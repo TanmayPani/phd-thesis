@@ -1,0 +1,162 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Courtesy of Charlotte Olsen, '23 and past graduates for this updated version of the Rutgers template!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[11pt]{ruthesis}
+\special{papersize=8.5in,11in}
+
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{url}
+
+\usepackage{comment}
+
+\usepackage{aastex_hack,deluxetable} 
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{lscape,longtable}
+\usepackage[T1]{fontenc}
+\usepackage{makecell}
+\usepackage[T1]{fontenc}
+%\usepackage{tgbonum}
+%\usepackage{ulem}
+
+\setlength{\unitlength}{1.0cm}
+
+% Load packages; ambssymb is for extra fonts, such as blackboard
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{xspace}
+\usepackage{soul}
+\usepackage{multirow}
+% Define Italic Sans Serif font (for tensors)
+\DeclareMathAlphabet{\mathsfsl}{OT1}{cmss}{m}{sl}
+
+%sectionbib option ensures that the bibliography is treated as a 
+% section in your chapter, and not a new chapter.
+% \usepackage[sectionbib,authoryear]{natbib} 
+% \bibliographystyle{apj}
+
+% Normal astronomical referencing is usually in the form (Smith
+% 1999), this is to remove the extra comma in  (Smith, 1999).
+%\bibstyle{aa}
+%\citestyle{aa}   % author-year; disabled in favour of numeric citations
+
+% to compile only the sections we are currently working on.
+%\includeonly{warp1,summary,appendix_warpA,appendix_warpB}
+%\includeonly{intro}
+
+%to show notes on the margin, {\baselinestretch}{1} is because in 
+% case double-space is used in the main text.
+%\long\def\Notes#1{\marginpar{\renewcommand{\baselinestretch}{1} \tiny #1}}
+%\long\def\Notes#1{\relax}
+%\long\def\Ignore#1{\relax}
+%\long\def\Comment#1{{\it\footnotesize #1}}
+
+% The page number in Rutgers thesis format is so high up in the
+% page that normal printers can not print it out! The following is to
+% lower page numbers down a bit, so we can see them in a draft
+% version to the committee members. Do NOT use this change in the
+% FINAL version to be submitted to the Graduate School.
+%\addtolength{\topmargin}{0.3cm}
+
+
+% Editing color by co-authors
+\definecolor{myred}{rgb}{0.7,0.1,0.1}
+\def\eg#1{\textcolor{myred}{Advisor: #1}}
+\definecolor{myblue}{rgb}{0.,0.4,0.7}
+\def\cao#1{\textcolor{myblue}{Student: #1}}
+
+%\draft
+\setcounter{tocdepth}{1}
+
+%commands
+\input{Commands.tex}
+
+\begin{document}
+\phd \title{Formalizing angular structure of particle jets}
+\author{Tanmay Pani}
+\program{Physics and Astronomy}
+\director{Prof. Sevil Salur}
+\approvals{5}
+\submissionyear{2026}
+\submissionmonth{September} 
+
+\abstract{Write abstract here}
+
+\beforepreface
+
+\acknowledgements{A nice thank you...
+}
+
+\dedication{
+\begin{center}
+{\em A dedication here. } \\
+\end{center}
+}
+
+\figurespage
+\tablespage
+
+\afterpreface
+\graphicspath{{./}{figures/}}
+% \def\figdirgap{./Figures/Gappies}
+% \def\figdirudg{./Figures/UDGs}
+% \def\figdirlsb{./Figures/LSBs}
+% \captionsetup{font={stretch=1}} 
+
+\chapter{Introduction}
+\label{chp:intro}
+\input{intro}
+
+\chapter{Jet-hadron correlations relative to the event plane}
+\label{chap:proj1}
+\input{jethadroncorr}
+
+\chapter{Jet angularities}
+\label{chap:proj2}
+\input{proj2}
+
+\chapter{Conclusions \& Future Work}
+\label{chap:conclusions}
+\input{summary}
+
+
+
+% R E F E R E N C E S
+\def\aap{{A\&A}}
+\def\aas{{A\&AS}}
+\def\aj{{AJ}}
+\def\araa{{ARA\&A}}
+\def\apj{{ApJ}}
+\def\apjl{{ApJ}}
+\def\apjs{{ApJS}}
+\def\baas{{BAAS}}
+\def\mnras{{MNRAS}}
+\def\nat{{Nature}}
+\def\pasp{{PASP}}
+
+\clearpage
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{unsrt}
+\begingroup
+    \setlength{\bibsep}{11pt}
+    \linespread{1}\selectfont
+    \bibliography{thesis}
+\endgroup
+
+% A P P E N D I X
+\appendix
+
+%\input{pca_appendix}
+
+\clearpage
+
+\pagestyle{empty}
+%\input{vita}
+
+\end{document}

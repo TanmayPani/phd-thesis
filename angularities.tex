@@ -1,0 +1,45 @@
+Within jets originating from the initial stages of hadron collisions, angular scales correlate with temporal and
+energy scales, giving insight into jet evolution across the perturbative and non-perturbative quantum chromodynamic (p/npQCD) regimes. SoftDrop-grooming \cite{SoftDrop} isolates the pQCD contributions to jet substructure by removing soft, wide-angle radiation. In presence of quark-gluon plasma (QGP), comparing groomed and ungroomed angular distributions to a \(p+p\) baseline reveals signatures of jet quenching, such as broadening.  They are calculated as:
+
+\begin{equation}\label{eq:GenAngIntro}
+	\lambda_\beta^\kappa=\sum_{\mathrm{const} \in \mathrm{jet}} \left(\frac{p_{\rm T, const}}{p_ {\rm T,  jet}}\right)^\kappa r(\mathrm{const, jet})^\beta ,
+\end{equation}
+where \ptJet~is the jet's total momentum, and $r(\mathrm{const, jet}) = \sqrt{(\eta_{\rm jet}-\eta_{\rm const})^2 + (\phi_{\rm jet}-\phi_{\rm const})^2} $ is the \etaphi distance of a constituent from the jet-axis. Parameters $\kappa$ and $\beta$ tune experimental sensitivity to hard and wide-angle radiation, respectively. $\lambda^1_\beta$'s are infra-red and collinear (IRC) safe angularites~\cite{Larkoski_2014}, which probe the average angular spread of energy around the jet-axis. They are radial moments of the  jet's momentum profile, also known as differential jet-shape (\rhoR), given by,
+
+\begin{equation}\label{eq:RhoRIntro}
+	\rho(\mathbf{r}) = \lim_{\delta r \rightarrow0}\Big\langle\frac{1}{\delta r}\frac{\sum_{|\mathbf{r_{\rm const}} - \mathbf{r}|<\delta r/2}p_{\rm T, const}}{p_{\rm T,  jet}}\Big\rangle _{\rm jets} ,
+\end{equation}
+where  $\mathbf{r}_{\rm const} =  (\eta_{\rm const}-\eta_{\rm jet})\hat{\eta}+ (\phi_{\rm const}-\phi_{\rm jet})\hat{\phi}$, and it follows that, 
+\begin{equation}
+	\lambda_\beta^1 = \int_{\rm jet} r^\beta\rho(\mathbf{r}) d\mathbf{r} .
+\end{equation}
+
+The jet angularity based observables like jet-substructure measurements in Pb+Pb collisions at \sGevPbPb~at the LHC, have shown quenched jets, on average, have migration of charged energy away from their axis relative to a \pp baseline \cite{CMS_2014243} and possibly a survivor bias toward harder, quark-like fragmentation \cite{Alice2018}. Similar measurements using jets with lower \ptJet~at RHIC, will help understand jet-medium interactions in a complementary phase-space region to LHC.`
+
+\section{Dataset and Analysis Method}\label{sect:AnaMethod}
+The analysis uses data from \pp collisions at \sGev~collected in 2012 using the Solenoidal Tracker At RHIC (STAR) detector system.~Charged-particle tracks and neutral energy depositions (towers) are measured using STAR's Time Projection Chamber (TPC) \cite{Anderson_2003} and Barrel Electromagnetic Calorimeter (BEMC) \cite{BEDDO2003725} detectors respectively. Together, they provide full azimuthal coverage with a pseudorapidity acceptance of $|\eta| \leq 1$.  The tracks and towers are clustered into jets using the anti-\(k_{\rm T}\) algorithm with a jet resolution parameter $R = 0.4$, implemented using the FastJet library~\cite{Cacciari_2012}. To suppress contributions of fake tracks and combinatorial background (especially in the context of the larger  heavy-ion background), a ``hard-core'' constituent selection as was done in previous STAR analyses \cite{PhysRevC.105.044906} is applied, which only allows tracks (towers) with $c\ptTrack (\EtTower) \geq 2~\mathrm{GeV}$ to be clustered into jets. To enhance jet signal, only High-Tower (HT) triggered events, with at least one tower with $\EtTower \geq 4$ GeV are considered. After clustering, only jets completely falling within acceptance ($|\eta_{\rm jet}| \leq 0.6$) are kept. Jets with area, $A_{\rm jet} < 0.3$ are rejected to further reduce the fake jet contribution.
+
+The distributions of \g, \ptd~and \lesub~are fully corrected for detector effects by using iterative bayesian unfolding, implemented using the RooUnfold library \cite{bennerRoounfold}. The unfolding requires a response matrix between particle-level and detector-level. This is constructed using an embedding simulation which involves PYTHIA-6 STAR tune \cite{adkins2019studying} events processed into detector hits using GEANT3 \cite{Brun:1987ma} and added to real zero-bias events from \pp collision environment. To calculate \rhoR, additional associated tracks not clustered into jets, but inside the jet cones are also used. This was done to look at the complete jet, around its hard core. Given a jet, tracks with $\ptAssoc \geq 1\Gevc$ and $r(\rm assoc, jet) \leq 0.4$ are used. The \rhoR~is corrected using bin-by-bin factors obtained from the aforementioned embedding simulation.
+
+%Thus operationally, $\rho(\mathbf{r})$ becomes:
+%
+%\begin{equation}\label{Eq:RhoROper}
+%	\rhoR=\frac{1}{N_{\text {jets }}} \sum_{\text {jets }} \frac{1}{\delta r} \frac{\sum_{\mid  \mathbf{r}_{\rm assoc} -\mathbf{r} \mid<\delta r / 2} p_{\mathrm{T, assoc}}}{p_{\mathrm{T, jet }}}
+%\end{equation}
+
+
+
+\section{Result and Discussion}\label{sect:Results}
+
+Differential jet-shape as a function of $r = r(\rm assoc, jet)$ from the jet axis is shown in Fig.~\ref{fig:RhoR}. Girth ($g$), \ptd~and \lesub~distributions are shown in Fig.~\ref{fig:JSOs}. Systematic uncertainties are shown as shaded grey bands. On average, lower energy jets with \ptJetRange{15}{20} have higher $g$, lower $LeSub$ and more energy away from jet-axis than jets with \ptJetGeq{20}. 
+
+
+The results are compared to PYTHIA-6 (STAR)~\cite{adkins2019studying}  and PYTHIA-8 Detroit underlying event tune \cite{PhysRevD.105.016011}. All measurements show a good agreement with PYTHIA-6, while PYTHIA-8 is shown to underestimate jets with higher $LeSub$ and lower $g$ values. \rhoR~from PYTHIA-8 underestimates the fraction of jet momentum closer to the jet axis. Figures~\ref{fig:JSOs_QG} and~\ref{fig:RhoR_QG} show STAR data compared to PYTHIA-8 (Detroit) with (a) all hard scatterings, (b) only \qqToqq hard scatterings (quark jets), and (c) only \ggTogg hard scatterings (gluon jets). 
+
+
+Since gluon jets have softer, more spread-out radiation pattern on average than quark jets \cite{Gallicchio_2011}, they are likely to have lower \ptd, lower \lesub, higher \g~with more momentum (\rhoR) away from the jet-axis. As even quark-jets from PYTHIA-8 (Detroit) show softer fragmentation on average than the STAR data, it is likely that PYTHIA-8 (Detroit) underestimates hard fragmentation of partons.
+
+
+\section{Conclusions} \label{sect:Conclusions}
+First measurements of jet-shape observables \g, \ptd, \lesub~and \rhoR~from STAR using hard-core jets \pp collisions at \sGev~are presented, setting the baseline for heavy-ion collisions to measure the medium-modification at RHIC. With the hard-core jet definition and HT trigger requirement, the sample of jets used here is biased towards hard-fragmented jets. The results show good agreement with PYTHIA-6 (STAR). PYTHIA-8 (Detroit) is shown to underestimate harder-fragmented jets, and needs further tuning of PYTHIA-8's parton shower/hadronization parameters to explain STAR hard-core jets.
+
