@@ -84,7 +84,7 @@
 \director{Prof. Sevil Salur}
 \approvals{5}
 \submissionyear{2026}
-\submissionmonth{September} 
+\submissionmonth{September}
 
 \abstract{Write abstract here}
 
@@ -94,9 +94,9 @@
 }
 
 \dedication{
-\begin{center}
-{\em A dedication here. } \\
-\end{center}
+	\begin{center}
+		{\em A dedication here. } \\
+	\end{center}
 }
 
 \figurespage
@@ -110,19 +110,31 @@
 % \captionsetup{font={stretch=1}} 
 
 \chapter{Introduction}
-\label{chp:intro}
+\label{ch:intro}
 \input{intro}
 
+\chapter{Relativistic collisions of nuclei}
+\label{ch:hic}
+\input{hic}
+
+\chapter{Solenoidal Tracker At RHIC}
+\label{ch:star}
+\input{star_rhic}
+
+\chapter{Methodology}
+\label{ch:methods}
+\input{methods}
+
 \chapter{Jet-hadron correlations relative to the event plane}
-\label{chap:proj1}
+\label{ch:jhcorr}
 \input{jethadroncorr}
 
 \chapter{Jet angularities}
-\label{chap:proj2}
-\input{proj2}
+\label{ch:angularities}
+\input{angularities}
 
 \chapter{Conclusions \& Future Work}
-\label{chap:conclusions}
+\label{ch:conclusions}
 \input{summary}
 
 
@@ -144,9 +156,9 @@
 \addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{unsrt}
 \begingroup
-    \setlength{\bibsep}{11pt}
-    \linespread{1}\selectfont
-    \bibliography{thesis}
+\setlength{\bibsep}{11pt}
+\linespread{1}\selectfont
+\bibliography{thesis}
 \endgroup
 
 % A P P E N D I X
