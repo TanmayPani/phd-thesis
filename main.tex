@@ -11,7 +11,8 @@
 
 \usepackage{comment}
 
-\usepackage{aastex_hack,deluxetable} 
+\usepackage{aastex_hack}
+%\usepackage{deluxetable} 
 \usepackage{graphicx}
 \usepackage{rotating}
 \usepackage{lscape,longtable}
@@ -33,6 +34,26 @@
 \usepackage{xspace}
 \usepackage{soul}
 \usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{bigdelim}
+\usepackage{tikz}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage{xcolor}
+
+\usepackage{listofitems} % to create arrays with \readlist
+\usepackage{ifthen} % for \whiledo
+\usepackage{siunitx} % for \SI
+\usetikzlibrary{decorations.pathmorphing} % for snake, coil, zigzag
+\usetikzlibrary{fpu} % for higher floating-point precision
+\usetikzlibrary{angles,quotes} % for pic (angle labels)
+\usetikzlibrary{arrows.meta} % for arrow head size
+\usetikzlibrary{bending} % for bending arrow head
+
+\pgfkeys{
+  /pgf/fpu/output format=fixed, % fpu floating-point format
+  /pgf/number format/precision=2 % two decimals
+}
+
 % Define Italic Sans Serif font (for tensors)
 \DeclareMathAlphabet{\mathsfsl}{OT1}{cmss}{m}{sl}
 
@@ -117,21 +138,17 @@
 \label{ch:hic}
 \input{hic}
 
-\chapter{Solenoidal Tracker At RHIC}
-\label{ch:star}
-\input{star_rhic}
-
 \chapter{Methodology}
 \label{ch:methods}
 \input{methods}
 
-\chapter{Jet-hadron correlations relative to the event plane}
-\label{ch:jhcorr}
-\input{jethadroncorr}
-
-\chapter{Jet angularities}
-\label{ch:angularities}
-\input{angularities}
+%\chapter{Jet-hadron correlations relative to the event plane}
+%\label{ch:jhcorr}
+%\input{jethadroncorr}
+%
+%\chapter{Jet angularities}
+%\label{ch:angularities}
+%\input{angularities}
 
 \chapter{Conclusions \& Future Work}
 \label{ch:conclusions}

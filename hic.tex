@@ -1,6 +1,160 @@
-Relativistic heavy-ion collisions have been used for more than three decades to map out the phase diagram of quantum chromodynamics (QCD) matter. This has been done through previous studies from energies around $5-20$ GeV at the Alternating Gradient Synchrotron (AGS) in Brookhaven National Laboratory (BNL) and the Super Proton Synchrotron (SPS) at CERN, to $200$ GeV at the Relativistic Heavy Ion Collider (RHIC) in BNL and $7$ TeV at the Large Hadron Collider (LHC) at CERN.  A new form of matter has been discovered in such collisions at extreme temperature and density, the ``Quark-Gluon Plasma'' (QGP), that exhibits almost perfect liquid dynamical behavior \cite{Adcox:2004mh,Adams:2005dq,Arsene:2004fa,Back:2004je,Shuryak:2004cy,Lee:2005gw,Gyulassy:2004zy,Heinz:2005zg,Blau:2005pk,Riordan:2006df}. RHIC and the LHC continue to explore new regions of the phase diagram and study the properties of the QGP.
+% COLORS
+\colorlet{protoncol}{red!68!black!80}
+\colorlet{neutroncol}{green!68!black!80}
+\colorlet{photoncol}{yellow!85!orange!95!black}
+
+% STYLES
+\tikzset{
+>=latex, % for LaTeX arrow head
+eta line/.style={->,black!60!red,thick,line cap=round},
+theta node/.style={black,pos=0.7,fill=white,scale=0.8,
+		inner sep=1.5pt,rounded corners=3pt},
+mysmallarrow/.style={-{Latex[length=3,width=2.5]},draw=black,line width=0.6,
+angle radius=45,angle eccentricity=1.1},
+vector/.style={->,thick,green!60!black},
+photon/.style={->,line width=0.7,line cap=round,photoncol,decorate,decoration={
+				snake,amplitude=.4mm,segment length=2.2mm,post length=1.5mm}
+	},
+ball/.style={
+		circle,draw=none,ball color=#1,postaction={
+				fill=#1,fill opacity=0.8,draw=#1!40!black,line width=0.04}
+	},
+ball/.default=protroncol,
+pics/nucleus/.style={%
+		code={%
+				\fill[protoncol] (0,0) circle(0.86*\R); % background to fill any holes
+				\pgfmathsetmacro\Rball{0.18*\R} % ball radius
+				\pgfmathsetmacro\Rcorr{\R-\Rball} % subtract ball radius
+				\pgfmathsetmacro\C{min(1/(4*\Rcorr),0.24)} % put balls at edges closer in to create 3D ball effect
+				\pgfmathsetmacro\D{1-4*\C*\Rcorr} % discriminant
+				\pgfmathsetmacro\Rs{2*(\Rcorr)/(1+sqrt(\D)} % scaled total radius
+				\message{^^J R=\R, R=\Rcorr, Rs=\Rs, C=\C, D=1-4cR=\D (must be >0)}
+				\foreach \lay [evaluate={
+							\r=\Rs*(\lay-0.05)/\Nlay; % ring radius
+							\rC=\r-\C*\r*\r; % reduce outer radii to create 3D effect
+							\aR=3*rand; % random angular offset
+							\Nring=int(round(2*\rC*\N/(\Rs*(\Nlay+1)*(1-\C*\Rs*(2*\Nlay+1)/(3*\Nlay))))) % number of balls on this ring
+						}] in {\Nlay,...,1}{
+						\message{^^J N=\N, Nlay=\Nlay, Nring=\Nring, r=\r}
+						\shufflelist{\Nring} % get shuffled list of sequence 1,...,\Nring
+						\foreach \i [evaluate={
+									\p=(rand+1)/2<0.39?1:0; % 0: neutron, 1: proton
+									\is=int(\shuffledlist[\i]); % shuffled index
+									\aB=\aR+360*(\is/\Nring)+2*rand/\Nring; % ball angle plus random offset
+									\rB=\rC+0.04*rand % ball radius plus random radial offset
+								}] in {1,...,\Nring}{
+								%\message{^^J is=\is, i=\i, a=\aB, p=\p}
+								\fill[ball=\ifodd\p protoncol\else neutroncol\fi]
+								(\aB:\rB) circle(\Rball);
+							}
+					}
+				\fill[ball=protoncol] (0,0) circle(\Rball);
+				\foreach \ang in {0,60,90,120,180,-60,-90,-120}{
+						\coordinate (-\ang) at (\ang:\R+1.3*\Rball);
+					}
+			}
+	}
+}
+\def\shufflelist#1{ % get shuffled list of sequence 1,...,#1
+	%\message{^^JShuffle list}
+	\pgfmathsetmacro\tmplist{random(1,#1)} % first random item
+	\readlist*\shuffledlist\tmplist % convert to array
+	\newboolean{unique}
+	\whiledo{\shuffledlistlen<#1}{ % try until list is of length = #1
+		\pgfmathsetmacro\rx{random(1,#1)} % generate new random item
+		\setboolean{unique}{true}
+		\foreachitem \x \in \shuffledlist{ % loop over previous elements
+			\ifnum \x=\rx % look if new number in list
+				\setboolean{unique}{false} % already in list
+				\breakforeach % stop looking and try again in next iteration
+			\fi
+		}
+		\ifthenelse{\boolean{unique}}{ % found unique item !
+			\xdef\tmplist{\tmplist,\rx} % add new unique item
+			\readlist*\shuffledlist\tmplist % convert to array
+		}{}
+	}
+}
+
+\section{Relativistic Kinematics}
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[scale=3]
+		\message{^^JPseudorapidity including negative side}
+		\pgfkeys{
+			/pgf/fpu/output format=fixed, % fpu floating-point format
+			/pgf/number format/precision=2 % two decimals
+		}
+		\def\R{1.2} % radius/length of lines
+		\node[scale=1,below left=1] at (0,\R) {$y$}; % y axis
+		\node[scale=1,below left=1] at (\R,0) {$z$}; % z axis
+		\coordinate (O) at (0,0); % origin
+		\foreach \t in {180,170,150,135,120,90,60,45,30,10,0}{ % loop over theta
+				\ifnum \t = 0
+					\def\e{+\infty} % infinity symbol
+				\else \ifnum \t = 180
+						\def\e{-\infty} % infinity symbol
+					\else
+						\pgfkeys{/pgf/fpu=true} % increase floating-point precision in computation
+						\pgfmathparse{-ln(tan(\t/2))} % pseudorapidity
+						\pgfkeys{/pgf/fpu=false} % turn off to avoid interference with following
+						\pgfmathroundtozerofill{\pgfmathresult} % round with trailing zeroes
+						\pgfmathsetmacro\e{\t==90?0:\pgfmathresult} % no trailing zeroes for theta = 0
+					\fi \fi
+				\message{^^Jt=\t, e=\e}
+				\draw[eta line] % eta lines
+				(O) -- (\t:\R) coordinate(P\t) node[anchor=180+\t,black] {$\eta=\e$}
+				node[theta node] {$\theta=\t^\circ$};
+			}
+		\draw pic["$\theta$"scale=0.8,mysmallarrow] {angle = P0--O--P10}; % arrow label	
+	\end{tikzpicture}
+	\label{fig:etavstheta}
+	\caption{\(\eta \) vs \(\theta\) }
+\end{figure}
+
+\section{Jets}
+
+\section{Heavy-Ion Collisions}
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}
+		\def\N{85} % number of nucleons
+		\def\R{1.0} % nucleus radius
+		\def\Nlay{5} % number of rings/layers
+		\def\xs{0.25} % horizontally scale
+		\def\Rp{0.92} % length photon
+		\def\D{3.7} % horizontal distance between nuclei
+		\pgfmathsetmacro\H{2.30*\R} % vertical distance between nuclei
+		\pgfmathsetmacro\v{0.25*\D} % length vector
+
+		\message{^^J PbPb collision with impact parameter}
+
+		% NUCLEUS
+		\pic[xscale=\xs] (L) at (-\D/2, \H/2) {nucleus};
+		\pic[xscale=\xs] (R) at ( \D/2,-\H/2) {nucleus};
+
+		% VELOCITY VECTORS
+		\draw[vector] (L-0)++(2pt,0) --++ (\v,0); %node[above=2pt] {$v\approx c$};
+		\draw[vector] (R-180)++(-2pt,0) --++ (-\v,0); %node[above=2pt] {$v\approx c$};
+
+		% PHOTONS
+		\foreach \ang in {60,90,120,-60,-90,-120}{
+				\draw[photon] (L-\ang) --++ (\ang:\Rp);
+				\draw[photon] (R-\ang) --++ (\ang:\Rp);
+			}
+
+		% MEASURES
+		\draw[<->,thick]
+		(R-0)++(0.3*\R,0) --++ (0,\R) node[midway,right] {$R\sim 7\mathrm{fm}$};
+		\draw[<->,thick]
+		(0,-\H/2) -- (0,\H/2) node[midway,right] {$b$};
+		\node at (0.3*\D,0.7*\H) {$b > 2R$};
+
+	\end{tikzpicture}
+	\caption{Typical heavy-ion collision}
+	\label{fig:hictikz}
+\end{figure}
+
 
 \section{Signatures of QGP}
-Observable remnants of partonic interactions at large momentum transfers, called hard probes, travel through the QGP medium and experience energy loss through various QCD interactions with the medium. Hence, they are commonly used to study the structure and dynamics of the QGP~\cite{Gyulassy:1990bh,Gyulassy:2003mc,Wang:1991xy}.  These probes are considered to be highly reliable, due to their expected yields being accurately calculable using the perturbative QCD (pQCD) theoretical framework. Additionally, their short production time ($\tau \sim 1/p_{\mathrm{T}} \leq 0.1$ fm/c) allows for the tracing of medium properties right from the initial phases of the collision. At RHIC, evidence of energy loss in the medium (“jet quenching”) was first observed through properties of leading fragments of jets and their correlations \cite{Adams:2003im,Adams:2006yt,Adler:2006hu}. %These techniques were developed in order to suppress the large underlying-event backgrounds. 
-Since 2011, the observation of significant jet quenching has also been confirmed through measurements of reconstructed  back-to-back, inclusive, and tagged jets at the LHC energies \cite{Chatrchyan:2011sx,Chatrchyan:2012gt,CMS:2016uxf,Chatrchyan:2012gw,CMS:2021vui}. The interactions of jets within the hot QCD medium can also be measured experimentally via, for example, the modification of the internal structure of jets, possibly due to medium-induced soft-gluon radiation \cite{Wiedemann:2009sh} and collisional processes\cite{doi:10.1146/annurev.nucl.50.1.37}. The interpretation behind these observations are further supported by correlating jets with charged particles to extend measurements of intrinsic jet properties to large relative angles in \deta and \dphi ~\cite{Khachatryan:2016erx,CMS:2021nhn}.
-More recently, measurements of jet substructure, such as splitting functions that reflect the splitting of a parton into two other partons, and the opening angle of two prongs (where a prong is a jet-like object within a jet), have been studied at LHC and RHIC energies~\cite{Sirunyan_2018,STAR:2021kjt}. The measurements of splitting functions at LHC, for jets with higher transverse momenta, indicate a more unbalanced momentum ratio in central collisions compared to peripheral and $p+p$ collisions. However, at RHIC, the opening angles and splittings of lower momentum jets are found to be vacuum-like, with no quantitative modification in Au+Au collisions compared to reference $p+p$ collisions. The partonic interactions, and therefore medium-induced modifications to a jet, are expected to depend on the path-length traversed by a hard-scattered parton through the medium~\cite{Liou:2013qya}. Leading particles of jets are indeed observed to follow such an expectation, as measured through the azimuthal anisotropy of high transverse momentum ($p_{\rm T}$) hadrons\cite{PhysRevC.76.034904}.
+Different seminal results go here...

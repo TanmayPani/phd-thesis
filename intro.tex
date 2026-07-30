@@ -1,17 +1,140 @@
-\section{History}
-\subsection{Atomism}
+\tikzset{
+	middle dot/.style={circle, fill=black, minimum size=3.5pt, inner sep=0pt},
+	end dot/.style={circle, fill=black, minimum size=2.5pt, inner sep=0pt}
+	% For hollow dots, change the middle dot to:
+	% middle dot/.style={circle, draw=black, fill=white, thick, minimum size=4pt, inner sep=0pt}
+}
 
-\section{Standard Model}
-Given available technology, the Standard Model (SM) is perhaps humanity's best attempt at answering questions like, ``What makes everything?'' or ``What keeps everything together?''.  From J.J. Thompson discovering electrons in 1897 to CERN's discovery of the Higgs boson in 2012, it took generations of physicists and chemists, from every continent  to develop SM to its current form.
+% ---------------- CUSTOM MACROS ----------------
+% Macro for Section Headers
+\newcommand{\vhead}[1]{\textcolor[HTML]{B32222}{\sffamily\small\uppercase{#1}}}
 
-\section{Quantum Chromodynamics (QCD)}
+% Macro for 3-point vertices 
+% Args: #1=bottom-left style, #2=bottom-left label, #3=top-left style, #4=top-left label, #5=right style, #6=right label
+\newcommand{\threevertex}[6]{%
+	\begin{tikzpicture}[baseline=0, thick]
+		\begin{feynman}
+			\vertex [middle dot] (v) at (0,0) {};
+			\vertex (i1) at (240:1.5) {\(#2\)};
+			\vertex (i2) at (120:1.5) {\(#4\)};
+			\vertex [end dot] (o) at (1.5,0) {};
+			\diagram* {
+			(i1) -- [#1] (v) -- [#3] (i2),
+			(v) -- [#5, edge label'=\(#6\)] (o)
+			};
+		\end{feynman}
+	\end{tikzpicture}%
+}
+
+% Macro for 4-point vertices
+% Args: #1=top-left style, #2=top-left label, #3=bottom-left style, #4=bottom-left label, 
+%       #5=top-right style, #6=top-right label, #7=bottom-right style, #8=bottom-right label
+\newcommand{\fourvertex}[8]{%
+	\begin{tikzpicture}[baseline=0, thick]
+		\begin{feynman}
+			\vertex [middle dot] (v) at (0,0) {};
+			\vertex (i1) at (135:1.5) {\(#2\)};
+			\vertex (i2) at (225:1.5) {\(#4\)};
+			\vertex (o1) at (45:1.5) {\(#6\)};
+			\vertex (o2) at (-45:1.5) {\(#8\)};
+			\diagram* {
+			(i1) -- [#1] (v),
+			(i2) -- [#3] (v),
+			(v) -- [#5] (o1),
+			(v) -- [#7] (o2),
+			};
+		\end{feynman}
+	\end{tikzpicture}%
+}
+
+%===========================================================================================
+%\section{History}
+%===========================================================================================
+%\subsection{Atomism}
+%===========================================================================================
+\section{The Standard Model}
+According to the Standard Model (SM), all matter results from interactions between fundamental particles: lepton and quarks (fermions), and mediators (bosons).
+Table \ref{tab:qrknlep} shows fermions of the standard model, their anti-particle equivalent would have all the signs reversed for the quantum numbers. For example, an anti-electron (\(e^+\)) and anti-electron-neutrino (\(\bar{\nu_e}\)) lepton number would flip to \((-1, 0, 0)\) and charges (\(Q\)s) would be \(+1\) and 0 respectively.
+
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{c @{\hspace{5pt}} l |c|c|c|l|c|c|c|}
+		% Top edges of both tables
+		\cline{3-5} \cline{7-9}
+
+		% Table Headers (overriding borders explicitly to ensure the outer walls exist)
+		\multicolumn{2}{c|}{}              & \multicolumn{3}{c|}{Leptons} &              & \multicolumn{3}{c|}{Quarks}                                                                                         \\
+		\cline{3-5} \cline{7-9}
+
+		% Column Headers (merging the first two columns to center 'Category' with no borders)
+		                                   &                              & \(l\)        & \(Q\)                       & \((L_e, L_\mu, L_\tau)\) &  & \(q\) & \(Q\)      & \((F_d, F_u, F_s, F_c, F_b, F_t)\) \\
+		\cline{3-5} \cline{7-9}
+
+		% Group A block
+		\multirow{2}{*}{First generation}  & \ldelim\{{2}{*}              & \(e^-\)      & \(-1\)                      & (1, 0, 0)                &  & \(d\) & \(-1/3\)   & \((-1, 0, 0, 0, 0, 0)\)            \\
+		                                   &                              & \(\nu_e\)    & 0                           & (1, 0, 0)                &  & \(u\) & \(2/3\)    & \((0, 1, 0, 0, 0, 0)\)             \\
+		\cline{3-5} \cline{7-9}
+
+		% Group B block
+		\multirow{2}{*}{Second generation} & \ldelim\{{2}{*}              & \(\mu^-\)    & \(-1\)                      & (0, 1, 0)                &  & \(s\) & \( -1/3 \) & \((0, 0, -1, 0, 0, 0)\)            \\
+		                                   &                              & \(\nu_\mu\)  & 0                           & (0, 1, 0)                &  & \(c\) & \(2/3\)    & \((0, 0, 0, 1, 0, 0)\)             \\
+		\cline{3-5} \cline{7-9}
+
+		% Group B block
+		\multirow{2}{*}{Third generation}  & \ldelim\{{2}{*}              & \(\tau^-\)   & \(-1\)                      & (0, 0, 1)                &  & \(b\) & \(-1/3\)   & \((0, 0, 0, 0, -1, 0)\)            \\
+		                                   &                              & \(\nu_\tau\) & 0                           & (0, 0, 1)                &  & \(t\) & \(2/3\)    & \((0, 0, 0, 0, 0, 1)\)             \\
+		% Bottom edges of both tables                         
+		\cline{3-5} \cline{7-9}
+	\end{tabular}
+	\label{tab:qrknlep}
+	\caption{Three generations of leptons (left) and quarks (right).}
+\end{table}
+
+The mediators/bosons exchanged between the other fundamental particles give rise to the fundamental interactions: electromagnetism from the photon (\(\gamma\)), weak force from \(W^\pm\) and \(Z\) bosons, the gluon (\(g\)) for the strong force, and the Higgs boson (\(h\)) for imparting mass to the fundamental particles. Various interaction vertices possible in SM, that become the building blocks of all fundamental interactions are shown in \ref{tab:smvtx}.
+
+\begin{table}[htbp]
+	\begin{tabular}{>{\centering\arraybackslash}m{4.5cm} >{\centering\arraybackslash}m{4.5cm} >{\centering\arraybackslash}m{4.5cm}}
+
+		% ROW 1: Strong Vertices
+		\multicolumn{3}{l}{\vhead{Strong Vertices}}                                                         \\[0.1cm]
+		\threevertex{fermion}{q}{fermion}{q}{gluon}{g}                                                    &
+		\threevertex{gluon}{g}{gluon}{g}{gluon}{g}                                                        &
+		\fourvertex{gluon}{g}{gluon}{g}{gluon}{g}{gluon}{g}                                                 \\[1cm]
+
+		% ROW 2: Weak Vertices
+		\multicolumn{3}{l}{\vhead{Weak Vertices}}                                                           \\[0.1cm]
+		\threevertex{fermion}{f}{fermion}{f}{photon}{Z}                                                   &
+		\threevertex{fermion}{\nu_e \mid \nu_\mu \mid \nu_\tau}{fermion}{e \mid \mu \mid \tau}{photon}{W} &
+		\threevertex{fermion}{d/s/b}{fermion}{u/c/t}{photon}{W}                                             \\[1cm]
+
+		% ROW 3: Electromagnetic and Electroweak Vertices
+		\multicolumn{1}{l}{\vhead{Electromagnetic Vertex}}                                                &
+		\multicolumn{2}{l}{\vhead{Electroweak Vertices}}                                                    \\[0.1cm]
+		\threevertex{fermion}{X^{+|-}}{fermion}{X^{-|+}}{photon}{\gamma}                                  &
+		\threevertex{photon}{Z/\gamma}{photon}{W}{photon}{W}                                              &
+		\fourvertex{photon}{W}{photon}{W}{photon}{W|Z/\gamma}{photon}{W|Z/\gamma}                           \\[1cm]
+
+		% ROW 4: Higgs Vertices
+		\multicolumn{3}{l}{\vhead{Higgs Vertices}}                                                          \\[0.1cm]
+		\threevertex{fermion}{m}{fermion}{m}{scalar}{H}                                                   &
+		% Empty center cell
+		                                                                                                  &
+		\fourvertex{scalar}{H}{scalar}{H}{scalar}{m_B}{scalar}{m_B}                                         \\
+	\end{tabular}
+	\caption{Feynman diagrams of various interaction vertices possible in the Standard Model}
+	\label{tab:smvtx}
+\end{table}
 
 
+%===========================================================================================
+\section{Quantum Chromodynamics}
+
+
+%===========================================================================================
 \section{Quark-Gluon Plasma}
 
 
 
-%===========================================================================================
 %===========================================================================================
 
 
