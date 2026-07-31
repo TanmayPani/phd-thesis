@@ -37,8 +37,12 @@
 \usepackage{booktabs}
 \usepackage{bigdelim}
 \usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{physics}
 \usepackage[compat=1.1.0]{tikz-feynman}
 \usepackage{xcolor}
+\usepackage[outline]{contour} % glow around text
+\contourlength{0.9pt}
 
 \usepackage{listofitems} % to create arrays with \readlist
 \usepackage{ifthen} % for \whiledo
@@ -48,6 +52,7 @@
 \usetikzlibrary{angles,quotes} % for pic (angle labels)
 \usetikzlibrary{arrows.meta} % for arrow head size
 \usetikzlibrary{bending} % for bending arrow head
+\usetikzlibrary{3d} % for canvas is
 
 \pgfkeys{
   /pgf/fpu/output format=fixed, % fpu floating-point format
@@ -138,17 +143,17 @@
 \label{ch:hic}
 \input{hic}
 
-\chapter{Methodology}
+\chapter{Jets and Machine Learning}
 \label{ch:methods}
 \input{methods}
 
-%\chapter{Jet-hadron correlations relative to the event plane}
-%\label{ch:jhcorr}
-%\input{jethadroncorr}
-%
-%\chapter{Jet angularities}
-%\label{ch:angularities}
-%\input{angularities}
+\chapter{Jet-hadron correlations relative to the event plane}
+\label{ch:jhcorr}
+\input{jethadroncorr}
+
+\chapter{Jet angularities}
+\label{ch:angularities}
+\input{angularities}
 
 \chapter{Conclusions \& Future Work}
 \label{ch:conclusions}
