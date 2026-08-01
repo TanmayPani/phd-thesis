@@ -93,33 +93,35 @@ Table \ref{tab:qrknlep} shows fermions of the standard model, their anti-particl
 The mediators/bosons exchanged between the other fundamental particles give rise to the fundamental interactions: electromagnetism from the photon (\(\gamma\)), weak force from \(W^\pm\) and \(Z\) bosons, the gluon (\(g\)) for the strong force, and the Higgs boson (\(h\)) for imparting mass to the fundamental particles. Various interaction vertices possible in SM, that become the building blocks of all fundamental interactions are shown in \ref{tab:smvtx}.
 
 \begin{table}[htbp]
-	\begin{tabular}{>{\centering\arraybackslash}m{4.5cm} >{\centering\arraybackslash}m{4.5cm} >{\centering\arraybackslash}m{4.5cm}}
+	\begin{tabular}{
+			>{\centering\arraybackslash}m{2.8cm}
+			>{\centering\arraybackslash}m{2.8cm} 
+			>{\centering\arraybackslash}m{2.8cm} 
+			>{\centering\arraybackslash}m{2.8cm} 
+		}
 
 		% ROW 1: Strong Vertices
-		\multicolumn{3}{l}{\vhead{Strong Vertices}}                                                         \\[0.1cm]
-		\threevertex{fermion}{q}{fermion}{q}{gluon}{g}                                                    &
-		\threevertex{gluon}{g}{gluon}{g}{gluon}{g}                                                        &
-		\fourvertex{gluon}{g}{gluon}{g}{gluon}{g}{gluon}{g}                                                 \\[1cm]
-
-		% ROW 2: Weak Vertices
-		\multicolumn{3}{l}{\vhead{Weak Vertices}}                                                           \\[0.1cm]
-		\threevertex{fermion}{f}{fermion}{f}{photon}{Z}                                                   &
-		\threevertex{fermion}{\nu_e \mid \nu_\mu \mid \nu_\tau}{fermion}{e \mid \mu \mid \tau}{photon}{W} &
-		\threevertex{fermion}{d/s/b}{fermion}{u/c/t}{photon}{W}                                             \\[1cm]
+			\multicolumn{1}{c}{\vhead{Electromagnetic} } &\multicolumn{3}{l}{\vhead{Strong}}     \\[0.1cm]
+					\threevertex{fermion}{X^{+|-}}{fermion}{X^{-|+}}{photon}{\gamma}   &
+		\threevertex{fermion}{q}{fermion}{q}{gluon}{g}       &
+		\threevertex{gluon}{g}{gluon}{g}{gluon}{g}    &
+		\fourvertex{gluon}{g}{gluon}{g}{gluon}{g}{gluon}{g}  
+		 \\[1cm]
 
 		% ROW 3: Electromagnetic and Electroweak Vertices
-		\multicolumn{1}{l}{\vhead{Electromagnetic Vertex}}                                                &
-		\multicolumn{2}{l}{\vhead{Electroweak Vertices}}                                                    \\[0.1cm]
-		\threevertex{fermion}{X^{+|-}}{fermion}{X^{-|+}}{photon}{\gamma}                                  &
-		\threevertex{photon}{Z/\gamma}{photon}{W}{photon}{W}                                              &
-		\fourvertex{photon}{W}{photon}{W}{photon}{W|Z/\gamma}{photon}{W|Z/\gamma}                           \\[1cm]
-
-		% ROW 4: Higgs Vertices
-		\multicolumn{3}{l}{\vhead{Higgs Vertices}}                                                          \\[0.1cm]
-		\threevertex{fermion}{m}{fermion}{m}{scalar}{H}                                                   &
-		% Empty center cell
-		                                                                                                  &
-		\fourvertex{scalar}{H}{scalar}{H}{scalar}{m_B}{scalar}{m_B}                                         \\
+	\multicolumn{3}{l}{\vhead{Weak}}   &\\[0.1cm]
+		\threevertex{fermion}{\nu_e \mid \nu_\mu \mid \nu_\tau}{fermion}{e \mid \mu \mid \tau}{photon}{W} &
+		\threevertex{fermion}{d/s/b}{fermion}{u/c/t}{photon}{W}  &
+		\threevertex{fermion}{f}{fermion}{f}{photon}{Z}&
+	
+		
+		                            
+		\\[1cm]
+			\multicolumn{2}{l}{\vhead{Electroweak}} & \multicolumn{2}{l}{\vhead{Higgs}}  \\[0.1cm]
+				\threevertex{photon}{Z/\gamma}{photon}{W}{photon}{W}   &
+			\fourvertex{photon}{W}{photon}{W}{photon}{W|Z/\gamma}{photon}{W|Z/\gamma} &
+			\threevertex{fermion}{m}{fermion}{m}{scalar}{H}      &
+		\fourvertex{scalar}{H}{scalar}{H}{scalar}{m_B}{scalar}{m_B} 
 	\end{tabular}
 	\caption{Feynman diagrams of various interaction vertices possible in the Standard Model}
 	\label{tab:smvtx}
@@ -128,7 +130,11 @@ The mediators/bosons exchanged between the other fundamental particles give rise
 
 %===========================================================================================
 \section{Quantum Chromodynamics}
-
+\emph{Quantum Chromodynamics (QCD)} is the component of the SM which describes the strong interactions of quarks and gluons. The classical Lagrangian density with quark and gluon fields as fundamental degrees of freedom is given as:
+\begin{equation}
+	\mathcal{L}_\mathrm{cl} = \bar{q}^\alpha (i \gamma^\mu \partial_\mu\delta_{\alpha\beta} - g\gamma^\mu 
+	t^a_{\alpha\beta}A^a_\mu - m\delta_{\alpha\beta})q^\beta - \frac{1}{4} F^a_{\mu\nu}F_a^{\mu\nu}
+\end{equation}
 
 %===========================================================================================
 \section{Quark-Gluon Plasma}
