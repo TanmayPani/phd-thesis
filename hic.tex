@@ -311,6 +311,7 @@ Also considering \emph{azimuthal angle} (\(\varphi\)) and \emph{transverse-momen
 \end{figure}
 
 \section{Jets}
+When a quark undergoes hard scattering during initial stages of a hadron-hadron collision , the interaction occurs at a scale where $\alpha_s$ is small. In this asymptotic regime, the probability of the quark radiating a high-energy gluon is suppressed according to perturbative QCD,  allowing the quark to initially behave as a free particle. However, as the energetic quark propagates outward, the characteristic momentum scale  of its subsequent interactions begins to drop and  $\alpha_s(\kappa^2)$ grows, which drastically increases the interaction probability at the fundamental vertices. The initial quark rapidly radiates gluons, which in turn split into more gluons and quark-antiquark pairs. This cascading sequence of emissions continues until the energy scale of the individual partons lowers to the confinement threshold, $\kappa \sim \Lambda_{\mathrm{QCD}}$, and the partons undergo hadronization. Experimentally this appears as a collimated spray of particles known as a \emph{jet}.
 
 \section{Heavy-Ion Collisions}
 \begin{figure}[htbp]
@@ -352,6 +353,80 @@ Also considering \emph{azimuthal angle} (\(\varphi\)) and \emph{transverse-momen
 	\caption{Typical heavy-ion collision}
 	\label{fig:hictikz}
 \end{figure}
+
+\subsection{Centrality determination and event plane reconstruction} \label{sect:CentEP}
+
+Centrality is a measure of the transverse overlap between the colliding nuclei and is generally expressed as a percentage of all collisions. 
+For example, the 0-10\% most central events would refer to the 10\% of events with the most overlap and thus the 10\% smallest impact parameter.  This analysis studied semi-peripheral (20-50\%) events to maximize the eccentricity of the interaction region.  Centrality is determined by fitting the  charged-particle multiplicity from the TPC within $|\eta| <$ 0.5 that is corrected for dependence on the $v_z$ and the beam luminosity.
+
+Within the overlap region, symmetry planes are generated from initial asymmetries in the nucleon distributions and can be quantified by a harmonic decomposition ~\cite{Poskanzer:1998yz}.  The reaction plane would correspond to the second-order symmetry plane $\Psi_{2, EP}$ if nucleon distributions were in their average positions and devoid of fluctuations of interactions amongst nucleons ~\cite{PhysRevC.101.064901}.  We refer in this letter to the event plane as being the experimentally reconstructed second-order symmetry plane ~\cite{Poskanzer:1998yz}.
+
+By measuring the charged particle azimuthal distribution, the n-th order event plane can be extracted by \cite{Poskanzer:1998yz}:  
+
+\begin{equation}
+	\Psi_{n,EP} = \frac{1}{n} \arctan \left(\frac{Q_{y, n}}{Q_{x, n}} \right),
+	\label{eqn:EP}
+\end{equation}
+
+Where, the weighted $Q$ vectors are given by:
+
+\begin{align}
+	Q_{x, n} = \sum_{\mathrm{tracks}} w_{\rm track} \cos (n \phi_{\rm track}) \qquad \text{\&} \qquad& Q_{y, n} = \sum_{\mathrm{tracks}} w_{\rm track} \sin (n \phi_{\rm track}).
+	\label{Eqn:Qvecs}
+\end{align}
+
+\noindent where the sum is calculated for all
+reconstructed charged particles (tracks) in the event, $\phi_{\rm track}$ is the track's azimuthal angle, and $w_{\rm track}$ the weight associated with the track.  Weights, $w_{\rm track}$, are optimized to calculate the event-plane vector to the best accuracy. This work uses the common approach of scaling by the track's $p_{\mathrm{T}}$ ($w_{\rm track} = p_{\rm T, track}$)~\cite{Poskanzer:1998yz}.  The event plane is calculated event-by-event, following a procedure similar to Ref.~\cite{CASTILHO2018369} using charged tracks with $0.2 < p_{\rm  T, track} < 1.0$ \GeVc measured within the TPC.  The approach is called the Modified Reaction Plane (MRP) method \cite{Agakishiev:2014ada}.  Additional details can be found in Refs.~\cite{CASTILHO2018369,Adams_2005}.
+% 0.2-2.0
+
+The impact of highly energetic jets on the calculation of the event-plane orientation is reduced by removing the particles within the pseudorapidity strip ($|\deta|<0.4$) across \dphi surrounding the leading jet.  This procedure also removes a significant portion of the away-side jet, located opposite in azimuth. 
+An upper limit of 1.0 GeV/c is used in the calculation of the event plane to exclude the momentum range of particles used in correlation functions from the calculation of the event plane which is used to characterize the near-side jets. Due to finite acceptance and multiplicities, the calculated event plane has an underlying anisotropy that is corrected by applying two separate correction methods.  
+
+%Two corrections are used to flatten the raw event plane distribution.  
+First, a calibration and recentering correction procedures are applied to remove bias introduced by non-uniform acceptance of the TPC tracking system and further account for potential beam-condition effects\cite{Barrette:1997pt,PhysRevC.55.1420,Poskanzer:1998yz}.  This procedure involves recentering the weighted $Q$-vectors such that, $\langle Q_{x, n} \rangle = 0 = \langle Q_{y, n} \rangle$.  
+
+Recentering is done by calculating a modified $Q$-vector, obtained by subtracting an event averaged $Q$-vector from each event's nominal $Q$-vector and done for 10\% centrality intervals and 4 cm $v_z$ intervals.  The recentering approach, which drastically improves the uniformity of the event plane, is however, unable to remove the higher harmonics of $\Psi_{n,EP}$ \cite{Poskanzer:1998yz}.  To help remove higher harmonics and make the event-plane angle isotropic in the lab frame \cite{Voloshin:2008dg}, a second correction step, referred to as shifting, is applied event-by-event.  This method defines a new angle:
+
+\begin{equation}
+	\Psi'_{2,EP} = \Psi_{2,EP} + \sum_n \frac{2}{n}
+	(- \langle \sin (n\Psi_{2,EP}) \rangle \cos(n\Psi_{2,EP}) + \langle \cos(n\Psi_{2,EP}) \sin(n\Psi_{2,EP}) \rangle) ,
+	\label{eqn:Shift}
+\end{equation}
+
+\noindent where the brackets denote an average over events.  We require the vanishing of each n-th Fourier moment up to 20th order.  Similarly to recentering, the shifting correction is done separately for 10\% centrality intervals and 4-cm $v_z$ intervals.  Additional details of the recentering and shifting corrections can be found in Refs.~\cite{Wang:2012bga,Barrette:1997pt,Poskanzer:1998yz}
+
+The resulting azimuthal anistropy can be characterized by the Fourier decomposition of the azimuthal particle distribution with respect to the second-order event plane ~\cite{Bielcikova:2003ku,Voloshin:1994mz}:
+
+\begin{equation}
+	\frac{dN}{d(\phi - \Psi_{RP})} = \frac{N_0}{2\pi} \left( 1 + 2 \sum_{n=1}^{\infty} v_n \cos[n(\phi - \Psi_{RP})] \right),
+	\label{fourier_azi_part_distr}
+\end{equation}
+
+\noindent where $N_0$ is the number of particles, $\phi$ describes the azimuthal angle of the particles, $\Psi_{RP}$ describes the azimuthal angle of the true reaction plane determined by the beam axis and the impact parameter and $v_n$ is the n-th harmonic (flow) coefficient. $\Psi_{RP}$ is not experimentally known and is replaced by the reconstructed event-plane angle.  Due to finite event multiplicity, there will be a difference between these two planes.  It is quantified by event-plane resolution, $R_n$ or $R_n\{\Psi_{2, EP}\}$ given by Eqn.~\ref{resolution}. The observed $v_n$, $v_n^{\rm obs}$ is corrected for this limited resolution by doing, $v_n = v_{n}^{\rm obs}/R_n$ \cite{Abbas:2013taa,Poskanzer:1998yz}.  Because an ideal event-plane resolution is equal to 1, for non-ideal cases, the value of the coefficients will be raised by applying the correction. Thus, $R_n$ impacts the flow-modulated background for these correlations, as described in Sect.~\ref{sect:CorrBkgd},
+
+\begin{equation}
+	R_n = R_n\{\Psi_{2, EP}\} = \langle \cos(n[\Psi_{RP} - \Psi_{2, EP}]) \rangle \qquad \text{$n$ is even}
+	\label{resolution}
+\end{equation}
+
+Furthermore, individual events are divided into two random sub-events by assigning charged tracks to sub-events, ``$a$" and ``$b$". The sub-events are unique, with approximately equal multiplicities. We can write the correlation of two event planes by taking the product of two sub-events \cite{Barrette:1996rs,Poskanzer:1998yz}:
+
+\begin{equation}
+	\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{2, EP}^{b}]) \rangle = 
+	\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{RP}]) \rangle
+	\langle \cos(n[\Psi_{2, EP}^{b} - \Psi_{RP}]) \rangle,
+	\label{resolution2sub}
+\end{equation}
+
+\noindent This allows calculation of the event-plane resolution directly from data. Since $a$ and $b$ have equal multiplicities, the resolution of each sub-event can be calculated from the correlation between the two sub-events as \cite{Poskanzer:1998yz}:
+
+\begin{equation}
+	\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{RP}]) \rangle = 
+	\sqrt{\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{2, EP}^{b}]) \rangle} .
+	\label{resolutionIndiv}
+\end{equation}
+
+The event-plane resolution is multiplicity dependent and calculated for separate ranges of collision centrality using the two sub-events method.  Narrower bins are calculated and then combined accordingly to match the ranges used by this analysis, by averaging the results from the narrow bins weighted by the multiplicity of each bin \cite{Voloshin:2008dg}.
 
 
 \section{Signatures of QGP}

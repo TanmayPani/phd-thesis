@@ -130,13 +130,51 @@ The mediators/bosons exchanged between the other fundamental particles give rise
 
 %===========================================================================================
 \section{Quantum Chromodynamics}
-\emph{Quantum Chromodynamics (QCD)} is the component of the SM which describes the strong interactions of quarks and gluons. The classical Lagrangian density with quark and gluon fields as fundamental degrees of freedom is given as:
+\emph{Quantum Chromodynamics (QCD)} is the component of the SM which describes the strong interactions of quarks and gluons. The classical Lagrangian density showing interaction of a quark field  \(q^\alpha\) with 3 color degrees of freedom interacting with gluon fields \(A^a_\mu\) with 8 color degrees of freedom is given as:
 \begin{equation}
 	\mathcal{L}_\mathrm{cl} = \bar{q}^\alpha (i \gamma^\mu \partial_\mu\delta_{\alpha\beta} - g\gamma^\mu 
-	t^a_{\alpha\beta}A^a_\mu - m\delta_{\alpha\beta})q^\beta - \frac{1}{4} F^a_{\mu\nu}F_a^{\mu\nu}
+	t^a_{\alpha\beta}A^a_\mu - m\delta_{\alpha\beta})q^\beta - \frac{1}{4} F^a_{\mu\nu}F_a^{\mu\nu}.
+	\label{eqn:qcdlagrangian}
 \end{equation}
 
-%===========================================================================================
+Where, \(g\) is the dimensionless QCD coupling constant, and \(t^a\) are the generators of \(\rm SU_c(3)\) Lie algebra in form of traceless \(3\times3\) hermitian matrices satisfying:
+\begin{equation}
+	[t^a, t^b] = if_{abc}t^c,~\tr(t^at^b) = \frac{1}{2}\delta^{ab}.
+\end{equation}
+
+The gluon strength tensor  \(F^a_{\mu\nu}\)  is defined as,
+\begin{equation}
+	F^a_{\mu\nu} = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a - gf_{abc}A^b_\mu A^c_\nu. 
+\end{equation}
+
+Quantizing Eqn. \ref{eqn:qcdlagrangian} using the prescription from Fadeev and Popov,  
+
+\begin{equation}
+	\mathcal{L} = \mathcal{L}_\mathrm{cl} + \bar{c}^\alpha\partial^\mu(\partial_\mu\delta_{\alpha\beta} + igT^a_{\alpha\beta}A^a_\mu)c^\beta - \frac{1}{2\xi}(\partial^\mu A^a_\mu)^2.
+	\label{eqn:qcdlagquantized}
+\end{equation}
+
+Where, \(c^\alpha / \bar{c}^\alpha\)  are independent Grassmann fields called ghost/anti-ghost. \(T^a\) are the adjoint representations of  \(\rm SU_c(3)\) Lie algebra, given by \(8\times8\) traceless hermitian matrices. 
+
+In contrast to quantum electrodynamics (QED), where the classical limit is more useful in low-energy situations, and quantum effects become more important at higher energies, quantum effects of QCD become more important at lower energies. This counterintuitive behavior originates from the renormalization procedure required to tame ultraviolet divergences arising from quantum loop corrections, which involves introduction of an arbitrary energy scale $\kappa$, known as the \emph{renormalization scale}. To keep true physical observables independent of \(\kappa\), the bare QCD coupling constant \(g\) of the Lagrangian is replaced by a scale-dependent renormalized coupling, $g(\kappa)$, which follows the renormalization group (RG) flow equation:
+\begin{equation}
+	\mu \frac{\partial g}{\partial \kappa} = \beta(g) \equiv -\beta_0g^3 - \beta_1g^5 + \ldots.
+\end{equation}
+Where,
+\begin{equation}
+	\beta_0 = \frac{1}{(4\pi)^2}\left(11 - \frac{2}{3}N_f\right), \quad \beta_1 =  \frac{1}{(4\pi)^4}\left(102 - \frac{38}{3}N_f\right) 
+\end{equation}
+As \(\beta_{{0,1}} < 0 \) for \(N_f = 6\), \(g(\kappa)\) decreases as \(\kappa\) increases. We can see this more clearly by obtaining explicit form of \(g\) and expressing it in terms of the finite structure constant, \(\alpha_s \equiv \frac{g^2}{4\pi}\):
+\begin{align}
+	\alpha_s(\kappa) &=  \frac{1}{4\pi\beta_0}\ln(\kappa^2/\Lambda_\mathrm{QCD}^2)\left[1 - \frac{\beta_1}{\beta_0^2}\frac{\ln(\ln(\kappa^2/\Lambda_\mathrm{QCD}^2))}{\ln(\kappa^2/\Lambda_\mathrm{QCD}^2)}\right] \notag\\
+	&\approx \frac{4\pi}{\ln(\kappa^2/\Lambda_\mathrm{QCD}^2)\left(11 - \frac{2}{3}N_f\right)}
+\end{align}
+This behaviour leads to:
+\begin{itemize}
+	\item \textbf{Asymptotic Freedom:} At high momentum transfers ($\kappa^2 \to \infty$), the coupling strength vanishes ($\alpha_s \to 0$). In this regime, quarks and gluons behave as quasi-free particles, making perturbative QCD calculations highly reliable.
+	\item \textbf{Color Confinement:} At low energy scales ($\kappa \sim \Lambda_{\mathrm{QCD}} \approx 200\text{ MeV}$), the coupling diverges ($\alpha_s \sim \mathcal{O}(1)$). In this strongly-interacting, non-perturbative limit, isolated color charges cannot exist; quarks and gluons are permanently bound into color-neutral hadrons.
+\end{itemize}
+
 \section{Quark-Gluon Plasma}
 
 
