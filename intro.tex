@@ -1,52 +1,3 @@
-\tikzset{
-	middle dot/.style={circle, fill=black, minimum size=3.5pt, inner sep=0pt},
-	end dot/.style={circle, fill=black, minimum size=2.5pt, inner sep=0pt}
-	% For hollow dots, change the middle dot to:
-	% middle dot/.style={circle, draw=black, fill=white, thick, minimum size=4pt, inner sep=0pt}
-}
-
-% ---------------- CUSTOM MACROS ----------------
-% Macro for Section Headers
-\newcommand{\vhead}[1]{\textcolor[HTML]{B32222}{\sffamily\small\uppercase{#1}}}
-
-% Macro for 3-point vertices 
-% Args: #1=bottom-left style, #2=bottom-left label, #3=top-left style, #4=top-left label, #5=right style, #6=right label
-\newcommand{\threevertex}[6]{%
-	\begin{tikzpicture}[baseline=0, thick]
-		\begin{feynman}
-			\vertex [middle dot] (v) at (0,0) {};
-			\vertex (i1) at (240:1.5) {\(#2\)};
-			\vertex (i2) at (120:1.5) {\(#4\)};
-			\vertex [end dot] (o) at (1.5,0) {};
-			\diagram* {
-			(i1) -- [#1] (v) -- [#3] (i2),
-			(v) -- [#5, edge label'=\(#6\)] (o)
-			};
-		\end{feynman}
-	\end{tikzpicture}%
-}
-
-% Macro for 4-point vertices
-% Args: #1=top-left style, #2=top-left label, #3=bottom-left style, #4=bottom-left label, 
-%       #5=top-right style, #6=top-right label, #7=bottom-right style, #8=bottom-right label
-\newcommand{\fourvertex}[8]{%
-	\begin{tikzpicture}[baseline=0, thick]
-		\begin{feynman}
-			\vertex [middle dot] (v) at (0,0) {};
-			\vertex (i1) at (135:1.5) {\(#2\)};
-			\vertex (i2) at (225:1.5) {\(#4\)};
-			\vertex (o1) at (45:1.5) {\(#6\)};
-			\vertex (o2) at (-45:1.5) {\(#8\)};
-			\diagram* {
-			(i1) -- [#1] (v),
-			(i2) -- [#3] (v),
-			(v) -- [#5] (o1),
-			(v) -- [#7] (o2),
-			};
-		\end{feynman}
-	\end{tikzpicture}%
-}
-
 %===========================================================================================
 %\section{History}
 %===========================================================================================
@@ -94,34 +45,34 @@ The mediators/bosons exchanged between the other fundamental particles give rise
 
 \begin{table}[htbp]
 	\begin{tabular}{
-			>{\centering\arraybackslash}m{2.8cm}
-			>{\centering\arraybackslash}m{2.8cm} 
-			>{\centering\arraybackslash}m{2.8cm} 
-			>{\centering\arraybackslash}m{2.8cm} 
+		>{\centering\arraybackslash}m{2.8cm}
+		>{\centering\arraybackslash}m{2.8cm}
+		>{\centering\arraybackslash}m{2.8cm}
+		>{\centering\arraybackslash}m{2.8cm}
 		}
 
 		% ROW 1: Strong Vertices
-			\multicolumn{1}{c}{\vhead{Electromagnetic} } &\multicolumn{3}{l}{\vhead{Strong}}     \\[0.1cm]
-					\threevertex{fermion}{X^{+|-}}{fermion}{X^{-|+}}{photon}{\gamma}   &
-		\threevertex{fermion}{q}{fermion}{q}{gluon}{g}       &
-		\threevertex{gluon}{g}{gluon}{g}{gluon}{g}    &
-		\fourvertex{gluon}{g}{gluon}{g}{gluon}{g}{gluon}{g}  
-		 \\[1cm]
+		\multicolumn{1}{c}{\vhead{Electromagnetic} }                                                      & \multicolumn{3}{l}{\vhead{Strong}} \\[0.1cm]
+		\threevertex{fermion}{X^{+|-}}{fermion}{X^{-|+}}{photon}{\gamma}                                  &
+		\threevertex{fermion}{q}{fermion}{q}{gluon}{g}                                                    &
+		\threevertex{gluon}{g}{gluon}{g}{gluon}{g}                                                        &
+		\fourvertex{gluon}{g}{gluon}{g}{gluon}{g}{gluon}{g}
+		\\[1cm]
 
 		% ROW 3: Electromagnetic and Electroweak Vertices
-	\multicolumn{3}{l}{\vhead{Weak}}   &\\[0.1cm]
+		\multicolumn{3}{l}{\vhead{Weak}}                                                                  &                                    \\[0.1cm]
 		\threevertex{fermion}{\nu_e \mid \nu_\mu \mid \nu_\tau}{fermion}{e \mid \mu \mid \tau}{photon}{W} &
-		\threevertex{fermion}{d/s/b}{fermion}{u/c/t}{photon}{W}  &
-		\threevertex{fermion}{f}{fermion}{f}{photon}{Z}&
-	
-		
-		                            
+		\threevertex{fermion}{d/s/b}{fermion}{u/c/t}{photon}{W}                                           &
+		\threevertex{fermion}{f}{fermion}{f}{photon}{Z}                                                   &
+
+
+
 		\\[1cm]
-			\multicolumn{2}{l}{\vhead{Electroweak}} & \multicolumn{2}{l}{\vhead{Higgs}}  \\[0.1cm]
-				\threevertex{photon}{Z/\gamma}{photon}{W}{photon}{W}   &
-			\fourvertex{photon}{W}{photon}{W}{photon}{W|Z/\gamma}{photon}{W|Z/\gamma} &
-			\threevertex{fermion}{m}{fermion}{m}{scalar}{H}      &
-		\fourvertex{scalar}{H}{scalar}{H}{scalar}{m_B}{scalar}{m_B} 
+		\multicolumn{2}{l}{\vhead{Electroweak}}                                                           & \multicolumn{2}{l}{\vhead{Higgs}}  \\[0.1cm]
+		\threevertex{photon}{Z/\gamma}{photon}{W}{photon}{W}                                              &
+		\fourvertex{photon}{W}{photon}{W}{photon}{W|Z/\gamma}{photon}{W|Z/\gamma}                         &
+		\threevertex{fermion}{m}{fermion}{m}{scalar}{H}                                                   &
+		\fourvertex{scalar}{H}{scalar}{H}{scalar}{m_B}{scalar}{m_B}
 	\end{tabular}
 	\caption{Feynman diagrams of various interaction vertices possible in the Standard Model}
 	\label{tab:smvtx}
@@ -130,50 +81,102 @@ The mediators/bosons exchanged between the other fundamental particles give rise
 
 %===========================================================================================
 \section{Quantum Chromodynamics}
-\emph{Quantum Chromodynamics (QCD)} is the component of the SM which describes the strong interactions of quarks and gluons. The classical Lagrangian density showing interaction of a quark field  \(q^\alpha\) with 3 color degrees of freedom interacting with gluon fields \(A^a_\mu\) with 8 color degrees of freedom is given as:
+\emph{Quantum Chromodynamics (QCD)} is the component of the SM which describes the strong interactions of quarks and gluons. The QCD Lagrangian can be expected as:
+\begin{align}
+	\mathcal{L}_\mathrm{QCD} = &\underbrace{\bar{q}^\alpha (i \gamma^\mu \partial_\mu\delta_{\alpha\beta} - g\gamma^\mu
+	t^a_{\alpha\beta}A^a_\mu - m\delta_{\alpha\beta})q^\beta - \frac{1}{4} F^a_{\mu\nu}F_a^{\mu\nu}}_{\mathcal{L}_\mathrm{classical}}\notag\\ &\underbrace{- \frac{1}{2\lambda}(\partial^\mu A^a_\mu)^2}_{\mathcal{L}_\mathrm{gauge-fixing}}+ \underbrace{\bar{c}^\alpha\partial^\mu(\partial_\mu\delta_{\alpha\beta} + igT^a_{\alpha\beta}A^a_\mu)c^\beta}_{\mathcal{L}_\mathrm{ghost}}
+\end{align}
+
+\(\mathcal{L}_\mathrm{classical}\) is the classical Lagrangian density shows interaction of a quark field  \(q^\alpha\) with 3 color degrees of freedom interacting with gluon fields \(A^a_\mu\) with 8 color degrees of freedom. \(g\) and \(m\) are dimensionless and correspond to QCD coupling constant, and quark-mass respectively. \(F^a_{\mu\nu}\) are the gluon tensors defined as,
 \begin{equation}
-	\mathcal{L}_\mathrm{cl} = \bar{q}^\alpha (i \gamma^\mu \partial_\mu\delta_{\alpha\beta} - g\gamma^\mu 
-	t^a_{\alpha\beta}A^a_\mu - m\delta_{\alpha\beta})q^\beta - \frac{1}{4} F^a_{\mu\nu}F_a^{\mu\nu}.
-	\label{eqn:qcdlagrangian}
+	F^a_{\mu\nu} = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a - gf_{abc}A^b_\mu A^c_\nu.
+	\label{eq:gluonFieldTensor}
 \end{equation}
 
-Where, \(g\) is the dimensionless QCD coupling constant, and \(t^a\) are the generators of \(\rm SU_c(3)\) Lie algebra in form of traceless \(3\times3\) hermitian matrices satisfying:
-\begin{equation}
-	[t^a, t^b] = if_{abc}t^c,~\tr(t^at^b) = \frac{1}{2}\delta^{ab}.
-\end{equation}
+To properly define gluon propagators, we need the make a choice of gauge. The \(\mathcal{L}_\mathrm{gauge-fixing}\) parametrizes the class of covariant gauges with the gauge parameter $\lambda$. In non-Abelian theories, this gauge fixing term leads to creation of unphysical degrees of freedom, which are canceled out by \(\mathcal{L}_\mathrm{ghost}\) which contains complex, scalar fermion fields \(c^\alpha\). 
 
-The gluon strength tensor  \(F^a_{\mu\nu}\)  is defined as,
-\begin{equation}
-	F^a_{\mu\nu} = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a - gf_{abc}A^b_\mu A^c_\nu. 
-\end{equation}
+ The matrices \(t^a\) and  \(T^a\) are the fundamental and adjoint representations of \(\rm SU(3)\) in form of traceless \(3\times3\) and \(8\times8\) hermitian matrices satisfying:
+\begin{align}
+	[t^a, t^b] = if_{abc}t^c,~\tr(t^at^b) = \frac{1}{2}\delta^{ab} \notag\\
+	[T^a, T^b] = if_{abc}T^c,~(T^{a})_{bc} = -if^{abc}.
+\end{align}
 
-Quantizing Eqn. \ref{eqn:qcdlagrangian} using the prescription from Fadeev and Popov,  
 
-\begin{equation}
-	\mathcal{L} = \mathcal{L}_\mathrm{cl} + \bar{c}^\alpha\partial^\mu(\partial_\mu\delta_{\alpha\beta} + igT^a_{\alpha\beta}A^a_\mu)c^\beta - \frac{1}{2\xi}(\partial^\mu A^a_\mu)^2.
-	\label{eqn:qcdlagquantized}
-\end{equation}
 
-Where, \(c^\alpha / \bar{c}^\alpha\)  are independent Grassmann fields called ghost/anti-ghost. \(T^a\) are the adjoint representations of  \(\rm SU_c(3)\) Lie algebra, given by \(8\times8\) traceless hermitian matrices. 
+Comparing with quantum electrodynamics (QED), where the photon field tensor lacks the last term of Eqn. \ref{eq:gluonFieldTensor} as it is an Abelian, \(U(1)\) gauge theory, we can explain the presence of three/four-gluon vertices and absence of such vertices for photon in Table \ref{tab:smvtx}.  
 
-In contrast to quantum electrodynamics (QED), where the classical limit is more useful in low-energy situations, and quantum effects become more important at higher energies, quantum effects of QCD become more important at lower energies. This counterintuitive behavior originates from the renormalization procedure required to tame ultraviolet divergences arising from quantum loop corrections, which involves introduction of an arbitrary energy scale $\kappa$, known as the \emph{renormalization scale}. To keep true physical observables independent of \(\kappa\), the bare QCD coupling constant \(g\) of the Lagrangian is replaced by a scale-dependent renormalized coupling, $g(\kappa)$, which follows the renormalization group (RG) flow equation:
-\begin{equation}
-	\mu \frac{\partial g}{\partial \kappa} = \beta(g) \equiv -\beta_0g^3 - \beta_1g^5 + \ldots.
-\end{equation}
+At an energy scale \(Q\), consider a dimensionless observable \(X\). To calculate \(X\) as a perturbation series in the QCD coupling \(\alpha_s = \frac{g^2}{4\pi}\) (analogous to the QED fine structure constant), we need to remove ultraviolet divergences through renormalization. Renormalization introduces another arbitrary energy scale $\mu$ where the divergences are subtracted.  In general, \(X\) would depend on the ratio \(Q^2/\mu^2\) and post-renormalization $\alpha_s(\mu^2)$. However, any physical observable should be independent of $\mu$:
+\begin{align}
+	\mu^2\frac{\partial X(Q^2/\mu^2, \alpha_s(\mu^2))}{\partial\mu^2} &= \left[\mu^2\frac{\partial}{\partial\mu^2} +  \mu^2\frac{\partial\alpha_s(\mu^2)}{\partial\mu^2}\frac{\partial}{\partial\alpha_s}\right] X(Q^2/\mu^2, \alpha_s(\mu^2)) = 0 \notag\\
+	\implies & \left[-\frac{\partial}{\partial t} + \beta(\alpha_s) \frac{\partial}{\partial\alpha_s}\right] X(e^t, \alpha_s) = 0.
+	\label{eqn:renormX}
+\end{align} 
+
+Where,
+\begin{align}
+	t = \ln{\frac{Q^2}{\mu^2}}, &\quad \beta(\alpha_s) = \mu^2\frac{\partial\alpha_s(\mu^2)}{\partial\mu^2} \notag\\
+	\implies \beta(\alpha_s) &= -\frac{\partial\alpha_s(\mu^2(t))}{\partial t}\notag\\
+		\implies  t - t_0 &= - \int_{\alpha_s(\mu^2(t_0))}^{\alpha_s(\mu^2(t))}\frac{d\alpha_s}{\beta(\alpha_s)}
+\end{align}
+Now, setting \(t_0 = 0\) gives \(\mu^2(t_0) = Q^2\) and the definite integral becomes:
+
+\begin{align}
+	t  &= \int^{\alpha_s(Q^2)}_{\alpha_s}\frac{d\alpha_s}{\beta(\alpha_s)},\quad\alpha_s\equiv\alpha_s(\mu^2)
+	\label{eq:runningCouplingIntro}
+\end{align}
+Substituting in Eq. \ref{eqn:renormX}:
+\begin{align}
+	\frac{\partial\alpha_s(Q^2)}{\partial t} = \beta(\alpha_s(Q^2)),\quad\frac{\partial\alpha_s(Q^2)}{\partial\alpha_s} = \frac{\beta(\alpha_s(Q^2))}{\beta(\alpha_s)}
+\end{align}
+we see that \(X(1, \alpha_s(Q^2))\) is a valid solution. Thus the scale dependence in \(X\) comes from the \emph{running coupling} \(\alpha_s(Q^2)\). 
+
+Taking derivative of Eq. \ref{eq:runningCouplingIntro} with respect to \(Q^2\) gives the \emph{renormalization group equation},
+
+\begin{align}
+Q^2\frac{\partial \alpha_s}{\partial Q^2}  =\beta(\alpha_s) \equiv -\alpha_s^2(Q^2)\left(\beta_0 + \beta_1\alpha_s(Q^2) + \mathcal{O}(\alpha_s^2(Q^2))\right)
+\label{eq:RGEquation}
+\end{align}
+
 Where,
 \begin{equation}
-	\beta_0 = \frac{1}{(4\pi)^2}\left(11 - \frac{2}{3}N_f\right), \quad \beta_1 =  \frac{1}{(4\pi)^4}\left(102 - \frac{38}{3}N_f\right) 
+	\beta_0 = \frac{1}{(4\pi)^2}\left(11 - \frac{2}{3}N_f\right), \quad \beta_1 =  \frac{1}{(4\pi)^4}\left(102 - \frac{38}{3}N_f\right)
 \end{equation}
-As \(\beta_{{0,1}} < 0 \) for \(N_f = 6\), \(g(\kappa)\) decreases as \(\kappa\) increases. We can see this more clearly by obtaining explicit form of \(g\) and expressing it in terms of the finite structure constant, \(\alpha_s \equiv \frac{g^2}{4\pi}\):
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/alphas-v-Q-2025-cropped.pdf}
+	\caption{Summary of determinations of \(\alpha_s\) as a function of the energy scale Q compared to
+		the running of the coupling computed at five loops taking as an input the current Particle Data Group (PDG) world average, \(\alpha_s(m_Z^2) = 0.1180 \pm 0.0009\) \cite{ParticleDataGroup:2026aaa}}
+	\label{fig:runningCoupling}
+\end{figure}
+
+Integrating Eq. \ref{eq:RGEquation}
 \begin{align}
-	\alpha_s(\kappa) &=  \frac{1}{4\pi\beta_0}\ln(\kappa^2/\Lambda_\mathrm{QCD}^2)\left[1 - \frac{\beta_1}{\beta_0^2}\frac{\ln(\ln(\kappa^2/\Lambda_\mathrm{QCD}^2))}{\ln(\kappa^2/\Lambda_\mathrm{QCD}^2)}\right] \notag\\
-	&\approx \frac{4\pi}{\ln(\kappa^2/\Lambda_\mathrm{QCD}^2)\left(11 - \frac{2}{3}N_f\right)}
+	\ln(\frac{Q^2}{Q_0^2})  &= \int^{\alpha_s(Q^2)}_{\alpha_s(Q^2_0)}\frac{d\alpha_s}{\beta(\alpha_s)}\notag\\
+	\implies \alpha_s(Q^2) &= \frac{\alpha_s(Q_0^2)}{1 + \beta_0(\alpha_s(Q_0^2))\ln(Q^2/Q_0^2) + \mathcal{O}(\alpha_s^2)}
+%	\label{eq:runningCouplingIntro}
 \end{align}
+
+Usually, the reference scale \(Q_0^2\) is usually set to a convenient energy scale in the perturbative regime. \(\alpha_s\) at all other scales can be inferred accordingly. Usually, \(Q_0\) is set to \(M_Z\) as shown in Fig. \ref{fig:runningCoupling}. Another approach is to choose a \emph{scale parameter} \(\Lambda\) such that \(\alpha_s(\Lambda) \rightarrow \infty\).  
+
+\begin{align}
+	\ln(\frac{Q^2}{\Lambda^2}) &= - \int_{\alpha_s(Q^2)}^{\infty} \frac{d\alpha_s}{\beta(\alpha_s)}  \notag\\
+	\implies \alpha_s(Q^2)  &= \frac{1}{\beta_0\ln(Q^2/\Lambda^2)}\left[1 - \frac{\beta_1}{\beta_0}\frac{\ln(\ln(Q^2/\Lambda^2))}{\ln(Q^2/\Lambda^2)} + \mathcal{O}\left(\frac{1}{\ln(Q^2/\Lambda^2)^2}\right)\right]
+\end{align}
+
 This behaviour leads to:
 \begin{itemize}
-	\item \textbf{Asymptotic Freedom:} At high momentum transfers ($\kappa^2 \to \infty$), the coupling strength vanishes ($\alpha_s \to 0$). In this regime, quarks and gluons behave as quasi-free particles, making perturbative QCD calculations highly reliable.
-	\item \textbf{Color Confinement:} At low energy scales ($\kappa \sim \Lambda_{\mathrm{QCD}} \approx 200\text{ MeV}$), the coupling diverges ($\alpha_s \sim \mathcal{O}(1)$). In this strongly-interacting, non-perturbative limit, isolated color charges cannot exist; quarks and gluons are permanently bound into color-neutral hadrons.
+	\item \textbf{Asymptotic Freedom:} At high momentum transfers (\(Q \gg \Lambda\)), the coupling strength vanishes ($\alpha_s \to 0$). In this regime, quarks and gluons behave as quasi-free particles, making perturbative QCD calculations highly reliable.
+	\item \textbf{Color Confinement:} At low energy scales (\(Q \sim \Lambda\), the coupling diverges ($\alpha_s \sim \mathcal{O}(1)$). In this strongly-interacting, non-perturbative limit, isolated color charges cannot exist; quarks and gluons are permanently bound into color-neutral hadrons.
 \end{itemize}
+
+\section{Hadrons}
+Since colored partons cannot exist freely, we observe emergent properties of QCD through their colorless bound states, the \(\emph{hadrons}\).
+
+
+\section{QCD Jets}
+When a quark undergoes hard scattering during initial stages of a hadron-hadron collision , the interaction occurs at a scale where $\alpha_s$ is small. In this asymptotic regime, the probability of the quark radiating a high-energy gluon is suppressed according to perturbative QCD,  allowing the quark to initially behave as a free particle. However, as the energetic quark propagates outward, the characteristic momentum scale  of its subsequent interactions begins to drop and  $\alpha_s(\kappa^2)$ grows, which drastically increases the interaction probability at the fundamental vertices. The initial quark rapidly radiates gluons, which in turn split into more gluons and quark-antiquark pairs. This cascading sequence of emissions continues until the energy scale of the individual partons lowers to the confinement threshold, $\kappa \sim \Lambda_{\mathrm{QCD}}$, and the partons undergo hadronization. Experimentally this appears as a collimated spray of particles known as a \emph{jet}.
+
 
 \section{Quark-Gluon Plasma}
 

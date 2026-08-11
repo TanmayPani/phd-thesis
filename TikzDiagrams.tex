@@ -1,0 +1,136 @@
+% ---------------- CUSTOM MACROS ----------------
+% Macro for Section Headers
+% COLORS
+\colorlet{protoncol}{red!68!black!80}
+\colorlet{neutroncol}{green!68!black!80}
+\colorlet{photoncol}{yellow!85!orange!95!black}
+\colorlet{veccol}{green!50!black}
+\colorlet{myred}{red!70!black}
+\colorlet{mycontourred}{red!55!black!3} % for contour
+\colorlet{mycontourred2}{red!55!black!6} % for contour
+\colorlet{myblue}{blue!70!black}
+\colorlet{mydarkred}{red!40!black}
+\colorlet{mydarkblue}{blue!30!black}
+\colorlet{CMScol}{red!80!black}
+\colorlet{ATLAScol}{blue!80!black}
+
+\tikzstyle{axis}=[->,thick,line cap=round]
+\tikzstyle{detector}=[thick,draw=mydarkred,rotate around z=\ang]
+\tikzstyle{beam pipe}=[draw=blue!20!black!50,fill=blue!20!black!10,rotate around z=\ang]
+\tikzstyle{detector surface}=[red!60!black!10,opacity=0.5,rotate around z=\ang]
+
+
+
+% STYLES
+\tikzset{
+	>=latex, % for LaTeX arrow head
+	eta line/.style={->,black!60!red,thick,line cap=round},
+	theta node/.style={black,pos=0.7,fill=white,scale=0.8,
+		inner sep=1.5pt,rounded corners=3pt},
+	mysmallarrow/.style={-{Latex[length=3,width=2.5]},draw=black,line width=0.6,
+		angle radius=45,angle eccentricity=1.1},
+	vector/.style={->,thick,green!60!black},
+	photon/.style={->,line width=0.7,line cap=round,photoncol,decorate,decoration={
+			snake,amplitude=.4mm,segment length=2.2mm,post length=1.5mm}
+	},
+	ball/.style={
+		circle,draw=none,ball color=#1,postaction={
+			fill=#1,fill opacity=0.8,draw=#1!40!black,line width=0.04}
+	},
+	ball/.default=protroncol,
+	pics/nucleus/.style={%
+		code={%
+			\fill[protoncol] (0,0) circle(0.86*\R); % background to fill any holes
+			\pgfmathsetmacro\Rball{0.18*\R} % ball radius
+			\pgfmathsetmacro\Rcorr{\R-\Rball} % subtract ball radius
+			\pgfmathsetmacro\C{min(1/(4*\Rcorr),0.24)} % put balls at edges closer in to create 3D ball effect
+			\pgfmathsetmacro\D{1-4*\C*\Rcorr} % discriminant
+			\pgfmathsetmacro\Rs{2*(\Rcorr)/(1+sqrt(\D)} % scaled total radius
+			\message{^^J R=\R, R=\Rcorr, Rs=\Rs, C=\C, D=1-4cR=\D (must be >0)}
+			\foreach \lay [evaluate={
+				\r=\Rs*(\lay-0.05)/\Nlay; % ring radius
+				\rC=\r-\C*\r*\r; % reduce outer radii to create 3D effect
+				\aR=3*rand; % random angular offset
+				\Nring=int(round(2*\rC*\N/(\Rs*(\Nlay+1)*(1-\C*\Rs*(2*\Nlay+1)/(3*\Nlay))))) % number of balls on this ring
+			}] in {\Nlay,...,1}{
+				\message{^^J N=\N, Nlay=\Nlay, Nring=\Nring, r=\r}
+				\shufflelist{\Nring} % get shuffled list of sequence 1,...,\Nring
+				\foreach \i [evaluate={
+					\p=(rand+1)/2<0.39?1:0; % 0: neutron, 1: proton
+					\is=int(\shuffledlist[\i]); % shuffled index
+					\aB=\aR+360*(\is/\Nring)+2*rand/\Nring; % ball angle plus random offset
+					\rB=\rC+0.04*rand % ball radius plus random radial offset
+				}] in {1,...,\Nring}{
+					%\message{^^J is=\is, i=\i, a=\aB, p=\p}
+					\fill[ball=\ifodd\p protoncol\else neutroncol\fi]
+					(\aB:\rB) circle(\Rball);
+				}
+			}
+			\fill[ball=protoncol] (0,0) circle(\Rball);
+			\foreach \ang in {0,60,90,120,180,-60,-90,-120}{
+				\coordinate (-\ang) at (\ang:\R+1.3*\Rball);
+			}
+		}
+	}
+}
+\def\shufflelist#1{ % get shuffled list of sequence 1,...,#1
+	%\message{^^JShuffle list}
+	\pgfmathsetmacro\tmplist{random(1,#1)} % first random item
+	\readlist*\shuffledlist\tmplist % convert to array
+	\newboolean{unique}
+	\whiledo{\shuffledlistlen<#1}{ % try until list is of length = #1
+		\pgfmathsetmacro\rx{random(1,#1)} % generate new random item
+		\setboolean{unique}{true}
+		\foreachitem \x \in \shuffledlist{ % loop over previous elements
+			\ifnum \x=\rx % look if new number in list
+			\setboolean{unique}{false} % already in list
+			\breakforeach % stop looking and try again in next iteration
+			\fi
+		}
+		\ifthenelse{\boolean{unique}}{ % found unique item !
+			\xdef\tmplist{\tmplist,\rx} % add new unique item
+			\readlist*\shuffledlist\tmplist % convert to array
+		}{}
+	}
+}
+
+\newcommand*{\vv}[1]{\vec{\mkern0mu#1}} % aligned vector arrow
+\newcommand{\vhead}[1]{\textcolor[HTML]{B32222}{\sffamily\small\uppercase{#1}}}
+
+% Macro for 3-point vertices 
+% Args: #1=bottom-left style, #2=bottom-left label, #3=top-left style, #4=top-left label, #5=right style, #6=right label
+\newcommand{\threevertex}[6]{%
+	\begin{tikzpicture}[baseline=0, thick]
+		\begin{feynman}
+			\vertex [circle, fill=black, minimum size=3.5pt, inner sep=0pt] (v) at (0,0) {};
+			\vertex (i1) at (240:1.5) {\(#2\)};
+			\vertex (i2) at (120:1.5) {\(#4\)};
+			\vertex [circle, fill=black, minimum size=2.5pt, inner sep=0pt] (o) at (1.5,0) {};
+			\diagram* {
+				(i1) -- [#1] (v) -- [#3] (i2),
+				(v) -- [#5, edge label'=\(#6\)] (o)
+			};
+		\end{feynman}
+	\end{tikzpicture}%
+}
+
+% Macro for 4-point vertices
+% Args: #1=top-left style, #2=top-left label, #3=bottom-left style, #4=bottom-left label, 
+%       #5=top-right style, #6=top-right label, #7=bottom-right style, #8=bottom-right label
+\newcommand{\fourvertex}[8]{%
+	\begin{tikzpicture}[baseline=0, thick]
+		\begin{feynman}
+			\vertex [circle, fill=black, minimum size=3.5pt, inner sep=0pt] (v) at (0,0) {};
+			\vertex (i1) at (135:1.5) {\(#2\)};
+			\vertex (i2) at (225:1.5) {\(#4\)};
+			\vertex (o1) at (45:1.5) {\(#6\)};
+			\vertex (o2) at (-45:1.5) {\(#8\)};
+			\diagram* {
+				(i1) -- [#1] (v),
+				(i2) -- [#3] (v),
+				(v) -- [#5] (o1),
+				(v) -- [#7] (o2),
+			};
+		\end{feynman}
+	\end{tikzpicture}%
+}
