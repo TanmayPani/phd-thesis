@@ -114,8 +114,48 @@
 	\end{tikzpicture}%
 }
 
+% Collinear factorization of a hadron-hadron hard scattering:
+% the two incoming hadrons (double lines) each supply a parton carrying a
+% fraction x of the hadron momentum, drawn from the parton distributions
+% f_i(x_1), f_j(x_2); the partons enter the hard cross section
+% sigma-hat_ij(alpha_s), and the beam remnants / outgoing partons leave as
+% three-line legs.  Takes no arguments; use inside a figure.
+\newcommand{\factorizationdiagram}{%
+	\begin{tikzpicture}[
+			>=latex, line width=0.6pt,
+			hadron/.style={double,double distance=2.2pt}, % incoming hadron: two lines
+			triple/.style={double,double distance=3.4pt}, % outer pair of a three-line leg
+		]
+		% --- parton distributions and the hard-scattering blob
+		\node[draw,circle,inner sep=2pt] (p1) at (0, 2.4) {$f_i(x_1)$};
+		\node[draw,circle,inner sep=2pt] (p2) at (0,-2.4) {$f_j(x_2)$};
+		\node[draw,minimum width=1.9cm,minimum height=1.5cm,inner sep=2pt]
+		(sig) at (5.0,0) {$\hat{\sigma}_{ij}(\alpha_{\rm s})$};
+
+		% --- endpoints of the beam remnants and the outgoing partons
+		\path (p1) ++(48:2.1) coordinate (rem1);
+		\path (p2) ++(-48:2.1) coordinate (rem2);
+		\path (sig.north east) ++(38:2.0) coordinate (out1);
+		\path (sig.south east) ++(-38:2.0) coordinate (out2);
+
+		% --- incoming hadrons
+		\draw[hadron] (-2.9, 2.4) -- (p1) node[pos=0.28,above=2pt] {$P_1$};
+		\draw[hadron] (-2.9,-2.4) -- (p2) node[pos=0.28,above=2pt] {$P_2$};
+
+		% --- three-line legs: beam remnants and outgoing partons
+		\foreach \s/\e in {p1/rem1, p2/rem2, sig.north east/out1, sig.south east/out2}{
+				\draw[triple] (\s) -- (\e);
+				\draw (\s) -- (\e); % middle line
+			}
+
+		% --- the two partons entering the hard scattering
+		\draw[->] (p1) -- (sig.north west) node[pos=0.62,above=3pt] {$x_1P_1$};
+		\draw[->] (p2) -- (sig.south west) node[pos=0.62,below=3pt] {$x_2P_2$};
+	\end{tikzpicture}%
+}
+
 % Macro for 4-point vertices
-% Args: #1=top-left style, #2=top-left label, #3=bottom-left style, #4=bottom-left label, 
+% Args: #1=top-left style, #2=top-left label, #3=bottom-left style, #4=bottom-left label,
 %       #5=top-right style, #6=top-right label, #7=bottom-right style, #8=bottom-right label
 \newcommand{\fourvertex}[8]{%
 	\begin{tikzpicture}[baseline=0, thick]

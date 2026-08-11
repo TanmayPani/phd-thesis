@@ -81,6 +81,8 @@ The mediators/bosons exchanged between the other fundamental particles give rise
 
 %===========================================================================================
 \section{Quantum Chromodynamics}
+
+\subsection{Lagrangian and Feynman Rules}
 \emph{Quantum Chromodynamics (QCD)} is the component of the SM which describes the strong interactions of quarks and gluons. The QCD Lagrangian can be expected as:
 \begin{align}
 	\mathcal{L}_\mathrm{QCD} = &\underbrace{\bar{q}^\alpha (i \gamma^\mu \partial_\mu\delta_{\alpha\beta} - g\gamma^\mu
@@ -93,7 +95,7 @@ The mediators/bosons exchanged between the other fundamental particles give rise
 	\label{eq:gluonFieldTensor}
 \end{equation}
 
-To properly define gluon propagators, we need the make a choice of gauge. The \(\mathcal{L}_\mathrm{gauge-fixing}\) parametrizes the class of covariant gauges with the gauge parameter $\lambda$. In non-Abelian theories, this gauge fixing term leads to creation of unphysical degrees of freedom, which are canceled out by \(\mathcal{L}_\mathrm{ghost}\) which contains complex, scalar fermion fields \(c^\alpha\). 
+To properly define gluon propagators, we need to make a choice of gauge. The \(\mathcal{L}_\mathrm{gauge-fixing}\) parametrizes the class of covariant gauges with the gauge parameter $\lambda$. In non-Abelian theories, this gauge fixing term leads to creation of unphysical degrees of freedom, which are canceled out by \(\mathcal{L}_\mathrm{ghost}\) which contains complex, scalar fermion fields \(c^\alpha\). 
 
  The matrices \(t^a\) and  \(T^a\) are the fundamental and adjoint representations of \(\rm SU(3)\) in form of traceless \(3\times3\) and \(8\times8\) hermitian matrices satisfying:
 \begin{align}
@@ -105,6 +107,8 @@ To properly define gluon propagators, we need the make a choice of gauge. The \(
 
 Comparing with quantum electrodynamics (QED), where the photon field tensor lacks the last term of Eqn. \ref{eq:gluonFieldTensor} as it is an Abelian, \(U(1)\) gauge theory, we can explain the presence of three/four-gluon vertices and absence of such vertices for photon in Table \ref{tab:smvtx}.  
 
+
+\subsection{The Running Coupling}
 At an energy scale \(Q\), consider a dimensionless observable \(X\). To calculate \(X\) as a perturbation series in the QCD coupling \(\alpha_s = \frac{g^2}{4\pi}\) (analogous to the QED fine structure constant), we need to remove ultraviolet divergences through renormalization. Renormalization introduces another arbitrary energy scale $\mu$ where the divergences are subtracted.  In general, \(X\) would depend on the ratio \(Q^2/\mu^2\) and post-renormalization $\alpha_s(\mu^2)$. However, any physical observable should be independent of $\mu$:
 \begin{align}
 	\mu^2\frac{\partial X(Q^2/\mu^2, \alpha_s(\mu^2))}{\partial\mu^2} &= \left[\mu^2\frac{\partial}{\partial\mu^2} +  \mu^2\frac{\partial\alpha_s(\mu^2)}{\partial\mu^2}\frac{\partial}{\partial\alpha_s}\right] X(Q^2/\mu^2, \alpha_s(\mu^2)) = 0 \notag\\
@@ -114,14 +118,14 @@ At an energy scale \(Q\), consider a dimensionless observable \(X\). To calculat
 
 Where,
 \begin{align}
-	t = \ln{\frac{Q^2}{\mu^2}}, &\quad \beta(\alpha_s) = \mu^2\frac{\partial\alpha_s(\mu^2)}{\partial\mu^2} \notag\\
-	\implies \beta(\alpha_s) &= -\frac{\partial\alpha_s(\mu^2(t))}{\partial t}\notag\\
+	t = \ln{\frac{Q^2}{\mu^2}}, &\quad \beta(\alpha_s) = \mu^2\frac{\partial\alpha_s}{\partial\mu^2},\quad\alpha_s\equiv\alpha_s(\mu^2(t)) \notag\\
+	\implies \beta(\alpha_s) &= -\frac{\partial\alpha_s}{\partial t}\notag\\
 		\implies  t - t_0 &= - \int_{\alpha_s(\mu^2(t_0))}^{\alpha_s(\mu^2(t))}\frac{d\alpha_s}{\beta(\alpha_s)}
 \end{align}
 Now, setting \(t_0 = 0\) gives \(\mu^2(t_0) = Q^2\) and the definite integral becomes:
 
 \begin{align}
-	t  &= \int^{\alpha_s(Q^2)}_{\alpha_s}\frac{d\alpha_s}{\beta(\alpha_s)},\quad\alpha_s\equiv\alpha_s(\mu^2)
+	t  &= \int^{\alpha_s(Q^2)}_{\alpha_s}\frac{d\alpha_s}{\beta(\alpha_s)}
 	\label{eq:runningCouplingIntro}
 \end{align}
 Substituting in Eq. \ref{eqn:renormX}:
@@ -164,17 +168,23 @@ Usually, the reference scale \(Q_0^2\) is usually set to a convenient energy sca
 	\implies \alpha_s(Q^2)  &= \frac{1}{\beta_0\ln(Q^2/\Lambda^2)}\left[1 - \frac{\beta_1}{\beta_0}\frac{\ln(\ln(Q^2/\Lambda^2))}{\ln(Q^2/\Lambda^2)} + \mathcal{O}\left(\frac{1}{\ln(Q^2/\Lambda^2)^2}\right)\right]
 \end{align}
 
-This behaviour leads to:
+Typically, \(\Lambda \sim 200\mathrm{MeV}\) with small variations depending on its exact definition. This behaviour leads to:
 \begin{itemize}
 	\item \textbf{Asymptotic Freedom:} At high momentum transfers (\(Q \gg \Lambda\)), the coupling strength vanishes ($\alpha_s \to 0$). In this regime, quarks and gluons behave as quasi-free particles, making perturbative QCD calculations highly reliable.
 	\item \textbf{Color Confinement:} At low energy scales (\(Q \sim \Lambda\), the coupling diverges ($\alpha_s \sim \mathcal{O}(1)$). In this strongly-interacting, non-perturbative limit, isolated color charges cannot exist; quarks and gluons are permanently bound into color-neutral hadrons.
 \end{itemize}
 
-\section{Hadrons}
-Since colored partons cannot exist freely, we observe emergent properties of QCD through their colorless bound states, the \(\emph{hadrons}\).
+%\section{Hadrons}
+%Since colored partons cannot exist freely, we observe emergent properties of QCD through their colorless bound states, the \(\emph{hadrons}\).
 
 
 \section{QCD Jets}
+\begin{figure}[htbp]
+	\centering
+	\factorizationdiagram
+	\caption{Collinear factorization of a hadronic hard scattering.}
+	\label{fig:factorization}
+\end{figure}
 When a quark undergoes hard scattering during initial stages of a hadron-hadron collision , the interaction occurs at a scale where $\alpha_s$ is small. In this asymptotic regime, the probability of the quark radiating a high-energy gluon is suppressed according to perturbative QCD,  allowing the quark to initially behave as a free particle. However, as the energetic quark propagates outward, the characteristic momentum scale  of its subsequent interactions begins to drop and  $\alpha_s(\kappa^2)$ grows, which drastically increases the interaction probability at the fundamental vertices. The initial quark rapidly radiates gluons, which in turn split into more gluons and quark-antiquark pairs. This cascading sequence of emissions continues until the energy scale of the individual partons lowers to the confinement threshold, $\kappa \sim \Lambda_{\mathrm{QCD}}$, and the partons undergo hadronization. Experimentally this appears as a collimated spray of particles known as a \emph{jet}.
 
 
