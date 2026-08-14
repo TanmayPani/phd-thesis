@@ -82,7 +82,7 @@ The mediators/bosons exchanged between the other fundamental particles give rise
 %===========================================================================================
 \section{Quantum Chromodynamics}
 
-\subsection{Lagrangian and Feynman Rules}
+%\subsection{Lagrangian and Feynman Rules}
 \emph{Quantum Chromodynamics (QCD)} is the component of the SM which describes the strong interactions of quarks and gluons. The QCD Lagrangian can be expected as:
 \begin{align}
 	\mathcal{L}_\mathrm{QCD} = &\underbrace{\bar{q}^\alpha (i \gamma^\mu \partial_\mu\delta_{\alpha\beta} - g\gamma^\mu
@@ -105,39 +105,75 @@ To properly define gluon propagators, we need to make a choice of gauge. The \(\
 
 
 
-Comparing with quantum electrodynamics (QED), where the photon field tensor lacks the last term of Eqn. \ref{eq:gluonFieldTensor} as it is an Abelian, \(U(1)\) gauge theory, we can explain the presence of three/four-gluon vertices and absence of such vertices for photon in Table \ref{tab:smvtx}.  
+Comparing with quantum electrodynamics (QED), where the photon field tensor lacks the last term of Eqn. \ref{eq:gluonFieldTensor} as it is an Abelian, \(U(1)\) gauge theory, we can explain the presence of three/four-gluon vertices and absence of such vertices for photon in Table \ref{tab:smvtx}.
+
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{
+		>{\centering\arraybackslash}m{4.0cm}
+		>{\raggedright\arraybackslash}m{10.4cm}
+		}
+		% --- PROPAGATORS
+		\propagator{gluon}{A,\alpha}{B,\beta}{p}   &
+		\(\delta^{AB}\left[-g^{\alpha\beta} + (1-\lambda)\dfrac{p^{\alpha}p^{\beta}}{p^{2}+i\epsilon}\right]
+		\dfrac{i}{p^{2}+i\epsilon}\)                                                             \\[0.4cm]
+
+		\propagator{ghost}{A}{B}{p}                &
+		\(\delta^{AB}\,\dfrac{i}{p^{2}+i\epsilon}\)                                              \\[0.4cm]
+
+		\propagator{fermion}{a,i}{b,j}{p}          &
+		\(\delta^{ab}\,\dfrac{i}{(\slashed{p}-m+i\epsilon)_{ji}}\)                               \\[0.6cm]
+
+		% --- VERTICES
+		\yvertex{gluon}{B,\beta}{q}{gluon}{A,\alpha}{p}{gluon}{C,\gamma}{r} &
+		\(-g\,f^{ABC}\left[(p-q)^{\gamma}g^{\alpha\beta} + (q-r)^{\alpha}g^{\beta\gamma}
+		+ (r-p)^{\beta}g^{\gamma\alpha}\right]\)
+
+		\smallskip
+
+		(all momenta incoming, \(p+q+r=0\))                                                      \\[0.4cm]
+
+		\fourvertex{gluon}{A,\alpha}{gluon}{C,\gamma}{gluon}{B,\beta}{gluon}{D,\delta} &
+		\(\begin{aligned}
+			-ig^{2}f^{XAC}f^{XBD}\left[g^{\alpha\beta}g^{\gamma\delta} - g^{\alpha\delta}g^{\beta\gamma}\right] \\
+			-ig^{2}f^{XAD}f^{XBC}\left[g^{\alpha\beta}g^{\gamma\delta} - g^{\alpha\gamma}g^{\beta\delta}\right] \\
+			-ig^{2}f^{XAB}f^{XCD}\left[g^{\alpha\gamma}g^{\beta\delta} - g^{\alpha\delta}g^{\beta\gamma}\right]
+		\end{aligned}\)                                                                          \\[0.4cm]
+
+		\yvertex{gluon}{A,\alpha}{}{ghost}{B}{}{ghost}{C}{q} &
+		\(g\,f^{ABC}q^{\alpha}\)                                                                 \\[0.4cm]
+
+		\yvertex{gluon}{A,\alpha}{}{fermion}{b,i}{}{fermion}{c,j}{} &
+		\(-ig\,(t^{A})_{cb}\,(\gamma^{\alpha})_{ji}\)
+	\end{tabular}
+	\caption{Feynman rules for QCD in a covariant gauge with gauge parameter \(\lambda\):
+		the gluon, ghost and quark propagators, followed by the three- and four-gluon,
+		ghost-gluon and quark-gluon vertices.}
+	\label{tab:qcdrules}
+\end{table}
 
 
 \subsection{The Running Coupling}
-At an energy scale \(Q\), consider a dimensionless observable \(X\). To calculate \(X\) as a perturbation series in the QCD coupling \(\alpha_s = \frac{g^2}{4\pi}\) (analogous to the QED fine structure constant), we need to remove ultraviolet divergences through renormalization. Renormalization introduces another arbitrary energy scale $\mu$ where the divergences are subtracted.  In general, \(X\) would depend on the ratio \(Q^2/\mu^2\) and post-renormalization $\alpha_s(\mu^2)$. However, any physical observable should be independent of $\mu$:
+\label{subsec:runningCoupling}
+At an energy scale \(Q\), consider a dimensionless observable \(X\). Lets assume that \(Q\) is sufficiently high that the quark masses become negligible in comparison. To calculate \(X\) as a perturbation series in the QCD coupling \(\alpha_s = \frac{g^2}{4\pi}\) (analogous to the QED fine structure constant), we need to remove ultraviolet divergences through renormalization. Renormalization introduces another arbitrary energy scale $\mu$ where the divergences are subtracted.  In general, \(X\) would depend on the ratio \(Q^2/\mu^2\) and post-renormalization coupling $\alpha_s(\mu^2)$. However, any physical observable should be independent of $\mu$:
 \begin{align}
-	\mu^2\frac{\partial X(Q^2/\mu^2, \alpha_s(\mu^2))}{\partial\mu^2} &= \left[\mu^2\frac{\partial}{\partial\mu^2} +  \mu^2\frac{\partial\alpha_s(\mu^2)}{\partial\mu^2}\frac{\partial}{\partial\alpha_s}\right] X(Q^2/\mu^2, \alpha_s(\mu^2)) = 0 \notag\\
+	\mu^2\frac{d X(Q^2/\mu^2, \alpha_s(\mu^2))}{d\mu^2} &= \left[\mu^2\frac{\partial}{\partial\mu^2} +  \mu^2\frac{\partial\alpha_s(\mu^2)}{\partial\mu^2}\frac{\partial}{\partial\alpha_s}\right] X(Q^2/\mu^2, \alpha_s(\mu^2)) = 0 \notag\\
 	\implies & \left[-\frac{\partial}{\partial t} + \beta(\alpha_s) \frac{\partial}{\partial\alpha_s}\right] X(e^t, \alpha_s) = 0.
 	\label{eqn:renormX}
 \end{align} 
 
-Where,
+Where, \(t = \ln{\frac{Q^2}{\mu^2}}\), \(\beta(\alpha_s) = \mu^2\frac{\partial\alpha_s}{\partial\mu^2}\), \(\alpha_s\equiv\alpha_s(\mu^2(t))\)
 \begin{align}
-	t = \ln{\frac{Q^2}{\mu^2}}, &\quad \beta(\alpha_s) = \mu^2\frac{\partial\alpha_s}{\partial\mu^2},\quad\alpha_s\equiv\alpha_s(\mu^2(t)) \notag\\
-	\implies \beta(\alpha_s) &= -\frac{\partial\alpha_s}{\partial t}\notag\\
-		\implies  t - t_0 &= - \int_{\alpha_s(\mu^2(t_0))}^{\alpha_s(\mu^2(t))}\frac{d\alpha_s}{\beta(\alpha_s)}
+	\beta(\alpha_s) &= -\frac{\partial\alpha_s}{\partial t}\notag\\
+		\implies  t &=  \int^{\alpha_s(Q^2)}_{\alpha_s}\frac{d\alpha_s}{\beta(\alpha_s)}\notag\\
+			\implies & \frac{\partial\alpha_s(Q^2)}{\partial t} =  \beta(\alpha_s(Q^2)), \quad\frac{\partial\alpha_s(Q^2)}{\partial\alpha_s} = \frac{\beta(\alpha_s(Q^2))}{\beta(\alpha_s)}
+					\label{eq:runningCouplingIntro}
 \end{align}
-Now, setting \(t_0 = 0\) gives \(\mu^2(t_0) = Q^2\) and the definite integral becomes:
+
+Substituting in Eq. \ref{eqn:renormX}, we see that \(X(1, \alpha_s(Q^2))\) is a valid solution. Thus the scale dependence in \(X\) comes from the \emph{running coupling} \(\alpha_s(Q^2)\).  Perturbatively expanding \(\beta(\alpha_s)\),
 
 \begin{align}
-	t  &= \int^{\alpha_s(Q^2)}_{\alpha_s}\frac{d\alpha_s}{\beta(\alpha_s)}
-	\label{eq:runningCouplingIntro}
-\end{align}
-Substituting in Eq. \ref{eqn:renormX}:
-\begin{align}
-	\frac{\partial\alpha_s(Q^2)}{\partial t} = \beta(\alpha_s(Q^2)),\quad\frac{\partial\alpha_s(Q^2)}{\partial\alpha_s} = \frac{\beta(\alpha_s(Q^2))}{\beta(\alpha_s)}
-\end{align}
-we see that \(X(1, \alpha_s(Q^2))\) is a valid solution. Thus the scale dependence in \(X\) comes from the \emph{running coupling} \(\alpha_s(Q^2)\). 
-
-Taking derivative of Eq. \ref{eq:runningCouplingIntro} with respect to \(Q^2\) gives the \emph{renormalization group equation},
-
-\begin{align}
-Q^2\frac{\partial \alpha_s}{\partial Q^2}  =\beta(\alpha_s) \equiv -\alpha_s^2(Q^2)\left(\beta_0 + \beta_1\alpha_s(Q^2) + \mathcal{O}(\alpha_s^2(Q^2))\right)
+\frac{\partial\alpha_s(Q^2)}{\partial t} = Q^2\frac{\partial \alpha_s}{\partial Q^2}  =\beta(\alpha_s) \equiv -\alpha_s^2(Q^2)\left(\beta_0 + \beta_1\alpha_s(Q^2) + \mathcal{O}(\alpha_s^2(Q^2))\right)
 \label{eq:RGEquation}
 \end{align}
 
@@ -158,37 +194,31 @@ Integrating Eq. \ref{eq:RGEquation}
 \begin{align}
 	\ln(\frac{Q^2}{Q_0^2})  &= \int^{\alpha_s(Q^2)}_{\alpha_s(Q^2_0)}\frac{d\alpha_s}{\beta(\alpha_s)}\notag\\
 	\implies \alpha_s(Q^2) &= \frac{\alpha_s(Q_0^2)}{1 + \beta_0(\alpha_s(Q_0^2))\ln(Q^2/Q_0^2) + \mathcal{O}(\alpha_s^2)}
-%	\label{eq:runningCouplingIntro}
+	\label{eq:runningCouplingRel}
 \end{align}
 
-Usually, the reference scale \(Q_0^2\) is usually set to a convenient energy scale in the perturbative regime. \(\alpha_s\) at all other scales can be inferred accordingly. Usually, \(Q_0\) is set to \(M_Z\) as shown in Fig. \ref{fig:runningCoupling}. Another approach is to choose a \emph{scale parameter} \(\Lambda\) such that \(\alpha_s(\Lambda) \rightarrow \infty\).  
+Usually, the reference scale \(Q_0^2\) is usually set to a convenient energy scale in the perturbative regime. \(\alpha_s\) at all other scales can be inferred accordingly. Usually, \(Q_0\) is set to mass of the \(Z\)-boson, \(m_Z\) as shown in Fig. \ref{fig:runningCoupling}. Another approach is to choose a scale parameter, \(\Lambda\) such that \(\alpha_s(\Lambda) \rightarrow \infty\).  
 
 \begin{align}
 	\ln(\frac{Q^2}{\Lambda^2}) &= - \int_{\alpha_s(Q^2)}^{\infty} \frac{d\alpha_s}{\beta(\alpha_s)}  \notag\\
 	\implies \alpha_s(Q^2)  &= \frac{1}{\beta_0\ln(Q^2/\Lambda^2)}\left[1 - \frac{\beta_1}{\beta_0}\frac{\ln(\ln(Q^2/\Lambda^2))}{\ln(Q^2/\Lambda^2)} + \mathcal{O}\left(\frac{1}{\ln(Q^2/\Lambda^2)^2}\right)\right]
+		\label{eq:runningCouplingLambda}
 \end{align}
 
-Typically, \(\Lambda \sim 200\mathrm{MeV}\) with small variations depending on its exact definition. This behaviour leads to:
-\begin{itemize}
-	\item \textbf{Asymptotic Freedom:} At high momentum transfers (\(Q \gg \Lambda\)), the coupling strength vanishes ($\alpha_s \to 0$). In this regime, quarks and gluons behave as quasi-free particles, making perturbative QCD calculations highly reliable.
-	\item \textbf{Color Confinement:} At low energy scales (\(Q \sim \Lambda\), the coupling diverges ($\alpha_s \sim \mathcal{O}(1)$). In this strongly-interacting, non-perturbative limit, isolated color charges cannot exist; quarks and gluons are permanently bound into color-neutral hadrons.
-\end{itemize}
+\(\Lambda\) is called the \emph{confinement scale}, around \(200~\mathrm{MeV}\). Eqs. \ref{eq:runningCouplingRel} and \ref{eq:runningCouplingLambda} show a monotonically decreasing relationship between \(\alpha_s\) and \(Q^2\). At high momentum transfers (\(Q \gg \Lambda\)), the coupling strength vanishes ($\alpha_s \to 0$). In this regime, quarks and gluons behave as quasi-free particles, making perturbative QCD calculations highly reliable (\emph{Asymptotic Freedom}).  At low energy scales (\(Q \ll \Lambda\)), the coupling diverges. In this non-perturbative limit, isolated color charges cannot exist; quarks and gluons are permanently bound into color-neutral hadrons (\emph{Color Confinement}).
 
 %\section{Hadrons}
 %Since colored partons cannot exist freely, we observe emergent properties of QCD through their colorless bound states, the \(\emph{hadrons}\).
-
-
-\section{QCD Jets}
+\subsection{QCD phase diagram}
 \begin{figure}[htbp]
 	\centering
-	\factorizationdiagram
-	\caption{Collinear factorization of a hadronic hard scattering.}
-	\label{fig:factorization}
+	\includegraphics[scale=1]{figures/ownpd_mub_v2.jpg}
 \end{figure}
-When a quark undergoes hard scattering during initial stages of a hadron-hadron collision , the interaction occurs at a scale where $\alpha_s$ is small. In this asymptotic regime, the probability of the quark radiating a high-energy gluon is suppressed according to perturbative QCD,  allowing the quark to initially behave as a free particle. However, as the energetic quark propagates outward, the characteristic momentum scale  of its subsequent interactions begins to drop and  $\alpha_s(\kappa^2)$ grows, which drastically increases the interaction probability at the fundamental vertices. The initial quark rapidly radiates gluons, which in turn split into more gluons and quark-antiquark pairs. This cascading sequence of emissions continues until the energy scale of the individual partons lowers to the confinement threshold, $\kappa \sim \Lambda_{\mathrm{QCD}}$, and the partons undergo hadronization. Experimentally this appears as a collimated spray of particles known as a \emph{jet}.
 
 
-\section{Quark-Gluon Plasma}
+
+
+
 
 
 
