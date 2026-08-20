@@ -209,7 +209,261 @@ Usually, the reference scale \(Q_0^2\) is usually set to a convenient energy sca
 
 %\section{Hadrons}
 %Since colored partons cannot exist freely, we observe emergent properties of QCD through their colorless bound states, the \(\emph{hadrons}\).
-\subsection{QCD phase diagram}
+
+\section{Hard Processes}
+\subsection{Factorization}
+To consider any nucleus as a singular coherent object, the fluctuations inside it would involve momentum transfers below the confinement scale (\(\Lambda\)) introduced in \ref{subsec:runningCoupling}, and would occur over timescales \(\sim 1/\Lambda\). We define \emph{hard-scattering processes} or just \emph{hard processes} as interactions of a hard perturbative probe with high momentum transfer \(Q >> \Lambda\). Since this interaction occurs over a time-scale \(\sim 1/Q \ll 1/\Lambda\), the perturbative probe effectively interacts with a near-static ``snapshot'' of the nucleus with a characteristic resolution \(\sim 1/Q\). 
+
+\begin{figure}[htbp]
+	\centering
+	\factorizationdiagram
+	\caption{Collinear factorization of a hadronic hard scattering.}
+	\label{fig:factorization}
+\end{figure}
+
+Thus, we can \emph{factorize} the cross section of a collision process of nuclei with momentum \(P_1\) and \(P_2\) depicted by Fig. \ref{fig:factorization} as,
+
+\begin{equation}
+	\sigma(P_1, P_2)  = \sum_{i,j} \int dx_1dx_2f_i(x_1, \mu^2)f_j(x_2, \mu^2)\hat{\sigma}_{ij}(p_1, p_2, \alpha_s, Q^2/\mu^2)
+	\label{eq:factorization}
+\end{equation}
+
+Where, the interactions occur between partons \(i\) from nucleus 1 and \(j\) from nucleus 2 carrying momentum \(p_1 = x_1P_1\) and \(p_2 = x_2P_2\) respectively. \(\mu\) is an arbitrary \emph{factorization scale}, often just set to \(Q\). The \(f_{k}(x, \mu^2)\) are the \emph{parton densities} giving likelihood of a parton \(k\) to carry \(x\) fraction of it's parent nucleus's momentum at a particular factorization scale \(\mu\). \(\hat{\sigma}_{ij}\)  is the \emph{parton cross-section} for scattering of partons \(i\) and \(j\). We can approximate it to the \((n+k)\) order in \(\alpha_s\) as, 
+
+\begin{equation}
+	\hat{\sigma}_{ij}(p_1, p_2, \alpha_s, Q^2/\mu^2) = \alpha_s^k \sum_{m=0}^{n}\hat{\sigma}_{ij}^{(m)} (p_1, p_2, Q^2/\mu^2)\alpha_s^m
+\end{equation}
+
+Different hard processes will have different leading powers \(k\). \(W\) production will have \(k=0\) whereas perturbative dijet production will have \(k=2\).
+
+\subsection{Dijet events (\(2\rightarrow2\) processes)}
+In dijet events, two incoming partons, one each from the incoming nuclei scatter off each other and produce two final state partons, which are observed as jets. The two partons are back-to-back and have equal momenta in the processes center of mass frame. A typical process,
+\begin{equation}
+	\mathrm{parton}_i(p_1) + \mathrm{parton}_j(p_2) \rightarrow \mathrm{parton}_k(p_3) + \mathrm{parton}_l(p_4)
+\end{equation}
+Has parton cross-section:
+
+\begin{equation}
+	\frac{E_3E_4d^6\hat{\sigma}}{d^3p_3d^3p_4} = \frac{1}{2\hat{s}}\frac{1}{16\pi^2}\overline{\sum}|\mathcal{M}|^2\delta^4(p_1 + p_2 - p_3 - p_4)
+	\label{eq:partonxsec}
+\end{equation}
+
+Where, \(\overline{\sum}\)  denotes  the average and sum over the spins and colors of initial and final partons \(\{i, j, k, l\}\) and \(\hat{s} = (p_1+p_2)^2\). To get the dijet cross-section, we insert the parton cross-section from Eq. \ref{eq:partonxsec} into  Eq. \ref{eq:factorization}. Assuming the incoming partons are massless and collinear with the beams, \(p_1 = \frac{1}{2}x_1\sqrt{s}(1, 0, 0, 1)\) and \(p_2 = \frac{1}{2}x_2\sqrt{s}(1, 0, 0, -1)\), so that \(\hat{s} = x_1x_2s\),
+
+\begin{align*}
+	\frac{E_3E_4d^6\sigma}{d^3p_3d^3p_4} & = \frac{1}{2s}\frac{1}{16\pi^2} \sum_{\{i,j,k,l\}\subset q\bigcup\bar{q}\bigcup g} \frac{1}{1 + \delta_{kl}} \int dx_1dx_2 \frac{f_i(x_1, \mu^2)}{x_1} \frac{f_j(x_2, \mu^2)}{x_2} \\
+	& \qquad \times\, \overline{\sum}|\mathcal{M}(ij\rightarrow kl)|^2\delta^4(p_1 + p_2 - p_3 - p_4) 
+\end{align*}
+Where \(q\bigcup\bar{q}\bigcup g\) represents all the partonic states \(\{g, u, \bar{u}, d, \ldots\}\). 
+
+%	The four-momentum conserving \(\delta\)-function factorizes into a transverse part and the energy and longitudinal parts, 
+%	
+%	\begin{align*}
+	%	\delta^4(p_1 + p_2 - p_3 - p_4)                                & = \delta^2(\mathbf{p}_{T3} + \mathbf{p}_{T4})\,\delta\left(\tfrac{1}{2}\sqrt{s}(x_1 + x_2) - E_3 - E_4\right)                 \\
+	%	                                                               & \qquad \times\, \delta\left(\tfrac{1}{2}\sqrt{s}(x_1 - x_2) - p_{z3} - p_{z4}\right) \\
+	%	                                                               & = \frac{2}{s}\delta^2(\mathbf{p}_{T3} + \mathbf{p}_{T4})\,\delta\left(x_1 - \tfrac{1}{2}x_T(e^{y_3} + e^{y_4})\right)         \\
+	%	                                                               & \qquad \times\, \delta\left(x_2 - \tfrac{1}{2}x_T(e^{-y_3} + e^{-y_4})\right)
+	%\end{align*}
+	%
+	%Where, \(x_T \equiv 2p_T/\sqrt{s}\) and \(p_T \equiv p_{T, 3} = p_{T, 4}\),
+	%
+	%\begin{equation}
+	%	\frac{d^3\sigma}{dy_3dy_4dp_T^2} = \frac{1}{16\pi s^2}\sum_{\{i,j,k,l\}\subset q\bigcup\bar{q}\bigcup g} \frac{1}{1 + \delta_{kl}} \frac{f_i(x_1, \mu^2)}{x_1}\frac{f_j(x_2, \mu^2)}{x_2} \overline{\sum}|\mathcal{M}(ij\rightarrow kl)|^2
+	%\end{equation}
+	
+	Integrating Eq. \ref{eq:partonxsec} over one of the outgoing partons gives the
+	\emph{single-inclusive} parton cross-section for the other.  Writing
+	\(q \equiv p_1 + p_2 - p_3\),
+	\begin{align}
+		\frac{E_3d^3\hat{\sigma}}{d^3p_3} &= \frac{1}{2\hat{s}}\frac{1}{16\pi^2}\overline{\sum}|\mathcal{M}|^2\int\frac{d^3p_4}{E_4}\,\delta^4(p_1 + p_2 - p_3 - p_4)                              \notag                      \\
+		&=\frac{1}{2\hat{s}}\frac{1}{16\pi^2}\overline{\sum}|\mathcal{M}|^2\int\frac{d^3p_4}{E_4}\,\delta^3(\mathbf{q} - \mathbf{p}_4)\,\delta(q^0 - E_4) \notag \\
+		&= \frac{1}{2\hat{s}}\frac{1}{16\pi^2}\overline{\sum}|\mathcal{M}|^2\,\frac{\delta(q^0 - |\mathbf{q}|)}{|\mathbf{q}|}       \notag \\  
+		&= \frac{1}{2\hat{s}}\frac{1}{16\pi^2}\overline{\sum}|\mathcal{M}|^2\,2\delta(q^2)                  
+	\end{align}
+	We can represent \(q^2\) in terms of partonic Mandelstam variables \(\hat{s} = (p_1+p_2)^2\), \(\hat{t} = (p_1-p_3)^2\) and \(\hat{u} = (p_2-p_3)^2\),
+	
+	\begin{align}
+		\implies \frac{Ed^3\hat{\sigma}}{d^3p}  &= \frac{1}{2\hat{s}}\frac{1}{8\pi^2}\overline{\sum}|\mathcal{M}|^2\delta(\hat{s} + \hat{t} + \hat{u})
+	\end{align}
+	
+	Assuming perfect detector and jet algorithm, the outgoing parton's momentum is the ensuing jet's momentum.
+	\begin{align}
+		\frac{E_Jd^3\sigma}{d^3p_J}  =& \frac{1}{16\pi^2 s}\sum_{\{i,j,k,l\}\subset q\bigcup\bar{q}\bigcup g} \frac{1}{1 + \delta_{kl}}\int_{0}^{1} \frac{dx_1}{x_1}\frac{dx_2}{x_2} f_i(x_1, \mu^2) f_j(x_2, \mu^2) \notag\\ &\times\overline{\sum}|\mathcal{M}(ij\rightarrow kl)|^2\delta(\hat{s} + \hat{t} + \hat{u})
+	\end{align}
+	\begin{sidewaystable}[htbp]
+		\centering
+		\setlength{\tabcolsep}{4pt}
+		\begin{tabular}{
+				>{\centering\arraybackslash}m{2.2cm}
+				>{\centering\arraybackslash}m{2.8cm}
+				>{\centering\arraybackslash}m{2.8cm}
+				>{\centering\arraybackslash}m{2.8cm}
+				>{\centering\arraybackslash}m{2.8cm}
+				>{\centering\arraybackslash}m{6.8cm}
+			}
+			\toprule
+			Process & \multicolumn{4}{c}{Diagrams} & \(\overline{\sum}|\mathcal{M}|^2/(4\pi\alpha_s)^2\) \\
+			\midrule
+			\(qq' \to qq'\)             & \diagqqpT{q'}{q}   &                  &            &          &
+			\(\dfrac{4}{9}\dfrac{\hat{s}^2+\hat{u}^2}{\hat{t}^2}\)                                                   \\
+			\(qq \to qq\)               & \diagqqpT{q}{q}    & \diagqqU{q}      &            &          &
+			\(\dfrac{4}{9}\left(\dfrac{\hat{s}^2+\hat{u}^2}{\hat{t}^2}+\dfrac{\hat{s}^2+\hat{t}^2}{\hat{u}^2}\right)
+			-\dfrac{8}{27}\dfrac{\hat{s}^2}{\hat{u}\hat{t}}\)                                                        \\
+			\(q\bar{q}' \to q\bar{q}'\) & \diagqqbpT{q}{q'}  &                  &            &          &
+			\(\dfrac{4}{9}\dfrac{\hat{s}^2+\hat{u}^2}{\hat{t}^2}\)                                                   \\
+			\(q\bar{q} \to q'\bar{q}'\) & \diagqqbAnn{q}{q'} &                  &            &          &
+			\(\dfrac{4}{9}\dfrac{\hat{t}^2+\hat{u}^2}{\hat{s}^2}\)                                                   \\
+			\(q\bar{q} \to q\bar{q}\)   & \diagqqbAnn{q}{q}  & \diagqqbpT{q}{q} &            &          &
+			\(\dfrac{4}{9}\left(\dfrac{\hat{s}^2+\hat{u}^2}{\hat{t}^2}+\dfrac{\hat{t}^2+\hat{u}^2}{\hat{s}^2}\right)
+			-\dfrac{8}{27}\dfrac{\hat{u}^2}{\hat{s}\hat{t}}\)                                                        \\
+			\(q\bar{q} \to gg\)         & \diagqqbS          & \diagqqbT        & \diagqqbU  &          &
+			\(\dfrac{32}{27}\dfrac{\hat{t}^2+\hat{u}^2}{\hat{t}\hat{u}}
+			-\dfrac{8}{3}\dfrac{\hat{t}^2+\hat{u}^2}{\hat{s}^2}\)                                                    \\
+			\(gg \to q\bar{q}\)         & \diagggqqS         & \diagggqqT       & \diagggqqU &          &
+			\(\dfrac{1}{6}\dfrac{\hat{t}^2+\hat{u}^2}{\hat{t}\hat{u}}
+			-\dfrac{3}{8}\dfrac{\hat{t}^2+\hat{u}^2}{\hat{s}^2}\)                                                    \\
+			\(qg \to qg\)               & \diagqgS           & \diagqgT         & \diagqgU   &          &
+			\(-\dfrac{4}{9}\dfrac{\hat{s}^2+\hat{u}^2}{\hat{s}\hat{u}}
+			+\dfrac{\hat{u}^2+\hat{s}^2}{\hat{t}^2}\)                                                                \\
+			\(gg \to gg\)               & \diagggS           & \diagggT         & \diagggU   & \diagggX &
+			\(\dfrac{9}{2}\left(3-\dfrac{\hat{t}\hat{u}}{\hat{s}^2}-\dfrac{\hat{s}\hat{u}}{\hat{t}^2}
+			-\dfrac{\hat{s}\hat{t}}{\hat{u}^2}\right)\)                                                              \\
+			\bottomrule
+		\end{tabular}
+		\caption[Leading-order diagrams and matrix elements for jet production]{%
+			The complete set of leading-order diagrams and squared matrix
+			elements for the partonic \(2\to2\) processes that produce jets, entering
+			the hard cross section \(\hat{\sigma}_{ij}\) of Fig. \ref{fig:factorization}.
+			Here \(q\) and \(q'\) denote distinct quark flavours, and \(\hat{s}\),
+			\(\hat{t}\), \(\hat{u}\) are the Mandelstam invariants of the partonic
+			subprocess.  The matrix elements are averaged over
+			initial-state and summed over final-state spins and colours, as indicated
+			by \(\overline{\sum}\), and are normalised by \(g^4 = (4\pi\alpha_s)^2\)~\cite{Ellis_Stirling_Webber_1996}.}
+		\label{tab:jetdiagrams}
+	\end{sidewaystable}
+	
+	% =====================================================================
+	% Append DIRECTLY AFTER the user's \subsection{Factorization}
+	% (inside \section{Hard Processes}, once moved to the parton-evolution slot).
+	% Does NOT redefine factorization; it references the user's eq:factorization,
+	% fig:factorization, and subsec:runningCoupling.
+	% Notation matched to the user's: factorization scale \mu, parton
+	% densities f_i(x,\mu^2). Assumes amsmath.
+	%
+	% Citation keys are PLACEHOLDERS; intended references:
+	%   [dglap-gl] Gribov, Lipatov, Sov. J. Nucl. Phys. 15 (1972) 438
+	%   [dglap-ap] Altarelli, Parisi, Nucl. Phys. B126 (1977) 298
+	%   [dglap-d]  Dokshitzer, Sov. Phys. JETP 46 (1977) 641
+	%   [esw]      Ellis, Stirling, Webber, "QCD and Collider Physics"
+	%   [lund]     Andersson, Gustafson, Ingelman, Sjostrand (Lund string model)
+	% =====================================================================
+	
+	\subsection{Scale evolution and the DGLAP equations}
+	\label{subsec:dglap}
+	
+	The parton densities \(f_i(x,\mu^2)\) in Eq.~\ref{eq:factorization} are not
+	calculable in perturbation theory, but they are \emph{universal}: once
+	measured in one process they may be used to predict any other. Their
+	\emph{dependence} on the factorization scale \(\mu\), by contrast, is
+	perturbative. Lowering \(\mu\) resolves a parton more coarsely, while
+	raising it exposes additional collinear splittings from which that parton
+	may have descended. Requiring the physical cross section of
+	Eq.~\ref{eq:factorization} to be independent of the arbitrary scale
+	\(\mu\), in the same spirit as the renormalization-scale argument of
+	Sec.~\ref{subsec:runningCoupling}, constrains how the densities evolve.
+	Resumming the collinear emissions leads to the
+	Dokshitzer-Gribov-Lipatov-Altarelli-Parisi (DGLAP) equations
+	\cite{dglap-gl, dglap-ap, dglap-d},
+	\begin{equation}
+		\frac{\partial f_{i}(x,\mu^2)}{\partial \ln\mu^2} =
+		\sum_{j}\int_x^1 \frac{dz}{z}\; \frac{\alpha_s(\mu^2)}{2\pi}\,
+		P_{ij}(z)\, f_{j}\!\left(\frac{x}{z}, \mu^2\right).
+		\label{eq:dglap}
+	\end{equation}
+	The kernel \(P_{ij}(z)\) is the \emph{splitting function}, giving the
+	probability that a parton \(j\) branches collinearly to yield a parton
+	\(i\) carrying a fraction \(z\) of its momentum. At leading order there are
+	four independent kernels,
+	\begin{align}
+		P_{qq}(z) &= C_F\left[\frac{1+z^2}{(1-z)_+}
+		+ \frac{3}{2}\delta(1-z)\right], \label{eq:Pqq}\\
+		P_{gq}(z) &= C_F\,\frac{1+(1-z)^2}{z}, \label{eq:Pgq}\\
+		P_{qg}(z) &= T_R\left[z^2 + (1-z)^2\right], \label{eq:Pqg}\\
+		P_{gg}(z) &= 2C_A\left[\frac{z}{(1-z)_+} + \frac{1-z}{z}
+		+ z(1-z)\right] + \frac{11C_A - 4N_f T_R}{6}\,\delta(1-z),
+		\label{eq:Pgg}
+	\end{align}
+	with color factors \(C_F = 4/3\), \(C_A = 3\), and \(T_R = 1/2\). The
+	\emph{plus prescription},
+	\begin{equation}
+		\int_0^1 dz\, \frac{g(z)}{(1-z)_+} =
+		\int_0^1 dz\, \frac{g(z) - g(1)}{1-z},
+		\label{eq:plusPrescription}
+	\end{equation}
+	regularizes the \(z\to 1\) singularity associated with the emission of a
+	soft gluon, while the \(\delta(1-z)\) terms enforce the momentum and
+	flavor sum rules order by order. The \(1/z\) and \(1/(1-z)\) poles reflect
+	the enhancement of soft and collinear radiation; their residues, set by
+	\(C_F\) for a radiating quark and \(C_A\) for a radiating gluon, already
+	anticipate the differing evolution of quark- and gluon-initiated cascades.
+	
+	A parton produced in the final state of the hard scattering evolves in the
+	same manner. The \emph{fragmentation functions} \(D_{h/i}(z,\mu^2)\), which
+	give the probability that a parton \(i\) hadronizes into an observed hadron
+	\(h\) carrying momentum fraction \(z\), obey an analogous timelike
+	evolution governed by the same splitting functions, now read as successive
+	branchings of the outgoing parton as it develops toward lower scales.
+	
+	\subsection{Parton showers and the Sudakov form factor}
+	\label{subsec:partonShower}
+	
+	Equation~\ref{eq:dglap} admits a probabilistic reading that underlies the
+	Monte Carlo simulation of QCD radiation. Casting the evolution in terms of
+	the probability that a parton \(i\) evolves from a hard scale \(\mu_1^2\)
+	down to a softer scale \(\mu_2^2\) \emph{without} a resolvable emission
+	defines the \emph{Sudakov form factor},
+	\begin{equation}
+		\Delta_i(\mu_1^2, \mu_2^2) = \exp\left[
+		-\int_{\mu_2^2}^{\mu_1^2}\frac{d\mu'^2}{\mu'^2}
+		\int dz\; \frac{\alpha_s(\mu'^2)}{2\pi}\, P_{i}(z)\right],
+		\label{eq:sudakov}
+	\end{equation}
+	where the \(z\) integral runs over the resolvable region fixed by an
+	infrared cutoff. Drawing successive emission scales and momentum fractions
+	according to Eq.~\ref{eq:sudakov} and the splitting functions generates a
+	\emph{parton shower}: an ordered cascade of \(1\to 2\) branchings that
+	evolves a single hard parton down toward the hadronization scale, resumming
+	the leading collinear logarithms \(\alpha_s^n \ln^n(\mu_1^2/\mu_2^2)\) to
+	all orders. Because \(P_{gg}\) exceeds \(P_{qq}\) in the singular region,
+	a gluon shower is the more active of the two, a difference that propagates
+	into the internal structure of the resulting jets.
+	
+	The ordering variable is not arbitrary. Quantum interference between
+	soft-gluon emissions, a manifestation of color coherence, suppresses
+	radiation at large angles and organizes successive branchings into a
+	sequence of \emph{decreasing emission angle}. This angular ordering
+	imprints the color flow of the hard process onto the angular distribution
+	of radiation within the developing jet, and is the microscopic origin of
+	much of the substructure exploited in later chapters.
+	
+	\subsection{Hadronization}
+	\label{subsec:hadronization}
+	
+	The perturbative cascade terminates once emission scales approach
+	\(\Lambda\), where \(\alpha_s\) grows large and the parton picture breaks
+	down. The final conversion of colored partons into color-neutral hadrons,
+	\emph{hadronization}, is intrinsically non-perturbative and is treated
+	through phenomenological models tuned to data, most commonly the Lund
+	string \cite{lund} and cluster models. The net result is a collimated
+	spray of hadrons whose total energy and direction approximate those of the
+	initiating parton, and whose internal structure retains the imprint of the
+	perturbative evolution described above. The reconstruction of these sprays
+	as \emph{jets}, and the observables built from their substructure, are the
+	subject of the chapters that follow.
+
+
+
+\section{QCD phase diagram}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale=1]{figures/ownpd_mub_v2.jpg}
