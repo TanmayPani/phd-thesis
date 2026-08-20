@@ -358,108 +358,216 @@ Where \(q\bigcup\bar{q}\bigcup g\) represents all the partonic states \(\{g, u, 
 	%   [lund]     Andersson, Gustafson, Ingelman, Sjostrand (Lund string model)
 	% =====================================================================
 	
-	\subsection{Scale evolution and the DGLAP equations}
-	\label{subsec:dglap}
-	
-	The parton densities \(f_i(x,\mu^2)\) in Eq.~\ref{eq:factorization} are not
-	calculable in perturbation theory, but they are \emph{universal}: once
-	measured in one process they may be used to predict any other. Their
-	\emph{dependence} on the factorization scale \(\mu\), by contrast, is
-	perturbative. Lowering \(\mu\) resolves a parton more coarsely, while
-	raising it exposes additional collinear splittings from which that parton
-	may have descended. Requiring the physical cross section of
-	Eq.~\ref{eq:factorization} to be independent of the arbitrary scale
-	\(\mu\), in the same spirit as the renormalization-scale argument of
-	Sec.~\ref{subsec:runningCoupling}, constrains how the densities evolve.
-	Resumming the collinear emissions leads to the
-	Dokshitzer-Gribov-Lipatov-Altarelli-Parisi (DGLAP) equations
-	\cite{dglap-gl, dglap-ap, dglap-d},
-	\begin{equation}
-		\frac{\partial f_{i}(x,\mu^2)}{\partial \ln\mu^2} =
-		\sum_{j}\int_x^1 \frac{dz}{z}\; \frac{\alpha_s(\mu^2)}{2\pi}\,
-		P_{ij}(z)\, f_{j}\!\left(\frac{x}{z}, \mu^2\right).
-		\label{eq:dglap}
-	\end{equation}
-	The kernel \(P_{ij}(z)\) is the \emph{splitting function}, giving the
-	probability that a parton \(j\) branches collinearly to yield a parton
-	\(i\) carrying a fraction \(z\) of its momentum. At leading order there are
-	four independent kernels,
-	\begin{align}
-		P_{qq}(z) &= C_F\left[\frac{1+z^2}{(1-z)_+}
-		+ \frac{3}{2}\delta(1-z)\right], \label{eq:Pqq}\\
-		P_{gq}(z) &= C_F\,\frac{1+(1-z)^2}{z}, \label{eq:Pgq}\\
-		P_{qg}(z) &= T_R\left[z^2 + (1-z)^2\right], \label{eq:Pqg}\\
-		P_{gg}(z) &= 2C_A\left[\frac{z}{(1-z)_+} + \frac{1-z}{z}
-		+ z(1-z)\right] + \frac{11C_A - 4N_f T_R}{6}\,\delta(1-z),
-		\label{eq:Pgg}
-	\end{align}
-	with color factors \(C_F = 4/3\), \(C_A = 3\), and \(T_R = 1/2\). The
-	\emph{plus prescription},
-	\begin{equation}
-		\int_0^1 dz\, \frac{g(z)}{(1-z)_+} =
-		\int_0^1 dz\, \frac{g(z) - g(1)}{1-z},
-		\label{eq:plusPrescription}
-	\end{equation}
-	regularizes the \(z\to 1\) singularity associated with the emission of a
-	soft gluon, while the \(\delta(1-z)\) terms enforce the momentum and
-	flavor sum rules order by order. The \(1/z\) and \(1/(1-z)\) poles reflect
-	the enhancement of soft and collinear radiation; their residues, set by
-	\(C_F\) for a radiating quark and \(C_A\) for a radiating gluon, already
-	anticipate the differing evolution of quark- and gluon-initiated cascades.
-	
-	A parton produced in the final state of the hard scattering evolves in the
-	same manner. The \emph{fragmentation functions} \(D_{h/i}(z,\mu^2)\), which
-	give the probability that a parton \(i\) hadronizes into an observed hadron
-	\(h\) carrying momentum fraction \(z\), obey an analogous timelike
-	evolution governed by the same splitting functions, now read as successive
-	branchings of the outgoing parton as it develops toward lower scales.
+\subsection{Scale evolution and the DGLAP equations}
+\label{subsec:dglap}
+
+The parton densities \(f_i(x,\mu^2)\) in Eq.~\ref{eq:factorization} are not
+calculable in perturbation theory, but they are \emph{universal}: once
+measured in one process they may be used to predict any other. Their
+\emph{dependence} on \(\mu\) is not universal but perturbative. Requiring the
+physical cross section of Eq.~\ref{eq:factorization} to be independent of the
+arbitrary scale \(\mu\), exactly as for the coupling in
+Sec.~\ref{subsec:runningCoupling},
+\begin{equation}
+	\mu^2\frac{d}{d\mu^2}\,\sigma(P_1,P_2) = 0,
+	\label{eq:pdfRGE}
+\end{equation}
+ties the \(\mu\)-dependence of the densities to that of \(\hat{\sigma}_{ij}\).
+
+Raising \(\mu\) exposes collinear splittings from which a resolved parton may
+have descended. Consider the hard process of Eq.~\ref{eq:factorization}
+accompanied by one additional parton, emitted at small angle in a branching
+\(a\to b\,c\) off an external leg. Let \(b\) retain a longitudinal fraction
+\(z\) of the parent momentum and carry transverse momentum \(\mathbf{k}_T\),
+so that the internal line \(a\) acquires a virtuality
+\begin{equation}
+	t \equiv p_a^2 = \frac{k_T^2}{z(1-z)},
+	\label{eq:collinearVirtuality}
+\end{equation}
+vanishing in the exactly collinear limit \(k_T\to 0\); at fixed \(z\),
+\(dt/t = dk_T^2/k_T^2\). In that limit the \((n{+}1)\)-parton squared matrix
+element factorizes onto the \(n\)-parton one through the near-on-shell
+propagator \(1/t\),
+\begin{equation}
+	\overline{\sum}\big|\mathcal{M}_{n+1}\big|^2 \;\simeq\;
+	\frac{2g^2}{t}\,\hat{P}_{ba}(z)\,
+	\overline{\sum}\big|\mathcal{M}_{n}\big|^2,
+	\label{eq:MEcollinear}
+\end{equation}
+with \(\hat{P}_{ba}(z)\) the unregularized splitting kernel and
+\(g^2 = 4\pi\alpha_s\). The emission phase space factorizes likewise,
+\begin{equation}
+	d\Phi_{n+1} = d\Phi_n\,\frac{1}{16\pi^2}\,dt\,dz\,\frac{d\phi}{2\pi}.
+	\label{eq:PScollinear}
+\end{equation}
+Inserting Eqs.~\ref{eq:MEcollinear} and~\ref{eq:PScollinear} into
+\(d\sigma \propto \overline{\sum}|\mathcal{M}|^2\,d\Phi\) and integrating over
+the azimuth \(\phi\),
+\begin{align}
+	d\sigma_{n+1} &= d\sigma_n\,\frac{2g^2}{16\pi^2}\,
+	\frac{dt}{t}\,\hat{P}_{ba}(z)\,dz \notag\\
+	&= d\sigma_n\,\frac{\alpha_s}{2\pi}\,\frac{dt}{t}\,\hat{P}_{ba}(z)\,dz .
+	\label{eq:collinearFactorized}
+\end{align}
+The virtuality \(t\) plays the role of the evolution scale; identifying
+\(dt/t = d\mu^2/\mu^2\), each such splitting contributes a differential
+emission probability
+\begin{equation}
+	d\mathcal{P}_{i\leftarrow j} = \frac{\alpha_s(\mu^2)}{2\pi}\,
+	\hat{P}_{ij}(z)\,dz\,\frac{d\mu^2}{\mu^2}.
+	\label{eq:collinearEmission}
+\end{equation}
+Each additional order in \(\alpha_s\) carries a factor
+\(\int dt/t = \ln(\mu^2/\mu_0^2)\). Summing these collinear logarithms, and
+combining the real emissions of Eq.~\ref{eq:collinearEmission} with the
+virtual, no-emission contributions that promote \(\hat{P}_{ij}\to P_{ij}\)
+with the plus prescription and \(\delta(1-z)\) terms introduced below, resums
+the series into the Dokshitzer-Gribov-Lipatov-Altarelli-Parisi (DGLAP)
+equations \cite{dglap-gl, dglap-ap, dglap-d, Ellis_Stirling_Webber_1996},
+\begin{equation}
+	\frac{\partial f_{i}(x,\mu^2)}{\partial \ln\mu^2} =
+	\sum_{j}\int_x^1 \frac{dz}{z}\; \frac{\alpha_s(\mu^2)}{2\pi}\,
+	P_{ij}(z)\, f_{j}\!\left(\frac{x}{z}, \mu^2\right).
+	\label{eq:dglap}
+\end{equation}
+The kernel \(P_{ij}(z)\) is the \emph{splitting function}, giving the
+probability that a parton \(j\) branches collinearly to yield a parton \(i\)
+carrying a fraction \(z\) of its momentum. At leading order there are four
+independent kernels, one for each allowed branching; they are collected with
+their diagrams in Table~\ref{tab:splitfns}, with color factors \(C_F = 4/3\),
+\(C_A = 3\), and \(T_R = 1/2\).
+
+\begin{table}[htbp]
+	\centering
+	\setlength{\tabcolsep}{6pt}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{tabular}{
+			>{\centering\arraybackslash}m{1.8cm}
+			>{\centering\arraybackslash}m{3.0cm}
+			>{\raggedright\arraybackslash}m{8.4cm}
+		}
+		\toprule
+		Kernel & Diagram & \(P_{ij}(z)\) \\
+		\midrule
+		\(P_{qq}\) & \splitvertex{fermion}{q}{}{fermion}{q}{z}{gluon}{g}{1-z} &
+		\(\displaystyle C_F\left[\frac{1+z^2}{(1-z)_+} + \frac{3}{2}\delta(1-z)\right]\) \\
+		\(P_{gq}\) & \splitvertex{fermion}{q}{}{gluon}{g}{z}{fermion}{q}{1-z} &
+		\(\displaystyle C_F\,\frac{1+(1-z)^2}{z}\) \\
+		\(P_{qg}\) & \splitvertex{gluon}{g}{}{fermion}{q}{z}{anti fermion}{\bar{q}}{1-z} &
+		\(\displaystyle T_R\left[z^2 + (1-z)^2\right]\) \\
+		\(P_{gg}\) & \splitvertex{gluon}{g}{}{gluon}{g}{z}{gluon}{g}{1-z} &
+		\(\displaystyle 2C_A\left[\frac{z}{(1-z)_+} + \frac{1-z}{z} + z(1-z)\right]
+		+ \frac{11C_A - 4N_f T_R}{6}\,\delta(1-z)\) \\
+		\bottomrule
+	\end{tabular}
+	\caption[Leading-order DGLAP splitting functions and their diagrams]{%
+		The four leading-order collinear splittings entering the DGLAP evolution
+		of Eq.~\ref{eq:dglap}. The daughter parton \(i\) carrying momentum
+		fraction \(z\) is drawn on the upper leg, the recoiling parton \((1-z)\)
+		on the lower. The plus prescription (Eq.~\ref{eq:plusPrescription}) and
+		\(\delta(1-z)\) terms regularize the soft limit and enforce the momentum
+		and flavor sum rules~\cite{Ellis_Stirling_Webber_1996}.}
+	\label{tab:splitfns}
+\end{table}
+
+ The \emph{plus prescription},
+\begin{equation}
+	\int_0^1 dz\, \frac{g(z)}{(1-z)_+} =
+	\int_0^1 dz\, \frac{g(z) - g(1)}{1-z},
+	\label{eq:plusPrescription}
+\end{equation}
+regularizes the \(z\to 1\) soft-gluon singularity, while the \(\delta(1-z)\)
+terms enforce the momentum and flavor sum rules order by order. In that soft
+limit the diagonal kernels reduce to
+\begin{equation}
+	P_{qq}(z)\xrightarrow{z\to1}\frac{2C_F}{(1-z)_+},\qquad
+	P_{gg}(z)\xrightarrow{z\to1}\frac{2C_A}{(1-z)_+},
+	\label{eq:splitSoft}
+\end{equation}
+so a radiating gluon is more singular than a radiating quark by the ratio
+\(C_A/C_F = 9/4\), already fixing the differing activity of quark- and
+gluon-initiated cascades exploited in later chapters.
+
+A parton in the final state evolves by the same kernels, now read as timelike
+branchings toward lower scales. The \emph{fragmentation functions}
+\(D_{h/i}(z,\mu^2)\), giving the probability that a parton \(i\) hadronizes
+into a hadron \(h\) with momentum fraction \(z\), obey
+\begin{equation}
+	\frac{\partial D_{h/i}(z,\mu^2)}{\partial \ln\mu^2} =
+	\sum_{j}\int_z^1 \frac{dz'}{z'}\;\frac{\alpha_s(\mu^2)}{2\pi}\,
+	P_{ji}(z')\,D_{h/j}\!\left(\frac{z}{z'},\mu^2\right).
+	\label{eq:fragDGLAP}
+\end{equation}
 	
 	\subsection{Parton showers and the Sudakov form factor}
 	\label{subsec:partonShower}
 	
-	Equation~\ref{eq:dglap} admits a probabilistic reading that underlies the
-	Monte Carlo simulation of QCD radiation. Casting the evolution in terms of
-	the probability that a parton \(i\) evolves from a hard scale \(\mu_1^2\)
-	down to a softer scale \(\mu_2^2\) \emph{without} a resolvable emission
-	defines the \emph{Sudakov form factor},
+	Equation~\ref{eq:collinearEmission} admits a probabilistic reading that
+	underlies the Monte Carlo simulation of QCD radiation. The differential
+	probability of a resolvable branching per unit evolution,
+	\begin{equation}
+		d\mathcal{P}_i = \frac{d\mu^2}{\mu^2}\int dz\;
+		\frac{\alpha_s(\mu^2)}{2\pi}\, P_i(z),
+		\label{eq:emitProb}
+	\end{equation}
+	exponentiates into the survival probability that a parton \(i\) evolves from a
+	hard scale \(\mu_1^2\) down to a softer scale \(\mu_2^2\) \emph{without} a
+	resolvable emission, the \emph{Sudakov form factor},
 	\begin{equation}
 		\Delta_i(\mu_1^2, \mu_2^2) = \exp\left[
 		-\int_{\mu_2^2}^{\mu_1^2}\frac{d\mu'^2}{\mu'^2}
 		\int dz\; \frac{\alpha_s(\mu'^2)}{2\pi}\, P_{i}(z)\right],
 		\label{eq:sudakov}
 	\end{equation}
-	where the \(z\) integral runs over the resolvable region fixed by an
-	infrared cutoff. Drawing successive emission scales and momentum fractions
-	according to Eq.~\ref{eq:sudakov} and the splitting functions generates a
-	\emph{parton shower}: an ordered cascade of \(1\to 2\) branchings that
-	evolves a single hard parton down toward the hadronization scale, resumming
-	the leading collinear logarithms \(\alpha_s^n \ln^n(\mu_1^2/\mu_2^2)\) to
-	all orders. Because \(P_{gg}\) exceeds \(P_{qq}\) in the singular region,
-	a gluon shower is the more active of the two, a difference that propagates
-	into the internal structure of the resulting jets.
+	where the \(z\) integral runs over the resolvable region fixed by an infrared
+	cutoff. Iterating---drawing the next scale from \(\Delta_i\) and the momentum
+	fraction from \(P_i(z)\)---generates a \emph{parton shower}: an ordered cascade
+	of \(1\to 2\) branchings evolving a single hard parton toward the hadronization
+	scale, resumming the leading collinear logarithms
+	\(\alpha_s^n \ln^n(\mu_1^2/\mu_2^2)\) to all orders. By Eq.~\ref{eq:splitSoft}
+	the gluon Sudakov falls faster, so \(g\)-initiated showers branch more
+	profusely than \(q\)-initiated ones, a difference that propagates into the
+	internal structure of the resulting jets.
 	
 	The ordering variable is not arbitrary. Quantum interference between
-	soft-gluon emissions, a manifestation of color coherence, suppresses
-	radiation at large angles and organizes successive branchings into a
-	sequence of \emph{decreasing emission angle}. This angular ordering
-	imprints the color flow of the hard process onto the angular distribution
-	of radiation within the developing jet, and is the microscopic origin of
-	much of the substructure exploited in later chapters.
+	soft-gluon emissions---color coherence---suppresses large-angle radiation and
+	orders successive branchings in \emph{decreasing emission angle},
+	\begin{equation}
+		\theta_1 > \theta_2 > \cdots > \theta_n .
+		\label{eq:angularOrdering}
+	\end{equation}
+	This angular ordering imprints the color flow of the hard process onto the
+	angular distribution of radiation within the developing jet, and is the
+	microscopic origin of much of the substructure exploited in later chapters.
 	
-	\subsection{Hadronization}
-	\label{subsec:hadronization}
-	
-	The perturbative cascade terminates once emission scales approach
-	\(\Lambda\), where \(\alpha_s\) grows large and the parton picture breaks
-	down. The final conversion of colored partons into color-neutral hadrons,
-	\emph{hadronization}, is intrinsically non-perturbative and is treated
-	through phenomenological models tuned to data, most commonly the Lund
-	string \cite{lund} and cluster models. The net result is a collimated
-	spray of hadrons whose total energy and direction approximate those of the
-	initiating parton, and whose internal structure retains the imprint of the
-	perturbative evolution described above. The reconstruction of these sprays
-	as \emph{jets}, and the observables built from their substructure, are the
-	subject of the chapters that follow.
+\subsection{Hadronization}
+\label{subsec:hadronization}
+
+The perturbative cascade terminates once emission scales approach \(\Lambda\),
+where \(\alpha_s\) grows large (Sec.~\ref{subsec:runningCoupling}) and the
+parton picture breaks down. The final conversion of colored partons into
+color-neutral hadrons, \emph{hadronization}, is intrinsically non-perturbative
+and is treated through phenomenological models tuned to data. In the Lund
+string model \cite{lund} the color field between separating partons collapses
+into a flux tube of constant tension, a linear confining potential
+\begin{equation}
+	V(r) = \kappa\, r,\qquad \kappa \approx 1~\mathrm{GeV/fm},
+	\label{eq:stringPotential}
+\end{equation}
+whose breakup into hadrons is governed by the symmetric fragmentation
+probability
+\begin{equation}
+	f(z) \propto \frac{1}{z}\,(1-z)^{a}\,
+	\exp\!\left(-\frac{b\,m_T^2}{z}\right),
+	\qquad m_T^2 = m^2 + p_T^2,
+	\label{eq:lundFF}
+\end{equation}
+with tunable parameters \(a,b\). The net result is a collimated spray of
+hadrons whose total energy and direction approximate those of the initiating
+parton, and whose internal structure retains the imprint of the perturbative
+evolution above. The reconstruction of these sprays as \emph{jets}, and the
+observables built from their substructure, are the subject of the chapters
+that follow.
 
 
 

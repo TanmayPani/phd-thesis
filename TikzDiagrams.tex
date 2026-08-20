@@ -683,3 +683,21 @@
 		\end{feynman}
 	\end{tikzpicture}%
 }
+
+\def\splitw{0.95} % half-width  of a 1->2 splitting diagram
+\def\splith{0.62} % half-height of a 1->2 splitting diagram
+\newcommand{\splitvertex}[9]{%
+	\begin{tikzpicture}[baseline=0, thick]
+		\begin{feynman}
+			\vertex [circle, fill=black, minimum size=3.5pt, inner sep=0pt] (v) at (0,0) {};
+			\vertex (p) at (-\splitw, 0)        {\(#2\)};
+			\vertex (u) at ( \splitw,  \splith) {\(#5\)};
+			\vertex (l) at ( \splitw, -\splith) {\(#8\)};
+			\diagram* {
+				(p) -- [#1, edge label'=\(#3\)] (v),
+				(v) -- [#4, edge label=\(#6\)]  (u),
+				(v) -- [#7, edge label'=\(#9\)] (l),
+			};
+		\end{feynman}
+	\end{tikzpicture}%
+}
