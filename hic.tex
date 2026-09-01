@@ -107,6 +107,114 @@ Also considering \emph{azimuthal angle} (\(\varphi\)) and \emph{transverse-momen
 	\label{fig:detcoords}
 \end{figure}
 
+%\section{Dijet events}
+%In dijet events, two incoming partons, one each from the incoming nuclei scatter off each other and produce two final state partons, which are observed as jets. The two partons are back-to-back and have equal momenta in the processes center of mass frame. A typical process,
+%\begin{equation}
+%	\mathrm{parton}_i(p_1) + \mathrm{parton}_j(p_2) \rightarrow \mathrm{parton}_k(p_3) + \mathrm{parton}_l(p_4)
+%\end{equation}
+%Has parton cross-section:
+%
+%\begin{equation}
+%	\frac{E_3E_4d^6\hat{\sigma}}{d^3p_3d^3p_4} = \frac{1}{2\hat{s}}\frac{1}{16\pi^2}\overline{\sum}|\mathcal{M}|^2\delta^4(p_1 + p_2 - p_3 - p_4)
+%	\label{eq:partonxsec}
+%\end{equation}
+%
+%Where, \(\overline{\sum}\)  denotes  the average and sum over the spins and colors of initial and final partons \(\{i, j, k, l\}\) and \(\hat{s} = (p_1+p_2)^2\). To get the dijet cross-section, we insert the parton cross-section from Eq. \ref{eq:partonxsec} into  Eq. \ref{eq:factorization}. Assuming the incoming partons are massless and collinear with the beams, \(p_1 = \frac{1}{2}x_1\sqrt{s}(1, 0, 0, 1)\) and \(p_2 = \frac{1}{2}x_2\sqrt{s}(1, 0, 0, -1)\), so that \(\hat{s} = x_1x_2s\),
+%
+%\begin{align*}
+%	\frac{E_3E_4d^6\sigma}{d^3p_3d^3p_4} & = \frac{1}{2s}\frac{1}{16\pi^2} \sum_{\{i,j,k,l\}\subset q\bigcup\bar{q}\bigcup g} \frac{1}{1 + \delta_{kl}} \int dx_1dx_2 \frac{f_i(x_1, \mu^2)}{x_1} \frac{f_j(x_2, \mu^2)}{x_2} \\
+%	& \qquad \times\, \overline{\sum}|\mathcal{M}(ij\rightarrow kl)|^2\delta^4(p_1 + p_2 - p_3 - p_4) 
+%\end{align*}
+%Where \(q\bigcup\bar{q}\bigcup g\) represents all the partonic states \(\{g, u, \bar{u}, d, \ldots\}\). 
+%
+%%	The four-momentum conserving \(\delta\)-function factorizes into a transverse part and the energy and longitudinal parts, 
+%%	
+%%	\begin{align*}
+%	%	\delta^4(p_1 + p_2 - p_3 - p_4)                                & = \delta^2(\mathbf{p}_{T3} + \mathbf{p}_{T4})\,\delta\left(\tfrac{1}{2}\sqrt{s}(x_1 + x_2) - E_3 - E_4\right)                 \\
+%	%	                                                               & \qquad \times\, \delta\left(\tfrac{1}{2}\sqrt{s}(x_1 - x_2) - p_{z3} - p_{z4}\right) \\
+%	%	                                                               & = \frac{2}{s}\delta^2(\mathbf{p}_{T3} + \mathbf{p}_{T4})\,\delta\left(x_1 - \tfrac{1}{2}x_T(e^{y_3} + e^{y_4})\right)         \\
+%	%	                                                               & \qquad \times\, \delta\left(x_2 - \tfrac{1}{2}x_T(e^{-y_3} + e^{-y_4})\right)
+%	%\end{align*}
+%	%
+%	%Where, \(x_T \equiv 2p_T/\sqrt{s}\) and \(p_T \equiv p_{T, 3} = p_{T, 4}\),
+%	%
+%	%\begin{equation}
+%	%	\frac{d^3\sigma}{dy_3dy_4dp_T^2} = \frac{1}{16\pi s^2}\sum_{\{i,j,k,l\}\subset q\bigcup\bar{q}\bigcup g} \frac{1}{1 + \delta_{kl}} \frac{f_i(x_1, \mu^2)}{x_1}\frac{f_j(x_2, \mu^2)}{x_2} \overline{\sum}|\mathcal{M}(ij\rightarrow kl)|^2
+%	%\end{equation}
+%	
+%	Integrating Eq. \ref{eq:partonxsec} over one of the outgoing partons gives the
+%	\emph{single-inclusive} parton cross-section for the other.  Writing
+%	\(q \equiv p_1 + p_2 - p_3\),
+%	\begin{align}
+%		\frac{E_3d^3\hat{\sigma}}{d^3p_3} &= \frac{1}{2\hat{s}}\frac{1}{16\pi^2}\overline{\sum}|\mathcal{M}|^2\int\frac{d^3p_4}{E_4}\,\delta^4(p_1 + p_2 - p_3 - p_4)                              \notag                      \\
+%		&=\frac{1}{2\hat{s}}\frac{1}{16\pi^2}\overline{\sum}|\mathcal{M}|^2\int\frac{d^3p_4}{E_4}\,\delta^3(\mathbf{q} - \mathbf{p}_4)\,\delta(q^0 - E_4) \notag \\
+%		&= \frac{1}{2\hat{s}}\frac{1}{16\pi^2}\overline{\sum}|\mathcal{M}|^2\,\frac{\delta(q^0 - |\mathbf{q}|)}{|\mathbf{q}|}       \notag \\  
+%		&= \frac{1}{2\hat{s}}\frac{1}{16\pi^2}\overline{\sum}|\mathcal{M}|^2\,2\delta(q^2)                  
+%	\end{align}
+%	We can represent \(q^2\) in terms of partonic Mandelstam variables \(\hat{s} = (p_1+p_2)^2\), \(\hat{t} = (p_1-p_3)^2\) and \(\hat{u} = (p_2-p_3)^2\),
+%	
+%	\begin{align}
+%		\implies \frac{Ed^3\hat{\sigma}}{d^3p}  &= \frac{1}{2\hat{s}}\frac{1}{8\pi^2}\overline{\sum}|\mathcal{M}|^2\delta(\hat{s} + \hat{t} + \hat{u})
+%	\end{align}
+%	
+%	Assuming perfect detector and jet algorithm, the outgoing parton's momentum is the ensuing jet's momentum.
+%	\begin{align}
+%		\frac{E_Jd^3\sigma}{d^3p_J}  =& \frac{1}{16\pi^2 s}\sum_{\{i,j,k,l\}\subset q\bigcup\bar{q}\bigcup g} \frac{1}{1 + \delta_{kl}}\int_{0}^{1} \frac{dx_1}{x_1}\frac{dx_2}{x_2} f_i(x_1, \mu^2) f_j(x_2, \mu^2) \notag\\ &\times\overline{\sum}|\mathcal{M}(ij\rightarrow kl)|^2\delta(\hat{s} + \hat{t} + \hat{u})
+%	\end{align}
+%	\begin{sidewaystable}[htbp]
+%		\centering
+%		\setlength{\tabcolsep}{4pt}
+%		\begin{tabular}{
+%				>{\centering\arraybackslash}m{2.2cm}
+%				>{\centering\arraybackslash}m{2.8cm}
+%				>{\centering\arraybackslash}m{2.8cm}
+%				>{\centering\arraybackslash}m{2.8cm}
+%				>{\centering\arraybackslash}m{2.8cm}
+%				>{\centering\arraybackslash}m{6.8cm}
+%			}
+%			\toprule
+%			Process & \multicolumn{4}{c}{Diagrams} & \(\overline{\sum}|\mathcal{M}|^2/(4\pi\alpha_s)^2\) \\
+%			\midrule
+%			\(qq' \to qq'\)             & \diagqqpT{q'}{q}   &                  &            &          &
+%			\(\dfrac{4}{9}\dfrac{\hat{s}^2+\hat{u}^2}{\hat{t}^2}\)                                                   \\
+%			\(qq \to qq\)               & \diagqqpT{q}{q}    & \diagqqU{q}      &            &          &
+%			\(\dfrac{4}{9}\left(\dfrac{\hat{s}^2+\hat{u}^2}{\hat{t}^2}+\dfrac{\hat{s}^2+\hat{t}^2}{\hat{u}^2}\right)
+%			-\dfrac{8}{27}\dfrac{\hat{s}^2}{\hat{u}\hat{t}}\)                                                        \\
+%			\(q\bar{q}' \to q\bar{q}'\) & \diagqqbpT{q}{q'}  &                  &            &          &
+%			\(\dfrac{4}{9}\dfrac{\hat{s}^2+\hat{u}^2}{\hat{t}^2}\)                                                   \\
+%			\(q\bar{q} \to q'\bar{q}'\) & \diagqqbAnn{q}{q'} &                  &            &          &
+%			\(\dfrac{4}{9}\dfrac{\hat{t}^2+\hat{u}^2}{\hat{s}^2}\)                                                   \\
+%			\(q\bar{q} \to q\bar{q}\)   & \diagqqbAnn{q}{q}  & \diagqqbpT{q}{q} &            &          &
+%			\(\dfrac{4}{9}\left(\dfrac{\hat{s}^2+\hat{u}^2}{\hat{t}^2}+\dfrac{\hat{t}^2+\hat{u}^2}{\hat{s}^2}\right)
+%			-\dfrac{8}{27}\dfrac{\hat{u}^2}{\hat{s}\hat{t}}\)                                                        \\
+%			\(q\bar{q} \to gg\)         & \diagqqbS          & \diagqqbT        & \diagqqbU  &          &
+%			\(\dfrac{32}{27}\dfrac{\hat{t}^2+\hat{u}^2}{\hat{t}\hat{u}}
+%			-\dfrac{8}{3}\dfrac{\hat{t}^2+\hat{u}^2}{\hat{s}^2}\)                                                    \\
+%			\(gg \to q\bar{q}\)         & \diagggqqS         & \diagggqqT       & \diagggqqU &          &
+%			\(\dfrac{1}{6}\dfrac{\hat{t}^2+\hat{u}^2}{\hat{t}\hat{u}}
+%			-\dfrac{3}{8}\dfrac{\hat{t}^2+\hat{u}^2}{\hat{s}^2}\)                                                    \\
+%			\(qg \to qg\)               & \diagqgS           & \diagqgT         & \diagqgU   &          &
+%			\(-\dfrac{4}{9}\dfrac{\hat{s}^2+\hat{u}^2}{\hat{s}\hat{u}}
+%			+\dfrac{\hat{u}^2+\hat{s}^2}{\hat{t}^2}\)                                                                \\
+%			\(gg \to gg\)               & \diagggS           & \diagggT         & \diagggU   & \diagggX &
+%			\(\dfrac{9}{2}\left(3-\dfrac{\hat{t}\hat{u}}{\hat{s}^2}-\dfrac{\hat{s}\hat{u}}{\hat{t}^2}
+%			-\dfrac{\hat{s}\hat{t}}{\hat{u}^2}\right)\)                                                              \\
+%			\bottomrule
+%		\end{tabular}
+%		\caption[Leading-order diagrams and matrix elements for jet production]{%
+%			The complete set of leading-order diagrams and squared matrix
+%			elements for the partonic \(2\to2\) processes that produce jets, entering
+%			the hard cross section \(\hat{\sigma}_{ij}\) of Fig. \ref{fig:factorization}.
+%			Here \(q\) and \(q'\) denote distinct quark flavours, and \(\hat{s}\),
+%			\(\hat{t}\), \(\hat{u}\) are the Mandelstam invariants of the partonic
+%			subprocess.  The matrix elements are averaged over
+%			initial-state and summed over final-state spins and colours, as indicated
+%			by \(\overline{\sum}\), and are normalised by \(g^4 = (4\pi\alpha_s)^2\)~\cite{Ellis_Stirling_Webber_1996}.}
+%		\label{tab:jetdiagrams}
+%	\end{sidewaystable}
+
+\section{Jet clustering}
+
 
 \section{Heavy-Ion Collisions}
 \begin{figure}[htbp]
