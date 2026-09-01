@@ -48,9 +48,23 @@ To enhance jet signal, only High-Tower (HT) triggered events, with at least one 
  The tracks and towers are clustered into jets using the anti-\(k_{\rm T}\) algorithm with a jet resolution parameter $R = 0.4$, implemented using the FastJet library~\cite{Cacciari_2012}.  After obtaining the jets, the softer constituents are groomed using Recursive SoftDrop with \(\beta = 0\) and \(z_\mathrm{cut} = 0.2\). The groomed-jet's constituents lose non-kinematic information like charge, which is regained by matching them to the original jet's constituents. 
  
  \subsection{Detector effects and Unfolding}
- The embedding simulation starts from PYTHIA6 (STAR Tune)  at the particle level. The particles are then reconstructed as detector hits using the STAR detector system implemented in GEANT3 and embedded into zero-bias events from 200 GeV \pp collisions (2012). The jets from particle and detector levels are matched using a \(p_\mathrm{T, jet}\) ordered nearness criteria.  
+ The embedding simulation starts from PYTHIA6 (STAR Tune)  at the particle level. The particles are then reconstructed as detector hits using the STAR detector system implemented in GEANT3 and embedded into zero-bias events from 200 GeV \pp collisions (2012). The jets from particle and detector levels are matched using a \(p_\mathrm{T, jet}\) ordered nearness criteria.  The matched jets can be used to show detector responses like shown in Fig. \ref{fig:PtResonse} and \(p_\mathrm{T, jet}\)-resolution shown in Fig. \ref{fig:PtResolution}.
  
- Unfolding is done using the Multifold method. Every jet is represented as a vector of 23 features. The four classifiers of Multifold are parametrized as DNNs with 3 hidden layers with 256 nodes each. The model weights are trained using the AdamW optimizer with a learning rate of \(10^{-3}\) and weight decay of \(10^{-2}\). Convergence is achieved in two unfolding iterations. Statistical uncertainties are calculated using bootstrap ensemble with 50 model replicas each sub-sampling  500k each of the data-like and sim-like jets, so each model replica sees 1M jets every epoch. 
+ \begin{figure}[h]
+ 	\centering
+ 	\label{fig:PtResonse}
+ 	\includegraphics[width=0.5\linewidth]{figures/jet_pt_response.pdf}
+ 	\caption{Two-dimensional histogram showing detector response for \(p_\mathrm{T, jet}\), showing probability of a \ptGenJet particle level jet being reconstructed as \ptRecoJet. Purple stars shows expected \ptRecoJet given a particular bin of the \ptGenJet.}
+ \end{figure}
+ 
+ \begin{figure}[h]
+ 	\centering
+ 	\label{fig:PtResolution}
+ 	\includegraphics[width=\linewidth]{figures/jet_pt_res.pdf}
+ 	\caption{\(p_\mathrm{T, jet}\)-resolution in different \(p_\mathrm{T, jet}\) bins.}
+ \end{figure}
+ 
+ Unfolding is done using the Multifold method. Every jet is represented as a vector of 23 features. The four classifiers of Multifold are parametrized as DNNs with 3 hidden layers with 256 nodes each. The model weights are trained using the AdamW optimizer with a learning rate of \(10^{-3}\) and weight decay of \(10^{-2}\). Convergence is achieved in two unfolding iterations. Statistical uncertainties are calculated using bootstrap ensemble with 50 model replicas each sub-sampling  500k each of the data-like and sim-like jets, so each model replica sees 1M jets every epoch. All the  required unfolded distributions and profiles are calculated by using the per-jet unfolding weights. 
  
  Closure test of the unfolding shown in  Fig. \ref{fig:ClosureAngularities} is done by doing the same unfolding procedure replacing measured data with pseudo-data for which the particle level is known (pseudo-truth). The pseudo-unfolded distributions are then compared to the pseudo-truth via ratios
  \begin{figure}[h]
@@ -61,13 +75,21 @@ To enhance jet signal, only High-Tower (HT) triggered events, with at least one 
  	\caption{Closures for \(\lambda^{\kappa=1}_{\beta\in\{0.5, 1, 2\}}\) distributions (top) and \(R_\mathrm{g}\) profile (bottom) shown for jets with \ptRange{jet}{20}{30}.}
  \end{figure}
  
+ \subsection{Systematic Uncertainties}
+ 
+ 
 \section{Results}
 \begin{figure}[h]
-	\includegraphics[width=\linewidth]{figures/fig_grid.pdf}
+	\centering
+		\includegraphics[width=0.8\linewidth]{figures/fig_grid_jpt1.pdf}
+	\includegraphics[width=0.8\linewidth]{figures/fig_grid_jpt2.pdf}
+		\includegraphics[width=0.8\linewidth]{figures/fig_grid_jpt3.pdf}
 \end{figure}
-
 \begin{figure}[h]
-	\includegraphics[width=\linewidth]{figures/fig_prof_grid.pdf}
+	\centering
+		\includegraphics[width=0.8\linewidth]{figures/fig_prof_grid_jpt1.pdf}
+			\includegraphics[width=0.8\linewidth]{figures/fig_prof_grid_jpt2.pdf}
+	\includegraphics[width=0.8\linewidth]{figures/fig_prof_grid_jpt3.pdf}
 \end{figure}
 
 \section{Conclusion and Outlook}
