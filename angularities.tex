@@ -48,7 +48,7 @@ To enhance jet signal, only High-Tower (HT) triggered events, with at least one 
  The tracks and towers are clustered into jets using the anti-\(k_{\rm T}\) algorithm with a jet resolution parameter $R = 0.4$, implemented using the FastJet library~\cite{Cacciari_2012}.  After obtaining the jets, the softer constituents are groomed using Recursive SoftDrop with \(\beta = 0\) and \(z_\mathrm{cut} = 0.2\). The groomed-jet's constituents lose non-kinematic information like charge, which is regained by matching them to the original jet's constituents. 
  
  \subsection{Detector effects and Unfolding}
- The embedding simulation starts from PYTHIA6 (STAR Tune)  at the particle level. The particles are then reconstructed as detector hits using the STAR detector system implemented in GEANT3 and embedded into zero-bias events from 200 GeV \pp collisions (2012). The jets from particle and detector levels are matched using a \(p_\mathrm{T, jet}\) ordered nearness criteria.  The matched jets can be used to show detector responses like shown in Fig. \ref{fig:PtResonse} and \(p_\mathrm{T, jet}\)-resolution shown in Fig. \ref{fig:PtResolution}.
+ The embedding simulation starts from PYTHIA6 (STAR Tune)  at the particle level. The particles are then reconstructed as detector hits using the STAR detector system implemented in GEANT3 and embedded into zero-bias events from 200 GeV \pp collisions (2012). The jets from particle and detector levels are matched using a \(p_\mathrm{T, jet}\) ordered nearness criteria.  The matched jets can be used to show detector responses like shown in Fig. \ref{fig:PtResonse} 
  
  \begin{figure}[h]
  	\centering
@@ -56,7 +56,7 @@ To enhance jet signal, only High-Tower (HT) triggered events, with at least one 
  	\includegraphics[width=0.5\linewidth]{figures/jet_pt_response.pdf}
  	\caption{Two-dimensional histogram showing detector response for \(p_\mathrm{T, jet}\), showing probability of a \ptGenJet particle level jet being reconstructed as \ptRecoJet. Purple stars shows expected \ptRecoJet given a particular bin of the \ptGenJet.}
  \end{figure}
- 
+ \(p_\mathrm{T, jet}\)-resolution shown in Fig. \ref{fig:PtResolution}.  
  \begin{figure}[h]
  	\centering
  	\label{fig:PtResolution}
