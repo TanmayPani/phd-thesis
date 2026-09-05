@@ -334,34 +334,26 @@ We get the familiar DGLAP-like evolution equations,
 	t\frac{\partial}{\partial t}\left(\frac{f_i}{\Delta_i}\right) = \frac{1}{\Delta_i}\sum_j \int \frac{dz}{z}\frac{\alpha_s}{2\pi}
 \hat{P}_{ij}(z)f_j(x/z, t)\end{align}
 
-To deal with singularities corresponding to soft gluons at \(z\to 1\), we introduce an explicit infrared cut-off \(z < 1-\epsilon(t)\) .  Requiring the transverse momentum in timelike branching \(a\to bc\), 
-\begin{align}
-	p_T^2 &= z(1-z)p_a^2 - (1-z)p_b^2 - zp_c^2 > 0 \notag\\
-	\implies& z(1-z) > t_0/t \notag\\
-	\implies&  z, 1-z > \epsilon(t) = \frac{1 - \sqrt{1-4t/t_0}}{2}\simeq t_0/t 
-\end{align} 
-
 \begin{table}[htbp]
 	\centering
 	\setlength{\tabcolsep}{6pt}
 	\renewcommand{\arraystretch}{1.6}
 	\begin{tabular}{
-			>{\centering\arraybackslash}m{1.8cm}
-			>{\centering\arraybackslash}m{3.0cm}
-			>{\raggedright\arraybackslash}m{8.4cm}
+			>{\centering\arraybackslash}m{2cm}
+			>{\centering\arraybackslash}m{4.0cm}
+			>{\raggedright\arraybackslash}m{8cm}
 		}
 		\toprule
-		Kernel & Diagram & \(P_{ij}(z)\) \\
+		Kernel (\(ij\)) & Diagram & \(\hat{P}_{ij}(z)\) \\
 		\midrule
-		\(P_{qq}\) & \splitvertex{fermion}{q}{}{fermion}{q}{z}{gluon}{g}{1-z} &
-		\(\displaystyle C_F\left[\frac{1+z^2}{(1-z)_+} + \frac{3}{2}\delta(1-z)\right]\) \\
-		\(P_{gq}\) & \splitvertex{fermion}{q}{}{gluon}{g}{z}{fermion}{q}{1-z} &
+		\(qq\) & \splitvertex{fermion}{q}{}{fermion}{q}{z}{gluon}{g}{1-z} &
+		\(\displaystyle C_F\left[\frac{1+z^2}{1-z}\right]\) \\
+		\(gq\) & \splitvertex{fermion}{q}{}{gluon}{g}{z}{fermion}{q}{1-z} &
 		\(\displaystyle C_F\,\frac{1+(1-z)^2}{z}\) \\
-		\(P_{qg}\) & \splitvertex{gluon}{g}{}{fermion}{q}{z}{anti fermion}{\bar{q}}{1-z} &
+		\(qg\) & \splitvertex{gluon}{g}{}{fermion}{q}{z}{anti fermion}{\bar{q}}{1-z} &
 		\(\displaystyle T_R\left[z^2 + (1-z)^2\right]\) \\
-		\(P_{gg}\) & \splitvertex{gluon}{g}{}{gluon}{g}{z}{gluon}{g}{1-z} &
-		\(\displaystyle 2C_A\left[\frac{z}{(1-z)_+} + \frac{1-z}{z} + z(1-z)\right]
-		+ \frac{11C_A - 4N_f T_R}{6}\,\delta(1-z)\) \\
+		\(gg\) & \splitvertex{gluon}{g}{}{gluon}{g}{z}{gluon}{g}{1-z} &
+		\(\displaystyle C_A\left[\frac{z}{1-z} + \frac{1-z}{z} + z(1-z)\right] \)\\
 		\bottomrule
 	\end{tabular}
 	\caption[Leading-order DGLAP splitting functions and their diagrams]{%
@@ -373,6 +365,16 @@ To deal with singularities corresponding to soft gluons at \(z\to 1\), we introd
 		and flavor sum rules~\cite{Ellis_Stirling_Webber_1996}.}
 	\label{tab:splitfns}
 \end{table}
+
+To deal with singularities corresponding to soft gluons at \(z\to 1\), we introduce an explicit infrared cut-off \(z < 1-\epsilon(t)\) .  Requiring the transverse momentum in timelike branching \(a\to bc\) to be positive, 
+\begin{align}
+	p_T^2 &= z(1-z)p_a^2 - (1-z)p_b^2 - zp_c^2 > 0 \notag\\
+	\implies& z(1-z) > t_0/t \notag\\
+	\implies&  z, 1-z > \epsilon(t) = \frac{1 - \sqrt{1-4t/t_0}}{2}\simeq t_0/t \notag\\
+	\implies& t_0/t < z < 1 - t_0/t
+\end{align} 
+
+
 
 \subsection{Coherent branching}
 So far, we have taken into account colinear enhancements to all pQCD orders. 
