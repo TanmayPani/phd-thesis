@@ -1,0 +1,95 @@
+\subsection{Quark and gluon jets}
+\label{subsec:qgjets}
+
+Every emission rate in Sec.~\ref{subsec:coherence} is proportional to the squared
+color charge of the emitter, so the two species of initiating parton differ by the
+single ratio
+\begin{equation}
+	\frac{\bm{Q}_g^2}{\bm{Q}_q^2} = \frac{C_A}{C_F}
+	= \frac{2N_c^2}{N_c^2-1} = \frac{9}{4},
+	\label{eq:casimirRatio}
+\end{equation}
+a gluon radiating \(9/4\) as copiously as a quark of the same energy. The
+consequences are most directly visible in the number of constituents a jet acquires
+and in how far from the jet axis they lie.
+
+The multiplicity follows from the angular-ordered cascade of
+Eq.~\ref{eq:coherentSudakov}. Writing \(Y=\tfrac12\ln(\tilde{t}/\Lambda^2)\) and using
+the running coupling, the double-logarithmic evolution
+\(d^2\langle n\rangle/dY^2 = (4C_A/\beta_0Y)\langle n\rangle\) integrates to
+\begin{equation}
+	\langle n(Y)\rangle \;\propto\;
+	\exp\left[\sqrt{\frac{16C_A}{\beta_0}\,Y}\,\right],
+	\qquad
+	\beta_0 = 11-\tfrac{2}{3}n_f ,
+	\label{eq:multiplicityGrowth}
+\end{equation}
+slower than any power of the jet energy, as anticipated at the end of
+Sec.~\ref{subsec:coherence}. The exponent carries \(C_A\) whatever the initiating
+parton, since after the first branching the cascade is gluon-dominated; the species
+enters only through the normalization, fixed by that first emission, so
+\begin{equation}
+	\frac{\langle n\rangle_g}{\langle n\rangle_q}
+	\;\xrightarrow[\;Y\to\infty\;]{}\; \frac{C_A}{C_F} = \frac{9}{4} .
+	\label{eq:multRatio}
+\end{equation}
+The approach to Eq.~\ref{eq:multRatio} is slow: energy conservation and
+next-to-leading corrections to the cascade reduce the ratio to \(\simeq1.5\) at
+presently accessible jet energies.
+
+The overall angular size of a jet scales the same way. Adopt the
+Sterman--Weinberg criterion --- a jet holds all but a fraction \(\epsilon\) of its
+energy within a cone of half-angle \(\delta\) --- for which the probability that a
+parton of color charge \(C_i\) qualifies is, at \(\mathcal{O}(\alpha_s)\),
+\begin{equation}
+	f_i(\epsilon,\delta) = 1 - \frac{4\alpha_s C_i}{\pi}
+	\ln\frac{1}{\epsilon}\,\ln\frac{1}{\delta} ,
+	\label{eq:stermanWeinberg}
+\end{equation}
+the double logarithm being the soft-collinear region of Sec.~\ref{subsec:coherence}
+once again. Holding \(f\) and \(\epsilon\) fixed and solving for the angular size,
+\begin{equation}
+	\delta_i \sim \exp\left[-\frac{\pi(1-f)}{4\alpha_s C_i\ln(1/\epsilon)}\right],
+	\qquad
+	\delta_g \sim \delta_q^{\,C_F/C_A} ,
+	\qquad
+	\frac{C_F}{C_A} = \frac{4}{9} .
+	\label{eq:swWidth}
+\end{equation}
+Here the charge sits in the denominator of the exponent, so raising \(\delta_q<1\) to
+the power \(4/9\) leaves the gluon jet the wider of the two. Since \(1/\alpha_s\)
+grows logarithmically with the hard scale, \(\delta\) falls like a negative power of
+it, and less rapidly for gluon jets.
+
+The transverse structure is quantified by the generalized angularities of
+Chapter~\ref{ch:angularities},
+\begin{equation}
+	\lambda^\kappa_\beta = \sum_{c\,\in J} z_c^\kappa
+	\left(\frac{\Delta R_c}{R}\right)^{\beta},
+	\qquad
+	z_c = \frac{p_{\mathrm{T},c}}{\sum_{c^\prime\in J}p_{\mathrm{T},c^\prime}},
+	\label{eq:angularityDef}
+\end{equation}
+of which \(\lambda^0_0\) counts constituents and \(\lambda^1_1\) is the jet width, so
+that the multiplicity and the width above are one observable at two values of
+\((\kappa,\beta)\). Counting emissions in the region \(z\theta^\beta>\lambda\),
+instead of outside the Sterman--Weinberg cone, turns the same argument into a
+statement about the distribution of the internal structure rather than the overall
+size, and the color charge appears once more as a power,
+\begin{equation}
+	\Sigma_g(\lambda) = \left[\Sigma_q(\lambda)\right]^{C_A/C_F} ,
+	\label{eq:casimirPower}
+\end{equation}
+\(\Sigma_i(\lambda)\) being the fraction of jets with angularity below \(\lambda\).
+The exponent is inverted with respect to Eq.~\ref{eq:swWidth} only because that
+equation fixes a probability and solves for an angle, where this one fixes the angle
+and returns a probability. Chapter~\ref{ch:angularities} develops the point.
+
+Gluon jets are therefore both more populous
+and wider than quark jets of the same energy, and the two effects share a single
+origin in Eq.~\ref{eq:casimirRatio}. The separation is statistical rather than
+absolute --- the distributions overlap heavily --- but it is large enough that
+\(\lambda^\kappa_\beta\) and its groomed variants form the basis of quark--gluon
+discrimination, and it is why the quark and gluon fractions of a jet sample must be
+controlled before any modification of the angular structure can be attributed to a
+medium.

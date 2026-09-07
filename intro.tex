@@ -229,12 +229,12 @@ Where, the interactions occur between partons \(i\) from nucleus 1 and \(j\) fro
 
 Different hard processes will have different leading powers \(k\). \(W\) production will have \(k=0\) whereas perturbative dijet production with two outgoing quarks will have \(k=2\). 
 
-The parton densities \(f_i(x,\mu^2)\) in Eq.~\ref{eq:factorization} are not calculable in perturbation theory, but they are \emph{universal}: once measured in one process they may be used to predict any other. Requiring the physical cross section of Eq.~\ref{eq:factorization} to be independent of the arbitrary scale \(\mu\), exactly as for the coupling in Sec.~\ref{subsec:runningCoupling},
-\begin{equation}
-	\mu^2\frac{d}{d\mu^2}\,\sigma(P_1,P_2) = 0,
-	\label{eq:pdfRGE}
-\end{equation}
-ties the \(\mu\)-dependence of the densities to that of \(\hat{\sigma}_{ij}\).
+%The parton densities \(f_i(x,\mu^2)\) in Eq.~\ref{eq:factorization} are not calculable in perturbation theory, but they are \emph{universal}: once measured in one process they may be used to predict any other. Requiring the physical cross section of Eq.~\ref{eq:factorization} to be independent of the arbitrary scale \(\mu\), exactly as for the coupling in Sec.~\ref{subsec:runningCoupling},
+%\begin{equation}
+%	\mu^2\frac{d}{d\mu^2}\,\sigma(P_1,P_2) = 0,
+%	\label{eq:pdfRGE}
+%\end{equation}
+%ties the \(\mu\)-dependence of the densities to that of \(\hat{\sigma}_{ij}\).
 
 \section{From partons to jets}
 Outgoing partons evolve from higher to lower momentum transfer scales (say, \(t\)). Initially their evolution are modeled using the pQCD mechanism called \emph{parton shower}. Eventually, say at an infra-red scale cut-off \(t_0\), pQCD calculations stop being valid and npQCD processes like hadronization dominate. QCD Monte-Carlo programs combining parton shower at \(t < t_0\) and hadronization process at \(t > t_0\)  are called \emph{QCD event generators}
@@ -374,87 +374,233 @@ To deal with singularities corresponding to soft gluons at \(z\to 1\), we introd
 	\implies& t_0/t < z < 1 - t_0/t
 \end{align} 
 
+\begin{align}
+	\Delta_i(t) \equiv \exp(-\sum_j\int_{2t_0}^{t}
+	\frac{dt^\prime}{t^\prime}
+	\int_{t_0/t^\prime}^{1-t_0/t^\prime} dz
+	\frac{\alpha_s}{2\pi} \hat{P}_{ji}(z))
+	\label{eq:coherentSudakov}
+\end{align}
 
+\subsection{Angular Ordering}
+Sec.~\ref{subsec:dglap} took collinear enhancements into account to all orders in
+\(\alpha_s\). However it does not take the enhancement in soft gluon emission at wide emission angle. 
+This is demonstrated in Eq. \ref{eq:softPropagator} by considering an on-mass-shell external line of
+momentum \(p\), mass \(m\) emitting a gluon with momentum \(q\)  at an angle \(\theta\)
+\begin{equation}
+	\frac{1}{(p\pm q)^2 - m^2} = \frac{\pm1}{2p\cdot q}
+	= \frac{\pm1}{2\omega E(1-v\cos\theta)},
+	\label{eq:softPropagator}
+\end{equation}
+where \(\omega\) is the gluon energy, \(E\) and \(v\) the energy and velocity of the
+emitter and \(\theta\) the emission angle. For light partons \(v\to1\) and the
+collinear enhancement appears as \(\theta\to0\); the enhancement as \(\omega\to0\)
+holds for any velocity and angle. Internal lines  are off-mass-shell and carry no such enhancement, since
+\((p+q)^2-m^2\to p^2-m^2\neq0\). The cross section carries a sum over all pairs of external lines \(\{i,j\}\),
+\begin{align}
+	\label{eq:antennaSplitXSec}
+	d\sigma_{n+1}& = d\sigma_n\,\frac{d\omega}{\omega}\frac{d\Omega}{2\pi}
+	\frac{\alpha_s}{2\pi}\sum_{i,j}C_{ij}W_{ij}
+\end{align}
+The weighted sum \(\sum_{i,j}C_{ij}W_{ij}\)  is called the \emph{antenna pattern} of the process. The \emph{color factor} \(C_{ij}\) and \emph{radiation function} \(W_{ij}\)  are defined as,
+\begin{align}
+	C_{ij} &= -\mathbf{Q}_i\cdot\mathbf{Q}_j  \notag \\
+	W_{ij} &= \frac{\omega^2 p_i\cdot p_j}{p_i\cdot q\;p_j\cdot q}
+	= \frac{1-v_iv_j\cos\theta_{ij}}
+	{(1-v_i\cos\theta_{iq})(1-v_j\cos\theta_{jq})}
+\end{align}
+  The vectors \(\mathbf{Q}_{i}\) represents color charge of parton \(i\). 
+  %\(\mathbf{Q}_i^2 = C_F\) for a quark, \(C_A\) for a gluon and \(0\) for a color singlet. 
+  \begin{equation}
+  	\mathbf{Q}_i^2 = 
+  	\begin{cases}
+  		C_F = 4/3 & i \in \text{quarks} \\[-15pt]
+  		C_A = 3 & i \in \text{gluons}\\[-15pt]
+  		0 & i \in \text{color singlet}
+  	\end{cases}
+  \end{equation}
+  
+  \(W_{ij}\) comes from interference between lines \(i\) and \(j\). \(W_{ij}\) can be separated into two parts  \(W^{[i/j]}_{ij}\) each with an \emph{incoherent} and a \emph{coherent} contribution from line \(i/j\)  . Assuming massless emitters (\(v_i=v_j=1\)) for simplicity,
+\begin{align}
+	W_{ij} &= W^{[i]}_{ij} + W^{[j]}_{ij}\notag\\
+	W^{[i]}_{ij} &= \frac{1}{2}\left(\overbrace{\frac{1}{1-\cos\theta_{iq}}}^\mathrm{incoherent} + \overbrace{\frac{\cos\theta_{iq}-\cos\theta_{ij}}{(1-\cos\theta_{jq}) (1-\cos\theta_{iq})}}^\mathrm{coherent}\right)\notag\\
+	&=  \frac{1}{2(1-\cos\theta_{iq})}\left(1 + \frac{\cos\theta_{iq}-\cos\theta_{ij}}{1-\cos\theta_{ij}\cos\theta_{iq} - \sin\theta_{ij}\sin\theta_{iq}\cos\phi_{iq}}\right)
+	\label{eq:antennaSplit}
+\end{align}
+Using the direction of line \(i\) as the z-axis, \(d\Omega \)  from Eq. \ref{eq:antennaSplitXSec} becomes \(d\cos\theta_{iq}\,d\phi_{iq}\), We can carry out the \(\phi_{iq}\) integration,
+\begin{align}
+	\int_0^{2\pi}\frac{d\phi_{iq}}{2\pi}W^{[i]}_{ij} &= \frac{1}{1-\cos\theta_{iq}}\left(\frac{1 + \frac{\cos\theta_{iq}-\cos\theta_{ij}}{|\cos\theta_{iq}-\cos\theta_{ij}|}}{2}\right) \notag\\
+	&= \begin{cases}
+		\dfrac{1}{1-\cos\theta_{iq}} & \cos\theta_{iq} > \cos\theta_{ij} \implies \theta_{iq} < \theta_{ij}\\[-10pt]
+		0 & \text{otherwise,}
+	\end{cases}
+	\label{eq:angularOrdering}
+\end{align}
 
-\subsection{Coherent branching}
-So far, we have taken into account colinear enhancements to all pQCD orders. 
+Eq.~\ref{eq:angularOrdering}  shows that azimuth-averaged soft gluon emission from a line \(i\) is confined to a cone, centered on \(i\)'s direction, extending up to the direction of line \(j\), \(i\)'s sibling from the preceding split. The total soft gluon emission cross-section can be then easily obtained for two external lines forming a color singlet (\(e^+e^-\to q\bar{q}\)) have \(\mathbf{Q}_i+\mathbf{Q}_j=0\) and hence \(C_{q\bar{q}}=\mathbf{Q}_q^2=\mathbf{Q}_{\bar{q}}^2 = C_F\), and angular ordering suppresses radiation outside the cones extending from \(q\) to \(\bar{q}\) and vice versa.
 
+\begin{align}
+	d\sigma_{q\bar{q}g}& = d\sigma_{q\bar{q}}\frac{\Theta(\cos(\theta_{qg})-\cos(\theta_{q\bar{q}}))}{1-\cos\theta_{qg}}d(\cos\theta_{qg})\frac{\alpha_s}{2\pi}\frac{d\omega}{\omega}C_F
+	\label{eq:qqbarSinglet}
+\end{align}
+We will come back to Eq.~\ref{eq:qqbarSinglet} 
 
-%\begin{equation}
-%	P_{qq}(z)\xrightarrow{z\to1}\frac{2C_F}{(1-z)_+},\qquad
-%	P_{gg}(z)\xrightarrow{z\to1}\frac{2C_A}{(1-z)_+},
-%	\label{eq:splitSoft}
-%\end{equation}
-%
-%In that soft limit the diagonal kernels reduce to Eq.~\ref{eq:splitSoft}, so
-%the rate of soft-gluon emission is fixed by the color charge of the radiating
-%parton, \(C_A\) for a gluon against \(C_F\) for a quark. The mean number of
-%emissions in the cascade grows in proportion, approaching
-%\begin{equation}
-%	\frac{\langle n \rangle_g}{\langle n \rangle_q} \longrightarrow
-%	\frac{C_A}{C_F} = \frac{9}{4}
-%	\label{eq:multRatio}
-%\end{equation}
-%in the asymptotic limit, so a gluon-initiated jet fragments into more
-%constituents than a quark-initiated jet of the same energy
-%
-%A parton in the final state evolves by the same kernels, now read as timelike
-%branchings toward lower scales. The \emph{fragmentation functions}
-%\(D_{h/i}(z,\mu^2)\), giving the probability that a parton \(i\) hadronizes
-%into a hadron \(h\) with momentum fraction \(z\), obey
-%\begin{equation}
-%	\frac{\partial D_{h/i}(z,\mu^2)}{\partial \ln\mu^2} =
-%	\sum_{j}\int_z^1 \frac{dz'}{z'}\;\frac{\alpha_s(\mu^2)}{2\pi}\,
-%	P_{ji}(z')\,D_{h/j}\!\left(\frac{z}{z'},\mu^2\right).
-%	\label{eq:fragDGLAP}
-%\end{equation}
-%
-%
-%\subsection{Parton showers and the Sudakov form factor}
-%\label{subsec:partonShower}
-%
-%Equation~\ref{eq:collinearEmission} admits a probabilistic reading that
-%underlies the Monte Carlo simulation of QCD radiation. The differential
-%probability of a resolvable branching per unit evolution,
-%\begin{equation}
-%	d\mathcal{P}_i = \frac{d\mu^2}{\mu^2}\int dz\;
-%	\frac{\alpha_s(\mu^2)}{2\pi}\, P_i(z),
-%	\label{eq:emitProb}
-%\end{equation}
-%exponentiates into the survival probability that a parton \(i\) evolves from a
-%hard scale \(\mu_1^2\) down to a softer scale \(\mu_2^2\) \emph{without} a
-%resolvable emission, the \emph{Sudakov form factor},
-%\begin{equation}
-%	\Delta_i(\mu_1^2, \mu_2^2) = \exp\left[
-%	-\int_{\mu_2^2}^{\mu_1^2}\frac{d\mu'^2}{\mu'^2}
-%	\int dz\; \frac{\alpha_s(\mu'^2)}{2\pi}\, P_{i}(z)\right],
-%	\label{eq:sudakov}
-%\end{equation}
-%where the \(z\) integral runs over the resolvable region fixed by an infrared
-%cutoff. Iterating---drawing the next scale from \(\Delta_i\) and the momentum
-%fraction from \(P_i(z)\)---generates a \emph{parton shower}: an ordered cascade
-%of \(1\to 2\) branchings evolving a single hard parton toward the hadronization
-%scale, resumming the leading collinear logarithms
-%\(\alpha_s^n \ln^n(\mu_1^2/\mu_2^2)\) to all orders. By Eq.~\ref{eq:splitSoft}
-%the gluon Sudakov falls faster, so \(g\)-initiated showers branch more
-%profusely than \(q\)-initiated ones, a difference that propagates into the
-%internal structure of the resulting jets.
+\subsection{Interference}
+Lets take the case of three partons \(\{i,j,k\}\) forming a color singlet (\(\mathbf{Q}_i + \mathbf{Q}_j +\mathbf{Q}_k = 0\)) e.g., \(e^+e^-\to q\bar{q} g\). First, partons \(l\) and \(k\) come from a color singlet state (\(\mathbf{Q}_l +\mathbf{Q}_k = 0\)). Then \(l\) splits into \(i\) and \(j\) (\(\mathbf{Q}_l = \mathbf{Q}_i + \mathbf{Q}_j = -\mathbf{Q}_k\)). The antennae function for this state is:
+\begin{align}
+		\label{eq:threePartonW}
+  \sum_{a,b}C_{ab}W_{ab} &= -\mathbf{Q}_i\!\cdot\!\mathbf{Q}_jW_{ij} -\mathbf{Q}_j\!\cdot\!\mathbf{Q}_kW_{jk} -\mathbf{Q}_i\!\cdot\!\mathbf{Q}_kW_{ik} \notag\\
+	&= \frac{1}{2}\left[\mathbf{Q}_i^2(W_{ij} + W_{ik} - W_{jk}) + \mathbf{Q}_j^2(W_{ij} + W_{jk} - W_{ik}) + \mathbf{Q}_k^2(W_{ik} + W_{jk} - W_{ij})\right]\notag\\
+	&=\mathbf{Q}_i^2\left(W_{ij}^{[i]} + \tilde{W}_{jk}^{[i]} - \tilde{W}_{ik}^{[j]}\right) + \mathbf{Q}_j^2\left(W_{ij}^{[j]} + \tilde{W}_{ik}^{[j]} - \tilde{W}_{jk}^{[i]}\right) \notag\\
+	& + \mathbf{Q}_k^2\left(\tilde{W}_{jk}^{[i]} + \tilde{W}_{ik}^{[j]} + \frac{W_{ik}^{[k]} + W_{jk}^{[k]} }{2}\right)
+\end{align}
+Where,
+\begin{equation}
+	\tilde{W}_{jk}^{[i]} = \frac{W^{[i]}_{ik} - W^{[i]}_{ij}}{2},\quad \tilde{W}_{ik}^{[j]} = \frac{W^{[j]}_{jk} - W^{[j]}_{ij}}{2}
+\end{equation}
+are shifted radiation functions for likes \(i\) and \(j\), with the collinear singularity canceled out. This allows us to make certain useful approximations. Taking \(\theta_{ij}\to0\), we can approximate the directions of \(i\) and \(j\) by \(l\). 
+\begin{align}
+	W_{ik}^{[k]} \simeq W_{jk}^{[k]} \simeq W_{lk}^{[k]},\text{and}~\tilde{W}_{jk}^{[i]} \simeq \tilde{W}_{ik}^{[j]} \simeq W_{lk}^{[ij]}/2 
+\end{align}
+Where, 
+\begin{equation}
+	\tilde{W}^{[ij]}_{lk} = \begin{cases}
+		W^{[l]}_{lk} & \theta_{lq}>\theta_{ij}\\[-10pt]
+		0            & \theta_{lq}<\theta_{ij},
+	\end{cases}
+\end{equation}
+\begin{equation}
+	W \simeq \mathbf{Q}_i^2W^{[i]}_{ij} + \mathbf{Q}_j^2W^{[j]}_{ij}
+	+ \mathbf{Q}_k^2W^{[k]}_{lk} + \mathbf{Q}_l^2\tilde{W}^{[ij]}_{lk},
+	\label{eq:coherentPattern}
+\end{equation}
 
-\begin{figure}[h]
-	\includegraphics[width=\linewidth]{figures/fig_angular_ordering_cartoon.pdf}
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[line width=0.55pt, scale=0.76,
+		gl/.style={decorate, decoration={coil, aspect=0, segment length=1.7mm,
+				amplitude=0.7mm}, ->}]
+		
+		\begin{scope}[xshift=0cm]
+			\coordinate (o) at (0,0);
+			\coordinate (l) at (35:1.05);
+			\coordinate (i) at (46:2.2);
+			\coordinate (j) at (21:2.2);
+			\coordinate (k) at (-40:2.25);
+			\draw[black] (l) -- (i) node[black, above=-2pt] {\(i\)};
+			\draw[black] (l) -- (j) node[black, right=0pt] {\(j\)};
+			\draw (o) -- node[above left=-5pt, pos=0.55] {\(l\)} (l);
+			\draw (o) -- (k) node[below right=-4pt] {\(k\)};
+			\coordinate (e) at ($(l)!0.55!(i)$);
+			\fill (e) circle (1.1pt);
+			\draw[gl] (e) -- ($(e)+(-35:1.75)$) node[below right=-4pt] {\(q\)};
+			%\node at (1.1,-2.1) {\(\mathcal{M}_i\)};
+		\end{scope}
+		
+		\node at (3.8,0.3) {\(+\)};
+		
+		\begin{scope}[xshift=4.6cm]
+			\coordinate (o) at (0,0);
+			\coordinate (l) at (35:1.05);
+			\coordinate (i) at (46:2.2);
+			\coordinate (j) at (21:2.2);
+			\coordinate (k) at (-40:2.25);
+			\draw[black] (l) -- (i) node[black, above=-2pt] {\(i\)};
+			\draw[black] (l) -- (j) node[black, right=0pt] {\(j\)};
+			\draw (o) -- node[above left=-5pt, pos=0.55] {\(l\)} (l);
+			\draw (o) -- (k) node[below right=-4pt] {\(k\)};
+			\coordinate (e) at ($(l)!0.55!(j)$);
+			\fill (e) circle (1.1pt);
+			\draw[gl] (e) -- ($(e)+(-35:1.75)$) node[below right=-4pt] {\(q\)};
+			%\node at (1.1,-2.1) {\(\mathcal{M}_j\)};
+		\end{scope}
+		
+		\node at (8.4,0.3) {\(\simeq\)};
+		
+		\begin{scope}[xshift=9.2cm]
+			\coordinate (o) at (0,0);
+			\coordinate (l) at (35:1.05);
+			\coordinate (i) at (46:2.2);
+			\coordinate (j) at (21:2.2);
+			\coordinate (k) at (-40:2.25);
+			\draw[black!30] (l) -- (i) node[black, above=-2pt] {\(i\)};
+			\draw[black!30] (l) -- (j) node[black, right=0pt] {\(j\)};
+			\draw (o) -- node[above left=-5pt, pos=0.55] {\(l\)} (l);
+			\draw (o) -- (k) node[below right=-4pt] {\(k\)};
+			\coordinate (e) at ($(o)!0.55!(l)$);
+			\fill (e) circle (1.1pt);
+			\draw[gl] (e) -- ($(e)+(-35:1.75)$) node[below right=-4pt] {\(q\)};
+			%\node at (1.1,-2.1) {\(\mathcal{M}_l\)};
+		\end{scope}
+	\end{tikzpicture}
+	\caption{Wide-angle emission of soft gluon \(q\), off \(i\) and \(j\), acts as if
+	the emission came off the parent parton \(l\), imagined to be on shell.}
+	\label{fig:threeParton}
 \end{figure}
 
-The ordering variable is not arbitrary. Quantum interference between
-soft-gluon emissions---color coherence---suppresses large-angle radiation and
-orders successive branchings in \emph{decreasing emission angle},
-\begin{equation}
-	\theta_1 > \theta_2 > \cdots > \theta_n .
-	\label{eq:angularOrdering}
-\end{equation}
-This angular ordering imprints the color flow of the hard process onto the
-angular distribution of radiation within the developing jet, and is the
-microscopic origin of much of the substructure exploited in later chapters.
 
+Each parton radiates in proportion to its color charge squared. When \(i\) and \(j\) close in angle their incoherent
+contributions are limited to cones of half-angle \(\theta_{ij}\), while at larger
+angles, out to the direction of \(k\), they radiate coherently in proportion to
+their combined charge \(\mathbf{Q}_l^2\), as if from an internal line of momentum
+\(p_l = p_i+p_j\) as shown in Fig.~\ref{fig:threeParton}.
+
+\subsection{Coherent Parton Branching}
+\label{sec:coherentPartonBranching}
+Extended to higher orders this gives a \emph{coherent parton branching} formalism.
+In place of the virtual mass-squared \(t\) the evolution variable is the opening
+angle, or more precisely
+\begin{equation}
+	\zeta = \frac{p_b\cdot p_c}{E_bE_c} \simeq 1-\cos\theta
+	\label{eq:zeta}
+\end{equation}
+for \(a\to bc\), with angular ordering \(\zeta^\prime<\zeta\) imposed on successive
+branchings and the propagator factor \(dt/t\) of Sec.~\ref{subsec:dglap} replaced by
+\(d\zeta/\zeta\). Using the splitting function \(\hat{P}_{ba}(z)dz\) rather than the
+soft approximation \(\mathbf{Q}_a^2d\omega/\omega\) treats both soft and collinear
+enhancements correctly, so that
+\begin{equation}
+	d\sigma_{n+1} = d\sigma_n\,\frac{d\zeta}{\zeta}\,dz\,
+	\frac{\alpha_s}{2\pi}\hat{P}_{ba}(z).
+	\label{eq:coherentBranching}
+\end{equation}
+The virtual mass-squared cut-off is replaced by an angular one,
+\(\zeta_0 = t_0/E^2\) for a parton of energy \(E\), and the convenient evolution
+variable is
+\begin{equation}
+	\tilde{t} = E^2\zeta \geq t_0 ,
+	\label{eq:tildeT}
+\end{equation}
+in terms of which the ordering condition \(\zeta_b,\zeta_c<\zeta_a\) and the
+resulting cut-off on \(z\) read
+\begin{equation}
+	\tilde{t}_b < z^2\tilde{t},
+	\qquad
+	\tilde{t}_c < (1-z)^2\tilde{t},
+	\qquad
+	\sqrt{t_0/\tilde{t}} < z < 1-\sqrt{t_0/\tilde{t}} ,
+	\label{eq:orderingCutoff}
+\end{equation}
+with \(\tilde{t}=\tilde{t}_a\) and \(z=E_b/E_a\). Neglecting the masses of \(b\) and
+\(c\),
+\begin{equation}
+	t = z(1-z)\tilde{t},
+	\qquad
+	p_t^2 = z^2(1-z)^2\tilde{t},
+	\label{eq:tAndPt}
+\end{equation}
+and the Sudakov form factor of Sec.~\ref{subsec:dglap} becomes
+\begin{align}
+	\tilde{\Delta}_i(\tilde{t}) \equiv \exp(-\sum_j\int_{4t_0}^{\tilde{t}}
+	\frac{d\tilde{t}^\prime}{\tilde{t}^\prime}
+	\int_{\sqrt{t_0/\tilde{t}^\prime}}^{1-\sqrt{t_0/\tilde{t}^\prime}} dz
+	\frac{\alpha_s(z^2(1-z)^2\tilde{t}^\prime)}{2\pi} \hat{P}_{ji}(z))
+	\label{eq:coherentSudakov}
+\end{align}
+
+At large \(\tilde{t}\) this falls more slowly than its collinear counterpart, though
+still faster than any negative power of \(\tilde{t}\). The slower fall implies less
+branching, which is the suppression of soft gluon emission by angular ordering.
 \subsection{Hadronization}
 \label{subsec:hadronization}
 
