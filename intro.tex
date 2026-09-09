@@ -160,8 +160,7 @@ At an energy scale \(Q\), consider a dimensionless observable \(X\). Lets assume
 
 Where, \(t = \ln{\frac{Q^2}{\mu^2}}\), \(\beta(\alpha_s) = \mu^2\frac{\partial\alpha_s}{\partial\mu^2}\), \(\alpha_s\equiv\alpha_s(\mu^2(t))\)
 \begin{align}
-	\beta(\alpha_s) &= -\frac{\partial\alpha_s}{\partial t}\notag\\
-		\implies  t &=  \int^{\alpha_s(Q^2)}_{\alpha_s}\frac{d\alpha_s}{\beta(\alpha_s)}\notag\\
+	\beta(\alpha_s) &= -\frac{\partial\alpha_s}{\partial t} \implies  t =  \int^{\alpha_s(Q^2)}_{\alpha_s}\frac{d\alpha_s}{\beta(\alpha_s)}\notag\\
 			\implies & \frac{\partial\alpha_s(Q^2)}{\partial t} = Q^2\frac{\partial \alpha_s}{\partial Q^2}  =  \beta(\alpha_s(Q^2)), \quad\frac{\partial\alpha_s(Q^2)}{\partial\alpha_s} = \frac{\beta(\alpha_s(Q^2))}{\beta(\alpha_s)}
 					\label{eq:runningCouplingIntro}
 \end{align}
@@ -193,7 +192,7 @@ Integrating Eq. \ref{eq:RGEquation}
 	\label{eq:runningCouplingRel}
 \end{align}
 
-Usually, the reference scale \(Q_0^2\) is usually set to a convenient energy scale in the perturbative regime. \(\alpha_s\) at all other scales can be inferred accordingly. Usually, \(Q_0\) is set to mass of the \(Z\)-boson, \(m_Z\) as shown in Fig. \ref{fig:runningCoupling}. Another approach is to choose a scale parameter, \(\Lambda\) such that \(\alpha_s(\Lambda) \rightarrow \infty\).  
+Usually, the reference scale \(Q_0^2\) is set to a convenient energy scale in the perturbative regime. \(\alpha_s\) at all other scales can be inferred accordingly. Usually, \(Q_0\) is set to mass of the \(Z\)-boson, \(m_Z\) as shown in Fig. \ref{fig:runningCoupling}. Another approach is to choose a scale parameter, \(\Lambda\) such that \(\alpha_s(\Lambda) \rightarrow \infty\).  
 
 \begin{align}
 	\ln(\frac{Q^2}{\Lambda^2}) &= - \int_{\alpha_s(Q^2)}^{\infty} \frac{d\alpha_s}{\beta(\alpha_s)}  \notag\\
@@ -203,8 +202,12 @@ Usually, the reference scale \(Q_0^2\) is usually set to a convenient energy sca
 
 \(\Lambda\) is called the \emph{confinement scale}, around \(200~\mathrm{MeV}\). Eqs. \ref{eq:runningCouplingRel} and \ref{eq:runningCouplingLambda} show a monotonically decreasing relationship between \(\alpha_s\) and \(Q^2\). At high momentum transfers (\(Q \gg \Lambda\)), the coupling strength vanishes ($\alpha_s \to 0$). In this regime, quarks and gluons behave as quasi-free particles, making perturbative QCD (pQCD) calculations highly reliable (\emph{Asymptotic Freedom}).  At low energy scales (\(Q \ll \Lambda\)), the coupling diverges. In this non-perturbative QCD (npQCD) limit, isolated color charges cannot exist and partons are permanently bound into color-neutral hadrons (\emph{Color Confinement}).
 
+\subsection{Quark Gluon Plasma (QGP)}
+Asymptotic freedom of QCD means that matter at extremely high temperatures and densities (high \(Q^2\)) undergo a \emph{deconfinement} phase transition, with partonic degrees of freedom replacing hadronic degrees of freedom. This state of deconfined quarks and gluons is called QCD/quark-gluon plasma due to analogous phenomena observed in atomic physics. Thermodynamically, when temperature (\(T\)) or baryon number density (\(n_\mathrm{B}\)) approaches the confinement scale \(\Lambda\) introduced in Sec.~\ref{subsec:runningCoupling} (\(T \sim \Lambda \sim \mathcal{O}(10^{12})K,~\text{and}~n_\mathrm{B} \sim \Lambda^3 \sim 1~\text{fm}^{-3}\)) the boundaries between hadrons become ill defined resulting in hadrons ``melt'' into QGP.  For reference, the core of our sun ``only'' has \(T\sim \mathcal{O}(10^{7})K\) and \(n_\mathrm{B}\sim\mathcal{O}(10^{-14})\text{fm}^{-3}\). 
+
+These orders of \(T\) and \(n_\mathrm{B}\) are the theorized conditions prevalent in the universe a few \(\mu\mathrm{s}\) after Big-Bang. The only natural phenomena in the present-day, cold universe that can achieve these conditions are the cores of neutron stars. Artificially, the required  \(T\) and \(n_\mathrm{B}\) can be achieved at facilities like the Large Hadron Collider (LHC) and Relativistic Heavy Ion Collider (RHIC) through collisions of heavy-ions (like Au, Pb, etc.) at near-light speeds, the aptly named \emph{little bangs}. More on this will be discussed in Sec. \ref{sec:heavyIonCollisions}. 
+
 \section{Hard Processes}
-\subsection{Factorization}
 To consider any nucleus as a singular coherent object, the fluctuations inside it would involve momentum transfers below the confinement scale (\(\Lambda\)) introduced in \ref{subsec:runningCoupling}, and would occur over timescales \(\sim 1/\Lambda\). We define \emph{hard-scattering processes} or just \emph{hard processes} as interactions of a hard perturbative probe with high momentum transfer \(Q >> \Lambda\). Since this interaction occurs over a time-scale \(\sim 1/Q \ll 1/\Lambda\), the perturbative probe effectively interacts with a near-static ``snapshot'' of the nucleus with a characteristic resolution \(\sim 1/Q\). 
 
 \begin{figure}[htbp]
@@ -295,18 +298,15 @@ Where \(\mathcal{F}\) is the initial-state flux factor and \(\mathbf{\Phi}_n\) i
 	d\mathbf{\Phi}_{n} = \ldots \frac{d^3\mathbf{p}_a}{2(2\pi)^3E_a}
 \end{equation}
 
-will be replaced by the \(n+1\)-parton phase space:
-
+will be replaced by the \(n+1\)-parton phase space and the \(n+1\)-parton matrix element can be calculated from the \(n\)-parton matrix element. 
 \begin{align}
-	d\mathbf{\Phi}_{n+1} &= \ldots \frac{d^3\mathbf{p}_b}{2(2\pi)^3E_b} \frac{d^3\mathbf{p}_c}{2(2\pi)^3E_c} \notag\\
-	&= d\mathbf{\Phi}_{n} \frac{1}{4(2\pi)^3}dtdzd\phi
+	d\mathbf{\Phi}_{n+1} &= \ldots \frac{d^3\mathbf{p}_b}{2(2\pi)^3E_b} \frac{d^3\mathbf{p}_c}{2(2\pi)^3E_c} 
+	= d\mathbf{\Phi}_{n} \frac{1}{4(2\pi)^3}dtdzd\phi \notag\\
+	|\mathcal{M}_{n+1}\big|^2 &\sim \frac{8\pi\alpha_s}{t}CF|\mathcal{M}_n|^2
 \end{align}
 
-and the \(n+1\)-parton matrix element can be calculated from the \(n\)-parton matrix element as,
 
-\begin{equation}
-	|\mathcal{M}_{n+1}\big|^2 \sim \frac{8\pi\alpha_s}{t}CF|\mathcal{M}_n|^2
-\end{equation}
+
 
 Substituting in Eq. \ref{eq:nPartonXsec} and integrating away the \(d\phi\), we get,
 
@@ -601,42 +601,10 @@ and the Sudakov form factor of Sec.~\ref{subsec:dglap} becomes
 At large \(\tilde{t}\) this falls more slowly than its collinear counterpart, though
 still faster than any negative power of \(\tilde{t}\). The slower fall implies less
 branching, which is the suppression of soft gluon emission by angular ordering.
-\subsection{Hadronization}
-\label{subsec:hadronization}
 
-The perturbative cascade terminates once emission scales approach \(\Lambda\),
-where \(\alpha_s\) grows large (Sec.~\ref{subsec:runningCoupling}) and the
-parton picture breaks down. The final conversion of colored partons into
-color-neutral hadrons, \emph{hadronization}, is intrinsically non-perturbative
-and is treated through phenomenological models tuned to data. In the Lund
-string model \cite{lund} the color field between separating partons collapses
-into a flux tube of constant tension, a linear confining potential
-\begin{equation}
-	V(r) = \kappa\, r,\qquad \kappa \approx 1~\mathrm{GeV/fm},
-	\label{eq:stringPotential}
-\end{equation}
-whose breakup into hadrons is governed by the symmetric fragmentation
-probability
-\begin{equation}
-	f(z) \propto \frac{1}{z}\,(1-z)^{a}\,
-	\exp\!\left(-\frac{b\,m_T^2}{z}\right),
-	\qquad m_T^2 = m^2 + p_T^2,
-	\label{eq:lundFF}
-\end{equation}
-with tunable parameters \(a,b\). The net result is a collimated spray of
-hadrons whose total energy and direction approximate those of the initiating
-parton, and whose internal structure retains the imprint of the perturbative
-evolution above. The reconstruction of these sprays as \emph{jets}, and the
-observables built from their substructure, are the subject of the chapters
-that follow.
 
-\section{QCD phase diagram}
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[scale=1]{figures/ownpd_mub_v2.jpg}
-\end{figure}
-
-\section{Event Generators}
+%\input{jetportrait}
+%\section{Event Generators}
 
 
 

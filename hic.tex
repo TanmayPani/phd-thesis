@@ -213,10 +213,44 @@ Also considering \emph{azimuthal angle} (\(\varphi\)) and \emph{transverse-momen
 %		\label{tab:jetdiagrams}
 %	\end{sidewaystable}
 
-\section{Jet clustering}
+\section{Jets}
+The discussions on parton shower and fragmentation show partons cleanly branching into partons and eventually giving rise to hadrons that can be traced back to the shower partons. So in principle, a \emph{jet finding algorithm} should be able to faithfully get the kinematics of the initiating parton. However, the picture is not so straightforward even at the parton level, before we have the complications from hadronization and detector level reconstruction. This ambiguity can already be seen in a clean reaction like \(e^+e^-\to q\bar{q}\). If one of the quark emits a gluon, then depending on the emission angle of the gluon, we might cluster 2 or 3 jets in the final state. So one can foresee the inherent ambiguity of jet definition for more complicated hadron-hadron collisions, led to the Snowmass Accord, which stated that, experimental and theoretical measurements had to use the same jet finding algorithm  on final state hadrons in order to be comparable. 
 
+Even after we define a jet, another ambiguity comes from the decision of what constituents in the event must be used as inputs into the jet finding algorithm. Especially, in Au+Au collisions jet-medium interactions make that choice non-trivial. Keeping these considerations in mind, a ``good'' jet finding algorithm is:
+\begin{itemize}
+	\item \emph{Collinear safe}, meaning  it would find the same jet with the same \(p_\mathrm{T, jet}\) regardless of  fragmentation details
+	\item \emph{Infrared safe}, meaning  it would find the same jets, even in the presence of a
+	large number of soft partons
+\end{itemize}
+
+The most commonly used family of infrared and collinear safe jet algorithms, sequentially recombines constituents in an event according to the following prescription:
+
+\begin{enumerate} 
+	\item Calculate
+	\begin{equation}
+		d_{ij} = {\mathrm {min}}(p_{T,i}^{2p},p_{T,j}^{2p})\frac{(\eta_i-\eta_j)^2+(\phi_i-\phi_j)^2}{R^2}
+	\end{equation}
+	and 
+	\begin{equation}
+		d_{i} = p_{T,i}^2p
+	\end{equation}
+	for every pair of particles where $p_{T,i}$ and $p_{T,j}$ are the momenta of the particles, $\eta_i$ and $\eta_j$ are the pseudorapidities of the particles, and $\phi_i$ and $\phi_j$ are the azimuthal angles of the particles. \(R\) is the resolution parameter of the algorithm, which decides the angular extent of clustered jets.
+	\item Find the minimum of the $d_{ij}$ and $d_{i}$.  If this minimum is a $d_{ij}$, combine these particles into one jet candidate, adding their energies and momenta, and return to the first step.  
+	\item If the minimum is a $d_{i}$, this is a final state jet candidate.  Remove it from the list and return to the first step.  Iterate until no particles remain.  
+\end{enumerate}
+
+Above algorithm becomes the \(k_\mathrm{T}\) algorithm for \(p=1\), Cambridge-Aachen for \(p=0\) and the most widely used anti- \(k_\mathrm{T}\) algorithm for \(p=-1\). 
+
+\subsection{SoftDrop}
+
+\subsection{Background Subtraction}
 
 \section{Heavy-Ion Collisions}
+\label{sec:heavyIonCollisions}
+
+
+\subsection{Centrality determination} \label{sect:CentEP}
+In heavy-ion collisions, the impact parameter (\(b\)) of collisions is defined by the distance between the geometrical centers of the colliding nuclei in the plane transverse to their direction. A schematic diagram of the geometry of heavy-ion collisions is shown in Fig. \ref{fig:hictikz}. 
 \begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}
@@ -228,44 +262,57 @@ Also considering \emph{azimuthal angle} (\(\varphi\)) and \emph{transverse-momen
 		\def\D{3.7} % horizontal distance between nuclei
 		\pgfmathsetmacro\H{1.30*\R} % vertical distance between nuclei
 		\pgfmathsetmacro\v{0.25*\D} % length vector
-
+		
 		%\message{^^J PbPb collision with impact parameter}
-
+		
 		% NUCLEUS
 		\pic[xscale=\xs] (L) at (-\D/2, \H/2) {nucleus};
 		\pic[xscale=\xs] (R) at ( \D/2,-\H/2) {nucleus};
-
+		
 		% VELOCITY VECTORS
 		\draw[vector] (L-0)++(2pt,0) --++ (\v,0); %node[above=2pt] {$v\approx c$};
 		\draw[vector] (R-180)++(-2pt,0) --++ (-\v,0); %node[above=2pt] {$v\approx c$};
-
+		
 		% PHOTONS
 		\foreach \ang in {60,90,120,-60,-90,-120}{
-				\draw[photon] (L-\ang) --++ (\ang:\Rp);
-				\draw[photon] (R-\ang) --++ (\ang:\Rp);
-			}
-
+			\draw[photon] (L-\ang) --++ (\ang:\Rp);
+			\draw[photon] (R-\ang) --++ (\ang:\Rp);
+		}
+		
 		% MEASURES
 		\draw[<->,thick]
 		(R-0)++(0.3*\R,0) --++ (0,\R) node[midway,right] {$R\sim A^{1/3}\mathrm{fm}$};
 		\draw[<->,thick]
 		(0,-\H/2) -- (0,\H/2) node[midway,right] {$b$};
 		%\node at (0.3*\D,0.7*\H) {$b > 2R$};
-
+		
 	\end{tikzpicture}
 	\caption{Typical heavy-ion collision}
 	\label{fig:hictikz}
 \end{figure}
+As the impact parameter is not measurable in experiments, the charged particle multiplicity of events can be used to define collision centrality as they reflect the initial geometry of the colliding nuclei. To obtain the geometrical quantities like the impact parameter, the number of participant nucleons (\(N_\mathrm{part}\)) and the number of binary collisions (\(N_\mathrm{coll}\)), one has to rely on model calculations which involves mapping the charged particle multiplicity from experiment to that of a simulated one. The widely used model for determining these quantities is the Glauber Monte Carlo (Glauber MC) model. In Glauber model, nucleons in a nuclei are distributed following the Wood–Saxon density distribution. The nuclei are then assigned a random impact parameter and translated to collide. The distance between the centers of nucleons of each nucleus is calculated. If this distance is found to be less than \(\sqrt{\sigma_\mathrm{inel}^\mathrm{NN}/\pi}\), where \(\sigma_\mathrm{inel}^\mathrm{NN}\) is the inelastic nucleon–nucleon cross section, the nucleons have undergone a binary collision. Nucleons that have undergone at least one binary collision are said to have participated in the reaction. This procedure is followed to obtain \(N_\mathrm{part}\), \(N_\mathrm{coll}\) event-by-event.
 
-\subsection{Centrality determination and event plane reconstruction} \label{sect:CentEP}
-\begin{figure}
+A class of events belonging to a given centrality (say 0\%–5\%) is obtained by the collection of events representing the fraction of the total cross-section. Glauber model can only provide the information on \(N_\mathrm{part}\), \(N_\mathrm{coll}\) and impact parameter \(b\), but for mapping with the experimental data, one has to use a combination of the Glauber model and a particle production model called the Two-Component Model. Assuming that particle production is governed by contribution from hard component (proportional to \(N_\mathrm{coll}\)) and soft component (proportional to  \(N_\mathrm{part}\)), it simulates the multiplicity distribution according to
+
+\begin{equation}
+	N_\mathrm{ch} = n_{pp}\left[xN_\mathrm{coll} + (1-x)\frac{N_\mathrm{part}}{2}\right]
+\end{equation}
+where the quantity \(n_{pp}\) is the multiplicity from a \(p+p\) collision of the same center-of-mass energy. \(x\) is the contribution of hard component. \(n_{pp}\) is drawn from a negative binomial distribution with parameters \(\text{NBD }(n_{pp}; \langle n_{pp}\rangle,k)\), where \( \langle n_{pp}\rangle\) is the average multiplicity in the \(p+p\) collision and \(k\) is the width of the distribution. The simulated charged multiplicity distribution is then fitted with the corresponding multiplicity distribution from the experiment. \(\langle n_{pp}\rangle\), \(k\), and \(x\) are kept as free parameters in the fitting to experimentally measured charged particle multiplicity distribution. Initial guess values for \(x\) could be set close to those determined in different experiments for faster convergence of fitting. 
+\begin{figure}[h]
+	\label{fig:centralityVsNch}
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/centrality_refmult.jpg}
+	\caption{An illustration of the total inclusive charged particles multiplicity \(N_\mathrm{ch}\) and number of participant (\(N_\mathrm{part}\)) and impact parameter (\(b\)) in heavy-ion collisions}
+\end{figure}
+Fig.~\ref{fig:centralityVsNch} illustrates collision centrality definition in heavy-ion collisions by comparing the charge particle multiplicities with Glauber MC + Two-component model simulation. Centrality classes are classified for the simulated distribution. \(\langle N_\mathrm{part}\rangle\), \(\langle N_\mathrm{coll}\rangle\) in those centrality classes are calculated.
+
+
+\subsection{Event plane reconstruction}
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.4\textwidth]{figures/flow_elliptic_init_v4.pdf}
-		\includegraphics[width=0.4\textwidth]{figures/flow_elliptic_expd_xyz_v2.pdf}
+	\includegraphics[width=0.4\textwidth]{figures/flow_elliptic_expd_xyz_v2.pdf}
 \end{figure}
-Centrality is a measure of the transverse overlap between the colliding nuclei and is generally expressed as a percentage of all collisions. 
-For example, the 0-10\% most central events would refer to the 10\% of events with the most overlap and thus the 10\% smallest impact parameter.  This analysis studied semi-peripheral (20-50\%) events to maximize the eccentricity of the interaction region.  Centrality is determined by fitting the  charged-particle multiplicity from the TPC within $|\eta| <$ 0.5 that is corrected for dependence on the $v_z$ and the beam luminosity.
-
 Within the overlap region, symmetry planes are generated from initial asymmetries in the nucleon distributions and can be quantified by a harmonic decomposition ~\cite{Poskanzer:1998yz}.  The reaction plane would correspond to the second-order symmetry plane $\Psi_{2, EP}$ if nucleon distributions were in their average positions and devoid of fluctuations of interactions amongst nucleons ~\cite{PhysRevC.101.064901}.  We refer in this letter to the event plane as being the experimentally reconstructed second-order symmetry plane ~\cite{Poskanzer:1998yz}.
 
 By measuring the charged particle azimuthal distribution, the n-th order event plane can be extracted by \cite{Poskanzer:1998yz}:  
