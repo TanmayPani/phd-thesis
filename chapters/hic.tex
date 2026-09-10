@@ -1,112 +1,4 @@
 
-
-
-
-
-
-\section{Relativistic Kinematics}
-\subsection{Laboratory vs Center-of-mass frames}
-A typical collision is a two-to-many reaction like:
-\begin{equation}
-\underbrace{A}_{\rm projectile} + \underbrace{B}_{\rm target} \rightarrow C_1 + C_2 + C_3 + \ldots,
-\end{equation}
-
-In \emph{laboratory frame}, the target is at rest, so,
-\begin{equation}
-	\mathbf{p}_B^{\rm lab} = \vec{0} \implies p_{B}^{\rm lab} = (m_B, 0, 0, 0),
-\end{equation}
-
-In \emph{center-of-mass} frame, the sum of three-momentum vectors vanish in the initial and final states
-\begin{equation}
-	\mathbf{p}_A^{\rm cm} + \mathbf{p}_B^{\rm cm} =\sum_i \mathbf{p}_{C, i}^{\rm cm} = \vec{0},
-\end{equation}
-
-Using Lorentz invariance of the Mandelstam variable \(s \equiv (p_A + p_B)_\mu(p_A + p_B)^\mu\):
-\begin{align}
-	s &= (E^{\rm lab}_A + m_B)^2 - |\mathbf{p}^{\rm lab}_A|^2 = (E^{\rm cm}_A + E^{\rm cm}_B)^2 \notag \\
-	\implies s &= m_A^2 + m_B^2  + 2m_BE^{\rm lab}_A = (E^{\rm cm})^2 
-\end{align}
-
-As relativistic energies (\(\mathcal{O}(10^{2-3} \mathrm{GeV})\)) are much higher than reactant masses \(\mathcal{O}(1-10 \mathrm{GeV})\), 
-
-\begin{equation}
-	\sqrt{s} = E^{\rm cm} \approx \sqrt{2m_BE^{\rm lab}_A}
-\end{equation}
-As the center-of-mass energy that produces new particles increases only as \(\sqrt{E^{\rm lab}}\) , making any gain in particle production more expensive at relativistic energies. Thus modern colliders usually operate in center-of-mass frames.
-
-\subsection{Coordinate system}
-Considering the non-linear addition of velocities in relativistic mechanics,
-
-\begin{equation}
-	\beta = \frac{\beta_1 + \beta_2}{1 + \beta_1\beta_2},
-\end{equation}
-
-Considering the transformation \(y = \tanh^{-1}\beta\), 
-\begin{align}
-	\tanh^{-1}\beta_1 + \tanh^{-1}\beta_2 &= \tanh^{-1}  \frac{\beta_1 + \beta_2}{1 + \beta_1\beta_2} = \tanh^{-1}\beta\notag\\
-	\implies y_1 + y_2 &= y
-\end{align}
-
-The addition is linear again.  We call this transformed velocity \emph{rapidity}, given by:
-\begin{equation}
-	y = \tanh^{-1}\beta = \frac{1}{2} \ln \frac{1 + \beta}{1 - \beta}  = \frac{1}{2} \ln \frac{E + p_z}{E - p_z}
-	\label{eq:rapy}
-\end{equation}
-
-Rapidity can grow without bound, and at small velocities, \(y \approx \beta\), making it a relativistic analogue of velocity.  Since it transforms linearly under Lorentz boosts, rapidity distribution of particles retain their shapes. For relativistic energies, \(E \approx p\) , making \ref{eq:rapy},
-\begin{equation}
-	y \approx  \frac{1}{2} \ln \frac{p + p_z}{p - p_z} = -\ln\left(\tan\frac{\theta}{2}\right) = \eta
-\end{equation}
-\(\eta\) is called the \emph{pseudo-rapidity}, the massless limit of rapidity. As shown in \ref{fig:etavstheta}, pseudo-rapidity can be directly determined form particle production angle \(\theta\) measured with respect to the beam axis. 
-\begin{figure}[htbp]
-	\centering
-	\begin{tikzpicture}[scale=3]
-		%\message{^^JPseudorapidity including negative side}
-		\pgfkeys{
-			/pgf/fpu/output format=fixed, % fpu floating-point format
-			/pgf/number format/precision=2 % two decimals
-		}
-		\def\R{1.2} % radius/length of lines
-		\node[scale=1,below left=1] at (0,\R) {$y$}; % y axis
-		\node[scale=1,below left=1] at (\R,0) {$z$}; % z axis
-		\coordinate (O) at (0,0); % origin
-		\foreach \t in {180,170,150,135,120,90,60,45,30,10,0}{ % loop over theta
-				\ifnum \t = 0
-					\def\e{+\infty} % infinity symbol
-				\else \ifnum \t = 180
-						\def\e{-\infty} % infinity symbol
-					\else
-						\pgfkeys{/pgf/fpu=true} % increase floating-point precision in computation
-						\pgfmathparse{-ln(tan(\t/2))} % pseudorapidity
-						\pgfkeys{/pgf/fpu=false} % turn off to avoid interference with following
-						\pgfmathroundtozerofill{\pgfmathresult} % round with trailing zeroes
-						\pgfmathsetmacro\e{\t==90?0:\pgfmathresult} % no trailing zeroes for theta = 0
-					\fi \fi
-				\message{^^Jt=\t, e=\e}
-				\draw[eta line] % eta lines
-				(O) -- (\t:\R) coordinate(P\t) node[anchor=180+\t,black] {$\eta=\e$}
-				node[theta node] {$\theta=\t^\circ$};
-			}
-		\draw pic["$\theta$"scale=0.8,mysmallarrow] {angle = P0--O--P10}; % arrow label	
-	\end{tikzpicture}
-	\label{fig:etavstheta}
-	\caption{\(\eta \) vs \(\theta\) }
-\end{figure}
-
-Also considering \emph{azimuthal angle} (\(\varphi\)) and \emph{transverse-momentum} \(\left(p_{\rm T} = \sqrt{p_x^2 + p_y^2}\right)\) of the particles, which are invariant under boosts along the beam-line by design, we can use (\(p_{\rm T}, \eta, \varphi\)) as the coordinate system for the particles produced in the collision. \Fref{fig:detcoords} illustrates this coordinate system for a cylindrical collider detector. 
-
-
-\begin{figure}[htbp]
-	\centering
-	\detectorCoordinateSystem
-	\caption{The \((p_{\rm T}, \eta, \varphi)\) coordinate system, drawn for a cylindrical
-		collider detector. The beam axis defines \(z\) and the interaction point (IP) sits at
-		the origin. A particle of momentum \(\vec{p}\) is described by its transverse momentum
-		\(\vec{p}_{\rm T}\), its azimuthal angle \(\varphi\) in the transverse plane, and its
-		pseudo-rapidity \(\eta\), fixed by the polar angle \(\theta\) with respect to the beam.}
-	\label{fig:detcoords}
-\end{figure}
-
 %\section{Dijet events}
 %In dijet events, two incoming partons, one each from the incoming nuclei scatter off each other and produce two final state partons, which are observed as jets. The two partons are back-to-back and have equal momenta in the processes center of mass frame. A typical process,
 %\begin{equation}
@@ -212,7 +104,9 @@ Also considering \emph{azimuthal angle} (\(\varphi\)) and \emph{transverse-momen
 %			by \(\overline{\sum}\), and are normalised by \(g^4 = (4\pi\alpha_s)^2\)~\cite{Ellis_Stirling_Webber_1996}.}
 %		\label{tab:jetdiagrams}
 %	\end{sidewaystable}
-
+\chapter{Relativistic collisions of  nuclei}
+\label{ch:hic}
+As discussed in 
 \section{Jets}
 The discussions on parton shower and fragmentation show partons cleanly branching into partons and eventually giving rise to hadrons that can be traced back to the shower partons. So in principle, a \emph{jet finding algorithm} should be able to faithfully get the kinematics of the initiating parton. However, the picture is not so straightforward even at the parton level, before we have the complications from hadronization and detector level reconstruction. This ambiguity can already be seen in a clean reaction like \(e^+e^-\to q\bar{q}\). If one of the quark emits a gluon, then depending on the emission angle of the gluon, we might cluster 2 or 3 jets in the final state. So one can foresee the inherent ambiguity of jet definition for more complicated hadron-hadron collisions, led to the Snowmass Accord, which stated that, experimental and theoretical measurements had to use the same jet finding algorithm  on final state hadrons in order to be comparable. 
 
@@ -232,7 +126,7 @@ The most commonly used family of infrared and collinear safe jet algorithms, seq
 	\end{equation}
 	and 
 	\begin{equation}
-		d_{i} = p_{T,i}^2p
+		d_{i} = p_{T,i}^{2p}
 	\end{equation}
 	for every pair of particles where $p_{T,i}$ and $p_{T,j}$ are the momenta of the particles, $\eta_i$ and $\eta_j$ are the pseudorapidities of the particles, and $\phi_i$ and $\phi_j$ are the azimuthal angles of the particles. \(R\) is the resolution parameter of the algorithm, which decides the angular extent of clustered jets.
 	\item Find the minimum of the $d_{ij}$ and $d_{i}$.  If this minimum is a $d_{ij}$, combine these particles into one jet candidate, adding their energies and momenta, and return to the first step.  
@@ -242,15 +136,28 @@ The most commonly used family of infrared and collinear safe jet algorithms, seq
 Above algorithm becomes the \(k_\mathrm{T}\) algorithm for \(p=1\), Cambridge-Aachen for \(p=0\) and the most widely used anti- \(k_\mathrm{T}\) algorithm for \(p=-1\). 
 
 \subsection{SoftDrop}
-
+The soft drop grooming procedure can be summarized as follows. First, the observed jet is reclustered with the Cambridge/Aachen (C/A) algorithm.
+Second, the soft drop criterion from Eq. \ref{eq:softDropCrit} is checked at each clustering step when going backward through the C/A clustering tree.
+\begin{equation}
+	\label{eq:softDropCrit}
+	\frac{\min(p_\mathrm{T,1}, p_\mathrm{T, 2})}{p_\mathrm{T,1} + p_\mathrm{T, 2}} > z_\mathrm{cut} \left(\frac{\Delta R_{12}}{R}\right)^\beta
+\end{equation}
+Here \(p_\mathrm{T, \{1,2\}}\) are the momenta of the two
+branches that had been merged together and \(\Delta R_{12}\) is their geometric distance in the \etaphi plane. When the softer branch fails the
+criterion it is removed from the jet and the procedure continues until it is satisfied. The remaining particles in the jet constitute
+the soft drop groomed jet. A convenient choice can be made for the soft threshold parameter \(z_\mathrm{cut}\) and the angular exponent \(\beta\). For \(\beta = 0\) the soft drop procedure reduces to the modified mass drop tagger (mMDT)
 \subsection{Background Subtraction}
+\subsubsection{Area based}
+\subsubsection{Constituent based}
 
 \section{Heavy-Ion Collisions}
 \label{sec:heavyIonCollisions}
 
-
-\subsection{Centrality determination} \label{sect:CentEP}
+\subsection{Initial State}
+\subsection{Centrality Determination} \label{sect:CentEP}
 In heavy-ion collisions, the impact parameter (\(b\)) of collisions is defined by the distance between the geometrical centers of the colliding nuclei in the plane transverse to their direction. A schematic diagram of the geometry of heavy-ion collisions is shown in Fig. \ref{fig:hictikz}. 
+
+
 \begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}
@@ -292,18 +199,21 @@ In heavy-ion collisions, the impact parameter (\(b\)) of collisions is defined b
 \end{figure}
 As the impact parameter is not measurable in experiments, the charged particle multiplicity of events can be used to define collision centrality as they reflect the initial geometry of the colliding nuclei. To obtain the geometrical quantities like the impact parameter, the number of participant nucleons (\(N_\mathrm{part}\)) and the number of binary collisions (\(N_\mathrm{coll}\)), one has to rely on model calculations which involves mapping the charged particle multiplicity from experiment to that of a simulated one. The widely used model for determining these quantities is the Glauber Monte Carlo (Glauber MC) model. In Glauber model, nucleons in a nuclei are distributed following the Wood–Saxon density distribution. The nuclei are then assigned a random impact parameter and translated to collide. The distance between the centers of nucleons of each nucleus is calculated. If this distance is found to be less than \(\sqrt{\sigma_\mathrm{inel}^\mathrm{NN}/\pi}\), where \(\sigma_\mathrm{inel}^\mathrm{NN}\) is the inelastic nucleon–nucleon cross section, the nucleons have undergone a binary collision. Nucleons that have undergone at least one binary collision are said to have participated in the reaction. This procedure is followed to obtain \(N_\mathrm{part}\), \(N_\mathrm{coll}\) event-by-event.
 
-A class of events belonging to a given centrality (say 0\%–5\%) is obtained by the collection of events representing the fraction of the total cross-section. Glauber model can only provide the information on \(N_\mathrm{part}\), \(N_\mathrm{coll}\) and impact parameter \(b\), but for mapping with the experimental data, one has to use a combination of the Glauber model and a particle production model called the Two-Component Model. Assuming that particle production is governed by contribution from hard component (proportional to \(N_\mathrm{coll}\)) and soft component (proportional to  \(N_\mathrm{part}\)), it simulates the multiplicity distribution according to
-
-\begin{equation}
-	N_\mathrm{ch} = n_{pp}\left[xN_\mathrm{coll} + (1-x)\frac{N_\mathrm{part}}{2}\right]
-\end{equation}
-where the quantity \(n_{pp}\) is the multiplicity from a \(p+p\) collision of the same center-of-mass energy. \(x\) is the contribution of hard component. \(n_{pp}\) is drawn from a negative binomial distribution with parameters \(\text{NBD }(n_{pp}; \langle n_{pp}\rangle,k)\), where \( \langle n_{pp}\rangle\) is the average multiplicity in the \(p+p\) collision and \(k\) is the width of the distribution. The simulated charged multiplicity distribution is then fitted with the corresponding multiplicity distribution from the experiment. \(\langle n_{pp}\rangle\), \(k\), and \(x\) are kept as free parameters in the fitting to experimentally measured charged particle multiplicity distribution. Initial guess values for \(x\) could be set close to those determined in different experiments for faster convergence of fitting. 
 \begin{figure}[h]
 	\label{fig:centralityVsNch}
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/centrality_refmult.jpg}
 	\caption{An illustration of the total inclusive charged particles multiplicity \(N_\mathrm{ch}\) and number of participant (\(N_\mathrm{part}\)) and impact parameter (\(b\)) in heavy-ion collisions}
 \end{figure}
+
+A class of events belonging to a given centrality (say 0\%–5\%) is obtained by the collection of events representing the fraction of the total cross-section. Glauber model can only provide the information on \(N_\mathrm{part}\), \(N_\mathrm{coll}\) and impact parameter \(b\), but for mapping with the experimental data, one has to use a combination of the Glauber model and a particle production model called the Two-Component Model. Assuming that particle production is governed by contribution from hard component (proportional to \(N_\mathrm{coll}\)) and soft component (proportional to  \(N_\mathrm{part}\)), it simulates the multiplicity distribution according to
+
+
+\begin{equation}
+	N_\mathrm{ch} = n_{pp}\left[xN_\mathrm{coll} + (1-x)\frac{N_\mathrm{part}}{2}\right]
+\end{equation}
+where the quantity \(n_{pp}\) is the multiplicity from a \(p+p\) collision of the same center-of-mass energy. \(x\) is the contribution of hard component. \(n_{pp}\) is drawn from a negative binomial distribution with parameters \(\text{NBD }(n_{pp}; \langle n_{pp}\rangle,k)\), where \( \langle n_{pp}\rangle\) is the average multiplicity in the \(p+p\) collision and \(k\) is the width of the distribution. The simulated charged multiplicity distribution is then fitted with the corresponding multiplicity distribution from the experiment. \(\langle n_{pp}\rangle\), \(k\), and \(x\) are kept as free parameters in the fitting to experimentally measured charged particle multiplicity distribution. Initial guess values for \(x\) could be set close to those determined in different experiments for faster convergence of fitting. 
+
 Fig.~\ref{fig:centralityVsNch} illustrates collision centrality definition in heavy-ion collisions by comparing the charge particle multiplicities with Glauber MC + Two-component model simulation. Centrality classes are classified for the simulated distribution. \(\langle N_\mathrm{part}\rangle\), \(\langle N_\mathrm{coll}\rangle\) in those centrality classes are calculated.
 
 
@@ -312,6 +222,8 @@ Fig.~\ref{fig:centralityVsNch} illustrates collision centrality definition in he
 	\centering
 	\includegraphics[width=0.4\textwidth]{figures/flow_elliptic_init_v4.pdf}
 	\includegraphics[width=0.4\textwidth]{figures/flow_elliptic_expd_xyz_v2.pdf}
+	\label{Fig:flowschematic}
+	\caption{Schematic diagrams showing the initial overlap region (left) and the spatial anisotropy generated by this anisotropic overlap region.  This anisotropy can be quantified using the Fourier coefficients of the momentum anisotropy.}
 \end{figure}
 Within the overlap region, symmetry planes are generated from initial asymmetries in the nucleon distributions and can be quantified by a harmonic decomposition ~\cite{Poskanzer:1998yz}.  The reaction plane would correspond to the second-order symmetry plane $\Psi_{2, EP}$ if nucleon distributions were in their average positions and devoid of fluctuations of interactions amongst nucleons ~\cite{PhysRevC.101.064901}.  We refer in this letter to the event plane as being the experimentally reconstructed second-order symmetry plane ~\cite{Poskanzer:1998yz}.
 
@@ -382,6 +294,34 @@ Furthermore, individual events are divided into two random sub-events by assigni
 
 The event-plane resolution is multiplicity dependent and calculated for separate ranges of collision centrality using the two sub-events method.  Narrower bins are calculated and then combined accordingly to match the ranges used by this analysis, by averaging the results from the narrow bins weighted by the multiplicity of each bin \cite{Voloshin:2008dg}.
 
+\section{Spacetime picture of QGP}
+Estimates of the energy density indicate that central heavy ion collisions with an incoming energy per nucleon pair as low as \sNN{7.7} GeV, the lower boundary of collision energies accessible at RHIC, can reach energy densities above 1 GeV/fm$^3$~\CITETHIS and that collisions at 2.76 TeV, accessible at the LHC, reach energy densities as high as 12 GeV/fm$^3$~\CITETHIS. Contrary to initial na\"ive expectations of a gas-like QGP, the QGP formed in these collisions was shown to behave like a liquid of quarks and gluons ~\CITETHIS.
+
+The heavy ion collision and the evolution of the fireball, as depicted in Figure~\CITETHIS, has several stages, and the measurement of the final state particles can be affected by one or all of these stages depending on the production mechanism and interaction time within the medium.  
+%
+%The initial state of the incoming nuclei is not precisely known, but its properties impact the production of final state particles.  
+%
+%The incoming nuclei are often modeled as either an independent collection of nucleons called a Glauber initial state~\CITETHIS, or a wall of coherent gluons called a Color Glass Condensate~\CITETHIS.  
+%
+%In either initial state model, both the impact parameter of the nuclei and fluctuations in the positions of the incoming quarks or gluons, called partons, lead to an asymmetric nuclear overlap region.  
+%
+%This asymmetric overlap is shown schematically in \Fref{Fig:flowschematic}.  The description of the initial state most consistent with the data is between these extremes~\CITETHIS.  
+%
+%The proposed electron ion collider is expected to resolve ambiguities in the initial state of heavy ion collisions~\CITETHIS. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/LightCone1_color-crop}
+	\caption{A light cone diagram showing the stages of a heavy ion collision.  The abbreviation  $T_{\mathrm fo}$ is for the thermal freeze-out temperature, $T_{\mathrm ch}$ is for the chemical freeze-out temperature, and $T_{\mathrm c}$ is for the critical temperature where the phase transition between a hadron gas and a QGP occurs.  $\tau_0$ is the formation time of the QGP.}
+	\label{fig:lightcone}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{figures/T_mu_vs_sNN}
+	\caption{Chemical freeze-out parameters \(T\) and \(\mu_\mathrm{B}\) obtained by thermal model fits to experimental data on particle yields as a function of collision energies. Red line represents parametrizations of \(T\) and \(\mu_\mathrm{B}\) as a function of $\sqrt{s_\mathrm{NN}}$}
+	\label{fig:tmuvssnn}
+\end{figure}
 
 \section{Signatures of QGP}
 Different seminal results go here...

@@ -1,3 +1,15 @@
+\newcommand{\addTwoPanelFig}[3]{
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.7\linewidth]{#1}
+		\caption{#2}
+		\label{#3}
+	\end{figure}
+}
+\newcommand{\addTwoPanelInFig}[1]{\includegraphics[width = 0.68\linewidth]{#1}}
+\newcommand{\addOnePanelInFig}[2]{\includegraphics[width = #2\linewidth]{#1}}
+
+
 % energy units, collision systems
 \newcommand{\GeVc}{GeV/\(c\)\xspace}
 \newcommand{\MeVc}{MeV/\(c\)\xspace}

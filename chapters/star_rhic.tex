@@ -1,6 +1,15 @@
-\section{Relativistic Heavy-Ion Collider (RHIC)}
+\chapter{Solenoidal Tracker At Relativistic Heavy Ion Collider}
+\label{ch:STAR}
 
-The Relativistic Heavy Ion Collider (RHIC), at Brookhaven National Laboratory (BNL), is the only collider with dedicated running for heavy ion research (the CERN Large Hadron Collider runs heavy ions for only about one month per year), and the only polarized proton collider ever built. Two concentric accelerator rings 2.4 miles in circumference containing a total of 1,740 superconducting magnets afford RHIC the capability to independently accelerate and collide ion beam species from $\rm ^1_1H (p)$ to  $\rm ^{238}_{92}U$ at energies between 3.85 GeV and 254.9 GeV per nucleon and different spin polarizations for protons (\(p\)), as shown in \ref{fig:RHICSpecies}. These capabilities make RHIC the most flexible and capable collider in the world for transformative studies of extreme states of nuclear matter and the origin of the proton spin.
+\section{Relativistic Heavy-Ion Collider (RHIC)}
+\begin{figure}[h]
+	\centering
+	\label{fig:RHIC-AGS}
+	\includegraphics[width=0.6\linewidth]{figures/rhic-aerial-hr.jpg}
+	\caption{An aerial view of the Relativistic Heavy Ion Collider (RHIC), showing the locations of the facilities used for accelerating different ions, and the positions of the STAR and sPHENIX detectors.}
+\end{figure}
+
+The Relativistic Heavy Ion Collider (RHIC), at Brookhaven National Laboratory (BNL), is the only collider with dedicated running for heavy ion research (the CERN Large Hadron Collider runs heavy ions for only about one month per year), and the only polarized proton collider ever built. Two concentric accelerator rings 2.4 miles in circumference containing a total of 1,740 superconducting magnets afford RHIC the capability to independently accelerate and collide ion beam species from $\rm ^1_1H (p)$ to  $\rm ^{238}_{92}U$ at energies between 3.85 GeV and 254.9 GeV per nucleon and different spin polarizations for protons (\(p\)), as shown in Fig.~\ref{fig:RHICSpecies}. These capabilities make RHIC the most flexible and capable collider in the world for transformative studies of extreme states of nuclear matter and the origin of the proton spin.
 
 \begin{figure}[h]
 	\label{fig:RHICSpecies}
@@ -11,21 +20,20 @@ On February 6th 2026 RHIC ended operations with collisions of $\rm ^{16}_{8}O$ n
 %\emph{strong Pioneering High Energy Nuclear Interaction eXperiment}.25 years. 
 
 \begin{figure}[h]
-	\label{fig:Final }
+	\label{fig:Final}
 	\includegraphics[width=\linewidth]{figures/sphenix-star-events-star-final-hr.jpg}
 	\caption{Some of the final O+O collisions at \(\sqrt{s_\mathrm{NN}} = 200\)~GeV captured by the sPHENIX and STAR detectors at the RHIC. }
 \end{figure}
 
 \subsection{From stable matter to little bangs}
 Before collisions, the nuclei have to be created first by taking the corresponding atoms and stripping off all their electrons. That process looks different for different nuclei. 
-
 \begin{figure}[h]
-		\centering
-		\label{fig:RHIC-AGS }
-		\includegraphics[width=0.6\linewidth]{figures/rhic-aerial-hr.jpg}
-	\includegraphics[width=0.3\linewidth]{figures/ags-complex}
-	\caption{(Left) An aerial view of the Relativistic Heavy Ion Collider (RHIC), showing the locations of the facilities used for accelerating different ions, and the positions of the STAR and sPHENIX detectors. Taken from \cite{RHICRun23}.}
+	\centering
+	\label{fig:AGS}
+	\includegraphics[width=0.5\linewidth]{figures/ags-complex}
+	\caption{Schematic view of the AGS complex, showing various stages the ions go through before going into RHIC}
 \end{figure}
+
 
 \begin{itemize}
 	\item \textbf{For protons} it is \emph{Optically Pumped Polarized \(H^-\) Ion Source (OPPIS)} fed into the \emph{Linear Accelerator (LINAC)}. The LINAC accelerates them to \(\sim 200\)~MeV and injects into the \emph{Booster Synchrotron} at which point, the two electrons are stripped away by a carbon foil. They are accelerated to upto 2.5 GeV and fed into the \emph{ Alternating Gradient Synchrotron (AGS)} which accelerates the proton beam to about 25 GeV.
@@ -74,14 +82,17 @@ STAR is designed to provide hermetic coverage around the interaction point, emph
 It is a highly versatile, multipurpose detector with several subsystems used for triggering, tracking and identifying the particle species for charged tracks, and calorimetry. These subsystems are surrounded by a room-temperature solenoid magnet 6.2 m long and 5.26 m in diameter which generates a magnetic field of 0.5 T in the detector volume. The detector is cylindrical with full coverage in the azimuthal direction in the mid-rapidity region along with wide coverage in pseudorapidity. A schematic diagram of the STAR detector with its various detector subsystems is shown in Fig.~\ref{fig:STARDetector}. As the only experiment running continuously since the inception of RHIC, STAR has undergone major upgrades that have augmented its tracking capabilities and increased its acceptance in the forward rapidity regions. The main detectors used for this analysis are the Time Projection Chamber (TPC) and Barrel Electromagnetic Calorimeters (BEMC). 
 
 \subsection{TPC} \label{TPC}
-The primary tracking detector for STAR is the Time Projection Chamber (TPC). TPC, shown in Fig. \ref{fig:TPC} is a cylindrical detector 420 cm long with an outer (inner) radii of 200 (50) cm, concentric to the 0.5 T solenoid, and provides particle identification and momentum information for charged tracks by measuring their ionization energy loss (dE/dx) inside the TPC volume. Its acceptance has been upgraded over time to cover a pseudorapidity range of $|\eta| < 1.0$, along with full azimuthal coverage. Particle momenta can usually be measured accurately over a range of 0.1 to 30~GeV/\(c\), while particle identification is usually limited between 0.1 and 1~GeV/\(c\).
+ Time Projection Chamber (TPC)\CITETHIS was the the primary tracking detector for STAR, providing particle identification and momentum information for charged tracks by measuring their ionization energy loss (dE/dx) inside the TPC volume\CITETHIS. As shown in Fig. \ref{fig:TPC} the TPC was a cylindrical detector 420 cm long with an outer (inner) radii of 200 (50) cm, concentric to the 0.5 T solenoid. Its acceptance covered a pseudorapidity range of $|\eta| < 1.0$, along with full azimuthal coverage. Particle momenta could be measured accurately over a range of 0.1 to 30~GeV/\(c\), and particle identification was limited between 0.1 and 1~GeV/\(c\).
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\linewidth]{figures/TPC.png}
 	\caption{The Time Projection Chamber at STAR. Taken from \cite{STARSubSystems}.}
 	\label{fig:TPC}
 \end{figure}
-The TPC volume is filled with an ionizable gas mixture called P10\footnote{10 \% methane, 90 \% argon}, maintained at 2 mbar above atmospheric pressure to ensure minimal contamination by impurities like oxygen and water vapor. This gas is chosen for its high drift velocity of 5.45 $\rm cm/\mu s$ in the well-defined, uniform electric field of $\approx 135$ V/cm at STAR. The uniform electric field is defined between the thin conductive central membrane at z = 0 maintained at 28 kV acting as a cathode, and the two end caps each 210 cm away from the center at 0 V acting as anodes. The drift velocity can change over time based on atmospheric pressure fluctuations, therefore, calibrations are typically done using lasers every few hours during data-taking.
+The TPC volume contained an ionizable gas mixture called P10 (10 \% methane, 90 \% argon), chosen for its high drift velocity of 5.45 $\rm cm/\mu s$ in the well-defined, uniform electric field of $\approx 135$ V/cm at STAR. 
+The uniform electric field is defined between the thin conductive central membrane at z = 0 maintained at 28 kV acting as a cathode, and the two end caps each 210 cm away from the center at 0 V acting as anodes. 
+The drift velocity can change over time based on atmospheric pressure fluctuations, therefore, calibrations are typically done using lasers every few hours during data-taking. 
+To ensure minimal contamination by impurities like oxygen and water vapor maintained at 2 mbar above atmospheric pressure. 
 
 \begin{figure}[h]
 	\centering
@@ -90,7 +101,15 @@ The TPC volume is filled with an ionizable gas mixture called P10\footnote{10 \%
 	\label{fig:TPCAnode}
 \end{figure}
 
-The TPC readout method relies on Multi-Wire Proportional Counters (MWPCs) with a segmented pad plane to capture detailed ionization trails from charged particles. As particles ionize the TPC gas, freed electrons drift toward the MWPCs under the effect of the electric field. A gated grid initially restricts electron flow to prevent signal contamination; if a collision is deemed significant, the gate opens, allowing electrons to enter the MWPCs. Electrons pass shield wires that prevent positive ions generated inside the MWPC from entering the TPC’s drift volume. Near the anode wires, electrons are rapidly accelerated, creating avalanches through secondary ionization and amplifying the signal by a factor of 1,000 to 3,000. These avalanches induce signals in the surrounding pads without direct contact with the electrons. The MWPC pads detect the x-y position based on pad geometry — 3,942 pads across 32 rows in the outer sector and 1,750 pads in 13 rows in the inner sector. One such anode sector is shown in Fig. \ref{fig:TPCAnode}. The z information is then derived using the drift time and calibrated drift velocity of the electrons inside the detector volume. The typical resolution for position measurements from TPC is roughly 1 cm.
+The charged particles leave ionization trails were captured by Multi-Wire Proportional Counters (MWPCs)\CITETHIS with a segmented pad plane used in TPC readout.
+%
+As particles ionize the TPC gas, freed electrons drift toward the MWPCs under the effect of the electric field. 
+%
+Signal contamination was prevented using a gated grid that initially restricted electron flow, opening only if a collision is deemed significant, allowing electrons to enter the MWPCs. 
+%
+Positive ions generated inside the MWPC are prevented from entering the TPC’s drift volume using shield wires. 
+%
+The electrons passed the shield wires and were rapidly accelerated near the anode wires, creating avalanches through secondary ionization and amplifying the signal by a factor of 1,000 to 3,000. These avalanches induce signals in the surrounding pads without direct contact with the electrons. The MWPC pads detect the x-y position based on pad geometry — 3,942 pads across 32 rows in the outer sector and 1,750 pads in 13 rows in the inner sector. One such anode sector is shown in Fig. \ref{fig:TPCAnode}. The z information is then derived using the drift time and calibrated drift velocity of the electrons inside the detector volume. The typical resolution for position measurements from TPC is roughly 1 cm.
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{figures/dEdxVsp.png}
@@ -98,11 +117,19 @@ The TPC readout method relies on Multi-Wire Proportional Counters (MWPCs) with a
 	\label{fig:dEdx}
 \end{figure}
 
-In each collision event, a maximum of 45 hits can be recorded for each track. Algorithms then fit these points to a helix which is then used to calculate the particle momenta. Particles with momentum below 100 MeV/c do not reach the TPC as their paths curve too tightly in the magnetic field, while those above 30 GeV/c follow nearly straight trajectories that compromise the measurement precision. For particles within these bounds, the relative momentum resolution is about 2 \%. The direction of curvature gives the charge of the track. The value of dE/dx for a track is extracted from the energy loss measured by a series of pads in the TPC. Figure \ref{fig:dEdx} shows a typical plot of measured dE/dx as a function of momentum. For a given particle species with known momenta, the dE/dx curves are given by the Bichsel function \cite{BICHSEL2006154} which are shown as solid lines in Fig. \ref{fig:dEdx}. For each particle species, the band has non-zero thickness due to the finite momentum resolution, and selection criteria based on simulations are used to assign particle ID. The particle identification from TPC is limited to low momenta tracks (about $1$ GeV/c) only beyond which the bands for different species start to overlap.
+For a charged particle track, maximum of 45 hits could be recorded, which were fitted to a helix to calculate the particle momentum. Particles with momentum below 100 MeV/\(c\) curve too tightly in the magnetic field and do not reach the TPC, while those above 30 GeV/\(c\) follow nearly straight trajectories that compromise the measurement precision. For particles within these bounds, the relative momentum resolution is about 2 \%. The direction of curvature gives the charge of the track. Energy loss as a function of distance travelled, dE/dx for a track was extracted using energy loss measured by a series of pads in the TPC. Figure \ref{fig:dEdx} shows a typical plot of measured dE/dx as a function of momentum. For a given particle species with known momenta, the dE/dx curves are given by the Bichsel function \CITETHIS which are shown as solid lines in Fig. \ref{fig:dEdx}. For each particle species, the band has non-zero thickness due to the finite momentum resolution, and selection criteria based on simulations are used to assign particle ID. The particle identification from TPC is limited to low momenta tracks (about $1$ GeV/c) only beyond which the bands for different species start to overlap.
 
 \subsection{BEMC} \label{BEMC}
 
-The STAR Barrel Electromagnetic Calorimeter (BEMC) \cite{BEDDO2003725}, shown in Fig. \ref{fig:BEMC} is a cylindrical detector located between the TPC and magnet coils, designed to measure particle energies, particularly for electron and neutral particle identification. In jet-related measurements, BEMC provides the neutral component of the jet energy that cannot be reconstructed by the TPC. It spans the entire azimuth and covers the pseudorapidity range $|\eta| < 1$, matching the coverage of the TPC. BEMC is also a fast detector and is used as a trigger to select events containing a hard process.
+The STAR Barrel Electromagnetic Calorimeter (BEMC) \cite{BEDDO2003725} designed to measure particle energies, particularly for electron and neutral particle identification.
+%
+BEMC was a fast detector, used as a trigger to select events containing a hard process. 
+%
+It also provided the neutral component of the jet energy that couldn't be reconstructed by the TPC in jet-related measurements. 
+%
+As shown in Fig.~\ref{fig:BEMC}, it was cylindrical detector located between the TPC and magnet coils. 
+%
+It covers the pseudorapidity range $|\eta| < 1$ and the full azimuth range (\(0 \leq \phi \leq 2\pi\)), matching the TPC's coverage.
 
 \begin{figure}[h]
 	\centering

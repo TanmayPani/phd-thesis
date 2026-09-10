@@ -1,3 +1,6 @@
+\chapter{Generalized Angularities}
+\label{ch:angularities}
+
 Generalized jet angularities are a family of jet observables defined as,
 
 \begin{equation}\label{eq:LambdaKappaBeta}
@@ -38,7 +41,7 @@ Using the momentum balance (\(z_\mathrm{g}\)) and angularity of the first collin
 	\caption{ Ways of arranging constituents (each represented as a circle whose radius represent \(\frac{p_\mathrm{T, const}}{p_\mathrm{T, jet}}\)) in the \etaphi space within a jet with \(p_\mathrm{T, jet} = 30~\text{GeV}/c\) such that \(R_\mathrm{g}\) of the jet increases going from left to right. Green (Red) colored constituents survive (are removed by) the SoftDrop grooming ( \(z_\mathrm{cut} = 0.2,~\beta = 0\)).}
 \end{figure}
 
-\section{Analysis details}
+\section{Angularities of \(p + p\) jets}
 \subsection{Dataset and Selections}
 The analysis uses data from \pp collisions at \sPP{200}{GeV}~collected in 2012 using the STAR detector system. Charged-particle tracks and neutral energy depositions (towers) are measured using STAR's Time Projection Chamber (TPC) \cite{Anderson_2003} and Barrel Electromagnetic Calorimeter (BEMC) \cite{BEDDO2003725} detectors respectively. 
 
@@ -84,17 +87,19 @@ To enhance jet signal, only High-Tower (HT) triggered events, with at least one 
  	\item \(p_\mathrm{T, jet}\) resolution
  \end{itemize}
  
+ \subsubsection{Unfolding related uncertainties}
  \begin{itemize}
  	\item Variation of the regularization parameter(number of iterations) -  For our central values, we have used 2 iterations as we found the result to converge reliably by that point. We vary the iterations between 3 and 5.
  \end{itemize}
  
-\section{Results}
+\subsection{Results and Discussions}
 \begin{figure}[h]
 	\centering
-		\includegraphics[width=0.8\linewidth]{figures/fig_grid_jpt1.pdf}
-	\includegraphics[width=0.8\linewidth]{figures/fig_grid_jpt2.pdf}
-		\includegraphics[width=0.8\linewidth]{figures/fig_grid_jpt3.pdf}
+		\includegraphics[width=0.9\linewidth]{figures/fig_grid_jpt1.pdf}
+	\includegraphics[width=0.9\linewidth]{figures/fig_grid_jpt2.pdf}
+		\includegraphics[width=0.9\linewidth]{figures/fig_grid_jpt3.pdf}
 \end{figure}
+
 \begin{figure}[h]
 	\centering
 		\includegraphics[width=0.8\linewidth]{figures/fig_prof_grid_jpt1.pdf}
@@ -102,6 +107,41 @@ To enhance jet signal, only High-Tower (HT) triggered events, with at least one 
 	\includegraphics[width=0.8\linewidth]{figures/fig_prof_grid_jpt3.pdf}
 \end{figure}
 
+\section{Angularities of Au+Au jets}
+\subsection{Methodology}
+Charged-particle tracks and neutral energy depositions (towers) are measured using STAR's Time Projection Chamber (TPC) \cite{Anderson_2003} and Barrel Electromagnetic Calorimeter (BEMC) \cite{BEDDO2003725} detectors respectively. Together, they provide full azimuthal coverage with a pseudorapidity acceptance of $|\eta| \leq 1$.  The tracks and towers are clustered into jets using the anti-$k_{\rm T}$ algorithm with a jet resolution parameter $R = 0.4$, implemented using the FastJet library~\cite{Cacciari_2012}. To suppress contributions of fake tracks and combinatorial background (especially in the context of the larger  heavy-ion background), a ``hard-core'' constituent selection  is applied, as was done in previous STAR analyses \cite{PhysRevC.105.044906}, which only allows tracks (towers) with $cp_\mathrm{T, trk} (E_\mathrm{T, tow}) \geq 2~\mathrm{GeV}$ to be clustered into jets. To enhance jet signal, only High-Tower (HT) triggered events, with at least one tower with $\EtTower \geq 5.4$ GeV are considered. After clustering, only jets completely falling within acceptance ($|\eta_{\rm jet}| \leq 0.6$) are kept. Jets with area, $A_{\rm jet} < 0.4$ are rejected to further reduce the fake jet contribution.
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.8\linewidth]{fig1_1}
+%	\caption{Comparison between MultiFold and RooUnfold shown for jet mass (M) measurement from STAR p+p collisions at $\sqrt{s} = 200$ GeV, in \ptJet~ranges of \ptJetRange{20}{25} (left), \ptJetRange{25}{30} (middle), and \ptJetRange{30}{40} (right) \cite{song2023measurement}.}
+%	\label{youqiFig}
+%\end{figure}
+
+Residual background and detector effects are removed by using a mapping between particle and detector level jets from an embedding simulation which involves PYTHIA-6 STAR tune \cite{adkins2019studying} events processed into detector hits using GEANT3 \cite{Brun:1987ma} and added to real minimum-bias events from Au+Au collision environment. MultiFold~\cite{PhysRevLett.124.182001} method was used to simultaneously unfold $p_{\rm T, jet}$, $\eta_{\rm jet}$, $\phi_{\rm jet}$, $N_{\rm cons, charged}$, \(g\), \(p_\mathrm{T}^\mathrm{D}\)~and LeSub. MultiFold uses Dense Neural Networks (DNNs) implemented using the EnergyFlow package~\cite{Komiske_2018},  which are trained on full embedding sample at the detector level and the generator level. Closure of the MultiFold is a measure of confidence in the algorithm determined by applying a pre-trained MultiFold on a detector level jet sample for which the particle level is known and comparing the two through ratios. Proper closure is demonstrated in Fig.\ref{fig:closure} for the obervables studied in these proceedings, with the ratios of distributions being consistent with unity within statistical errors.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{closure_cent0to20_v3}
+	\caption{Closure test for \(g\), \(p_\mathrm{T}^\mathrm{D}\)~and LeSub showing the ratio of distributions calculated using jets from unfolded 0-20\% centrality detector level and particle level events from Au+Au collisions at \sNN{200}{GeV}.}
+	\label{fig:closure}
+\end{figure}
+
+This study is the first instance of the MultiFold method being used to deconvolute detector effects from heavy-ion collision events.
+
+\subsection{Result and Discussion}
+\begin{figure}[h]
+	\centering
+	\addOnePanelInFig{finalPlots_noPP_Girth_1_v3_warn.pdf}{0.42}
+	\addOnePanelInFig{finalPlots_noPP_PtD_1_v3_warn.pdf}{0.42}
+	\addOnePanelInFig{finalPlots_noPP_LeSub_1_v3_warn.pdf}{0.42}
+	\caption{Normalized \(g\), \(p_\mathrm{T}^\mathrm{D}\)~and LeSub distributions for jets with \ptGeq{jet}{20} from central (0-20\%, red stars) and peripheral (40-80\%, blue stars) centrality ranges. Systematic uncertainties are shown as shaded boxes. Central over peripheral ratios (magenta stars) are in the lower panels with their systematic uncertainties represented as magenta boxes. Systematic uncertainties are assumed to be uncorrelated between the centrality ranges. }
+	\label{fig:JSOs}	
+\end{figure}
+
+Fully corrected measurements of \(g\), \(p_\mathrm{T}^\mathrm{D}\)~and LeSub distributions calculated from jets with $p_\mathrm{T, jet} > 20 \text{GeV}/c$ from events within centrality ranges of 0-20\% (central) and 40-80\% (peripheral), and ratio comparisons between distributions from  central and peripheral events are shown in Fig.~\ref{fig:JSOs}. The \(p_\mathrm{T}^\mathrm{D}\)~distribution shows a discontinuity at 0.7 due to the strong dependence on number of constituents in jet. Systematic uncertainties were assumed to be uncorrelated, with uncertainties from various sources being added in quadrature. Parameters varied for calculating the uncertainties in this study are the MultiFold regularization parameters of batch size and number of iterations. Any residual non-closure from MultiFold were also included in the calculation of systematic uncertainties. A prior variation uncertainty was added from previous calculations using STAR $\sqrt{s} = 200$ GeV p+p collision data. 
+
+Results are consistent between central and peripheral collisions within conservative systematic uncertainties. This can be attributed to the assumption of uncorrelated systematic uncertainties, and a bias in the analysis towards hard-fragmented jets due to the selection of events and constituents for jet clustering. Harder-fragmented jets, on average are narrower and have lower interaction time with QGP, which could make any relative modification in central events compared to the peripheral ones lower than what would be potentially observed in an inclusive jet analysis. 
 \section{Conclusion and Outlook}
 
 

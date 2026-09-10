@@ -103,8 +103,8 @@
 \setcounter{tocdepth}{1}
 
 %commands
-\input{Commands.tex}
-\input{TikzDiagrams.tex}
+\input{defines/Commands.tex}
+\input{defines/TikzDiagrams.tex}
 
 \begin{document}
 \phd \title{Formalizing angular structure of particle jets}
@@ -138,29 +138,16 @@
 % \def\figdirlsb{./Figures/LSBs}
 % \captionsetup{font={stretch=1}} 
 
-\chapter{Introduction}
-\label{ch:intro}
-\input{intro}
 
-\chapter{Relativistic collisions of  nuclei}
-\label{ch:hic}
-\input{hic}
+\input{chapters/intro}
+\input{chapters/star_rhic}
+\input{chapters/hic}
+\input{chapters/methods}
+\input{chapters/jethadroncorr}
+\input{chapters/angularities}
 
-\chapter{Solenoidal Tracker At Relativistic Heavy Ion Collider}
-\label{ch:STAR}
-\input{star_rhic}
 
-\chapter{Jets and Machine Learning}
-\label{ch:methods}
-\input{methods}
 
-\chapter{Generalized Angularities}
-\label{ch:angularities}
-\input{angularities}
-
-\chapter{Jet-hadron correlations relative to the event plane}
-\label{ch:jhcorr}
-\input{jethadroncorr}
 
 % R E F E R E N C E S
 \def\aap{{A\&A}}
@@ -187,7 +174,7 @@
 % A P P E N D I X
 \appendix
 
-%\input{pca_appendix}
+\input{appendices/kinematics.tex}
 
 \clearpage
 

@@ -1,0 +1,102 @@
+\chapter{Relativistic Kinematics}
+\section{Laboratory vs Center-of-mass frames}
+A typical collision is a two-to-many reaction like:
+\begin{equation}
+	\underbrace{A}_{\rm projectile} + \underbrace{B}_{\rm target} \rightarrow C_1 + C_2 + C_3 + \ldots,
+\end{equation}
+
+In \emph{laboratory frame}, the target is at rest, so,
+\begin{equation}
+	\mathbf{p}_B^{\rm lab} = \vec{0} \implies p_{B}^{\rm lab} = (m_B, 0, 0, 0),
+\end{equation}
+
+In \emph{center-of-mass} frame, the sum of three-momentum vectors vanish in the initial and final states
+\begin{equation}
+	\mathbf{p}_A^{\rm cm} + \mathbf{p}_B^{\rm cm} =\sum_i \mathbf{p}_{C, i}^{\rm cm} = \vec{0},
+\end{equation}
+
+Using Lorentz invariance of the Mandelstam variable \(s \equiv (p_A + p_B)_\mu(p_A + p_B)^\mu\):
+\begin{align}
+	s &= (E^{\rm lab}_A + m_B)^2 - |\mathbf{p}^{\rm lab}_A|^2 = (E^{\rm cm}_A + E^{\rm cm}_B)^2 \notag \\
+	\implies s &= m_A^2 + m_B^2  + 2m_BE^{\rm lab}_A = (E^{\rm cm})^2 
+\end{align}
+
+As relativistic energies (\(\mathcal{O}(10^{2-3} \mathrm{GeV})\)) are much higher than reactant masses \(\mathcal{O}(1-10 \mathrm{GeV})\), 
+
+\begin{equation}
+	\sqrt{s} = E^{\rm cm} \approx \sqrt{2m_BE^{\rm lab}_A}
+\end{equation}
+As the center-of-mass energy that produces new particles increases only as \(\sqrt{E^{\rm lab}}\) , making any gain in particle production more expensive at relativistic energies. Thus modern colliders usually operate in center-of-mass frames.
+
+\section{Coordinate system}
+Considering the non-linear addition of velocities in relativistic mechanics,
+
+\begin{equation}
+	\beta = \frac{\beta_1 + \beta_2}{1 + \beta_1\beta_2},
+\end{equation}
+
+Considering the transformation \(y = \tanh^{-1}\beta\), 
+\begin{align}
+	\tanh^{-1}\beta_1 + \tanh^{-1}\beta_2 &= \tanh^{-1}  \frac{\beta_1 + \beta_2}{1 + \beta_1\beta_2} = \tanh^{-1}\beta\notag\\
+	\implies y_1 + y_2 &= y
+\end{align}
+
+The addition is linear again.  We call this transformed velocity \emph{rapidity}, given by:
+\begin{equation}
+	y = \tanh^{-1}\beta = \frac{1}{2} \ln \frac{1 + \beta}{1 - \beta}  = \frac{1}{2} \ln \frac{E + p_z}{E - p_z}
+	\label{eq:rapy}
+\end{equation}
+
+Rapidity can grow without bound, and at small velocities, \(y \approx \beta\), making it a relativistic analogue of velocity.  Since it transforms linearly under Lorentz boosts, rapidity distribution of particles retain their shapes. For relativistic energies, \(E \approx p\) , making \ref{eq:rapy},
+\begin{equation}
+	y \approx  \frac{1}{2} \ln \frac{p + p_z}{p - p_z} = -\ln\left(\tan\frac{\theta}{2}\right) = \eta
+\end{equation}
+\(\eta\) is called the \emph{pseudo-rapidity}, the massless limit of rapidity. As shown in \ref{fig:etavstheta}, pseudo-rapidity can be directly determined form particle production angle \(\theta\) measured with respect to the beam axis. 
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[scale=3]
+		%\message{^^JPseudorapidity including negative side}
+		\pgfkeys{
+			/pgf/fpu/output format=fixed, % fpu floating-point format
+			/pgf/number format/precision=2 % two decimals
+		}
+		\def\R{1.2} % radius/length of lines
+		\node[scale=1,below left=1] at (0,\R) {$y$}; % y axis
+		\node[scale=1,below left=1] at (\R,0) {$z$}; % z axis
+		\coordinate (O) at (0,0); % origin
+		\foreach \t in {180,170,150,135,120,90,60,45,30,10,0}{ % loop over theta
+			\ifnum \t = 0
+			\def\e{+\infty} % infinity symbol
+			\else \ifnum \t = 180
+			\def\e{-\infty} % infinity symbol
+			\else
+			\pgfkeys{/pgf/fpu=true} % increase floating-point precision in computation
+			\pgfmathparse{-ln(tan(\t/2))} % pseudorapidity
+			\pgfkeys{/pgf/fpu=false} % turn off to avoid interference with following
+			\pgfmathroundtozerofill{\pgfmathresult} % round with trailing zeroes
+			\pgfmathsetmacro\e{\t==90?0:\pgfmathresult} % no trailing zeroes for theta = 0
+			\fi \fi
+			\message{^^Jt=\t, e=\e}
+			\draw[eta line] % eta lines
+			(O) -- (\t:\R) coordinate(P\t) node[anchor=180+\t,black] {$\eta=\e$}
+			node[theta node] {$\theta=\t^\circ$};
+		}
+		\draw pic["$\theta$"scale=0.8,mysmallarrow] {angle = P0--O--P10}; % arrow label	
+	\end{tikzpicture}
+	\label{fig:etavstheta}
+	\caption{\(\eta \) vs \(\theta\) }
+\end{figure}
+
+Also considering \emph{azimuthal angle} (\(\varphi\)) and \emph{transverse-momentum} \(\left(p_{\rm T} = \sqrt{p_x^2 + p_y^2}\right)\) of the particles, which are invariant under boosts along the beam-line by design, we can use (\(p_{\rm T}, \eta, \varphi\)) as the coordinate system for the particles produced in the collision. \Fref{fig:detcoords} illustrates this coordinate system for a cylindrical collider detector. 
+
+
+\begin{figure}[htbp]
+	\centering
+	\detectorCoordinateSystem
+	\caption{The \((p_{\rm T}, \eta, \varphi)\) coordinate system, drawn for a cylindrical
+		collider detector. The beam axis defines \(z\) and the interaction point (IP) sits at
+		the origin. A particle of momentum \(\vec{p}\) is described by its transverse momentum
+		\(\vec{p}_{\rm T}\), its azimuthal angle \(\varphi\) in the transverse plane, and its
+		pseudo-rapidity \(\eta\), fixed by the polar angle \(\theta\) with respect to the beam.}
+	\label{fig:detcoords}
+\end{figure}

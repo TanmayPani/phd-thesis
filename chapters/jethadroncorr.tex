@@ -1,4 +1,5 @@
-
+\chapter{Jet-hadron correlations relative to the event plane}
+\label{ch:jhcorr}
 
 Historically, the effects of the medium on high energy partons were studied by measuring the leading particles and studying the \ensuremath{p_{\rm T}}\xspace distribution of pairs of high-\ensuremath{p_{\rm T}}\xspace particles.  Leading particle studies, however, have limitations in extreme quenching scenarios.  In these cases, particle emission occurs near the surface of the medium and thus the sensitivity of the leading particles to the region of highest energy density is very limited.  This consequently makes the nuclear modification factor insensitive to medium properties.  Full jet reconstruction allows for unbiased measurement of the original parton 4-momentum and the transverse and longitudinal  shape of the jet.  Through modifications of the jet structure, properties of the medium can be studied.  
 
@@ -132,9 +133,9 @@ The combinatorial background ($N^{\rm bkgd}_{\rm assoc,jet}$) from Eq.~\ref{Eqtn
 \begin{equation}
 	v^{\mathfrak{R}}_{n, \mathrm{jet}} = 
 	\begin{cases}
-		\frac{1}{\beta^\mathfrak{R}}\left(v_{n, \mathrm{jet}}+\cos(n\phi_{s}^\mathfrak{R})
-		\frac{\sin(nc)}{nc}R_{n} + \sum_{k=2,4,6,..} (v_{(k+n), \mathrm{jet}}+v_{|k-n|, \mathrm{jet}})
-		\cos(k\phi_{s}^\mathfrak{R}) \frac{\sin(kc)}{kc}R_{n}\right)& \text{if $n$ is even,}\\
+		\frac{v_{n, \mathrm{jet}}}{\beta^\mathfrak{R}}+ \cos(n\phi_{s}^\mathfrak{R}) \frac{\sin(nc)}{nc}\frac{R_{n}}{\beta^\mathfrak{R}} + &\\
+		\frac{1}{\beta^\mathfrak{R}}\sum_{k=2,4,6,..} (v_{(k+n), \mathrm{jet}}+v_{|k-n|, \mathrm{jet}})
+		\cos(k\phi_{s}^\mathfrak{R}) \frac{\sin(kc)}{kc}R_{n} & \text{if $n$ is even,}\\
 		v_{n, \mathrm{jet}} & \text{if $n$ is odd.}
 	\end{cases}
 	\label{Eq:vRn}
