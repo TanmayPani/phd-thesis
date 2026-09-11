@@ -106,11 +106,37 @@
 %	\end{sidewaystable}
 \chapter{Relativistic collisions of  nuclei}
 \label{ch:hic}
-As discussed in 
-\section{Jets}
-The discussions on parton shower and fragmentation show partons cleanly branching into partons and eventually giving rise to hadrons that can be traced back to the shower partons. So in principle, a \emph{jet finding algorithm} should be able to faithfully get the kinematics of the initiating parton. However, the picture is not so straightforward even at the parton level, before we have the complications from hadronization and detector level reconstruction. This ambiguity can already be seen in a clean reaction like \(e^+e^-\to q\bar{q}\). If one of the quark emits a gluon, then depending on the emission angle of the gluon, we might cluster 2 or 3 jets in the final state. So one can foresee the inherent ambiguity of jet definition for more complicated hadron-hadron collisions, led to the Snowmass Accord, which stated that, experimental and theoretical measurements had to use the same jet finding algorithm  on final state hadrons in order to be comparable. 
+Outgoing partons from hard processes undergo many successive splitting and fragmentation processes, becoming a collimated ``spray'' of hadrons called \emph{jets} which are detected as dense clustering of energy in calorimeters. 
+%
+In principle, a \emph{jet finding algorithm} should be able to faithfully get the kinematics of the initiating parton given the theory discussed in sec.\ref{sec:partonShower}, which show partons cleanly branching into partons and eventually fragmenting into final-state hadrons that can be traced back to the shower partons. 
+%
+However reality is rarely this straightforward. 
+%
+First, the fragmentation functions that connect the partons and final state hadrons cannot be calculated in experiments. 
+%
+Second, it is not trivial to establish connection between final state particles and initial state partons even at the parton level, before we have the complications from hadronization and detector level reconstruction. 
+%
+For example, in a clean reaction like \(e^+e^-\to q\bar{q}\). If one of the quark emits a gluon, then depending on the emission angle of the gluon, we might cluster 2 or 3 jets in the final state. We will discuss more about jet finding in \ref{sec:jetAlgo}
 
-Even after we define a jet, another ambiguity comes from the decision of what constituents in the event must be used as inputs into the jet finding algorithm. Especially, in Au+Au collisions jet-medium interactions make that choice non-trivial. Keeping these considerations in mind, a ``good'' jet finding algorithm is:
+As discussed in Sec. \ref{sec:QGPIntro}, collisions of heavy-ions at near-light speeds can create the conditions for forming QGP.
+%
+Sec.~\ref{sec:RHIC} discussed RHIC and sec.~\ref{sec:STAR} describe the STAR detector system. 
+%
+Before moving on to analyses of heavy-ion collisions, we need to establish a few more concepts. 
+%
+Nuclei like $\rm ^{197}_{79}Au$, $\rm ^{96}_{40}Zr$, $\rm ^{96}_{44}Ru$,  etc. are complex arrangements of protons and neutrons that have a multitude of non-trivial initial configurations leading up to their collisions which have significant effects on the final state particle distributions. 
+%
+Therefore, any measurement done using heavy-ion events need to report these initial configurations of the colliding nuclei. We discuss these in sec.~\ref{sec:heavyIonCollisions}. 
+
+
+
+\section{Jets}
+\label{sec:jetAlgo}
+To address the prevalent ambiguity of jet definitions, the Snowmass Accord \CITETHIS stated that, experimental and theoretical measurements had to use the same jet finding algorithm on final state hadrons in order to be comparable. 
+%
+Thus clustered jets are not-quite the proxies for partons in the same way as parton showers, but regions in the phase space that are most likely to have contributions from parton showers. 
+%
+Even after we define a jet, another ambiguity comes from the decision of what constituents in the event must be used as inputs into the jet finding algorithm. Especially, in heavy-ion collisions jet-medium interactions make that choice non-trivial. Keeping these considerations in mind, a ``good'' jet finding algorithm is:
 \begin{itemize}
 	\item \emph{Collinear safe}, meaning  it would find the same jet with the same \(p_\mathrm{T, jet}\) regardless of  fragmentation details
 	\item \emph{Infrared safe}, meaning  it would find the same jets, even in the presence of a
@@ -120,20 +146,22 @@ Even after we define a jet, another ambiguity comes from the decision of what co
 The most commonly used family of infrared and collinear safe jet algorithms, sequentially recombines constituents in an event according to the following prescription:
 
 \begin{enumerate} 
-	\item Calculate
+	\item For every pair of particles \(\{i,j\}\) with momenta \((\mathbf{p}_i, \mathbf{p}_j) \equiv \{(p_{\mathrm{T},i}, \eta_i, \varphi_i), (p_{\mathrm{T},j}, \eta_j, \varphi_j)\}\)
 	\begin{equation}
-		d_{ij} = {\mathrm {min}}(p_{T,i}^{2p},p_{T,j}^{2p})\frac{(\eta_i-\eta_j)^2+(\phi_i-\phi_j)^2}{R^2}
+		d_{ij} = {\mathrm {min}}(p_{T,i}^{2p},p_{T,j}^{2p})\frac{\Delta R_{ij}^2}{R^2},~\text{and}~d_{i} = p_{T,i}^{2p}
 	\end{equation}
-	and 
-	\begin{equation}
-		d_{i} = p_{T,i}^{2p}
-	\end{equation}
-	for every pair of particles where $p_{T,i}$ and $p_{T,j}$ are the momenta of the particles, $\eta_i$ and $\eta_j$ are the pseudorapidities of the particles, and $\phi_i$ and $\phi_j$ are the azimuthal angles of the particles. \(R\) is the resolution parameter of the algorithm, which decides the angular extent of clustered jets.
-	\item Find the minimum of the $d_{ij}$ and $d_{i}$.  If this minimum is a $d_{ij}$, combine these particles into one jet candidate, adding their energies and momenta, and return to the first step.  
+%
+where, \(\Delta R_{ij}^2 = (\eta_i-\eta_j)^2+(\phi_i-\phi_j)^2\) is the \etaphi distance between particle \(i\) and \(j\). 
+%
+\(R\) is the resolution parameter of the algorithm, which decides the angular extent of clustered jets.
+%
+	\item Find the minimum of the $d_{ij}$ and $d_{i}$.  
+	%
+	If this minimum is a $d_{ij}$, combine these particles into one jet candidate, adding their energies and momenta, and return to the first step.  
 	\item If the minimum is a $d_{i}$, this is a final state jet candidate.  Remove it from the list and return to the first step.  Iterate until no particles remain.  
 \end{enumerate}
 
-Above algorithm becomes the \(k_\mathrm{T}\) algorithm for \(p=1\), Cambridge-Aachen for \(p=0\) and the most widely used anti- \(k_\mathrm{T}\) algorithm for \(p=-1\). 
+Above algorithm becomes the \emph{\(k_\mathrm{T}\) algorithm} for \(p=1\), \emph{Cambridge-Aachen} for \(p=0\) and the most widely used \emph{anti-\(k_\mathrm{T}\) algorithm} for \(p=-1\). 
 
 \subsection{SoftDrop}
 The soft drop grooming procedure can be summarized as follows. First, the observed jet is reclustered with the Cambridge/Aachen (C/A) algorithm.
@@ -324,4 +352,6 @@ The heavy ion collision and the evolution of the fireball, as depicted in Figure
 \end{figure}
 
 \section{Signatures of QGP}
-Different seminal results go here...
+Since 
+
+Since QGP is short-lived, the properties of the QGP medium can only be studied from the final state particles measured by the detectors. These "final state" particles carry imprints of the medium’s properties which influence their final momenta distributions and correlations. Among the key observables in this regard is the azimuthal anisotropy in the momentum distribution of the final state particles, denoted as the \textit{anisotropic flow}

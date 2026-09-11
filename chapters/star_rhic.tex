@@ -2,6 +2,7 @@
 \label{ch:STAR}
 
 \section{Relativistic Heavy-Ion Collider (RHIC)}
+\label{sec:RHIC}
 \begin{figure}[h]
 	\centering
 	\label{fig:RHIC-AGS}
@@ -45,6 +46,7 @@ when the ion beam reached top speed in the AGS, it was taken down another beamli
 There are 6 interaction regions (IR) around the RHIC complex, where the two beams cross and allow for detectors to be placed. 4 such detectors have existed during RHIC's operation: At 10 o'clock and 2 o'clock, the PHOBOS and BRAHMS experiments operated only for the first few years of RHIC (ending in 2006). At 8 o’clock, the PHENIX experiment collected data from 2000 to 2016 and was then transformed into the sPHENIX detector which began operations in 2023. STAR sits at the 6 o'clock position, and has been the only experiment running for all 25 years of RHIC's existence.
 
 \section{The STAR detector}
+\label{sec:STAR}
 STAR is designed to provide hermetic coverage around the interaction point, emphasizing precise tracking capabilities in high multiplicity environments, for its main physics mission of obtaining a fundamental understanding of the microscopic structure of QCD interactions at high energy densities.
 %\begin{figure}[h]
 %	\centering
@@ -80,6 +82,37 @@ STAR is designed to provide hermetic coverage around the interaction point, emph
 \end{figure}
 
 It is a highly versatile, multipurpose detector with several subsystems used for triggering, tracking and identifying the particle species for charged tracks, and calorimetry. These subsystems are surrounded by a room-temperature solenoid magnet 6.2 m long and 5.26 m in diameter which generates a magnetic field of 0.5 T in the detector volume. The detector is cylindrical with full coverage in the azimuthal direction in the mid-rapidity region along with wide coverage in pseudorapidity. A schematic diagram of the STAR detector with its various detector subsystems is shown in Fig.~\ref{fig:STARDetector}. As the only experiment running continuously since the inception of RHIC, STAR has undergone major upgrades that have augmented its tracking capabilities and increased its acceptance in the forward rapidity regions. The main detectors used for this analysis are the Time Projection Chamber (TPC) and Barrel Electromagnetic Calorimeters (BEMC). 
+
+\subsection{Detector Coordinate System}
+\label{sec:detCoordSys}
+Before we get to the components of the STAR detector system, we will introduce the coordinate system used for the calculations involved. STAR is cylindrical around the beamline, so a convenient choice for \(z\)-axis is the beamline going east-west. \(z=0\) is set at the \emph{Interaction Point} (IP), center of the detector volume, as shown in Fig.~\ref{fig:detcoords}
+
+ Kinematics of ultra-relativistic particles are described by its four-momentum, \((E, p_\mathrm{x}, p_\mathrm{y}, p_\mathrm{z})\). However, these coordinates are not additive under Lorentz boosts in the \(z\)-direction, making calculations involving relativistic entities somewhat unwieldy.  Since \(p_\mathrm{x}, p_\mathrm{y}\) are already invariant under Lorentz boosts along the \(z\)-axis, we can just convert them to the convenient cylindrical coordinates
+ \begin{equation}
+ 	p_\mathrm{T} = \sqrt{p_\mathrm{x}^2 + p_\mathrm{y}^2},\quad \varphi = \arctan(\frac{p_\mathrm{y}}{p_\mathrm{y}}) 
+ \end{equation}
+ Energy (\(E\)) can be replaced with the particle's mass (\(m\)), or transverse mass \(m_\mathrm{T} = \sqrt{p_\mathrm{T}^2 + m^2}\)
+ We can make the \(z\)-coordinate additive under Lorentz Boosts along \(z\)-axis by representing a particle's direction along the \(z\)-axis by \emph{rapidity}
+\begin{equation}
+		y  = \frac{1}{2} \ln \frac{E + p_z}{E - p_z} 
+\end{equation}
+
+However since \(y\) is mass-dependent and most detectors don't provide robust particle identification at all kinematic ranges. We usually define the \(z\)-direction in a detector using \emph{Pseudorapidity}, which is the massless limit of rapidity
+\begin{equation}
+	\eta = \lim_{m\to 0} y= \frac{1}{2} \ln \frac{p + p_z}{p - p_z}  = -\ln(\tan\frac{\theta}{2})
+\end{equation}
+Where \(\theta\) is the polar angle between the particle's direction and the \(z\)-axis as shown in Fig.~\ref{fig:detcoords}. Thus a particle's four-momentum is given by \((m_\mathrm{T}, p_\mathrm{T}, \eta, \varphi)\) or \((p_\mathrm{T}, \eta, \varphi, m)\).  See Appendix~\ref{sec:coordSysAppendix} for a more detailed derivation of coordinates.
+
+\begin{figure}[htbp]
+	\centering
+	\detectorCoordinateSystem
+	\caption{The \((p_{\rm T}, \eta, \varphi)\) coordinate system, drawn for a cylindrical
+		collider detector. The beam axis defines \(z\) and the interaction point (IP) sits at
+		the origin. A particle of momentum \(\vec{p}\) is described by its transverse momentum
+		\(\vec{p}_{\rm T}\), its azimuthal angle \(\varphi\) in the transverse plane, and its
+		pseudo-rapidity \(\eta\), fixed by the polar angle \(\theta\) with respect to the beam.}
+	\label{fig:detcoords}
+\end{figure}
 
 \subsection{TPC} \label{TPC}
  Time Projection Chamber (TPC)\CITETHIS was the the primary tracking detector for STAR, providing particle identification and momentum information for charged tracks by measuring their ionization energy loss (dE/dx) inside the TPC volume\CITETHIS. As shown in Fig. \ref{fig:TPC} the TPC was a cylindrical detector 420 cm long with an outer (inner) radii of 200 (50) cm, concentric to the 0.5 T solenoid. Its acceptance covered a pseudorapidity range of $|\eta| < 1.0$, along with full azimuthal coverage. Particle momenta could be measured accurately over a range of 0.1 to 30~GeV/\(c\), and particle identification was limited between 0.1 and 1~GeV/\(c\).
@@ -138,6 +171,18 @@ It covers the pseudorapidity range $|\eta| < 1$ and the full azimuth range (\(0 
 	\label{fig:BEMC}
 \end{figure}
 
-The inner and outer radii of the BEMC are 223.5 cm and 263 cm respectively. It consists of 120 modules, each containing 40 towers, totaling 4800 towers. Each of the towers covers a range of $\Delta \eta \times \Delta \phi = 0.05 \times 0.05$. This is approximately 10 cm × 10 cm near $\eta = 0$ and grows slightly with increasing $|\eta|$ due to their projective geometry toward the center of the detector ($z = 0$). Each BEMC tower is built with 20 alternating layers of 5-mm thick lead, which act as absorbers to initiate electromagnetic showers, and 21 layers of plastic scintillators, which detect the light produced by these showers. Together, these layers create a depth of around 20 radiation lengths ($\rm X_0$), allowing the calorimeter to capture nearly all of the energy from electromagnetic showers. This depth is enough to contain 95 \% of the energy from electrons and photons above 1 GeV. Within these layers, the Shower Maximum Detector (SMD) is located around 5-7 radiation lengths in, where the shower’s energy is most concentrated. The SMD is a gas\footnote{90 \% Argon, 10 \% $\rm CO_{2}$}-filled proportional counter and improves spatial resolution to help differentiate between the profiles of electromagnetic and hadronic showers.
-
-The BEMC has an energy resolution that improves with particle energy, around 17\% for 1.5 GeV electrons and 10\% for 3 GeV electrons in head-on Au + Au collisions. This follows a typical calorimetric trend where energy resolution decreases as energy increases ($\sigma_{E}/E \approx 1.5 \% + 15 \% /\sqrt{E}$), providing complementarity with TPC where the resolution increases with increasing momentum ($\sigma_{p_\mathrm{T}}/p_\mathrm{T} \propto p_\mathrm{T}$).
+The BEMC had inner and outer radii of  223.5 cm and 263 cm respectively and consisted of 120 modules, each containing 40 towers, totaling 4800 towers. 
+%
+Each of the towers covers a range of $\Delta \eta \times \Delta \phi = 0.05 \times 0.05$, approximately 10 cm × 10 cm near $\eta = 0$, growing slightly with increasing $|\eta|$ due to their projective geometry toward the center of the detector ($z = 0$). 
+%
+Each tower was built with 20 alternating layers of 5-mm thick lead, acting as absorbers to initiate electromagnetic showers, and 21 layers of plastic scintillators, which detect the photons produced by these showers. 
+%
+Together, the layers created a depth of around 20 radiation lengths ($\rm X_0$), allowing the calorimeter to capture nearly all of the energy from electromagnetic showers. 
+%
+This depth is enough to contain 95 \% of the energy from electrons and photons above 1 GeV. 
+%
+Within these layers, the shower’s energy was most concentrated around 5-7 radiation lengths in, where the Shower Maximum Detector (SMD), a gas (90 \% Argon, 10 \% $\rm CO_{2}$)-filled proportional counter improved spatial resolution to help differentiate between electromagnetic and hadronic shower profiles.
+%
+The BEMC has an energy resolution that improves with particle energy, around 17\% for 1.5 GeV electrons and 10\% for 3 GeV electrons in head-on Au + Au collisions.
+%
+ This follows a typical calorimetric trend where energy resolution decreases as energy increases ($\sigma_{E}/E \approx 1.5 \% + 15 \% /\sqrt{E}$), providing complementarity with TPC where the resolution increases with increasing momentum ($\sigma_{p_\mathrm{T}}/p_\mathrm{T} \propto p_\mathrm{T}$).
