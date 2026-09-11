@@ -116,9 +116,9 @@ First, the fragmentation functions that connect the partons and final state hadr
 %
 Second, it is not trivial to establish connection between final state particles and initial state partons even at the parton level, before we have the complications from hadronization and detector level reconstruction. 
 %
-For example, in a clean reaction like \(e^+e^-\to q\bar{q}\). If one of the quark emits a gluon, then depending on the emission angle of the gluon, we might cluster 2 or 3 jets in the final state. We will discuss more about jet finding in \ref{sec:jetAlgo}
+For example, in a clean reaction like \(e^+e^-\to q\bar{q}\). If one of the quark emits a gluon, then depending on the emission angle of the gluon, we might cluster 2 or 3 jets in the final state. We will further define jet finding in sec.~\ref{sec:jetAlgo}
 
-As discussed in Sec. \ref{sec:QGPIntro}, collisions of heavy-ions at near-light speeds can create the conditions for forming QGP.
+As discussed in sec.~\ref{sec:QGPIntro}, collisions of heavy-ions at near-light speeds can create the conditions for forming QGP.
 %
 Sec.~\ref{sec:RHIC} discussed RHIC and sec.~\ref{sec:STAR} describe the STAR detector system. 
 %
@@ -130,7 +130,7 @@ Therefore, any measurement done using heavy-ion events need to report these init
 
 
 
-\section{Jets}
+\section{Finding Jets}
 \label{sec:jetAlgo}
 To address the prevalent ambiguity of jet definitions, the Snowmass Accord \CITETHIS stated that, experimental and theoretical measurements had to use the same jet finding algorithm on final state hadrons in order to be comparable. 
 %
@@ -170,19 +170,69 @@ Second, the soft drop criterion from Eq. \ref{eq:softDropCrit} is checked at eac
 	\label{eq:softDropCrit}
 	\frac{\min(p_\mathrm{T,1}, p_\mathrm{T, 2})}{p_\mathrm{T,1} + p_\mathrm{T, 2}} > z_\mathrm{cut} \left(\frac{\Delta R_{12}}{R}\right)^\beta
 \end{equation}
-Here \(p_\mathrm{T, \{1,2\}}\) are the momenta of the two
-branches that had been merged together and \(\Delta R_{12}\) is their geometric distance in the \etaphi plane. When the softer branch fails the
-criterion it is removed from the jet and the procedure continues until it is satisfied. The remaining particles in the jet constitute
-the soft drop groomed jet. A convenient choice can be made for the soft threshold parameter \(z_\mathrm{cut}\) and the angular exponent \(\beta\). For \(\beta = 0\) the soft drop procedure reduces to the modified mass drop tagger (mMDT)
-\subsection{Background Subtraction}
-\subsubsection{Area based}
-\subsubsection{Constituent based}
+Here \(p_\mathrm{T, \{1,2\}}\) are the momenta of the two branches that had been merged together and \(\Delta R_{12}\) is their geometric distance in the \etaphi plane. 
+%
+When the softer branch fails the criterion it is removed from the jet and the procedure continues until it is satisfied. 
+%
+The remaining particles in the jet constitute the soft drop groomed jet. 
+%
+A convenient choice can be made for the soft threshold parameter \(z_\mathrm{cut}\) and the angular exponent \(\beta\). 
+%
+For \(\beta = 0\) the soft drop procedure reduces to the modified mass drop tagger (mMDT). 
+%
+Using Recursive SoftDrop, we can decompose angularities into pQCD and npQCD components. 
+%
+pQCD component is the angularity calculated from the jet after grooming has been performed and the npQCD component is calculated as the difference between the inclusive/ungroomed and groomed jet angularities. 
+
+\begin{align}
+	\mathcal{O}_\beta^\mathrm{\kappa} &= \mathcal{O}_\mathrm{\beta, pQCD}^\kappa + \mathcal{O}_\mathrm{\beta, npQCD}^\kappa \notag\\
+	\mathcal{O}_\mathrm{\beta, pQCD}^\kappa &\equiv \mathcal{O}_\mathrm{\beta, g}^\kappa \notag \\
+	\mathcal{O}_\mathrm{\beta, npQCD}^\kappa &\equiv \Delta\mathcal{O}_\mathrm{\beta}^\kappa = \mathcal{O}_\beta^\mathrm{\kappa} -  \mathcal{O}_\mathrm{\beta, g}^\kappa
+\end{align}
+
+Using the momentum balance (\(z_\mathrm{g}\)) and angularity of the first collinear-splitting (\(R_\mathrm{g}\)), we get direct connection between measurement of jet shapes and calculations from field theory. 
+%
+Larger \(R_\mathrm{g}\) implies that the most prominent split in the jet occurred earlier in its evolution, opening up more phase space for pQCD splittings (which survive SoftDrop grooming) because of color coherence discussed earlier.
+%
+Fig.~\ref{fig:GroomingAndRg} shows percentage npQCD contribution to jet width \(\left(\frac{\Delta \lambda_1^1}{\lambda_1^1} \times 100\right)\) decreasing  with increasing \(R_\mathrm{g}\), going from highly collimated, pencil-like jets to jets with proper two pronged structure.
+\begin{figure}[h]
+	\label{fig:GroomingAndRg}
+	\includegraphics[width=\linewidth]{figures/fig_grooming_cartoon_4panel.pdf}
+	\caption{ Ways of arranging constituents (each represented as a circle whose radius represent \(\frac{p_\mathrm{T, const}}{p_\mathrm{T, jet}}\)) in the \etaphi space within a jet with \(p_\mathrm{T, jet} = 30~\text{GeV}/c\) such that \(R_\mathrm{g}\) of the jet increases going from left to right. Green (Red) colored constituents survive (are removed by) the SoftDrop grooming ( \(z_\mathrm{cut} = 0.2,~\beta = 0\)).}
+\end{figure}
+
 
 \section{Heavy-Ion Collisions}
 \label{sec:heavyIonCollisions}
+Estimates of the energy density indicate that central heavy ion collisions with an incoming energy per nucleon pair as low as \sNN{7.7} GeV, the lower boundary of collision energies accessible at RHIC, can reach energy densities above 1 GeV/fm$^3$~\CITETHIS and that collisions at 2.76 TeV, accessible at the LHC, reach energy densities as high as 12 GeV/fm$^3$~\CITETHIS. Contrary to initial na\"ive expectations of a gas-like QGP, the QGP formed in these collisions was shown to behave like a liquid of quarks and gluons ~\CITETHIS.
 
-\subsection{Initial State}
-\subsection{Centrality Determination} \label{sect:CentEP}
+The heavy ion collision and the evolution of the fireball, as depicted in Figure~\ref{fig:lightcone}, has several stages, and the measurement of the final state particles can be affected by one or all of these stages depending on the production mechanism and interaction time within the medium. 
+%
+The initial state of the incoming nuclei is not precisely known, but its properties impact the production of final state particles.  
+%
+The incoming nuclei are often modeled as either an independent collection of nucleons called a Glauber initial state~\CITETHIS, or a wall of coherent gluons called a Color Glass Condensate~\CITETHIS. We discuss the Glaubler model further in 
+
+In either initial state model, both the impact parameter of the nuclei and fluctuations in the positions of the incoming quarks or gluons, called partons, lead to an asymmetric nuclear overlap region.  
+
+This asymmetric overlap is shown schematically in \Fref{Fig:flowschematic}.  The description of the initial state most consistent with the data is between these extremes~\CITETHIS.  
+
+The proposed electron ion collider is expected to resolve ambiguities in the initial state of heavy ion collisions~\CITETHIS. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/LightCone1_color-crop}
+	\caption{A light cone diagram showing the stages of a heavy ion collision.  The abbreviation  $T_{\mathrm fo}$ is for the thermal freeze-out temperature, $T_{\mathrm ch}$ is for the chemical freeze-out temperature, and $T_{\mathrm c}$ is for the critical temperature where the phase transition between a hadron gas and a QGP occurs.  $\tau_0$ is the formation time of the QGP.}
+	\label{fig:lightcone}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{figures/T_mu_vs_sNN}
+	\caption{Chemical freeze-out parameters \(T\) and \(\mu_\mathrm{B}\) obtained by thermal model fits to experimental data on particle yields as a function of collision energies. Red line represents parametrizations of \(T\) and \(\mu_\mathrm{B}\) as a function of $\sqrt{s_\mathrm{NN}}$}
+	\label{fig:tmuvssnn}
+\end{figure}
+\subsection{Initial State of Colliding Nuclei}
+\subsubsection{Centrality Determination} \label{sect:CentEP}
 In heavy-ion collisions, the impact parameter (\(b\)) of collisions is defined by the distance between the geometrical centers of the colliding nuclei in the plane transverse to their direction. A schematic diagram of the geometry of heavy-ion collisions is shown in Fig. \ref{fig:hictikz}. 
 
 
@@ -245,7 +295,7 @@ where the quantity \(n_{pp}\) is the multiplicity from a \(p+p\) collision of th
 Fig.~\ref{fig:centralityVsNch} illustrates collision centrality definition in heavy-ion collisions by comparing the charge particle multiplicities with Glauber MC + Two-component model simulation. Centrality classes are classified for the simulated distribution. \(\langle N_\mathrm{part}\rangle\), \(\langle N_\mathrm{coll}\rangle\) in those centrality classes are calculated.
 
 
-\subsection{Event plane reconstruction}
+\subsubsection{Event plane reconstruction}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.4\textwidth]{figures/flow_elliptic_init_v4.pdf}
@@ -322,36 +372,11 @@ Furthermore, individual events are divided into two random sub-events by assigni
 
 The event-plane resolution is multiplicity dependent and calculated for separate ranges of collision centrality using the two sub-events method.  Narrower bins are calculated and then combined accordingly to match the ranges used by this analysis, by averaging the results from the narrow bins weighted by the multiplicity of each bin \cite{Voloshin:2008dg}.
 
-\section{Spacetime picture of QGP}
-Estimates of the energy density indicate that central heavy ion collisions with an incoming energy per nucleon pair as low as \sNN{7.7} GeV, the lower boundary of collision energies accessible at RHIC, can reach energy densities above 1 GeV/fm$^3$~\CITETHIS and that collisions at 2.76 TeV, accessible at the LHC, reach energy densities as high as 12 GeV/fm$^3$~\CITETHIS. Contrary to initial na\"ive expectations of a gas-like QGP, the QGP formed in these collisions was shown to behave like a liquid of quarks and gluons ~\CITETHIS.
-
-The heavy ion collision and the evolution of the fireball, as depicted in Figure~\CITETHIS, has several stages, and the measurement of the final state particles can be affected by one or all of these stages depending on the production mechanism and interaction time within the medium.  
-%
-%The initial state of the incoming nuclei is not precisely known, but its properties impact the production of final state particles.  
-%
-%The incoming nuclei are often modeled as either an independent collection of nucleons called a Glauber initial state~\CITETHIS, or a wall of coherent gluons called a Color Glass Condensate~\CITETHIS.  
-%
-%In either initial state model, both the impact parameter of the nuclei and fluctuations in the positions of the incoming quarks or gluons, called partons, lead to an asymmetric nuclear overlap region.  
-%
-%This asymmetric overlap is shown schematically in \Fref{Fig:flowschematic}.  The description of the initial state most consistent with the data is between these extremes~\CITETHIS.  
-%
-%The proposed electron ion collider is expected to resolve ambiguities in the initial state of heavy ion collisions~\CITETHIS. 
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.7\linewidth]{figures/LightCone1_color-crop}
-	\caption{A light cone diagram showing the stages of a heavy ion collision.  The abbreviation  $T_{\mathrm fo}$ is for the thermal freeze-out temperature, $T_{\mathrm ch}$ is for the chemical freeze-out temperature, and $T_{\mathrm c}$ is for the critical temperature where the phase transition between a hadron gas and a QGP occurs.  $\tau_0$ is the formation time of the QGP.}
-	\label{fig:lightcone}
-\end{figure}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\linewidth]{figures/T_mu_vs_sNN}
-	\caption{Chemical freeze-out parameters \(T\) and \(\mu_\mathrm{B}\) obtained by thermal model fits to experimental data on particle yields as a function of collision energies. Red line represents parametrizations of \(T\) and \(\mu_\mathrm{B}\) as a function of $\sqrt{s_\mathrm{NN}}$}
-	\label{fig:tmuvssnn}
-\end{figure}
+\subsection{Background Subtraction}
+\subsubsection{Area based}
+\subsubsection{Constituent based}
 
 \section{Signatures of QGP}
-Since 
+Since QGP is extremely short-lived, 
 
 Since QGP is short-lived, the properties of the QGP medium can only be studied from the final state particles measured by the detectors. These "final state" particles carry imprints of the medium’s properties which influence their final momenta distributions and correlations. Among the key observables in this regard is the azimuthal anisotropy in the momentum distribution of the final state particles, denoted as the \textit{anisotropic flow}
