@@ -160,9 +160,13 @@ where, \(\Delta R_{ij}^2 = (\eta_i-\eta_j)^2+(\phi_i-\phi_j)^2\) is the \etaphi 
 	If this minimum is a $d_{ij}$, combine these particles into one jet candidate, adding their energies and momenta, and return to the first step.  
 	\item If the minimum is a $d_{i}$, this is a final state jet candidate.  Remove it from the list and return to the first step.  Iterate until no particles remain.  
 \end{enumerate}
-
-Above algorithm becomes the \emph{\(k_\mathrm{T}\) algorithm} for \(p=1\), \emph{Cambridge-Aachen} for \(p=0\) and the most widely used \emph{anti-\(k_\mathrm{T}\) algorithm} for \(p=-1\). 
-
+This algorithm becomes the \emph{\(k_\mathrm{T}\) algorithm} for \(p=1\), \emph{Cambridge-Aachen} for \(p=0\) and the most widely used \emph{anti-\(k_\mathrm{T}\) algorithm} for \(p=-1\). The difference in these algorithms are shown in fig.~\ref{fig:jetalgorithms}.  The \emph{FastJet} library efficiently implements these algorithms and a few more, and is the de-facto standard in the High Energy Physics (HEP) community. 
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{jetalgorithms.png}
+	\caption{Jets reconstructed using the $k_{\rm T}$ (left), Cambridge/Aachen (middle), and anti-$k_{\rm T}$ (right) algorithms.}
+	\label{fig:jetalgorithms}
+\end{figure}
 \subsection{SoftDrop}
 The soft drop grooming procedure can be summarized as follows. First, the observed jet is reclustered with the Cambridge/Aachen (C/A) algorithm.
 Second, the soft drop criterion from Eq. \ref{eq:softDropCrit} is checked at each clustering step when going backward through the C/A clustering tree.
@@ -180,7 +184,7 @@ A convenient choice can be made for the soft threshold parameter \(z_\mathrm{cut
 %
 For \(\beta = 0\) the soft drop procedure reduces to the modified mass drop tagger (mMDT). 
 %
-Using Recursive SoftDrop, we can decompose angularities into pQCD and npQCD components. 
+Using SoftDrop, we can decompose angularities into pQCD and npQCD components. 
 %
 pQCD component is the angularity calculated from the jet after grooming has been performed and the npQCD component is calculated as the difference between the inclusive/ungroomed and groomed jet angularities. 
 
@@ -195,7 +199,7 @@ Using the momentum balance (\(z_\mathrm{g}\)) and angularity of the first collin
 Larger \(R_\mathrm{g}\) implies that the most prominent split in the jet occurred earlier in its evolution, opening up more phase space for pQCD splittings (which survive SoftDrop grooming) because of color coherence discussed earlier.
 %
 Fig.~\ref{fig:GroomingAndRg} shows percentage npQCD contribution to jet width \(\left(\frac{\Delta \lambda_1^1}{\lambda_1^1} \times 100\right)\) decreasing  with increasing \(R_\mathrm{g}\), going from highly collimated, pencil-like jets to jets with proper two pronged structure.
-\begin{figure}[h]
+\begin{figure}
 	\label{fig:GroomingAndRg}
 	\includegraphics[width=\linewidth]{figures/fig_grooming_cartoon_4panel.pdf}
 	\caption{ Ways of arranging constituents (each represented as a circle whose radius represent \(\frac{p_\mathrm{T, const}}{p_\mathrm{T, jet}}\)) in the \etaphi space within a jet with \(p_\mathrm{T, jet} = 30~\text{GeV}/c\) such that \(R_\mathrm{g}\) of the jet increases going from left to right. Green (Red) colored constituents survive (are removed by) the SoftDrop grooming ( \(z_\mathrm{cut} = 0.2,~\beta = 0\)).}
@@ -204,37 +208,56 @@ Fig.~\ref{fig:GroomingAndRg} shows percentage npQCD contribution to jet width \(
 
 \section{Heavy-Ion Collisions}
 \label{sec:heavyIonCollisions}
-Estimates of the energy density indicate that central heavy ion collisions with an incoming energy per nucleon pair as low as \sNN{7.7} GeV, the lower boundary of collision energies accessible at RHIC, can reach energy densities above 1 GeV/fm$^3$~\CITETHIS and that collisions at 2.76 TeV, accessible at the LHC, reach energy densities as high as 12 GeV/fm$^3$~\CITETHIS. Contrary to initial na\"ive expectations of a gas-like QGP, the QGP formed in these collisions was shown to behave like a liquid of quarks and gluons ~\CITETHIS.
 
-The heavy ion collision and the evolution of the fireball, as depicted in Figure~\ref{fig:lightcone}, has several stages, and the measurement of the final state particles can be affected by one or all of these stages depending on the production mechanism and interaction time within the medium. 
-%
-The initial state of the incoming nuclei is not precisely known, but its properties impact the production of final state particles.  
-%
-The incoming nuclei are often modeled as either an independent collection of nucleons called a Glauber initial state~\CITETHIS, or a wall of coherent gluons called a Color Glass Condensate~\CITETHIS. We discuss the Glaubler model further in 
-
-In either initial state model, both the impact parameter of the nuclei and fluctuations in the positions of the incoming quarks or gluons, called partons, lead to an asymmetric nuclear overlap region.  
-
-This asymmetric overlap is shown schematically in \Fref{Fig:flowschematic}.  The description of the initial state most consistent with the data is between these extremes~\CITETHIS.  
-
-The proposed electron ion collider is expected to resolve ambiguities in the initial state of heavy ion collisions~\CITETHIS. 
-
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/LightCone1_color-crop}
 	\caption{A light cone diagram showing the stages of a heavy ion collision.  The abbreviation  $T_{\mathrm fo}$ is for the thermal freeze-out temperature, $T_{\mathrm ch}$ is for the chemical freeze-out temperature, and $T_{\mathrm c}$ is for the critical temperature where the phase transition between a hadron gas and a QGP occurs.  $\tau_0$ is the formation time of the QGP.}
 	\label{fig:lightcone}
 \end{figure}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\linewidth]{figures/T_mu_vs_sNN}
-	\caption{Chemical freeze-out parameters \(T\) and \(\mu_\mathrm{B}\) obtained by thermal model fits to experimental data on particle yields as a function of collision energies. Red line represents parametrizations of \(T\) and \(\mu_\mathrm{B}\) as a function of $\sqrt{s_\mathrm{NN}}$}
-	\label{fig:tmuvssnn}
-\end{figure}
+Estimates of the energy density indicate that central heavy ion collisions with an incoming energy per nucleon pair as low as \sNN{7.7} GeV, the lower boundary of collision energies accessible at RHIC, can reach energy densities above 1 GeV/fm$^3$~\CITETHIS and that collisions at 2.76 TeV, accessible at the LHC, reach energy densities as high as 12 GeV/fm$^3$~\CITETHIS. Contrary to initial naive expectations of a gas-like QGP, the QGP formed in these collisions was shown to behave like a liquid of quarks and gluons ~\CITETHIS.
+
+\subsection{Space-time picture of QGP}
+\label{sec:qgpSpacetime}
+The heavy ion collision and the evolution of the fireball, as depicted in Figure~\ref{fig:lightcone}, has several stages, and the measurement of the final state particles can be affected by one or all of these stages depending on the production mechanism and interaction time within the medium. 
+%
+Immediately after the collision, the system is in a non-thermalized, pre-equilibrium state where, partons undergo hard scattering, dominated by \(2\to 2\) QCD processes with the outgoing partons back-to-back in azimuth (\(\Delta \varphi \approx \pi\)). 
+%
+At \(\tau \approx 0.5 - 1~\text{fm}/c\), the system thermalizes into the QGP state which expands following hydrodynamic laws. 
+%
+During the expansion, the system cools down until it reaches the temperature (\(T_c \approx 156\)~MeV from lattice QCD studies) at which a crossover phase transition to a hadronic gas state occurs. 
+%
+By \(\tau \approx 10~\text{fm}/c\) after the collision for LHC energies, confinement is restored and hadronisation of quarks into colourless hadrons takes place. 
+%
+When the chemical freeze-out temperature (\(T_{ch} \approx 165\)~MeV) is reached, the particle abundances of the system are frozen. 
+%
+Elastic interactions can still occur till the kinetic freeze-out (\(T_{fo} \approx 100\)~MeV), where the particle momentum spectra are established.
+
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.5\linewidth]{figures/T_mu_vs_sNN}
+%	\caption{Chemical freeze-out parameters \(T\) and \(\mu_\mathrm{B}\) obtained by thermal model fits to experimental data on particle yields as a function of collision energies. Red line represents parametrizations of \(T\) and \(\mu_\mathrm{B}\) as a function of $\sqrt{s_\mathrm{NN}}$}
+%	\label{fig:tmuvssnn}
+%\end{figure}
 \subsection{Initial State of Colliding Nuclei}
-\subsubsection{Centrality Determination} \label{sect:CentEP}
-In heavy-ion collisions, the impact parameter (\(b\)) of collisions is defined by the distance between the geometrical centers of the colliding nuclei in the plane transverse to their direction. A schematic diagram of the geometry of heavy-ion collisions is shown in Fig. \ref{fig:hictikz}. 
-\begin{figure}[htbp]
+The initial state of the incoming nuclei is not precisely known, but its properties impact the production of final state particles.  
+%
+The incoming nuclei are often modeled as either an independent collection of nucleons called a Glauber initial state~\CITETHIS, or a wall of coherent gluons called a Color Glass Condensate~\CITETHIS. 
+%
+The widely used model for determining these quantities is the Glauber Monte Carlo (Glauber MC) model, which assumes Wood–Saxon density distribution of nucleons.
+%
+The nuclei are then assigned a random impact parameter and translated to collide. 
+%
+If the distance between centers of nucleons is less than \(\sqrt{\sigma_\mathrm{inel}^\mathrm{NN}/\pi}\), where \(\sigma_\mathrm{inel}^\mathrm{NN}\) is the inelastic nucleon–nucleon cross section, the nucleons have undergone a binary collision. 
+%
+Nucleons that have undergone at least one binary collision are said to have participated in the reaction.
+%
+This procedure is followed to obtain the number of participant nucleons (\(N_\mathrm{part}\)) and the number of binary collisions (\(N_\mathrm{coll}\)) event-by-event.
+
+A schematic diagram of the geometry of heavy-ion collisions is shown in Fig. \ref{fig:hictikz}. 
+\begin{figure}
 	\centering
 	\begin{tikzpicture}
 		\def\N{85} % number of nucleons
@@ -274,26 +297,41 @@ In heavy-ion collisions, the impact parameter (\(b\)) of collisions is defined b
 	\caption{Typical heavy-ion collision with an impact parameter of \(b\). The participating nuclei are colored red and the spectators are colored blue.}
 	\label{fig:hictikz}
 \end{figure}
-As the impact parameter is not measurable in experiments, the charged particle multiplicity of events can be used to define collision centrality as they reflect the initial geometry of the colliding nuclei. To obtain the geometrical quantities like the impact parameter, the number of participant nucleons (\(N_\mathrm{part}\)) and the number of binary collisions (\(N_\mathrm{coll}\)), one has to rely on model calculations which involves mapping the charged particle multiplicity from experiment to that of a simulated one. The widely used model for determining these quantities is the Glauber Monte Carlo (Glauber MC) model. In Glauber model, nucleons in a nuclei are distributed following the Wood–Saxon density distribution. The nuclei are then assigned a random impact parameter and translated to collide. The distance between the centers of nucleons of each nucleus is calculated. If this distance is found to be less than \(\sqrt{\sigma_\mathrm{inel}^\mathrm{NN}/\pi}\), where \(\sigma_\mathrm{inel}^\mathrm{NN}\) is the inelastic nucleon–nucleon cross section, the nucleons have undergone a binary collision. Nucleons that have undergone at least one binary collision are said to have participated in the reaction. This procedure is followed to obtain \(N_\mathrm{part}\), \(N_\mathrm{coll}\) event-by-event.
 
+\subsection{Centrality Determination} \label{sect:CentEP}
 \begin{figure}[h]
 	\label{fig:centralityVsNch}
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/centrality_refmult.jpg}
 	\caption{An illustration of the total inclusive charged particles multiplicity \(N_\mathrm{ch}\) and number of participant (\(N_\mathrm{part}\)) and impact parameter (\(b\)) in heavy-ion collisions}
 \end{figure}
-
-A class of events belonging to a given centrality (say 0\%–5\%) is obtained by the collection of events representing the fraction of the total cross-section. Glauber model can only provide the information on \(N_\mathrm{part}\), \(N_\mathrm{coll}\) and impact parameter \(b\), but for mapping with the experimental data, one has to use a combination of the Glauber model and a particle production model called the Two-Component Model. Assuming that particle production is governed by contribution from hard component (proportional to \(N_\mathrm{coll}\)) and soft component (proportional to  \(N_\mathrm{part}\)), it simulates the multiplicity distribution according to
-
-
+As the impact parameter  (\(b\)) of collisions, the distance between the geometrical centers of the colliding nuclei, is not measurable in experiments, a proxy called \emph{centrality} is defined. 
+%
+Centrality is characterized by the charged particle multiplicity of events, connected to the impact parameter through a simulation defining it as a function of \(N_\mathrm{part}\), \(N_\mathrm{coll}\) 
+%
+\(N_\mathrm{part}\), \(N_\mathrm{coll}\) and impact parameter \(b\) from Glauber model is mapped with the experimental data through a particle production model called the Two-Component Model\CITETHIS. 
+%
+Assuming that particle production is governed by contribution from hard component (\(\propto N_\mathrm{coll}\)) and soft component (proportional to  \(\propto N_\mathrm{part}\)), it simulates the multiplicity distribution according to
 \begin{equation}
 	N_\mathrm{ch} = n_{pp}\left[xN_\mathrm{coll} + (1-x)\frac{N_\mathrm{part}}{2}\right]
 \end{equation}
-where the quantity \(n_{pp}\) is the multiplicity from a \(p+p\) collision of the same center-of-mass energy. \(x\) is the contribution of hard component. \(n_{pp}\) is drawn from a negative binomial distribution with parameters \(\text{NBD }(n_{pp}; \langle n_{pp}\rangle,k)\), where \( \langle n_{pp}\rangle\) is the average multiplicity in the \(p+p\) collision and \(k\) is the width of the distribution. The simulated charged multiplicity distribution is then fitted with the corresponding multiplicity distribution from the experiment. \(\langle n_{pp}\rangle\), \(k\), and \(x\) are kept as free parameters in the fitting to experimentally measured charged particle multiplicity distribution. Initial guess values for \(x\) could be set close to those determined in different experiments for faster convergence of fitting. 
+where the quantity \(n_{pp}\) is the multiplicity from a \(p+p\) collision of the same center-of-mass energy. \(x\) is the contribution of hard component. 
+%
+\(n_{pp}\) is drawn from a negative binomial distribution with parameters \(\text{NBD }(n_{pp}; \langle n_{pp}\rangle,k)\), where \( \langle n_{pp}\rangle\) is the average multiplicity in the \(p+p\) collision and \(k\) is the width of the distribution. 
+%
+The simulated charged multiplicity distribution is then fitted with the corresponding multiplicity distribution from the experiment. \(\langle n_{pp}\rangle\), \(k\), and \(x\) are kept as free parameters in the fitting to experimentally measured charged particle multiplicity distribution. 
+%
+Initial guess values for \(x\) could be set close to those determined in different experiments for faster convergence of fitting. 
 
-Fig.~\ref{fig:centralityVsNch} illustrates collision centrality definition in heavy-ion collisions by comparing the charge particle multiplicities with Glauber MC + Two-component model simulation. Centrality classes are classified for the simulated distribution. \(\langle N_\mathrm{part}\rangle\), \(\langle N_\mathrm{coll}\rangle\) in those centrality classes are calculated. 
+An event belongs to a centrality class, say 0\%–5\% if its charged particle multiplicity falls in the top \(5^\text{th}\) percentile. 
+%
+Fig.~\ref{fig:centralityVsNch} illustrates collision centrality definition in heavy-ion collisions by comparing the charge particle multiplicities with Glauber MC + Two-component model simulation.
+%
+Centrality classes are classified for the simulated distribution. 
+%
+\(\langle N_\mathrm{part}\rangle\), \(\langle N_\mathrm{coll}\rangle\) in those centrality classes are calculated. 
 
-\subsubsection{Anisotropic flow}
+\subsection{Anisotropic flow}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.4\textwidth]{figures/flow_elliptic_init_v4.pdf}
@@ -301,41 +339,57 @@ Fig.~\ref{fig:centralityVsNch} illustrates collision centrality definition in he
 	\label{fig:anisotropycartoon}
 	\caption{Schematic diagrams showing the initial overlap region (left) and the spatial anisotropy generated by this anisotropic overlap region.  This anisotropy can be quantified using the Fourier coefficients of the momentum anisotropy.}
 \end{figure}
-Anisotropic flow is the azimuthal anisotropy in the momentum distribution of the final state particles. 
+Mean free path of particles in QGP fireball ($l$) is much smaller than the fireball's system size ($R$).
 %
-The mean free path of individual particles in the QGP medium ($l$) is much smaller than system size ($R$). Hence, the initial state coordinate space asymmetry in non-central heavy ion collisions generates a pressure gradient in the direction of the impact parameter $b$. 
+Hence, in non-central heavy ion collisions the initial state coordinate space asymmetry generates a pressure gradient in the direction of the impact parameter $b$, schematically shown in fig.~\ref{fig:anisotropycartoon}. 
 %
-This is schematically shown in Fig. \ref{fig:anisotropycartoon}. 
+This spatial asymmetry translates into a azimuthal momentum anisotropy as the system expands, meaning that particles are more likely to be emitted along the plane where the pressure gradients are the highest. 
 %
-This spatial asymmetry can then translate into a momentum anisotropy as the system expands, meaning that particles are more likely to be emitted along the plane defined by the beam axis and the impact parameter of the collision (called the reaction plane, \(\Psi_{\rm RP}\)), where the pressure gradients are the highest.  
+This plane is defined by the beam axis and the impact parameter of the collision, and called the \emph{reaction plane} (\(\Psi_{\rm RP}\)).
 %
-This can be characterized by the Fourier decomposition of the azimuthal particle distribution with respect to \(\Psi_{\rm RP}\) ~\cite{Bielcikova:2003ku,Voloshin:1994mz}:
+The anisotropy can be characterized by the Fourier decomposition of the azimuthal particle distribution with respect to \(\Psi_{\rm RP}\)~\cite{Bielcikova:2003ku,Voloshin:1994mz}:
 \begin{equation}
 	\frac{dN}{d(\phi - \Psi_{RP})} = \frac{N_0}{2\pi} \left( 1 + 2 \sum_{n=1}^{\infty} v_n \cos[n(\phi - \Psi_{RP})] \right),
 	\label{fourier_azi_part_distr}
 \end{equation}
-The flow coefficients $v_{n}$, the $n^{\rm th}$ order term in the Fourier decomposition of the final state particle azimuthal distribution is given by,
+%
+The \emph{anisotropic flow} coefficients $v_{n}$, the $n^{\rm th}$ order term in the Fourier decomposition of the final state particle azimuthal distribution is given by,
+%
 \begin{equation}
 	\label{flow}
 	v_{n} = \left< \cos([n(\phi - \Psi_{\rm RP})]) \right>
 \end{equation}
-Due to the symmetry of the collision geometry, the most prominent contribution is from the second order coefficient $v_2$, called elliptic flow.
+%
+Due to the symmetry of the collision geometry, the most prominent contribution is from the second order coefficient $v_2$, called \emph{elliptic flow}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.41\linewidth]{AnisotropyWithNoScaling (1).png}
+	\includegraphics[width=0.52\linewidth]{Gen1_IdentifiedParticle_v2.png}
+	\caption{\textbf{Left panel}: Elliptic flow $v_2$ for several particle species in Au + Au collisions at \sNN{200}{GeV}  from STAR and PHENIX experiments. Predictions from hydrodynamic models are shown as lines. Taken from \cite{GYULASSY200530}. \textbf{Right panel}: Number of constituent quarks ($n_q$) scaled $v_2$ as a function of $p_{\rm T}/n_q$. Taken from \cite{Sorensen_2006}.}
+	\label{fig:AnisotropyResults}
+\end{figure}
+
+$v_2$ was measured by the STAR and PHENIX for several particle species and is shown in Fig. \ref{fig:AnisotropyResults}. 
+%
+Large positive $v_2$ values indicate collective phenomena associated with a strongly coupled fluid, or a \emph{signature of QGP}.
+%
+A scaling of the $v_2$ values with the number of constituent quarks (2 for mesons, 3 for baryons) yielded a universal curve as a function of $p_{\rm T}/n_q$ suggesting the flow dynamics were developed in a medium with quark and gluon degrees of freedom, i.e. QGP.
 
 \subsubsection{Event plane reconstruction}
-The reaction plane, \(\Psi_{\rm RP}\) cannot be directly measured and is approximated by the second-order symmetry plane, $\Psi_{2,EP}$, referred to as the ``event plane"  in this text, for simplicity.  
+\label{sec:EP_Recon}
+The reaction plane, \(\Psi_{\rm RP}\) cannot be directly measured and is approximated by the second-order symmetry plane, $\Psi_{2,EP}$, referred to as the \emph{event plane}  in this text, for simplicity.  
 %
-\(\Psi_{\rm RP} \to \Psi_{2, EP}\) if nucleon distributions were in their average positions and devoid of fluctuations from interactions among nucleons ~\cite{PhysRevC.101.064901}.
+\(\Psi_{\rm RP} \to \Psi_{2, EP}\) if nucleon distributions were in their average positions and devoid of fluctuations from interactions among nucleons~\cite{PhysRevC.101.064901}.
 %
-Within the overlap region, symmetry planes are generated from initial asymmetries in the nucleon distributions and can be quantified by a harmonic decomposition ~\cite{Poskanzer:1998yz}.   
-%
-By measuring the charged particle azimuthal distribution, the n-th order event plane can be extracted by \cite{Poskanzer:1998yz}:  
+By measuring the charged particle azimuthal distribution, the n-th order event plane can be extracted by~\cite{Poskanzer:1998yz},  
 %
 \begin{equation}
 	\Psi_{n,EP} = \frac{1}{n} \arctan \left(\frac{Q_{y, n}}{Q_{x, n}} \right),
 	\label{eqn:EP}
 \end{equation}
 %
-the weighted vector \(\mathbf{Q}_n = Q_{x, n}\hat{\mathbf{x}}+ Q_{y, n}\hat{\mathbf{y}}\) are given by~\cite{Poskanzer:1998yz}:
+the weighted vector \(\mathbf{Q}_n = Q_{x, n}\hat{\mathbf{x}}+ Q_{y, n}\hat{\mathbf{y}}\) are given by,
 %
 \begin{align}
 	\mathbf{Q}_n = \hat{\mathbf{x}}\sum_{\mathrm{tracks}} p_{\rm T, track} \cos (n \phi_{\rm track}) + \hat{\mathbf{y}}\sum_{\mathrm{tracks}} p_{\rm T, track} \sin (n \phi_{\rm track}).
@@ -344,30 +398,17 @@ the weighted vector \(\mathbf{Q}_n = Q_{x, n}\hat{\mathbf{x}}+ Q_{y, n}\hat{\mat
 %
 where the sum is calculated for all reconstructed charged particles (tracks) in the event, $\phi_{\rm track}$ is the track's azimuthal angle, and $p_{\rm T, track}$ the track's transverse momentum.  
 %
-The event plane is calculated event-by-event, following a procedure similar to Ref.~\cite{CASTILHO2018369} using charged tracks with $0.2 < p_{\rm  T, track} < 1.0$ \GeVc measured within the TPC.  
-%
-The approach is called the Modified Reaction Plane (MRP) method \cite{Agakishiev:2014ada,CASTILHO2018369,Adams_2005}.
-% 0.2-2.0
 
-The impact of highly energetic jets on the calculation of the event-plane orientation is reduced by removing the particles within the pseudorapidity strip ($|\deta|<0.4$) across \dphi surrounding the leading jet.  
-%
-This procedure also removes a significant portion of the away-side jet, located opposite in azimuth. 
-%
-An upper limit of 1.0 GeV/c is used in the calculation of the event plane to exclude the momentum range of particles used in correlation functions from the calculation of the event plane which is used to characterize the near-side jets. 
-%
 Due to finite acceptance and multiplicities, the calculated event plane has an underlying anisotropy that is corrected by applying two separate correction methods.  
-
-%Two corrections are used to flatten the raw event plane distribution.  
+%
 First, a calibration and recentering correction procedures are applied to remove bias introduced by non-uniform acceptance of the TPC tracking system and further account for potential beam-condition effects~\cite{Barrette:1997pt,PhysRevC.55.1420,Poskanzer:1998yz}.  
 %
 This procedure involves recentering the weighted $\mathbf{Q}_2$-vectors such that, $\langle\mathbf{Q}_2 \rangle = \mathbf{0}$. 
 %
-It is done by calculating a modified $\mathbf{Q}_2$-vector, obtained by subtracting an event averaged $\langle\mathbf{Q}_2 \rangle$ from each event's nominal $Q$-vector and done for 10\% centrality intervals and 4 cm $v_z$ intervals. 
+It is done by calculating a modified $\mathbf{Q}_2$, obtained by subtracting an event averaged $\langle\mathbf{Q}_2 \rangle$ from each event's nominal $\mathbf{Q}_2$.
 %
 
-The recentering approach, which drastically improves the uniformity of the event plane, is however, unable to remove the higher harmonics of $\Psi_{n,EP}$ \cite{Poskanzer:1998yz}.  
-%
-They are removed through a second correction step, referred to as  the shifting method, applied event-by-event  to make the event-plane angle isotropic in the lab frame \cite{Voloshin:2008dg}. 
+The higher harmonics of $\Psi_{n,EP}$ still persist after recentering \cite{Poskanzer:1998yz}, and are removed through a second correction step, referred to as  the shifting method, applied event-by-event  to make the event-plane angle isotropic in the lab frame \cite{Voloshin:2008dg}. 
 %
 This method defines a new angle:
 %
@@ -377,11 +418,7 @@ This method defines a new angle:
 	\label{eqn:Shift}
 \end{equation}
 %
-where the brackets denote an average over events.  
-%
-We require the vanishing of each n-th Fourier moment up to 20th order.  
-%
-Similarly to recentering, the shifting correction is done separately for 10\% centrality intervals and 4-cm $v_z$ intervals. 
+Usually 20 orders of Fourier moment are removed. 
 %
 Additional details of the recentering and shifting corrections can be found in Refs.~\cite{Wang:2012bga,Barrette:1997pt,Poskanzer:1998yz}
 
@@ -389,10 +426,6 @@ Additional details of the recentering and shifting corrections can be found in R
  %
  The observed $v_n$, $v_n^{\rm obs}$ is corrected for this limited resolution by doing, $v_n = v_{n}^{\rm obs}/R_n$ \cite{Abbas:2013taa,Poskanzer:1998yz}.  
  %
- Because an ideal event-plane resolution is equal to 1, for non-ideal cases, the value of the coefficients will be raised by applying the correction. 
- %
- Thus, $R_n$ impacts the flow-modulated background for these correlations, as described in Sect.~\ref{sect:CorrBkgd},
-
 \begin{equation}
 	R_n = R_n\{\Psi_{2, EP}\} = \langle \cos(n[\Psi_{RP} - \Psi_{2, EP}]) \rangle \qquad \text{$n$ is even}
 	\label{resolution}
@@ -402,16 +435,16 @@ Furthermore, individual events are divided into two random sub-events by assigni
 %
 The sub-events are unique, with approximately equal multiplicities. 
 %
-We can write the correlation of two event planes by taking the product of two sub-events \cite{Barrette:1996rs,Poskanzer:1998yz}:
-
+We can write the correlation of two event planes by taking the product of two sub-events, \cite{Barrette:1996rs,Poskanzer:1998yz}
+%
 \begin{equation}
 	\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{2, EP}^{b}]) \rangle = 
 	\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{RP}]) \rangle
 	\langle \cos(n[\Psi_{2, EP}^{b} - \Psi_{RP}]) \rangle,
 	\label{resolution2sub}
 \end{equation}
-
-\noindent This allows calculation of the event-plane resolution directly from data. Since $a$ and $b$ have equal multiplicities, the resolution of each sub-event can be calculated from the correlation between the two sub-events as \cite{Poskanzer:1998yz}:
+%
+This allows calculation of the event-plane resolution directly from data. Since $a$ and $b$ have equal multiplicities, the resolution of each sub-event can be calculated from the correlation between the two sub-events as \cite{Poskanzer:1998yz}:
 
 \begin{equation}
 	\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{RP}]) \rangle = 
@@ -423,50 +456,86 @@ The event-plane resolution is multiplicity dependent and calculated for separate
 %
 Narrower bins are calculated and then combined accordingly to match the ranges required, by averaging the results from the narrow bins weighted by the multiplicity of each bin \cite{Voloshin:2008dg}.
 
-\section{Signatures of QGP}
-Since QGP is extremely short-lived, studying it using external probes is not practical. 
+\section{Jets in QGP}
+As discussed in sec.~\ref{sec:qgpSpacetime}, hard scattered partons that produce jets are produced before the system thermalizes into QGP. 
 %
-Internal probes of QGP can either be \emph{bulk probes} or \emph{hard probes}
+Thus the ensuing parton shower traverses the QGP, and resulting jet is \emph{quenched} compared to an appropriate \emph{baseline}. 
 %
-\subsection{Bulk probes}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.41\linewidth]{AnisotropyWithNoScaling (1).png}
-	\includegraphics[width=0.52\linewidth]{Gen1_IdentifiedParticle_v2.png}
-	\caption{\textbf{Left panel}: Elliptic flow $v_2$ for several particle species in Au + Au collisions at \sNN{200}{GeV}  from STAR and PHENIX experiments. Predictions from hydrodynamic models are shown as lines. Taken from \cite{GYULASSY200530}. \textbf{Right panel}: Number of constituent quarks ($n_q$) scaled $v_2$ as a function of $p_{\rm T}/n_q$. Taken from \cite{Sorensen_2006}.}
-	\label{fig:AnisotropyResults}
-\end{figure}
-$v_2$ was measured by the STAR and PHENIX experiments at RHIC for several particle species and is shown in Fig. \ref{fig:AnisotropyResults}. Large positive $v_2$ values measured by both the experiments indicated that the medium that exists in heavy ion collisions behaves as a strongly-coupled liquid. A scaling of the $v_2$ values with the number of constituent quarks (2 for mesons, 3 for baryons) yielded a universal curve as a function of $p_{\rm T}/n_q$ suggesting the flow dynamics were developed in a medium with quark and gluon degrees of freedom, i.e. QGP.
+The two main mechanisms for jet quenching are \emph{collisional} and \emph{radiative} energy losses. 
+%
+Collisional energy loss happens due to the elastic scattering between the parton and the medium constituents and usually dominates for lower energy partons. 
+%
+Radiative energy loss happens due to induced gluon radiation (\textit{bremsstrahlung}) through inelastic scatterings with the medium particles \cite{MAJUMDER201141,QinWang2024,Burkeetal}. 
+%
+For partons with \ptGeq{parton}{5} , this is usually the dominant source of energy loss \cite{LandoltBornstein2010:sm_lbs_978-3-642-01539-7_16}. 
+%
 
-\subsection{Hard probes}
-The main evidence of jet interaction with the QGP is through \textit{jet quenching}, where the jets lose energy through their interactions with the medium particles. The two main mechanisms for this process are collisional and radiative energy losses. Collisional energy loss happens due to the elastic scattering between the parton and the medium constituents and usually dominates for lower energy partons. Radiative energy loss happens due to induced gluon radiation (\textit{bremsstrahlung}) through inelastic scatterings with the medium particles \cite{MAJUMDER201141,QinWang2024,Burkeetal}. For partons with \ptGeq{}{5} , this is usually the dominant source of energy loss \cite{LandoltBornstein2010:sm_lbs_978-3-642-01539-7_16}. One of the first measurements of jet quenching was performed by the STAR experiment\cite{PhysRevLett.91.072304}, well before it became feasible to reliably reconstruct a sufficient number of jets in heavy-ion collisions. In this measurement shown in Fig. \ref{fig:angularcorr}, the azimuthal angular correlation ($\Delta\phi$) of all charged hadrons reconstructed by the STAR detector with the leading $p_\mathrm{T}$ hadron (used as a proxy for the jet) was compared between p + p, Au + Au, and d + Au collisions. The p + p and d + Au both show peaks around $\Delta\phi\approx 0$ and $\Delta\phi\approx \pi$ as expected, given the back-to-back nature of the hard scattered parton. However, for Au + Au collisions, the away side peak ($\Delta\phi\approx \pi$) completely vanishes. This was the expectation because depending on the distance from the center of the collision where the initial back-to-back partons were produced, one of the partons would travel a larger distance in the QGP medium and therefore lose more energy than the other one.
+The baseline measurement is done in a collision system where either QGP is not formed or has negligible lifetime compared to central heavy-ion collisions. 
+%
+Two possible choices arise for the baseline, first is \(p+p\) collisions from which we can calculate the \emph{Nuclear Modification Factor} (\RAA) for distributions of any observable \(\mathbf{O}\) calculated in \(p+p\) and \(A+A\) collisions,
+given by
+\begin{equation}
+	R_{\rm AA}(\mathbf{O}, b) = \frac{dN_{\rm AA}/d\mathbf{O}}{\left<T_{\rm AA}(b)\right> . d^2\sigma_{pp}/d\mathbf{O}}
+\end{equation}\label{RAA}
+where $T_{\rm AA}(b) = N_{\rm coll}(b)/\sigma_{\rm NN}^{\rm inel}$ is the nuclear overlap function of impact parameter (\textit{b}) \cite{doi:10.1142/S0217751X95001467}.
+%
+The second common baseline used in absence of a \(p+p\) baseline is peripheral collisions of heavy-ion collisions. The \emph{Relative Nuclear Modification Factor} \(R_{CP}\) is given by,
+%
+\begin{equation}
+	R_{CP}(\mathbf{O}, b) = \frac{dN/d\mathbf{O}}{\left< N_{\rm bin}(b) \right>} \biggm\lvert_{\rm cent} \times \frac{\left< N_{\rm bin}(b) \right>}{dN/d\mathbf{O}} \biggm\lvert_{\rm peri}
+\end{equation}
 
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[width=0.8\linewidth]{Gen0_AngularCorrelation_JetQuenching.png}
 	\caption{Measurement of the angular correlation between all charged hadrons and the leading hadron in the event for p + p (black lines), d + Au (red and green markers), and Au + Au events (blue markers), performed by the STAR experiment. The vanishing of the away-side yield around $\Delta\phi\approx \pi$ in Au + Au events is evidence of particles getting quenched in the QGP medium. Taken from \cite{PhysRevLett.91.072304}.}
 	\label{fig:angularcorr}
 \end{figure}
 
-A collection of measurements of nuclear modification factors (Eq. \ref{RAA}) for identified particles from the PHENIX experiments, shown in Fig. \ref{fig:singleparticleraa} allowed for a more nuanced look at jet quenching. For example, direct photons ($\gamma$) do not interact strongly, and hence have no yield modification in the medium. All strongly interacting particles show varying levels of suppression from 0.2 - 0.6, again confirming their energy loss in the presence of QGP.
-
-\begin{figure}[h]
+Before infrastructure became available to reliably reconstruct a sufficient number of jets in heavy-ion collisions,  the effects of the medium on high energy partons were studying the \emph{Di-hadron correlation}. 
+%
+Leading hadron (highest $p_\mathrm{T}$ in event) is used as a jet proxy and the azimuthal angular correlation ($\Delta\varphi$) of all charged hadrons in the event is studied.
+%
+Fig. \ref{fig:angularcorr} shows one of the first measurements performed by STAR\cite{PhysRevLett.91.072304}, di-hadron correlations compared between p + p, Au + Au, and d + Au collisions. 
+%
+The p + p and d + Au both show peaks around $\Delta\varphi = 0$ and $\Delta\varphi =  \pi$ as expected, given that hard scatterings are dominated by \(2\to 2\) Feynman diagrams. 
+%
+However, for Au + Au collisions, the peak around $\Delta\varphi = \pi$ completely vanishes. 
+%
+This was the expectation because depending on the distance from the center of the collision where the initial back-to-back partons were produced, one of the partons would travel a larger distance in the QGP medium and therefore lose more energy than the other one.
+ 
+\begin{figure}
 	\centering
 	\includegraphics[width=0.8\linewidth]{Gen0_SingleParticle_RAA.png}
 	\caption{Nuclear modification factor $R_{\rm AA}$ as a function of $p_\mathrm{T}$ for identified particle species in Au + Au collisions at \sNN{200}{GeV} measured by the PHENIX experiment. Taken from \cite{Tannenbaum_2015}.}
 	\label{fig:singleparticleraa}
 \end{figure}
 
-Although measurements with high $p_\mathrm{T}$ hadrons help us understand jet quenching mechanisms in the medium, they suffer from survival bias, as these hadrons arise from a subsample of jets which usually undergo the least amount of quenching \cite{PhysRevC.99.051901}. Fully reconstructed jets, however, are mostly unbiased probes of energy flow at high $p_\mathrm{T}$, and offer a wealth of substructure observables which allow us to look at energy flow within the jet more differentially.
+A closer look at jet quenching was given by the PHENIX experiment through a collection of  \RAA measurements Eq.~\ref{RAA} for identified particles spectra, shown in Fig. \ref{fig:singleparticleraa}.
+% 
+All strongly interacting particles show varying levels of suppression from 0.2 - 0.6, again confirming their energy loss in the presence of QGP.
 
-The STAR experiment measured the modification of the charged particle jets\footnote{Charged particle jets are formed with clustered charged tracks only and contain no calorimeter hits (towers) as input.} $p_\mathrm{T}$ spectra using anti-$k_{\rm T}$ jets between central and peripheral Au + Au collisions at \sNN{200}{GeV} \cite{STARChargedJet}. This is shown in Fig. \ref{fig:chargedparticlercp} using the nuclear modification factor ($R_{CP}$) defined as
-\begin{equation}
-	R_{CP}(p_\mathrm{T}, \eta, b) = \frac{d^2N/d\eta dp_\mathrm{T}}{\left< N_{\rm bin}(b) \right>} \biggm\lvert_{\rm cent} \times \frac{\left< N_{\rm bin}(b) \right>}{d^2N/d\eta dp_\mathrm{T}} \biggm\lvert_{\rm peri}
-\end{equation}
-and compared to the measured $R_{CP}$ for charged hadrons from STAR at the same energy, and to the measured $R_{CP}$ for charged hadrons and jets from the ALICE and ATLAS experiments at \sNN{2.76}{TeV}. First, the charged hadrons $R_{CP}$ is found to be the same over the same range of $p_\mathrm{T}$ at RHIC and LHC energies (which are an order of magnitude apart). The charged jet $R_{CP}$ is also found to have similar values between RHIC and LHC energies with roughly 60\% of the energy lost outside the jet cone in central collisions with respect to peripheral collisions, with no significant $p_\mathrm{T}$ dependence. This lack of $p_\mathrm{T}$ dependence for charged jets is in contrast to the $p_\mathrm{T}$ dependence observed for the charged hadrons $R_{CP}$. This may be because the inclusive hadron distribution usually arises from the leading hadron in the corresponding jet, and is therefore is sensitive to the fragmentation function. This fragmentation process can therefore introduce the $p_\mathrm{T}$ dependence of $R_{CP}$ in hadrons. 
+Although measurements with high $p_\mathrm{T}$ hadrons help us understand jet quenching mechanisms in the medium, they suffer from survival bias, as these hadrons arise from a subsample of jets which usually undergo the least amount of quenching \cite{PhysRevC.99.051901}. 
+%
+Fully reconstructed jets, however, are mostly unbiased probes of energy flow at high $p_\mathrm{T}$, and offer a wealth of substructure observables which allow us to look at energy flow within the jet more differentially.
+%
+This motivates the studies presented in chapters~\ref{ch:jhcorr} and~\ref{ch:angularities}.   
+
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{Gen1_ChargedParticleAndJets_RCP.png}
 	\caption{$R_{CP}$ distributions for charged hadrons (open markers) and jets (solid markers) from RHIC (blue star markers) and LHC (red circle markers) experiments. Taken from \cite{STARChargedJet} and references within \cite{PhysRevLett.91.172302, ALICEChargedJet, ATLASChargedHadron}.}
 	\label{fig:chargedparticlercp}
 \end{figure}
+The STAR experiment measured the \(R_{CP}\) of the $p_\mathrm{T}$ spectra of charged particle jets (clustered charged tracks only and contain no calorimeter hits (towers) as input) from central and peripheral Au + Au collisions at \sNN{200}{GeV} shown in fig.~\ref{fig:chargedparticlercp} \cite{STARChargedJet}. 
+%
+Measured for charged jets was compared to $R_{CP}$ for charged hadrons from STAR at the same energy, and to the measured $R_{CP}$ for charged hadrons and jets from the ALICE and ATLAS experiments at \sNN{2.76}{TeV}. 
+%
+First, the charged hadrons $R_{CP}$ is found to be the same over the same range of $p_\mathrm{T}$ at RHIC and LHC energies (which are an order of magnitude apart). 
+%
+The charged jet $R_{CP}$ is also found to have similar values between RHIC and LHC energies with roughly 60\% of the energy lost outside the jet cone in central collisions with respect to peripheral collisions, with no significant $p_\mathrm{T}$ dependence in contrast to the $p_\mathrm{T}$ dependence observed for the charged hadrons $R_{CP}$. 
+%
+This may be because the inclusive hadron distribution usually arises from the leading hadron in the corresponding jet, and is therefore is sensitive to the fragmentation function. 
+%
+This fragmentation process can therefore introduce the $p_\mathrm{T}$ dependence of $R_{CP}$ in hadrons. 
+

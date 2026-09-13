@@ -1,43 +1,54 @@
 \chapter{Jet-hadron correlations relative to the event plane}
 \label{ch:jhcorr}
-
-Historically, the effects of the medium on high energy partons were studied by measuring the leading particles and studying the \ensuremath{p_{\rm T}}\xspace distribution of pairs of high-\ensuremath{p_{\rm T}}\xspace particles.  Leading particle studies, however, have limitations in extreme quenching scenarios.  In these cases, particle emission occurs near the surface of the medium and thus the sensitivity of the leading particles to the region of highest energy density is very limited.  This consequently makes the nuclear modification factor insensitive to medium properties.  Full jet reconstruction allows for unbiased measurement of the original parton 4-momentum and the transverse and longitudinal  shape of the jet.  Through modifications of the jet structure, properties of the medium can be studied.  
-
-When studying the \dphi distributions, a peak is observed at $\dphi = 0$ which is the triggered jet.  This side is referred to as the near-side.  There is another peak which is seen near $\pi$.  This is referred to as the away-side.  The away-side consists of the hadrons associated with the trigger jet and make up the second jet which results from the early hard-scatter.
-
-%Full jets are reconstructed with neutral- and charged-particle constituents using the anti-\kt sequential reconstruction algorithm from the FastJet package~\cite{Cacciari:2011ma}. 
-In this analysis, the coordinate system used to depict the distribution of associated particles is defined relative to a reconstructed jet, also called a trigger jet. The distribution is thus given by:
-
+In this analysis, the coordinate system used to depict the distribution of associated particles is defined relative to a reconstructed jet, also called a trigger jet. 
+%
+The distribution is thus given by:
+%
 \begin{equation}
 	\frac{1}{N_{\rm trig}} \frac{d^2 N_{\rm assoc,jet}}{d\dphi d\deta},
 	\label{Eq:JHCorrIntro}
 \end{equation}
+%
+\noindent where $N_{\rm trig}$ is the number of trigger jets, $N_{\rm assoc,jet}$ is the number of associated particles, \dphi ($=|\phi_{\rm jet}-\phi_{\rm assoc}|$) is the azimuthal angle of those trigger particles relative to the trigger jets, and \deta ($=|\eta_{\rm jet}-\eta_{\rm assoc}|$) is the difference in the pseudorapidities of the trigger jet and associated particle.  
+%
+When studying the \dphi distributions, a peak is observed at $\dphi = 0$ which is the triggered jet, referred to as the near-side.  
+%
+Another peak which is seen near $\dphi = \pi$ is referred to as the away-side.  
+%
+The away-side consists of the hadrons associated with the trigger jet and make up the second jet which results from the early hard-scatter.
 
-\noindent where $N_{\rm trig}$ is the number of trigger jets, $N_{\rm assoc,jet}$ is the number of associated particles, \dphi ($=|\phi_{\rm jet}-\phi_{\rm assoc}|$) is the azimuthal angle of those trigger particles relative to the trigger jets, and \deta ($=|\eta_{\rm jet}-\eta_{\rm assoc}|$) is the difference in the pseudorapidities of the trigger jet and associated particle.  %The choice of normalization by the number of trigger jets matches the conventions for most studies in the literature.  
 The goal of this analysis is to study the conditional yield of associated particles, the width of the near- and away-side peaks (quantified using the gaussian width) as a function of the angle between the jet axis and the event plane.  The yield is estimated by:
-
+%
 \begin{equation}
 	\mathrm{Yield} = \frac{1}{N_{\rm trig}} \int_{c}^{d} \int_{a}^{b} 
 	\frac{d^2N_{\rm assoc,jet}}{d\dphi d\deta}  d\dphi d\deta.
 	\label{Eqtn:Yield}
 \end{equation}
-
-\noindent  The choice of integration limits is somewhat arbitrary.  They are chosen based on practical considerations, including the detector acceptance and binning of histograms.  
+%
+The integration limits are chosen based on practical considerations, including the detector acceptance and binning of histograms.  
 
 \section{Analysis Method} \label{sect:Method}
-This measurement utilizes data collected during the 2014 run from \AuAu collisions at nucleon-nucleon center-of-mass energy of \sNN = 200 GeV by the STAR experiment~\cite{Ackermann:2002ad} at RHIC.  Events referred to as signal (same) events are required to contain a HT trigger in the BEMC \cite{Beddo:2002zx}.  Minimum-bias (MB) triggered events based on coincidence of Zero Degree Calorimeters (ZDC coincidence), Vertex Position Detectors and Beam-Beam Counters signals are used to estimate the pair-acceptance effects via a mixed-event (ME) technique \cite{PhysRevC.96.024905}. For this analysis, 9.4M HT-triggered and 4.0M MB collision events are used.  Events are further categorized by their centrality selection, defined in section ~\ref{sect:CentEP}.  The events are required to have a reconstructed primary vertex $|v_{z}| <$ 24 cm and centrality of 20-50\%.  
+This measurement utilizes data collected during the 2014 run from \AuAu collisions at nucleon-nucleon center-of-mass energy of \sNN{200}{GeV} by the STAR experiment~\cite{Ackermann:2002ad} at RHIC.  Events referred to as signal (same) events are required to contain a HT trigger in the BEMC \cite{Beddo:2002zx}.  Minimum-bias (MB) triggered events based on coincidence of Zero Degree Calorimeters (ZDC coincidence), Vertex Position Detectors and Beam-Beam Counters signals are used to estimate the pair-acceptance effects via a mixed-event (ME) technique \cite{PhysRevC.96.024905}. For this analysis, 9.4M HT-triggered and 4.0M MB collision events are used.  Events are further categorized by their centrality selection, defined in section ~\ref{sect:CentEP}.  The events are required to have a reconstructed primary vertex $|v_{z}| <$ 24 cm and centrality of 20-50\%.  
 
 %To ensure good tracking and coverage,\commented[(needs a better explanation)] 
 
 %Add description of z-vertex cutoff, and why it was chosen. And how mixed events were combined (MB5+MB30).
 
-% FIX THE BELOW PARAGRAPH
-%Procedures for selection and reconstruction of tracks from charged particles, identification of calorimeter towers, and jet reconstruction are as in~\cite{Adam:2015ewa} and are summarized in Sect.~\ref{sect:JetReco}.  
-The reaction plane is approximated by the second-order event plane, which is the experimentally reconstructed second-order symmetry plane, and will be referred to as the ``event plane" ($\Psi_{2,EP}$) in this text, for simplicity. %The $n$-th order event plane can be extracted by $\Big\{ \Psi_{n,EP} = \left( \arctan \frac{\sum_{i} w_i \sin(n\phi_i)}{\sum_{i} w_i \cos(n\phi_i)} \right) /n\Big\}$ \cite{Poskanzer:1998yz}. 
-The distributions of these associated tracks relative to the trigger jet are measured in three bins in the angle between the trigger jet and the event plane, in-plane ($| \Psi_{2,EP}-\phi_{\mathrm {jet}}|<\pi/6$), mid-plane ($\pi/6<|\Psi_{2,EP}-\phi_{\mathrm {jet}}|<\pi/3$), and out-of-plane ($|\Psi_{2,EP}-\phi_{\mathrm {jet}}|>\pi/3$) bins.  The analysis is restricted to 20--50\% central \AuAu collisions to achieve the highest event-plane resolution and therefore the analysis will be most sensitive to any path-length dependencies. %The possible impact of the finite event-plane resolution on the signal is discussed in Sect.~\ref{Sec:RxnPlaneResolutionEffects}.
+\subsection{Event plane reconstruction}
+The event plane (\(\Psi_{2,EP}\)) discussed in~\ref{sec:EP_Recon} is calculated event-by-event using the Modified Reaction Plane (MRP) method~\cite{CASTILHO2018369,Agakishiev:2014ada,CASTILHO2018369,Adams_2005} using charged tracks with $0.2 < p_{\rm  T, track} < 1.0$ \GeVc measured within the TPC.  
+%
+The impact of highly energetic jets on the calculation of the event-plane orientation is reduced by removing the particles within the pseudorapidity strip ($|\deta|<0.4$) across \dphi surrounding the leading jet.  
+%
+This procedure also removes a significant portion of the away-side jet, located opposite in azimuth. 
+%
+The event-by-event recentering and shifting corrections for removing azimuthal anisotropy in \(\Psi_{2,EP}\)  are done separately for 10\% centrality intervals and 4-cm $v_z$ intervals. 
+%
 
+The distributions of these associated tracks relative to the trigger jet are measured in three bins in the angle between the trigger jet and the event plane, in-plane ($| \Psi_{2,EP}-\phi_{\mathrm {jet}}|<\pi/6$), mid-plane ($\pi/6<|\Psi_{2,EP}-\phi_{\mathrm {jet}}|<\pi/3$), and out-of-plane ($|\Psi_{2,EP}-\phi_{\mathrm {jet}}|>\pi/3$) bins.  
+%
+The analysis is restricted to 20--50\% central \AuAu collisions to achieve the highest event-plane resolution and therefore the analysis will be most sensitive to any path-length dependencies. 
+%The possible impact of the finite event-plane resolution on the signal is discussed in Sect.~\ref{Sec:RxnPlaneResolutionEffects}.
 % As in Fig.~\ref{plot:rxnschematic}, we see the event-plane orientations defined relative to a trigger (jet).
-
 % \begin{figure}[!htbp]
 	%   \begin{center}
 		%     \rotatebox{0}{\resizebox{5cm}{!}{\includegraphics{figures/RxnPlaneFig.pdf} }}
