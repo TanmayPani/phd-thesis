@@ -1,6 +1,6 @@
 \chapter{Jet-hadron correlations relative to the event plane}
 \label{ch:jhcorr}
-In this analysis, the coordinate system used to depict the distribution of associated particles is defined relative to a reconstructed jet, also called a trigger jet. 
+In this analysis, the coordinate system used to depict the distribution of associated particles is defined relative to a reconstructed jet, also called a \emph{trigger jet}. 
 %
 The distribution is thus given by:
 %
@@ -11,9 +11,9 @@ The distribution is thus given by:
 %
 \noindent where $N_{\rm trig}$ is the number of trigger jets, $N_{\rm assoc,jet}$ is the number of associated particles, \dphi ($=|\phi_{\rm jet}-\phi_{\rm assoc}|$) is the azimuthal angle of those trigger particles relative to the trigger jets, and \deta ($=|\eta_{\rm jet}-\eta_{\rm assoc}|$) is the difference in the pseudorapidities of the trigger jet and associated particle.  
 %
-When studying the \dphi distributions, a peak is observed at $\dphi = 0$ which is the triggered jet, referred to as the near-side.  
+When studying the \dphi distributions, a peak is observed at $\dphi = 0$ which is the triggered jet, referred to as the \emph{near-side}.  
 %
-Another peak which is seen near $\dphi = \pi$ is referred to as the away-side.  
+Another peak which is seen near $\dphi = \pi$ is referred to as the \emph{away-side}.  
 %
 The away-side consists of the hadrons associated with the trigger jet and make up the second jet which results from the early hard-scatter.
 
@@ -92,6 +92,14 @@ The measurement of the correlation function (distribution of charged hadrons rel
 	\frac{1}{N_{\rm trig}} \frac{d^2N_{\rm assoc,jet}}{d\dphi d\deta} = \frac{1}{N_{\rm trig}} \frac{1}{\epsilon(\Pt{assoc}, \eta_{\rm assoc})} \frac{1}{a(\Pt{assoc}, \text{\dphi}, \text{\deta})}\left(\frac{d^2 N^{\rm meas}_{\rm assoc,jet}}{d\dphi d\deta} - \frac{d^2 N^{\rm bkgd}_{\rm assoc,jet}}{d\dphi d\deta}\right) .
 	\label{Eqtn:CorrFunction}
 \end{equation}
+
+\begin{figure}
+	\centering
+		\includegraphics[width=0.49\linewidth]{figures/jhcorr_jpt1520}
+	\includegraphics[width=0.49\linewidth]{figures/ajhcorr_jpt1520}
+	\caption{Example of a correlation function distribution in 2 dimensions between \pttrigrange{15}{20} \ptassocrange{1.0}{1.5} (left). Example of a normalized mixed event distribution in 2 dimensions between \pttrigrange{15}{20} \ptassocrange{1.0}{1.5} showing the \(\Delta\eta = \eta_\mathrm{jet} - \eta_\mathrm{assoc.}\) acceptance for associated particles given \(|\eta_\mathrm{assoc.}| < 1.0 \) and \(|\eta_\mathrm{jet}| < 0.6 \) (right).}
+	\label{fig:jhcorrjpt1520}
+\end{figure}
 
 %\noindent where and acceptance, $a(\dphi, \deta)$ is the acceptance correction for track pairs, $N_{meas}$ is the measured number of associated particles, and $N_{bkgd}$ is the number of associated particles from the background.  The single-track reconstruction efficiency and acceptance only account for the reconstruction of associated particles.
 %\begin{equation}
