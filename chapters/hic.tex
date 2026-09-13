@@ -245,14 +245,15 @@ In heavy-ion collisions, the impact parameter (\(b\)) of collisions is defined b
 		\def\xs{0.25} % horizontally scale
 		\def\Rp{0.92} % length photon
 		\def\D{3.7} % horizontal distance between nuclei
-		\pgfmathsetmacro\H{1.30*\R} % vertical distance between nuclei
+		\pgfmathsetmacro\H{1.10*\R} % vertical distance between nuclei
 		\pgfmathsetmacro\v{0.25*\D} % length vector
 		
 		%\message{^^J PbPb collision with impact parameter}
 		
 		% NUCLEUS
-		\pic[xscale=\xs] (L) at (-\D/2, \H/2) {nucleus};
-		\pic[xscale=\xs] (R) at ( \D/2,-\H/2) {nucleus};
+		% participants: nucleons in the vertical band where the two nuclei overlap
+		\pic[xscale=\xs,nucleus participants,nucleus ymin=-\R,nucleus ymax=\R-\H] (L) at (-\D/2, \H/2) {nucleus};
+		\pic[xscale=\xs,nucleus participants,nucleus ymin=\H-\R,nucleus ymax=\R] (R) at ( \D/2,-\H/2) {nucleus};
 		
 		% VELOCITY VECTORS
 		\draw[vector] (L-0)++(2pt,0) --++ (\v,0); %node[above=2pt] {$v\approx c$};
@@ -272,7 +273,7 @@ In heavy-ion collisions, the impact parameter (\(b\)) of collisions is defined b
 		%\node at (0.3*\D,0.7*\H) {$b > 2R$};
 		
 	\end{tikzpicture}
-	\caption{Typical heavy-ion collision}
+	\caption{Typical heavy-ion collision with an impact parameter of \(b\). The participating nuclei are colored red and the spectators are colored blue.}
 	\label{fig:hictikz}
 \end{figure}
 As the impact parameter is not measurable in experiments, the charged particle multiplicity of events can be used to define collision centrality as they reflect the initial geometry of the colliding nuclei. To obtain the geometrical quantities like the impact parameter, the number of participant nucleons (\(N_\mathrm{part}\)) and the number of binary collisions (\(N_\mathrm{coll}\)), one has to rely on model calculations which involves mapping the charged particle multiplicity from experiment to that of a simulated one. The widely used model for determining these quantities is the Glauber Monte Carlo (Glauber MC) model. In Glauber model, nucleons in a nuclei are distributed following the Wood–Saxon density distribution. The nuclei are then assigned a random impact parameter and translated to collide. The distance between the centers of nucleons of each nucleus is calculated. If this distance is found to be less than \(\sqrt{\sigma_\mathrm{inel}^\mathrm{NN}/\pi}\), where \(\sigma_\mathrm{inel}^\mathrm{NN}\) is the inelastic nucleon–nucleon cross section, the nucleons have undergone a binary collision. Nucleons that have undergone at least one binary collision are said to have participated in the reaction. This procedure is followed to obtain \(N_\mathrm{part}\), \(N_\mathrm{coll}\) event-by-event.
