@@ -63,7 +63,96 @@ A vast array of techniques exist to avoid overtraining, all of which can be cons
 Regularization techniques such as dropout were key to advances in image recognition with deep learning
 
 \section{Jet Classification}
+For jets, classifiers can be used as a tagging mechanism. 
+%
+For almost every way of representing a jet, there is a class of machine learning models.
+%
+We discuss two cases here
+\subsection{Quark-Gluon jet discrimination}
+Quark and gluon jet \(p+p\) events are generated as \(qq\to qq\) and \(gg\to gg\) dijet events at \sNN{200}{GeV} using PYTHIA-8 (RHIC Tune). 
+%
+Each jet is represented as an $24\times24$ image following~\cite{Komiske_2017}. 
+%
+The RGB color channels of the image are made as,
+\begin{itemize}
+	\item R: $\sum p_\mathrm{T}$ of charged constituents,
+	\item G: $\sum p_\mathrm{T}$ of neutral constituents,
+	\item B: number of charged constituents.
+\end{itemize}
+giving jets as shown in~\ref{fig:qgJetExamples}.
+%
+Preprocessing involves centering the images around each jet's $p_\mathrm{T}$-weighted centroid
+$(\bar y,\bar\phi) = \sum_i p_{\mathrm{T},i}(y_i,\phi_i)/\sum_i p_{\mathrm{T},i}$, followed by narmalization
+%
+Data is augmented using  procedures like random reflections ($\Delta y\to-\Delta y$ or $\Delta\phi\to-\Delta\phi$) and random jitter. 
 
+\begin{figure}
+	\centering
+	\label{fig:qgJetExamples}
+	\includegraphics[width=\linewidth]{figures/qgjet_images}
+	\caption{Typical quark (left) and gluon (right) jet. Gluon jets exhibit a broader spatial radiation pattern
+		and higher particle multiplicity compared to quark jets}
+	\label{fig:qgjetimages}
+\end{figure}
+
+The images were input for a Convolutional Neural Network (CNN) implemented using PyTorch as shown in fig.~\ref{fig:rgbnn}.  
+%
+Each convolutional layer consisted of 64 filters, with filter sizes of 5×5, 3×3, and 3×3, respectively (8×8, 4×4, and 4×4 for the 72×72 images). The max-pooling layers performed a 2×2 down-sampling with a stride length of 2. The dense layer consisted of 128 units, with a dropout rate of 0.2 before and after it.
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/RGBNN}
+	\caption{An illustration of the deep convolutional neural network architecture. The first
+		layer is the input jet image, followed by three convolutional layers, a dense layer and an
+		output layer.~\cite{Komiske_2017}}
+	\label{fig:rgbnn}
+\end{figure}
+
+The network was trained with the AdamW optimizer at a learning rate of \(10^{-3}\) and a weight decay of 0.1, using the cross-entropy loss. 
+%
+Training used a batch size of 128 for 20 epochs, and the model with the lowest validation loss was retained. 
+%
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/roc_per_jpt}
+	\caption{}
+	\label{fig:rocperjpt}
+\end{figure}
+Training images were augmented with random reflections in \(\Delta\eta\) and \(\Delta\phi\) and random translations of up to 0.5 pixels. 
+%
+The Receiver Operator Characteristic (ROC) curve  is shown differential in \(p_\mathrm{T, jet}\) by evaluating the model on a holdout test set.  
+
+
+A way to gain some understanding of how the model looks at jet substructure is through \emph{interpretability} methods. 
+%
+We use a simple method of just noting the average change in classifier output upon masking a pixel. As seen in fig.~\ref{fig:importancecnnqg}, 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/importance_cnn_qg}
+	\caption{Per-pixel feature importance }
+	\label{fig:importancecnnqg}
+\end{figure}
+\subsection{Characterizing jet quenching}
+Another way to think about jet quenching/modification, is to ask how easily can a classifier algorithm tell apart the quenched and unquenched jet. 
+%
+Here we take PYTHIA-6~\cite{Sj_strand_2006} as the source of unquenched jets and JEWEL \cite{Zapp:2013vla} generates quenched jets in different centrality bins with/without recoil centers. 
+%
+Jets are represented as a 9-D vectors of features: $p_{\rm T, jet}$, $\rm N^{charged}_{\rm constit., jet}$, $\rm N^{neutral}_{\rm constit., jet}$, LeSub, $\lambda^2_0$, $\lambda_1^{0.5}$, $\lambda_1^1$, $\lambda_1^2$.
+%
+The jets are input into Dense Neural Networks (DNNs) with three hidden layers with 100 nodes each. After training, we calculate ROC curves shown in~\ref{fig:jetQuenchROC} using a holdout test set.
+%
+ \begin{figure}
+ 	\label{fig:jetQuenchROC}
+	\includegraphics[width=0.49\linewidth]{roc_curve_dnn_withoutRec.pdf}
+	\includegraphics[width=0.49\linewidth]{roc_curve_dnn_wRec.pdf}
+	\caption{ROC curves for PYTHIA6 vs. JEWEL without recoils (left) and with recoils (right).}
+\end{figure}
+%
+The DNN performs better than chance in all the centralities and for both with/without recoils case.
+The with-recoils case gives exagerrated ROC curves due to the background of recoil centers. 
+%
+AUC score decreases from central (0-10\%) to peripheral (50-80\%) events possibly implying more modification in central compared to peripheral.  
+%
+More information about jet quenching and machine learning can be found in~\cite{lai2022informationcontentjetquenching}
 
 \section{Unfolding}
 For any experiment, there is a disconnect between the desired phenomena (\emph{truth} level) and the measurement (\emph{measured} level) due to limitations of the detector setup. This is portrayed in fig.~\ref{fig:UnfoldingScheme} through a dijet event at the truth level, whose final state charged and neutral particles are recorded as TPC tracks and BEMC towers.  Each of the detectors smear the energy and momenta and for almost all experiments,  the information about particle species is lost. For example, at STAR often a \(\pi^0\) mass assumption is taken for measured constituents. Thus jets, which are composite objects of these tracks and towers are non-trivially modified by a complicated convolution of these effects. Even with the best background removal procedure, jets will contain some residual background fluctuations from the underlying event.
@@ -205,7 +294,15 @@ Thus distributions of any jet observable \(\mathbf{O}\) will have these \emph{de
 	p_\mathrm{tr.}(\mathbf{x}) &= \int d\mathbf{y}~p_\mathrm{tr.|meas.}(\mathbf{x} |  \mathbf{y}) p_\mathrm{meas.}(\mathbf{y})
 \end{align}
 
-From eq.~\ref{eq:trMeas}, we measure \(p_\mathrm{meas.}\) through histograms, density estimates, etc. and \(p_\mathrm{tr.}\) is what we want to measure. Now, \(p_\mathrm{meas.|tr.}\) represents the detector's \emph{response}, which can be obtained to a high degree of accuracy from simulation programs like GEANT\CITETHIS. We can start from a \emph{generated} truth distribution  \(p_\mathrm{gen., 0}\) and obtain the \emph{reconstructed} measured distribution  \(p_\mathrm{reco., 0}\). Thus the assumption is, 
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/omnifold_fig_2025_04_24}
+	\caption{Illustration of the OmniFold method. In Step 1, MC is corrected to match data at the detector level, producing a weighting function $w_1(\vec{x}_{\text{reco}}^{\text{ MC}})$. In Step 2, a new function $w_2(\vec{x}_{\text{true}}^{\text{ MC}})$ is learned based only on particle-level quantities. The method proceeds iteratively, refining the function $w_2(\vec{x}_{\text{true}}^{\text{ MC}})$ such that the particle-level MC can be reweighted to give event yields and kinematics that match those observed in the data.~\cite{Canelli_2026}
+		\label{fig:omnifold}}
+	\label{fig:omnifoldfig20250424}
+\end{figure}
+
+From eq.~\ref{eq:trMeas}, we measure \(p_\mathrm{meas.}\) through histograms, density estimates, etc. and \(p_\mathrm{tr.}\) is what we want to measure. Now, \(p_\mathrm{meas.|tr.}\) represents the detector's \emph{response}, which can be obtained to a high degree of accuracy from simulation programs like GEANT~\cite{MISC-15}. We can start from a \emph{generated} truth distribution  \(p_\mathrm{gen., 0}\) and obtain the \emph{reconstructed} measured distribution  \(p_\mathrm{reco., 0}\). Thus the assumption is, 
 \begin{align}
 	\label{eq:responseTransfer}
 	p_\mathrm{meas.|tr.}(\mathbf{y} |  \mathbf{x}) = p_\mathrm{reco.|gen., 0}(\mathbf{y} |  \mathbf{x}) \equiv R(\mathbf{y}, \mathbf{x}) ,
@@ -254,7 +351,7 @@ Given convergence, \(p_{\mathrm{reco.}, n}(\mathbf{y}) \to p_\mathrm{gen.}(\math
 %\end{align}
 %so that \(\nu_{n-1}\) is formed over a generated distribution that includes misses, and \(\omega_n\) against a reconstructed distribution that includes fakes.
 
-This algorithm can be adapted for binned data by expressing the distributions as vectors representing bin counts of histograms and \(R(\mathbf{y}, \mathbf{x})\) as a matrix, giving the traditional method of \emph{Iterative Bayesian Unfolding}\CITETHIS. Although it has been the standard for a long time, the required binning of data limits its usefulness beyond 3-dimensions. Also, not all measurements can be straightforwardly represented in the response matrix. 
+This algorithm can be adapted for binned data by expressing the distributions as vectors representing bin counts of histograms and \(R(\mathbf{y}, \mathbf{x})\) as a matrix, giving the traditional method of \emph{Iterative Bayesian Unfolding}~\cite{bennerRoounfold}. Although it has been the standard for a long time, the required binning of data limits its usefulness beyond 3-dimensions. Also, not all measurements can be straightforwardly represented in the response matrix. 
 
 One of the first unbinned approach uses classifiers to calculate ratios \(\omega\) and \(\nu\). For \(i^\text{th}\) iteration, \(\omega_{i-1}(\mathbf{y})\) can be calculated using classifier \(f_\mathrm{meas., reco}\) which classifies a jet represented by \(\mathbf{y}\) as measured or reconstructed. Thus, 
 \begin{equation}
@@ -264,7 +361,7 @@ and \(\nu_{i-1}(\mathbf{y})\) can be calculated using classifier \(f_{i, i-1}\) 
 \begin{equation}
 	\nu_{i-1}(\mathbf{x}) = \frac{f_{i, i-1}(\mathbf{x})}{1-f_{i, i-1}(\mathbf{x})}
 \end{equation}
-The weights of eq.~\ref{eq:missFakeWeights} are obtained the same way. For misses, a classifier \(f^\mathrm{gen.}_{i, i-1}\) separates matched generated jets weighted by \(\omega_{i-1}(\mathbf{y})\) from those of the \((i-1)^\text{th}\) iteration; for fakes, a classifier \(f^\mathrm{reco.}_{i, i-1}\) separates matched reconstructed jets weighted by \(\nu_{i-1}(\mathbf{x})\) from those of the \((i-1)^\text{th}\) iteration,
+ For misses, a classifier \(f^\mathrm{gen.}_{i, i-1}\) separates matched generated jets weighted by \(\omega_{i-1}(\mathbf{y})\) from those of the \((i-1)^\text{th}\) iteration; for fakes, a classifier \(f^\mathrm{reco.}_{i, i-1}\) separates matched reconstructed jets weighted by \(\nu_{i-1}(\mathbf{x})\) from those of the \((i-1)^\text{th}\) iteration,
 \begin{equation}
 	\omega_{i-1}(\mathbf{x}) = \frac{f^\mathrm{gen.}_{i, i-1}(\mathbf{x})}{1-f^\mathrm{gen.}_{i, i-1}(\mathbf{x})} ,
 	\qquad
@@ -272,7 +369,7 @@ The weights of eq.~\ref{eq:missFakeWeights} are obtained the same way. For misse
 \end{equation}
 evaluated at the miss's \(\mathbf{x}\) and the fake's \(\mathbf{y}\) respectively. Thus, it takes 2-4 classfier training per unfolding iteration. 
 
-\section{Uncertainties in ML predictions}
+%\section{Uncertainties in ML predictions}
 
 
 

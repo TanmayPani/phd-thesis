@@ -132,11 +132,11 @@ Therefore, any measurement done using heavy-ion events need to report these init
 
 \section{Finding Jets}
 \label{sec:jetAlgo}
-To address the prevalent ambiguity of jet definitions, the Snowmass Accord \CITETHIS stated that, experimental and theoretical measurements had to use the same jet finding algorithm on final state hadrons in order to be comparable. 
+To address the prevalent ambiguity of jet definitions, the Snowmass Accord~\cite{Berger:1992etd} stated that, experimental and theoretical measurements had to use the same jet finding algorithm on final state hadrons in order to be comparable. 
 %
-Thus clustered jets are not-quite the proxies for partons in the same way as parton showers, but regions in the phase space that are most likely to have contributions from parton showers. 
+Thus clustered jets are not-quite the proxies for partons in the same way as parton showers, but regions in the final state phase space that are most likely to have contributions from parton showers. 
 %
-Even after we define a jet, another ambiguity comes from the decision of what constituents in the event must be used as inputs into the jet finding algorithm. Especially, in heavy-ion collisions jet-medium interactions make that choice non-trivial. Keeping these considerations in mind, a ``good'' jet finding algorithm is:
+Even after we define a jet, another ambiguity comes from the decision of what constituents in the event must be used as inputs into the jet finding algorithm. Especially, in heavy-ion collisions jet-medium interactions make that choice non-trivial. For example, is a soft particle inside the jet cone coming from soft gluon radiation from the jet or the medium? Keeping these considerations in mind, a ``good'' jet finding algorithm is:
 \begin{itemize}
 	\item \emph{Collinear safe}, meaning  it would find the same jet with the same \(p_\mathrm{T, jet}\) regardless of  fragmentation details
 	\item \emph{Infrared safe}, meaning  it would find the same jets, even in the presence of a
@@ -162,7 +162,7 @@ where, \(\Delta R_{ij}^2 = (\eta_i-\eta_j)^2+(\phi_i-\phi_j)^2\) is the \etaphi 
 \end{enumerate}
 These steps are iterated until no particles remain. 
 %
-This algorithm becomes the \emph{\(k_\mathrm{T}\) algorithm} for \(p=1\), \emph{Cambridge-Aachen} for \(p=0\) and the most widely used \emph{anti-\(k_\mathrm{T}\) algorithm} for \(p=-1\). 
+This algorithm becomes the \emph{\(k_\mathrm{T}\) algorithm}~\cite{kTAlgorithm} for \(p=1\), \emph{Cambridge-Aachen}~\cite{CambAlgorithm} for \(p=0\) and the most widely used \emph{anti-\(k_\mathrm{T}\) algorithm}~\cite{antiKtAlgorithm} for \(p=-1\). 
 %
 \begin{figure}
 	\centering
@@ -172,12 +172,12 @@ This algorithm becomes the \emph{\(k_\mathrm{T}\) algorithm} for \(p=1\), \emph{
 \end{figure}
 The difference in these algorithms are shown in fig.~\ref{fig:jetalgorithms}.  
 %
-The \emph{FastJet} library efficiently implements these algorithms and a few more, and is the de-facto standard in the High Energy Physics (HEP) community. 
+The \emph{FastJet} library~\cite{Cacciari:2011ma} efficiently implements these algorithms and a few more, and is the de-facto standard in the High Energy Physics (HEP) community. 
 %
 It also provides various recombination schemes. 
 \begin{itemize}
-	\item \emph{E scheme}, just adds the four momenta of the jet candidates.
-	\item \emph{$p_t$, $p_t^2$, $E_t$ and $E_t^2$ schemes} involve a preprocessing stage rescaling the energy to be equal to the 3-momentum for the
+	\item \emph{E-scheme}, just adds the four momenta of the jet candidates.  it is the default in FastJet and the most commonly used.
+	\item \emph{Boost-invariant $p_t$/$p_t^2$/$E_t$/$E_t^2$ schemes} involve a preprocessing stage rescaling the energy to be equal to the 3-momentum for the
 	$p_t$ and $p_t^2$ schemes or the 3-momentum to be equal to
 	the energy in the $E_t$ and $E_t^2$ schemes. Then for all schemes the
 	recombination $p_r$ of $p_i$ and $p_j$ is a massless 4-vector
@@ -185,18 +185,17 @@ It also provides various recombination schemes.
 	\begin{subequations}
 		\begin{align}
 			p_{t,r} &= p_{t,i} + p_{t,j}\,,\\
-			\phi_r &= (w_i \phi_i + w_j \phi_j)/(w_i + w_j)\,,\\
-			y_r &= (w_i y_i + w_j y_j)/(w_i + w_j)\,,
+			\varphi_r &= \frac{w_i \varphi_i + w_j \varphi_j}{w_i + w_j}\,,\\
+			y_r &= \frac{w_i y_i + w_j y_j}{w_i + w_j}\,,
 		\end{align}
 	\end{subequations}
 	where $w_i$ is $p_{t,i}$ for the $p_t$ and $E_t$ schemes, and is
 	$p_{t,i}^2$ for the $p_t^2$ and $E_t^2$ schemes. 
 \item \emph{Winner-takes-all (WTA) scheme} uses the four momentum of the higher momentum jet candidate
 \end{itemize}
-Out of these, E-scheme is the default in FastJet and the most commonly used.
 
 \subsection{SoftDrop}
-The soft drop grooming procedure can be summarized as follows. First, the observed jet is reclustered with the Cambridge/Aachen (C/A) algorithm.
+The soft drop grooming~\cite{SoftDrop_Larkoski_2014} procedure can be summarized as follows. First, the observed jet is reclustered with the Cambridge/Aachen (C/A) algorithm.
 Second, the soft drop criterion from Eq. \ref{eq:softDropCrit} is checked at each clustering step when going backward through the C/A clustering tree.
 \begin{equation}
 	\label{eq:softDropCrit}

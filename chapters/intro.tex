@@ -310,25 +310,24 @@ will be replaced by the \(n+1\)-parton phase space and the \(n+1\)-parton matrix
 	|\mathcal{M}_{n+1}\big|^2 &\sim \frac{8\pi\alpha_s}{t}CF|\mathcal{M}_n|^2
 \end{align}
 
-
-
-
 Substituting in Eq. \ref{eq:nPartonXsec} and integrating away the \(d\phi\), we get,
-
+%
 \begin{align}
 	d\sigma_{n+1} &= d\sigma_n \frac{dt}{t}dz\frac{\alpha_s}{2\pi}\int\frac{d\phi}{2\pi}CF \notag\\
 	&= d\sigma_n \frac{dt}{t}dz\frac{\alpha_s}{2\pi} \hat{P}_{ba}
 \end{align}
 
-Same equation would hold for the space-like case. To obtain the evolution equations, we can frame the evolution in terms of the change in parton distribution function \(f(x,t)\) when the evolution scale \(t\) goes from \(t\) to \(t+\delta t\).  ,
-
+Same equation would hold for the space-like case. 
+%
+To obtain the evolution equations, we can frame the evolution in terms of the change in parton distribution function \(f(x,t)\) when the evolution scale \(t\) goes from \(t\) to \(t+\delta t\),
+%
 \begin{align}
 	\delta f_i(x, t) &= \delta f_\mathrm{in} - \delta f_\mathrm{out} \notag\\
 	&=\frac{\delta t}{t} \sum_j \int_{0}^{1} dz \frac{\alpha_s}{2\pi} \left[\frac{\hat{P}_{ij}(z)}{z}f_j(x/z, t) - \hat{P}_{ji}f_i(x,t)\right]
  \end{align}
-
+ %
 Introducing the \emph{Sudakov form factor}, which gives the probability of a parton \(i\) evolving from scale \(t\) to a softer scale \(t_0\) without a resolvable emission,
-
+%
 \begin{align}
 	\Delta_i(t) \equiv \exp(-\sum_j\int_{t_0}^{t} \frac{dt^\prime}{t^\prime}\int dz\frac{\alpha_s}{2\pi} \hat{P}_{ji}(z))
 \end{align}
