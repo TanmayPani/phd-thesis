@@ -207,9 +207,15 @@ Usually, the reference scale \(Q_0^2\) is set to a convenient energy scale in th
 
 \subsection{Quark Gluon Plasma (QGP)}
 \label{sec:QGPIntro}
-Asymptotic freedom of QCD means that matter at extremely high temperatures and densities (high \(Q^2\)) undergo a \emph{deconfinement} phase transition, with partonic degrees of freedom replacing hadronic degrees of freedom. This state of deconfined quarks and gluons is called QCD/quark-gluon plasma due to analogous phenomena observed in atomic physics. Thermodynamically, when temperature (\(T\)) or baryon number density (\(n_\mathrm{B}\)) approaches the confinement scale \(\Lambda\) introduced in Sec.~\ref{subsec:runningCoupling} (\(T \sim \Lambda \sim \mathcal{O}(10^{12})K,~\text{and}~n_\mathrm{B} \sim \Lambda^3 \sim 1~\text{fm}^{-3}\)) the boundaries between hadrons become ill defined resulting in hadrons ``melt'' into QGP.  For reference, the core of our sun ``only'' has \(T\sim \mathcal{O}(10^{7})K\) and \(n_\mathrm{B}\sim\mathcal{O}(10^{-14})\text{fm}^{-3}\). 
+Asymptotic freedom of QCD means that matter at extremely high temperatures and densities (high \(Q^2\)) undergo a \emph{deconfinement} phase transition, with partonic degrees of freedom replacing hadronic degrees of freedom. 
+%
+This state of deconfined quarks and gluons is called QCD/quark-gluon plasma due to analogous phenomena observed in atomic physics~\cite{SHURYAK198071}.
 
-These orders of \(T\) and \(n_\mathrm{B}\) are the theorized conditions prevalent in the universe a few \(\mu\mathrm{s}\) after Big-Bang. The only natural phenomena in the present-day, cold universe that can achieve these conditions are the cores of neutron stars. Artificially, the required  \(T\) and \(n_\mathrm{B}\) can be achieved at facilities like the Large Hadron Collider (LHC) and Relativistic Heavy Ion Collider (RHIC) through collisions of heavy-ions (like Au, Pb, etc.) at near-light speeds, the aptly named \emph{little bangs}. More on this will be discussed in Sec. \ref{sec:heavyIonCollisions}. 
+Thermodynamically, when temperature (\(T\)) or baryon number density (\(n_\mathrm{B}\)) approaches the confinement scale \(\Lambda\) introduced in Sec.~\ref{subsec:runningCoupling} (\(T \sim \Lambda \sim \mathcal{O}(10^{12})K,~\text{and}~n_\mathrm{B} \sim \Lambda^3 \sim 1~\text{fm}^{-3}\)) the boundaries between hadrons become ill defined resulting in hadrons ``melt'' into QGP~\cite{Fukushima_2010}.  
+%
+For reference, the core of our sun ``only'' has \(T\sim \mathcal{O}(10^{7})K\) and \(n_\mathrm{B}\sim\mathcal{O}(10^{-14})\text{fm}^{-3}\). 
+
+These orders of \(T\) and \(n_\mathrm{B}\) are the theorized conditions prevalent in the universe a few \(\mu\mathrm{s}\) after Big-Bang. The only natural phenomena in the present-day, cold universe that can achieve these conditions are the cores of neutron stars~\cite{Annala_2020} or neutron star mergers~\cite{neutronStarMerger}. Artificially, the required  \(T\) and \(n_\mathrm{B}\) can be achieved at facilities like the Large Hadron Collider (LHC) and Relativistic Heavy Ion Collider (RHIC) through collisions of heavy-ions (like Au, Pb, etc.) at near-light speeds, the aptly named \emph{little bangs}. More on this will be discussed in Sec. \ref{sec:heavyIonCollisions}. 
 
 \section{Hard Processes}
 To consider any nucleus as a singular coherent object, the fluctuations inside it would involve momentum transfers below the confinement scale (\(\Lambda\)) introduced in \ref{subsec:runningCoupling}, and would occur over timescales \(\sim 1/\Lambda\). We define \emph{hard-scattering processes} or just \emph{hard processes} as interactions of a hard perturbative probe with high momentum transfer \(Q >> \Lambda\). Since this interaction occurs over a time-scale \(\sim 1/Q \ll 1/\Lambda\), the perturbative probe effectively interacts with a near-static ``snapshot'' of the nucleus with a characteristic resolution \(\sim 1/Q\). 
@@ -221,10 +227,10 @@ To consider any nucleus as a singular coherent object, the fluctuations inside i
 	\label{fig:factorization}
 \end{figure}
 
-Thus, we can \emph{factorize} the cross section of a collision process of nuclei with momentum \(P_1\) and \(P_2\) depicted by Fig. \ref{fig:factorization} as,
+Thus, the cross sections of a collision process of nuclei with momentum \(P_1\) and \(P_2\) depicted by Fig.~\ref{fig:factorization} can be \emph{factorized} into various independent components as,
 
 \begin{equation}
-	\sigma(P_1, P_2)  = \sum_{i,j} \int dx_1dx_2f_i(x_1, \mu^2)f_j(x_2, \mu^2)\hat{\sigma}_{ij}(p_1, p_2, \alpha_s, Q^2/\mu^2)
+	\frac{d\sigma(P_1, P_2)}{d\mathbf{O}}  = \sum_{i,j,f} \int dx_1dx_2f_i(x_1, \mu^2)f_j(x_2, \mu^2)\frac{d\hat{\sigma}_{ij\to f}(p_1, p_2, \alpha_s, Q^2/\mu^2)}{d\hat{\mathbf{O}}}D_f(\hat{\mathbf{O}}\to\mathbf{O}, \mu^2)
 	\label{eq:factorization}
 \end{equation}
 
@@ -288,8 +294,7 @@ Outgoing partons evolve from higher to lower momentum transfer scales (say, \(t\
 
 Consider timelike splitting of a parton, \(a\to b+c\) shown in Fig. \ref{fig:splitKinematics}. Let's assume the partons are massless, and define the evolution scale (\(t\)) as, 
 \begin{align}
-	t &\equiv p_a^2 \gg p_b^2, p_c^2 \notag\\
-	\implies t &\approx 2E_bE_c(1 - \cos(\theta))  \approx z(1-z)E_a^2\theta^2
+	t \equiv p_a^2 \approx 2E_bE_c(1 - \cos\theta)  \approx z(1-z)E_a^2\theta^2
 \end{align}
 Where, \(z = E_b/E_a = 1 - E_c/E_a\) and \(\theta = \theta_a + \theta_b\) is the opening angle.  The cross-section of a \(n\)-parton final state branching processes can be calculated by considering \(n\)-parton matrix element.
 \begin{equation}
