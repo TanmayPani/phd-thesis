@@ -367,9 +367,57 @@ and \(\nu_{i-1}(\mathbf{y})\) can be calculated using classifier \(f_{i, i-1}\) 
 	\qquad
 	\nu_{i-1}(\mathbf{y}) = \frac{f^\mathrm{reco.}_{i, i-1}(\mathbf{y})}{1-f^\mathrm{reco.}_{i, i-1}(\mathbf{y})} ,
 \end{equation}
-evaluated at the miss's \(\mathbf{x}\) and the fake's \(\mathbf{y}\) respectively. Thus, it takes 2-4 classfier training per unfolding iteration. 
+evaluated at the miss's \(\mathbf{x}\) and the fake's \(\mathbf{y}\) respectively. Thus, it takes 2-4 classfier training per unfolding iteration~\cite{andreassen2021scaffoldingsimulationsdeeplearning}.
 
-%\section{Uncertainties in ML predictions}
+\section{Bootstrap Uncertainties}
+\label{sec:bootstrap}
+The classifiers of the previous section are trained on finite samples of measured, reconstructed and generated jets, and the training itself is stochastic through the initialization of the model, dropout and the order of the mini-batches. 
+%
+The unfolded distribution inherits all of these, and after several trainings chained across iterations there is no closed form for propagating them. 
+%
+Instead, the whole procedure is repeated on resampled inputs and the spread of the outcomes is taken as the uncertainty. 
+
+Every classifier \(f\) is replaced by an ensemble of \(N_\mathrm{rep.}\) replicas. 
+%
+Replica \(r\) is trained on a random subsample of \(m\) jets drawn without replacement from each of the two classes it separates (e.g. \(m\) measured and \(m\) reconstructed jets for \(f_\mathrm{meas., reco}\)), split further into a training and a validation set, with its own initialization and dropout. 
+%
+The same replica index is carried through every classifier of every iteration, so replica \(r\) is a complete unfolding on its own, with weights \(\omega^{(r)}_{n-1}\) and \(\nu^{(r)}_{n-1}\) and, from eq.~\ref{eq:generalUnfolding},
+\begin{equation}
+	\label{eq:replicaWeight}
+	p^{(r)}_{\mathrm{gen.}, n}(\mathbf{x}) = p_{\mathrm{gen.}, 0}(\mathbf{x})\prod_{k=0}^{n-1}\nu^{(r)}_k(\mathbf{x}) \equiv w^{(r)}_n(\mathbf{x})\,p_{\mathrm{gen.}, 0}(\mathbf{x})
+\end{equation}
+Where, \(w^{(r)}_n(\mathbf{x})\) is the per-jet unfolding weight of replica \(r\) after \(n\) iterations. 
+%
+The subsampling is only done for training; at inference every replica is evaluated on every jet, so eq.~\ref{eq:replicaWeight} gives \(N_\mathrm{rep.}\) unfolded samples, each with the full statistics of the simulation. 
+
+Any binned quantity \(H\), a histogram, a profile or a ratio of two of them, is then calculated once per replica from the weights \(w^{(r)}_n\), and its central value and uncertainty are the mean and standard deviation over the ensemble,
+\begin{equation}
+	\label{eq:bootstrapUnc}
+	\bar{H} = \frac{1}{N_\mathrm{rep.}}\sum_{r=1}^{N_\mathrm{rep.}} H^{(r)} , \qquad
+	\sigma_H^2 = \frac{1}{N_\mathrm{rep.} - 1}\sum_{r=1}^{N_\mathrm{rep.}}\left(H^{(r)} - \bar{H}\right)^2 
+\end{equation}
+Ratios are formed replica by replica before averaging, so the correlation between numerator and denominator through the shared weights is kept. 
+%
+Where a single diverged replica would pull \(\bar{H}\), the median or a trimmed mean over the ensemble is used for the central value instead; \(\sigma_H\) is always the standard deviation. 
+
+Since the replicas differ in the measured subsample, the simulated subsample and the training, \(\sigma_H\) contains the statistical uncertainty of the measurement, that of the simulation and the variance of the training procedure, without separating them. 
+%
+With \(m\) smaller than the full samples, the spread is that of samples of size \(m\) and is conservative for the purely statistical part. 
+%
+\(N_\mathrm{rep.}\) only sets how precisely \(\sigma_H\) itself is known, not its size. 
+
+\section{Barlow Test}
+\label{sec:barlow}
+The ensembles of Sec.~\ref{sec:bootstrap} are also used to decide whether a systematic variation is significant. 
+%
+Each variation is a complete unfolding with its own ensemble, giving \(\bar{H}_\mathrm{var.}\) and \(\sigma_\mathrm{var.}\) alongside the nominal \(\bar{H}_\mathrm{nom.}\) and \(\sigma_\mathrm{nom.}\). 
+%
+The shift \(\bar{H}_\mathrm{var.} - \bar{H}_\mathrm{nom.}\) is partly a statistical fluctuation between two ensembles, whose size is estimated as \(\sigma^2_\mathrm{uncorr.} = |\sigma^2_\mathrm{var.} - \sigma^2_\mathrm{nom.}|\), and the shift is only counted as a systematic uncertainty in a bin where
+\begin{equation}
+	\label{eq:barlow}
+	\frac{|\bar{H}_\mathrm{var.} - \bar{H}_\mathrm{nom.}|}{\sigma_\mathrm{uncorr.}} \geq 1 ,
+\end{equation}
+the \emph{Barlow test}, and is set to zero otherwise. 
 
 
 

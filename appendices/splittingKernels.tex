@@ -1,0 +1,75 @@
+\chapter{Contribution of QCD processes to cross section}
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{
+			>{\centering\arraybackslash}m{4.0cm}
+			>{\raggedright\arraybackslash}m{10.4cm}
+		}
+		% --- PROPAGATORS
+		\propagator{gluon}{A,\alpha}{B,\beta}{p}   &
+		\(\delta^{AB}\left[-g^{\alpha\beta} + (1-\lambda)\dfrac{p^{\alpha}p^{\beta}}{p^{2}+i\epsilon}\right]
+		\dfrac{i}{p^{2}+i\epsilon}\)                                                             \\[0.4cm]
+		
+		\propagator{ghost}{A}{B}{p}                &
+		\(\delta^{AB}\,\dfrac{i}{p^{2}+i\epsilon}\)                                              \\[0.4cm]
+		
+		\propagator{fermion}{a,i}{b,j}{p}          &
+		\(\delta^{ab}\,\dfrac{i}{(\slashed{p}-m+i\epsilon)_{ji}}\)                               \\[0.6cm]
+		
+		% --- VERTICES
+		\yvertex{gluon}{B,\beta}{q}{gluon}{A,\alpha}{p}{gluon}{C,\gamma}{r} &
+		\(-g\,f^{ABC}\left[(p-q)^{\gamma}g^{\alpha\beta} + (q-r)^{\alpha}g^{\beta\gamma}
+		+ (r-p)^{\beta}g^{\gamma\alpha}\right]\)
+		
+		\smallskip
+		
+		(all momenta incoming, \(p+q+r=0\))                                                      \\[0.4cm]
+		
+		\fourvertex{gluon}{A,\alpha}{gluon}{C,\gamma}{gluon}{B,\beta}{gluon}{D,\delta} &
+		\(\begin{aligned}
+			-ig^{2}f^{XAC}f^{XBD}\left[g^{\alpha\beta}g^{\gamma\delta} - g^{\alpha\delta}g^{\beta\gamma}\right] \\
+			-ig^{2}f^{XAD}f^{XBC}\left[g^{\alpha\beta}g^{\gamma\delta} - g^{\alpha\gamma}g^{\beta\delta}\right] \\
+			-ig^{2}f^{XAB}f^{XCD}\left[g^{\alpha\gamma}g^{\beta\delta} - g^{\alpha\delta}g^{\beta\gamma}\right]
+		\end{aligned}\)                                                                          \\[0.4cm]
+		
+		\yvertex{gluon}{A,\alpha}{}{ghost}{B}{}{ghost}{C}{q} &
+		\(g\,f^{ABC}q^{\alpha}\)                                                                 \\[0.4cm]
+		
+		\yvertex{gluon}{A,\alpha}{}{fermion}{b,i}{}{fermion}{c,j}{} &
+		\(-ig\,(t^{A})_{cb}\,(\gamma^{\alpha})_{ji}\)
+	\end{tabular}
+	\caption{Feynman rules for QCD in a covariant gauge with gauge parameter \(\lambda\):
+		the gluon, ghost and quark propagators, followed by the three- and four-gluon,
+		ghost-gluon and quark-gluon vertices.}
+	\label{tab:qcdrules}
+\end{table}
+
+\begin{table}[htbp]
+	\centering
+	\setlength{\tabcolsep}{6pt}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{tabular}{
+			>{\centering\arraybackslash}m{2cm}
+			>{\centering\arraybackslash}m{4.0cm}
+			>{\raggedright\arraybackslash}m{8cm}
+		}
+		\toprule
+		Kernel (\(ij\)) & Diagram & \(\hat{P}_{ij}(z)\) \\
+		\midrule
+		\(qq\) & \splitvertex{fermion}{q}{}{fermion}{q}{z}{gluon}{g}{1-z} &
+		\(\displaystyle C_F\left[\frac{1+z^2}{1-z}\right]\) \\
+		\(gq\) & \splitvertex{fermion}{q}{}{gluon}{g}{z}{fermion}{q}{1-z} &
+		\(\displaystyle C_F\,\frac{1+(1-z)^2}{z}\) \\
+		\(qg\) & \splitvertex{gluon}{g}{}{fermion}{q}{z}{anti fermion}{\bar{q}}{1-z} &
+		\(\displaystyle T_R\left[z^2 + (1-z)^2\right]\) \\
+		\(gg\) & \splitvertex{gluon}{g}{}{gluon}{g}{z}{gluon}{g}{1-z} &
+		\(\displaystyle C_A\left[\frac{z}{1-z} + \frac{1-z}{z} + z(1-z)\right] \)\\
+		\bottomrule
+	\end{tabular}
+	\caption[Leading-order DGLAP splitting functions and their diagrams]{%
+		The four leading-order collinear splittings entering the DGLAP evolution
+		of Eq.~\ref{eq:xsecBranching}. The daughter parton \(i\) carrying momentum
+		fraction \(z\) is drawn on the upper leg, the recoiling parton \((1-z)\)
+		on the lower~\cite{Ellis_Stirling_Webber_1996}.}
+	\label{tab:splitfns}
+\end{table}
