@@ -1,5 +1,25 @@
 \chapter{Introduction}
 \label{ch:intro}
+Since ancient times, humans have pondered the nature of matter, as evidenced by the fact that between 2000-3000 years ago, the Greeks and Indians independently developed the philosophical school of \emph{Atomism}. 
+%
+The words ``atomism'' and  ``atoms'' are etymologically linked to the Greek word \emph{atomos} (indivisible), first used by Democritus in 500 B.C., to denote the most fundamental, indivisible unit of matter. 
+%
+The atoms of Democritus differed from the matter they came from quantitatively but not qualitatively (an atom of wood would still be an almost infinitesimal piece of wood).\CITETHIS 
+%perhaps quickly diverged from the atoms of today as he explained the sweet and bitter tastes as round and jagged atoms going through the tongue. 
+%
+Meanwhile sometime between 600-200 B.C., the Indian philosopher Kanada developed a non-theistic, atomistic approach to the Vedic texts in the Sanskrit text \emph{Vaishesika Sutra} (Aphorisms on particularity).\CITETHIS
+%
+Kanada postulated that even the smallest division of any material that still resembles the matter, \emph{Anu} (Sanskrit word for atom) would further comprise of \emph{Paramanu} (Sanskrit for ultimate-atom/sub-atom).
+%
+Interestingly, Kanada's paramanu were qualitatively different than ordinary matter and were of four kinds, two with mass and two without, and their indivisibility came from their immeasureability.\CITETHIS
+%
+However, even though they went into concepts like rotational invariance (the paramanu must be spherical to be the same from all directions), the ultimate objective Kanada's sutras had little to do with formalizing natural phenomena and were mostly a metaphysical reading of Vedic teachings like \emph{Dharma}, \emph{Moksha} (Vedic version of the Buddhist \emph{Nirvana}), etc.  
+%
+
+Atomism lived on as a niche philosophical concept for the next 2000 years or so, piquing curiosities of thinkers like Aristotle, Epicurius and his Roman descendants, Al-Ghazali and his Ash'ari peers in Basra, Iraq, and eventually in renaissance European philosophers like Galileo and Descartes.
+%
+In 1704 Issac Newton's \emph{Optika} described the \emph{Corpuscular theory of light}, conceptualizing light as a rectilinear stream of discrete ``corpuscules''  with a finite velocity. 
+
 
 %===========================================================================================
 %\section{History}
@@ -10,7 +30,7 @@
 According to the Standard Model (SM), all matter results from interactions between fundamental particles: lepton and quarks (fermions), and mediators (bosons).
 Table \ref{tab:qrknlep} shows fermions of the standard model, their anti-particle equivalent would have all the signs reversed for the quantum numbers. For example, an anti-electron (\(e^+\)) and anti-electron-neutrino (\(\bar{\nu_e}\)) lepton number would flip to \((-1, 0, 0)\) and charges (\(Q\)s) would be \(+1\) and 0 respectively.
 
-\begin{table}[htbp]
+\begin{table}
 	\centering
 	\begin{tabular}{c @{\hspace{5pt}} l |c|c|c|l|c|c|c|}
 		% Top edges of both tables
@@ -43,7 +63,8 @@ Table \ref{tab:qrknlep} shows fermions of the standard model, their anti-particl
 	\label{tab:qrknlep}
 	\caption{Three generations of leptons (left) and quarks (right).}
 \end{table}
-\begin{table}[htbp]
+
+\begin{table}
 	\begin{tabular}{
 			>{\centering\arraybackslash}m{2.8cm}
 			>{\centering\arraybackslash}m{2.8cm}
@@ -104,37 +125,12 @@ The matrices \(t^a\) and  \(T^a\) are the fundamental and adjoint representation
 	[T^a, T^b] = if_{abc}T^c,~(T^{a})_{bc} = -if^{abc}.
 \end{align}
 
-Comparing with quantum electrodynamics (QED), where the photon field tensor lacks the last term of Eqn. \ref{eq:gluonFieldTensor} as it is an Abelian, \(U(1)\) gauge theory, we can explain the presence of three/four-gluon vertices and absence of such vertices for the photon in Table \ref{tab:smvtx}. The lagrangian can be used to formulate \emph{Feynman rules} for calculating amplitude contributions from various propagators and vertices, which are collected in Tab.~\ref{tab:qcdrules} of Appendix~\ref{app:qcdProcesses}. 
+Comparing with quantum electrodynamics (QED), where the photon field tensor lacks the last term of Eqn. \ref{eq:gluonFieldTensor} as it is an Abelian, \(U(1)\) gauge theory, we can explain the presence of three/four-gluon vertices and absence of such vertices for the photon in Table \ref{tab:smvtx}. The lagrangian can be used to formulate \emph{Feynman rules} for calculating amplitude contributions from various propagators and vertices, which are collected in Tab.~\ref{tab:qcdrules}. 
 
 \subsection{The Running Coupling}
 \label{subsec:runningCoupling}
-At an energy scale \(Q\), consider a dimensionless observable \(X\). Lets assume that \(Q\) is sufficiently high that the quark masses become negligible in comparison. To calculate \(X\) as a perturbation series in the QCD coupling \(\alpha_s = \frac{g^2}{4\pi}\) (analogous to the QED fine structure constant), we need to remove ultraviolet divergences through renormalization. Renormalization introduces another arbitrary energy scale $\mu$ where the divergences are subtracted.  In general, \(X\) would depend on the ratio \(Q^2/\mu^2\) and post-renormalization coupling $\alpha_s(\mu^2)$. However, any physical observable should be independent of $\mu$:
-\begin{align}
-	\mu^2\frac{d X(Q^2/\mu^2, \alpha_s(\mu^2))}{d\mu^2} &= \left[\mu^2\frac{\partial}{\partial\mu^2} +  \mu^2\frac{\partial\alpha_s(\mu^2)}{\partial\mu^2}\frac{\partial}{\partial\alpha_s}\right] X(Q^2/\mu^2, \alpha_s(\mu^2)) = 0 \notag\\
-	\implies & \left[-\frac{\partial}{\partial t} + \beta(\alpha_s) \frac{\partial}{\partial\alpha_s}\right] X(e^t, \alpha_s) = 0.
-	\label{eqn:renormX}
-\end{align} 
 
-Where, \(t = \ln{\frac{Q^2}{\mu^2}}\), \(\beta(\alpha_s) = \mu^2\frac{\partial\alpha_s}{\partial\mu^2}\), \(\alpha_s\equiv\alpha_s(\mu^2(t))\)
-\begin{align}
-	\beta(\alpha_s) &= -\frac{\partial\alpha_s}{\partial t} \implies  t =  \int^{\alpha_s(Q^2)}_{\alpha_s}\frac{d\alpha_s}{\beta(\alpha_s)}\notag\\
-	\implies & \frac{\partial\alpha_s(Q^2)}{\partial t} = Q^2\frac{\partial \alpha_s}{\partial Q^2}  =  \beta(\alpha_s(Q^2)), \quad\frac{\partial\alpha_s(Q^2)}{\partial\alpha_s} = \frac{\beta(\alpha_s(Q^2))}{\beta(\alpha_s)}
-	\label{eq:runningCouplingIntro}
-\end{align}
-
-Substituting in Eq. \ref{eqn:renormX}, we see that \(X(1, \alpha_s(Q^2))\) is a valid solution. Thus the scale dependence in \(X\) comes from the \emph{running coupling} \(\alpha_s(Q^2)\).  Perturbatively expanding \(\beta(\alpha_s)\), we can write the \emph{renormalization group equation} as,
-
-\begin{align}
-	Q^2\frac{\partial \alpha_s}{\partial Q^2}  = -\alpha_s^2(Q^2)\left(\beta_0 + \beta_1\alpha_s(Q^2) + \mathcal{O}(\alpha_s^2(Q^2))\right)
-	\label{eq:RGEquation}
-\end{align}
-
-Where,
-\begin{equation}
-	\beta_0 = \frac{1}{(4\pi)^2}\left(11 - \frac{2}{3}N_f\right), \quad \beta_1 =  \frac{1}{(4\pi)^4}\left(102 - \frac{38}{3}N_f\right)
-\end{equation}
-
-\begin{figure}[!htbp]
+\begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/alphas-v-Q-2025-cropped.pdf}
 	\caption{Summary of determinations of \(\alpha_s\) as a function of the energy scale Q compared to
@@ -142,22 +138,64 @@ Where,
 	\label{fig:runningCoupling}
 \end{figure}
 
-Integrating Eq. \ref{eq:RGEquation}
-\begin{align}
-	\ln(\frac{Q^2}{Q_0^2})  &= \int^{\alpha_s(Q^2)}_{\alpha_s(Q^2_0)}\frac{d\alpha_s}{\beta(\alpha_s)}\notag\\
-	\implies \alpha_s(Q^2) &= \frac{\alpha_s(Q_0^2)}{1 + \beta_0(\alpha_s(Q_0^2))\ln(Q^2/Q_0^2) + \mathcal{O}(\alpha_s^2)}
-	\label{eq:runningCouplingRel}
-\end{align}
+\begin{equation}
+	\alpha_s(Q^2) = \frac{\alpha_s(Q_0^2)}{1 + \beta_0(\alpha_s(Q_0^2))\ln(Q^2/Q_0^2) + \mathcal{O}(\alpha_s^2)}
+	\label{eq:alphasVsQ2}
+\end{equation}
 
-Usually, the reference scale \(Q_0^2\) is set to a convenient energy scale in the perturbative regime. \(\alpha_s\) at all other scales can be inferred accordingly. Usually, \(Q_0\) is set to mass of the \(Z\)-boson, \(m_Z\) as shown in Fig. \ref{fig:runningCoupling}. Another approach is to choose a scale parameter, \(\Lambda\) such that \(\alpha_s(\Lambda) \rightarrow \infty\).  
-
-\begin{align}
-	\ln(\frac{Q^2}{\Lambda^2}) &= - \int_{\alpha_s(Q^2)}^{\infty} \frac{d\alpha_s}{\beta(\alpha_s)}  \notag\\
-	\implies \alpha_s(Q^2)  &= \frac{1}{\beta_0\ln(Q^2/\Lambda^2)}\left[1 - \frac{\beta_1}{\beta_0}\frac{\ln(\ln(Q^2/\Lambda^2))}{\ln(Q^2/\Lambda^2)} + \mathcal{O}\left(\frac{1}{\ln(Q^2/\Lambda^2)^2}\right)\right]
-	\label{eq:runningCouplingLambda}
-\end{align}
-
-\(\Lambda\) is called the \emph{confinement scale}, around \(200~\mathrm{MeV}\). Eqs. \ref{eq:runningCouplingRel} and \ref{eq:runningCouplingLambda} show a monotonically decreasing relationship between \(\alpha_s\) and \(Q^2\). At high momentum transfers (\(Q \gg \Lambda\)), the coupling strength vanishes ($\alpha_s \to 0$). In this regime, quarks and gluons behave as quasi-free particles, making perturbative QCD (pQCD) calculations highly reliable (\emph{Asymptotic Freedom}).  At low energy scales (\(Q \ll \Lambda\)), the coupling diverges. In this non-perturbative QCD (npQCD) limit, isolated color charges cannot exist and partons are permanently bound into color-neutral hadrons (\emph{Color Confinement}).
+%At an energy scale \(Q\), consider a dimensionless observable \(X\). Lets assume that \(Q\) is sufficiently high that the quark masses become negligible in comparison. To calculate \(X\) as a perturbation series in the QCD coupling \(\alpha_s = \frac{g^2}{4\pi}\) (analogous to the QED fine structure constant), we need to remove ultraviolet divergences through renormalization. Renormalization introduces another arbitrary energy scale $\mu$ where the divergences are subtracted.  In general, \(X\) would depend on the ratio \(Q^2/\mu^2\) and post-renormalization coupling $\alpha_s(\mu^2)$. However, any physical observable should be independent of $\mu$:
+%\begin{align}
+%	\mu^2\frac{d X(Q^2/\mu^2, \alpha_s(\mu^2))}{d\mu^2} &= \left[\mu^2\frac{\partial}{\partial\mu^2} +  \mu^2\frac{\partial\alpha_s(\mu^2)}{\partial\mu^2}\frac{\partial}{\partial\alpha_s}\right] X(Q^2/\mu^2, \alpha_s(\mu^2)) = 0 \notag\\
+%	\implies & \left[-\frac{\partial}{\partial t} + \beta(\alpha_s) \frac{\partial}{\partial\alpha_s}\right] X(e^t, \alpha_s) = 0.
+%	\label{eqn:renormX}
+%\end{align} 
+%
+%Where, \(t = \ln{\frac{Q^2}{\mu^2}}\), \(\beta(\alpha_s) = \mu^2\frac{\partial\alpha_s}{\partial\mu^2}\), \(\alpha_s\equiv\alpha_s(\mu^2(t))\)
+%\begin{align}
+%	\beta(\alpha_s) &= -\frac{\partial\alpha_s}{\partial t} \implies  t =  \int^{\alpha_s(Q^2)}_{\alpha_s}\frac{d\alpha_s}{\beta(\alpha_s)}\notag\\
+%	\implies & \frac{\partial\alpha_s(Q^2)}{\partial t} = Q^2\frac{\partial \alpha_s}{\partial Q^2}  =  \beta(\alpha_s(Q^2)), \quad\frac{\partial\alpha_s(Q^2)}{\partial\alpha_s} = \frac{\beta(\alpha_s(Q^2))}{\beta(\alpha_s)}
+%	\label{eq:runningCouplingIntro}
+%\end{align}
+%
+%Substituting in Eq. \ref{eqn:renormX}, we see that \(X(1, \alpha_s(Q^2))\) is a valid solution. Thus the scale dependence in \(X\) comes from the \emph{running coupling} \(\alpha_s(Q^2)\).  Perturbatively expanding \(\beta(\alpha_s)\), we can write the \emph{renormalization group equation} as,
+%
+%\begin{align}
+%	Q^2\frac{\partial \alpha_s}{\partial Q^2}  = -\alpha_s^2(Q^2)\left(\beta_0 + \beta_1\alpha_s(Q^2) + \mathcal{O}(\alpha_s^2(Q^2))\right)
+%	\label{eq:RGEquation}
+%\end{align}
+%
+%Where,
+%\begin{equation}
+%	\beta_0 = \frac{1}{(4\pi)^2}\left(11 - \frac{2}{3}N_f\right), \quad \beta_1 =  \frac{1}{(4\pi)^4}\left(102 - \frac{38}{3}N_f\right)
+%\end{equation}
+%
+%
+%
+%Integrating Eq. \ref{eq:RGEquation}
+%\begin{align}
+%	\ln(\frac{Q^2}{Q_0^2})  &= \int^{\alpha_s(Q^2)}_{\alpha_s(Q^2_0)}\frac{d\alpha_s}{\beta(\alpha_s)}\notag\\
+%	\implies \alpha_s(Q^2) &= \frac{\alpha_s(Q_0^2)}{1 + \beta_0(\alpha_s(Q_0^2))\ln(Q^2/Q_0^2) + \mathcal{O}(\alpha_s^2)}
+%	\label{eq:runningCouplingRel}
+%\end{align}
+%
+%Usually, the reference scale \(Q_0^2\) is set to a convenient energy scale in the perturbative regime. \(\alpha_s\) at all other scales can be inferred accordingly. Usually, \(Q_0\) is set to mass of the \(Z\)-boson, \(m_Z\) as shown in Fig. \ref{fig:runningCoupling}. Another approach is to choose a scale parameter, \(\Lambda\) such that \(\alpha_s(\Lambda) \rightarrow \infty\).  
+%
+%\begin{align}
+%	\ln(\frac{Q^2}{\Lambda^2}) &= - \int_{\alpha_s(Q^2)}^{\infty} \frac{d\alpha_s}{\beta(\alpha_s)}  \notag\\
+%	\implies \alpha_s(Q^2)  &= \frac{1}{\beta_0\ln(Q^2/\Lambda^2)}\left[1 - \frac{\beta_1}{\beta_0}\frac{\ln(\ln(Q^2/\Lambda^2))}{\ln(Q^2/\Lambda^2)} + \mathcal{O}\left(\frac{1}{\ln(Q^2/\Lambda^2)^2}\right)\right]
+%	\label{eq:runningCouplingLambda}
+%\end{align}
+%\(\Lambda\) is called the \emph{confinement scale}, around \(200~\mathrm{MeV}\). 
+%
+Eq. \ref{eq:alphasVsQ2} show a monotonically decreasing relationship between \(\alpha_s\) and \(Q^2\). 
+%
+At high momentum transfers (\(Q \gg \Lambda\)), the coupling strength vanishes ($\alpha_s \to 0$). 
+%
+In this regime, quarks and gluons behave as quasi-free particles, making perturbative QCD (pQCD) calculations highly reliable (\emph{Asymptotic Freedom}).  
+%
+At low energy scales (\(Q \ll \Lambda\)), the coupling diverges. 
+%
+In this non-perturbative QCD (npQCD) limit, isolated color charges cannot exist and partons are permanently bound into color-neutral hadrons (\emph{Color Confinement}).
 
 \subsection{Quark Gluon Plasma (QGP)}
 \label{sec:QGPIntro}
@@ -171,480 +209,6 @@ For reference, the core of our sun ``only'' has \(T\sim \mathcal{O}(10^{7})K\) a
 
 These orders of \(T\) and \(n_\mathrm{B}\) are the theorized conditions prevalent in the universe a few \(\mu\mathrm{s}\) after Big-Bang. The only natural phenomena in the present-day, cold universe that can achieve these conditions are the cores of neutron stars~\cite{Annala_2020} or neutron star mergers~\cite{neutronStarMerger}. Artificially, the required  \(T\) and \(n_\mathrm{B}\) can be achieved at facilities like the Large Hadron Collider (LHC) and Relativistic Heavy Ion Collider (RHIC) through collisions of heavy-ions (like Au, Pb, etc.) at near-light speeds, the aptly named \emph{little bangs}. More on this will be discussed in Sec. \ref{sec:heavyIonCollisions}. 
 
-\section{Hard Processes}
-To consider any nucleus as a singular coherent object, the fluctuations inside it would involve momentum transfers below the confinement scale (\(\Lambda\)) introduced in \ref{subsec:runningCoupling}, and would occur over timescales \(\sim 1/\Lambda\). We define \emph{hard-scattering processes} or just \emph{hard processes} as interactions of a hard perturbative probe with high momentum transfer \(Q >> \Lambda\). Since this interaction occurs over a time-scale \(\sim 1/Q \ll 1/\Lambda\), the perturbative probe effectively interacts with a near-static ``snapshot'' of the nucleus with a characteristic resolution \(\sim 1/Q\). 
-
-\begin{figure}[htbp]
-	\centering
-	\factorizationdiagram
-	\caption{Collinear factorization of a hadronic hard scattering.}
-	\label{fig:factorization}
-\end{figure}
-
-Thus, the cross sections of a collision process of nuclei with momentum \(P_1\) and \(P_2\) depicted by Fig.~\ref{fig:factorization} can be \emph{factorized} into various independent components as,
-
-\begin{equation}
-	\frac{d\sigma}{d\mathbf{O}}  = \sum_{i,j,f} \int dx_1dx_2d\mathbf{\Phi}_ff_i(x_1, \mu^2)f_j(x_2, \mu^2)\frac{d\hat{\sigma}_{ij\to f}}{d\hat{\mathbf{O}}}D_f(\hat{\mathbf{O}}\to\mathbf{O}, \mu^2)
-	\label{eq:factorization}
-\end{equation}
-
-Where, the interactions occur between partons \(i\) from nucleus 1 and \(j\) from nucleus 2 carrying momentum \(p_1 = x_1P_1\) and \(p_2 = x_2P_2\) respectively. \(\mu\) is an arbitrary \emph{factorization scale}, often just set to \(Q\). The \(f_{k}(x, \mu^2)\) are the \emph{parton densities} giving likelihood of a parton \(k\) to carry \(x\) fraction of it's parent nucleus's momentum at a particular factorization scale \(\mu\). \(f\) labels the partonic final state coming out of the scattering and \(\mathbf{\Phi}_f\) is its phase space. \(\hat{\sigma}_{ij\to f}\)  is the \emph{parton cross-section} for scattering of partons \(i\) and \(j\) into \(f\), kept differential in a partonic observable \(\hat{\mathbf{O}}\). We can approximate it to the \((n+k)\) order in \(\alpha_s\) as, 
-
-\begin{equation}
-	\frac{d\hat{\sigma}_{ij\to f}}{d\hat{\mathbf{O}}} = \alpha_s^k \sum_{m=0}^{n}\alpha_s^m\,\frac{d\hat{\sigma}^{(m)}_{ij\to f}}{d\hat{\mathbf{O}}}(p_1, p_2, Q^2/\mu^2)
-	\label{eq:partonXsecOrders}
-\end{equation}
-
-Different hard processes will have different leading powers \(k\). \(W\) production will have \(k=0\) whereas perturbative dijet production with two outgoing quarks will have \(k=2\). 
-
-The \(D_f(\hat{\mathbf{O}}\to\mathbf{O}, \mu^2)\) are the \emph{fragmentation functions}, giving the likelihood of a partonic final state with \(\hat{\mathbf{O}}\) being measured as \(\mathbf{O}\) once hadronization is over.
-%
-Like the parton densities, they cannot be calculated in perturbation theory, but they are \emph{universal}: once measured in one process they can be used in any other, and their dependence on \(\mu\) is governed by evolution equations of the same form as eq.~\ref{eq:RGEquation}.
-%
-Eq.~\ref{eq:factorization} is the skeleton of every measurement presented in this thesis, with the choice of \(\mathbf{O}\) being what separates one from the next, and a measurement is comparable to a calculation only if both use the same \(\mathbf{O}\).
-%
-Restricting \(\mathbf{O}\) to charged particles, as will be done for the angularities of Ch.~\ref{ch:angularities}, puts that restriction into \(D_f\) as well, and the non-perturbative input can then no longer be avoided.
-%
-The nuclear modification factors of Ch.~\ref{ch:hic} are ratios of Eq.~\ref{eq:factorization} between two collision systems, where the parton densities largely cancel and what is left is the effect of the medium on \(\hat{\sigma}_{ij\to f}\) and \(D_f\). 
-
-%The parton densities \(f_i(x,\mu^2)\) in Eq.~\ref{eq:factorization} are not calculable in perturbation theory, but they are \emph{universal}: once measured in one process they may be used to predict any other. Requiring the physical cross section of Eq.~\ref{eq:factorization} to be independent of the arbitrary scale \(\mu\), exactly as for the coupling in Sec.~\ref{subsec:runningCoupling},
-%\begin{equation}
-%	\mu^2\frac{d}{d\mu^2}\,\sigma(P_1,P_2) = 0,
-%	\label{eq:pdfRGE}
-%\end{equation}
-%ties the \(\mu\)-dependence of the densities to that of \(\hat{\sigma}_{ij}\).
-
-\section{From partons to jets}
-\label{sec:partonShower}
-Outgoing partons evolve from higher to lower momentum transfer scales (say, \(t\)). Initially their evolution are modeled using the pQCD mechanism called \emph{parton shower}. Eventually, say at an infra-red scale cut-off \(t_0\), pQCD calculations stop being valid and npQCD processes like hadronization dominate. QCD Monte-Carlo programs combining parton shower at \(t < t_0\) and hadronization process at \(t > t_0\)  are called \emph{QCD event generators}
-
-
-\subsection{Parton branching}
-\label{subsec:dglap}
-\begin{figure}[h]
-	\centering
-	\label{fig:splitKinematics}
-	\begin{tikzpicture}[>=latex, line width=0.6pt,]
-		\node[draw,circle, minimum size=1cm, inner sep=2pt] (rest) at (-1,0) {\(\mathcal{M}_\mathrm{n}\)};
-		\coordinate (splitPoint) at (0.5, 0);
-		\coordinate (continual) at (2,0);
-		\coordinate (splitUp) at (2, 1);
-		\coordinate (splitDown) at (2, -1);
-		\draw (rest) to [edge label=a] (splitPoint);
-		\path[draw, dash pattern=on 2pt off 3pt on 4pt off 4pt] (splitPoint) -- (continual);
-		\path[draw] (splitPoint) to [edge label=b] (splitUp);
-		\path[draw] (splitPoint)  to [edge label'=c] (splitDown);
-		
-		\pic[draw, "\(\theta_a\)",  ->, angle eccentricity=1.7] {angle = continual--splitPoint--splitUp};
-		\pic[draw, "\(\theta_b\)",  <-, angle eccentricity=2.] {angle = splitDown--splitPoint--continual};
-	\end{tikzpicture}
-	\hspace{1cm}
-	\begin{tikzpicture}[>=latex, line width=0.6pt]
-		%\node[draw,circle, minimum size=1cm, inner sep=2pt, pattern=north west lines] (rest) at (-1,0) { };
-		\coordinate (incoming) at (-1, 0);
-		\coordinate (splitPoint) at (0.5, 0);
-		\coordinate (continual) at (2,0);
-		\node[draw,circle, minimum size=1cm, inner sep=2pt] (rest) at (2,1) {\(\mathcal{M}_\mathrm{n}\)};
-		\coordinate (splitDown) at (2, -1);
-		\draw (incoming) to [edge label=a] (splitPoint);
-		\path[draw, dash pattern=on 2pt off 3pt on 4pt off 4pt] (splitPoint) -- (continual);
-		\path[draw] (splitPoint) to [edge label=b] (rest);
-		\path[draw] (splitPoint)  to [edge label'=c] (splitDown);
-		
-		\pic[draw, "\(\theta_a\)",  ->, angle eccentricity=1.7] {angle = continual--splitPoint--splitUp};
-		\pic[draw, "\(\theta_b\)",  <-, angle eccentricity=2.] {angle = splitDown--splitPoint--continual};
-	\end{tikzpicture}
-	\caption{Kinematics of timelike (left) vs spacelike (right) parton branching}
-\end{figure}
-
-Consider nearly collinear timelike splitting of a parton, \(a\to b+c\) shown in Fig. \ref{fig:splitKinematics}. Let's assume the partons are massless, and define the evolution scale (\(t\)) as, 
-\begin{align}
-	t \equiv p_a^2 \approx 2E_bE_c(1 - \cos\theta)  \approx z(1-z)E_a^2\theta^2
-\end{align}
-Where, \(z = E_b/E_a = 1 - E_c/E_a\) and \(\theta = \theta_a + \theta_b\) is the small opening angle.  The cross-section of a \(n\)-parton state branching into \(n+1\)-parton state~\cite{Ellis_Stirling_Webber_1996}
-%processes can be calculated by considering \(n\)-parton matrix element.
-%\begin{equation}
-%	\label{eq:nPartonXsec}
-%	d\sigma_n = \mathcal{F}|\mathcal{M}_n|^2d\mathbf{\Phi}_n
-%\end{equation}
-%
-%Where \(\mathcal{F}\) is the initial-state flux factor and \(\mathbf{\Phi}_n\) is phase space of the \(n\)-parton final state. In the branching process the \(n\)-parton pre-split phase space volume element:
-%
-%\begin{equation}
-%	d\mathbf{\Phi}_{n} = \ldots \frac{d^3\mathbf{p}_a}{2(2\pi)^3E_a}
-%\end{equation}
-%
-%will be replaced by the \(n+1\)-parton phase space and the \(n+1\)-parton matrix element can be calculated from the \(n\)-parton matrix element. 
-%\begin{align}
-%	d\mathbf{\Phi}_{n+1} &= \ldots \frac{d^3\mathbf{p}_b}{2(2\pi)^3E_b} \frac{d^3\mathbf{p}_c}{2(2\pi)^3E_c} 
-%	= d\mathbf{\Phi}_{n} \frac{1}{4(2\pi)^3}dtdzd\phi \notag\\
-%	|\mathcal{M}_{n+1}\big|^2 &\sim \frac{8\pi\alpha_s}{t}CF|\mathcal{M}_n|^2
-%\end{align}
-%
-%Substituting in Eq. \ref{eq:nPartonXsec} and integrating away the \(d\phi\), we get,
-%
-\begin{align}
-	\label{eq:xsecBranching}
-	%d\sigma_{n+1} &= d\sigma_n \frac{dt}{t}dz\frac{\alpha_s}{2\pi}\int\frac{d\phi}{2\pi}CF \notag\\
-	d\sigma_{n+1} &= d\sigma_n \frac{dt}{t}dz\frac{\alpha_s}{2\pi} \hat{P}_{ba}
-\end{align}
-
-The \(\hat{P}_{ba}(z)\) are the \emph{unregularized Altarsi-Parisi splitting functions}, giving the probability of the branching \(a \to b + c\) with \(b\) taking a fraction \(z\) of \(a\)'s energy.
-%
-Their leading order forms are shown in Tab.~\ref{tab:splitfns}.
-%
-\(\hat{P}_{qq}\) diverges as \(z\to1\), \(\hat{P}_{gq}\) as \(z\to0\), and \(\hat{P}_{gg}\) at both ends, each of these limits being the emission of a soft gluon.
-%
-Only \(\hat{P}_{qg}\), the splitting of a gluon into a \(q\bar{q}\) pair, stays finite over the whole range of \(z\).
-%
-%This soft pole is what grooming procedures like SoftDrop (Sec.~\ref{sec:jetAlgo}) are built to remove from a measured jet.
-
-Same equation would hold for the space-like case. 
-%
-To obtain the evolution equations, we can frame the evolution in terms of the change in parton distribution function \(f(x,t)\) when the evolution scale \(t\) goes from \(t\) to \(t+\delta t\),
-%
-\begin{align}
-	\delta f_i(x, t) &= \delta f_\mathrm{in} - \delta f_\mathrm{out} \notag\\
-	&=\frac{\delta t}{t} \sum_j \int_{0}^{1} dz \frac{\alpha_s}{2\pi} \left[\frac{\hat{P}_{ij}(z)}{z}f_j(x/z, t) - \hat{P}_{ji}f_i(x,t)\right]
-\end{align}
-%
-The second term of the RHS gives \emph{Sudakov form factor}, which gives the probability of a parton \(i\) evolving from scale \(t\) to a softer scale \(t_0\) without a resolvable emission,
-%
-\begin{align}
-	\Delta_i(t) \equiv \exp(-\sum_j\int_{t_0}^{t} \frac{dt^\prime}{t^\prime}\int dz\frac{\alpha_s}{2\pi} \hat{P}_{ji}(z))
-\end{align}
-
-We get the familiar DGLAP-like evolution equations,
-
-\begin{align}
-	t\frac{\partial}{\partial t}\left(\frac{f_i}{\Delta_i}\right) = \frac{1}{\Delta_i}\sum_j \int \frac{dz}{z}\frac{\alpha_s}{2\pi}
-	\hat{P}_{ij}(z)f_j(x/z, t)\end{align}
-
-
-To deal with singularities corresponding to soft gluons at \(z\to 1\), we introduce an explicit infrared cut-off \(z < 1-\epsilon(t)\) .  Requiring the transverse momentum in timelike branching \(a\to bc\) to be positive, 
-\begin{align}
-	p_T^2 &= z(1-z)p_a^2 - (1-z)p_b^2 - zp_c^2 > 0 \notag\\
-	\implies& z(1-z) > t_0/t \implies t_0/t < z < 1 - t_0/t
-	%	\implies&  z, 1-z > \epsilon(t) = \frac{1 - \sqrt{1-4t/t_0}}{2}\simeq t_0/t \notag\\
-\end{align} 
-and also, \(t > 2t_0\). Thus the Sudakov factors become,
-%
-\begin{align}
-	\Delta_i(t) \equiv \exp(-\sum_j\int_{2t_0}^{t}
-	\frac{dt^\prime}{t^\prime}
-	\int_{t_0/t^\prime}^{1-t_0/t^\prime} dz
-	\frac{\alpha_s}{2\pi} \hat{P}_{ji}(z))
-	\label{eq:col`inearSudakov}
-\end{align}
-
-\subsection{Angular Ordering}
-\label{sec:angularOrdering}
-Sec.~\ref{subsec:dglap} took collinear enhancements into account to all orders in
-\(\alpha_s\). However it does not take the enhancement in soft gluon emission at wide emission angle. 
-This is demonstrated in Eq. \ref{eq:softPropagator} by considering an on-mass-shell external line of
-momentum \(p\), mass \(m\) emitting a gluon with momentum \(q\)  at an angle \(\theta\)
-\begin{equation}
-	\frac{1}{(p\pm q)^2 - m^2} = \frac{\pm1}{2p\cdot q}
-	= \frac{\pm1}{2\omega E(1-v\cos\theta)},
-	\label{eq:softPropagator}
-\end{equation}
-where \(\omega\) is the gluon energy, \(E\) and \(v\) the energy and velocity of the
-emitter and \(\theta\) the emission angle. For light partons \(v\to1\) and the
-collinear enhancement appears as \(\theta\to0\); the enhancement as \(\omega\to0\)
-holds for any velocity and angle. Internal lines  are off-mass-shell and carry no such enhancement, since
-\((p+q)^2-m^2\to p^2-m^2\neq0\). The cross section carries a sum over all pairs of external lines \(\{i,j\}\),
-\begin{align}
-	\label{eq:antennaSplitXSec}
-	d\sigma_{n+1}& = d\sigma_n\,\frac{d\omega}{\omega}\frac{d\Omega}{2\pi}
-	\frac{\alpha_s}{2\pi}\sum_{i,j}C_{ij}W_{ij}
-\end{align}
-The weighted sum \(\sum_{i,j}C_{ij}W_{ij}\)  is called the \emph{antenna pattern} of the process. The \emph{color factor} \(C_{ij}\) and \emph{radiation function} \(W_{ij}\)  are defined as,
-\begin{align}
-	C_{ij} &= -\mathbf{Q}_i\cdot\mathbf{Q}_j  \notag \\
-	W_{ij} &= \frac{\omega^2 p_i\cdot p_j}{p_i\cdot q\;p_j\cdot q}
-	= \frac{1-v_iv_j\cos\theta_{ij}}
-	{(1-v_i\cos\theta_{iq})(1-v_j\cos\theta_{jq})}
-\end{align}
-The vectors \(\mathbf{Q}_{i}\) represents color charge of parton \(i\). 
-%\(\mathbf{Q}_i^2 = C_F\) for a quark, \(C_A\) for a gluon and \(0\) for a color singlet. 
-\begin{equation}
-	\mathbf{Q}_i^2 = 
-	\begin{cases}
-		C_F = 4/3 & i \in \text{quarks} \\[-15pt]
-		C_A = 3 & i \in \text{gluons}\\[-15pt]
-		0 & i \in \text{color singlet}
-	\end{cases}
-\end{equation}
-
-\(W_{ij}\) comes from interference between lines \(i\) and \(j\). \(W_{ij}\) can be separated into two parts  \(W^{[i/j]}_{ij}\) each with an \emph{incoherent} and a \emph{coherent} contribution from line \(i/j\)  . Assuming massless emitters (\(v_i=v_j=1\)) for simplicity,
-\begin{align}
-	W_{ij} &= W^{[i]}_{ij} + W^{[j]}_{ij}\notag\\
-	W^{[i]}_{ij} &= \frac{1}{2}\left(\overbrace{\frac{1}{1-\cos\theta_{iq}}}^\mathrm{incoherent} + \overbrace{\frac{\cos\theta_{iq}-\cos\theta_{ij}}{(1-\cos\theta_{jq}) (1-\cos\theta_{iq})}}^\mathrm{coherent}\right)\notag\\
-	&=  \frac{1}{2(1-\cos\theta_{iq})}\left(1 + \frac{\cos\theta_{iq}-\cos\theta_{ij}}{1-\cos\theta_{ij}\cos\theta_{iq} - \sin\theta_{ij}\sin\theta_{iq}\cos\phi_{iq}}\right)
-	\label{eq:antennaSplit}
-\end{align}
-Using the direction of line \(i\) as the z-axis, \(d\Omega \)  from Eq. \ref{eq:antennaSplitXSec} becomes \(d\cos\theta_{iq}\,d\phi_{iq}\), We can carry out the \(\phi_{iq}\) integration,
-\begin{align}
-	\int_0^{2\pi}\frac{d\phi_{iq}}{2\pi}W^{[i]}_{ij} &= \frac{1}{1-\cos\theta_{iq}}\left(\frac{1 + \frac{\cos\theta_{iq}-\cos\theta_{ij}}{|\cos\theta_{iq}-\cos\theta_{ij}|}}{2}\right) \notag\\
-	&= \begin{cases}
-		\dfrac{1}{1-\cos\theta_{iq}} & \cos\theta_{iq} > \cos\theta_{ij} \implies \theta_{iq} < \theta_{ij}\\[-10pt]
-		0 & \text{otherwise,}
-	\end{cases}
-	\label{eq:angularOrdering}
-\end{align}
-
-Eq.~\ref{eq:angularOrdering}  shows that azimuth-averaged soft gluon emission from a line \(i\) is confined to a cone, centered on \(i\)'s direction, extending up to the direction of line \(j\), \(i\)'s sibling from the preceding split. 
-%
-Since the emission probability of Eq.~\ref{eq:antennaSplitXSec} is weighted by the color charges, a gluon radiates \(C_A/C_F = 9/4\) times as much as a quark of the same energy into the same cone.
-%
-Gluon jets are therefore wider and carry more particles than quark jets of the same momentum, a difference the classifiers of Ch.~\ref{ch:methods} are trained to pick up, and one that has to be kept in mind whenever angularities are compared between samples with different quark and gluon fractions.
-%The total soft gluon emission cross-section can be then easily obtained for two external lines forming a color singlet (\(e^+e^-\to q\bar{q}\)) have \(\mathbf{Q}_i+\mathbf{Q}_j=0\) and hence \(C_{q\bar{q}}=\mathbf{Q}_q^2=\mathbf{Q}_{\bar{q}}^2 = C_F\), and angular ordering suppresses radiation outside the cones extending from \(q\) to \(\bar{q}\) and vice versa.
-
-%\begin{align}
-%	d\sigma_{q\bar{q}g}& = d\sigma_{q\bar{q}}\frac{\Theta(\cos(\theta_{qg})-\cos(\theta_{q\bar{q}}))}{1-\cos\theta_{qg}}d(\cos\theta_{qg})\frac{\alpha_s}{2\pi}\frac{d\omega}{\omega}C_F
-%	\label{eq:qqbarSinglet}
-%\end{align}
-%We will come back to Eq.~\ref{eq:qqbarSinglet} 
-
-\subsection{Color Coherence}
-\label{sec:colorCoherence}
-Lets take the case of three partons \(\{i,j,k\}\) forming a color singlet (\(\mathbf{Q}_i + \mathbf{Q}_j +\mathbf{Q}_k = 0\)) e.g., \(e^+e^-\to q\bar{q} g\). First, partons \(l\) and \(k\) come from a color singlet state (\(\mathbf{Q}_l +\mathbf{Q}_k = 0\)). Then \(l\) splits into \(i\) and \(j\) (\(\mathbf{Q}_l = \mathbf{Q}_i + \mathbf{Q}_j = -\mathbf{Q}_k\)). The antennae function for this state is:
-\begin{align}
-	\label{eq:threePartonW}
-	\sum_{a,b}C_{ab}W_{ab} &= -\mathbf{Q}_i\!\cdot\!\mathbf{Q}_jW_{ij} -\mathbf{Q}_j\!\cdot\!\mathbf{Q}_kW_{jk} -\mathbf{Q}_i\!\cdot\!\mathbf{Q}_kW_{ik} \notag\\
-	&= \frac{1}{2}\left[\mathbf{Q}_i^2(W_{ij} + W_{ik} - W_{jk}) + \mathbf{Q}_j^2(W_{ij} + W_{jk} - W_{ik}) + \mathbf{Q}_k^2(W_{ik} + W_{jk} - W_{ij})\right]\notag\\
-	&=\mathbf{Q}_i^2\left(W_{ij}^{[i]} + \tilde{W}_{jk}^{[i]} - \tilde{W}_{ik}^{[j]}\right) + \mathbf{Q}_j^2\left(W_{ij}^{[j]} + \tilde{W}_{ik}^{[j]} - \tilde{W}_{jk}^{[i]}\right) \notag\\
-	& + \mathbf{Q}_k^2\left(\tilde{W}_{jk}^{[i]} + \tilde{W}_{ik}^{[j]} + \frac{W_{ik}^{[k]} + W_{jk}^{[k]} }{2}\right)
-\end{align}
-Where,
-\begin{equation}
-	\tilde{W}_{jk}^{[i]} = \frac{W^{[i]}_{ik} - W^{[i]}_{ij}}{2},\quad \tilde{W}_{ik}^{[j]} = \frac{W^{[j]}_{jk} - W^{[j]}_{ij}}{2}
-\end{equation}
-are shifted radiation functions for lines \(i\) and \(j\), with the collinear singularity canceled out. This allows us to make certain useful approximations. Taking \(\theta_{ij}\to0\), we can approximate the directions of \(i\) and \(j\) by \(l\). 
-\begin{align}
-	W_{ik}^{[k]} \simeq W_{jk}^{[k]} \simeq W_{lk}^{[k]},\text{and}~\tilde{W}_{jk}^{[i]} \simeq \tilde{W}_{ik}^{[j]} \simeq W_{lk}^{[ij]}/2 
-\end{align}
-Where, 
-\begin{equation}
-	\tilde{W}^{[ij]}_{lk} = \begin{cases}
-		W^{[l]}_{lk} & \theta_{lq}>\theta_{ij}\\[-10pt]
-		0            & \theta_{lq}<\theta_{ij},
-	\end{cases}
-\end{equation}
-\begin{equation}
-	W \simeq \mathbf{Q}_i^2W^{[i]}_{ij} + \mathbf{Q}_j^2W^{[j]}_{ij}
-	+ \mathbf{Q}_k^2W^{[k]}_{lk} + \mathbf{Q}_l^2\tilde{W}^{[ij]}_{lk},
-	\label{eq:coherentPattern}
-\end{equation}
-
-\begin{figure}[htbp]
-	\centering
-	\begin{tikzpicture}[line width=0.55pt, scale=0.76,
-		gl/.style={decorate, decoration={coil, aspect=0, segment length=1.7mm,
-				amplitude=0.7mm}, ->}]
-		
-		\begin{scope}[xshift=0cm]
-			\coordinate (o) at (0,0);
-			\coordinate (l) at (35:1.05);
-			\coordinate (i) at (46:2.2);
-			\coordinate (j) at (21:2.2);
-			\coordinate (k) at (-40:2.25);
-			\draw[black] (l) -- (i) node[black, above=-2pt] {\(i\)};
-			\draw[black] (l) -- (j) node[black, right=0pt] {\(j\)};
-			\draw (o) -- node[above left=-5pt, pos=0.55] {\(l\)} (l);
-			\draw (o) -- (k) node[below right=-4pt] {\(k\)};
-			\coordinate (e) at ($(l)!0.55!(i)$);
-			\fill (e) circle (1.1pt);
-			\draw[gl] (e) -- ($(e)+(-35:1.75)$) node[below right=-4pt] {\(q\)};
-			%\node at (1.1,-2.1) {\(\mathcal{M}_i\)};
-		\end{scope}
-		
-		\node at (3.8,0.3) {\(+\)};
-		
-		\begin{scope}[xshift=4.6cm]
-			\coordinate (o) at (0,0);
-			\coordinate (l) at (35:1.05);
-			\coordinate (i) at (46:2.2);
-			\coordinate (j) at (21:2.2);
-			\coordinate (k) at (-40:2.25);
-			\draw[black] (l) -- (i) node[black, above=-2pt] {\(i\)};
-			\draw[black] (l) -- (j) node[black, right=0pt] {\(j\)};
-			\draw (o) -- node[above left=-5pt, pos=0.55] {\(l\)} (l);
-			\draw (o) -- (k) node[below right=-4pt] {\(k\)};
-			\coordinate (e) at ($(l)!0.55!(j)$);
-			\fill (e) circle (1.1pt);
-			\draw[gl] (e) -- ($(e)+(-35:1.75)$) node[below right=-4pt] {\(q\)};
-			%\node at (1.1,-2.1) {\(\mathcal{M}_j\)};
-		\end{scope}
-		
-		\node at (8.4,0.3) {\(\simeq\)};
-		
-		\begin{scope}[xshift=9.2cm]
-			\coordinate (o) at (0,0);
-			\coordinate (l) at (35:1.05);
-			\coordinate (i) at (46:2.2);
-			\coordinate (j) at (21:2.2);
-			\coordinate (k) at (-40:2.25);
-			\draw[black!30] (l) -- (i) node[black, above=-2pt] {\(i\)};
-			\draw[black!30] (l) -- (j) node[black, right=0pt] {\(j\)};
-			\draw (o) -- node[above left=-5pt, pos=0.55] {\(l\)} (l);
-			\draw (o) -- (k) node[below right=-4pt] {\(k\)};
-			\coordinate (e) at ($(o)!0.55!(l)$);
-			\fill (e) circle (1.1pt);
-			\draw[gl] (e) -- ($(e)+(-35:1.75)$) node[below right=-4pt] {\(q\)};
-			%\node at (1.1,-2.1) {\(\mathcal{M}_l\)};
-		\end{scope}
-	\end{tikzpicture}
-	\caption{Wide-angle emission of soft gluon \(q\), off \(i\) and \(j\), acts as if
-		the emission came off the parent parton \(l\), imagined to be on shell.}
-	\label{fig:threeParton}
-\end{figure}
-
-
-Each parton radiates in proportion to its color charge squared. When \(i\) and \(j\) close in angle their incoherent
-contributions are limited to cones of half-angle \(\theta_{ij}\), while at larger
-angles, out to the direction of \(k\), they radiate coherently in proportion to
-their combined charge \(\mathbf{Q}_l^2\), as if from an internal line of momentum
-\(p_l = p_i+p_j\) as shown in Fig.~\ref{fig:threeParton}.
-
-\subsection{Coherent Parton Branching}
-\label{sec:coherentPartonBranching}
-Extended to higher orders this gives a \emph{coherent parton branching} formalism.
-In place of the virtual mass-squared \(t\) the evolution variable is the opening
-angle, or more precisely
-\begin{equation}
-	\zeta = \frac{p_b\cdot p_c}{E_bE_c} \simeq 1-\cos\theta
-	\label{eq:zeta}
-\end{equation}
-for \(a\to bc\), with angular ordering \(\zeta^\prime<\zeta\) imposed on successive
-branchings and the propagator factor \(dt/t\) of Sec.~\ref{subsec:dglap} replaced by
-\(d\zeta/\zeta\). Using the splitting function \(\hat{P}_{ba}(z)dz\) rather than the
-soft approximation \(\mathbf{Q}_a^2d\omega/\omega\) treats both soft and collinear
-enhancements correctly, so that
-\begin{equation}
-	d\sigma_{n+1} = d\sigma_n\,\frac{d\zeta}{\zeta}\,dz\,
-	\frac{\alpha_s}{2\pi}\hat{P}_{ba}(z).
-	\label{eq:coherentBranching}
-\end{equation}
-The virtual mass-squared cut-off is replaced by an angular one,
-\(\zeta_0 = t_0/E^2\) for a parton of energy \(E\), and the convenient evolution
-variable \(\tilde{t} = E^2\zeta \geq t_0\) in terms of which the ordering condition \(\zeta_b,\zeta_c<\zeta_a\) and the
-resulting cut-off on \(z\) read
-\begin{equation}
-	\tilde{t}_b < z^2\tilde{t},
-	\qquad
-	\tilde{t}_c < (1-z)^2\tilde{t},
-	\qquad
-	\sqrt{t_0/\tilde{t}} < z < 1-\sqrt{t_0/\tilde{t}} ,
-	\label{eq:orderingCutoff}
-\end{equation}
-with \(\tilde{t}=\tilde{t}_a\) and \(z=E_b/E_a\). Neglecting the masses of \(b\) and
-\(c\),
-\begin{equation}
-	t = z(1-z)\tilde{t},
-	\qquad
-	p_t^2 = z^2(1-z)^2\tilde{t},
-	\label{eq:tAndPt}
-\end{equation}
-and the Sudakov form factor of Sec.~\ref{subsec:dglap} becomes
-\begin{align}
-	\tilde{\Delta}_i(\tilde{t}) \equiv \exp(-\sum_j\int_{4t_0}^{\tilde{t}}
-	\frac{d\tilde{t}^\prime}{\tilde{t}^\prime}
-	\int_{\sqrt{t_0/\tilde{t}^\prime}}^{1-\sqrt{t_0/\tilde{t}^\prime}} dz
-	\frac{\alpha_s(z^2(1-z)^2\tilde{t}^\prime)}{2\pi} \hat{P}_{ji}(z))
-	\label{eq:coherentSudakov}
-\end{align}
-
-At large \(\tilde{t}\) this falls more slowly than its collinear counterpart, though
-still faster than any negative power of \(\tilde{t}\). The slower fall implies less
-branching, which is the suppression of soft gluon emission by angular ordering.
-
-\subsection{Angular structure of a jet}
-\label{sec:angularityEstimate}
-Sec.~\ref{sec:coherentPartonBranching} is enough to estimate what the radiation around a hard parton looks like. 
-%
-At a hadron collider, the angle \(\theta\) between two particles is measured as their distance \(\Delta R\) in the \etaphi plane and the energy \(E\) as the transverse momentum \(p_\mathrm{T}\) (see Sec.~\ref{sec:detCoordSys}), and a \emph{jet} is, for now, all the radiation within \(\Delta R < R\) of the initiating parton. 
-%
-Taking \(z\) to be the momentum fraction of the emitted gluon, as in \(\hat{P}_{gq}\) and \(\hat{P}_{gg}\) of Tab.~\ref{tab:splitfns}, the soft limit is \(\hat{P}_{gi}(z) \to 2C_i/z\) and \(d\zeta/\zeta \to 2d\theta/\theta\), so Eq.~\ref{eq:coherentBranching} becomes,
-\begin{equation}
-	dP = \frac{2\alpha_s C_i}{\pi}\frac{d\hat{\theta}}{\hat{\theta}}\frac{dz}{z}, \qquad \hat{\theta} \equiv \frac{\Delta R}{R} < 1
-	\label{eq:lundDensity}
-\end{equation}
-Where, \(C_i = \mathbf{Q}_i^2\) is the color charge of the initiating parton from Sec.~\ref{sec:angularOrdering}. 
-%
-Eq.~\ref{eq:lundDensity} is flat in \(\ln(1/z)\) and \(\ln(1/\hat{\theta})\), so a jet is filled uniformly in this plane, the \emph{Lund plane}, down to the cut-off. 
-%
-The \emph{generalized angularity} of a jet is the sum over its emissions,
-\begin{equation}
-	\lambda_\beta = \sum_{i \in \mathrm{jet}} z_i\,\hat{\theta}_i^{\,\beta}
-	\label{eq:angularityShower}
-\end{equation}
-Eq.~\ref{eq:LambdaKappaBeta} is the same quantity written in terms of the measured constituents of a jet, with \(z_i \to p_\mathrm{T, const}/p_\mathrm{T, jet}\) and \(\hat{\theta}_i \to \Delta R_\mathrm{const, jet}/R\), and with a second exponent \(\kappa\) on \(z_i\) which is \(1\) here. 
-%
-For \(\beta > 0\), an emission contributes nothing to \(\lambda_\beta\) in either the soft or the collinear limit, which is what makes it an IRC safe observable. 
-%
-Since \(\lambda_\beta\) is additive, the probability of a jet having an angularity below \(\hat{\lambda}_\beta\) is the probability of no emission with \(z\hat{\theta}^\beta > \hat{\lambda}_\beta\), which is the Sudakov form factor of Eq.~\ref{eq:coherentSudakov} with the no-emission condition replaced accordingly. 
-%
-Calling this cumulative distribution \(\Sigma_i(\hat{\lambda}_\beta)\), with the hat marking it as a parton level quantity like in Eq.~\ref{eq:factorization}, the hadron level cross section follows from it through the fragmentation function of Eq.~\ref{eq:factorization} for \(\mathbf{O} = \lambda_\beta\), summed over the flavor of the parton initiating the jet,
-\begin{align}
-	\frac{d\sigma}{d\lambda_\beta} &= \sum_{i \in \{q, g\}}\int d\hat{\lambda}_\beta\,\frac{d\sigma_i}{d\hat{\lambda}_\beta}\,D_i(\hat{\lambda}_\beta \to \lambda_\beta) = \sum_{i \in \{q, g\}}\sigma_i\int d\hat{\lambda}_\beta\,\frac{d\Sigma_i}{d\hat{\lambda}_\beta}\,D_i(\hat{\lambda}_\beta \to \lambda_\beta)
-	\label{eq:angularityCumulant}
-\end{align}
-Where, \(\sigma_i\) is the cross section for producing a jet initiated by parton \(i\), i.e. Eq.~\ref{eq:factorization} with everything but the flavor of the outgoing parton integrated over, and \(d\sigma_i/d\hat{\lambda}_\beta = \sigma_i\,d\Sigma_i/d\hat{\lambda}_\beta\) is its parton level distribution. 
-%
-Normalized to the total cross section, the left hand side is the distribution measured in Ch.~\ref{ch:angularities}. 
-%
-The rest of this section is about \(\Sigma_i\), and comes back to \(D_i\) at the end. 
-%
-At fixed coupling,
-\begin{align}
-	\Sigma_i(\hat{\lambda}_\beta) &= \exp\left(-\frac{2\alpha_s C_i}{\pi}\int_0^1\frac{d\hat{\theta}}{\hat{\theta}}\int_0^1\frac{dz}{z}\,\Theta(z\hat{\theta}^\beta - \hat{\lambda}_\beta)\right) \notag\\
-	&= \exp\left(-\frac{\alpha_s C_i}{\pi\beta}\ln^2\hat{\lambda}_\beta\right)
-	\label{eq:angularitySudakov}
-\end{align}
-Quark and gluon jets differ only through \(C_i\), so \(\Sigma_g = \Sigma_q^{C_A/C_F}\)~\cite{Larkoski_2014}.
-%
-A convenient choice for scale of \(\alpha_s\) is \(p_\mathrm{T, jet}R\), the largest transverse momentum an emission inside the jet can have. 
-%
-
-Tab.~\ref{tab:angularityEstimate} evaluates Eq.~\ref{eq:angularitySudakov} for the three \(\beta\) values measured in Ch.~\ref{ch:angularities}. 
-
-\begin{table}[htbp]
-	\centering
-	\begin{tabular}{c c c c c}
-		\toprule
-		\multirow{2}{*}{\(\beta\)} & \multicolumn{2}{c}{median \(\hat{\lambda}_\beta\)} & \multicolumn{2}{c}{fraction with \(\hat{\lambda}_\beta > 0.1\)} \\
-		\cmidrule(lr){2-3} \cmidrule(lr){4-5}
-		& quark & gluon & quark & gluon \\
-		\midrule
-		0.5 & 0.13  & 0.26  & 59\% & 87\% \\
-		1   & 0.06  & 0.15  & 36\% & 64\% \\
-		2   & 0.02  & 0.07  & 20\% & 40\% \\
-		\bottomrule
-	\end{tabular}
-	\caption[Leading logarithmic estimates of jet angularities at RHIC]{Parton level median angularity and fraction of jets with \(\hat{\lambda}_\beta > 0.1\) from Eq.~\ref{eq:angularitySudakov} at \(\alpha_s = 0.2\), corresponding to \(p_\mathrm{T, jet} \approx 20~\mathrm{GeV}/c\) and \(R = 0.4\), for quark (\(C_F = 4/3\)) and gluon (\(C_A = 3\)) initiated jets.}
-	\label{tab:angularityEstimate}
-\end{table}
-
-Median angularities are larger by  a factor of 2--3 for gluon jets compared to quark jets. 
-%
-Increasing \(\beta\) pushes both to smaller values and widens the gap between them, as the observable weighs the wide angle radiation more heavily. 
-%
-Going up in \(p_\mathrm{T, jet}\) only changes \(\alpha_s\) logarithmically, so the distributions are expected to narrow slowly. 
-
-%Eq.~\ref{eq:lundDensity} only holds for emissions whose transverse momentum, \(k_\mathrm{T} \approx z\,p_\mathrm{T, jet}\Delta R\), is above the scale where \(\alpha_s\) stops being perturbative, and below it the emissions are replaced by hadronization, which is what \(D_i\) in Eq.~\ref{eq:angularityCumulant} accounts for. 
-%%
-%An emission with \(k_\mathrm{T}\) between \(\Lambda \approx 0.2\)~GeV and \(1\)~GeV sitting at the edge of the jet contributes \(k_\mathrm{T}/(p_\mathrm{T, jet}R) \approx 0.03\)--\(0.12\) to \(\lambda_\beta\) for any \(\beta\), which is as large as the medians of Tab.~\ref{tab:angularityEstimate}. 
-%%
-%Thus at RHIC energies the npQCD part of an angularity is not a small correction on top of the pQCD part, and it only falls as \(1/p_\mathrm{T, jet}\). 
-%%
-%This is why the angularity distributions measured in Ch.~\ref{ch:angularities} sit above these estimates by about this much, why removing the soft wide angle radiation by grooming (Sec.~\ref{sec:jetAlgo}) brings them closer, and why the event generators of Sec.~\ref{sec:eventGenerators} are tested there as much on their hadronization as on their showers. 
-%
-%These are leading logarithmic estimates at fixed coupling, and are indicative rather than predictions. 
-%%
-%Terms of order \(\alpha_s\ln(1/\lambda_\beta)\), coming from the running of \(\alpha_s\), hard collinear splittings, the recoil of the jet axis against the emissions for \(\beta \leq 1\), and radiation across the jet boundary, are all of order one half at these values. 
-%%
-%The angularities with \(\kappa \neq 1\) used for \AuAu collisions in Ch.~\ref{ch:angularities} are not IRC safe, and no estimate of this kind exists for them. 
 
 \section{Hadronization and event generators}
 \label{sec:eventGenerators}
@@ -680,8 +244,468 @@ Ch.~\ref{ch:jhcorr} also uses JEWEL~\cite{Zapp:2013vla}, which adds scattering o
 %
 The response of the detector to the generated particles is simulated separately using GEANT~\cite{Brun:1987ma}, and Ch.~\ref{ch:methods} describes how its effects are taken back out of a measurement.
 
+\section{Relativistic collisions of  nuclei}
+\label{ch:hic}
+Outgoing partons from hard processes undergo many successive splitting and fragmentation processes, becoming a collimated ``spray'' of hadrons called \emph{jets} which are detected as dense clustering of energy in calorimeters. 
+%
+In principle, a \emph{jet finding algorithm} should be able to faithfully get the kinematics of the initiating parton given the theory discussed in sec.\ref{sec:partonShower}, which show partons cleanly branching into partons and eventually fragmenting into final-state hadrons that can be traced back to the shower partons. 
+%
+However reality is rarely this straightforward. 
+%
+First, the fragmentation functions that connect the partons and final state hadrons cannot be calculated in experiments. 
+%
+Second, it is not trivial to establish connection between final state particles and initial state partons even at the parton level, before we have the complications from hadronization and detector level reconstruction. 
+%
+For example, in a clean reaction like \(e^+e^-\to q\bar{q}\). If one of the quark emits a gluon, then depending on the emission angle of the gluon, we might cluster 2 or 3 jets in the final state. We will further define jet finding in sec.~\ref{sec:jetAlgo}
 
-\section{Outline of this thesis}
+As discussed in sec.~\ref{sec:QGPIntro}, collisions of heavy-ions at near-light speeds can create the conditions for forming QGP.
+%
+Sec.~\ref{sec:RHIC} discussed RHIC and sec.~\ref{sec:STAR} describe the STAR detector system. 
+%
+Before moving on to analyses of heavy-ion collisions, we need to establish a few more concepts. 
+%
+Nuclei like $\rm ^{197}_{79}Au$, $\rm ^{96}_{40}Zr$, $\rm ^{96}_{44}Ru$,  etc. are complex arrangements of protons and neutrons that have a multitude of non-trivial initial configurations leading up to their collisions which have significant effects on the final state particle distributions. 
+%
+Therefore, any measurement done using heavy-ion events need to report these initial configurations of the colliding nuclei. We discuss these in sec.~\ref{sec:heavyIonCollisions}. 
+
+
+
+\section{Finding Jets}
+\label{sec:jetAlgo}
+To address the prevalent ambiguity of jet definitions, the Snowmass Accord~\cite{Berger:1992etd} stated that, experimental and theoretical measurements had to use the same jet finding algorithm on final state hadrons in order to be comparable. 
+%
+Thus clustered jets are not-quite the proxies for partons in the same way as parton showers, but regions in the final state phase space that are most likely to have contributions from parton showers. 
+%
+Even after we define a jet, another ambiguity comes from the decision of what constituents in the event must be used as inputs into the jet finding algorithm. Especially, in heavy-ion collisions jet-medium interactions make that choice non-trivial. For example, is a soft particle inside the jet cone coming from soft gluon radiation from the jet or the medium? Keeping these considerations in mind, a ``good'' jet finding algorithm is:
+\begin{itemize}
+	\item \emph{Collinear safe}, meaning  it would find the same jet with the same \(p_\mathrm{T, jet}\) regardless of  fragmentation details
+	\item \emph{Infrared safe}, meaning  it would find the same jets, even in the presence of a
+	large number of soft partons
+\end{itemize}
+
+The most commonly used family of infrared and collinear safe jet algorithms, sequentially recombines constituents in an event according to the following prescription:
+
+\begin{enumerate} 
+	\item For every pair of particles \(\{i,j\}\) with momenta \((\mathbf{p}_i, \mathbf{p}_j) \equiv \{(p_{\mathrm{T},i}, \eta_i, \varphi_i), (p_{\mathrm{T},j}, \eta_j, \varphi_j)\}\)
+	\begin{equation}
+		d_{ij} = {\mathrm {min}}(p_{T,i}^{2p},p_{T,j}^{2p})\frac{\Delta R_{ij}^2}{R^2},~\text{and}~d_{i} = p_{T,i}^{2p}
+	\end{equation}
+	%
+	where, \(\Delta R_{ij}^2 = (\eta_i-\eta_j)^2+(\phi_i-\phi_j)^2\) is the \etaphi distance between particle \(i\) and \(j\). 
+	%
+	\(R\) is the resolution parameter of the algorithm, which decides the angular extent of clustered jets.
+	%
+	\item $i_\mathrm{min} = \min(\{d_{ij}\}\cup \{d_{i}\})$ is found.  
+	%
+	$d_\mathrm{min} \in \{d_{ij}\}$, the particles are combined into one jet candidate, adding their energies and momenta according to some \emph{recombination scheme}, and the first step is repeated.  
+	\item  $d_\mathrm{min} \in \{d_{i}\}$, this is recorded as a final state jet candidate.  It is removed from the list and the first step is repeated. 
+\end{enumerate}
+These steps are iterated until no particles remain. 
+%
+This algorithm becomes the \emph{\(k_\mathrm{T}\) algorithm}~\cite{kTAlgorithm} for \(p=1\), \emph{Cambridge-Aachen}~\cite{CambAlgorithm} for \(p=0\) and the most widely used \emph{anti-\(k_\mathrm{T}\) algorithm}~\cite{antiKtAlgorithm} for \(p=-1\). 
+%
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{jet_areas.pdf}
+	\caption{Jet areas of one \textsc{Pythia}~8 $pp$ event at $\sqrt{s}=200$~GeV
+		(Detroit tune) with the $k_{\rm T}$ (top left), Cambridge/Aachen (top right) and
+		anti-$k_{\rm T}$ (bottom) algorithms, $R = 1$. Coloured regions are the three
+		hardest jets, the same colour marking the same jet in every panel; other jets are
+		grey. Circles are particles, their area growing with $p_{\rm T}$.}
+	\label{fig:jetalgorithms}
+\end{figure}
+The difference in these algorithms are shown in fig.~\ref{fig:jetalgorithms}.  
+%
+The \emph{FastJet} library~\cite{Cacciari:2011ma} efficiently implements these algorithms and a few more, and is the de-facto standard in the High Energy Physics (HEP) community. 
+%
+It also provides various recombination schemes. 
+\begin{itemize}
+	\item \emph{E-scheme}, just adds the four momenta of the jet candidates.  it is the default in FastJet and the most commonly used.
+	\item \emph{Boost-invariant $p_t$/$p_t^2$/$E_t$/$E_t^2$ schemes} involve a preprocessing stage rescaling the energy to be equal to the 3-momentum for the
+	$p_t$ and $p_t^2$ schemes or the 3-momentum to be equal to
+	the energy in the $E_t$ and $E_t^2$ schemes. Then for all schemes the
+	recombination $p_r$ of $p_i$ and $p_j$ is a massless 4-vector
+	satisfying
+	\begin{subequations}
+		\begin{align}
+			p_{t,r} &= p_{t,i} + p_{t,j}\,,\\
+			\varphi_r &= \frac{w_i \varphi_i + w_j \varphi_j}{w_i + w_j}\,,\\
+			y_r &= \frac{w_i y_i + w_j y_j}{w_i + w_j}\,,
+		\end{align}
+	\end{subequations}
+	where $w_i$ is $p_{t,i}$ for the $p_t$ and $E_t$ schemes, and is
+	$p_{t,i}^2$ for the $p_t^2$ and $E_t^2$ schemes. 
+	\item \emph{Winner-takes-all (WTA) scheme} uses the four momentum of the higher momentum jet candidate
+\end{itemize}
+
+\section{Heavy-Ion Collisions}
+\label{sec:heavyIonCollisions}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/LightCone1_color-crop}
+	\caption{A light cone diagram showing the stages of a heavy ion collision.  The abbreviation  $T_{\mathrm fo}$ is for the thermal freeze-out temperature, $T_{\mathrm ch}$ is for the chemical freeze-out temperature, and $T_{\mathrm c}$ is for the critical temperature where the phase transition between a hadron gas and a QGP occurs.  $\tau_0$ is the formation time of the QGP. Taken from~\cite{Connors_2018}}
+	\label{fig:lightcone}
+\end{figure}
+
+Estimates of the energy density indicate that heavy ion collisions at RHIC and LHC  reach energy densities ranging between 1-12 GeV/fm$^3$~\cite{PhysRevC.93.024901,PhysRevC.94.034903}, well in excess of the 0.2-1 GeV/fm\(^3\) required for QGP formation~\cite{PhysRevD.90.094503, Karsch2002}. 
+%
+
+%\subsection{Space-time picture of QGP}
+\label{sec:qgpSpacetime}
+The heavy ion collision and the evolution of the fireball, as depicted in Figure~\ref{fig:lightcone}, has several stages, and the measurement of the final state particles can be affected by one or all of these stages depending on their production mechanism and interaction time within the medium. 
+%
+Immediately after the collision, the system is in a non-thermalized, pre-equilibrium state where, partons undergo hard scattering, dominated by \(2\to 2\) QCD processes with the outgoing partons back-to-back in azimuth (\(\Delta \varphi \approx \pi\)). 
+%
+At \(\tau \approx 0.5 - 1~\text{fm}/c\), the system thermalizes into the QGP state which expands following hydrodynamic laws. 
+%
+During the expansion, the system cools down until it reaches the temperature (\(T_c \approx 156\)~MeV from lattice QCD studies) at which a crossover phase transition to a hadronic gas state occurs. 
+%
+By \(\tau \approx 10~\text{fm}/c\) after the collision, confinement is restored and colored partons hadronize into colourless hadrons.
+%
+When the chemical freeze-out temperature (\(T_{ch} \approx 165\)~MeV) is reached, the particle abundances of the system are frozen. 
+%
+Elastic interactions can still occur till the kinetic freeze-out (\(T_{fo} \approx 100\)~MeV), where the particle momentum spectra are established.
+
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.5\linewidth]{figures/T_mu_vs_sNN}
+%	\caption{Chemical freeze-out parameters \(T\) and \(\mu_\mathrm{B}\) obtained by thermal model fits to experimental data on particle yields as a function of collision energies. Red line represents parametrizations of \(T\) and \(\mu_\mathrm{B}\) as a function of $\sqrt{s_\mathrm{NN}}$}
+%	\label{fig:tmuvssnn}
+%\end{figure}
+\subsection{Initial State of Colliding Nuclei}
+The initial state of the incoming nuclei is not precisely known, but its properties impact the production of final state particles.  
+%
+The incoming nuclei are often modeled as either an independent collection of nucleons called a Glauber initial state~\cite{Miller:2007ri}, or a wall of coherent gluons called a Color Glass Condensate~\cite{IANCU2001583}. 
+%
+The widely used model for determining these quantities is the Glauber Monte Carlo (Glauber MC) model~\cite{Loizides_2015}, which assumes Wood–Saxon density distribution of nucleons.
+%
+The nuclei are then assigned a random impact parameter and translated to collide. 
+%
+If the distance between centers of nucleons is less than \(\sqrt{\sigma_\mathrm{inel}^\mathrm{NN}/\pi}\), where \(\sigma_\mathrm{inel}^\mathrm{NN}\) is the inelastic nucleon–nucleon cross section, the nucleons have undergone a binary collision. 
+%
+Nucleons that have undergone at least one binary collision are said to have participated in the reaction.
+%
+This procedure is followed to obtain the number of participant nucleons (\(N_\mathrm{part}\)) and the number of binary collisions (\(N_\mathrm{coll}\)) event-by-event.
+
+A schematic diagram of the geometry of heavy-ion collisions is shown in Fig. \ref{fig:hictikz}. 
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\def\N{85} % number of nucleons
+		\def\R{1.0} % nucleus radius
+		\def\Nlay{5} % number of rings/layers
+		\def\xs{0.25} % horizontally scale
+		\def\Rp{0.92} % length photon
+		\def\D{3.7} % horizontal distance between nuclei
+		\pgfmathsetmacro\H{1.10*\R} % vertical distance between nuclei
+		\pgfmathsetmacro\v{0.25*\D} % length vector
+		
+		%\message{^^J PbPb collision with impact parameter}
+		
+		% NUCLEUS
+		% participants: nucleons in the vertical band where the two nuclei overlap
+		\pic[xscale=\xs,nucleus participants,nucleus ymin=-\R,nucleus ymax=\R-\H] (L) at (-\D/2, \H/2) {nucleus};
+		\pic[xscale=\xs,nucleus participants,nucleus ymin=\H-\R,nucleus ymax=\R] (R) at ( \D/2,-\H/2) {nucleus};
+		
+		% VELOCITY VECTORS
+		\draw[vector] (L-0)++(2pt,0) --++ (\v,0); %node[above=2pt] {$v\approx c$};
+		\draw[vector] (R-180)++(-2pt,0) --++ (-\v,0); %node[above=2pt] {$v\approx c$};
+		
+		% PHOTONS
+		\foreach \ang in {60,90,120,-60,-90,-120}{
+			\draw[photon] (L-\ang) --++ (\ang:\Rp);
+			\draw[photon] (R-\ang) --++ (\ang:\Rp);
+		}
+		
+		% MEASURES
+		\draw[<->,thick]
+		(R-0)++(0.3*\R,0) --++ (0,\R) node[midway,right] {$R\sim A^{1/3}\mathrm{fm}$};
+		\draw[<->,thick]
+		(0,-\H/2) -- (0,\H/2) node[midway,right] {$b$};
+		%\node at (0.3*\D,0.7*\H) {$b > 2R$};
+		
+	\end{tikzpicture}
+	\caption{Typical heavy-ion collision with an impact parameter of \(b\). The participating nuclei are colored red and the spectators are colored blue.}
+	\label{fig:hictikz}
+\end{figure}
+
+\subsection{Centrality Determination} \label{sect:CentEP}
+\begin{figure}[h]
+	\label{fig:centralityVsNch}
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/centrality_refmult.jpg}
+	\caption{An illustration of the total inclusive charged particles multiplicity \(N_\mathrm{ch}\) and number of participant (\(N_\mathrm{part}\)) and impact parameter (\(b\)) in heavy-ion collisions. Taken from~\cite{Miller:2007ri}}
+\end{figure}
+As the impact parameter  (\(b\)) of collisions, the distance between the geometrical centers of the colliding nuclei, is not measurable in experiments, a proxy called \emph{centrality} is defined. 
+%
+Centrality is characterized by the charged particle multiplicity of events, connected to the impact parameter through a simulation defining it as a function of \(N_\mathrm{part}\), \(N_\mathrm{coll}\) 
+and impact parameter \(b\) from Glauber model is mapped with the experimental data through a particle production model called the Two-Component Model~\cite{KHARZEEV2001121}. 
+%
+Assuming that particle production is governed by contribution from hard component (\(\propto N_\mathrm{coll}\)) and soft component (proportional to  \(\propto N_\mathrm{part}\)), it simulates the multiplicity distribution according to
+\begin{equation}
+	\frac{dN_\mathrm{ch}}{d\eta} = n_{pp}\left[xN_\mathrm{coll} + (1-x)\frac{N_\mathrm{part}}{2}\right]
+\end{equation}
+where the quantity \(n_{pp}\) is the multiplicity from a \(p+p\) collision of the same center-of-mass energy. \(x\) is the contribution of hard component. 
+%
+\(n_{pp}\) is drawn from a negative binomial distribution with parameters \(\text{NBD }(n_{pp}; \langle n_{pp}\rangle,k)\), where \( \langle n_{pp}\rangle\) is the average multiplicity in the \(p+p\) collision and \(k\) is the width of the distribution. 
+%
+The simulated charged multiplicity distribution is then fitted with the corresponding multiplicity distribution from the experiment. \(\langle n_{pp}\rangle\), \(k\), and \(x\) are kept as free parameters in the fitting to experimentally measured charged particle multiplicity distribution. 																		
+%
+Initial guess values for \(x\) could be set close to those determined in different experiments for faster convergence of fitting~\cite{back2004collision,PhysRevC.88.044909}. 
+
+An event belongs to a centrality class, say 0\%–5\% if its charged particle multiplicity falls in the top \(5^\text{th}\) percentile. 
+%
+Fig.~\ref{fig:centralityVsNch} illustrates collision centrality definition in heavy-ion collisions by comparing the charge particle multiplicities with Glauber MC + Two-component model simulation.
+%
+Centrality classes are classified for the simulated distribution. 
+%
+\(\langle N_\mathrm{part}\rangle\), \(\langle N_\mathrm{coll}\rangle\) in those centrality classes are calculated. 
+
+\subsection{Anisotropic flow}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/flow_elliptic_init_v4.pdf}
+	\includegraphics[width=0.4\textwidth]{figures/flow_elliptic_expd_xyz_v2.pdf}
+	\label{fig:anisotropycartoon}
+	\caption{Schematic diagrams showing the initial overlap region (left) and the spatial anisotropy generated by this anisotropic overlap region.  This anisotropy can be quantified using the Fourier coefficients of the momentum anisotropy. Taken from~\cite{Connors_2018}}
+\end{figure}
+Contrary to initial naive expectations of a gas-like QGP, the QGP formed in these collisions was shown to behave like a liquid of quarks and gluons~\cite{Heinz_2013}.
+%
+Thus, mean free path of particles in QGP fireball is much smaller than the fireball's system size.
+%
+Hence, in non-central heavy ion collisions the initial state coordinate space asymmetry generates a pressure gradient in the direction of the impact parameter $b$, schematically shown in fig.~\ref{fig:anisotropycartoon}. 
+%
+This spatial asymmetry translates into a azimuthal momentum anisotropy as the system expands, meaning that particles are more likely to be emitted along the plane where the pressure gradients are the highest. 
+%
+This plane is defined by the beam axis and the impact parameter of the collision, and called the \emph{reaction plane} (\(\Psi_{\rm RP}\)).
+%
+The anisotropy can be characterized by the Fourier decomposition of the azimuthal particle distribution with respect to \(\Psi_{\rm RP}\)~\cite{Bielcikova:2003ku,Voloshin:1994mz}:
+\begin{equation}
+	\frac{dN}{d(\phi - \Psi_{RP})} = \frac{N_0}{2\pi} \left( 1 + 2 \sum_{n=1}^{\infty} v_n \cos[n(\phi - \Psi_{RP})] \right),
+	\label{fourier_azi_part_distr}
+\end{equation}
+%
+The \emph{anisotropic flow} coefficients $v_{n}$, the $n^{\rm th}$ order term in the Fourier decomposition of the final state particle azimuthal distribution is given by,
+%
+\begin{equation}
+	\label{flow}
+	v_{n} = \left< \cos([n(\phi - \Psi_{\rm RP})]) \right>
+\end{equation}
+%
+Due to the symmetry of the collision geometry, the most prominent contribution is from the second order coefficient $v_2$, called \emph{elliptic flow}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.41\linewidth]{AnisotropyWithNoScaling (1).png}
+	\includegraphics[width=0.52\linewidth]{Gen1_IdentifiedParticle_v2.png}
+	\caption{\textbf{Left panel}: Elliptic flow $v_2$ for several particle species in Au + Au collisions at \sNN{200}{GeV}  from STAR and PHENIX experiments. Predictions from hydrodynamic models are shown as lines. Taken from \cite{GYULASSY200530}. \textbf{Right panel}: Number of constituent quarks ($n_q$) scaled $v_2$ as a function of $p_{\rm T}/n_q$. Taken from \cite{Sorensen_2006}.}
+	\label{fig:AnisotropyResults}
+\end{figure}
+
+$v_2$ was measured by the STAR and PHENIX for several particle species and is shown in Fig. \ref{fig:AnisotropyResults}. 
+%
+Large positive $v_2$ values indicate collective phenomena associated with a strongly coupled fluid, or a \emph{signature of QGP}.
+%
+A scaling of the $v_2$ values with the number of constituent quarks (2 for mesons, 3 for baryons) yielded a universal curve as a function of $p_{\rm T}/n_q$ suggesting the flow dynamics were developed in a medium with quark and gluon degrees of freedom, i.e. QGP.
+
+\subsubsection{Event plane reconstruction}
+\label{sec:EP_Recon}
+The reaction plane, \(\Psi_{\rm RP}\) cannot be directly measured and is approximated by the second-order symmetry plane, $\Psi_{2,EP}$, referred to as the \emph{event plane}  in this text, for simplicity.  
+%
+\(\Psi_{\rm RP} \to \Psi_{2, EP}\) if nucleon distributions were in their average positions and devoid of fluctuations from interactions among nucleons~\cite{PhysRevC.101.064901}.
+%
+By measuring the charged particle azimuthal distribution, the n-th order event plane can be extracted by~\cite{Poskanzer:1998yz},  
+%
+\begin{equation}
+	\Psi_{n,EP} = \frac{1}{n} \arctan \left(\frac{Q_{y, n}}{Q_{x, n}} \right),
+	\label{eqn:EP}
+\end{equation}
+%
+the weighted vector \(\mathbf{Q}_n = Q_{x, n}\hat{\mathbf{x}}+ Q_{y, n}\hat{\mathbf{y}}\) are given by,
+%
+\begin{align}
+	\mathbf{Q}_n = \hat{\mathbf{x}}\sum_{\mathrm{tracks}} p_{\rm T, track} \cos (n \phi_{\rm track}) + \hat{\mathbf{y}}\sum_{\mathrm{tracks}} p_{\rm T, track} \sin (n \phi_{\rm track}).
+	\label{Eqn:Qvecs}
+\end{align}
+%
+where the sum is calculated for all reconstructed charged particles (tracks) in the event, $\phi_{\rm track}$ is the track's azimuthal angle, and $p_{\rm T, track}$ the track's transverse momentum.  
+%
+
+Due to finite acceptance and multiplicities, the calculated event plane has an underlying anisotropy that is corrected by applying two separate correction methods.  
+%
+First, a calibration and recentering correction procedures are applied to remove bias introduced by non-uniform acceptance of the TPC tracking system and further account for potential beam-condition effects~\cite{Barrette:1997pt,PhysRevC.55.1420,Poskanzer:1998yz}.  
+%
+This procedure involves recentering the weighted $\mathbf{Q}_2$-vectors such that, $\langle\mathbf{Q}_2 \rangle = \mathbf{0}$. 
+%
+It is done by calculating a modified $\mathbf{Q}_2$, obtained by subtracting an event averaged $\langle\mathbf{Q}_2 \rangle$ from each event's nominal $\mathbf{Q}_2$.
+%
+
+The higher harmonics of $\Psi_{n,EP}$ still persist after recentering \cite{Poskanzer:1998yz}, and are removed through a second correction step, referred to as  the shifting method, applied event-by-event  to make the event-plane angle isotropic in the lab frame \cite{Voloshin:2008dg}. 
+%
+This method defines a new angle:
+%
+\begin{equation}
+	\Psi'_{2,EP} = \Psi_{2,EP} + \sum_n \frac{2}{n}
+	(- \langle \sin (n\Psi_{2,EP}) \rangle \cos(n\Psi_{2,EP}) + \langle \cos(n\Psi_{2,EP}) \sin(n\Psi_{2,EP}) \rangle) ,
+	\label{eqn:Shift}
+\end{equation}
+%
+Usually 20 orders of Fourier moment are removed. 
+%
+Additional details of the recentering and shifting corrections can be found in Refs.~\cite{Wang:2012bga,Barrette:1997pt,Poskanzer:1998yz}
+
+The difference between $\Psi_{RP}$ and \(\Psi_{2, EP}\) is quantified by event-plane resolution, $R_n$ or $R_n\{\Psi_{2, EP}\}$ given by Eqn.~\ref{resolution}. 
+%
+The observed $v_n$, $v_n^{\rm obs}$ is corrected for this limited resolution by doing, $v_n = v_{n}^{\rm obs}/R_n$ \cite{Abbas:2013taa,Poskanzer:1998yz}.  
+%
+\begin{equation}
+	R_n = R_n\{\Psi_{2, EP}\} = \langle \cos(n[\Psi_{RP} - \Psi_{2, EP}]) \rangle \qquad \text{$n$ is even}
+	\label{resolution}
+\end{equation}
+
+Furthermore, individual events are divided into two random sub-events by assigning charged tracks to sub-events, ``$a$" and ``$b$". 
+%
+The sub-events are unique, with approximately equal multiplicities. 
+%
+We can write the correlation of two event planes by taking the product of two sub-events, \cite{Barrette:1996rs,Poskanzer:1998yz}
+%
+\begin{equation}
+	\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{2, EP}^{b}]) \rangle = 
+	\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{RP}]) \rangle
+	\langle \cos(n[\Psi_{2, EP}^{b} - \Psi_{RP}]) \rangle,
+	\label{resolution2sub}
+\end{equation}
+%
+This allows calculation of the event-plane resolution directly from data. Since $a$ and $b$ have equal multiplicities, the resolution of each sub-event can be calculated from the correlation between the two sub-events as \cite{Poskanzer:1998yz}:
+
+\begin{equation}
+	\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{RP}]) \rangle = 
+	\sqrt{\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{2, EP}^{b}]) \rangle} .
+	\label{resolutionIndiv}
+\end{equation}
+
+The event-plane resolution is multiplicity dependent and calculated for separate ranges of collision centrality using the two sub-events method.  
+%
+Narrower bins are calculated and then combined accordingly to match the ranges required, by averaging the results from the narrow bins weighted by the multiplicity of each bin \cite{Voloshin:2008dg}.
+
+\section{Jets in QGP}
+As discussed in sec.~\ref{sec:qgpSpacetime}, hard scatterings of partons that produce jets happens before the system thermalizes into QGP (parton producing a 10~GeV jet scatters at \(\tau \sim 1/E \sim 0.2\text{fm}/c\)). 
+%
+Thus the ensuing parton shower traverses the QGP, and resulting jet is \emph{modified/quenched} compared to an appropriate \emph{baseline}. 
+%
+The two main mechanisms for jet quenching are \emph{collisional} and \emph{radiative} energy losses. 
+%
+Collisional energy loss happens due to the elastic scattering between the parton and the medium constituents and usually dominates for lower energy partons. 
+%
+Radiative energy loss happens due to induced gluon radiation (\textit{bremsstrahlung}) through inelastic scatterings with the medium particles \cite{MAJUMDER201141,QinWang2024,Burkeetal}. 
+%
+For partons with \ptGeq{parton}{5} , this is usually the dominant source of energy loss \cite{LandoltBornstein2010:sm_lbs_978-3-642-01539-7_16}. 
+%
+%\subsection{Combinatorial background in heavy-ion jets}
+%Final state of heavy-ion collisions is characterized by a massive \emph{Underlying Event}, arising from the thermalized QGP. 
+%%
+%Although useful for bulk calculations like elliptic flow, including them in the jet clustering would artificially inflate the amount of radiation in the jet cone, as we generally want to restrict the jet constituents to remnants of a parton shower. 
+%%
+%This background is generally uncorrelated to the jet and hence called \emph{Uncorrelated/Combinatorial Background}.  
+%%
+%Heavy-ion jet background subtraction is quite an active field of study. 
+%%
+%The method of background subtraction is different for different jet analysis. 
+%
+%For 
+
+%\subsection{Heavy-ion jet measurements}
+The baseline measurement is done in a collision system where either QGP is not formed or has negligible lifetime compared to central heavy-ion collisions. 
+%
+Two possible choices arise for the baseline, first is \(p+p\) collisions from which we can calculate the \emph{Nuclear Modification Factor} (\RAA) for distributions of any observable \(\mathbf{O}\) calculated in \(p+p\) and \(A+A\) collisions,
+given by
+\begin{equation}
+	R_{\rm AA}(\mathbf{O}, b) = \frac{dN_{\rm AA}/d\mathbf{O}}{\left<T_{\rm AA}(b)\right> . d^2\sigma_{pp}/d\mathbf{O}}
+\end{equation}\label{RAA}
+where $T_{\rm AA}(b) = N_{\rm coll}(b)/\sigma_{\rm NN}^{\rm inel}$ is the nuclear overlap function  which determines the number of participating nucleons and number of binary collisions $N_{\rm bin}$ for a heavy ion collision as a function of its impact parameter (\textit{b})~\cite{doi:10.1142/S0217751X95001467}.
+%
+The second common baseline used in absence of a \(p+p\) baseline is peripheral collisions of heavy-ion collisions. The \emph{Relative Nuclear Modification Factor} \(R_{CP}\) is given by,
+%
+\begin{equation}
+	R_{CP}(\mathbf{O}, b) = \frac{dN/d\mathbf{O}}{\left< N_{\rm bin}(b) \right>} \biggm\lvert_{\rm cent} \times \frac{\left< N_{\rm bin}(b) \right>}{dN/d\mathbf{O}} \biggm\lvert_{\rm peri}
+\end{equation}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{Gen0_AngularCorrelation_JetQuenching.png}
+	\caption{Measurement of the angular correlation between all charged hadrons and the leading hadron in the event for p + p (black lines), d + Au (red and green markers), and Au + Au events (blue markers), performed by the STAR experiment. The vanishing of the away-side yield around $\Delta\phi\approx \pi$ in Au + Au events is evidence of particles getting quenched in the QGP medium. Taken from \cite{Adams:2003im}.}
+	\label{fig:angularcorr}
+\end{figure}
+
+Before infrastructure became available to reliably reconstruct a sufficient number of jets in heavy-ion collisions,  the effects of the medium on high energy partons were studying the \emph{Di-hadron correlation}. 
+%
+Leading hadron (highest $p_\mathrm{T}$ in event) is used as a jet proxy and the azimuthal angular correlation ($\Delta\varphi$) of all charged hadrons in the event is studied.
+%
+Fig. \ref{fig:angularcorr} shows one of the first measurements performed by STAR~\cite{Adams:2003im}, di-hadron correlations compared between p + p, Au + Au, and d + Au collisions. 
+%
+The p + p and d + Au both show peaks around $\Delta\varphi = 0$ and $\Delta\varphi =  \pi$ as expected, given that hard scatterings are dominated by \(2\to 2\) Feynman diagrams. 
+%
+However, for Au + Au collisions, the peak around $\Delta\varphi = \pi$ completely vanishes. 
+%
+This was the expectation because depending on the distance from the center of the collision where the initial back-to-back partons were produced, one of the partons would travel a larger distance in the QGP medium and therefore lose more energy than the other one.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{Gen0_SingleParticle_RAA.png}
+	\caption{Nuclear modification factor $R_{\rm AA}$ as a function of $p_\mathrm{T}$ for identified particle species in Au + Au collisions at \sNN{200}{GeV} measured by the PHENIX experiment. Taken from \cite{Tannenbaum_2015}.}
+	\label{fig:singleparticleraa}
+\end{figure}
+
+A closer look at jet quenching was given by the PHENIX experiment through a collection of  \RAA~measurements discussed in eq.~\ref{RAA} for identified particles spectra, shown in Fig. \ref{fig:singleparticleraa}.
+%
+Whereas, direct photons ($\gamma$) do not interact strongly, and hence have no yield modification in the medium.
+% 
+All strongly interacting particles show varying levels of suppression from 0.2 - 0.6, again confirming their energy loss in the presence of QGP.
+
+Although measurements with high $p_\mathrm{T}$ hadrons help us understand jet quenching mechanisms in the medium, they suffer from survival bias, as these hadrons arise from a subsample of jets which usually undergo the least amount of quenching \cite{PhysRevC.99.051901}. 
+%
+Fully reconstructed jets, however, are mostly unbiased probes of energy flow at high $p_\mathrm{T}$, and offer a wealth of substructure observables which allow us to look at energy flow within the jet more differentially.
+%
+This motivates the studies presented in chapters~\ref{ch:jhcorr} and~\ref{ch:angularities}.   
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{Gen1_ChargedParticleAndJets_RCP.png}
+	\caption{$R_{CP}$ distributions for charged hadrons (open markers) and jets (solid markers) from RHIC (blue star markers) and LHC (red circle markers) experiments. Taken from \cite{STARChargedJet} and references within \cite{PhysRevLett.91.172302, ALICEChargedJet, ATLASChargedHadron}.}
+	\label{fig:chargedparticlercp}
+\end{figure}
+The STAR experiment measured the \(R_{CP}\) of the $p_\mathrm{T}$ spectra of charged particle jets (clustered charged tracks only and contain no calorimeter hits (towers) as input) from central and peripheral Au + Au collisions at \sNN{200}{GeV} shown in fig.~\ref{fig:chargedparticlercp} \cite{STARChargedJet}. 
+%
+Measured for charged jets was compared to $R_{CP}$ for charged hadrons from STAR at the same energy, and to the measured $R_{CP}$ for charged hadrons and jets from the ALICE and ATLAS experiments at \sNN{2.76}{TeV}. 
+%
+First, the charged hadrons $R_{CP}$ is found to be the same over the same range of $p_\mathrm{T}$ at RHIC and LHC energies (which are an order of magnitude apart). 
+%
+The charged jet $R_{CP}$ is also found to have similar values between RHIC and LHC energies with roughly 60\% of the energy lost outside the jet cone in central collisions with respect to peripheral collisions, with no significant $p_\mathrm{T}$ dependence in contrast to the $p_\mathrm{T}$ dependence observed for the charged hadrons $R_{CP}$. 
+%
+This may be because the inclusive hadron distribution usually arises from the leading hadron in the corresponding jet, and is therefore is sensitive to the fragmentation function. 
+%
+This fragmentation process can therefore introduce the $p_\mathrm{T}$ dependence of $R_{CP}$ in hadrons. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/CMSJetShapeFinalJS4Cent}
+	\caption{Differential jet shapes in Pb+Pb and \(p+p\) collisions for four Pb+Pb  centralities. Each spectrum is normalized so that its integral is unity.  This shows that there are more particles in jets in central collisions and these modifications are primarily at large angles relative to the jet axis, as expected from partonic energy loss. Taken from~\cite{Connors_2018}}
+	\label{fig:cmsjetshapefinaljs4cent}
+\end{figure}
+Going a bit into the jet substructure, CMS measurement of jet's average radial momentum profile around the jet-axis, called \emph{differential jet shape} defined as,
+\begin{equation}
+	\rho(r) = \frac{1}{\delta r} \frac{1}{N_{\mathrm jet}} \sum_{\mathrm jets} \frac{ \sum_{{\mathrm tracks} \epsilon [r_a, r_b)} p_{T}^{\mathrm track}}{p_{T}^{\mathrm jet}}
+\end{equation}
+%
+where the jet cone is divided rings of width $\delta r$ which have an inner radius $r_a$ and an outer radius $r_b$.  
+%
+From the results shown in fig.~\ref{fig:cmsjetshapefinaljs4cent}, the differential jet shapes in the most central Pb+Pb collisions are broadened in comparison to measurements done in \pp collisions at the same center of mass energy ~\cite{Chatrchyan:1605718}.  
+%
+These measurements demonstrate that there is an enhancement in the modification with increasing angle from the jet axis, indicating a broadening of the jet profile and a depletion near r~$\approx$~0.2.
+
+\section{Outline}
 Angular ordering makes the angular distribution of energy inside a jet a record of the shower that produced it, with the wide-angle radiation coming from the early, hard splittings and the core of the jet being filled in later.
 %
 This thesis measures that distribution.
@@ -699,9 +723,6 @@ Ch.~\ref{ch:jhcorr} presents jet-hadron correlations relative to the event plane
 Ch.~\ref{ch:angularities} presents generalized angularities, inclusive and groomed, in \pp collisions and then in \AuAu collisions.
 %
 Ch.~\ref{ch:summary} summarizes both measurements and what they suggest about where to go next. 
-
-%\input{test/qgmutualinfo}
-%\input{jetportrait}
 
 
 

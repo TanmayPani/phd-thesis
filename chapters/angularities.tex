@@ -25,6 +25,434 @@ where  $\mathbf{r}_{\rm const} =  (\eta_{\rm const}-\eta_{\rm jet})\hat{\eta}+ (
 
 However, as an experimental observable, it is useful to restrict the summation in Eq. \ref{eq:LambdaKappaBeta} to only charged constituents / tracks and mitigate contamination from towers like pileup.  This comes at the cost of IRC safety of \(\lambda_\beta^1\) as theoretical predictions will involve non-perturbative fragmentation functions. 
 
+\subsection{SoftDrop}
+The soft drop grooming~\cite{SoftDrop_Larkoski_2014} procedure can be summarized as follows. First, the observed jet is reclustered with the Cambridge/Aachen (C/A) algorithm.
+Second, the soft drop criterion from Eq. \ref{eq:softDropCrit} is checked at each clustering step when going backward through the C/A clustering tree.
+\begin{equation}
+	\label{eq:softDropCrit}
+	\frac{\min(p_\mathrm{T,1}, p_\mathrm{T, 2})}{p_\mathrm{T,1} + p_\mathrm{T, 2}} > z_\mathrm{cut} \left(\frac{\Delta R_{12}}{R}\right)^\beta
+\end{equation}
+Here \(p_\mathrm{T, \{1,2\}}\) are the momenta of the two branches that had been merged together and \(\Delta R_{12}\) is their geometric distance in the \etaphi plane. 
+%
+When the softer branch fails the criterion it is removed from the jet and the procedure continues until it is satisfied. 
+%
+The remaining particles in the jet constitute the soft drop groomed jet. 
+%
+A convenient choice can be made for the soft threshold parameter \(z_\mathrm{cut}\) and the angular exponent \(\beta\). 
+%
+For \(\beta = 0\) the soft drop procedure reduces to the modified mass drop tagger (mMDT). 
+%
+Using SoftDrop, we can decompose angularities into pQCD and npQCD components. 
+%
+pQCD component is the angularity calculated from the jet after grooming has been performed and the npQCD component is calculated as the difference between the inclusive/ungroomed and groomed jet angularities. 
+
+\begin{align}
+	\mathcal{O}_\beta^\mathrm{\kappa} &= \mathcal{O}_\mathrm{\beta, pQCD}^\kappa + \mathcal{O}_\mathrm{\beta, npQCD}^\kappa \notag\\
+	\mathcal{O}_\mathrm{\beta, pQCD}^\kappa &\equiv \mathcal{O}_\mathrm{\beta, g}^\kappa \notag \\
+	\mathcal{O}_\mathrm{\beta, npQCD}^\kappa &\equiv \Delta\mathcal{O}_\mathrm{\beta}^\kappa = \mathcal{O}_\beta^\mathrm{\kappa} -  \mathcal{O}_\mathrm{\beta, g}^\kappa
+\end{align}
+
+Using the momentum balance (\(z_\mathrm{g}\)) and angularity of the first collinear-splitting (\(R_\mathrm{g}\)), we get direct connection between measurement of jet shapes and calculations from field theory. 
+%
+Larger \(R_\mathrm{g}\) implies that the most prominent split in the jet occurred earlier in its evolution, opening up more phase space for pQCD splittings (which survive SoftDrop grooming) because of color coherence discussed earlier.
+%
+Fig.~\ref{fig:GroomingAndRg} shows percentage npQCD contribution to jet width \(\left(\frac{\Delta \lambda_1^1}{\lambda_1^1} \times 100\right)\) decreasing  with increasing \(R_\mathrm{g}\), going from highly collimated, pencil-like jets to jets with proper two pronged structure.
+\begin{figure}
+	\label{fig:GroomingAndRg}
+	\includegraphics[width=\linewidth]{figures/fig_grooming_cartoon_4panel.pdf}
+	\caption{ Ways of arranging constituents (each represented as a circle whose radius represent \(\frac{p_\mathrm{T, const}}{p_\mathrm{T, jet}}\)) in the \etaphi space within a jet with \(p_\mathrm{T, jet} = 30~\text{GeV}/c\) such that \(R_\mathrm{g}\) of the jet increases going from left to right. Green (Red) colored constituents survive (are removed by) the SoftDrop grooming ( \(z_\mathrm{cut} = 0.2,~\beta = 0\)).}
+\end{figure}
+
+\section{Machine Learning Basics}
+Fortunately, many of the tasks encountered in HEP can be naturally reformulated as machine learning problems. 
+%
+Typically, the problems are formulated in terms of a search for some function \(f:X \to Y\), from the space of the observed data \(X\) to a low-dimensional space of a desired target label \(Y\), which optimizes some metric of our choosing. 
+%
+This metric is called a loss function and is written as \(L[ \mathbf{y}, f (\mathbf{x})]\).
+%
+
+Ideally, a learning algorithm would find the function that optimizes \(L\) over all possible values
+of \((\mathbf{x}, \mathbf{y})\), but this is intractable owing to the curse of dimensionality and an infinite number of functions to choose from. 
+%
+Instead, in supervised learning, one has labeled training data \(\{\mathbf{x}_i , \mathbf{y}_i\}^N_{i=1}\) sampled from \(p(\mathbf{x} , \mathbf{y})\). 
+%
+Furthermore, the function space is restricted to a model—a highly flexible family of functions \(f_\phi(\mathbf{x})\) parameterized by \(\phi\). 
+%
+In this case, the algorithms minimize the loss function directly with respect to the model parameters \(\phi\). 
+%
+Neural networks, support vector machines, and decision trees are examples of types of models commonly used in machine learning. 
+%
+These models often have a large number of parameters, and in the case of neural networks, finding the optimal \(f_\phi\) can be a difficult problem
+%
+
+An essential goal in machine learning is generalization—the ability of the model to perform well on data that were not used in training. 
+%
+Failure in this task is called overtraining or overfitting. 
+%
+A vast array of techniques exist to avoid overtraining, all of which can be considered forms of regularization. 
+%
+Regularization techniques such as dropout were key to advances in image recognition with deep learning
+
+\section{Jet Classification}
+For jets, classifiers can be used as a tagging mechanism. 
+%
+For almost every way of representing a jet, there is a class of machine learning models.
+%
+We discuss two cases here
+\subsection{Quark-Gluon jet discrimination}
+Quark and gluon jet \(p+p\) events are generated as \(qq\to qq\) and \(gg\to gg\) dijet events at \sNN{200}{GeV} using PYTHIA-8 (RHIC Tune). 
+%
+Each jet is represented as an $24\times24$ image following~\cite{Komiske_2017}. 
+%
+The RGB color channels of the image are made as,
+\begin{itemize}
+	\item R: $\sum p_\mathrm{T}$ of charged constituents,
+	\item G: $\sum p_\mathrm{T}$ of neutral constituents,
+	\item B: number of charged constituents.
+\end{itemize}
+giving jets as shown in~\ref{fig:qgJetExamples}.
+%
+Preprocessing involves centering the images around each jet's $p_\mathrm{T}$-weighted centroid
+$(\bar y,\bar\phi) = \sum_i p_{\mathrm{T},i}(y_i,\phi_i)/\sum_i p_{\mathrm{T},i}$, followed by narmalization
+%
+Data is augmented using  procedures like random reflections ($\Delta y\to-\Delta y$ or $\Delta\phi\to-\Delta\phi$) and random jitter. 
+
+\begin{figure}
+	\centering
+	\label{fig:qgJetExamples}
+	\includegraphics[width=\linewidth]{figures/qgjet_images}
+	\caption{Typical quark (left) and gluon (right) jet. Gluon jets exhibit a broader spatial radiation pattern
+		and higher particle multiplicity compared to quark jets}
+	\label{fig:qgjetimages}
+\end{figure}
+
+The images were input for a Convolutional Neural Network (CNN) implemented using PyTorch as shown in fig.~\ref{fig:rgbnn}.  
+%
+Each convolutional layer consisted of 64 filters, with filter sizes of 5×5, 3×3, and 3×3, respectively (8×8, 4×4, and 4×4 for the 72×72 images). The max-pooling layers performed a 2×2 down-sampling with a stride length of 2. The dense layer consisted of 128 units, with a dropout rate of 0.2 before and after it.
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/RGBNN}
+	\caption{An illustration of the deep convolutional neural network architecture. The first
+		layer is the input jet image, followed by three convolutional layers, a dense layer and an
+		output layer.~\cite{Komiske_2017}}
+	\label{fig:rgbnn}
+\end{figure}
+
+The network was trained with the AdamW optimizer at a learning rate of \(10^{-3}\) and a weight decay of 0.1, using the cross-entropy loss. 
+%
+Training used a batch size of 128 for 20 epochs, and the model with the lowest validation loss was retained. 
+%
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/roc_per_jpt}
+	\caption{}
+	\label{fig:rocperjpt}
+\end{figure}
+Training images were augmented with random reflections in \(\Delta\eta\) and \(\Delta\phi\) and random translations of up to 0.5 pixels. 
+%
+The Receiver Operator Characteristic (ROC) curve  is shown differential in \(p_\mathrm{T, jet}\) by evaluating the model on a holdout test set.  
+
+
+A way to gain some understanding of how the model looks at jet substructure is through \emph{interpretability} methods. 
+%
+We use a simple method of just noting the average change in classifier output upon masking a pixel. As seen in fig.~\ref{fig:importancecnnqg}, 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/importance_cnn_qg}
+	\caption{Per-pixel feature importance }
+	\label{fig:importancecnnqg}
+\end{figure}
+\subsection{Characterizing jet quenching}
+Another way to think about jet quenching/modification, is to ask how easily can a classifier algorithm tell apart the quenched and unquenched jet. 
+%
+Here we take PYTHIA-6~\cite{Sj_strand_2006} as the source of unquenched jets and JEWEL \cite{Zapp:2013vla} generates quenched jets in different centrality bins with/without recoil centers. 
+%
+Jets are represented as a 9-D vectors of features: $p_{\rm T, jet}$, $\rm N^{charged}_{\rm constit., jet}$, $\rm N^{neutral}_{\rm constit., jet}$, LeSub, $\lambda^2_0$, $\lambda_1^{0.5}$, $\lambda_1^1$, $\lambda_1^2$.
+%
+The jets are input into Dense Neural Networks (DNNs) with three hidden layers with 100 nodes each. After training, we calculate ROC curves shown in~\ref{fig:jetQuenchROC} using a holdout test set.
+%
+\begin{figure}
+	\label{fig:jetQuenchROC}
+	\includegraphics[width=0.49\linewidth]{roc_curve_dnn_withoutRec.pdf}
+	\includegraphics[width=0.49\linewidth]{roc_curve_dnn_wRec.pdf}
+	\caption{ROC curves for PYTHIA6 vs. JEWEL without recoils (left) and with recoils (right).}
+\end{figure}
+%
+The DNN performs better than chance in all the centralities and for both with/without recoils case.
+The with-recoils case gives exagerrated ROC curves due to the background of recoil centers. 
+%
+AUC score decreases from central (0-10\%) to peripheral (50-80\%) events possibly implying more modification in central compared to peripheral.  
+%
+More information about jet quenching and machine learning can be found in~\cite{lai2022informationcontentjetquenching}
+
+\section{Unfolding}
+For any experiment, there is a disconnect between the desired phenomena (\emph{truth} level) and the measurement (\emph{measured} level) due to limitations of the detector setup. This is portrayed in fig.~\ref{fig:UnfoldingScheme} through a dijet event at the truth level, whose final state charged and neutral particles are recorded as TPC tracks and BEMC towers.  Each of the detectors smear the energy and momenta and for almost all experiments,  the information about particle species is lost. For example, at STAR often a \(\pi^0\) mass assumption is taken for measured constituents. Thus jets, which are composite objects of these tracks and towers are non-trivially modified by a complicated convolution of these effects. Even with the best background removal procedure, jets will contain some residual background fluctuations from the underlying event.
+
+\begin{figure}[h]
+	\centering
+	\label{fig:UnfoldingScheme}
+	\begin{tikzpicture}[scale=0.7,rotate=0]
+		\def\R{5} % tracker outer radius
+		\def\dang{3} % angular granularity of calo deposits, 
+		% HCAL DEPOSITS
+		\foreach \dr [count=\i,
+		evaluate={\r=\R+\dr; \anga=12+\dang*\i; \angb=\anga+\dang;}
+		] in {0.1, 0.2, 0.2, 0.6, 0.3,0.5,0.2,2.0,1.2,0.3,0.5, 0.2, 0.4, 0.1}{
+			\draw[calo] (0,0) -- (\anga:\r) arc(\anga:\angb:\r) -- cycle;
+			%\draw[calo]
+			%  (\anga:\R) -- (\anga:\r) arc(\anga:\angb:\r)
+			%  -- (\angb:\R) arc(\angb:\anga:\R) -- cycle;
+		}
+		
+		\foreach \dr [count=\i,
+		evaluate={\r=\R+\dr; \anga=192+\dang*\i; \angb=\anga+\dang;}
+		] in {0.1, 0.05, 0.3, 0.2,0.3,0.5,0.2, 0.5,0.4,0.3,0.5, 0.2, 0.4, 0.1}{
+			\draw[calo] (0,0) -- (\anga:\r) arc(\anga:\angb:\r) -- cycle;
+			%\draw[calo]
+			%  (\anga:\R) -- (\anga:\r) arc(\anga:\angb:\r)
+			%  -- (\angb:\R) arc(\angb:\anga:\R) -- cycle;
+		}
+		
+		\foreach \ang [count=\i, 
+		evaluate={\stepa = 15;
+			\stepb=\stepa+50;
+			\ra=\R+0.25*sin(\dang*\i*10); 
+			\rb=\R+0.2*cos(\dang*\i*15);
+			\rc=\R+0.3*sin(\dang*\i*20);
+			\rd=\R+0.1;
+		}]in {0, 3,...,360}{
+			\draw[calobg] (0,0) -- (\ang:\ra) arc(\ang:\ang+\dang:\ra) -- cycle;
+			\draw[calobg] (0,0) -- (\ang:\rd) arc(\ang:\ang+\dang:\rd) -- cycle;
+			\draw[calobg] (0,0) -- (\stepa*\dang+\ang:\rb) arc(\stepa*\dang+\ang:\stepa*\dang+\ang+\dang:\rb) -- cycle;
+			\draw[calobg] (0,0) -- (\stepb*\dang+\ang:\rc) arc(\stepb*\dang+\ang:\stepb*\dang+\ang+\dang:\rc) -- cycle;
+		}
+		
+		\draw[thick,fill=white] (0,0) circle(\R); 
+		
+		\foreach \ang [count=\i,
+		evaluate={\bend=12*sin(20+\i*\dang*15)}]in {0, 3,...,360}{
+			\draw[black,opacity=0.3,thin,fill=none]
+			(0,0) to[bend right=\bend] (\ang:\R);
+		}
+		
+		\foreach \ang [count=\i,
+		evaluate={\bend=12*cos(\i*\dang*15)}]in {0, 3,...,360}{
+			\draw[black,opacity=0.3,thin,fill=none]
+			(0,0) to[bend left=\bend] (\ang-\dang*0.5:\R);
+		}
+		
+		%\draw[calo]
+		%  (\anga:\R) -- (\anga:\r) arc(\anga:\angb:\r)
+		%  -- (\angb:\R) arc(\angb:\anga:\R) -- cycle;
+		
+		\foreach \bend [count=\i,
+		evaluate={\anga=6+\dang*\i;}
+		] in {30, 14, 15,18, 20, 12, 19, 17, 11, 12}{
+			\draw[blue!60!green!50!black,thin,fill=none]
+			(0,0) to[bend left=\bend] (\anga:\R);	
+		}	
+		
+		\foreach \bend [count=\i,
+		evaluate={\anga=72-\dang*\i;}
+		] in {20, 30, 19, 18, 20, 12, 19, 17, 12, 10, 8}{
+			\draw[blue!60!green!50!black,thin,fill=none]
+			(0,0) to[bend right=\bend] (\anga:\R);
+		}
+		
+		\foreach \bend [count=\i,
+		evaluate={\anga=186+1.5*\dang*\i;}
+		] in {30, 14, 20, 12, 11, 12}{
+			\draw[blue!60!green!50!black,thin,fill=none]
+			(0,0) to[bend left=\bend] (\anga:\R);
+		}
+		
+		\foreach \bend [count=\i,
+		evaluate={\anga=252-1.5*\dang*\i;}
+		] in {20, 30, 19, 12, 19, 10, 8}{
+			\draw[blue!60!green!50!black,thin,fill=none]
+			(0,0) to[bend right=\bend] (\anga:\R);
+		}
+		
+		\node[draw, text width=0.15\textwidth, rounded corners=4pt] (tracks) at (90:1.3*\R){
+			\textbf{TPC tracks}
+		};		
+		\draw (tracks) edge[dashed,  ->, very thick, red] (225:0.6*\R);
+		\draw (tracks) edge[dashed,  ->, very thick, red] (30:0.5*\R);
+		
+		\node[draw, text width=0.17\textwidth, rounded corners=4pt] (towers) at (150:1.5*\R){
+			\textbf{BEMC tower deposits} 
+		};		
+		\draw (towers) edge[dashed,  ->, very thick, magenta] (210:1.02*\R);
+		\draw (towers) edge[dashed,  ->, very thick, magenta] (30:1.02*\R);
+		
+		\node[draw, text width=0.15\textwidth, rounded corners=4pt] (UE) at (340:1.8*\R){
+			\textbf{Underlying Event}
+		};		
+		\draw (UE) edge[dashed, ->, very thick, blue] (300:1.02*\R);
+		\draw (UE) edge[dashed,  ->, very thick, blue] (340:0.5*\R);
+		
+		\draw[thick,fill=white] (0,0) circle(0.27*\R); 
+		\begin{feynhand}[scale=0.3]
+			\vertex (a)  at (-1, -2); 
+			\vertex(b)  at (-2, 1); 
+			\vertex (c)  at (0, -1); 
+			\vertex (d)  at (0, 1);
+			\propag [plain] (c) to (a);
+			\propag [plain] (b) to  [edge label = $p_1$] (d);
+			\propag [gluon] (c) to (d);
+			\vertex(e) at (2, -1) ; 
+			\vertex (f) at (1, 2);
+			\propag [plain] (e) to [edge label = $p_2$](c);
+			\propag [plain] (d) to (f);
+			\coordinate (J1) at (2.5,3.5);
+			\coordinate (J2) at (-2.5, -3.5);
+			\jetcone{f}{J1}{0.4}{0.10}
+			\jetcone{a}{J2}{0.4}{0.10}
+			\node[vector,left] at (J1) {$\vv{p}_{j_1}$};
+			\node[vector,right] at (J2) {$\vv{p}_{j_2}$};
+		\end{feynhand}		
+		
+		\draw  (10:\R) edge["\textbf{Deconvolution / Unfolding}", ->, very thick, red] (10:0.15*\R);
+	\end{tikzpicture}
+	\caption{Schematic figure showing the unfolding procedure. The desired physics / truth / particle level is represented by the \(2\to 2\) feynman diagram in the middle. The blue (gray) tracks and tower deposits are the dijet (underlying) event as recorded by the TPC and BEMC. } 
+\end{figure}
+
+Thus distributions of any jet observable \(\mathbf{O}\) will have these \emph{detector effects} which will need to be removed in order for the measurement to be comparable to theory calculations. In other terms, a truth value of \(\mathbf{x}\) can manifest as a range of measured values \((\mathbf{x}_0, \mathbf{x}_1)\) similarly, a measured value of \(\mathbf{y}\) can come from a range of truth values \((\mathbf{y}_0, \mathbf{y}_1)\).  Thus, using Bayes theorem, the probability either measured value being  \(\mathbf{y}\)  or truth value being  \(\mathbf{x}\) would be,
+
+\begin{align}
+	\label{eq:trMeas}
+	p_\mathrm{meas.}(\mathbf{y}) &= \int d\mathbf{x}~p_\mathrm{meas.|tr.}(\mathbf{y} |  \mathbf{x}) p_\mathrm{tr.}(\mathbf{x}) \notag\\
+	p_\mathrm{tr.}(\mathbf{x}) &= \int d\mathbf{y}~p_\mathrm{tr.|meas.}(\mathbf{x} |  \mathbf{y}) p_\mathrm{meas.}(\mathbf{y})
+\end{align}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/omnifold_fig_2025_04_24}
+	\caption{Illustration of the OmniFold method. In Step 1, MC is corrected to match data at the detector level, producing a weighting function $w_1(\vec{x}_{\text{reco}}^{\text{ MC}})$. In Step 2, a new function $w_2(\vec{x}_{\text{true}}^{\text{ MC}})$ is learned based only on particle-level quantities. The method proceeds iteratively, refining the function $w_2(\vec{x}_{\text{true}}^{\text{ MC}})$ such that the particle-level MC can be reweighted to give event yields and kinematics that match those observed in the data.~\cite{Canelli_2026}
+		\label{fig:omnifold}}
+	\label{fig:omnifoldfig20250424}
+\end{figure}
+
+From eq.~\ref{eq:trMeas}, we measure \(p_\mathrm{meas.}\) through histograms, density estimates, etc. and \(p_\mathrm{tr.}\) is what we want to measure. Now, \(p_\mathrm{meas.|tr.}\) represents the detector's \emph{response}, which can be obtained to a high degree of accuracy from simulation programs like GEANT~\cite{MISC-15}. We can start from a \emph{generated} truth distribution  \(p_\mathrm{gen., 0}\) and obtain the \emph{reconstructed} measured distribution  \(p_\mathrm{reco., 0}\). Thus the assumption is, 
+\begin{align}
+	\label{eq:responseTransfer}
+	p_\mathrm{meas.|tr.}(\mathbf{y} |  \mathbf{x}) = p_\mathrm{reco.|gen., 0}(\mathbf{y} |  \mathbf{x}) \equiv R(\mathbf{y}, \mathbf{x}) ,
+\end{align}
+Substituting \(R(\mathbf{y}, \mathbf{x})\) in eq.~\ref{eq:trMeas} and using \(\omega_0(\mathbf{y}) = p_\mathrm{meas.}(\mathbf{y})/p_\mathrm{reco., 0}(\mathbf{y})\)
+\begin{align}
+	\label{eq:unfoldEstimator}
+	p_\mathrm{gen., 1}(\mathbf{x}) &\equiv \int d\mathbf{y}~p_\mathrm{gen.|reco., 0}(\mathbf{x} |  \mathbf{y})\,p_\mathrm{meas.}(\mathbf{y}) \notag\\
+	&=\int d\mathbf{y}~\frac{R(\mathbf{y}, \mathbf{x})\,p_\mathrm{gen., 0}(\mathbf{x})}{p_\mathrm{reco., 0}(\mathbf{y})} p_\mathrm{meas.}(\mathbf{y})\notag\\
+	&= p_\mathrm{gen., 0}(\mathbf{x})\int d\mathbf{y}~R(\mathbf{y}, \mathbf{x})\,\omega_0(\mathbf{y})
+\end{align}
+Using \(\nu_0(\mathbf{x}) = p_\mathrm{gen., 1}(\mathbf{x})/p_\mathrm{gen., 0}(\mathbf{x})\) measured distribution correspondingly becomes,
+\begin{align}
+	\label{eq:step2Joint}
+	p_\mathrm{reco., 1}(\mathbf{y}) &= \int d\mathbf{x}~(\mathbf{x})\,R(\mathbf{y}, \mathbf{x})\,p_\mathrm{gen., 1}(\mathbf{x})\notag\\
+	&= p_\mathrm{reco., 0}(\mathbf{y}) \int d\mathbf{x}~\frac{R(\mathbf{y}, \mathbf{x})\,p_\mathrm{gen., 0}(\mathbf{x})}{p_\mathrm{reco., 0}(\mathbf{y})}\nu_0(\mathbf{x}) 
+\end{align}
+The convolutions \(\int d\mathbf{y}~R(\mathbf{y}, \mathbf{x})\,\omega_0(\mathbf{y})\) and \(\int d\mathbf{x}~R(\mathbf{y}, \mathbf{x})\frac{\,p_\mathrm{gen., 0}(\mathbf{x})}{p_\mathrm{reco., 0}(\mathbf{y})}\nu_0(\mathbf{x})\) are mapping \(\omega_0(\mathbf{y})\to\omega_0(\mathbf{x})\) and \(\nu_0(\mathbf{x})\to\nu_0(\mathbf{y})\) respectively. 
+%
+For the \(n^\text{th}\) iteration, 
+%
+\begin{align}
+	\label{eq:generalUnfolding}
+	\omega_{n-1}(\mathbf{y}) &= \frac{p_\mathrm{meas.}(\mathbf{y})}{p_{\mathrm{reco.}, n-1}(\mathbf{y})} \notag\\
+	p_{\mathrm{gen.}, n}(\mathbf{x}) &= p_{\mathrm{gen.}, n-1}(\mathbf{x})\int d\mathbf{y}~R(\mathbf{y}, \mathbf{x})\,\omega_{n-1}(\mathbf{y})\notag\\
+	\nu_{n-1}(\mathbf{x}) &= \frac{p_{\mathrm{gen.}, n}(\mathbf{x})}{p_{\mathrm{gen.}, n-1}(\mathbf{x})} \notag\\
+	p_{\mathrm{reco.}, n}(\mathbf{y}) &= p_{\mathrm{reco.}, n-1}(\mathbf{y}) \int d\mathbf{x}~R(\mathbf{y}, \mathbf{x})\frac{p_{\mathrm{gen.}, n-1}(\mathbf{x})}{p_{\mathrm{reco.}, n-1}(\mathbf{y})}\nu_{n-1}(\mathbf{x}) 
+\end{align}
+%
+Given convergence, \(p_{\mathrm{reco.}, n}(\mathbf{y}) \to p_\mathrm{gen.}(\mathbf{y})\) and \(p_{\mathrm{tr.}, n}(\mathbf{x}) \to p_{\mathrm{unf.}}(\mathbf{x})\) is the unfolded distribution. 
+
+%Generated jets without a reconstructed partner (\emph{misses}, \(\mathbf{y}=\varnothing\)) carry no \(\omega_{n-1}\), and reconstructed jets without a generated partner (\emph{fakes}, \(\mathbf{x}=\varnothing\)) carry no \(\nu_{n-1}\). Each receives its missing weight from the corresponding map of eq.~\ref{eq:generalUnfolding}, built from matched pairs and normalized over them,
+%\begin{align}
+%	\label{eq:missFakeWeights}
+%	\omega_{n-1}(\mathbf{x}) &= \frac{\int d\mathbf{y}~R(\mathbf{y}, \mathbf{x})\,\omega_{n-1}(\mathbf{y})}{\int d\mathbf{y}~R(\mathbf{y}, \mathbf{x})}
+%	= \frac{\int d\mathbf{y}~R(\mathbf{y}, \mathbf{x})\,\omega_{n-1}(\mathbf{y})}{\epsilon(\mathbf{x})} ,
+%	&&\mathbf{y}=\varnothing , \notag\\
+%	\nu_{n-1}(\mathbf{y}) &= \frac{\int d\mathbf{x}~R(\mathbf{y}, \mathbf{x})\,p_{\mathrm{gen.}, n-1}(\mathbf{x})\,\nu_{n-1}(\mathbf{x})}{\int d\mathbf{x}~R(\mathbf{y}, \mathbf{x})\,p_{\mathrm{gen.}, n-1}(\mathbf{x})} ,
+%	&&\mathbf{x}=\varnothing ,
+%\end{align}
+%where \(\epsilon(\mathbf{x})\) is the reconstruction efficiency and the second denominator is \(p_{\mathrm{reco.}, n-1}(\mathbf{y})\) of matched jets. A miss at \(\mathbf{x}\) thus enters the second step with the mean first-step weight of the matched generated jets at \(\mathbf{x}\), and a fake at \(\mathbf{y}\) enters the next iteration with the weight the matched reconstructed jets at \(\mathbf{y}\) acquire from \(\nu_{n-1}\). Eq.~\ref{eq:generalUnfolding} then holds on the full samples,
+%\begin{align}
+%	\label{eq:missFakeIteration}
+%	p_{\mathrm{gen.}, n}(\mathbf{x}) &= \omega_{n-1}(\mathbf{x})\,p_{\mathrm{gen.}, n-1}(\mathbf{x}) = \nu_{n-1}(\mathbf{x})\,p_{\mathrm{gen.}, n-1}(\mathbf{x}) , &&\text{matched and missed,} \notag\\
+%	p_{\mathrm{reco.}, n}(\mathbf{y}) &= \nu_{n-1}(\mathbf{y})\,p_{\mathrm{reco.}, n-1}(\mathbf{y}) , &&\text{matched and fake,}
+%\end{align}
+%so that \(\nu_{n-1}\) is formed over a generated distribution that includes misses, and \(\omega_n\) against a reconstructed distribution that includes fakes.
+
+This algorithm can be adapted for binned data by expressing the distributions as vectors representing bin counts of histograms and \(R(\mathbf{y}, \mathbf{x})\) as a matrix, giving the traditional method of \emph{Iterative Bayesian Unfolding}~\cite{bennerRoounfold}. Although it has been the standard for a long time, the required binning of data limits its usefulness beyond 3-dimensions. Also, not all measurements can be straightforwardly represented in the response matrix. 
+
+One of the first unbinned approach uses classifiers to calculate ratios \(\omega\) and \(\nu\). For \(i^\text{th}\) iteration, \(\omega_{i-1}(\mathbf{y})\) can be calculated using classifier \(f_\mathrm{meas., reco}\) which classifies a jet represented by \(\mathbf{y}\) as measured or reconstructed. Thus, 
+\begin{equation}
+	\omega_{i-1}(\mathbf{y}) = \frac{f_\mathrm{meas., reco}(\mathbf{y})}{1 - f_\mathrm{meas., reco}(\mathbf{y})}
+\end{equation}
+and \(\nu_{i-1}(\mathbf{y})\) can be calculated using classifier \(f_{i, i-1}\) which classifies a jet represented by \(\mathbf{x}\) as being generated from \(i^\text{th}\) or \((i-1)^\text{th}\) iteration. 
+\begin{equation}
+	\nu_{i-1}(\mathbf{x}) = \frac{f_{i, i-1}(\mathbf{x})}{1-f_{i, i-1}(\mathbf{x})}
+\end{equation}
+For misses, a classifier \(f^\mathrm{gen.}_{i, i-1}\) separates matched generated jets weighted by \(\omega_{i-1}(\mathbf{y})\) from those of the \((i-1)^\text{th}\) iteration; for fakes, a classifier \(f^\mathrm{reco.}_{i, i-1}\) separates matched reconstructed jets weighted by \(\nu_{i-1}(\mathbf{x})\) from those of the \((i-1)^\text{th}\) iteration,
+\begin{equation}
+	\omega_{i-1}(\mathbf{x}) = \frac{f^\mathrm{gen.}_{i, i-1}(\mathbf{x})}{1-f^\mathrm{gen.}_{i, i-1}(\mathbf{x})} ,
+	\qquad
+	\nu_{i-1}(\mathbf{y}) = \frac{f^\mathrm{reco.}_{i, i-1}(\mathbf{y})}{1-f^\mathrm{reco.}_{i, i-1}(\mathbf{y})} ,
+\end{equation}
+evaluated at the miss's \(\mathbf{x}\) and the fake's \(\mathbf{y}\) respectively. Thus, it takes 2-4 classfier training per unfolding iteration~\cite{andreassen2021scaffoldingsimulationsdeeplearning}.
+
+\section{Bootstrap Uncertainties}
+\label{sec:bootstrap}
+The classifiers of the previous section are trained on finite samples of measured, reconstructed and generated jets, and the training itself is stochastic through the initialization of the model, dropout and the order of the mini-batches. 
+%
+The unfolded distribution inherits all of these, and after several trainings chained across iterations there is no closed form for propagating them. 
+%
+Instead, the whole procedure is repeated on resampled inputs and the spread of the outcomes is taken as the uncertainty. 
+
+Every classifier \(f\) is replaced by an ensemble of \(N_\mathrm{rep.}\) replicas. 
+%
+Replica \(r\) is trained on a random subsample of \(m\) jets drawn without replacement from each of the two classes it separates (e.g. \(m\) measured and \(m\) reconstructed jets for \(f_\mathrm{meas., reco}\)), split further into a training and a validation set, with its own initialization and dropout. 
+%
+The same replica index is carried through every classifier of every iteration, so replica \(r\) is a complete unfolding on its own, with weights \(\omega^{(r)}_{n-1}\) and \(\nu^{(r)}_{n-1}\) and, from eq.~\ref{eq:generalUnfolding},
+\begin{equation}
+	\label{eq:replicaWeight}
+	p^{(r)}_{\mathrm{gen.}, n}(\mathbf{x}) = p_{\mathrm{gen.}, 0}(\mathbf{x})\prod_{k=0}^{n-1}\nu^{(r)}_k(\mathbf{x}) \equiv w^{(r)}_n(\mathbf{x})\,p_{\mathrm{gen.}, 0}(\mathbf{x})
+\end{equation}
+Where, \(w^{(r)}_n(\mathbf{x})\) is the per-jet unfolding weight of replica \(r\) after \(n\) iterations. 
+%
+The subsampling is only done for training; at inference every replica is evaluated on every jet, so eq.~\ref{eq:replicaWeight} gives \(N_\mathrm{rep.}\) unfolded samples, each with the full statistics of the simulation. 
+
+Any binned quantity \(H\), a histogram, a profile or a ratio of two of them, is then calculated once per replica from the weights \(w^{(r)}_n\), and its central value and uncertainty are the mean and standard deviation over the ensemble,
+\begin{equation}
+	\label{eq:bootstrapUnc}
+	\bar{H} = \frac{1}{N_\mathrm{rep.}}\sum_{r=1}^{N_\mathrm{rep.}} H^{(r)} , \qquad
+	\sigma_H^2 = \frac{1}{N_\mathrm{rep.} - 1}\sum_{r=1}^{N_\mathrm{rep.}}\left(H^{(r)} - \bar{H}\right)^2 
+\end{equation}
+Ratios are formed replica by replica before averaging, so the correlation between numerator and denominator through the shared weights is kept. 
+%
+Where a single diverged replica would pull \(\bar{H}\), the median or a trimmed mean over the ensemble is used for the central value instead; \(\sigma_H\) is always the standard deviation. 
+
+Since the replicas differ in the measured subsample, the simulated subsample and the training, \(\sigma_H\) contains the statistical uncertainty of the measurement, that of the simulation and the variance of the training procedure, without separating them. 
+%
+With \(m\) smaller than the full samples, the spread is that of samples of size \(m\) and is conservative for the purely statistical part. 
+%
+\(N_\mathrm{rep.}\) only sets how precisely \(\sigma_H\) itself is known, not its size. 
+
+\section{Barlow Test}
+\label{sec:barlow}
+The ensembles of Sec.~\ref{sec:bootstrap} are also used to decide whether a systematic variation is significant. 
+%
+Each variation is a complete unfolding with its own ensemble, giving \(\bar{H}_\mathrm{var.}\) and \(\sigma_\mathrm{var.}\) alongside the nominal \(\bar{H}_\mathrm{nom.}\) and \(\sigma_\mathrm{nom.}\). 
+%
+The shift \(\bar{H}_\mathrm{var.} - \bar{H}_\mathrm{nom.}\) is partly a statistical fluctuation between two ensembles, whose size is estimated as \(\sigma^2_\mathrm{uncorr.} = |\sigma^2_\mathrm{var.} - \sigma^2_\mathrm{nom.}|\), and the shift is only counted as a systematic uncertainty in a bin where
+\begin{equation}
+	\label{eq:barlow}
+	\frac{|\bar{H}_\mathrm{var.} - \bar{H}_\mathrm{nom.}|}{\sigma_\mathrm{uncorr.}} \geq 1 ,
+\end{equation}
+the \emph{Barlow test}, and is set to zero otherwise. 
+
+
+
+
 
 
 

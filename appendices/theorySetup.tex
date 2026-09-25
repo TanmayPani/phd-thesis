@@ -1,0 +1,642 @@
+\chapter{Hard Processes and Parton Showers}
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{
+		>{\centering\arraybackslash}m{4.0cm}
+		>{\raggedright\arraybackslash}m{10.4cm}
+		}
+		% --- PROPAGATORS
+		\propagator{gluon}{A,\alpha}{B,\beta}{p}                                       &
+		\(\delta^{AB}\left[-g^{\alpha\beta} + (1-\lambda)\dfrac{p^{\alpha}p^{\beta}}{p^{2}+i\epsilon}\right]
+		\dfrac{i}{p^{2}+i\epsilon}\)                                                                                                                                                       \\[0.4cm]
+
+		\propagator{ghost}{A}{B}{p}                                                    &
+		\(\delta^{AB}\,\dfrac{i}{p^{2}+i\epsilon}\)                                                                                                                                        \\[0.4cm]
+
+		\propagator{fermion}{a,i}{b,j}{p}                                              &
+		\(\delta^{ab}\,\dfrac{i}{(\slashed{p}-m+i\epsilon)_{ji}}\)                                                                                                                         \\[0.6cm]
+
+		% --- VERTICES
+		\yvertex{gluon}{B,\beta}{q}{gluon}{A,\alpha}{p}{gluon}{C,\gamma}{r}            &
+		\(-g\,f^{ABC}\left[(p-q)^{\gamma}g^{\alpha\beta} + (q-r)^{\alpha}g^{\beta\gamma}
+			+ (r-p)^{\beta}g^{\gamma\alpha}\right]\)
+
+		\smallskip
+
+		(all momenta incoming, \(p+q+r=0\))                                                                                                                                                \\[0.4cm]
+
+		\fourvertex{gluon}{A,\alpha}{gluon}{C,\gamma}{gluon}{B,\beta}{gluon}{D,\delta} &
+		\(\begin{aligned}
+			  -ig^{2}f^{XAC}f^{XBD}\left[g^{\alpha\beta}g^{\gamma\delta} - g^{\alpha\delta}g^{\beta\gamma}\right] \\
+			  -ig^{2}f^{XAD}f^{XBC}\left[g^{\alpha\beta}g^{\gamma\delta} - g^{\alpha\gamma}g^{\beta\delta}\right] \\
+			  -ig^{2}f^{XAB}f^{XCD}\left[g^{\alpha\gamma}g^{\beta\delta} - g^{\alpha\delta}g^{\beta\gamma}\right]
+		  \end{aligned}\) \\[0.4cm]
+
+		\yvertex{gluon}{A,\alpha}{}{ghost}{B}{}{ghost}{C}{q}                           &
+		\(g\,f^{ABC}q^{\alpha}\)                                                                                                                                                           \\[0.4cm]
+
+		\yvertex{gluon}{A,\alpha}{}{fermion}{b,i}{}{fermion}{c,j}{}                    &
+		\(-ig\,(t^{A})_{cb}\,(\gamma^{\alpha})_{ji}\)
+	\end{tabular}
+	\caption{Feynman rules for QCD in a covariant gauge with gauge parameter \(\lambda\):
+		the gluon, ghost and quark propagators, followed by the three- and four-gluon,
+		ghost-gluon and quark-gluon vertices.}
+	\label{tab:qcdrules}
+\end{table}
+\section{Hard Processes}
+To consider any nucleus as a singular coherent object, the fluctuations inside it would involve momentum transfers below the confinement scale (\(\Lambda\)) introduced in \ref{subsec:runningCoupling}, and would occur over timescales \(\sim 1/\Lambda\). We define \emph{hard-scattering processes} or just \emph{hard processes} as interactions of a hard perturbative probe with high momentum transfer \(Q >> \Lambda\). Since this interaction occurs over a time-scale \(\sim 1/Q \ll 1/\Lambda\), the perturbative probe effectively interacts with a near-static ``snapshot'' of the nucleus with a characteristic resolution \(\sim 1/Q\).
+
+\begin{figure}[htbp]
+	\centering
+	\factorizationdiagram
+	\caption{Collinear factorization of a hadronic hard scattering.}
+	\label{fig:factorization}
+\end{figure}
+
+Thus, the cross sections of a collision process of nuclei with momentum \(P_1\) and \(P_2\) depicted by Fig.~\ref{fig:factorization} can be \emph{factorized} into various independent components as,
+
+\begin{equation}
+	\frac{d\sigma}{d\mathbf{O}}  = \sum_{i,j,f} \int dx_1dx_2d\mathbf{\Phi}_ff_i(x_1, \mu^2)f_j(x_2, \mu^2)\frac{d\hat{\sigma}_{ij\to f}}{d\hat{\mathbf{O}}}D_f(\hat{\mathbf{O}}\to\mathbf{O}, \mu^2)
+	\label{eq:factorization}
+\end{equation}
+
+Where, the interactions occur between partons \(i\) from nucleus 1 and \(j\) from nucleus 2 carrying momentum \(p_1 = x_1P_1\) and \(p_2 = x_2P_2\) respectively. \(\mu\) is an arbitrary \emph{factorization scale}, often just set to \(Q\). The \(f_{k}(x, \mu^2)\) are the \emph{parton densities} giving likelihood of a parton \(k\) to carry \(x\) fraction of it's parent nucleus's momentum at a particular factorization scale \(\mu\). \(f\) labels the partonic final state coming out of the scattering and \(\mathbf{\Phi}_f\) is its phase space. \(\hat{\sigma}_{ij\to f}\)  is the \emph{parton cross-section} for scattering of partons \(i\) and \(j\) into \(f\), kept differential in a partonic observable \(\hat{\mathbf{O}}\). We can approximate it to the \((n+k)\) order in \(\alpha_s\) as,
+
+\begin{equation}
+	\frac{d\hat{\sigma}_{ij\to f}}{d\hat{\mathbf{O}}} = \alpha_s^k \sum_{m=0}^{n}\alpha_s^m\,\frac{d\hat{\sigma}^{(m)}_{ij\to f}}{d\hat{\mathbf{O}}}(p_1, p_2, Q^2/\mu^2)
+	\label{eq:partonXsecOrders}
+\end{equation}
+
+Different hard processes will have different leading powers \(k\). \(W\) production will have \(k=0\) whereas perturbative dijet production with two outgoing quarks will have \(k=2\).
+
+The \(D_f(\hat{\mathbf{O}}\to\mathbf{O}, \mu^2)\) are the \emph{fragmentation functions}, giving the likelihood of a partonic final state with \(\hat{\mathbf{O}}\) being measured as \(\mathbf{O}\) once hadronization is over.
+%
+Like the parton densities, they cannot be calculated in perturbation theory, but they are \emph{universal}: once measured in one process they can be used in any other, and their dependence on \(\mu\) is governed by evolution equations of the same form as eq.~\ref{eq:RGEquation}.
+%
+Eq.~\ref{eq:factorization} is the skeleton of every measurement presented in this thesis, with the choice of \(\mathbf{O}\) being what separates one from the next, and a measurement is comparable to a calculation only if both use the same \(\mathbf{O}\).
+%
+Restricting \(\mathbf{O}\) to charged particles, as will be done for the angularities of Ch.~\ref{ch:angularities}, puts that restriction into \(D_f\) as well, and the non-perturbative input can then no longer be avoided.
+%
+The nuclear modification factors of Ch.~\ref{ch:hic} are ratios of Eq.~\ref{eq:factorization} between two collision systems, where the parton densities largely cancel and what is left is the effect of the medium on \(\hat{\sigma}_{ij\to f}\) and \(D_f\).
+
+%The parton densities \(f_i(x,\mu^2)\) in Eq.~\ref{eq:factorization} are not calculable in perturbation theory, but they are \emph{universal}: once measured in one process they may be used to predict any other. Requiring the physical cross section of Eq.~\ref{eq:factorization} to be independent of the arbitrary scale \(\mu\), exactly as for the coupling in Sec.~\ref{subsec:runningCoupling},
+%\begin{equation}
+%	\mu^2\frac{d}{d\mu^2}\,\sigma(P_1,P_2) = 0,
+%	\label{eq:pdfRGE}
+%\end{equation}
+%ties the \(\mu\)-dependence of the densities to that of \(\hat{\sigma}_{ij}\).
+
+%\section{Dijet events}
+%Where, \(\overline{\sum}\)  denotes  the average and sum over the spins and colors of initial and final partons \(\{i, j, k, l\}\) and \(\hat{s} = (p_1+p_2)^2\). To get the dijet cross-section, we insert the parton cross-section from Eq. \ref{eq:partonxsec} into  Eq. \ref{eq:factorization}. Assuming the incoming partons are massless and collinear with the beams, \(p_1 = \frac{1}{2}x_1\sqrt{s}(1, 0, 0, 1)\) and \(p_2 = \frac{1}{2}x_2\sqrt{s}(1, 0, 0, -1)\), so that \(\hat{s} = x_1x_2s\),
+%
+%\begin{align*}
+%	\frac{E_3E_4d^6\sigma}{d^3p_3d^3p_4} & = \frac{1}{2s}\frac{1}{16\pi^2} \sum_{\{i,j,k,l\}\subset q\bigcup\bar{q}\bigcup g} \frac{1}{1 + \delta_{kl}} \int dx_1dx_2 \frac{f_i(x_1, \mu^2)}{x_1} \frac{f_j(x_2, \mu^2)}{x_2} \\
+%	& \qquad \times\, \overline{\sum}|\mathcal{M}(ij\rightarrow kl)|^2\delta^4(p_1 + p_2 - p_3 - p_4) 
+%\end{align*}
+%Where \(q\bigcup\bar{q}\bigcup g\) represents all the partonic states \(\{g, u, \bar{u}, d, \ldots\}\). 
+%
+%%	The four-momentum conserving \(\delta\)-function factorizes into a transverse part and the energy and longitudinal parts, 
+%%	
+%%	\begin{align*}
+%		%	\delta^4(p_1 + p_2 - p_3 - p_4)                                & = \delta^2(\mathbf{p}_{T3} + \mathbf{p}_{T4})\,\delta\left(\tfrac{1}{2}\sqrt{s}(x_1 + x_2) - E_3 - E_4\right)                 \\
+%		%	                                                               & \qquad \times\, \delta\left(\tfrac{1}{2}\sqrt{s}(x_1 - x_2) - p_{z3} - p_{z4}\right) \\
+%		%	                                                               & = \frac{2}{s}\delta^2(\mathbf{p}_{T3} + \mathbf{p}_{T4})\,\delta\left(x_1 - \tfrac{1}{2}x_T(e^{y_3} + e^{y_4})\right)         \\
+%		%	                                                               & \qquad \times\, \delta\left(x_2 - \tfrac{1}{2}x_T(e^{-y_3} + e^{-y_4})\right)
+%		%\end{align*}
+%		%
+%		%Where, \(x_T \equiv 2p_T/\sqrt{s}\) and \(p_T \equiv p_{T, 3} = p_{T, 4}\),
+%		%
+%		%\begin{equation}
+%		%	\frac{d^3\sigma}{dy_3dy_4dp_T^2} = \frac{1}{16\pi s^2}\sum_{\{i,j,k,l\}\subset q\bigcup\bar{q}\bigcup g} \frac{1}{1 + \delta_{kl}} \frac{f_i(x_1, \mu^2)}{x_1}\frac{f_j(x_2, \mu^2)}{x_2} \overline{\sum}|\mathcal{M}(ij\rightarrow kl)|^2
+%		%\end{equation}
+%		
+%		Integrating Eq. \ref{eq:partonxsec} over one of the outgoing partons gives the
+%		\emph{single-inclusive} parton cross-section for the other.  Writing
+%		\(q \equiv p_1 + p_2 - p_3\),
+%		\begin{align}
+%				\frac{E_3d^3\hat{\sigma}}{d^3p_3} &= \frac{1}{2\hat{s}}\frac{1}{16\pi^2}\overline{\sum}|\mathcal{M}|^2\int\frac{d^3p_4}{E_4}\,\delta^4(p_1 + p_2 - p_3 - p_4)                              \notag                      \\
+%				&=\frac{1}{2\hat{s}}\frac{1}{16\pi^2}\overline{\sum}|\mathcal{M}|^2\int\frac{d^3p_4}{E_4}\,\delta^3(\mathbf{q} - \mathbf{p}_4)\,\delta(q^0 - E_4) \notag \\
+%				&= \frac{1}{2\hat{s}}\frac{1}{16\pi^2}\overline{\sum}|\mathcal{M}|^2\,\frac{\delta(q^0 - |\mathbf{q}|)}{|\mathbf{q}|}       \notag \\  
+%				&= \frac{1}{2\hat{s}}\frac{1}{16\pi^2}\overline{\sum}|\mathcal{M}|^2\,2\delta(q^2)                  
+%			\end{align}
+%		We can represent \(q^2\) in terms of partonic Mandelstam variables \(\hat{s} = (p_1+p_2)^2\), \(\hat{t} = (p_1-p_3)^2\) and \(\hat{u} = (p_2-p_3)^2\),
+%		
+%		\begin{align}
+%				\implies \frac{Ed^3\hat{\sigma}}{d^3p}  &= \frac{1}{2\hat{s}}\frac{1}{8\pi^2}\overline{\sum}|\mathcal{M}|^2\delta(\hat{s} + \hat{t} + \hat{u})
+%			\end{align}
+%		
+%		Assuming perfect detector and jet algorithm, the outgoing parton's momentum is the ensuing jet's momentum.
+%		\begin{align}
+%				\frac{E_Jd^3\sigma}{d^3p_J}  =& \frac{1}{16\pi^2 s}\sum_{\{i,j,k,l\}\subset q\bigcup\bar{q}\bigcup g} \frac{1}{1 + \delta_{kl}}\int_{0}^{1} \frac{dx_1}{x_1}\frac{dx_2}{x_2} f_i(x_1, \mu^2) f_j(x_2, \mu^2) \notag\\ &\times\overline{\sum}|\mathcal{M}(ij\rightarrow kl)|^2\delta(\hat{s} + \hat{t} + \hat{u})
+%			\end{align}
+%		\begin{sidewaystable}[htbp]
+%				\centering
+%				\setlength{\tabcolsep}{4pt}
+%				\begin{tabular}{
+%								>{\centering\arraybackslash}m{2.2cm}
+%								>{\centering\arraybackslash}m{2.8cm}
+%								>{\centering\arraybackslash}m{2.8cm}
+%								>{\centering\arraybackslash}m{2.8cm}
+%								>{\centering\arraybackslash}m{2.8cm}
+%								>{\centering\arraybackslash}m{6.8cm}
+%							}
+%						\toprule
+%						Process & \multicolumn{4}{c}{Diagrams} & \(\overline{\sum}|\mathcal{M}|^2/(4\pi\alpha_s)^2\) \\
+%						\midrule
+%						\(qq' \to qq'\)             & \diagqqpT{q'}{q}   &                  &            &          &
+%						\(\dfrac{4}{9}\dfrac{\hat{s}^2+\hat{u}^2}{\hat{t}^2}\)                                                   \\
+%						\(qq \to qq\)               & \diagqqpT{q}{q}    & \diagqqU{q}      &            &          &
+%						\(\dfrac{4}{9}\left(\dfrac{\hat{s}^2+\hat{u}^2}{\hat{t}^2}+\dfrac{\hat{s}^2+\hat{t}^2}{\hat{u}^2}\right)
+%						-\dfrac{8}{27}\dfrac{\hat{s}^2}{\hat{u}\hat{t}}\)                                                        \\
+%						\(q\bar{q}' \to q\bar{q}'\) & \diagqqbpT{q}{q'}  &                  &            &          &
+%						\(\dfrac{4}{9}\dfrac{\hat{s}^2+\hat{u}^2}{\hat{t}^2}\)                                                   \\
+%						\(q\bar{q} \to q'\bar{q}'\) & \diagqqbAnn{q}{q'} &                  &            &          &
+%						\(\dfrac{4}{9}\dfrac{\hat{t}^2+\hat{u}^2}{\hat{s}^2}\)                                                   \\
+%						\(q\bar{q} \to q\bar{q}\)   & \diagqqbAnn{q}{q}  & \diagqqbpT{q}{q} &            &          &
+%						\(\dfrac{4}{9}\left(\dfrac{\hat{s}^2+\hat{u}^2}{\hat{t}^2}+\dfrac{\hat{t}^2+\hat{u}^2}{\hat{s}^2}\right)
+%						-\dfrac{8}{27}\dfrac{\hat{u}^2}{\hat{s}\hat{t}}\)                                                        \\
+%						\(q\bar{q} \to gg\)         & \diagqqbS          & \diagqqbT        & \diagqqbU  &          &
+%						\(\dfrac{32}{27}\dfrac{\hat{t}^2+\hat{u}^2}{\hat{t}\hat{u}}
+%						-\dfrac{8}{3}\dfrac{\hat{t}^2+\hat{u}^2}{\hat{s}^2}\)                                                    \\
+%						\(gg \to q\bar{q}\)         & \diagggqqS         & \diagggqqT       & \diagggqqU &          &
+%						\(\dfrac{1}{6}\dfrac{\hat{t}^2+\hat{u}^2}{\hat{t}\hat{u}}
+%						-\dfrac{3}{8}\dfrac{\hat{t}^2+\hat{u}^2}{\hat{s}^2}\)                                                    \\
+%						\(qg \to qg\)               & \diagqgS           & \diagqgT         & \diagqgU   &          &
+%						\(-\dfrac{4}{9}\dfrac{\hat{s}^2+\hat{u}^2}{\hat{s}\hat{u}}
+%						+\dfrac{\hat{u}^2+\hat{s}^2}{\hat{t}^2}\)                                                                \\
+%						\(gg \to gg\)               & \diagggS           & \diagggT         & \diagggU   & \diagggX &
+%						\(\dfrac{9}{2}\left(3-\dfrac{\hat{t}\hat{u}}{\hat{s}^2}-\dfrac{\hat{s}\hat{u}}{\hat{t}^2}
+%						-\dfrac{\hat{s}\hat{t}}{\hat{u}^2}\right)\)                                                              \\
+%						\bottomrule
+%					\end{tabular}
+%				\caption[Leading-order diagrams and matrix elements for jet production]{%
+%						The complete set of leading-order diagrams and squared matrix
+%						elements for the partonic \(2\to2\) processes that produce jets, entering
+%						the hard cross section \(\hat{\sigma}_{ij}\) of Fig. \ref{fig:factorization}.
+%						Here \(q\) and \(q'\) denote distinct quark flavours, and \(\hat{s}\),
+%						\(\hat{t}\), \(\hat{u}\) are the Mandelstam invariants of the partonic
+%						subprocess.  The matrix elements are averaged over
+%						initial-state and summed over final-state spins and colours, as indicated
+%						by \(\overline{\sum}\), and are normalised by \(g^4 = (4\pi\alpha_s)^2\)~\cite{Ellis_Stirling_Webber_1996}.}
+%				\label{tab:jetdiagrams}
+%			\end{sidewaystable}
+\section{From partons to jets}
+\label{sec:partonShower}
+Outgoing partons evolve from higher to lower momentum transfer scales (say, \(t\)). Initially their evolution are modeled using the pQCD mechanism called \emph{parton shower}. Eventually, say at an infra-red scale cut-off \(t_0\), pQCD calculations stop being valid and npQCD processes like hadronization dominate. QCD Monte-Carlo programs combining parton shower at \(t < t_0\) and hadronization process at \(t > t_0\)  are called \emph{QCD event generators}
+
+
+\subsection{Parton branching}
+\label{subsec:dglap}
+\begin{figure}[h]
+	\centering
+	\label{fig:splitKinematics}
+	\begin{tikzpicture}[>=latex, line width=0.6pt,]
+		\node[draw,circle, minimum size=1cm, inner sep=2pt] (rest) at (-1,0) {\(\mathcal{M}_\mathrm{n}\)};
+		\coordinate (splitPoint) at (0.5, 0);
+		\coordinate (continual) at (2,0);
+		\coordinate (splitUp) at (2, 1);
+		\coordinate (splitDown) at (2, -1);
+		\draw (rest) to [edge label=a] (splitPoint);
+		\path[draw, dash pattern=on 2pt off 3pt on 4pt off 4pt] (splitPoint) -- (continual);
+		\path[draw] (splitPoint) to [edge label=b] (splitUp);
+		\path[draw] (splitPoint)  to [edge label'=c] (splitDown);
+
+		\pic[draw, "\(\theta_a\)",  ->, angle eccentricity=1.7] {angle = continual--splitPoint--splitUp};
+		\pic[draw, "\(\theta_b\)",  <-, angle eccentricity=2.] {angle = splitDown--splitPoint--continual};
+	\end{tikzpicture}
+	\hspace{1cm}
+	\begin{tikzpicture}[>=latex, line width=0.6pt]
+		%\node[draw,circle, minimum size=1cm, inner sep=2pt, pattern=north west lines] (rest) at (-1,0) { };
+		\coordinate (incoming) at (-1, 0);
+		\coordinate (splitPoint) at (0.5, 0);
+		\coordinate (continual) at (2,0);
+		\node[draw,circle, minimum size=1cm, inner sep=2pt] (rest) at (2,1) {\(\mathcal{M}_\mathrm{n}\)};
+		\coordinate (splitDown) at (2, -1);
+		\draw (incoming) to [edge label=a] (splitPoint);
+		\path[draw, dash pattern=on 2pt off 3pt on 4pt off 4pt] (splitPoint) -- (continual);
+		\path[draw] (splitPoint) to [edge label=b] (rest);
+		\path[draw] (splitPoint)  to [edge label'=c] (splitDown);
+
+		\pic[draw, "\(\theta_a\)",  ->, angle eccentricity=1.7] {angle = continual--splitPoint--splitUp};
+		\pic[draw, "\(\theta_b\)",  <-, angle eccentricity=2.] {angle = splitDown--splitPoint--continual};
+	\end{tikzpicture}
+	\caption{Kinematics of timelike (left) vs spacelike (right) parton branching}
+\end{figure}
+
+Consider nearly collinear timelike splitting of a parton, \(a\to b+c\) shown in Fig. \ref{fig:splitKinematics}. Let's assume the partons are massless, and define the evolution scale (\(t\)) as,
+\begin{align}
+	t \equiv p_a^2 \approx 2E_bE_c(1 - \cos\theta)  \approx z(1-z)E_a^2\theta^2
+\end{align}
+Where, \(z = E_b/E_a = 1 - E_c/E_a\) and \(\theta = \theta_a + \theta_b\) is the small opening angle.  The cross-section of a \(n\)-parton state branching into \(n+1\)-parton state~\cite{Ellis_Stirling_Webber_1996}
+%processes can be calculated by considering \(n\)-parton matrix element.
+%\begin{equation}
+%	\label{eq:nPartonXsec}
+%	d\sigma_n = \mathcal{F}|\mathcal{M}_n|^2d\mathbf{\Phi}_n
+%\end{equation}
+%
+%Where \(\mathcal{F}\) is the initial-state flux factor and \(\mathbf{\Phi}_n\) is phase space of the \(n\)-parton final state. In the branching process the \(n\)-parton pre-split phase space volume element:
+%
+%\begin{equation}
+%	d\mathbf{\Phi}_{n} = \ldots \frac{d^3\mathbf{p}_a}{2(2\pi)^3E_a}
+%\end{equation}
+%
+%will be replaced by the \(n+1\)-parton phase space and the \(n+1\)-parton matrix element can be calculated from the \(n\)-parton matrix element. 
+%\begin{align}
+%	d\mathbf{\Phi}_{n+1} &= \ldots \frac{d^3\mathbf{p}_b}{2(2\pi)^3E_b} \frac{d^3\mathbf{p}_c}{2(2\pi)^3E_c} 
+%	= d\mathbf{\Phi}_{n} \frac{1}{4(2\pi)^3}dtdzd\phi \notag\\
+%	|\mathcal{M}_{n+1}\big|^2 &\sim \frac{8\pi\alpha_s}{t}CF|\mathcal{M}_n|^2
+%\end{align}
+%
+%Substituting in Eq. \ref{eq:nPartonXsec} and integrating away the \(d\phi\), we get,
+%
+\begin{table}[htbp]
+	\centering
+	\setlength{\tabcolsep}{6pt}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{tabular}{
+		>{\centering\arraybackslash}m{2cm}
+		>{\centering\arraybackslash}m{4.0cm}
+		>{\raggedright\arraybackslash}m{8cm}
+		}
+		\toprule
+		Kernel (\(ij\)) & Diagram                                                             & \(\hat{P}_{ij}(z)\) \\
+		\midrule
+		\(qq\)          & \splitvertex{fermion}{q}{}{fermion}{q}{z}{gluon}{g}{1-z}            &
+		\(\displaystyle C_F\left[\frac{1+z^2}{1-z}\right]\)                                                         \\
+		\(gq\)          & \splitvertex{fermion}{q}{}{gluon}{g}{z}{fermion}{q}{1-z}            &
+		\(\displaystyle C_F\,\frac{1+(1-z)^2}{z}\)                                                                  \\
+		\(qg\)          & \splitvertex{gluon}{g}{}{fermion}{q}{z}{anti fermion}{\bar{q}}{1-z} &
+		\(\displaystyle T_R\left[z^2 + (1-z)^2\right]\)                                                             \\
+		\(gg\)          & \splitvertex{gluon}{g}{}{gluon}{g}{z}{gluon}{g}{1-z}                &
+		\(\displaystyle C_A\left[\frac{z}{1-z} + \frac{1-z}{z} + z(1-z)\right] \)                                   \\
+		\bottomrule
+	\end{tabular}
+	\caption[Leading-order DGLAP splitting functions and their diagrams]{%
+		The four leading-order collinear splittings entering the DGLAP evolution
+		of Eq.~\ref{eq:xsecBranching}. The daughter parton \(i\) carrying momentum
+		fraction \(z\) is drawn on the upper leg, the recoiling parton \((1-z)\)
+		on the lower~\cite{Ellis_Stirling_Webber_1996}.}
+	\label{tab:splitfns}
+\end{table}
+\begin{align}
+	\label{eq:xsecBranching}
+	%d\sigma_{n+1} &= d\sigma_n \frac{dt}{t}dz\frac{\alpha_s}{2\pi}\int\frac{d\phi}{2\pi}CF \notag\\
+	d\sigma_{n+1} & = d\sigma_n \frac{dt}{t}dz\frac{\alpha_s}{2\pi} \hat{P}_{ba}
+\end{align}
+
+The \(\hat{P}_{ba}(z)\) are the \emph{unregularized Altarsi-Parisi splitting functions}, giving the probability of the branching \(a \to b + c\) with \(b\) taking a fraction \(z\) of \(a\)'s energy.
+%
+Their leading order forms are shown in Tab.~\ref{tab:splitfns}.
+%
+\(\hat{P}_{qq}\) diverges as \(z\to1\), \(\hat{P}_{gq}\) as \(z\to0\), and \(\hat{P}_{gg}\) at both ends, each of these limits being the emission of a soft gluon.
+%
+Only \(\hat{P}_{qg}\), the splitting of a gluon into a \(q\bar{q}\) pair, stays finite over the whole range of \(z\).
+%
+%This soft pole is what grooming procedures like SoftDrop (Sec.~\ref{sec:jetAlgo}) are built to remove from a measured jet.
+
+Same equation would hold for the space-like case.
+%
+To obtain the evolution equations, we can frame the evolution in terms of the change in parton distribution function \(f(x,t)\) when the evolution scale \(t\) goes from \(t\) to \(t+\delta t\),
+%
+\begin{align}
+	\delta f_i(x, t) & = \delta f_\mathrm{in} - \delta f_\mathrm{out} \notag                                                                                     \\
+	                 & =\frac{\delta t}{t} \sum_j \int_{0}^{1} dz \frac{\alpha_s}{2\pi} \left[\frac{\hat{P}_{ij}(z)}{z}f_j(x/z, t) - \hat{P}_{ji}f_i(x,t)\right]
+\end{align}
+%
+The second term of the RHS gives \emph{Sudakov form factor}, which gives the probability of a parton \(i\) evolving from scale \(t\) to a softer scale \(t_0\) without a resolvable emission,
+%
+\begin{align}
+	\Delta_i(t) \equiv \exp(-\sum_j\int_{t_0}^{t} \frac{dt^\prime}{t^\prime}\int dz\frac{\alpha_s}{2\pi} \hat{P}_{ji}(z))
+\end{align}
+
+We get the familiar DGLAP-like evolution equations,
+
+\begin{align}
+	t\frac{\partial}{\partial t}\left(\frac{f_i}{\Delta_i}\right) = \frac{1}{\Delta_i}\sum_j \int \frac{dz}{z}\frac{\alpha_s}{2\pi}
+	\hat{P}_{ij}(z)f_j(x/z, t)\end{align}
+
+
+To deal with singularities corresponding to soft gluons at \(z\to 1\), we introduce an explicit infrared cut-off \(z < 1-\epsilon(t)\) .  Requiring the transverse momentum in timelike branching \(a\to bc\) to be positive,
+\begin{align}
+	p_T^2    & = z(1-z)p_a^2 - (1-z)p_b^2 - zp_c^2 > 0 \notag \\
+	\implies & z(1-z) > t_0/t \implies t_0/t < z < 1 - t_0/t
+	%	\implies&  z, 1-z > \epsilon(t) = \frac{1 - \sqrt{1-4t/t_0}}{2}\simeq t_0/t \notag\\
+\end{align}
+and also, \(t > 2t_0\). Thus the Sudakov factors become,
+%
+\begin{align}
+	\Delta_i(t) \equiv \exp(-\sum_j\int_{2t_0}^{t}
+	\frac{dt^\prime}{t^\prime}
+	\int_{t_0/t^\prime}^{1-t_0/t^\prime} dz
+	\frac{\alpha_s}{2\pi} \hat{P}_{ji}(z))
+	\label{eq:col`inearSudakov}
+\end{align}
+
+\subsection{Angular Ordering}
+\label{sec:angularOrdering}
+Sec.~\ref{subsec:dglap} took collinear enhancements into account to all orders in
+\(\alpha_s\). However it does not take the enhancement in soft gluon emission at wide emission angle.
+This is demonstrated in Eq. \ref{eq:softPropagator} by considering an on-mass-shell external line of
+momentum \(p\), mass \(m\) emitting a gluon with momentum \(q\)  at an angle \(\theta\)
+\begin{equation}
+	\frac{1}{(p\pm q)^2 - m^2} = \frac{\pm1}{2p\cdot q}
+	= \frac{\pm1}{2\omega E(1-v\cos\theta)},
+	\label{eq:softPropagator}
+\end{equation}
+where \(\omega\) is the gluon energy, \(E\) and \(v\) the energy and velocity of the
+emitter and \(\theta\) the emission angle. For light partons \(v\to1\) and the
+collinear enhancement appears as \(\theta\to0\); the enhancement as \(\omega\to0\)
+holds for any velocity and angle. Internal lines  are off-mass-shell and carry no such enhancement, since
+\((p+q)^2-m^2\to p^2-m^2\neq0\). The cross section carries a sum over all pairs of external lines \(\{i,j\}\),
+\begin{align}
+	\label{eq:antennaSplitXSec}
+	d\sigma_{n+1} & = d\sigma_n\,\frac{d\omega}{\omega}\frac{d\Omega}{2\pi}
+	\frac{\alpha_s}{2\pi}\sum_{i,j}C_{ij}W_{ij}
+\end{align}
+The weighted sum \(\sum_{i,j}C_{ij}W_{ij}\)  is called the \emph{antenna pattern} of the process. The \emph{color factor} \(C_{ij}\) and \emph{radiation function} \(W_{ij}\)  are defined as,
+\begin{align}
+	C_{ij} & = -\mathbf{Q}_i\cdot\mathbf{Q}_j  \notag               \\
+	W_{ij} & = \frac{\omega^2 p_i\cdot p_j}{p_i\cdot q\;p_j\cdot q}
+	= \frac{1-v_iv_j\cos\theta_{ij}}
+	{(1-v_i\cos\theta_{iq})(1-v_j\cos\theta_{jq})}
+\end{align}
+The vectors \(\mathbf{Q}_{i}\) represents color charge of parton \(i\).
+%\(\mathbf{Q}_i^2 = C_F\) for a quark, \(C_A\) for a gluon and \(0\) for a color singlet. 
+\begin{equation}
+	\mathbf{Q}_i^2 =
+	\begin{cases}
+		C_F = 4/3 & i \in \text{quarks}        \\[-15pt]
+		C_A = 3   & i \in \text{gluons}        \\[-15pt]
+		0         & i \in \text{color singlet}
+	\end{cases}
+\end{equation}
+
+\(W_{ij}\) comes from interference between lines \(i\) and \(j\). \(W_{ij}\) can be separated into two parts  \(W^{[i/j]}_{ij}\) each with an \emph{incoherent} and a \emph{coherent} contribution from line \(i/j\)  . Assuming massless emitters (\(v_i=v_j=1\)) for simplicity,
+\begin{align}
+	W_{ij}       & = W^{[i]}_{ij} + W^{[j]}_{ij}\notag                                                                                                                                                                         \\
+	W^{[i]}_{ij} & = \frac{1}{2}\left(\overbrace{\frac{1}{1-\cos\theta_{iq}}}^\mathrm{incoherent} + \overbrace{\frac{\cos\theta_{iq}-\cos\theta_{ij}}{(1-\cos\theta_{jq}) (1-\cos\theta_{iq})}}^\mathrm{coherent}\right)\notag \\
+	             & =  \frac{1}{2(1-\cos\theta_{iq})}\left(1 + \frac{\cos\theta_{iq}-\cos\theta_{ij}}{1-\cos\theta_{ij}\cos\theta_{iq} - \sin\theta_{ij}\sin\theta_{iq}\cos\phi_{iq}}\right)
+	\label{eq:antennaSplit}
+\end{align}
+Using the direction of line \(i\) as the z-axis, \(d\Omega \)  from Eq. \ref{eq:antennaSplitXSec} becomes \(d\cos\theta_{iq}\,d\phi_{iq}\), We can carry out the \(\phi_{iq}\) integration,
+\begin{align}
+	\int_0^{2\pi}\frac{d\phi_{iq}}{2\pi}W^{[i]}_{ij} & = \frac{1}{1-\cos\theta_{iq}}\left(\frac{1 + \frac{\cos\theta_{iq}-\cos\theta_{ij}}{|\cos\theta_{iq}-\cos\theta_{ij}|}}{2}\right) \notag \\
+	                                                 & = \begin{cases}
+		                                                     \dfrac{1}{1-\cos\theta_{iq}} & \cos\theta_{iq} > \cos\theta_{ij} \implies \theta_{iq} < \theta_{ij} \\[-10pt]
+		                                                     0                            & \text{otherwise,}
+	                                                     \end{cases}
+	\label{eq:angularOrdering}
+\end{align}
+
+Eq.~\ref{eq:angularOrdering}  shows that azimuth-averaged soft gluon emission from a line \(i\) is confined to a cone, centered on \(i\)'s direction, extending up to the direction of line \(j\), \(i\)'s sibling from the preceding split.
+%
+Since the emission probability of Eq.~\ref{eq:antennaSplitXSec} is weighted by the color charges, a gluon radiates \(C_A/C_F = 9/4\) times as much as a quark of the same energy into the same cone.
+%
+Gluon jets are therefore wider and carry more particles than quark jets of the same momentum, a difference the classifiers of Ch.~\ref{ch:methods} are trained to pick up, and one that has to be kept in mind whenever angularities are compared between samples with different quark and gluon fractions.
+%The total soft gluon emission cross-section can be then easily obtained for two external lines forming a color singlet (\(e^+e^-\to q\bar{q}\)) have \(\mathbf{Q}_i+\mathbf{Q}_j=0\) and hence \(C_{q\bar{q}}=\mathbf{Q}_q^2=\mathbf{Q}_{\bar{q}}^2 = C_F\), and angular ordering suppresses radiation outside the cones extending from \(q\) to \(\bar{q}\) and vice versa.
+
+%\begin{align}
+%	d\sigma_{q\bar{q}g}& = d\sigma_{q\bar{q}}\frac{\Theta(\cos(\theta_{qg})-\cos(\theta_{q\bar{q}}))}{1-\cos\theta_{qg}}d(\cos\theta_{qg})\frac{\alpha_s}{2\pi}\frac{d\omega}{\omega}C_F
+%	\label{eq:qqbarSinglet}
+%\end{align}
+%We will come back to Eq.~\ref{eq:qqbarSinglet} 
+
+\subsection{Color Coherence}
+\label{sec:colorCoherence}
+Lets take the case of three partons \(\{i,j,k\}\) forming a color singlet (\(\mathbf{Q}_i + \mathbf{Q}_j +\mathbf{Q}_k = 0\)) e.g., \(e^+e^-\to q\bar{q} g\). First, partons \(l\) and \(k\) come from a color singlet state (\(\mathbf{Q}_l +\mathbf{Q}_k = 0\)). Then \(l\) splits into \(i\) and \(j\) (\(\mathbf{Q}_l = \mathbf{Q}_i + \mathbf{Q}_j = -\mathbf{Q}_k\)). The antennae function for this state is:
+\begin{align}
+	\label{eq:threePartonW}
+	\sum_{a,b}C_{ab}W_{ab} & = -\mathbf{Q}_i\!\cdot\!\mathbf{Q}_jW_{ij} -\mathbf{Q}_j\!\cdot\!\mathbf{Q}_kW_{jk} -\mathbf{Q}_i\!\cdot\!\mathbf{Q}_kW_{ik} \notag                                                   \\
+	                       & = \frac{1}{2}\left[\mathbf{Q}_i^2(W_{ij} + W_{ik} - W_{jk}) + \mathbf{Q}_j^2(W_{ij} + W_{jk} - W_{ik}) + \mathbf{Q}_k^2(W_{ik} + W_{jk} - W_{ij})\right]\notag                        \\
+	                       & =\mathbf{Q}_i^2\left(W_{ij}^{[i]} + \tilde{W}_{jk}^{[i]} - \tilde{W}_{ik}^{[j]}\right) + \mathbf{Q}_j^2\left(W_{ij}^{[j]} + \tilde{W}_{ik}^{[j]} - \tilde{W}_{jk}^{[i]}\right) \notag \\
+	                       & + \mathbf{Q}_k^2\left(\tilde{W}_{jk}^{[i]} + \tilde{W}_{ik}^{[j]} + \frac{W_{ik}^{[k]} + W_{jk}^{[k]} }{2}\right)
+\end{align}
+Where,
+\begin{equation}
+	\tilde{W}_{jk}^{[i]} = \frac{W^{[i]}_{ik} - W^{[i]}_{ij}}{2},\quad \tilde{W}_{ik}^{[j]} = \frac{W^{[j]}_{jk} - W^{[j]}_{ij}}{2}
+\end{equation}
+are shifted radiation functions for lines \(i\) and \(j\), with the collinear singularity canceled out. This allows us to make certain useful approximations. Taking \(\theta_{ij}\to0\), we can approximate the directions of \(i\) and \(j\) by \(l\).
+\begin{align}
+	W_{ik}^{[k]} \simeq W_{jk}^{[k]} \simeq W_{lk}^{[k]},\text{and}~\tilde{W}_{jk}^{[i]} \simeq \tilde{W}_{ik}^{[j]} \simeq W_{lk}^{[ij]}/2
+\end{align}
+Where,
+\begin{equation}
+	\tilde{W}^{[ij]}_{lk} = \begin{cases}
+		W^{[l]}_{lk} & \theta_{lq}>\theta_{ij}  \\[-10pt]
+		0            & \theta_{lq}<\theta_{ij},
+	\end{cases}
+\end{equation}
+\begin{equation}
+	W \simeq \mathbf{Q}_i^2W^{[i]}_{ij} + \mathbf{Q}_j^2W^{[j]}_{ij}
+	+ \mathbf{Q}_k^2W^{[k]}_{lk} + \mathbf{Q}_l^2\tilde{W}^{[ij]}_{lk},
+	\label{eq:coherentPattern}
+\end{equation}
+
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[line width=0.55pt, scale=0.76,
+			gl/.style={decorate, decoration={coil, aspect=0, segment length=1.7mm,
+							amplitude=0.7mm}, ->}]
+
+		\begin{scope}[xshift=0cm]
+			\coordinate (o) at (0,0);
+			\coordinate (l) at (35:1.05);
+			\coordinate (i) at (46:2.2);
+			\coordinate (j) at (21:2.2);
+			\coordinate (k) at (-40:2.25);
+			\draw[black] (l) -- (i) node[black, above=-2pt] {\(i\)};
+			\draw[black] (l) -- (j) node[black, right=0pt] {\(j\)};
+			\draw (o) -- node[above left=-5pt, pos=0.55] {\(l\)} (l);
+			\draw (o) -- (k) node[below right=-4pt] {\(k\)};
+			\coordinate (e) at ($(l)!0.55!(i)$);
+			\fill (e) circle (1.1pt);
+			\draw[gl] (e) -- ($(e)+(-35:1.75)$) node[below right=-4pt] {\(q\)};
+			%\node at (1.1,-2.1) {\(\mathcal{M}_i\)};
+		\end{scope}
+
+		\node at (3.8,0.3) {\(+\)};
+
+		\begin{scope}[xshift=4.6cm]
+			\coordinate (o) at (0,0);
+			\coordinate (l) at (35:1.05);
+			\coordinate (i) at (46:2.2);
+			\coordinate (j) at (21:2.2);
+			\coordinate (k) at (-40:2.25);
+			\draw[black] (l) -- (i) node[black, above=-2pt] {\(i\)};
+			\draw[black] (l) -- (j) node[black, right=0pt] {\(j\)};
+			\draw (o) -- node[above left=-5pt, pos=0.55] {\(l\)} (l);
+			\draw (o) -- (k) node[below right=-4pt] {\(k\)};
+			\coordinate (e) at ($(l)!0.55!(j)$);
+			\fill (e) circle (1.1pt);
+			\draw[gl] (e) -- ($(e)+(-35:1.75)$) node[below right=-4pt] {\(q\)};
+			%\node at (1.1,-2.1) {\(\mathcal{M}_j\)};
+		\end{scope}
+
+		\node at (8.4,0.3) {\(\simeq\)};
+
+		\begin{scope}[xshift=9.2cm]
+			\coordinate (o) at (0,0);
+			\coordinate (l) at (35:1.05);
+			\coordinate (i) at (46:2.2);
+			\coordinate (j) at (21:2.2);
+			\coordinate (k) at (-40:2.25);
+			\draw[black!30] (l) -- (i) node[black, above=-2pt] {\(i\)};
+			\draw[black!30] (l) -- (j) node[black, right=0pt] {\(j\)};
+			\draw (o) -- node[above left=-5pt, pos=0.55] {\(l\)} (l);
+			\draw (o) -- (k) node[below right=-4pt] {\(k\)};
+			\coordinate (e) at ($(o)!0.55!(l)$);
+			\fill (e) circle (1.1pt);
+			\draw[gl] (e) -- ($(e)+(-35:1.75)$) node[below right=-4pt] {\(q\)};
+			%\node at (1.1,-2.1) {\(\mathcal{M}_l\)};
+		\end{scope}
+	\end{tikzpicture}
+	\caption{Wide-angle emission of soft gluon \(q\), off \(i\) and \(j\), acts as if
+		the emission came off the parent parton \(l\), imagined to be on shell.}
+	\label{fig:threeParton}
+\end{figure}
+
+
+Each parton radiates in proportion to its color charge squared. When \(i\) and \(j\) close in angle their incoherent
+contributions are limited to cones of half-angle \(\theta_{ij}\), while at larger
+angles, out to the direction of \(k\), they radiate coherently in proportion to
+their combined charge \(\mathbf{Q}_l^2\), as if from an internal line of momentum
+\(p_l = p_i+p_j\) as shown in Fig.~\ref{fig:threeParton}.
+
+\subsection{Coherent Parton Branching}
+\label{sec:coherentPartonBranching}
+Extended to higher orders this gives a \emph{coherent parton branching} formalism.
+In place of the virtual mass-squared \(t\) the evolution variable is the opening
+angle, or more precisely
+\begin{equation}
+	\zeta = \frac{p_b\cdot p_c}{E_bE_c} \simeq 1-\cos\theta
+	\label{eq:zeta}
+\end{equation}
+for \(a\to bc\), with angular ordering \(\zeta^\prime<\zeta\) imposed on successive
+branchings and the propagator factor \(dt/t\) of Sec.~\ref{subsec:dglap} replaced by
+\(d\zeta/\zeta\). Using the splitting function \(\hat{P}_{ba}(z)dz\) rather than the
+soft approximation \(\mathbf{Q}_a^2d\omega/\omega\) treats both soft and collinear
+enhancements correctly, so that
+\begin{equation}
+	d\sigma_{n+1} = d\sigma_n\,\frac{d\zeta}{\zeta}\,dz\,
+	\frac{\alpha_s}{2\pi}\hat{P}_{ba}(z).
+	\label{eq:coherentBranching}
+\end{equation}
+The virtual mass-squared cut-off is replaced by an angular one,
+\(\zeta_0 = t_0/E^2\) for a parton of energy \(E\), and the convenient evolution
+variable \(\tilde{t} = E^2\zeta \geq t_0\) in terms of which the ordering condition \(\zeta_b,\zeta_c<\zeta_a\) and the
+resulting cut-off on \(z\) read
+\begin{equation}
+	\tilde{t}_b < z^2\tilde{t},
+	\qquad
+	\tilde{t}_c < (1-z)^2\tilde{t},
+	\qquad
+	\sqrt{t_0/\tilde{t}} < z < 1-\sqrt{t_0/\tilde{t}} ,
+	\label{eq:orderingCutoff}
+\end{equation}
+with \(\tilde{t}=\tilde{t}_a\) and \(z=E_b/E_a\). Neglecting the masses of \(b\) and
+\(c\),
+\begin{equation}
+	t = z(1-z)\tilde{t},
+	\qquad
+	p_t^2 = z^2(1-z)^2\tilde{t},
+	\label{eq:tAndPt}
+\end{equation}
+and the Sudakov form factor of Sec.~\ref{subsec:dglap} becomes
+\begin{align}
+	\tilde{\Delta}_i(\tilde{t}) \equiv \exp(-\sum_j\int_{4t_0}^{\tilde{t}}
+	\frac{d\tilde{t}^\prime}{\tilde{t}^\prime}
+	\int_{\sqrt{t_0/\tilde{t}^\prime}}^{1-\sqrt{t_0/\tilde{t}^\prime}} dz
+	\frac{\alpha_s(z^2(1-z)^2\tilde{t}^\prime)}{2\pi} \hat{P}_{ji}(z))
+	\label{eq:coherentSudakov}
+\end{align}
+
+At large \(\tilde{t}\) this falls more slowly than its collinear counterpart, though
+still faster than any negative power of \(\tilde{t}\). The slower fall implies less
+branching, which is the suppression of soft gluon emission by angular ordering.
+
+\subsection{Angular structure of a jet}
+\label{sec:angularityEstimate}
+Sec.~\ref{sec:coherentPartonBranching} is enough to estimate what the radiation around a hard parton looks like.
+%
+At a hadron collider, the angle \(\theta\) between two particles is measured as their distance \(\Delta R\) in the \etaphi plane and the energy \(E\) as the transverse momentum \(p_\mathrm{T}\) (see Sec.~\ref{sec:detCoordSys}), and a \emph{jet} is, for now, all the radiation within \(\Delta R < R\) of the initiating parton.
+%
+Taking \(z\) to be the momentum fraction of the emitted gluon, as in \(\hat{P}_{gq}\) and \(\hat{P}_{gg}\) of Tab.~\ref{tab:splitfns}, the soft limit is \(\hat{P}_{gi}(z) \to 2C_i/z\) and \(d\zeta/\zeta \to 2d\theta/\theta\), so Eq.~\ref{eq:coherentBranching} becomes,
+\begin{equation}
+	dP = \frac{2\alpha_s C_i}{\pi}\frac{d\hat{\theta}}{\hat{\theta}}\frac{dz}{z}, \qquad \hat{\theta} \equiv \frac{\Delta R}{R} < 1
+	\label{eq:lundDensity}
+\end{equation}
+Where, \(C_i = \mathbf{Q}_i^2\) is the color charge of the initiating parton from Sec.~\ref{sec:angularOrdering}.
+%
+Eq.~\ref{eq:lundDensity} is flat in \(\ln(1/z)\) and \(\ln(1/\hat{\theta})\), so a jet is filled uniformly in this plane, the \emph{Lund plane}, down to the cut-off.
+%
+The \emph{generalized angularity} of a jet is the sum over its emissions,
+\begin{equation}
+	\lambda_\beta = \sum_{i \in \mathrm{jet}} z_i\,\hat{\theta}_i^{\,\beta}
+	\label{eq:angularityShower}
+\end{equation}
+Eq.~\ref{eq:LambdaKappaBeta} is the same quantity written in terms of the measured constituents of a jet, with \(z_i \to p_\mathrm{T, const}/p_\mathrm{T, jet}\) and \(\hat{\theta}_i \to \Delta R_\mathrm{const, jet}/R\), and with a second exponent \(\kappa\) on \(z_i\) which is \(1\) here.
+%
+For \(\beta > 0\), an emission contributes nothing to \(\lambda_\beta\) in either the soft or the collinear limit, which is what makes it an IRC safe observable.
+%
+Since \(\lambda_\beta\) is additive, the probability of a jet having an angularity below \(\hat{\lambda}_\beta\) is the probability of no emission with \(z\hat{\theta}^\beta > \hat{\lambda}_\beta\), which is the Sudakov form factor of Eq.~\ref{eq:coherentSudakov} with the no-emission condition replaced accordingly.
+%
+Calling this cumulative distribution \(\Sigma_i(\hat{\lambda}_\beta)\), with the hat marking it as a parton level quantity like in Eq.~\ref{eq:factorization}, the hadron level cross section follows from it through the fragmentation function of Eq.~\ref{eq:factorization} for \(\mathbf{O} = \lambda_\beta\), summed over the flavor of the parton initiating the jet,
+\begin{align}
+	\frac{d\sigma}{d\lambda_\beta} & = \sum_{i \in \{q, g\}}\int d\hat{\lambda}_\beta\,\frac{d\sigma_i}{d\hat{\lambda}_\beta}\,D_i(\hat{\lambda}_\beta \to \lambda_\beta) = \sum_{i \in \{q, g\}}\sigma_i\int d\hat{\lambda}_\beta\,\frac{d\Sigma_i}{d\hat{\lambda}_\beta}\,D_i(\hat{\lambda}_\beta \to \lambda_\beta)
+	\label{eq:angularityCumulant}
+\end{align}
+Where, \(\sigma_i\) is the cross section for producing a jet initiated by parton \(i\), i.e. Eq.~\ref{eq:factorization} with everything but the flavor of the outgoing parton integrated over, and \(d\sigma_i/d\hat{\lambda}_\beta = \sigma_i\,d\Sigma_i/d\hat{\lambda}_\beta\) is its parton level distribution.
+%
+Normalized to the total cross section, the left hand side is the distribution measured in Ch.~\ref{ch:angularities}.
+%
+The rest of this section is about \(\Sigma_i\), and comes back to \(D_i\) at the end.
+%
+At fixed coupling,
+\begin{align}
+	\Sigma_i(\hat{\lambda}_\beta) & = \exp\left(-\frac{2\alpha_s C_i}{\pi}\int_0^1\frac{d\hat{\theta}}{\hat{\theta}}\int_0^1\frac{dz}{z}\,\Theta(z\hat{\theta}^\beta - \hat{\lambda}_\beta)\right) \notag \\
+	                              & = \exp\left(-\frac{\alpha_s C_i}{\pi\beta}\ln^2\hat{\lambda}_\beta\right)
+	\label{eq:angularitySudakov}
+\end{align}
+Quark and gluon jets differ only through \(C_i\), so \(\Sigma_g = \Sigma_q^{C_A/C_F}\)~\cite{Larkoski_2014}.
+%
+A convenient choice for scale of \(\alpha_s\) is \(p_\mathrm{T, jet}R\), the largest transverse momentum an emission inside the jet can have.
+%
+
+Tab.~\ref{tab:angularityEstimate} evaluates Eq.~\ref{eq:angularitySudakov} for the three \(\beta\) values measured in Ch.~\ref{ch:angularities}.
+
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{c c c c c}
+		\toprule
+		\multirow{2}{*}{\(\beta\)} & \multicolumn{2}{c}{median \(\hat{\lambda}_\beta\)} & \multicolumn{2}{c}{fraction with \(\hat{\lambda}_\beta > 0.1\)}                 \\
+		\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+		                           & quark                                              & gluon                                                           & quark & gluon \\
+		\midrule
+		0.5                        & 0.13                                               & 0.26                                                            & 59\%  & 87\%  \\
+		1                          & 0.06                                               & 0.15                                                            & 36\%  & 64\%  \\
+		2                          & 0.02                                               & 0.07                                                            & 20\%  & 40\%  \\
+		\bottomrule
+	\end{tabular}
+	\caption[Leading logarithmic estimates of jet angularities at RHIC]{Parton level median angularity and fraction of jets with \(\hat{\lambda}_\beta > 0.1\) from Eq.~\ref{eq:angularitySudakov} at \(\alpha_s = 0.2\), corresponding to \(p_\mathrm{T, jet} \approx 20~\mathrm{GeV}/c\) and \(R = 0.4\), for quark (\(C_F = 4/3\)) and gluon (\(C_A = 3\)) initiated jets.}
+	\label{tab:angularityEstimate}
+\end{table}
+
+Median angularities are larger by  a factor of 2--3 for gluon jets compared to quark jets.
+%
+Increasing \(\beta\) pushes both to smaller values and widens the gap between them, as the observable weighs the wide angle radiation more heavily.
+%
+Going up in \(p_\mathrm{T, jet}\) only changes \(\alpha_s\) logarithmically, so the distributions are expected to narrow slowly.
+
+%Eq.~\ref{eq:lundDensity} only holds for emissions whose transverse momentum, \(k_\mathrm{T} \approx z\,p_\mathrm{T, jet}\Delta R\), is above the scale where \(\alpha_s\) stops being perturbative, and below it the emissions are replaced by hadronization, which is what \(D_i\) in Eq.~\ref{eq:angularityCumulant} accounts for. 
+%%
+%An emission with \(k_\mathrm{T}\) between \(\Lambda \approx 0.2\)~GeV and \(1\)~GeV sitting at the edge of the jet contributes \(k_\mathrm{T}/(p_\mathrm{T, jet}R) \approx 0.03\)--\(0.12\) to \(\lambda_\beta\) for any \(\beta\), which is as large as the medians of Tab.~\ref{tab:angularityEstimate}. 
+%%
+%Thus at RHIC energies the npQCD part of an angularity is not a small correction on top of the pQCD part, and it only falls as \(1/p_\mathrm{T, jet}\). 
+%%
+%This is why the angularity distributions measured in Ch.~\ref{ch:angularities} sit above these estimates by about this much, why removing the soft wide angle radiation by grooming (Sec.~\ref{sec:jetAlgo}) brings them closer, and why the event generators of Sec.~\ref{sec:eventGenerators} are tested there as much on their hadronization as on their showers. 
+%
+%These are leading logarithmic estimates at fixed coupling, and are indicative rather than predictions. 
+%%
+%Terms of order \(\alpha_s\ln(1/\lambda_\beta)\), coming from the running of \(\alpha_s\), hard collinear splittings, the recoil of the jet axis against the emissions for \(\beta \leq 1\), and radiation across the jet boundary, are all of order one half at these values. 
+%%
+%The angularities with \(\kappa \neq 1\) used for \AuAu collisions in Ch.~\ref{ch:angularities} are not IRC safe, and no estimate of this kind exists for them. 
