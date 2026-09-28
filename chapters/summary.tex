@@ -2,75 +2,51 @@
 \label{ch:summary}
 The jet-hadron correlations relative to the event plane of Ch.~\ref{ch:jhcorr} have been published by the STAR Collaboration in Phys.\ Rev.\ C~\textbf{109}, 044909 (2024)~\cite{STAR:2023hye}.
 %
-The generalized angularities of jets in \AuAu collisions (Sec.~\ref{sec:AuAuAngularities}) were shown as STAR preliminary results at the 30\(^\text{th}\) International Conference on Ultra-relativistic Nucleus-Nucleus Collisions (Quark Matter 2023)~\cite{Pani:2024mgy}.
+The generalized angularities of jets in \AuAu collisions (Sec.~\ref{sec:AuAuAngularities}) were shown as STAR preliminary results at Quark Matter 2023~\cite{Pani:2024mgy}.
 %
-Earlier iterations of the \pp angularities of Sec.~\ref{sec:ppResults} were presented orally at the 11\(^\text{th}\) International Conference on Hard and Electromagnetic Probes of High-Energy Nuclear Collisions (Hard Probes 2023)~\cite{Pani_2024} and as posters at Hard Probes 2024 and Hard Probes 2026, and some of the recommendations of this work for unbinned unfolding are featured in a community white paper~\cite{Canelli_2026}.
+Earlier iterations of the \pp angularities of Sec.~\ref{sec:ppResults} were presented orally at Hard Probes 2023~\cite{Pani_2024} and as posters at Hard Probes 2024 and 2026, and some of the recommendations of this work for unbinned unfolding are featured in a community white paper~\cite{Canelli_2026}.
 
-This thesis uses jets, the collimated sprays of hadrons that trace the quarks and gluons of a hard scattering, to study QCD in vacuum and in the quark-gluon plasma at RHIC.
+This thesis used jets to study QCD in vacuum and in the quark-gluon plasma at RHIC, with two questions in mind: does jet quenching depend on the path length through the medium, and how is the energy of a jet distributed in angle?
 %
-Ch.~\ref{ch:intro} built the necessary picture: the color charge and the non-Abelian \(\mathrm{SU}(3)\) symmetry of QCD, the running of \(\alpha_s\) that separates the perturbative hard scattering and parton shower from the non-perturbative hadronization, and the event generators that model these stages.
-%
-Because soft gluon radiation is ordered in angle (App.~\ref{app:theory}), the angular distribution of energy inside a jet records the history of its shower, which is what the angularities of Ch.~\ref{ch:angularities} measure.
-%
-All measurements use the STAR TPC for charged tracks and the BEMC for neutral energy and triggering (Ch.~\ref{ch:STAR}), and rest on the event-plane reconstruction (App.~\ref{sec:EP_Recon}), the machine-learning tools (App.~\ref{app:ML}) and the unfolding framework (App.~\ref{app:Unfolding}) described in the appendices, in which binned Iterative Bayesian Unfolding and unbinned MultiFold are the same algorithm, differing only in how the reweighting ratios are estimated.
+Because soft gluon radiation is ordered in angle (App.~\ref{app:theory}), the second question is a question about the history of the parton shower.
 
 \paragraph{Path-length dependence of jet quenching.}
-Ch.~\ref{ch:jhcorr} measured the distributions of charged hadrons relative to jets with \pttrigrange{15}{20} and \pttrigrange{20}{40} in 20--50\% central \AuAu collisions at \sNN{200}{GeV}, separately for jets in-, mid- and out-of-plane with respect to the second-order event plane, as the angle to the event plane is correlated with the average path length through the medium.
-%
-The large, flow-modulated combinatorial background was removed with the reaction plane fit, which constrains the background by fitting all three orientations simultaneously at large \deta, while the pair acceptance was corrected with mixed events and the orientation-dependent underlying-event contribution to the jet momentum with random cones.
+Ch.~\ref{ch:jhcorr} measured the distributions of charged hadrons around \pttrigrange{15}{20} and \pttrigrange{20}{40} jets in 20--50\% central \AuAu collisions at \sNN{200}{GeV}, separately for jets in-, mid- and out-of-plane, with the flow-modulated background removed by the reaction plane fit.
 %
 Within the uncertainties, neither the associated yields nor the widths of the jet peaks show a dependence on the event plane.
 %
 The ratios of the associated yields between the orientations do not deviate significantly from unity, with indications of potential modifications only in the inclusive \ptassocrange{1.0}{10} bin of the \pttrigrange{20}{40} jets.
 %
-Any real dependence is diluted by the finite event-plane resolution, \(R_2 = 0.56\): a constituent anisotropy of \(v_2 = 0.1\) would reduce the out-of-plane to in-plane ratio only to 0.81 instead of 0.67.
-%
-JEWEL predicts an event-plane dependence well below the uncertainties, consistent with jet-by-jet fluctuations dominating over path-length effects, and describes the data better with recoils at low \Pt{assoc} and without them at high \Pt{assoc}.
+The finite event-plane resolution, \(R_2 = 0.56\), dilutes any real dependence, and JEWEL predicts one well below the uncertainties, consistent with jet-by-jet fluctuations dominating over path-length effects.
 
 \paragraph{Jet substructure in \AuAu collisions.}
-Sec.~\ref{sec:AuAuAngularities} presented the girth \(g = \lambda_1^1\), \(p_\mathrm{T}^\mathrm{D} = \sqrt{\lambda_0^2}\) and LeSub of hard-core jets in 0--20\% and 40--80\% central \AuAu collisions, the first heavy-ion measurement corrected with unbinned, machine-learning based unfolding.
-%
-The distributions are consistent between central and peripheral collisions within the systematic uncertainties.
+The girth, \(p_\mathrm{T}^\mathrm{D}\) and LeSub of hard-core jets (Sec.~\ref{sec:AuAuAngularities}), the first heavy-ion measurement corrected with unbinned, machine-learning based unfolding, are consistent between 0--20\% and 40--80\% central collisions within the systematic uncertainties.
 
 \paragraph{Inclusive and groomed angularities in \pp collisions.}
-Sec.~\ref{sec:ppResults} presented the inclusive and SoftDrop-groomed angularities \(\lambda^{\kappa=1}_{\beta}\), \(\beta = 0.5\), 1 and 2, of inclusive jets in \pp collisions at \sPP{200}{GeV}, unfolded with MultiFold using 23 features per jet.
+The \pp measurement of Sec.~\ref{sec:ppResults} provides the inclusive and SoftDrop-groomed angularities \(\lambda^{\kappa=1}_{\beta}\), \(\beta = 0.5\), 1 and 2, of inclusive jets at \sPP{200}{GeV}, validated by closure tests and by reproducing four previously published STAR observables from the same unfolded jets.
 %
-The unfolding passes its closure tests and, from the same unfolded jets, reproduces the jet mass, groomed jet mass, \(R_\mathrm{g}\) and \(z_\mathrm{g}\) previously published by STAR.
+Its main physics message comes from combining two views of the same jets.
 %
-The jets become narrower with increasing \(p_\mathrm{T, jet}\), and grooming shifts the angularities to smaller values, the more so the larger \(\beta\).
+The distributions show that PYTHIA\mbox{-}8 and HERWIG\mbox{-}7 predict jets narrower than measured, by up to 20--40\% in the tails, while PYTHIA\mbox{-}6 agrees within uncertainties in most bins.
 %
-PYTHIA-6, PYTHIA-8 and HERWIG-7 reproduce these trends but predict jets that are narrower than measured: PYTHIA-8 and HERWIG-7 fall 20--40\% below the data in the tails of the distributions, while PYTHIA-6 agrees within uncertainties in most bins, and for \(\beta = 1\) and 2 grooming reduces the deviations of PYTHIA-8 and HERWIG-7.
-
-Because the unbinned unfolding keeps the full set of jet features, the mean angularities could also be measured as functions of the groomed radius \(R_\mathrm{g}\), an observable that was not chosen before the unfolding.
-%
-The profiles rise monotonically with \(R_\mathrm{g}\), the groomed and inclusive values converge at large \(R_\mathrm{g}\), as expected from the angular ordering of the clustering sequence, and at fixed \(R_\mathrm{g}\) they depend only weakly on \(p_\mathrm{T, jet}\).
-%
-PYTHIA-8 and HERWIG-7 underestimate them by 10--15\% at every \(R_\mathrm{g}\), which shows that their narrower jets come from too little radiation at a given splitting angle rather than from a different distribution of splitting angles.
-%
-Compared with ALICE at \(\sqrt{s} = 5.02\)~TeV at the same charged-jet \(p_\mathrm{T}\), the jets at RHIC are considerably narrower, as expected from their larger fraction of quark-initiated jets.
+The mean angularities as functions of \(R_\mathrm{g}\), an observable that did not have to be chosen before the unfolding, locate the origin of this difference: at every splitting angle PYTHIA\mbox{-}8 and HERWIG\mbox{-}7 fall 10--15\% below the data, so they produce too little radiation at a given angle rather than a wrong distribution of angles.
 
 \paragraph{Synthesis.}
-Both heavy-ion measurements select jets with a high-tower trigger and hard-core constituents, a selection that favors hard-fragmented, narrow jets that interact least with the medium.
+Both heavy-ion measurements select jets with a high-tower trigger and hard-core constituents, which favors hard-fragmented, narrow jets that interact least with the medium.
 %
 This survivor bias is the likely common reason why neither the expected path-length dependence nor a centrality dependence of the substructure is observed.
 %
 The \pp measurement avoids this selection and provides both the baseline and a validated unbinned unfolding pipeline for the next generation of heavy-ion measurements.
 
 \section{Outlook}
-The natural next step is to measure the inclusive and groomed angularities of jets in \AuAu collisions with the inclusive constituent selection and SoftDrop grooming of the \pp analysis, unfolded with the same pipeline, so that the \pp results can serve as the baseline they were designed to be.
+The natural next step is to measure the inclusive and groomed angularities of jets in \AuAu collisions with the constituent selection, grooming and unfolding of the \pp analysis.
 %
-There, the \(R_\mathrm{g}\) profiles can separate a medium-induced change of the radiation at a given splitting angle from a change of the distribution of the splitting angles themselves, a distinction that one-dimensional distributions cannot make.
+There, the \(R_\mathrm{g}\) profiles can separate a medium-induced change of the radiation at a given splitting angle from a change of the splitting angles themselves, a distinction one-dimensional distributions cannot make.
 %
-The larger background of heavy-ion collisions makes missed and fake jets far from negligible, which the unfolding framework of App.~\ref{app:Unfolding} already treats explicitly.
+The unfolding itself can be made more robust by methods that remove the need for iterations~\cite{Ore:2026qgp}, which would avoid the growth of statistical fluctuations over the iterations seen in this work, and by profiling the detector uncertainties as nuisance parameters~\cite{Zhu:2024drd}.
 
-The unfolding itself can be made more robust.
+On the jet-hadron side, selecting events on the ellipticity of their initial state through the \(q_n\) flow vector would test whether fluctuations of the initial geometry wash out the event-plane dependence.
 %
-Recent methods that replace the particle-level step of OmniFold by a single loss function remove the need for iterations and reduce the dependence on the reference simulation~\cite{Ore:2026qgp}, which would avoid the growth of statistical fluctuations over the iterations seen in this work, and profiling the uncertainties of the detector simulation as nuisance parameters during the unfolding~\cite{Zhu:2024drd} would give a more principled treatment of the systematic uncertainties than the separate variations used here.
-%
-Richer jet representations, such as images of the constituents, could let the classifiers use more of the information in a jet.
-
-On the jet-hadron side, selecting events on the ellipticity of their initial state through the \(q_n\) flow vector within a centrality class would test whether fluctuations of the initial geometry wash out the event-plane dependence.
-%
-The quark-gluon and quenched-unquenched classifiers of App.~\ref{app:ML} suggest that the amount of medium modification can itself be quantified as a discrimination problem, which extends naturally to the angularities once groomed heavy-ion measurements are available.
+The classifiers of App.~\ref{app:ML} suggest that medium modification can itself be quantified as a discrimination problem.
 %
 Finally, the \pp measurement will be extended with \(\lambda_0^2\) and the remaining angularities for the final STAR publication.

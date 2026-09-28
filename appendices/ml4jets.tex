@@ -4,7 +4,7 @@
 \section{Machine Learning Basics}
 Fortunately, many of the tasks encountered in HEP can be naturally reformulated as machine learning problems. 
 %
-Typically, the problems are formulated in terms of a search for some function \(f:X \to Y\), from the space of the observed data \(X\) to a low-dimensional space of a desired target label \(Y\), which optimizes some metric of our choosing. 
+Typically, the problems are formulated in terms of a search for some function \(f:X \to Y\), from the space of the observed data \(X\) to a low-dimensional space of a desired target label \(Y\), which optimizes a chosen metric. 
 %
 This metric is called a loss function and is written as \(L[ \mathbf{y}, f (\mathbf{x})]\).
 %
@@ -36,9 +36,9 @@ For jets, classifiers can be used as a tagging mechanism.
 %
 For almost every way of representing a jet, there is a class of machine learning models.
 %
-We discuss two cases here
+Two cases are discussed here
 \subsection{Quark-Gluon jet discrimination}
-Quark and gluon jet \(p+p\) events are generated as \(qq\to qq\) and \(gg\to gg\) dijet events at \sNN{200}{GeV} using PYTHIA-8 (RHIC Tune). 
+Quark and gluon jet \(p+p\) events are generated as \(qq\to qq\) and \(gg\to gg\) dijet events at \sNN{200}{GeV} using PYTHIA\mbox{-}8 (RHIC Tune). 
 %
 Each jet is represented as an $24\times24$ image following~\cite{Komiske_2017}. 
 %
@@ -63,7 +63,7 @@ Data is augmented using  procedures like random reflections ($\Delta y\to-\Delta
 	\label{fig:qgJetExamples}
 \end{figure}
 
-The images were input for a Convolutional Neural Network (CNN) implemented using PyTorch as shown in fig.~\ref{fig:rgbnn}.  
+The images were input for a Convolutional Neural Network (CNN) implemented using PyTorch as shown in Fig.~\ref{fig:rgbnn}.  
 %
 Each convolutional layer consisted of 64 filters, with filter sizes of \(5\times5\), \(3\times3\), and \(3\times3\), respectively. The max-pooling layers performed a 2×2 down-sampling with a stride length of 2. The dense layer consisted of 128 units, with a dropout rate of 0.2 before and after it.
 \begin{figure}
@@ -92,7 +92,7 @@ The Receiver Operator Characteristic (ROC) curve, evaluated on a holdout test se
 
 A way to gain some understanding of how the model looks at jet substructure is through \emph{interpretability} methods. 
 %
-We use a simple method of just noting the average change in classifier output upon masking a pixel. As seen in Fig.~\ref{fig:importancecnnqg}, the classifier relies mostly on the pixels close to the jet axis, and the region it uses becomes narrower for jets with higher \(p_\mathrm{T}\), which are more collimated.
+A simple method is used here: the average change in the classifier output when a pixel is masked. As seen in Fig.~\ref{fig:importancecnnqg}, the classifier relies mostly on the pixels close to the jet axis, and the region it uses becomes narrower for jets with higher \(p_\mathrm{T}\), which are more collimated.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/importance_cnn_qg}
@@ -102,16 +102,16 @@ We use a simple method of just noting the average change in classifier output up
 \subsection{Characterizing jet quenching}
 Another way to think about jet quenching/modification, is to ask how easily can a classifier algorithm tell apart the quenched and unquenched jet. 
 %
-Here we take PYTHIA-6~\cite{Sj_strand_2006} as the source of unquenched jets and JEWEL \cite{Zapp:2013vla} generates quenched jets in different centrality bins with/without recoil centers. 
+Here PYTHIA\mbox{-}6~\cite{Sj_strand_2006} provides the unquenched jets and JEWEL \cite{Zapp:2013vla} the quenched jets in different centrality bins with/without recoil centers. 
 %
 Jets are represented as a 9-D vectors of features: $p_{\rm T, jet}$, $\rm N^{charged}_{\rm constit., jet}$, $\rm N^{neutral}_{\rm constit., jet}$, LeSub, $\lambda^2_0$, $\lambda_1^{0.5}$, $\lambda_1^1$, $\lambda_1^2$.
 %
-The jets are input into Dense Neural Networks (DNNs) with three hidden layers with 100 nodes each. After training, we calculate ROC curves shown in Fig.~\ref{fig:jetQuenchROC} using a holdout test set.
+The jets are input into Dense Neural Networks (DNNs) with three hidden layers with 100 nodes each. After training, the ROC curves shown in Fig.~\ref{fig:jetQuenchROC} are calculated on a holdout test set.
 %
 \begin{figure}
 	\includegraphics[width=0.49\linewidth]{roc_curve_dnn_withoutRec.pdf}
 	\includegraphics[width=0.49\linewidth]{roc_curve_dnn_wRec.pdf}
-	\caption{ROC curves of the DNN classifier separating PYTHIA-6 (unquenched) from JEWEL (quenched) jets, for JEWEL without recoils (left) and with recoils (right), in four centrality classes, with the corresponding AUC values in the legends. Jets are anti-\(k_\mathrm{T}\), \(R = 0.4\), \(p_\mathrm{T, jet} > 10\)~GeV/\(c\), \(|\eta_\mathrm{jet}| < 1 - R\), with at least two charged constituents.}
+	\caption{ROC curves of the DNN classifier separating PYTHIA\mbox{-}6 (unquenched) from JEWEL (quenched) jets, for JEWEL without recoils (left) and with recoils (right), in four centrality classes, with the corresponding AUC values in the legends. Jets are anti-\(k_\mathrm{T}\), \(R = 0.4\), \(p_\mathrm{T, jet} > 10\)~GeV/\(c\), \(|\eta_\mathrm{jet}| < 1 - R\), with at least two charged constituents.}
 	\label{fig:jetQuenchROC}
 \end{figure}
 %

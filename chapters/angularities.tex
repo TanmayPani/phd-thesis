@@ -2,11 +2,11 @@
 \label{ch:angularities}
 Substructure based observables calculated from constituents of clustered jets can potentially have sensitivity to variety of QCD processes, from initial hard (high-\(Q^2\)) parton scattering to hadronization.
 %
-Considering that, a constituent carries two major types of information, its energy relative to the jet \(\left(z_\mathrm{const.} = \frac{p_{\rm T, const.}}{p_ {\rm T,  jet}}\right)\) and its direction with respect to the jet-axis, usually characterized by its \(\eta-\varphi\) coordinate relative to the jet-axis \(\left(\Delta R_\mathrm{const., jet}=\sqrt{(\eta_\mathrm{const.} - \eta_\mathrm{jet})^2 + (\varphi_\mathrm{const.} - \varphi_\mathrm{jet})^2}\right)\).
+Considering that, a constituent carries two major types of information, its energy relative to the jet \(\left(z_\mathrm{const.} = \frac{p_{\rm T, const.}}{p_ {\rm T,  jet}}\right)\) and its direction with respect to the jet-axis, usually characterized by its \(\eta-\phi\) coordinate relative to the jet-axis \(\left(\Delta R_\mathrm{const., jet}=\sqrt{(\eta_\mathrm{const.} - \eta_\mathrm{jet})^2 + (\phi_\mathrm{const.} - \phi_\mathrm{jet})^2}\right)\).
 %
 An intuitive way to put these two information together is by raising \(z_\mathrm{const.}\) and \(\Delta R_\mathrm{const, jet}\) to exponents \(\kappa\) and \(\beta\) respectively and multiplying them. 
 %
-That would give bunch of per-constituent scalars, which we can add up  for a jet to get a family of jet observables called \emph{Generalized angularities}. 
+This gives a set of per-constituent scalars, which are summed over the constituents of a jet to get a family of jet observables called \emph{Generalized angularities}. 
 %
 \begin{equation}\label{eq:LambdaKappaBeta}
 	\lambda_\beta^\kappa=\sum_{\mathrm{const} \in \mathrm{jet}}z_{\rm const.}^\kappa \left(\frac{\Delta R_\mathrm{const., jet}}{R}\right)^\beta
@@ -26,7 +26,7 @@ Further, \(\lambda_2^1\) is related to the jet-mass~\((m_\mathrm{jet})\) as  \(\
 
 As an experimental observable, it is useful to restrict the summation in Eq.~\ref{eq:LambdaKappaBeta} to only charged constituents / tracks and mitigate contamination from towers like pileup, especially in the case of heavy-ion collisions.  
 %
-This makes \(\lambda_{\beta > 0}^1\)  IRC unsafe, but as shown in~\cite{Chang_2013, ALICE:2021njq} comparison to theoretical predictions~\cite{Kang_2018, Kang:2018vgn} is still possible. 
+This makes \(\lambda_{\beta > 0}^1\)  IRC unsafe, but as shown in~\cite{Chang_2013,ALICE:2021njq} comparison to theoretical predictions~\cite{Kang_2018,Kang:2018vgn} is still possible. 
 %
 Comparisons to theoretical predictions can be further simplified by disentangling the pQCD and npQCD contributions to the angularity, through use of grooming algorithms~\cite{Dasgupta_2013}. 
 
@@ -41,7 +41,7 @@ These measurements explore jet fragmentation in a phase space of lower-momentum 
 
 \section{Angularities of Au+Au jets}
 \label{sec:AuAuAngularities}
-A brief exploratory analysis done on jets from the dataset used in chapter~\ref{ch:jhcorr} is shown. 
+A brief exploratory analysis done on jets from the dataset used in Ch.~\ref{ch:jhcorr} is shown. 
 %
 Distributions of Girth (\(g\)), \(p^D_T\), and LeSub given by, 
 %
@@ -55,19 +55,19 @@ LeSub is the \(p_\mathrm{T}\) difference between the leading and sub-leading con
 
 
 \subsection{Dataset and Selection}
-Jets are reconstructed with same data (Au + Au collision from 2014), events (HT2-triggered, \(|v_z| < 24\)~cm; Sect.~\ref{sec:JHEventSel}), track and tower selection (Sect.~\ref{sec:TrackTowerSel}), constituents (hard-core,~\(cp_\mathrm{T, trk},~E_\mathrm{T, tow.} > 2.0\)~GeV)  and definition (\(R=0.4\),~anti-\(k_\mathrm{T}\),~boost-invariant \(p_\mathrm{T}^2\)) as in Sect.~\ref{sec:JetRecoAuAu}. 
+Jets are reconstructed with same data (Au+Au collision from 2014), events (HT2-triggered, \(|v_z| < 24\)~cm; Sec.~\ref{sec:JHEventSel}), track and tower selection (Sec.~\ref{sec:TrackTowerSel}), constituents (hard-core,~\(cp_\mathrm{T, trk},~E_\mathrm{T, tow.} > 2.0\)~GeV)  and definition (\(R=0.4\),~anti-\(k_\mathrm{T}\),~boost-invariant \(p_\mathrm{T}^2\)) as in Sec.~\ref{sec:JetRecoAuAu}. 
 %
-The jet selection used in this analysis differs only  in that we omit the requirement for a high-tower triggered (\(E_\mathrm{T, tow.} \geq 5.4\)~GeV) inside the jet-cone and add an extra minimum jet-area cut \(A_\mathrm{jet} > 0.4\) to reduce combinatorial jet contribution.
+The jet selection used in this analysis differs only in that it omits the requirement for a high-tower triggered (\(E_\mathrm{T, tow.} \geq 5.4\)~GeV) inside the jet-cone and adds a minimum jet-area cut \(A_\mathrm{jet} > 0.4\) to reduce combinatorial jet contribution.
 %
 The mathematical requirements to calculate the observables defined in Eq.~\ref{eq:AuAuJSODefs} further imposes a \(N_\mathrm{trk.} \geq 2\) selection on the jets. 
 
 \subsection{Unfolding}
 \begin{figure}
 	\includegraphics[width=\linewidth]{angularities/AuAu/auau\_miss\_fake\_rates.pdf}
-	\caption{Miss rate (left) and fake rate (right) calculated from matched jets from the PYTHIA-6 (STAR tune) + GEANT3 + AuAu 2014 minimum bias pedestal embedding simulation. Each panel shows the miss/fake rates for jets from 0-20\%, 20-40\%, and 40-80\%  centrality events as red circles, green squares, and blue triangles respectively.}
+	\caption{Miss rate (left) and fake rate (right) calculated from matched jets from the PYTHIA\mbox{-}6 (STAR tune) + GEANT3 + Au+Au 2014 minimum bias pedestal embedding simulation. Each panel shows the miss/fake rates for jets from 0-20\%, 20-40\%, and 40-80\%  centrality events as red circles, green squares, and blue triangles respectively.}
 		\label{fig:AuAuMissAndFake}
 \end{figure}
-Residual background and detector effects are removed by mapping between particle and detector level jets using the embedding simulation and matching procedure described in section~\ref{sec:AuAuEmbedding}.
+Residual background and detector effects are removed by mapping between particle and detector level jets using the embedding simulation and matching procedure described in Sec.~\ref{sec:AuAuEmbedding}.
 %
 Efficiencies involved in jet reconstruction are shown in Fig.~\ref{fig:AuAuMissAndFake}.
 %
@@ -79,11 +79,11 @@ MultiFold~\cite{PhysRevLett.124.182001} method was used to simultaneously unfold
 %
 MultiFold uses Dense Neural Networks (DNNs) implemented using the EnergyFlow package~\cite{Komiske_2018},  which are trained on full embedding sample at the detector level and the generator level. 
 %
-See appendix~\ref{app:Unfolding} for more information about unfolding procedure and appendix~\ref{app:ML} for more information on machine learning.
+See App.~\ref{app:Unfolding} for more information about unfolding procedure and App.~\ref{app:ML} for more information on machine learning.
 %
 Each classifier has three hidden layers of 100 nodes, and is trained with batches of 1024 jets on 80\% of the jets, the remaining 20\% being used for validation. Training is stopped once the validation loss has not improved for 10 epochs, and the network with the lowest validation loss is kept and used as the starting point in the next iteration.
 %
-The evolution of the losses during the unfolding is shown in Fig.~\ref{fig:multifoldTraining} for two runs with the nominal settings, since the training logs of the nominal runs themselves were not kept.
+The evolution of the losses during the unfolding is shown in Fig.~\ref{fig:multifoldTraining} for two runs with the nominal settings.
 %
 In step 1, the validation loss reaches its minimum within the first few epochs of each iteration while the training loss keeps decreasing, i.e. the classifier starts to learn fluctuations of the training sample, which the early stopping prevents from entering the weights. In step 2, the losses change little after the first epoch, as the reweighting between consecutive iterations is small.
 \begin{figure}
@@ -98,9 +98,9 @@ Closure of the MultiFold is a measure of confidence in the algorithm determined 
 %
 Here, the matched embedding jets of each centrality class (0-20\% and 40-80\%) are randomly split into two independent samples: the detector-level jets of 20\% of them serve as pseudo-data, which are unfolded by a MultiFold trained on the remaining 80\% with the same settings as for the measured data (10 iterations, batch size of 1024), and the unfolded result is compared to the particle-level jets of the pseudo-data sample (pseudo-truth).
 %
-Since both samples come from the same PYTHIA-6 simulation, this tests the technical closure of the method rather than its dependence on the prior.
+Since both samples come from the same PYTHIA\mbox{-}6 simulation, this tests the technical closure of the method rather than its dependence on the prior.
 %
-Proper closure is demonstrated in Fig.\ref{fig:closure} for the observables studied here, with the ratios of distributions being consistent with unity within statistical errors.
+Proper closure is demonstrated in Fig.~\ref{fig:closure} for the observables studied here, with the ratios of distributions being consistent with unity within statistical errors.
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{angularities/AuAu/closure_cent0to20_v3}
@@ -131,7 +131,7 @@ The statistical uncertainties are below about 10\%, except in the highest LeSub 
 %
 For the ratio of central to peripheral distributions, the total uncertainties of the two centrality classes are added in quadrature, i.e. they are assumed to be uncorrelated. This is a conservative choice, since the unfolding-related variations are expected to shift both centrality classes in the same direction.
 %
-Detector-level sources such as the tracking efficiency (Sect.~\ref{sec:TrackTowerSel}) and the tower energy scale were not evaluated in this exploratory analysis.
+Detector-level sources such as the tracking efficiency (Sec.~\ref{sec:TrackTowerSel}) and the tower energy scale were not evaluated in this exploratory analysis.
 \begin{sidewaysfigure}
 	\centering
 	\begin{tabularx}{\textwidth}{XXX}
@@ -267,7 +267,7 @@ First, the constituents of the jet are reclustered with the Cambridge/Aachen (C/
 		{p_{\mathrm{T,leading}}+p_{\mathrm{T,subleading}}}$};
 	\node[anchor=west] at (3.55,2.0)
 	{$\theta_{\mathrm g}\equiv\dfrac{R_{\mathrm g}}{R}
-		\equiv\dfrac{\sqrt{\Delta y^{2}+\Delta\varphi^{2}}}{R}$};
+		\equiv\dfrac{\sqrt{\Delta y^{2}+\Delta\phi^{2}}}{R}$};
 	\node[anchor=west] at (3.55,0.65)       
 	{$z_g > z_{\rm cut}\,(\theta_{\mathrm{g}})^{\beta}$ };
 \end{tikzpicture}%
@@ -291,7 +291,7 @@ The soft threshold \(z_\mathrm{cut}\) sets how asymmetric a splitting may be and
 %
 For \(\beta = 0\) the criterion is independent of the angle and SoftDrop reduces to the modified mass drop tagger (mMDT), while for \(\beta \to \infty\) nothing is groomed.
 %
-Since the mMDT removes soft radiation at all angles, the groomed jet is largely insensitive to the underlying event and hadronization, and its observables are calculable in perturbative QCD, with \(z_\mathrm{g}\) directly probing the QCD splitting function~\cite{Dasgupta_2013, SoftDrop_Larkoski_2014}.
+Since the mMDT removes soft radiation at all angles, the groomed jet is largely insensitive to the underlying event and hadronization, and its observables are calculable in perturbative QCD, with \(z_\mathrm{g}\) directly probing the QCD splitting function~\cite{Dasgupta_2013,SoftDrop_Larkoski_2014}.
 %
 This work uses \(z_\mathrm{cut} = 0.2\) and \(\beta = 0\).
 
@@ -319,24 +319,24 @@ Fig.~\ref{fig:GroomingAndRg} illustrates this: the npQCD fraction of the jet wid
 \subsection{Dataset and Methodology}
 The analysis uses data from \pp collisions at \sPP{200}{GeV}~collected in 2012 using the STAR detector system. Charged-particle tracks and neutral energy depositions (towers) are measured using STAR's TPC and BEMC detectors respectively. 
 
-To enhance jet signal, only High-Tower (HT) triggered events (at least one tower with $\EtTower \geq 4$ GeV) are considered. Events containing a track with \ptGeq{track}{30} are rejected to avoid contamination from cosmic rays, as in the Au+Au analysis (Sect.~\ref{sec:JHEventSel}). Tracks(Towers) with \ptGeq{track}{0.2} (\(E_\mathrm{T, tower} \geq 0.2\) GeV) are considered for jet clustering. The tracks pass the same quality criteria as in the Au+Au analysis (Tab.~\ref{Tab:JHTrackCuts}), bad and dead towers are removed, and the full momentum of the tracks matched to a tower is subtracted from its energy (Eq.~\ref{Eq:HadCorr}); the reasons for these choices are discussed in Sect.~\ref{sec:TrackTowerSel}. Clustered jets completely falling within acceptance ($|\eta_{\rm jet}| \leq 0.6$), with \ptGeq{jet}{10} and a plurality of charged tracks (\(N_\mathrm{ch., jet} \geq 2\)) are used for further study.  
+To enhance jet signal, only High-Tower (HT) triggered events (at least one tower with $\EtTower \geq 4$ GeV) are considered. Events containing a track with \ptGeq{track}{30} are rejected to avoid contamination from cosmic rays, as in the Au+Au analysis (Sec.~\ref{sec:JHEventSel}). Tracks(Towers) with \ptGeq{track}{0.2} (\(E_\mathrm{T, tower} \geq 0.2\) GeV) are considered for jet clustering. The tracks pass the same quality criteria as in the Au+Au analysis (Tab.~\ref{Tab:JHTrackCuts}), bad and dead towers are removed, and the full momentum of the tracks matched to a tower is subtracted from its energy (Eq.~\ref{Eq:HadCorr}); the reasons for these choices are discussed in Sec.~\ref{sec:TrackTowerSel}. Clustered jets completely falling within acceptance ($|\eta_{\rm jet}| \leq 0.6$), with \ptGeq{jet}{10} and a plurality of charged tracks (\(N_\mathrm{ch., jet} \geq 2\)) are used for further study.  
 %Jets with area, $A_{\rm jet} < 0.3$ are rejected to further reduce the fake jet contribution. 
 
- The tracks and towers are clustered into jets using the anti-\(k_{\rm T}\) algorithm with a jet resolution parameter $R = 0.4$, implemented using the FastJet library~\cite{Cacciari_2012}, with the same particle-mass assumptions and recombination scheme as in Sect.~\ref{sec:JetRecoAuAu}. Unlike the hard-core Au+Au jets, all tracks and towers above 0.2~GeV are clustered, so the jets are inclusive.  After obtaining the jets, the softer constituents are groomed using Recursive SoftDrop with \(\beta = 0\) and \(z_\mathrm{cut} = 0.2\). The groomed-jet's constituents lose non-kinematic information like charge, which is regained by matching them to the original jet's constituents. 
+ The tracks and towers are clustered into jets using the anti-\(k_{\rm T}\) algorithm with a jet resolution parameter $R = 0.4$, implemented using the FastJet library~\cite{Cacciari:2011ma}, with the same particle-mass assumptions and recombination scheme as in Sec.~\ref{sec:JetRecoAuAu}. Unlike the hard-core Au+Au jets, all tracks and towers above 0.2~GeV are clustered, so the jets are inclusive.  After obtaining the jets, the softer constituents are groomed using SoftDrop (Sec.~\ref{sec:softDropDesc}) with \(\beta = 0\) and \(z_\mathrm{cut} = 0.2\). The groomed-jet's constituents lose non-kinematic information like charge, which is regained by matching them to the original jet's constituents. 
  
  \subsection{Detector effects and Unfolding}
- The embedding simulation starts from PYTHIA6 (STAR Tune)  at the particle level. The particles are then reconstructed as detector hits using the STAR detector system implemented in GEANT3 and embedded into zero-bias events from 200 GeV \pp collisions (2012). The jets from particle and detector levels are matched using a \(p_\mathrm{T, jet}\) ordered nearness criteria, similar to the one used for the Au+Au embedding (Sect.~\ref{sec:AuAuEmbedding}).  The matched jets can be used to show detector responses like shown in Fig.~\ref{fig:PtResolution} (top) and  \(p_\mathrm{T, jet}\)-resolution (Eq.~\ref{Eq:JetPtRes}) shown in Fig.~\ref{fig:PtResolution} (bottom).  
+ The embedding simulation starts from PYTHIA\mbox{-}6 (STAR Tune)  at the particle level. The particles are then reconstructed as detector hits using the STAR detector system implemented in GEANT3 and embedded into zero-bias events from 200 GeV \pp collisions (2012). The jets from particle and detector levels are matched using a \(p_\mathrm{T, jet}\) ordered nearness criteria, similar to the one used for the Au+Au embedding (Sec.~\ref{sec:AuAuEmbedding}).  The matched jets can be used to show detector responses like shown in Fig.~\ref{fig:PtResolution} (top) and  \(p_\mathrm{T, jet}\)-resolution (Eq.~\ref{Eq:JetPtRes}) shown in Fig.~\ref{fig:PtResolution} (bottom).  
 
 
  \begin{figure}
  	\centering
  	\includegraphics[width=0.5\linewidth]{figures/jet_pt_response.pdf}
  	\includegraphics[width=\linewidth]{figures/jet_pt_res.pdf}
- 	\caption{Jet-\(p_\mathrm{T}\) response of the PYTHIA-6 + GEANT3 embedding for matched jets. (Top) Probability of a particle-level jet with \ptGenJet to be reconstructed with \ptRecoJet; the magenta stars are the mean \ptRecoJet in each bin of \ptGenJet, with the standard deviation as error bars. (Bottom) Distributions of the relative difference \(R(p_\mathrm{T, jet}) = (p_\mathrm{T, jet}^\mathrm{det.} - p_\mathrm{T, jet}^\mathrm{part.})/p_\mathrm{T, jet}^\mathrm{part.}\) in four ranges of \(p_\mathrm{T, jet}^\mathrm{part.}\); their mean and standard deviation, quoted in each panel, are the jet-\(p_\mathrm{T}\) scale shift and resolution.}
+ 	\caption{Jet-\(p_\mathrm{T}\) response of the PYTHIA\mbox{-}6 + GEANT3 embedding for matched jets. (Top) Probability of a particle-level jet with \ptGenJet to be reconstructed with \ptRecoJet; the magenta stars are the mean \ptRecoJet in each bin of \ptGenJet, with the standard deviation as error bars. (Bottom) Distributions of the relative difference \(R(p_\mathrm{T, jet}) = (p_\mathrm{T, jet}^\mathrm{det.} - p_\mathrm{T, jet}^\mathrm{part.})/p_\mathrm{T, jet}^\mathrm{part.}\) in four ranges of \(p_\mathrm{T, jet}^\mathrm{part.}\); their mean and standard deviation, quoted in each panel, are the jet-\(p_\mathrm{T}\) scale shift and resolution.}
  	\label{fig:PtResolution}
  \end{figure}
  
- Unfolding is done using the MultiFold method. Every jet is represented as a vector of 23 features. The four classifiers of MultiFold are parametrized as DNNs with 3 hidden layers with 256 nodes each. The model weights are trained using the AdamW optimizer with a learning rate of \(10^{-3}\) and weight decay of \(10^{-2}\). Convergence is achieved in two unfolding iterations; the training histories of the four classifiers over the iterations are shown in Fig.~\ref{fig:unfoldigLossAccAUC}. Statistical uncertainties are calculated using bootstrap ensemble with 50 model replicas each sub-sampling  500k each of the data-like and sim-like jets, so each model replica sees 1M jets every epoch. All the  required unfolded distributions and profiles are calculated by using the per-jet unfolding weights. 
+ Unfolding is done using the MultiFold method. Every jet is represented as a vector of 23 features. The four classifiers of MultiFold are parametrized as DNNs with 3 hidden layers with 256 nodes each. The model weights are trained using the AdamW optimizer with a learning rate of \(10^{-3}\) and weight decay of \(10^{-2}\). Convergence is achieved in two unfolding iterations; the training histories of the four classifiers over the iterations are shown in Fig.~\ref{fig:unfoldigLossAccAUC}. Statistical uncertainties are estimated from an ensemble of 50 model replicas, each trained on a random subsample of 500k data-like and 500k sim-like jets, so that each replica sees 1M jets every epoch (Sec.~\ref{sec:bootstrap}). All the  required unfolded distributions and profiles are calculated by using the per-jet unfolding weights. 
  
  \begin{figure}
  	\centering
@@ -346,7 +346,7 @@ To enhance jet signal, only High-Tower (HT) triggered events (at least one tower
  	\label{fig:unfoldigLossAccAUC}
  \end{figure}
  
- Closure test of the unfolding shown in  Fig. \ref{fig:ClosureAngularity} and \ref{fig:ClosureAngVsRg} is done by doing the same unfolding procedure replacing measured data with pseudo-data for which the particle level is known (pseudo-truth). The pseudo-unfolded distributions are then compared to the pseudo-truth via ratios
+ Closure test of the unfolding shown in  Fig.~\ref{fig:ClosureAngularity} and~\ref{fig:ClosureAngVsRg} is done by doing the same unfolding procedure replacing measured data with pseudo-data for which the particle level is known (pseudo-truth). The pseudo-unfolded distributions are then compared to the pseudo-truth via ratios
  \begin{figure}
  	\centering
  	\includegraphics[width=\linewidth]{figures/angularities/pp/fig_dist_ptbins_closure_like.pdf}
@@ -373,14 +373,14 @@ To enhance jet signal, only High-Tower (HT) triggered events (at least one tower
  %
  Replica \(r\) is trained on a random subsample of \(m\) jets drawn without replacement from each of the two classes it separates (e.g. \(m\) measured and \(m\) reconstructed jets for \(f_\mathrm{meas., reco}\)), split further into a training and a validation set, with its own initialization and dropout. 
  %
- The same replica index is carried through every classifier of every iteration, so replica \(r\) is a complete unfolding on its own, with weights \(\omega^{(r)}_{n-1}\) and \(\nu^{(r)}_{n-1}\) and, from eq.~\ref{eq:generalUnfolding},
+ The same replica index is carried through every classifier of every iteration, so replica \(r\) is a complete unfolding on its own, with weights \(\omega^{(r)}_{n-1}\) and \(\nu^{(r)}_{n-1}\) and, from Eq.~\ref{eq:generalUnfolding},
  \begin{equation}
  	\label{eq:replicaWeight}
  	p^{(r)}_{\mathrm{gen.}, n}(\mathbf{x}) = p_{\mathrm{gen.}, 0}(\mathbf{x})\prod_{k=0}^{n-1}\nu^{(r)}_k(\mathbf{x}) \equiv w^{(r)}_n(\mathbf{x})\,p_{\mathrm{gen.}, 0}(\mathbf{x})
  \end{equation}
  Where, \(w^{(r)}_n(\mathbf{x})\) is the per-jet unfolding weight of replica \(r\) after \(n\) iterations. 
  %
- The subsampling is only done for training; at inference every replica is evaluated on every jet, so eq.~\ref{eq:replicaWeight} gives \(N_\mathrm{rep.}\) unfolded samples, each with the full statistics of the simulation. 
+ The subsampling is only done for training; at inference every replica is evaluated on every jet, so Eq.~\ref{eq:replicaWeight} gives \(N_\mathrm{rep.}\) unfolded samples, each with the full statistics of the simulation. 
  
  Any binned quantity \(H\), a histogram, a profile or a ratio of two of them, is then calculated once per replica from the weights \(w^{(r)}_n\), and its central value and uncertainty are the mean and standard deviation over the ensemble,
  \begin{equation}
@@ -411,83 +411,83 @@ The relative uncertainty from every source, detector and unfolding related, is s
 	\includegraphics[width=\textwidth]{angularities/pp/sys_ch_ang_k1_b0.5_hist_ang_raw.pdf}
 	\includegraphics[width=\textwidth]{angularities/pp/sys_ch_ang_k1_b1_hist_ang_raw.pdf}
 	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b2_hist_ang_raw.pdf}
-	\caption{Relative systematic uncertainties of the \(\lambda^{\kappa=1}_{\beta}\) distributions of inclusive jets, before the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG-7 and PYTHIA-8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
+	\caption{Relative systematic uncertainties of the \(\lambda^{\kappa=1}_{\beta}\) distributions of inclusive jets, before the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
 	\label{fig:SysDistInclRaw}
 \end{figure}
 \begin{figure}
 	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b0.5_hist_sd_ang_raw.pdf}
 	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b1_hist_sd_ang_raw.pdf}
 	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b2_hist_sd_ang_raw.pdf}
-	\caption{Relative systematic uncertainties of the \(\lambda^{\kappa=1}_{\beta}\) distributions of SoftDrop-groomed jets, before the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG-7 and PYTHIA-8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
+	\caption{Relative systematic uncertainties of the \(\lambda^{\kappa=1}_{\beta}\) distributions of SoftDrop-groomed jets, before the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
 	\label{fig:SysDistSDRaw}
 \end{figure}
 \begin{figure}
 	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b0.5_prof_incl_vs_sd_dR_raw.pdf}
 	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b1_prof_incl_vs_sd_dR_raw.pdf}
 	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b2_prof_incl_vs_sd_dR_raw.pdf}
-	\caption{Relative systematic uncertainties of the \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles of inclusive jets, before the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG-7 and PYTHIA-8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
+	\caption{Relative systematic uncertainties of the \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles of inclusive jets, before the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
 	\label{fig:SysProfInclRaw}
 \end{figure}
 \begin{figure}
 	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b0.5_prof_sd_vs_sd_dR_raw.pdf}
 	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b1_prof_sd_vs_sd_dR_raw.pdf}
 	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b2_prof_sd_vs_sd_dR_raw.pdf}
-	\caption{Relative systematic uncertainties of the \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles of SoftDrop-groomed jets, before the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG-7 and PYTHIA-8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
+	\caption{Relative systematic uncertainties of the \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles of SoftDrop-groomed jets, before the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
 	\label{fig:SysProfSDRaw}
 \end{figure}
 
  \begin{itemize}
- 	\item Tracking Efficiency -  The uncertainty in tracking efficiency (Sect.~\ref{sec:TrackTowerSel}) is estimated at $\pm 4 \%$ for \(p+p\) events.
- 	\item Variation of Hadronic Correction - For the towers, we remove the full contribution of the track momentum for our central values (Eq.~\ref{Eq:HadCorr}, \(f_\mathrm{had} = 1\)). As a variation on that, we remove half of the total track momentum contribution.
+ 	\item Tracking Efficiency -  The uncertainty in tracking efficiency (Sec.~\ref{sec:TrackTowerSel}) is estimated at $\pm 4 \%$ for \(p+p\) events.
+ 	\item Variation of Hadronic Correction - For the nominal result, the full momentum of the matched tracks is subtracted from the towers (Eq.~\ref{Eq:HadCorr}, \(f_\mathrm{had} = 1\)). As a variation, only half of the track momentum is subtracted.
  	\item Tower Gain Uncertainty - Tower energies increased by 3.8\%
- 	\item \(p_\mathrm{T, jet}\) resolution - Use the \(p_\mathrm{T, jet}\) resolution values from fig.~\ref{fig:PtResolution} to shift the \(p_\mathrm{T, jet}\) windows in which results are presented. 
+ 	\item \(p_\mathrm{T, jet}\) resolution - Use the \(p_\mathrm{T, jet}\) resolution values from Fig.~\ref{fig:PtResolution} to shift the \(p_\mathrm{T, jet}\) windows in which results are presented. 
  \end{itemize}
  
  \subsubsection{Unfolding related uncertainties}
  \begin{itemize}
- 	\item Variation of the regularization parameter(number of iterations) -  For our central values, we have used 2 iterations as we found the result to converge reliably by that point. The number of iterations is varied to 1 and 3.
- 	\item Prior variation - Varied the prior of the embedding sample from PYTHIA6 to HERWIG7 and to PYTHIA8 by reweighting (Sec.~\ref{sec:priorReweighting})
- 	\item Non Closure - Any deviations from 1 for ratios shown in fig.~\ref{fig:ClosureAngularity} and fig.~\ref{fig:ClosureAngVsRg}, with the data-like prior of Sec.~\ref{sec:priorReweighting}
+ 	\item Variation of the regularization parameter(number of iterations) -  The nominal result uses 2 iterations, by which the result was found to converge reliably. The number of iterations is varied to 1 and 3.
+ 	\item Prior variation - Varied the prior of the embedding sample from PYTHIA\mbox{-}6 to HERWIG\mbox{-}7 and to PYTHIA\mbox{-}8 by reweighting (Sec.~\ref{sec:priorReweighting})
+ 	\item Non Closure - Any deviations from 1 for ratios shown in Fig.~\ref{fig:ClosureAngularity} and Fig.~\ref{fig:ClosureAngVsRg}, with the data-like prior of Sec.~\ref{sec:priorReweighting}
  \end{itemize}
 
  \subsubsection{Prior reweighting}
  \label{sec:priorReweighting}
  The prior of the unfolding is the generated distribution of the embedding simulation, \(p_{\mathrm{gen.}, 0}(\mathbf{x})\), together with the reconstructed distribution \(p_{\mathrm{reco.}, 0}(\mathbf{y})\) it produces through the response \(R(\mathbf{y}, \mathbf{x})\).
  %
- Two kinds of alternative priors are used: the particle-level distributions of HERWIG7 and PYTHIA8, for the prior variation, and a data-like PYTHIA6 prior, which provides the pseudo-data of the closure test.
+ Two kinds of alternative priors are used: the particle-level distributions of HERWIG\mbox{-}7 and PYTHIA\mbox{-}8, for the prior variation, and a data-like PYTHIA\mbox{-}6 prior, which provides the pseudo-data of the closure test.
  %
  Neither is obtained by a new detector simulation.
  %
- Instead, the PYTHIA6 embedding jets are reweighted, which changes the prior while keeping the PYTHIA6+GEANT3 response \(R(\mathbf{y}, \mathbf{x})\) fixed, so that each variation probes the dependence on the prior alone.
+ Instead, the PYTHIA\mbox{-}6 embedding jets are reweighted, which changes the prior while keeping the PYTHIA\mbox{-}6+GEANT3 response \(R(\mathbf{y}, \mathbf{x})\) fixed, so that each variation probes the dependence on the prior alone.
 
  Each reweighting is a density ratio learned with a classifier, in the same way as \(\omega\) and \(\nu\) in the unfolding.
  %
- A classifier \(f\) trained with the binary cross-entropy to separate a target sample (label 1) from the PYTHIA6 sample (label 0) gives the per-jet weight
+ A classifier \(f\) trained with the binary cross-entropy to separate a target sample (label 1) from the PYTHIA\mbox{-}6 sample (label 0) gives the per-jet weight
  \begin{equation}
  	\label{eq:priorRatio}
- 	r(\mathbf{x}) = \frac{1}{C}\,\frac{f(\mathbf{x})}{1 - f(\mathbf{x})} \approx \frac{p_\mathrm{target}(\mathbf{x})}{p_\mathrm{PYTHIA6}(\mathbf{x})} ,
+ 	r(\mathbf{x}) = \frac{1}{C}\,\frac{f(\mathbf{x})}{1 - f(\mathbf{x})} \approx \frac{p_\mathrm{target}(\mathbf{x})}{p_\text{PYTHIA\mbox{-}6}(\mathbf{x})} ,
  \end{equation}
  over the full joint feature vector, so that correlations between the observables are reweighted along with their one-dimensional distributions.
  %
- The classifier has the architecture and optimizer of the unfolding classifiers, and the jets carry their \(\hat{p}_\mathrm{T}\) cross-section weights, with the target normalized to the total weight of the PYTHIA6 sample.
+ The classifier has the architecture and optimizer of the unfolding classifiers, and the jets carry their \(\hat{p}_\mathrm{T}\) cross-section weights, with the target normalized to the total weight of the PYTHIA\mbox{-}6 sample.
  %
  Since the jet spectrum falls steeply, the loss would be dominated by the lowest-\(p_\mathrm{T, jet}\) jets.
  %
- Both classes are therefore given the common training weight \(c(p_\mathrm{T, jet}) = [p_\mathrm{PYTHIA6}(p_\mathrm{T, jet})]^{-1/2}\), with \(p_\mathrm{PYTHIA6}(p_\mathrm{T, jet})\) the weighted jet-\(p_\mathrm{T}\) density of the PYTHIA6 sample.
+ Both classes are therefore given the common training weight \(c(p_\mathrm{T, jet}) = [p_\text{PYTHIA\mbox{-}6}(p_\mathrm{T, jet})]^{-1/2}\), with \(p_\text{PYTHIA\mbox{-}6}(p_\mathrm{T, jet})\) the weighted jet-\(p_\mathrm{T}\) density of the PYTHIA\mbox{-}6 sample.
  %
- Being a function of a feature shared by both classes, \(c\) cancels in eq.~\ref{eq:priorRatio} and only shifts the training towards higher \(p_\mathrm{T, jet}\).
+ Being a function of a feature shared by both classes, \(c\) cancels in Eq.~\ref{eq:priorRatio} and only shifts the training towards higher \(p_\mathrm{T, jet}\).
  %
  An ensemble of 10 classifiers is trained; their odds are clamped to \([0.1, 10]\) and combined by the geometric mean.
  %
- The constant \(C\) normalizes the weighted mean of \(r\) over the PYTHIA6 sample to one, so that only the shape of the prior changes and not its total cross-section.
+ The constant \(C\) normalizes the weighted mean of \(r\) over the PYTHIA\mbox{-}6 sample to one, so that only the shape of the prior changes and not its total cross-section.
 
- \paragraph{Generator priors.} The targets are the HERWIG7 and PYTHIA8 particle-level jets, selected with the particle-level cuts of the embedding (\ptGeq{jet}{5}, \(|\eta_\mathrm{jet}| < 0.6\), at least two charged constituents) and described by the same features.
+ \paragraph{Generator priors.} The targets are the HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 particle-level jets, selected with the particle-level cuts of the embedding (\ptGeq{jet}{5}, \(|\eta_\mathrm{jet}| < 0.6\), at least two charged constituents) and described by the same features.
  %
- The weight \(r(\mathbf{x})\) is evaluated on every generated PYTHIA6 jet, matched or missed, and each matched reconstructed jet inherits the weight of its generated partner; fakes, having no generated partner, are unchanged.
+ The weight \(r(\mathbf{x})\) is evaluated on every generated PYTHIA\mbox{-}6 jet, matched or missed, and each matched reconstructed jet inherits the weight of its generated partner; fakes, having no generated partner, are unchanged.
  %
  The reweighted embedding replaces the nominal one in the full unfolding, and the difference of the result to the nominal one is taken as the uncertainty of each generator, entering the envelope of the unfolding uncertainties.
 %
-The reweighted PYTHIA-6 jets are compared to their HERWIG-7 and PYTHIA-8 targets in Figs.~\ref{fig:reweight_herwig7} and \ref{fig:reweight_pythia8}: the reweighting reproduces the target distributions and \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles to within a few percent in most bins, including the differences in their correlation with \(R_\mathrm{g}\), which a reweighting of one-dimensional distributions would not capture.
+The reweighted PYTHIA\mbox{-}6 jets are compared to their HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 targets in Figs.~\ref{fig:reweight_herwig7} and~\ref{fig:reweight_pythia8}: the reweighting reproduces the target distributions and \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles to within a few percent in most bins, including the differences in their correlation with \(R_\mathrm{g}\), which a reweighting of one-dimensional distributions would not capture.
   \begin{sidewaysfigure}
  	\begin{tabularx}{\textwidth}{XX}
  		\includegraphics[width=\linewidth]{figures/angularities/pp/reweight_herwig7_ch_ang_k1_b0.5.pdf}&
@@ -497,7 +497,7 @@ The reweighted PYTHIA-6 jets are compared to their HERWIG-7 and PYTHIA-8 targets
  		\includegraphics[width=\linewidth]{figures/angularities/pp/reweight_herwig7_ch_ang_k1_b2.pdf}&
  		\includegraphics[width=\linewidth]{figures/angularities/pp/reweight_herwig7_prof_ch_ang_k1_b2.pdf}
  	\end{tabularx}
- 	\caption{Reweighting of the PYTHIA-6 prior to HERWIG-7 at particle level: the distributions of \(\lambda^{\kappa=1}_{\beta}\) (left) and the \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles (right) for \(\beta = 0.5\), 1 and 2 (top to bottom), in four \(p_\mathrm{T, jet}\) ranges (panels). HERWIG-7 (points) is compared to the nominal (dotted) and the reweighted (solid) PYTHIA-6; the lower panels show their ratios to HERWIG-7.}
+ 	\caption{Reweighting of the PYTHIA\mbox{-}6 prior to HERWIG\mbox{-}7 at particle level: the distributions of \(\lambda^{\kappa=1}_{\beta}\) (left) and the \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles (right) for \(\beta = 0.5\), 1 and 2 (top to bottom), in four \(p_\mathrm{T, jet}\) ranges (panels). HERWIG\mbox{-}7 (points) is compared to the nominal (dotted) and the reweighted (solid) PYTHIA\mbox{-}6; the lower panels show their ratios to HERWIG\mbox{-}7.}
  	\label{fig:reweight_herwig7}
  \end{sidewaysfigure}
  
@@ -510,48 +510,48 @@ The reweighted PYTHIA-6 jets are compared to their HERWIG-7 and PYTHIA-8 targets
  		\includegraphics[width=\linewidth]{figures/angularities/pp/reweight_pythia8_ch_ang_k1_b2.pdf}&
  		\includegraphics[width=\linewidth]{figures/angularities/pp/reweight_pythia8_prof_ch_ang_k1_b2.pdf}
  	\end{tabularx}
- 	\caption{Reweighting of the PYTHIA-6 prior to PYTHIA-8 at particle level: the distributions of \(\lambda^{\kappa=1}_{\beta}\) (left) and the \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles (right) for \(\beta = 0.5\), 1 and 2 (top to bottom), in four \(p_\mathrm{T, jet}\) ranges (panels). PYTHIA-8 (points) is compared to the nominal (dotted) and the reweighted (solid) PYTHIA-6; the lower panels show their ratios to PYTHIA-8.}
+ 	\caption{Reweighting of the PYTHIA\mbox{-}6 prior to PYTHIA\mbox{-}8 at particle level: the distributions of \(\lambda^{\kappa=1}_{\beta}\) (left) and the \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles (right) for \(\beta = 0.5\), 1 and 2 (top to bottom), in four \(p_\mathrm{T, jet}\) ranges (panels). PYTHIA\mbox{-}8 (points) is compared to the nominal (dotted) and the reweighted (solid) PYTHIA\mbox{-}6; the lower panels show their ratios to PYTHIA\mbox{-}8.}
  	\label{fig:reweight_pythia8}
  \end{sidewaysfigure}
 
  \paragraph{Data-like prior.} The pseudo-data of the closure test is obtained from a one-iteration unfolding of the measured data by the same method.
  %
- First, a classifier separating measured from reconstructed PYTHIA6 jets (matched and fake) gives \(r(\mathbf{y}) \approx p_\mathrm{meas.}(\mathbf{y})/p_{\mathrm{reco.}, 0}(\mathbf{y})\), which is applied to the reconstructed jets.
+ First, a classifier separating measured from reconstructed PYTHIA\mbox{-}6 jets (matched and fake) gives \(r(\mathbf{y}) \approx p_\mathrm{meas.}(\mathbf{y})/p_{\mathrm{reco.}, 0}(\mathbf{y})\), which is applied to the reconstructed jets.
  %
  Matched generated jets inherit the weight of their reconstructed partner.
  %
  As missed jets have none, a second classifier separates the matched generated jets weighted this way from the unweighted ones, and the resulting smooth \(r(\mathbf{x})\) is applied to all generated jets, matched and missed.
  %
- The reweighted reconstructed jets are the pseudo-data, the reweighted generated jets the pseudo-truth, and the pseudo-data are unfolded with the nominal PYTHIA6 embedding.
+ The reweighted reconstructed jets are the pseudo-data, the reweighted generated jets the pseudo-truth, and the pseudo-data are unfolded with the nominal PYTHIA\mbox{-}6 embedding.
  %
- Since the pseudo-data resemble the measurement, but the pseudo-truth is known, the deviation of the pseudo-unfolded result from the pseudo-truth (Figs.~\ref{fig:ClosureAngularity} and \ref{fig:ClosureAngVsRg}) is a non-closure uncertainty applied to the measured result as a relative uncertainty.
+ Since the pseudo-data resemble the measurement, but the pseudo-truth is known, the deviation of the pseudo-unfolded result from the pseudo-truth (Figs.~\ref{fig:ClosureAngularity} and~\ref{fig:ClosureAngVsRg}) is a non-closure uncertainty applied to the measured result as a relative uncertainty.
  
  \begin{figure}
  	\includegraphics[width=\textwidth]{angularities/pp/sys_ch_ang_k1_b0.5_hist_ang.pdf}
  	\includegraphics[width=\textwidth]{angularities/pp/sys_ch_ang_k1_b1_hist_ang.pdf}
  	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b2_hist_ang.pdf}
-	\caption{Relative systematic uncertainties of the \(\lambda^{\kappa=1}_{\beta}\) distributions of inclusive jets, after the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG-7 and PYTHIA-8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
+	\caption{Relative systematic uncertainties of the \(\lambda^{\kappa=1}_{\beta}\) distributions of inclusive jets, after the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
 	\label{fig:SysDistIncl}
 \end{figure}
  \begin{figure}
  	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b0.5_hist_sd_ang.pdf}
  	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b1_hist_sd_ang.pdf}
  	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b2_hist_sd_ang.pdf}
-	\caption{Relative systematic uncertainties of the \(\lambda^{\kappa=1}_{\beta}\) distributions of SoftDrop-groomed jets, after the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG-7 and PYTHIA-8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
+	\caption{Relative systematic uncertainties of the \(\lambda^{\kappa=1}_{\beta}\) distributions of SoftDrop-groomed jets, after the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
 	\label{fig:SysDistSD}
 \end{figure}
  \begin{figure}
  	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b0.5_prof_incl_vs_sd_dR.pdf}
  	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b1_prof_incl_vs_sd_dR.pdf}
  	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b2_prof_incl_vs_sd_dR.pdf}
-	\caption{Relative systematic uncertainties of the \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles of inclusive jets, after the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG-7 and PYTHIA-8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
+	\caption{Relative systematic uncertainties of the \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles of inclusive jets, after the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
 	\label{fig:SysProfIncl}
 \end{figure}
  \begin{figure}
  	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b0.5_prof_sd_vs_sd_dR.pdf}
  	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b1_prof_sd_vs_sd_dR.pdf}
  	\includegraphics[width=\linewidth]{angularities/pp/sys_ch_ang_k1_b2_prof_sd_vs_sd_dR.pdf}
-	\caption{Relative systematic uncertainties of the \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles of SoftDrop-groomed jets, after the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG-7 and PYTHIA-8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
+	\caption{Relative systematic uncertainties of the \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles of SoftDrop-groomed jets, after the Barlow check (Sec.~\ref{sec:barlow}), for \(\beta = 0.5\), 1 and 2 (top to bottom). The sources are the tracking efficiency, the hadronic correction and the tower gain (solid), the number of unfolding iterations, the jet-\(p_\mathrm{T}\) resolution and the HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 priors (dashed), and the non-closure (dotted); the black line is their sum in quadrature and the magenta band is the statistical uncertainty. Jet-\(p_\mathrm{T}\) ranges are shown as panels.}
 	\label{fig:SysProfSD}
 \end{figure}
  
@@ -573,7 +573,7 @@ As a cross-check of the unfolding, the jet mass \(M_\mathrm{jet}\) and groomed j
 %
 They are shown in the \(p_\mathrm{T, jet}\) ranges of the publications, and the groomed observables are obtained by grooming the unfolded jets again with SoftDrop at \(z_\mathrm{cut} = 0.1\), \(\beta = 0\), as in the publications.
 %
-The systematic uncertainties of this work in these comparisons include the number of iterations, the jet-\(p_\mathrm{T}\) resolution, the HERWIG-7 prior, the non-closure, the tracking efficiency and the hadronic correction.
+The systematic uncertainties of this work in these comparisons include the number of iterations, the jet-\(p_\mathrm{T}\) resolution, the HERWIG\mbox{-}7 prior, the non-closure, the tracking efficiency and the hadronic correction.
 %
 The jet mass, \(R_\mathrm{g}\) and \(z_\mathrm{g}\) of this work agree with the published results within uncertainties in most bins (Fig.~\ref{fig:starpub}), while the groomed mass is higher than the published one in the lowest \(M_\mathrm{jet, g}\) bins.
 \begin{sidewaysfigure}
@@ -601,13 +601,13 @@ Grooming shifts all distributions to smaller angularity values, since the soft, 
 %
 The change of shape grows with \(\beta\), because a larger \(\beta\) weights the constituents far from the axis more strongly: for \(\beta = 0.5\) the groomed distribution is a moderately shifted version of the inclusive one, while for \(\beta = 2\) the groomed thrust falls steeply from the smallest values, most of the groomed jets being reduced to a narrow core.
 
-PYTHIA-6, PYTHIA-8 and HERWIG-7 reproduce the overall shape and the \(p_\mathrm{T, jet}\) and \(\beta\) dependence of the data, but all three predict jets that are narrower than measured: they overshoot the data at small \(\lambda_\beta\), most visibly for the LHA, and undershoot the large-\(\lambda_\beta\) tails.
+PYTHIA\mbox{-}6, PYTHIA\mbox{-}8 and HERWIG\mbox{-}7 reproduce the overall shape and the \(p_\mathrm{T, jet}\) and \(\beta\) dependence of the data, but all three predict jets that are narrower than measured: they overshoot the data at small \(\lambda_\beta\), most visibly for the LHA, and undershoot the large-\(\lambda_\beta\) tails.
 %
-The deficit in the tails reaches 20--40\% for HERWIG-7 and PYTHIA-8, beyond the systematic uncertainties, while PYTHIA-6 stays within them in most bins, for both inclusive and groomed jets.
+The deficit in the tails reaches 20--40\% for HERWIG\mbox{-}7 and PYTHIA\mbox{-}8, beyond the systematic uncertainties, while PYTHIA\mbox{-}6 stays within them in most bins, for both inclusive and groomed jets.
 %
-For \(\beta = 1\) and 2, grooming reduces the deviations of HERWIG-7 and PYTHIA-8 from the data, most clearly at higher \(p_\mathrm{T, jet}\), consistent with the removal of the soft wide-angle radiation that is most sensitive to the hadronization modeling; PYTHIA-6 does not show this improvement.
+For \(\beta = 1\) and 2, grooming reduces the deviations of HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 from the data, most clearly at higher \(p_\mathrm{T, jet}\), consistent with the removal of the soft wide-angle radiation that is most sensitive to the hadronization modeling; PYTHIA\mbox{-}6 does not show this improvement.
 %
-Since PYTHIA-6 is also the prior of the unfolding, this agreement alone does not prove a good description, but the prior variations to HERWIG-7 and PYTHIA-8 (Sect.~\ref{sec:priorReweighting}) are part of the systematic uncertainty, so a result pulled towards the prior would show up there.
+Since PYTHIA\mbox{-}6 is also the prior of the unfolding, this agreement alone does not prove a good description, but the prior variations to HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 (Sec.~\ref{sec:priorReweighting}) are part of the systematic uncertainty, so a result pulled towards the prior would show up there.
 
 \paragraph{Angularities as functions of the groomed radius.}
 The unbinned unfolding provides the full set of jet features for every jet, so that any observable can be projected afterward without being chosen, or binned, before the unfolding.
@@ -626,7 +626,7 @@ At fixed \(R_\mathrm{g}\) the mean angularities depend only weakly on \(p_\mathr
 
 The profiles separate the two possible origins of the model deviations seen in the distributions.
 %
-PYTHIA-6 describes the profiles within uncertainties, but HERWIG-7 and PYTHIA-8 lie 10--15\% below the data at all \(R_\mathrm{g}\), for all \(\beta\), in all \(p_\mathrm{T, jet}\) ranges and for inclusive as well as groomed jets.
+PYTHIA\mbox{-}6 describes the profiles within uncertainties, but HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 lie 10--15\% below the data at all \(R_\mathrm{g}\), for all \(\beta\), in all \(p_\mathrm{T, jet}\) ranges and for inclusive as well as groomed jets.
 %
 Their narrower jets are thus not caused by a different distribution of the first splitting angle, but by too little radiation at a given splitting angle, which is information that the one-dimensional distributions alone cannot provide.
 
@@ -638,14 +638,14 @@ The charged-jet and full-jet versions of this work agree closely with each other
 At the same charged-jet \(p_\mathrm{T}\), the jets at \sPP{200}{GeV} are considerably narrower than at \(\sqrt{s} = 5.02\) TeV, both with and without grooming, as expected from the larger fraction of quark-initiated jets at the lower collision energy.
 
 \paragraph{Summary.}
-In terms of the three goals set out at the beginning of this section: the inclusive and groomed angularities, their \(p_\mathrm{T, jet}\) dependence and their correlation with \(R_\mathrm{g}\) provide a \(p+p\) baseline for future measurements in heavy-ion collisions at the same energy; the unbinned unfolding passes its closure tests and reproduces earlier STAR measurements of other observables from the same jets (Fig.~\ref{fig:starpub}); and the \(R_\mathrm{g}\) profiles, obtained from the same unfolding without a dedicated analysis, trace the deviations of HERWIG-7 and PYTHIA-8 from the data to the radiation at a given splitting angle.
+In terms of the three goals set out at the beginning of this section: the inclusive and groomed angularities, their \(p_\mathrm{T, jet}\) dependence and their correlation with \(R_\mathrm{g}\) provide a \(p+p\) baseline for future measurements in heavy-ion collisions at the same energy; the unbinned unfolding passes its closure tests and reproduces earlier STAR measurements of other observables from the same jets (Fig.~\ref{fig:starpub}); and the \(R_\mathrm{g}\) profiles, obtained from the same unfolding without a dedicated analysis, trace the deviations of HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 from the data to the radiation at a given splitting angle.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.9\linewidth]{angularities/pp/fig_dist_ptbins_ch_ang_k1_b0_5.pdf}
 	\includegraphics[width=0.9\linewidth]{angularities/pp/fig_dist_ptbins_ch_ang_k1_b1.pdf}
 	\includegraphics[width=0.9\linewidth]{angularities/pp/fig_dist_ptbins_ch_ang_k1_b2.pdf}
-	\caption{Unfolded distributions of \(\lambda^{\kappa=1}_{\beta}\) for \(\beta = 0.5\), 1 and 2 (top to bottom) for inclusive (blue) and SoftDrop-groomed (red, \(z_\mathrm{cut} = 0.2\), \(\beta = 0\)) jets in \(p+p\) collisions at \sPP{200}{GeV}, in three \(p_\mathrm{T, jet}\) ranges (columns). Boxes show the systematic and bars the statistical uncertainties. The measurements are compared to PYTHIA-6 (dotted), PYTHIA-8 (dashed) and HERWIG-7 (solid), and the lower panels show the ratios of the event generators to the data for inclusive and groomed jets, with the relative systematic uncertainty of the data as a band.}
+	\caption{Unfolded distributions of \(\lambda^{\kappa=1}_{\beta}\) for \(\beta = 0.5\), 1 and 2 (top to bottom) for inclusive (blue) and SoftDrop-groomed (red, \(z_\mathrm{cut} = 0.2\), \(\beta = 0\)) jets in \(p+p\) collisions at \sPP{200}{GeV}, in three \(p_\mathrm{T, jet}\) ranges (columns). Boxes show the systematic and bars the statistical uncertainties. The measurements are compared to PYTHIA\mbox{-}6 (dotted), PYTHIA\mbox{-}8 (dashed) and HERWIG\mbox{-}7 (solid), and the lower panels show the ratios of the event generators to the data for inclusive and groomed jets, with the relative systematic uncertainty of the data as a band.}
 	\label{fig:ppDist}
 \end{figure}
 %
@@ -654,7 +654,7 @@ In terms of the three goals set out at the beginning of this section: the inclus
 	\includegraphics[width=0.9\linewidth]{angularities/pp/fig_prof_sd_dR_ptbins_ch_ang_k1_b0_5.pdf}
 	\includegraphics[width=0.9\linewidth]{angularities/pp/fig_prof_sd_dR_ptbins_ch_ang_k1_b1.pdf}
 	\includegraphics[width=0.9\linewidth]{angularities/pp/fig_prof_sd_dR_ptbins_ch_ang_k1_b2.pdf}
-	\caption{Unfolded mean angularities \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) as functions of the groomed radius \(R_\mathrm{g}\) for \(\beta = 0.5\), 1 and 2 (top to bottom) for inclusive (blue) and SoftDrop-groomed (red) jets in \(p+p\) collisions at \sPP{200}{GeV}, in three \(p_\mathrm{T, jet}\) ranges (columns). Boxes show the systematic and bars the statistical uncertainties. The measurements are compared to PYTHIA-6 (dotted), PYTHIA-8 (dashed) and HERWIG-7 (solid), and the lower panels show the ratios of the event generators to the data, with the relative systematic uncertainty of the data as a band.}
+	\caption{Unfolded mean angularities \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) as functions of the groomed radius \(R_\mathrm{g}\) for \(\beta = 0.5\), 1 and 2 (top to bottom) for inclusive (blue) and SoftDrop-groomed (red) jets in \(p+p\) collisions at \sPP{200}{GeV}, in three \(p_\mathrm{T, jet}\) ranges (columns). Boxes show the systematic and bars the statistical uncertainties. The measurements are compared to PYTHIA\mbox{-}6 (dotted), PYTHIA\mbox{-}8 (dashed) and HERWIG\mbox{-}7 (solid), and the lower panels show the ratios of the event generators to the data, with the relative systematic uncertainty of the data as a band.}
 	\label{fig:ppProfRg}
 \end{figure}
 
@@ -670,27 +670,27 @@ In terms of the three goals set out at the beginning of this section: the inclus
 \label{sec:angConclusion}
 This chapter presented two measurements of jet angularities at \sNN{200}{GeV}, both corrected for detector effects with unbinned, machine-learning based unfolding.
 
-The distributions of the girth \(g = \lambda_1^1\), \(p_\mathrm{T}^\mathrm{D} = \sqrt{\lambda_0^2}\) and LeSub of hard-core jets in Au+Au collisions (Sect.~\ref{sec:AuAuAngularities}, Fig.~\ref{fig:AuAu_JSO}) are consistent between central (0--20\%) and peripheral (40--80\%) collisions within the systematic uncertainties.
+The distributions of the girth \(g = \lambda_1^1\), \(p_\mathrm{T}^\mathrm{D} = \sqrt{\lambda_0^2}\) and LeSub of hard-core jets in Au+Au collisions (Sec.~\ref{sec:AuAuAngularities}, Fig.~\ref{fig:AuAu_JSO}) are consistent between central (0--20\%) and peripheral (40--80\%) collisions within the systematic uncertainties.
 %
 This absence of a visible modification is at least partly a consequence of the analysis choices: the hard-core constituent selection favors hard-fragmented, narrow jets, which interact less with the QGP, and the conservative, uncorrelated treatment of the systematic uncertainties in the central-to-peripheral ratio limits its sensitivity.
 %
 As the first heavy-ion measurement with unbinned unfolding, it also showed where the method needed to be developed further before being applied to less biased jets.
 
-This development was carried out with the inclusive and SoftDrop-groomed angularities \(\lambda^{\kappa=1}_{\beta}\), \(\beta = 0.5\), 1 and 2, of inclusive jets in \(p+p\) collisions at \sPP{200}{GeV} (Sect.~\ref{sec:ppResults}).
+This development was carried out with the inclusive and SoftDrop-groomed angularities \(\lambda^{\kappa=1}_{\beta}\), \(\beta = 0.5\), 1 and 2, of inclusive jets in \(p+p\) collisions at \sPP{200}{GeV} (Sec.~\ref{sec:ppResults}).
 %
 The unfolding passes its closure tests and reproduces earlier STAR measurements of the jet mass, groomed jet mass, \(R_\mathrm{g}\) and \(z_\mathrm{g}\) from the same unfolded jets.
 %
 The measured jets become narrower with increasing \(p_\mathrm{T, jet}\), and grooming shifts the angularities to smaller values, the more so the larger \(\beta\).
 %
-PYTHIA-6, PYTHIA-8 and HERWIG-7 describe the main trends, but predict narrower jets than measured; PYTHIA-8 and HERWIG-7 fall 20--40\% below the data in the tails of the distributions, while PYTHIA-6 agrees within uncertainties in most bins.
+PYTHIA\mbox{-}6, PYTHIA\mbox{-}8 and HERWIG\mbox{-}7 describe the main trends, but predict narrower jets than measured; PYTHIA\mbox{-}8 and HERWIG\mbox{-}7 fall 20--40\% below the data in the tails of the distributions, while PYTHIA\mbox{-}6 agrees within uncertainties in most bins.
 %
-For \(\beta = 1\) and 2, grooming reduces the deviations of PYTHIA-8 and HERWIG-7 from the data.
+For \(\beta = 1\) and 2, grooming reduces the deviations of PYTHIA\mbox{-}8 and HERWIG\mbox{-}7 from the data.
 %
 Because the unbinned unfolding keeps the full set of jet features, the mean angularities could also be measured as functions of the groomed radius \(R_\mathrm{g}\) without a dedicated analysis.
 %
 These profiles rise monotonically with \(R_\mathrm{g}\), with the groomed and inclusive values converging at large \(R_\mathrm{g}\) as expected from the angular ordering of the clustering sequence, and depend only weakly on \(p_\mathrm{T, jet}\) at fixed \(R_\mathrm{g}\).
 %
-They also show that PYTHIA-8 and HERWIG-7 underestimate the angularities by 10--15\% at every \(R_\mathrm{g}\), i.e.\ that their narrower jets come from too little radiation at a given splitting angle rather than from a different distribution of the splitting angle.
+They also show that PYTHIA\mbox{-}8 and HERWIG\mbox{-}7 underestimate the angularities by 10--15\% at every \(R_\mathrm{g}\), i.e.\ that their narrower jets come from too little radiation at a given splitting angle rather than from a different distribution of the splitting angle.
 %
 Compared with ALICE measurements at \(\sqrt{s} = 5.02\) TeV at the same charged-jet \(p_\mathrm{T}\), the jets at RHIC are considerably narrower, as expected from their larger fraction of quark-initiated jets.
 

@@ -1,7 +1,7 @@
 \chapter{Unfolding}
 \label{app:Unfolding}
 
-For any experiment, there is a disconnect between the desired phenomena (\emph{truth} level) and the measurement (\emph{measured} level) due to limitations of the detector setup. This is portrayed in fig.~\ref{fig:UnfoldingScheme} through a dijet event at the truth level, whose final state charged and neutral particles are recorded as TPC tracks and BEMC towers.  Each of the detectors smear the energy and momenta and for almost all experiments,  the information about particle species is lost. For example, at STAR often a \(\pi^0\) mass assumption is taken for measured constituents. Thus jets, which are composite objects of these tracks and towers are non-trivially modified by a complicated convolution of these effects. Even with the best background removal procedure, jets will contain some residual background fluctuations from the underlying event.
+For any experiment, there is a disconnect between the desired phenomena (\emph{truth} level) and the measurement (\emph{measured} level) due to limitations of the detector setup. This is portrayed in Fig.~\ref{fig:UnfoldingScheme} through a dijet event at the truth level, whose final state charged and neutral particles are recorded as TPC tracks and BEMC towers.  Each of the detectors smear the energy and momenta and for almost all experiments,  the information about particle species is lost. For example, at STAR often a \(\pi^0\) mass assumption is taken for measured constituents. Thus jets, which are composite objects of these tracks and towers are non-trivially modified by a complicated convolution of these effects. Even with the best background removal procedure, jets will contain some residual background fluctuations from the underlying event.
 
 \begin{figure}
 	\centering
@@ -142,12 +142,12 @@ Thus distributions of any jet observable \(\mathbf{O}\) will have these \emph{de
 
 
 
-From eq.~\ref{eq:trMeas}, we measure \(p_\mathrm{meas.}\) through histograms, density estimates, etc. and \(p_\mathrm{tr.}\) is what we want to measure. Now, \(p_\mathrm{meas.|tr.}\) represents the detector's \emph{response}, which can be obtained to a high degree of accuracy from simulation programs like GEANT~\cite{MISC-15}. We can start from a \emph{generated} truth distribution  \(p_\mathrm{gen., 0}\) and obtain the \emph{reconstructed} measured distribution  \(p_\mathrm{reco., 0}\). Thus the assumption is, 
+From Eq.~\ref{eq:trMeas}, we measure \(p_\mathrm{meas.}\) through histograms, density estimates, etc. and \(p_\mathrm{tr.}\) is what we want to measure. Now, \(p_\mathrm{meas.|tr.}\) represents the detector's \emph{response}, which can be obtained to a high degree of accuracy from simulation programs like GEANT~\cite{MISC-15}. We can start from a \emph{generated} truth distribution  \(p_\mathrm{gen., 0}\) and obtain the \emph{reconstructed} measured distribution  \(p_\mathrm{reco., 0}\). Thus the assumption is, 
 \begin{align}
 	\label{eq:responseTransfer}
 	p_\mathrm{meas.|tr.}(\mathbf{y} |  \mathbf{x}) = p_\mathrm{reco.|gen., 0}(\mathbf{y} |  \mathbf{x}) \equiv R(\mathbf{y}, \mathbf{x}) ,
 \end{align}
-Substituting \(R(\mathbf{y}, \mathbf{x})\) in eq.~\ref{eq:trMeas} and using \(\omega_0(\mathbf{y}) = p_\mathrm{meas.}(\mathbf{y})/p_\mathrm{reco., 0}(\mathbf{y})\)
+Substituting \(R(\mathbf{y}, \mathbf{x})\) in Eq.~\ref{eq:trMeas} and using \(\omega_0(\mathbf{y}) = p_\mathrm{meas.}(\mathbf{y})/p_\mathrm{reco., 0}(\mathbf{y})\)
 \begin{align}
 	\label{eq:unfoldEstimator}
 	p_\mathrm{gen., 1}(\mathbf{x}) &\equiv \int d\mathbf{y}~p_\mathrm{gen.|reco., 0}(\mathbf{x} |  \mathbf{y})\,p_\mathrm{meas.}(\mathbf{y}) \notag\\
@@ -174,7 +174,7 @@ For the \(n^\text{th}\) iteration,
 %
 Given convergence, \(p_{\mathrm{reco.}, n}(\mathbf{y}) \to p_\mathrm{gen.}(\mathbf{y})\) and \(p_{\mathrm{tr.}, n}(\mathbf{x}) \to p_{\mathrm{unf.}}(\mathbf{x})\) is the unfolded distribution. 
 
-%Generated jets without a reconstructed partner (\emph{misses}, \(\mathbf{y}=\varnothing\)) carry no \(\omega_{n-1}\), and reconstructed jets without a generated partner (\emph{fakes}, \(\mathbf{x}=\varnothing\)) carry no \(\nu_{n-1}\). Each receives its missing weight from the corresponding map of eq.~\ref{eq:generalUnfolding}, built from matched pairs and normalized over them,
+%Generated jets without a reconstructed partner (\emph{misses}, \(\mathbf{y}=\varnothing\)) carry no \(\omega_{n-1}\), and reconstructed jets without a generated partner (\emph{fakes}, \(\mathbf{x}=\varnothing\)) carry no \(\nu_{n-1}\). Each receives its missing weight from the corresponding map of Eq.~\ref{eq:generalUnfolding}, built from matched pairs and normalized over them,
 %\begin{align}
 %	\label{eq:missFakeWeights}
 %	\omega_{n-1}(\mathbf{x}) &= \frac{\int d\mathbf{y}~R(\mathbf{y}, \mathbf{x})\,\omega_{n-1}(\mathbf{y})}{\int d\mathbf{y}~R(\mathbf{y}, \mathbf{x})}
