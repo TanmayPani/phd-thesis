@@ -5,7 +5,6 @@ For any experiment, there is a disconnect between the desired phenomena (\emph{t
 
 \begin{figure}
 	\centering
-	\label{fig:UnfoldingScheme}
 	\begin{tikzpicture}[scale=0.7,rotate=0]
 		\def\R{5} % tracker outer radius
 		\def\dang{3} % angular granularity of calo deposits, 
@@ -129,7 +128,8 @@ For any experiment, there is a disconnect between the desired phenomena (\emph{t
 		
 		\draw  (10:\R) edge["\textbf{Deconvolution / Unfolding}", ->, very thick, red] (10:0.15*\R);
 	\end{tikzpicture}
-	\caption{Schematic figure showing the unfolding procedure. The desired physics / truth / particle level is represented by the \(2\to 2\) feynman diagram in the middle. The blue (gray) tracks and tower deposits are the dijet (underlying) event as recorded by the TPC and BEMC. } 
+	\caption{Schematic figure showing the unfolding procedure. The desired physics / truth / particle level is represented by the \(2\to 2\) feynman diagram in the middle. The blue (gray) tracks and tower deposits are the dijet (underlying) event as recorded by the TPC and BEMC. }
+	\label{fig:UnfoldingScheme} 
 \end{figure}
 
 Thus distributions of any jet observable \(\mathbf{O}\) will have these \emph{detector effects} which will need to be removed in order for the measurement to be comparable to theory calculations. In other terms, a truth value of \(\mathbf{x}\) can manifest as a range of measured values \((\mathbf{x}_0, \mathbf{x}_1)\) similarly, a measured value of \(\mathbf{y}\) can come from a range of truth values \((\mathbf{y}_0, \mathbf{y}_1)\).  Thus, using Bayes theorem, the probability either measured value being  \(\mathbf{y}\)  or truth value being  \(\mathbf{x}\) would be,
@@ -196,12 +196,11 @@ This algorithm can be adapted for binned data by expressing the distributions as
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/omnifold_fig_2025_04_24}
-	\caption{Illustration of the OmniFold method. In Step 1, MC is corrected to match data at the detector level, producing a weighting function $w_1(\vec{x}_{\text{reco}}^{\text{ MC}})$. In Step 2, a new function $w_2(\vec{x}_{\text{true}}^{\text{ MC}})$ is learned based only on particle-level quantities. The method proceeds iteratively, refining the function $w_2(\vec{x}_{\text{true}}^{\text{ MC}})$ such that the particle-level MC can be reweighted to give event yields and kinematics that match those observed in the data.~\cite{Canelli_2026}
-		\label{fig:omnifold}}
-	\label{fig:omnifoldfig20250424}
+	\caption{Illustration of the OmniFold method. In Step 1, MC is corrected to match data at the detector level, producing a weighting function $w_1(\vec{x}_{\text{reco}}^{\text{ MC}})$. In Step 2, a new function $w_2(\vec{x}_{\text{true}}^{\text{ MC}})$ is learned based only on particle-level quantities. The method proceeds iteratively, refining the function $w_2(\vec{x}_{\text{true}}^{\text{ MC}})$ such that the particle-level MC can be reweighted to give event yields and kinematics that match those observed in the data.~\cite{Canelli_2026}}
+	\label{fig:omnifold}
 \end{figure}
 
-One of the first unbinned approach uses classifiers to calculate ratios \(\omega\) and \(\nu\). For \(i^\text{th}\) iteration, \(\omega_{i-1}(\mathbf{y})\) can be calculated using classifier \(f_\mathrm{meas., reco}\) which classifies a jet represented by \(\mathbf{y}\) as measured or reconstructed. Thus, 
+One of the first unbinned approaches, OmniFold~\cite{PhysRevLett.124.182001} (Fig.~\ref{fig:omnifold}), uses classifiers to calculate the ratios \(\omega\) and \(\nu\). For \(i^\text{th}\) iteration, \(\omega_{i-1}(\mathbf{y})\) can be calculated using classifier \(f_\mathrm{meas., reco}\) which classifies a jet represented by \(\mathbf{y}\) as measured or reconstructed. Thus, 
 \begin{equation}
 	\omega_{i-1}(\mathbf{y}) = \frac{f_\mathrm{meas., reco}(\mathbf{y})}{1 - f_\mathrm{meas., reco}(\mathbf{y})}
 \end{equation}

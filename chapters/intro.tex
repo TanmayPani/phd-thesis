@@ -11,7 +11,7 @@ Later around 340-330 B.C., Aristotle's \emph{hylomorphic} (from Greek words \emp
 The ingenuity of Aristotle's hylomorphism lied in his abstraction of the unknown, he theorized the \emph{elachista} (Greek word for minima, later translated into Latin as \emph{minima naturalia})  not as an indivisible unit of matter,  but simply a \emph{size scale} beyond which matter could no longer be structured into recognizable forms like flesh, wood, bronze, etc.
 
 
-Meanwhile, sometime between 600-200 B.C., the Indian philosopher Kanada developed a non-theistic, atomistic approach to the Vedas in the Sanskrit text \emph{Vaishesika Sutra} (Aphorisms on particularity).
+Meanwhile, sometime between 600-200 B.C., the Indian philosopher Kanada developed a non-theistic, atomistic approach to the Vedas in the Sanskrit text \emph{Vaishesika Sutra} (Aphorisms on particularity)~\cite{chakrabarty2003vaisesika}.
 %
 Kanada postulated that even the smallest division of any material that still resembles the matter, \emph{Anu} (Sanskrit word for atom) would further comprise of \emph{Paramanu} (Sanskrit for ultimate-atom/sub-atom)
 %
@@ -19,7 +19,7 @@ Interestingly, Kanada's paramanu were qualitatively different than ordinary matt
 %
 Kanada also went into concepts like rotational invariance (the paramanu must be spherical to be the same from all directions).
 %
-However, even though the words Anu and Paramanu are still used to mean ``atom'' and ``nuclear/sub-atom'' respectively in almost every language spoken in today's India, the ultimate objective of Kanada's sutras had little to do with formalizing natural phenomena and were mostly a metaphysical reading of Vedic teachings like \emph{Dharma} and \emph{Moksha} (Vedic version of the Buddhist \emph{Nirvana}).  
+However, even though the words Anu and Paramanu are still used to mean ``atom'' and ``nuclear/sub-atom'' respectively in almost every language spoken in today's India, the ultimate objective of Kanada's sutras had little to do with formalizing natural phenomena and were mostly a metaphysical reading of Vedic teachings like \emph{Dharma} and \emph{Moksha} (Vedic version of the Buddhist \emph{Nirvana}) ~\cite{klostermaier2010survey}.  
 %
 
 Around 2000 years later, Aristotle's minima naturalia became the foundation of \emph{corpuscular theories} from European natural philosophers like Issac Newton, Rene Descartes and Robert Boyle. 
@@ -98,8 +98,8 @@ Table \ref{tab:qrknlep} shows fermions of the standard model, their anti-particl
 		% Bottom edges of both tables                         
 		\cline{3-5} \cline{7-9}
 	\end{tabular}
-	\label{tab:qrknlep}
 	\caption{Three generations of leptons (left) and quarks (right).}
+	\label{tab:qrknlep}
 \end{table}
 
 \begin{table}
@@ -137,33 +137,78 @@ Table \ref{tab:qrknlep} shows fermions of the standard model, their anti-particl
 	\label{tab:smvtx}
 \end{table}
 
-The mediators/bosons exchanged between the other fundamental particles give rise to the fundamental interactions: electromagnetism from the photon (\(\gamma\)), weak force from \(W^\pm\) and \(Z\) bosons, the gluon (\(g\)) for the strong force, and the Higgs boson (\(h\)) for imparting mass to the fundamental particles. Various interaction vertices possible in SM, that become the building blocks of all fundamental interactions are shown in \ref{tab:smvtx}. 
+The mediators/bosons exchanged between the other fundamental particles give rise to the fundamental interactions: electromagnetism from the photon (\(\gamma\)), weak force from \(W^\pm\) and \(Z\) bosons, the gluon (\(g\)) for the strong force, and the Higgs boson (\(h\)) for imparting mass to the fundamental particles. Various interaction vertices possible in SM, that become the building blocks of all fundamental interactions are shown in Tab.~\ref{tab:smvtx}.
+
+Each vertex in Tab.~\ref{tab:smvtx} is a point where a mediator is emitted or absorbed, and its strength is set by the \emph{coupling} of the corresponding interaction: the electric charge \(e\) for the photon, the weak couplings for the \(W^\pm\) and \(Z\), and the strong coupling \(g_s\) for the gluon.
+%
+Every vertex in a Feynman diagram contributes one factor of its coupling to the quantum-mechanical amplitude of a process, and the cross section, being proportional to the square of the amplitude, therefore scales as a power of the dimensionless combinations \(\alpha = e^2/4\pi \approx 1/137\) and \(\alpha_s = g_s^2/4\pi\).
+%
+For example, the scattering of two quarks by the exchange of a gluon, or the annihilation of a quark and an antiquark into a gluon that produces a new pair (Fig.~\ref{fig:qqScattering}), has two vertices, so its amplitude is proportional to \(g_s^2\) and its cross section to \(\alpha_s^2\).
+%
+Any additional emission, or any virtual loop, adds more vertices and hence more powers of the coupling, so the prediction for a process takes the form of a series in \(\alpha\) or \(\alpha_s\).
+%
+Such a \emph{perturbative} expansion is only useful when the coupling is small, which is well satisfied for electromagnetism.
+%
+As shown in Sec.~\ref{subsec:runningCoupling}, the couplings are not constants but depend on the momentum transfer \(Q\) of the interaction, and for the strong interaction this dependence decides where perturbation theory can be used at all.
+
+\begin{figure}[htbp]
+	\centering
+	\begin{tabular}{c@{\hspace{2cm}}c}
+		\diagqqpT{q'}{q} & \diagqqbAnn{q}{q'} \\[0.3cm]
+		(a) & (b)
+	\end{tabular}
+	\caption{Leading-order Feynman diagrams of (a) the scattering of two quarks, \(qq' \to qq'\), by the exchange of a gluon, and (b) the annihilation of a quark and an antiquark into a gluon that produces a new pair, \(q\bar{q} \to q'\bar{q}'\). Both contain two quark-gluon vertices of Tab.~\ref{tab:smvtx}, so their amplitudes are proportional to \(g_s^2\) and their cross sections to \(\alpha_s^2\).}
+	\label{fig:qqScattering}
+\end{figure}
+
 
 %===========================================================================================
 \section{Quantum Chromodynamics}
+\label{sec:QCDIntro}
 
-%\subsection{Lagrangian and Feynman Rules}
-\emph{Quantum Chromodynamics (QCD)} is the component of the SM which describes the strong interactions of quarks and gluons. The QCD Lagrangian can be expected as:
-\begin{align}
-	\mathcal{L}_\mathrm{QCD} = &\underbrace{\bar{q}^\alpha (i \gamma^\mu \partial_\mu\delta_{\alpha\beta} - g\gamma^\mu
-		t^a_{\alpha\beta}A^a_\mu - m\delta_{\alpha\beta})q^\beta - \frac{1}{4} F^a_{\mu\nu}F_a^{\mu\nu}}_{\mathcal{L}_\mathrm{classical}}\notag\\ &\underbrace{- \frac{1}{2\lambda}(\partial^\mu A^a_\mu)^2}_{\mathcal{L}_\mathrm{gauge-fixing}}+ \underbrace{\bar{c}^\alpha\partial^\mu(\partial_\mu\delta_{\alpha\beta} + igT^a_{\alpha\beta}A^a_\mu)c^\beta}_{\mathcal{L}_\mathrm{ghost}}
-\end{align}
+\emph{Quantum Chromodynamics (QCD)} is the component of the SM that describes the strong interaction of quarks and gluons, collectively called \emph{partons}.
+%
+Its charge, the analogue of the electric charge of quantum electrodynamics (QED), is called \emph{color}: every quark carries one of three colors, conventionally named red (\(r\)), green (\(g\)) and blue (\(b\)), and every antiquark one of the three anticolors (\(\bar{r}\), \(\bar{g}\), \(\bar{b}\)).
 
-\(\mathcal{L}_\mathrm{classical}\) is the classical Lagrangian density shows interaction of a quark field  \(q^\alpha\) with 3 color degrees of freedom interacting with gluon fields \(A^a_\mu\) with 8 color degrees of freedom. \(g\) and \(m\) are dimensionless and correspond to QCD coupling constant, and quark-mass respectively. \(F^a_{\mu\nu}\) are the gluon tensors defined as,
-\begin{equation}
-	F^a_{\mu\nu} = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a - gf_{abc}A^b_\mu A^c_\nu.
-	\label{eq:gluonFieldTensor}
-\end{equation}
+The names of the colors are arbitrary, and physics must not change if the three color states of a quark are relabeled.
+%
+More generally, it must not change if they are \emph{shuffled}, i.e.\ mixed into each other, \(r \to \cos\theta\,r + \sin\theta\,g\) and \(g \to -\sin\theta\,r + \cos\theta\,g\) being one example.
+%
+Any such shuffle that preserves the total probability is a \(3\times3\) unitary matrix acting on the column \((r, g, b)\), and those with unit determinant form the group \(\mathrm{SU}(3)\).
+%
+In QED, the only corresponding freedom is a change of the overall complex phase of the electron field, which forms the group \(\mathrm{U}(1)\).
+%
+QCD requires this freedom locally: the colors may be shuffled differently at every point in space and time.
+%
+Two neighboring quarks can then only be compared if there is a field that relates their color frames, and this field is the \emph{gluon}.
+%
+There is one gluon for every independent infinitesimal shuffle, of which \(\mathrm{SU}(3)\) has \(3^2 - 1 = 8\), so there are eight gluons, while \(\mathrm{U}(1)\) has a single one, the photon.
 
-To properly define gluon propagators, we need to make a choice of gauge. The \(\mathcal{L}_\mathrm{gauge-fixing}\) parametrizes the class of covariant gauges with the gauge parameter $\lambda$. In non-Abelian theories, this gauge fixing term leads to creation of unphysical degrees of freedom, which are canceled out by \(\mathcal{L}_\mathrm{ghost}\) which contains complex, scalar fermion fields \(c^\alpha\). 
+When a quark emits or absorbs a gluon, its color changes: a red quark turning green emits a gluon that carries away red and brings in green, i.e.\ a red-antigreen (\(r\bar{g}\)) gluon.
+%
+Gluons therefore carry a color and an anticolor.
+%
+Of the \(3 \times 3 = 9\) color-anticolor combinations, the one that is completely symmetric in the three colors, \((r\bar{r} + g\bar{g} + b\bar{b})/\sqrt{3}\), is unchanged by every shuffle.
+%
+It is a \emph{color singlet}, carries no net color and does not take part in the strong interaction, leaving eight gluons, as found above (in group-theory notation, \(\mathbf{3}\otimes\bar{\mathbf{3}} = \mathbf{8}\oplus\mathbf{1}\)).
+%
+Only color singlets are observed in nature: the \emph{mesons}, quark-antiquark pairs in exactly this symmetric combination, and the \emph{baryons}, three quarks in the combination that is antisymmetric in color, such as the proton and the neutron.
 
-The matrices \(t^a\) and  \(T^a\) are the fundamental and adjoint representations of \(\rm SU(3)\) in form of traceless \(3\times3\) and \(8\times8\) hermitian matrices satisfying:
-\begin{align}
-	[t^a, t^b] = if_{abc}t^c,~\tr(t^at^b) = \frac{1}{2}\delta^{ab} \notag\\
-	[T^a, T^b] = if_{abc}T^c,~(T^{a})_{bc} = -if^{abc}.
-\end{align}
+Successive shuffles do not commute: mixing \(r\) with \(g\) and then \(g\) with \(b\) gives a different result than doing the same in the opposite order, just as two rotations about different axes in space do.
+%
+\(\mathrm{SU}(3)\) is therefore a \emph{non-Abelian} group, unlike the Abelian \(\mathrm{U}(1)\) of QED.
+%
+Because gluons are themselves colored, a shuffle of the colors also rotates the gluons, and gluons consequently interact with other gluons.
+%
+This is the origin of the three- and four-gluon vertices of Tab.~\ref{tab:smvtx}, which have no counterpart for the electrically neutral photon.
+%
+The corresponding Lagrangian and Feynman rules are given in App.~\ref{sec:qcdLagrangian}.
 
-Comparing with quantum electrodynamics (QED), where the photon field tensor lacks the last term of Eqn. \ref{eq:gluonFieldTensor} as it is an Abelian, \(U(1)\) gauge theory, we can explain the presence of three/four-gluon vertices and absence of such vertices for the photon in Table \ref{tab:smvtx}. The lagrangian can be used to formulate \emph{Feynman rules} for calculating amplitude contributions from various propagators and vertices, which are collected in Tab.~\ref{tab:qcdrules}. 
+The strength with which a parton radiates gluons is set by its color charge, quantified by the \emph{color factors} \(C_F = 4/3\) for quarks and \(C_A = 3\) for gluons.
+%
+A gluon therefore radiates about \(C_A/C_F = 9/4\) times more than a quark, so jets initiated by gluons contain more, and more widely spread, radiation than those initiated by quarks.
+
+
 
 \subsection{The Running Coupling}
 \label{subsec:runningCoupling}
@@ -176,8 +221,17 @@ Comparing with quantum electrodynamics (QED), where the photon field tensor lack
 	\label{fig:runningCoupling}
 \end{figure}
 
+The coupling of a vertex in Tab.~\ref{tab:smvtx} is not a fixed number, because virtual loops around the vertex change the charge seen by a probe at a given momentum transfer \(Q\).
+%
+In QED, virtual electron-positron pairs polarize the vacuum and \emph{screen} the electric charge, so that \(\alpha\) grows slowly with \(Q\), from about \(1/137\) at low \(Q\) to about \(1/128\) at the mass of the \(Z\) boson.
+%
+In QCD, virtual quark-antiquark pairs screen the color charge in the same way, but the colored gluons around a charge have the opposite effect and \emph{anti-screen} it.
+%
+Anti-screening wins as long as there are fewer than 17 quark flavors, so \(\alpha_s\) decreases with \(Q\).
+%
+At leading order,
 \begin{equation}
-	\alpha_s(Q^2) = \frac{\alpha_s(Q_0^2)}{1 + \beta_0(\alpha_s(Q_0^2))\ln(Q^2/Q_0^2) + \mathcal{O}(\alpha_s^2)}
+	\alpha_s(Q^2) = \frac{\alpha_s(Q_0^2)}{1 + \beta_0\,\alpha_s(Q_0^2)\ln(Q^2/Q_0^2)}, \qquad \beta_0 = \frac{11 C_A - 2 n_f}{12\pi},
 	\label{eq:alphasVsQ2}
 \end{equation}
 
@@ -225,7 +279,11 @@ Comparing with quantum electrodynamics (QED), where the photon field tensor lack
 %\end{align}
 %\(\Lambda\) is called the \emph{confinement scale}, around \(200~\mathrm{MeV}\). 
 %
-Eq. \ref{eq:alphasVsQ2} show a monotonically decreasing relationship between \(\alpha_s\) and \(Q^2\). 
+where \(n_f\) is the number of quark flavors light enough to take part at the scale \(Q\), and \(Q_0\) is a reference scale, usually the \(Z\) mass, at which \(\alpha_s\) is measured (Fig.~\ref{fig:runningCoupling}).
+%
+Eq.~\ref{eq:alphasVsQ2} shows a monotonically decreasing relationship between \(\alpha_s\) and \(Q^2\).
+%
+It is often written in terms of the scale \(\Lambda \approx 200\)~MeV at which the leading-order coupling would diverge, \(\alpha_s(Q^2) = 1/[\beta_0 \ln(Q^2/\Lambda^2)]\).
 %
 At high momentum transfers (\(Q \gg \Lambda\)), the coupling strength vanishes ($\alpha_s \to 0$). 
 %
@@ -235,11 +293,84 @@ At low energy scales (\(Q \ll \Lambda\)), the coupling diverges.
 %
 In this non-perturbative QCD (npQCD) limit, isolated color charges cannot exist and partons are permanently bound into color-neutral hadrons (\emph{Color Confinement}).
 
-\section{Hadronization and event generators}
+\section{Parton showers, hadronization and event generators}
 \label{sec:eventGenerators}
+In a collision of two hadrons, the partons that scatter at a large momentum transfer do so over a time too short for the rest of the hadron to take part, so the \emph{hard scattering} can be calculated perturbatively in terms of partons, and combined with the probabilities of finding those partons inside the incoming hadrons (App.~\ref{sec:hardProcesses}, Eq.~\ref{eq:factorization}).
+%
+The partons leaving a hard scattering are far off their mass shell, i.e.\ highly \emph{virtual}.
+%
+They lose their virtuality by radiating gluons, which in turn radiate or split into quark-antiquark pairs, each emission being most likely soft (low energy) or collinear (at a small angle to its emitter).
+%
+This radiation from the outgoing partons is called \emph{final-state radiation} (FSR), while the incoming partons radiate as well before the scattering, giving \emph{initial-state radiation} (ISR).
+%
+The resulting cascade is the \emph{parton shower}, and it proceeds, emission by emission, until the momentum scale of the emissions reaches about \(1\)~GeV (App.~\ref{sec:partonShower}).
+
+Below this scale \(\alpha_s\) becomes large (Sec.~\ref{subsec:runningCoupling}) and perturbation theory no longer applies.
+%
+The colored partons are then bound into color-neutral hadrons, a step called \emph{hadronization}, which is modelled phenomenologically: in the string picture, the partons that are connected in color are joined by a color flux tube, or \emph{string}, which breaks into hadrons as the partons fly apart.
+%
+Many of the hadrons produced are unstable and \emph{decay} further, e.g.\ neutral pions into photon pairs, before reaching a detector.
+%
+Fig.~\ref{fig:partonShowerStages} shows these stages for simulated \(qq \to qq\), \(qg \to qg\) and \(gg \to gg\) scatterings.
+%
+The events initiated by more gluons contain visibly more radiation, as expected from their larger color factor, \(C_A > C_F\).
+%
+The collimated sprays of hadrons that emerge along the directions of the scattered partons are the \emph{jets} studied in this thesis (Sec.~\ref{sec:jetAlgo}).
+
+\begin{figure}[p]
+	\centering
+	\tikzset{showerlabel/.style={font=\scriptsize\sffamily, align=center, inner sep=1pt},
+		showerarrow/.style={-{Stealth[length=1.6mm]}, thin, black!80}}
+	\newcommand{\showerimg}[1]{\includegraphics[width=\linewidth]{figures/partonShower/#1}}
+	\begin{tabular}{@{}>{\centering\arraybackslash}m{0.45cm}
+			>{\centering\arraybackslash}m{0.3\textwidth}
+			>{\centering\arraybackslash}m{0.3\textwidth}
+			>{\centering\arraybackslash}m{0.3\textwidth}@{}}
+		& \textsf{\small Parton shower} & \textsf{\small Color strings} & \textsf{\small Hadrons and decays} \\[0.2cm]
+		\rotatebox{90}{\(qq \to qq\)} &
+		\begin{tikzpicture}
+			\node[anchor=south west, inner sep=0] (img) {\showerimg{qq2qq_noHadr}};
+			\begin{scope}[x={(img.south east)}, y={(img.north west)}]
+				\node[showerlabel] (hs) at (0.76,0.9) {hard\\scattering};
+				\draw[showerarrow] (hs) -- (0.38,0.43);
+				\node[showerlabel] (isr) at (0.93,0.6) {ISR};
+				\draw[showerarrow] (isr) -- (0.55,0.47);
+				\draw[showerarrow] (isr) -- (0.76,0.27);
+				\node[showerlabel] (fsr) at (0.07,0.8) {FSR};
+				\draw[showerarrow] (fsr) -- (0.235,0.76);
+			\end{scope}
+		\end{tikzpicture} &
+		\begin{tikzpicture}
+			\node[anchor=south west, inner sep=0] (img) {\showerimg{qq2qq_hadrString}};
+			\begin{scope}[x={(img.south east)}, y={(img.north west)}]
+				\node[showerlabel] (str) at (0.08,0.85) {strings};
+				\draw[showerarrow] (str) -- (0.245,0.62);
+				\draw[showerarrow] (str) -- (0.32,0.865);
+			\end{scope}
+		\end{tikzpicture} &
+		\begin{tikzpicture}
+			\node[anchor=south west, inner sep=0] (img) {\showerimg{qq2qq_hadr}};
+			\begin{scope}[x={(img.south east)}, y={(img.north west)}]
+				\node[showerlabel] (had) at (0.8,0.88) {hadrons};
+				\draw[showerarrow] (had) -- (0.51,0.9);
+				\draw[showerarrow] (had) -- (0.72,0.44);
+				\node[showerlabel] (dec) at (0.09,0.86) {hadron\\decays};
+				\draw[showerarrow] (dec) -- (0.255,0.71);
+				\draw[showerarrow] (dec) -- (0.19,0.285);
+			\end{scope}
+		\end{tikzpicture} \\[0.3cm]
+		\rotatebox{90}{\(qg \to qg\)} & \showerimg{qg2qg_noHadr} & \showerimg{qg2qg_hadrString} & \showerimg{qg2qg_hadr} \\[0.3cm]
+		\rotatebox{90}{\(gg \to gg\)} & \showerimg{gg2gg_noHadr} & \showerimg{gg2gg_hadrString} & \showerimg{gg2gg_hadr} \\
+	\end{tabular}
+	\caption{Stages of simulated proton-proton collisions for the hard scatterings \(qq \to qq\) (top), \(qg \to qg\) (middle) and \(gg \to gg\) (bottom). Left: the hard scattering with the parton shower, i.e.\ initial-state (ISR) and final-state radiation (FSR). Middle: the color strings (brown) joining the color-connected partons at the end of the shower. Right: the hadrons produced by the breaking strings and their decay products. Incoming beams are shown in gray, quarks and antiquarks as blue and violet lines, gluons as red coils and photons as yellow coils; positive, negative and neutral hadrons are shown as pink, green and gray lines. The stages are labelled in the top row. The events with more gluons in the hard scattering contain more radiation. The events were generated with PYTHIA-8 (Detroit tune, all hard QCD processes, \(p+p\) at \sPP{200}{GeV}, \(20 < \hat{p}_\mathrm{T} < 30\)~GeV/\(c\)) and drawn from the PYTHIA event record with an interactive event viewer coded using Python and JavaScript}
+	\label{fig:partonShowerStages}
+\end{figure}
+
+The shower is not a set of independent emissions: quantum interference between emissions, \emph{color coherence}, suppresses soft radiation at large angles and orders the emissions in angle (App.~\ref{sec:coherentPartonBranching}).
+%
 Coherent branching does not only suppress soft emission, it also organizes the color flow of the shower.
 %
-Eq.~\ref{eq:coherentPattern} of shows that a pair of partons close in angle radiates as its parent, carrying the parent's charge, so the color of a branching is handed down the tree along with its momentum.
+Eq.~\ref{eq:coherentPattern} shows that a pair of partons close in angle radiates as its parent, carrying the parent's charge, so the color of a branching is handed down the tree along with its momentum.
 %
 Applying this at every branching down to the cut-off \(t_0\), neighbouring partons are the ones that are color connected, and the final state has sorted itself into color singlet groups whose invariant masses are set by \(t_0\) and \(\Lambda\), and not by the scale of the hard process that started it.
 %
@@ -471,10 +602,10 @@ A schematic diagram of the geometry of heavy-ion collisions is shown in Fig. \re
 
 \subsection{Centrality Determination} \label{sect:CentEP}
 \begin{figure}[h]
-	\label{fig:centralityVsNch}
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/centrality_refmult.jpg}
 	\caption{An illustration of the total inclusive charged particles multiplicity \(N_\mathrm{ch}\) and number of participant (\(N_\mathrm{part}\)) and impact parameter (\(b\)) in heavy-ion collisions. Taken from~\cite{Miller:2007ri}}
+	\label{fig:centralityVsNch}
 \end{figure}
 As the impact parameter  (\(b\)) of collisions, the distance between the geometrical centers of the colliding nuclei, is not measurable in experiments, a proxy called \emph{centrality} is defined. 
 %
@@ -506,8 +637,8 @@ Centrality classes are classified for the simulated distribution.
 	\centering
 	\includegraphics[width=0.4\textwidth]{figures/flow_elliptic_init_v4.pdf}
 	\includegraphics[width=0.4\textwidth]{figures/flow_elliptic_expd_xyz_v2.pdf}
+	\caption{Schematic diagrams of a non-central heavy-ion collision: the almond-shaped overlap region of the two nuclei with its anisotropic pressure gradients (left), and the resulting momentum anisotropy of the expanding medium, with more particles emitted along the short axis of the overlap region (right). This anisotropy is quantified by the Fourier coefficients \(v_n\) of the azimuthal particle distribution. Taken from~\cite{Connors_2018}}
 	\label{fig:anisotropycartoon}
-	\caption{Schematic diagrams showing the initial overlap region (left) and the spatial anisotropy generated by this anisotropic overlap region.  This anisotropy can be quantified using the Fourier coefficients of the momentum anisotropy. Taken from~\cite{Connors_2018}}
 \end{figure}
 Contrary to initial naive expectations of a gas-like QGP, the QGP formed in these collisions was shown to behave like a liquid of quarks and gluons~\cite{Heinz_2013}.
 %
@@ -651,7 +782,7 @@ This fragmentation process can therefore introduce the $p_\mathrm{T}$ dependence
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{figures/CMSJetShapeFinalJS4Cent}
-	\caption{Differential jet shapes in Pb+Pb and \(p+p\) collisions for four Pb+Pb  centralities. Each spectrum is normalized so that its integral is unity.  This shows that there are more particles in jets in central collisions and these modifications are primarily at large angles relative to the jet axis, as expected from partonic energy loss. Taken from~\cite{Connors_2018}}
+	\caption{Differential jet shapes in Pb+Pb and \(p+p\) collisions for four Pb+Pb  centralities. Each spectrum is normalized so that its integral is unity.  In central collisions a larger fraction of the jet momentum is found at large angles relative to the jet axis, as expected from partonic energy loss. Taken from~\cite{Connors_2018}}
 	\label{fig:cmsjetshapefinaljs4cent}
 \end{figure}
 Going a bit into the jet substructure, CMS measurement of jet's average radial momentum profile around the jet-axis, called \emph{differential jet shape} defined as,

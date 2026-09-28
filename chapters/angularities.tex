@@ -339,7 +339,7 @@ To enhance jet signal, only High-Tower (HT) triggered events (at least one tower
  	\label{fig:PtResolution}
  \end{figure}
  
- Unfolding is done using the Multifold method. Every jet is represented as a vector of 23 features. The four classifiers of Multifold are parametrized as DNNs with 3 hidden layers with 256 nodes each. The model weights are trained using the AdamW optimizer with a learning rate of \(10^{-3}\) and weight decay of \(10^{-2}\). Convergence is achieved in two unfolding iterations. Statistical uncertainties are calculated using bootstrap ensemble with 50 model replicas each sub-sampling  500k each of the data-like and sim-like jets, so each model replica sees 1M jets every epoch. All the  required unfolded distributions and profiles are calculated by using the per-jet unfolding weights. 
+ Unfolding is done using the Multifold method. Every jet is represented as a vector of 23 features. The four classifiers of Multifold are parametrized as DNNs with 3 hidden layers with 256 nodes each. The model weights are trained using the AdamW optimizer with a learning rate of \(10^{-3}\) and weight decay of \(10^{-2}\). Convergence is achieved in two unfolding iterations; the training histories of the four classifiers over the iterations are shown in Fig.~\ref{fig:unfoldigLossAccAUC}. Statistical uncertainties are calculated using bootstrap ensemble with 50 model replicas each sub-sampling  500k each of the data-like and sim-like jets, so each model replica sees 1M jets every epoch. All the  required unfolded distributions and profiles are calculated by using the per-jet unfolding weights. 
  
  \begin{figure}
  	\centering
@@ -409,7 +409,7 @@ To enhance jet signal, only High-Tower (HT) triggered events (at least one tower
  %
 The Barlow test was performed on each source of systematic error to remove the statistical fluctuation from the variation.
 %
-The relative uncertainty from every source, detector and unfolding related, is shown before the Barlow check in Figs.~\ref{fig:SysDistInclRaw}--\ref{fig:SysProfSDRaw} and after it in Figs.~\ref{fig:SysDistIncl}--\ref{fig:SysProfSD}, for the inclusive and groomed distributions and for the \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles.
+The relative uncertainty from every source, detector and unfolding related, is shown before the Barlow check for the inclusive and groomed distributions (Figs.~\ref{fig:SysDistInclRaw} and~\ref{fig:SysDistSDRaw}) and for the inclusive and groomed \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles (Figs.~\ref{fig:SysProfInclRaw} and~\ref{fig:SysProfSDRaw}), and after it in Figs.~\ref{fig:SysDistIncl}, \ref{fig:SysDistSD}, \ref{fig:SysProfIncl} and~\ref{fig:SysProfSD}, respectively.
 \begin{figure}
 	\includegraphics[width=\textwidth]{angularities/pp/sys_ch_ang_k1_b0.5_hist_ang_raw.pdf}
 	\includegraphics[width=\textwidth]{angularities/pp/sys_ch_ang_k1_b1_hist_ang_raw.pdf}

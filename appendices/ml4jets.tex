@@ -48,25 +48,24 @@ The RGB color channels of the image are made as,
 	\item G: $\sum p_\mathrm{T}$ of neutral constituents,
 	\item B: number of charged constituents.
 \end{itemize}
-giving jets as shown in~\ref{fig:qgJetExamples}.
+giving jets as shown in Fig.~\ref{fig:qgJetExamples}.
 %
 Preprocessing involves centering the images around each jet's $p_\mathrm{T}$-weighted centroid
-$(\bar y,\bar\phi) = \sum_i p_{\mathrm{T},i}(y_i,\phi_i)/\sum_i p_{\mathrm{T},i}$, followed by narmalization
+$(\bar y,\bar\phi) = \sum_i p_{\mathrm{T},i}(y_i,\phi_i)/\sum_i p_{\mathrm{T},i}$, followed by normalization
 %
 Data is augmented using  procedures like random reflections ($\Delta y\to-\Delta y$ or $\Delta\phi\to-\Delta\phi$) and random jitter. 
 
 \begin{figure}
 	\centering
-	\label{fig:qgJetExamples}
 	\includegraphics[width=\linewidth]{figures/qgjet_images}
-	\caption{Typical quark (left) and gluon (right) jet. Gluon jets exhibit a broader spatial radiation pattern
+	\caption{Jet images of a typical quark (left) and gluon (right) jet in \(\Delta y\) and \(\Delta\phi\) around the jet axis, with the image channels defined in the text. Gluon jets exhibit a broader spatial radiation pattern
 		and higher particle multiplicity compared to quark jets}
-	\label{fig:qgjetimages}
+	\label{fig:qgJetExamples}
 \end{figure}
 
 The images were input for a Convolutional Neural Network (CNN) implemented using PyTorch as shown in fig.~\ref{fig:rgbnn}.  
 %
-Each convolutional layer consisted of 64 filters, with filter sizes of 5×5, 3×3, and 3×3, respectively (8×8, 4×4, and 4×4 for the 72×72 images). The max-pooling layers performed a 2×2 down-sampling with a stride length of 2. The dense layer consisted of 128 units, with a dropout rate of 0.2 before and after it.
+Each convolutional layer consisted of 64 filters, with filter sizes of \(5\times5\), \(3\times3\), and \(3\times3\), respectively. The max-pooling layers performed a 2×2 down-sampling with a stride length of 2. The dense layer consisted of 128 units, with a dropout rate of 0.2 before and after it.
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/RGBNN}
@@ -83,21 +82,21 @@ Training used a batch size of 128 for 20 epochs, and the model with the lowest v
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/roc_per_jpt}
-	\caption{}
+	\caption{ROC curves of the CNN quark-gluon classifier, quark efficiency vs gluon efficiency, evaluated on a holdout test set in bins of \(p_\mathrm{T, jet}\) (20--25, 25--30, 30--40 and 40--65 GeV/\(c\)). The area under the curve (AUC) rises from 0.79 to 0.83 with increasing \(p_\mathrm{T, jet}\). The diagonal corresponds to random guessing.}
 	\label{fig:rocperjpt}
 \end{figure}
 Training images were augmented with random reflections in \(\Delta\eta\) and \(\Delta\phi\) and random translations of up to 0.5 pixels. 
 %
-The Receiver Operator Characteristic (ROC) curve  is shown differential in \(p_\mathrm{T, jet}\) by evaluating the model on a holdout test set.  
+The Receiver Operator Characteristic (ROC) curve, evaluated on a holdout test set, is shown differentially in \(p_\mathrm{T, jet}\) in Fig.~\ref{fig:rocperjpt}. The separation improves with \(p_\mathrm{T, jet}\), with the area under the curve increasing from 0.79 to 0.83. 
 
 
 A way to gain some understanding of how the model looks at jet substructure is through \emph{interpretability} methods. 
 %
-We use a simple method of just noting the average change in classifier output upon masking a pixel. As seen in fig.~\ref{fig:importancecnnqg}, 
+We use a simple method of just noting the average change in classifier output upon masking a pixel. As seen in Fig.~\ref{fig:importancecnnqg}, the classifier relies mostly on the pixels close to the jet axis, and the region it uses becomes narrower for jets with higher \(p_\mathrm{T}\), which are more collimated.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/importance_cnn_qg}
-	\caption{Per-pixel feature importance }
+	\caption{Per-pixel importance for the CNN quark-gluon classifier: the mean change of the classifier output when a pixel is masked, relative to the probability of the true class, \(\langle|\Delta P|\rangle/P(\text{true class})\), as a function of \(\Delta y\) and \(\Delta\phi\) from the jet axis, for quark (left) and gluon (right) jets with \(20 < p_\mathrm{T, jet} < 30\)~GeV/\(c\) (top) and \(p_\mathrm{T, jet} \geq 30\)~GeV/\(c\) (bottom).}
 	\label{fig:importancecnnqg}
 \end{figure}
 \subsection{Characterizing jet quenching}
@@ -107,13 +106,13 @@ Here we take PYTHIA-6~\cite{Sj_strand_2006} as the source of unquenched jets and
 %
 Jets are represented as a 9-D vectors of features: $p_{\rm T, jet}$, $\rm N^{charged}_{\rm constit., jet}$, $\rm N^{neutral}_{\rm constit., jet}$, LeSub, $\lambda^2_0$, $\lambda_1^{0.5}$, $\lambda_1^1$, $\lambda_1^2$.
 %
-The jets are input into Dense Neural Networks (DNNs) with three hidden layers with 100 nodes each. After training, we calculate ROC curves shown in~\ref{fig:jetQuenchROC} using a holdout test set.
+The jets are input into Dense Neural Networks (DNNs) with three hidden layers with 100 nodes each. After training, we calculate ROC curves shown in Fig.~\ref{fig:jetQuenchROC} using a holdout test set.
 %
 \begin{figure}
-	\label{fig:jetQuenchROC}
 	\includegraphics[width=0.49\linewidth]{roc_curve_dnn_withoutRec.pdf}
 	\includegraphics[width=0.49\linewidth]{roc_curve_dnn_wRec.pdf}
-	\caption{ROC curves for PYTHIA6 vs. JEWEL without recoils (left) and with recoils (right).}
+	\caption{ROC curves of the DNN classifier separating PYTHIA-6 (unquenched) from JEWEL (quenched) jets, for JEWEL without recoils (left) and with recoils (right), in four centrality classes, with the corresponding AUC values in the legends. Jets are anti-\(k_\mathrm{T}\), \(R = 0.4\), \(p_\mathrm{T, jet} > 10\)~GeV/\(c\), \(|\eta_\mathrm{jet}| < 1 - R\), with at least two charged constituents.}
+	\label{fig:jetQuenchROC}
 \end{figure}
 %
 The DNN performs better than chance in all the centralities and for both with/without recoils case.

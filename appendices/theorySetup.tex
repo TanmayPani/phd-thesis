@@ -1,4 +1,28 @@
 \chapter{Hard Processes and Parton Showers}
+\section{The QCD Lagrangian}
+\label{sec:qcdLagrangian}
+The color symmetry of Sec.~\ref{sec:QCDIntro} is made precise by the QCD Lagrangian,
+\begin{align}
+	\mathcal{L}_\mathrm{QCD} = &\underbrace{\bar{q}^\alpha (i \gamma^\mu \partial_\mu\delta_{\alpha\beta} - g\gamma^\mu
+		t^a_{\alpha\beta}A^a_\mu - m\delta_{\alpha\beta})q^\beta - \frac{1}{4} F^a_{\mu\nu}F_a^{\mu\nu}}_{\mathcal{L}_\mathrm{classical}}\notag\\ &\underbrace{- \frac{1}{2\lambda}(\partial^\mu A^a_\mu)^2}_{\mathcal{L}_\mathrm{gauge-fixing}}+ \underbrace{\bar{c}^\alpha\partial^\mu(\partial_\mu\delta_{\alpha\beta} + igT^a_{\alpha\beta}A^a_\mu)c^\beta}_{\mathcal{L}_\mathrm{ghost}}
+\end{align}
+
+\(\mathcal{L}_\mathrm{classical}\) is the classical Lagrangian density shows interaction of a quark field  \(q^\alpha\) with 3 color degrees of freedom interacting with gluon fields \(A^a_\mu\) with 8 color degrees of freedom. \(g\) and \(m\) are dimensionless and correspond to QCD coupling constant, and quark-mass respectively. \(F^a_{\mu\nu}\) are the gluon tensors defined as,
+\begin{equation}
+	F^a_{\mu\nu} = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a - gf_{abc}A^b_\mu A^c_\nu.
+	\label{eq:gluonFieldTensor}
+\end{equation}
+
+To properly define gluon propagators, we need to make a choice of gauge. The \(\mathcal{L}_\mathrm{gauge-fixing}\) parametrizes the class of covariant gauges with the gauge parameter $\lambda$. In non-Abelian theories, this gauge fixing term leads to creation of unphysical degrees of freedom, which are canceled out by \(\mathcal{L}_\mathrm{ghost}\) which contains complex, scalar fermion fields \(c^\alpha\). 
+
+The matrices \(t^a\) and  \(T^a\) are the fundamental and adjoint representations of \(\rm SU(3)\) in form of traceless \(3\times3\) and \(8\times8\) hermitian matrices satisfying:
+\begin{align}
+	[t^a, t^b] = if_{abc}t^c,~\tr(t^at^b) = \frac{1}{2}\delta^{ab} \notag\\
+	[T^a, T^b] = if_{abc}T^c,~(T^{a})_{bc} = -if^{abc}.
+\end{align}
+
+Comparing with quantum electrodynamics (QED), where the photon field tensor lacks the last term of Eqn. \ref{eq:gluonFieldTensor} as it is an Abelian, \(U(1)\) gauge theory, we can explain the presence of three/four-gluon vertices and absence of such vertices for the photon in Table \ref{tab:smvtx}. The Lagrangian can be used to formulate \emph{Feynman rules} for calculating amplitude contributions from various propagators and vertices, which are collected in Tab.~\ref{tab:qcdrules}.
+
 \begin{table}[htbp]
 	\centering
 	\begin{tabular}{
@@ -44,6 +68,7 @@
 	\label{tab:qcdrules}
 \end{table}
 \section{Hard Processes}
+\label{sec:hardProcesses}
 To consider any nucleus as a singular coherent object, the fluctuations inside it would involve momentum transfers below the confinement scale (\(\Lambda\)) introduced in \ref{subsec:runningCoupling}, and would occur over timescales \(\sim 1/\Lambda\). We define \emph{hard-scattering processes} or just \emph{hard processes} as interactions of a hard perturbative probe with high momentum transfer \(Q >> \Lambda\). Since this interaction occurs over a time-scale \(\sim 1/Q \ll 1/\Lambda\), the perturbative probe effectively interacts with a near-static ``snapshot'' of the nucleus with a characteristic resolution \(\sim 1/Q\).
 
 \begin{figure}[htbp]
@@ -189,7 +214,6 @@ Outgoing partons evolve from higher to lower momentum transfer scales (say, \(t\
 \label{subsec:dglap}
 \begin{figure}[h]
 	\centering
-	\label{fig:splitKinematics}
 	\begin{tikzpicture}[>=latex, line width=0.6pt,]
 		\node[draw,circle, minimum size=1cm, inner sep=2pt] (rest) at (-1,0) {\(\mathcal{M}_\mathrm{n}\)};
 		\coordinate (splitPoint) at (0.5, 0);
@@ -221,6 +245,7 @@ Outgoing partons evolve from higher to lower momentum transfer scales (say, \(t\
 		\pic[draw, "\(\theta_b\)",  <-, angle eccentricity=2.] {angle = splitDown--splitPoint--continual};
 	\end{tikzpicture}
 	\caption{Kinematics of timelike (left) vs spacelike (right) parton branching}
+	\label{fig:splitKinematics}
 \end{figure}
 
 Consider nearly collinear timelike splitting of a parton, \(a\to b+c\) shown in Fig. \ref{fig:splitKinematics}. Let's assume the partons are massless, and define the evolution scale (\(t\)) as,
