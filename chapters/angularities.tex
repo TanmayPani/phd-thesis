@@ -2,7 +2,7 @@
 \label{ch:angularities}
 Substructure based observables calculated from constituents of clustered jets can potentially have sensitivity to variety of QCD processes, from initial hard (high-\(Q^2\)) parton scattering to hadronization.
 %
-Considering that, a constituent carries two major types of information, it's energy relative to the jet \(\left(z_\mathrm{const.} = \frac{p_{\rm T, const.}}{p_ {\rm T,  jet}}\right)\) and its direction with respect to the jet-axis, usually characterized by it's \(\eta-\varphi\) coordinate relative to the jet-axis \(\left(\Delta R_\mathrm{const., jet}=\sqrt{(\eta_\mathrm{const.} - \eta_\mathrm{jet})^2 + (\varphi_\mathrm{const.} - \varphi_\mathrm{jet})^2}\right)\).
+Considering that, a constituent carries two major types of information, its energy relative to the jet \(\left(z_\mathrm{const.} = \frac{p_{\rm T, const.}}{p_ {\rm T,  jet}}\right)\) and its direction with respect to the jet-axis, usually characterized by its \(\eta-\varphi\) coordinate relative to the jet-axis \(\left(\Delta R_\mathrm{const., jet}=\sqrt{(\eta_\mathrm{const.} - \eta_\mathrm{jet})^2 + (\varphi_\mathrm{const.} - \varphi_\mathrm{jet})^2}\right)\).
 %
 An intuitive way to put these two information together is by raising \(z_\mathrm{const.}\) and \(\Delta R_\mathrm{const, jet}\) to exponents \(\kappa\) and \(\beta\) respectively and multiplying them. 
 %
@@ -14,7 +14,7 @@ That would give bunch of per-constituent scalars, which we can add up  for a jet
 %
 The parameters $\kappa$ and $\beta$ tune the experimental sensitivity to hard and wide-angle radiation, respectively. 
 %
-$\lambda^1_\beta$'s are IRC safe angularites~\cite{Berger_2003}, which probe the average angular spread of energy around the jet-axis. 
+$\lambda^1_\beta$'s are IRC safe angularities~\cite{Berger_2003}, which probe the average angular spread of energy around the jet-axis. 
 %
 They are radial moments of the  jet's transverse momentum profile, also known as differential jet-shape (\(\rho(r)\)) given by Eq.~\ref{eq:rhoVsDr}.
 %
@@ -35,7 +35,7 @@ On the heavy-ion side, angularity measurements can help determine non-trivial bi
 Experimental measurements of IRC unsafe angularities like \(\lambda_0^0\), the jet-\emph{multiplicity} and \(\lambda_0^2\) jet-\emph{momentum dispersion} (\(= (p_T^D)^2\)) complement the \(\lambda_{\beta > 0}^1\)  with further information about jet fragmentation. 
 %
 
-In this chapter, various generalized angularites are measured at RHIC energies. 
+In this chapter, various generalized angularities are measured at RHIC energies. 
 %
 These measurements explore jet fragmentation in a phase space of lower-momentum jets complementing LHC measurements at high energies. 
 
@@ -336,7 +336,7 @@ To enhance jet signal, only High-Tower (HT) triggered events (at least one tower
  	\label{fig:PtResolution}
  \end{figure}
  
- Unfolding is done using the Multifold method. Every jet is represented as a vector of 23 features. The four classifiers of Multifold are parametrized as DNNs with 3 hidden layers with 256 nodes each. The model weights are trained using the AdamW optimizer with a learning rate of \(10^{-3}\) and weight decay of \(10^{-2}\). Convergence is achieved in two unfolding iterations; the training histories of the four classifiers over the iterations are shown in Fig.~\ref{fig:unfoldigLossAccAUC}. Statistical uncertainties are calculated using bootstrap ensemble with 50 model replicas each sub-sampling  500k each of the data-like and sim-like jets, so each model replica sees 1M jets every epoch. All the  required unfolded distributions and profiles are calculated by using the per-jet unfolding weights. 
+ Unfolding is done using the MultiFold method. Every jet is represented as a vector of 23 features. The four classifiers of MultiFold are parametrized as DNNs with 3 hidden layers with 256 nodes each. The model weights are trained using the AdamW optimizer with a learning rate of \(10^{-3}\) and weight decay of \(10^{-2}\). Convergence is achieved in two unfolding iterations; the training histories of the four classifiers over the iterations are shown in Fig.~\ref{fig:unfoldigLossAccAUC}. Statistical uncertainties are calculated using bootstrap ensemble with 50 model replicas each sub-sampling  500k each of the data-like and sim-like jets, so each model replica sees 1M jets every epoch. All the  required unfolded distributions and profiles are calculated by using the per-jet unfolding weights. 
  
  \begin{figure}
  	\centering
@@ -605,7 +605,7 @@ PYTHIA-6, PYTHIA-8 and HERWIG-7 reproduce the overall shape and the \(p_\mathrm{
 %
 The deficit in the tails reaches 20--40\% for HERWIG-7 and PYTHIA-8, beyond the systematic uncertainties, while PYTHIA-6 stays within them in most bins, for both inclusive and groomed jets.
 %
-For \(\beta = 1\) and 2, grooming reduces the deviations of HERWIG-7 and PYTHIA-8 from the data, most clearly at higher \(p_\mathrm{T, jet}\), consistent with the removal of the soft wide-angle radiation that is most sensitive to the hadronization modelling; PYTHIA-6 does not show this improvement.
+For \(\beta = 1\) and 2, grooming reduces the deviations of HERWIG-7 and PYTHIA-8 from the data, most clearly at higher \(p_\mathrm{T, jet}\), consistent with the removal of the soft wide-angle radiation that is most sensitive to the hadronization modeling; PYTHIA-6 does not show this improvement.
 %
 Since PYTHIA-6 is also the prior of the unfolding, this agreement alone does not prove a good description, but the prior variations to HERWIG-7 and PYTHIA-8 (Sect.~\ref{sec:priorReweighting}) are part of the systematic uncertainty, so a result pulled towards the prior would show up there.
 
