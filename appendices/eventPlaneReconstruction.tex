@@ -1,0 +1,79 @@
+\chapter{Event plane reconstruction}
+\label{sec:EP_Recon}
+The reaction plane, \(\Psi_{\rm RP}\) cannot be directly measured and is approximated by the second-order symmetry plane, $\Psi_{2,EP}$, referred to as the \emph{event plane}  in this text, for simplicity.  
+%
+\(\Psi_{\rm RP} \to \Psi_{2, EP}\) if nucleon distributions were in their average positions and devoid of fluctuations from interactions among nucleons~\cite{PhysRevC.101.064901}.
+%
+By measuring the charged particle azimuthal distribution, the n-th order event plane can be extracted by~\cite{Poskanzer:1998yz},  
+%
+\begin{equation}
+	\Psi_{n,EP} = \frac{1}{n} \arctan \left(\frac{Q_{y, n}}{Q_{x, n}} \right),
+	\label{eqn:EP}
+\end{equation}
+%
+the weighted vector \(\mathbf{Q}_n = Q_{x, n}\hat{\mathbf{x}}+ Q_{y, n}\hat{\mathbf{y}}\) are given by,
+%
+\begin{align}
+	\mathbf{Q}_n = \hat{\mathbf{x}}\sum_{\mathrm{tracks}} p_{\rm T, track} \cos (n \phi_{\rm track}) + \hat{\mathbf{y}}\sum_{\mathrm{tracks}} p_{\rm T, track} \sin (n \phi_{\rm track}).
+	\label{Eqn:Qvecs}
+\end{align}
+%
+where the sum is calculated for all reconstructed charged particles (tracks) in the event, $\phi_{\rm track}$ is the track's azimuthal angle, and $p_{\rm T, track}$ the track's transverse momentum.  
+%
+
+Due to finite acceptance and multiplicities, the calculated event plane has an underlying anisotropy that is corrected by applying two separate correction methods.  
+%
+First, a calibration and recentering correction procedures are applied to remove bias introduced by non-uniform acceptance of the TPC tracking system and further account for potential beam-condition effects~\cite{Barrette:1997pt,PhysRevC.55.1420,Poskanzer:1998yz}.  
+%
+This procedure involves recentering the weighted $\mathbf{Q}_2$-vectors such that, $\langle\mathbf{Q}_2 \rangle = \mathbf{0}$. 
+%
+It is done by calculating a modified $\mathbf{Q}_2$, obtained by subtracting an event averaged $\langle\mathbf{Q}_2 \rangle$ from each event's nominal $\mathbf{Q}_2$.
+%
+
+The higher harmonics of $\Psi_{n,EP}$ still persist after recentering \cite{Poskanzer:1998yz}, and are removed through a second correction step, referred to as  the shifting method, applied event-by-event  to make the event-plane angle isotropic in the lab frame \cite{Voloshin:2008dg}. 
+%
+This method defines a new angle:
+%
+\begin{equation}
+	\Psi'_{2,EP} = \Psi_{2,EP} + \sum_n \frac{2}{n}
+	(- \langle \sin (n\Psi_{2,EP}) \rangle \cos(n\Psi_{2,EP}) + \langle \cos(n\Psi_{2,EP}) \sin(n\Psi_{2,EP}) \rangle) ,
+	\label{eqn:Shift}
+\end{equation}
+%
+Usually 20 orders of Fourier moment are removed. 
+%
+Additional details of the recentering and shifting corrections can be found in Refs.~\cite{Wang:2012bga,Barrette:1997pt,Poskanzer:1998yz}
+
+The difference between $\Psi_{RP}$ and \(\Psi_{2, EP}\) is quantified by event-plane resolution, $R_n$ or $R_n\{\Psi_{2, EP}\}$ given by Eqn.~\ref{resolution}. 
+%
+The observed $v_n$, $v_n^{\rm obs}$ is corrected for this limited resolution by doing, $v_n = v_{n}^{\rm obs}/R_n$ \cite{Abbas:2013taa,Poskanzer:1998yz}.  
+%
+\begin{equation}
+	R_n = R_n\{\Psi_{2, EP}\} = \langle \cos(n[\Psi_{RP} - \Psi_{2, EP}]) \rangle \qquad \text{$n$ is even}
+	\label{resolution}
+\end{equation}
+
+Furthermore, individual events are divided into two random sub-events by assigning charged tracks to sub-events, ``$a$" and ``$b$". 
+%
+The sub-events are unique, with approximately equal multiplicities. 
+%
+We can write the correlation of two event planes by taking the product of two sub-events, \cite{Barrette:1996rs,Poskanzer:1998yz}
+%
+\begin{equation}
+	\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{2, EP}^{b}]) \rangle = 
+	\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{RP}]) \rangle
+	\langle \cos(n[\Psi_{2, EP}^{b} - \Psi_{RP}]) \rangle,
+	\label{resolution2sub}
+\end{equation}
+%
+This allows calculation of the event-plane resolution directly from data. Since $a$ and $b$ have equal multiplicities, the resolution of each sub-event can be calculated from the correlation between the two sub-events as \cite{Poskanzer:1998yz}:
+
+\begin{equation}
+	\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{RP}]) \rangle = 
+	\sqrt{\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{2, EP}^{b}]) \rangle} .
+	\label{resolutionIndiv}
+\end{equation}
+
+The event-plane resolution is multiplicity dependent and calculated for separate ranges of collision centrality using the two sub-events method.  
+%
+Narrower bins are calculated and then combined accordingly to match the ranges required, by averaging the results from the narrow bins weighted by the multiplicity of each bin \cite{Voloshin:2008dg}.
