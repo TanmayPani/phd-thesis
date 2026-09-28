@@ -59,15 +59,38 @@ Jets are reconstructed with same data (Au+Au collision from 2014), events (HT2-t
 %
 The jet selection used in this analysis differs only in that it omits the requirement for a high-tower triggered (\(E_\mathrm{T, tow.} \geq 5.4\)~GeV) inside the jet-cone and adds a minimum jet-area cut \(A_\mathrm{jet} > 0.4\) to reduce combinatorial jet contribution.
 %
-The mathematical requirements to calculate the observables defined in Eq.~\ref{eq:AuAuJSODefs} further imposes a \(N_\mathrm{trk.} \geq 2\) selection on the jets. 
+The mathematical requirements to calculate the observables defined in Eq.~\ref{eq:AuAuJSODefs} further imposes a \(N_\mathrm{trk.} \geq 2\) selection on the jets.
+%
+For this analysis, 22.2M (0--20\%) and 2.9M (40--80\%) HT-triggered collision events are used.
 
 \subsection{Unfolding}
+\begin{table}[!htbp]
+	\caption{Number of PYTHIA\mbox{-}6 + GEANT3 + Au+Au 2014 embedding events used in each \(\hat{p}_\mathrm{T}\) bin and centrality class.}
+	\label{tab:AuAuEmbEvents}
+	\centering
+	\begin{tabular}{c | r r}
+		\hline
+		\(\hat{p}_\mathrm{T}\) (GeV/\(c\)) & 0--20\% & 40--80\% \Tstrut \Bstrut \\
+		\hline
+		15--20 & 308\,615 & 427\,419 \\
+		20--25 & 310\,202 & 425\,362 \\
+		25--30 & 233\,225 & 317\,152 \\
+		30--40 & 156\,196 & 210\,337 \\
+		40--50 & 94\,579 & 125\,449 \\
+		\(>50\) & 31\,752 & 41\,480 \\
+		\hline
+		Total & 1\,134\,569 & 1\,547\,199 \Tstrut \\
+		\hline
+	\end{tabular}
+\end{table}
 \begin{figure}
 	\includegraphics[width=\linewidth]{angularities/AuAu/auau\_miss\_fake\_rates.pdf}
 	\caption{Miss rate (left) and fake rate (right) calculated from matched jets from the PYTHIA\mbox{-}6 (STAR tune) + GEANT3 + Au+Au 2014 minimum bias pedestal embedding simulation. Each panel shows the miss/fake rates for jets from 0-20\%, 20-40\%, and 40-80\%  centrality events as red circles, green squares, and blue triangles respectively.}
 		\label{fig:AuAuMissAndFake}
 \end{figure}
 Residual background and detector effects are removed by mapping between particle and detector level jets using the embedding simulation and matching procedure described in Sec.~\ref{sec:AuAuEmbedding}.
+%
+Only the \(\hat{p}_\mathrm{T}\) bins with \(\hat{p}_\mathrm{T} \geq 15\)~GeV/\(c\) are used; the numbers of embedding events in each \(\hat{p}_\mathrm{T}\) bin and centrality class are listed in Tab.~\ref{tab:AuAuEmbEvents}.
 %
 Efficiencies involved in jet reconstruction are shown in Fig.~\ref{fig:AuAuMissAndFake}.
 %
@@ -149,7 +172,7 @@ Detector-level sources such as the tracking efficiency (Sec.~\ref{sec:TrackTower
 \label{fig:AuAuSys}
 \end{sidewaysfigure}
 
-\subsection{Result and Discussion}
+\subsection{Results and Discussion}
 \begin{figure}
 	\centering
 	\begin{tabularx}{\textwidth}{XX}
@@ -317,7 +340,7 @@ Fig.~\ref{fig:GroomingAndRg} illustrates this: the npQCD fraction of the jet wid
 \end{figure}
 
 \subsection{Dataset and Methodology}
-The analysis uses data from \pp collisions at \sPP{200}{GeV}~collected in 2012 using the STAR detector system. Charged-particle tracks and neutral energy depositions (towers) are measured using STAR's TPC and BEMC detectors respectively. 
+The analysis uses data from \pp collisions at \sPP{200}{GeV}~collected in 2012 using the STAR detector system. Charged-particle tracks and neutral energy depositions (towers) are measured using STAR's TPC and BEMC detectors respectively. For this analysis, 5.1M HT-triggered collision events are used.
 
 To enhance jet signal, only High-Tower (HT) triggered events (at least one tower with $\EtTower \geq 4$ GeV) are considered. Events containing a track with \ptGeq{track}{30} are rejected to avoid contamination from cosmic rays, as in the Au+Au analysis (Sec.~\ref{sec:JHEventSel}). Tracks(Towers) with \ptGeq{track}{0.2} (\(E_\mathrm{T, tower} \geq 0.2\) GeV) are considered for jet clustering. The tracks pass the same quality criteria as in the Au+Au analysis (Tab.~\ref{Tab:JHTrackCuts}), bad and dead towers are removed, and the full momentum of the tracks matched to a tower is subtracted from its energy (Eq.~\ref{Eq:HadCorr}); the reasons for these choices are discussed in Sec.~\ref{sec:TrackTowerSel}. Clustered jets completely falling within acceptance ($|\eta_{\rm jet}| \leq 0.6$), with \ptGeq{jet}{10} and a plurality of charged tracks (\(N_\mathrm{ch., jet} \geq 2\)) are used for further study.  
 %Jets with area, $A_{\rm jet} < 0.3$ are rejected to further reduce the fake jet contribution. 
@@ -325,8 +348,29 @@ To enhance jet signal, only High-Tower (HT) triggered events (at least one tower
  The tracks and towers are clustered into jets using the anti-\(k_{\rm T}\) algorithm with a jet resolution parameter $R = 0.4$, implemented using the FastJet library~\cite{Cacciari:2011ma}, with the same particle-mass assumptions and recombination scheme as in Sec.~\ref{sec:JetRecoAuAu}. Unlike the hard-core Au+Au jets, all tracks and towers above 0.2~GeV are clustered, so the jets are inclusive.  After obtaining the jets, the softer constituents are groomed using SoftDrop (Sec.~\ref{sec:softDropDesc}) with \(\beta = 0\) and \(z_\mathrm{cut} = 0.2\). The groomed-jet's constituents lose non-kinematic information like charge, which is regained by matching them to the original jet's constituents. 
  
  \subsection{Detector effects and Unfolding}
- The embedding simulation starts from PYTHIA\mbox{-}6 (STAR Tune)  at the particle level. The particles are then reconstructed as detector hits using the STAR detector system implemented in GEANT3 and embedded into zero-bias events from 200 GeV \pp collisions (2012). The jets from particle and detector levels are matched using a \(p_\mathrm{T, jet}\) ordered nearness criteria, similar to the one used for the Au+Au embedding (Sec.~\ref{sec:AuAuEmbedding}).  The matched jets can be used to show detector responses like shown in Fig.~\ref{fig:PtResolution} (top) and  \(p_\mathrm{T, jet}\)-resolution (Eq.~\ref{Eq:JetPtRes}) shown in Fig.~\ref{fig:PtResolution} (bottom).  
+ The embedding simulation starts from PYTHIA\mbox{-}6 (STAR Tune)  at the particle level. The particles are then reconstructed as detector hits using the STAR detector system implemented in GEANT3 and embedded into zero-bias events from 200 GeV \pp collisions (2012). The events are generated in bins of the partonic hard-scattering transverse momentum, \(\hat{p}_\mathrm{T}\), which are combined with weights given by their cross sections divided by the number of generated events. Events are required to have \(|v_z| < 30\)~cm, and events containing a particle-level track with \ptGeq{track}{30} are rejected; the numbers of events used in each \(\hat{p}_\mathrm{T}\) bin are listed in Tab.~\ref{tab:ppEmbEvents}. The jets from particle and detector levels are matched using a \(p_\mathrm{T, jet}\) ordered nearness criteria, similar to the one used for the Au+Au embedding (Sec.~\ref{sec:AuAuEmbedding}).  The matched jets can be used to show detector responses like shown in Fig.~\ref{fig:PtResolution} (top) and  \(p_\mathrm{T, jet}\)-resolution (Eq.~\ref{Eq:JetPtRes}) shown in Fig.~\ref{fig:PtResolution} (bottom).  
 
+
+ \begin{table}[!htbp]
+ 	\caption{Number of PYTHIA\mbox{-}6 + GEANT3 embedding events used in each \(\hat{p}_\mathrm{T}\) bin.}
+ 	\label{tab:ppEmbEvents}
+ 	\centering
+ 	\begin{tabular}{c | r}
+ 		\hline
+ 		\(\hat{p}_\mathrm{T}\) (GeV/\(c\)) & Events \Tstrut \Bstrut \\
+ 		\hline
+ 		11--15 & 5\,163\,862 \\
+ 		15--20 & 6\,046\,722 \\
+ 		20--25 & 1\,472\,276 \\
+ 		25--35 & 1\,068\,020 \\
+ 		35--45 & 1\,172\,245 \\
+ 		45--55 & 548\,735 \\
+ 		\(>55\) & 534\,350 \\
+ 		\hline
+ 		Total & 16\,006\,210 \Tstrut \\
+ 		\hline
+ 	\end{tabular}
+ \end{table}
 
  \begin{figure}
  	\centering
@@ -481,7 +525,7 @@ The relative uncertainty from every source, detector and unfolding related, is s
  %
  The constant \(C\) normalizes the weighted mean of \(r\) over the PYTHIA\mbox{-}6 sample to one, so that only the shape of the prior changes and not its total cross-section.
 
- \paragraph{Generator priors.} The targets are the HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 particle-level jets, selected with the particle-level cuts of the embedding (\ptGeq{jet}{5}, \(|\eta_\mathrm{jet}| < 0.6\), at least two charged constituents) and described by the same features.
+ \paragraph{Generator priors} The targets are the HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 particle-level jets, selected with the particle-level cuts of the embedding (\ptGeq{jet}{5}, \(|\eta_\mathrm{jet}| < 0.6\), at least two charged constituents) and described by the same features.
  %
  The weight \(r(\mathbf{x})\) is evaluated on every generated PYTHIA\mbox{-}6 jet, matched or missed, and each matched reconstructed jet inherits the weight of its generated partner; fakes, having no generated partner, are unchanged.
  %
@@ -514,7 +558,7 @@ The reweighted PYTHIA\mbox{-}6 jets are compared to their HERWIG\mbox{-}7 and PY
  	\label{fig:reweight_pythia8}
  \end{sidewaysfigure}
 
- \paragraph{Data-like prior.} The pseudo-data of the closure test is obtained from a one-iteration unfolding of the measured data by the same method.
+ \paragraph{Data-like prior} The pseudo-data of the closure test is obtained from a one-iteration unfolding of the measured data by the same method.
  %
  First, a classifier separating measured from reconstructed PYTHIA\mbox{-}6 jets (matched and fake) gives \(r(\mathbf{y}) \approx p_\mathrm{meas.}(\mathbf{y})/p_{\mathrm{reco.}, 0}(\mathbf{y})\), which is applied to the reconstructed jets.
  %
@@ -590,7 +634,7 @@ The jet mass, \(R_\mathrm{g}\) and \(z_\mathrm{g}\) of this work agree with the 
  
 \subsection{Results and Discussions}
 \label{sec:ppResults}
-\paragraph{Distributions.}
+\paragraph{Distributions}
 The unfolded \(\lambda_{\beta}^{\kappa=1}\) distributions for \(\beta = 0.5\) (LHA), 1 (girth) and 2 (thrust) are shown in Fig.~\ref{fig:ppDist} for inclusive and SoftDrop-groomed jets in the three \(p_\mathrm{T, jet}\) ranges.
 %
 With increasing \(p_\mathrm{T, jet}\) all distributions become narrower and move to smaller values; the peak of the inclusive girth distribution, for example, moves from about 0.18 to about 0.11 between the lowest and the highest \(p_\mathrm{T, jet}\) range.
@@ -609,7 +653,7 @@ For \(\beta = 1\) and 2, grooming reduces the deviations of HERWIG\mbox{-}7 and 
 %
 Since PYTHIA\mbox{-}6 is also the prior of the unfolding, this agreement alone does not prove a good description, but the prior variations to HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 (Sec.~\ref{sec:priorReweighting}) are part of the systematic uncertainty, so a result pulled towards the prior would show up there.
 
-\paragraph{Angularities as functions of the groomed radius.}
+\paragraph{Angularities as functions of the groomed radius}
 The unbinned unfolding provides the full set of jet features for every jet, so that any observable can be projected afterward without being chosen, or binned, before the unfolding.
 %
 This is used here to measure the mean angularities as a function of the SoftDrop groomed radius, \(\langle\lambda^{\kappa=1}_\beta\rangle\) vs \(R_\mathrm{g}\), shown in Fig.~\ref{fig:ppProfRg}, which correlates the radiation pattern of the whole jet with the angle of its first hard splitting.
@@ -630,33 +674,33 @@ PYTHIA\mbox{-}6 describes the profiles within uncertainties, but HERWIG\mbox{-}7
 %
 Their narrower jets are thus not caused by a different distribution of the first splitting angle, but by too little radiation at a given splitting angle, which is information that the one-dimensional distributions alone cannot provide.
 
-\paragraph{Comparison with ALICE.}
+\paragraph{Comparison with ALICE}
 Fig.~\ref{fig:aliceComp} compares the \(\lambda^{\kappa=1}_{1}\) and \(\lambda^{\kappa=1}_{2}\) distributions to the ALICE measurement in \(p+p\) collisions at \(\sqrt{s} = 5.02\) TeV~\cite{ALICE:2021njq}, for charged-particle jets with \(20 < p_\mathrm{T, jet}^\mathrm{ch.} < 40\) GeV/\(c\), which are reconstructed from the unfolded jets of this work for the comparison.
 %
 The charged-jet and full-jet versions of this work agree closely with each other.
 %
 At the same charged-jet \(p_\mathrm{T}\), the jets at \sPP{200}{GeV} are considerably narrower than at \(\sqrt{s} = 5.02\) TeV, both with and without grooming, as expected from the larger fraction of quark-initiated jets at the lower collision energy.
 
-\paragraph{Summary.}
+\paragraph{Summary}
 In terms of the three goals set out at the beginning of this section: the inclusive and groomed angularities, their \(p_\mathrm{T, jet}\) dependence and their correlation with \(R_\mathrm{g}\) provide a \(p+p\) baseline for future measurements in heavy-ion collisions at the same energy; the unbinned unfolding passes its closure tests and reproduces earlier STAR measurements of other observables from the same jets (Fig.~\ref{fig:starpub}); and the \(R_\mathrm{g}\) profiles, obtained from the same unfolding without a dedicated analysis, trace the deviations of HERWIG\mbox{-}7 and PYTHIA\mbox{-}8 from the data to the radiation at a given splitting angle.
-
-\begin{figure}[h]
+%
+\begin{sidewaysfigure}
 	\centering
-	\includegraphics[width=0.9\linewidth]{angularities/pp/fig_dist_ptbins_ch_ang_k1_b0_5.pdf}
-	\includegraphics[width=0.9\linewidth]{angularities/pp/fig_dist_ptbins_ch_ang_k1_b1.pdf}
-	\includegraphics[width=0.9\linewidth]{angularities/pp/fig_dist_ptbins_ch_ang_k1_b2.pdf}
+	\includegraphics[width=0.49\linewidth]{angularities/pp/fig_dist_ptbins_ch_ang_k1_b0_5.pdf}
+	\includegraphics[width=0.49\linewidth]{angularities/pp/fig_dist_ptbins_ch_ang_k1_b1.pdf}
+	\includegraphics[width=0.49\linewidth]{angularities/pp/fig_dist_ptbins_ch_ang_k1_b2.pdf}
 	\caption{Unfolded distributions of \(\lambda^{\kappa=1}_{\beta}\) for \(\beta = 0.5\), 1 and 2 (top to bottom) for inclusive (blue) and SoftDrop-groomed (red, \(z_\mathrm{cut} = 0.2\), \(\beta = 0\)) jets in \(p+p\) collisions at \sPP{200}{GeV}, in three \(p_\mathrm{T, jet}\) ranges (columns). Boxes show the systematic and bars the statistical uncertainties. The measurements are compared to PYTHIA\mbox{-}6 (dotted), PYTHIA\mbox{-}8 (dashed) and HERWIG\mbox{-}7 (solid), and the lower panels show the ratios of the event generators to the data for inclusive and groomed jets, with the relative systematic uncertainty of the data as a band.}
 	\label{fig:ppDist}
-\end{figure}
+\end{sidewaysfigure}
 %
-\begin{figure}[h]
+\begin{sidewaysfigure}
 	\centering
-	\includegraphics[width=0.9\linewidth]{angularities/pp/fig_prof_sd_dR_ptbins_ch_ang_k1_b0_5.pdf}
-	\includegraphics[width=0.9\linewidth]{angularities/pp/fig_prof_sd_dR_ptbins_ch_ang_k1_b1.pdf}
-	\includegraphics[width=0.9\linewidth]{angularities/pp/fig_prof_sd_dR_ptbins_ch_ang_k1_b2.pdf}
+	\includegraphics[width=0.49\linewidth]{angularities/pp/fig_prof_sd_dR_ptbins_ch_ang_k1_b0_5.pdf}
+	\includegraphics[width=0.49\linewidth]{angularities/pp/fig_prof_sd_dR_ptbins_ch_ang_k1_b1.pdf}
+	\includegraphics[width=0.49\linewidth]{angularities/pp/fig_prof_sd_dR_ptbins_ch_ang_k1_b2.pdf}
 	\caption{Unfolded mean angularities \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) as functions of the groomed radius \(R_\mathrm{g}\) for \(\beta = 0.5\), 1 and 2 (top to bottom) for inclusive (blue) and SoftDrop-groomed (red) jets in \(p+p\) collisions at \sPP{200}{GeV}, in three \(p_\mathrm{T, jet}\) ranges (columns). Boxes show the systematic and bars the statistical uncertainties. The measurements are compared to PYTHIA\mbox{-}6 (dotted), PYTHIA\mbox{-}8 (dashed) and HERWIG\mbox{-}7 (solid), and the lower panels show the ratios of the event generators to the data, with the relative systematic uncertainty of the data as a band.}
 	\label{fig:ppProfRg}
-\end{figure}
+\end{sidewaysfigure}
 
  \begin{figure}
 	\includegraphics[width=0.49\linewidth]{angularities/pp/pub_comparison/alice_2107.11303/angularities_noptd/alice_ungroomed_lambda1_ptch20_40.pdf}

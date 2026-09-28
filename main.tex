@@ -63,6 +63,11 @@
   /pgf/number format/precision=2 % two decimals
 }
 
+% Run-in \paragraph headings: same style as ruthesis' subsubsection, preceded by a bullet
+\makeatletter
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}{-3.25ex plus -1ex minus -.2ex}{1.5ex plus .2ex}{\normalsize\bfseries\textbullet\enspace}}
+\makeatother
+
 % Define Italic Sans Serif font (for tensors)
 \DeclareMathAlphabet{\mathsfsl}{OT1}{cmss}{m}{sl}
 

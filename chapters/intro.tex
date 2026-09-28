@@ -102,7 +102,7 @@ Tab.~\ref{tab:qrknlep} shows fermions of the standard model, their anti-particle
 	\label{tab:qrknlep}
 \end{table}
 
-\begin{table}
+\begin{figure}
 	\begin{tabular}{
 			>{\centering\arraybackslash}m{2.8cm}
 			>{\centering\arraybackslash}m{2.8cm}
@@ -133,13 +133,13 @@ Tab.~\ref{tab:qrknlep} shows fermions of the standard model, their anti-particle
 		\threevertex{fermion}{m}{fermion}{m}{scalar}{H}                                                   &
 		\fourvertex{scalar}{H}{scalar}{H}{scalar}{m_B}{scalar}{m_B}
 	\end{tabular}
-	\caption{Feynman diagrams of various interaction vertices possible in the Standard Model}
-	\label{tab:smvtx}
-\end{table}
+	\caption[Feynman diagrams of the interaction vertices of the Standard Model]{Feynman diagrams of the interaction vertices of the Standard Model. \(X^{+|-}\), \(X^{-|+}\): an electrically charged fermion and its antiparticle; \(q\): quark; \(g\): gluon; \(\gamma\): photon; \(\nu_e, \nu_\mu, \nu_\tau\): neutrinos; \(e, \mu, \tau\): charged leptons, of the same flavor as the neutrino at the vertex; \(u/c/t\): up, charm, top quarks; \(d/s/b\): down, strange, bottom quarks; \(f\): any fermion; \(W\), \(Z\): weak gauge bosons; \(H\): Higgs boson; \(m\): any massive fermion; \(m_B\): any massive boson (\(H\), \(W\) or \(Z\)). A vertical bar or slash separates alternatives, e.g.\ \(W|Z/\gamma\) stands for a \(W\), \(Z\) or \(\gamma\).}
+	\label{fig:smvtx}
+\end{figure}
 
-The mediators/bosons exchanged between the other fundamental particles give rise to the fundamental interactions: electromagnetism from the photon (\(\gamma\)), weak force from \(W^\pm\) and \(Z\) bosons, the gluon (\(g\)) for the strong force, and the Higgs boson (\(h\)) for imparting mass to the fundamental particles. Various interaction vertices possible in SM, that become the building blocks of all fundamental interactions are shown in Tab.~\ref{tab:smvtx}.
+The mediators/bosons exchanged between the other fundamental particles give rise to the fundamental interactions: electromagnetism from the photon (\(\gamma\)), weak force from \(W^\pm\) and \(Z\) bosons, the gluon (\(g\)) for the strong force, and the Higgs boson (\(h\)) for imparting mass to the fundamental particles. Various interaction vertices possible in SM, that become the building blocks of all fundamental interactions are shown in Fig.~\ref{fig:smvtx}.
 
-Each vertex in Tab.~\ref{tab:smvtx} is a point where a mediator is emitted or absorbed, and its strength is set by the \emph{coupling} of the corresponding interaction: the electric charge \(e\) for the photon, the weak couplings for the \(W^\pm\) and \(Z\), and the strong coupling \(g_s\) for the gluon.
+Each vertex in Fig.~\ref{fig:smvtx} is a point where a mediator is emitted or absorbed, and its strength is set by the \emph{coupling} of the corresponding interaction: the electric charge \(e\) for the photon, the weak couplings for the \(W^\pm\) and \(Z\), and the strong coupling \(g_s\) for the gluon.
 %
 Every vertex in a Feynman diagram contributes one factor of its coupling to the quantum-mechanical amplitude of a process, and the cross section, being proportional to the square of the amplitude, therefore scales as a power of the dimensionless combinations \(\alpha = e^2/4\pi \approx 1/137\) and \(\alpha_s = g_s^2/4\pi\).
 %
@@ -157,7 +157,7 @@ As discussed in Sec.~\ref{subsec:runningCoupling}, the couplings are not constan
 		\diagqqpT{q'}{q} & \diagqqbAnn{q}{q'} \\[0.3cm]
 		(a) & (b)
 	\end{tabular}
-	\caption{Leading-order Feynman diagrams of (a) the scattering of two quarks, \(qq' \to qq'\), by the exchange of a gluon, and (b) the annihilation of a quark and an antiquark into a gluon that produces a new pair, \(q\bar{q} \to q'\bar{q}'\). Both contain two quark-gluon vertices of Tab.~\ref{tab:smvtx}, so their amplitudes are proportional to \(g_s^2\) and their cross sections to \(\alpha_s^2\).}
+	\caption{Leading-order Feynman diagrams of (a) the scattering of two quarks, \(qq' \to qq'\), by the exchange of a gluon, and (b) the annihilation of a quark and an antiquark into a gluon that produces a new pair, \(q\bar{q} \to q'\bar{q}'\). Both contain two quark-gluon vertices of Fig.~\ref{fig:smvtx}, so their amplitudes are proportional to \(g_s^2\) and their cross sections to \(\alpha_s^2\).}
 	\label{fig:qqScattering}
 \end{figure}
 
@@ -200,7 +200,7 @@ Successive shuffles do not commute: mixing \(r\) with \(g\) and then \(g\) with 
 %
 Because gluons are themselves colored, a shuffle of the colors also rotates the gluons, and gluons consequently interact with other gluons.
 %
-This is the origin of the three- and four-gluon vertices of Tab.~\ref{tab:smvtx}, which have no counterpart for the electrically neutral photon.
+This is the origin of the three- and four-gluon vertices of Fig.~\ref{fig:smvtx}, which have no counterpart for the electrically neutral photon.
 %
 The corresponding Lagrangian and Feynman rules are given in App.~\ref{sec:qcdLagrangian}.
 
@@ -217,19 +217,19 @@ A gluon therefore radiates about \(C_A/C_F = 9/4\) times more than a quark, so j
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/alphas-v-Q-2025-cropped.pdf}
 	\caption{Summary of determinations of \(\alpha_s\) as a function of the energy scale Q compared to
-		the running of the coupling computed at five loops taking as an input the current Particle Data Group (PDG) world average, \(\alpha_s(m_Z^2) = 0.1180 \pm 0.0009\) \cite{ParticleDataGroup:2026aaa}}
+		the running of the coupling computed at five loops taking as an input the current Particle Data Group (PDG) world average, \(\alpha_s(m_Z^2) = 0.1180 \pm 0.0009\)~\cite{ParticleDataGroup:2026aaa}.}
 	\label{fig:runningCoupling}
 \end{figure}
 
-The coupling of a vertex in Tab.~\ref{tab:smvtx} is not a fixed number, because virtual loops around the vertex change the charge seen by a probe at a given momentum transfer \(Q\).
+The coupling of a vertex in Fig.~\ref{fig:smvtx} is not a fixed number, because virtual loops around the vertex change the charge seen by a probe at a given momentum transfer \(Q\)~\cite{peskin2018introduction}.
 %
-In QED, virtual electron-positron pairs polarize the vacuum and \emph{screen} the electric charge, so that \(\alpha\) grows slowly with \(Q\), from about \(1/137\) at low \(Q\) to about \(1/128\) at the mass of the \(Z\) boson.
+In QED, virtual electron-positron pairs polarize the vacuum and \emph{screen} the electric charge, so that \(\alpha\) grows slowly with \(Q\), from about \(1/137\) at low \(Q\) to about \(1/128\) at the mass of the \(Z\) boson~\cite{ParticleDataGroup:2026aaa}.
 %
-In QCD, virtual quark-antiquark pairs screen the color charge in the same way, but the colored gluons around a charge have the opposite effect and \emph{anti-screen} it.
+In QCD, virtual quark-antiquark pairs screen the color charge in the same way, but the colored gluons around a charge have the opposite effect and \emph{anti-screen} it~\cite{PhysRevLett.30.1343,PhysRevLett.30.1346}.
 %
 Anti-screening wins as long as there are fewer than 17 quark flavors, so \(\alpha_s\) decreases with \(Q\).
 %
-At leading order,
+At leading order~\cite{ParticleDataGroup:2026aaa},
 \begin{equation}
 	\alpha_s(Q^2) = \frac{\alpha_s(Q_0^2)}{1 + \beta_0\,\alpha_s(Q_0^2)\ln(Q^2/Q_0^2)}, \qquad \beta_0 = \frac{11 C_A - 2 n_f}{12\pi},
 	\label{eq:alphasVsQ2}
@@ -283,15 +283,15 @@ where \(n_f\) is the number of quark flavors light enough to take part at the sc
 %
 Eq.~\ref{eq:alphasVsQ2} shows a monotonically decreasing relationship between \(\alpha_s\) and \(Q^2\).
 %
-It is often written in terms of the scale \(\Lambda \approx 200\)~MeV at which the leading-order coupling would diverge, \(\alpha_s(Q^2) = 1/[\beta_0 \ln(Q^2/\Lambda^2)]\).
+It is often written in terms of the scale \(\Lambda \approx 200\)~MeV at which the leading-order coupling would diverge, \(\alpha_s(Q^2) = 1/[\beta_0 \ln(Q^2/\Lambda^2)]\)~\cite{ParticleDataGroup:2026aaa}.
 %
 At high momentum transfers (\(Q \gg \Lambda\)), the coupling strength vanishes ($\alpha_s \to 0$). 
 %
-In this regime, quarks and gluons behave as quasi-free particles, making perturbative QCD (pQCD) calculations highly reliable (\emph{Asymptotic Freedom}).  
+In this regime, quarks and gluons behave as quasi-free particles, making perturbative QCD (pQCD) calculations highly reliable (\emph{Asymptotic Freedom})~\cite{PhysRevLett.30.1343,PhysRevLett.30.1346}.  
 %
 At low energy scales (\(Q \ll \Lambda\)), the coupling diverges. 
 %
-In this non-perturbative QCD (npQCD) limit, isolated color charges cannot exist and partons are permanently bound into color-neutral hadrons (\emph{Color Confinement}).
+In this non-perturbative QCD (npQCD) limit, isolated color charges cannot exist and partons are permanently bound into color-neutral hadrons (\emph{Color Confinement})~\cite{Wilson:1974sk}.
 
 \section{Parton showers, hadronization and event generators}
 \label{sec:eventGenerators}
@@ -394,9 +394,27 @@ Both generators are used with tunes made for RHIC energies~\cite{Skands_2010,Phy
 PYTHIA\mbox{-}6 and PYTHIA\mbox{-}8 share the string hadronization and the transverse-momentum ordered shower, and differ mainly in their treatment of multiple parton interactions, color reconnection and beam remnants, all of which control the multiplicity and the soft, wide-angle part of an event.
 %
 
-Ch.~\ref{ch:jhcorr} also uses JEWEL~\cite{Zapp:2013vla}, which adds scattering of the shower partons off a thermal medium to this picture.
+Ch.~\ref{ch:jhcorr} and App.~\ref{app:ML} also use JEWEL (Jet Evolution With Energy Loss)~\cite{Zapp_2009,Zapp:2013vla}, a generator that places the parton shower described above inside a QGP (Sec.~\ref{sec:heavyIonCollisions}).
 %
-The response of the detector to the generated particles is simulated separately using GEANT~\cite{Brun:1987ma}, and App.~\ref{app:Unfolding} describes how its effects are taken back out of a measurement.
+The hard scattering and the vacuum shower are taken from PYTHIA\mbox{-}6, and the medium is represented by quasi-free partons, the \emph{scattering centers}, with the density of a thermal gas of quarks and gluons that cools as it expands along the beam direction, distributed in the transverse plane according to the overlap of the two nuclei.
+%
+A shower parton can scatter elastically off the scattering centers with the perturbative \(2 \to 2\) QCD matrix elements, regulated at small momentum transfer by the Debye screening mass of the medium, and a scattering can add virtuality to the parton and thereby trigger additional emissions.
+%
+The collisional and radiative energy losses of Sec.~\ref{sec:jetsInQGP} therefore both follow from the same scatterings instead of being modeled separately.
+%
+Scatterings that occur within the formation time of an emission act coherently, which suppresses the medium-induced radiation of energetic partons (the Landau--Pomeranchuk--Migdal effect), and JEWEL includes this through the formation times of the emissions.
+%
+When the shower ends, the partons are hadronized with the string model of PYTHIA.
+%
+A scattering center that has exchanged momentum with the jet can either be discarded, in which case the momentum it received is lost from the event, or be kept as a \emph{recoil} parton and hadronized with the rest of the event.
+%
+Keeping the recoils approximates the response of the medium to the jet, but their thermal momenta from before the scattering then also enter the event, so Ch.~\ref{ch:jhcorr} compares the data with both options.
+%
+Since every jet undergoes a different number of scatterings, the energy loss in JEWEL fluctuates strongly from jet to jet, and these fluctuations turn out to matter more than the average path length through the medium~\cite{Zapp:2013zya,Milhano:2015mng}.
+%
+The medium of JEWEL has no event-by-event density fluctuations and no hydrodynamic flow of its own.
+%
+The response of the detector to the generated particles is simulated separately using GEANT~\cite{Brun:1987ma}, and App.~\ref{app:Unfolding} describes how its effects are inferred from a measurement.
 
 \section{Finding Jets}
 \label{sec:jetAlgo}
@@ -498,7 +516,7 @@ These orders of \(T\) and \(n_\mathrm{B}\) are the theorized conditions prevalen
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/LightCone1_color-crop}
-	\caption{A light cone diagram showing the stages of a heavy ion collision.  The abbreviation  $T_{\mathrm fo}$ is for the thermal freeze-out temperature, $T_{\mathrm ch}$ is for the chemical freeze-out temperature, and $T_{\mathrm c}$ is for the critical temperature where the phase transition between a hadron gas and a QGP occurs.  $\tau_0$ is the formation time of the QGP. Taken from~\cite{Connors_2018}}
+	\caption{A light cone diagram showing the stages of a heavy ion collision.  The abbreviation  $T_{\mathrm fo}$ is for the thermal freeze-out temperature, $T_{\mathrm ch}$ is for the chemical freeze-out temperature, and $T_{\mathrm c}$ is for the critical temperature where the phase transition between a hadron gas and a QGP occurs.  $\tau_0$ is the formation time of the QGP. Taken from~\cite{Connors_2018}.}
 	\label{fig:lightcone}
 \end{figure}
 
@@ -592,7 +610,7 @@ A schematic diagram of the geometry of heavy-ion collisions is shown in Fig.~\re
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/centrality_refmult.jpg}
-	\caption{An illustration of the total inclusive charged particles multiplicity \(N_\mathrm{ch}\) and number of participant (\(N_\mathrm{part}\)) and impact parameter (\(b\)) in heavy-ion collisions. Taken from~\cite{Miller:2007ri}}
+	\caption{An illustration of the total inclusive charged particles multiplicity \(N_\mathrm{ch}\) and number of participant (\(N_\mathrm{part}\)) and impact parameter (\(b\)) in heavy-ion collisions. Taken from~\cite{Miller:2007ri}.}
 	\label{fig:centralityVsNch}
 \end{figure}
 As the impact parameter  (\(b\)) of collisions, the distance between the geometrical centers of the colliding nuclei, is not measurable in experiments, a proxy called \emph{centrality} is defined. 
@@ -626,7 +644,7 @@ Centrality classes are classified for the simulated distribution.
 	\centering
 	\includegraphics[width=0.4\textwidth]{figures/flow_elliptic_init_v4.pdf}
 	\includegraphics[width=0.4\textwidth]{figures/flow_elliptic_expd_xyz_v2.pdf}
-	\caption{Schematic diagrams of a non-central heavy-ion collision: the almond-shaped overlap region of the two nuclei with its anisotropic pressure gradients (left), and the resulting momentum anisotropy of the expanding medium, with more particles emitted along the short axis of the overlap region (right). This anisotropy is quantified by the Fourier coefficients \(v_n\) of the azimuthal particle distribution. Taken from~\cite{Connors_2018}}
+	\caption{Schematic diagrams of a non-central heavy-ion collision: the almond-shaped overlap region of the two nuclei with its anisotropic pressure gradients (left), and the resulting momentum anisotropy of the expanding medium, with more particles emitted along the short axis of the overlap region (right). This anisotropy is quantified by the Fourier coefficients \(v_n\) of the azimuthal particle distribution. Taken from~\cite{Connors_2018}.}
 	\label{fig:anisotropycartoon}
 \end{figure}
 Contrary to initial naive expectations of a gas-like QGP, the QGP formed in these collisions was shown to behave like a liquid of quarks and gluons~\cite{Heinz_2013}.
@@ -772,7 +790,7 @@ This fragmentation process can therefore introduce the $p_\mathrm{T}$ dependence
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{figures/CMSJetShapeFinalJS4Cent}
-	\caption{Differential jet shapes in Pb+Pb and \(p+p\) collisions for four Pb+Pb  centralities. Each spectrum is normalized so that its integral is unity.  In central collisions a larger fraction of the jet momentum is found at large angles relative to the jet axis, as expected from partonic energy loss. Taken from~\cite{Connors_2018}}
+	\caption{Differential jet shapes in Pb+Pb and \(p+p\) collisions for four Pb+Pb  centralities. Each spectrum is normalized so that its integral is unity.  In central collisions a larger fraction of the jet momentum is found at large angles relative to the jet axis, as expected from partonic energy loss. Taken from~\cite{Connors_2018}.}
 	\label{fig:cmsjetshapefinaljs4cent}
 \end{figure}
 Going a bit into the jet substructure, CMS measurement of jet's average radial momentum profile around the jet-axis, called \emph{differential jet shape} defined as,
