@@ -7,6 +7,7 @@
 \special{papersize=8.5in,11in}
 
 \usepackage[numbers,sort&compress]{natbib}
+\usepackage{notoccite} % citations in the LoF/LoT do not set the bibliography order
 \usepackage{url}
 
 \usepackage{comment}
@@ -108,6 +109,17 @@
 \input{defines/Commands.tex}
 \input{defines/TikzDiagrams.tex}
 
+% clickable citations, cross-references, table of contents and URLs (keep hyperref last)
+\usepackage[hyperfootnotes=false]{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue!50!black,
+	citecolor=blue!50!black,
+	urlcolor=blue!50!black,
+	bookmarksnumbered=true,
+	pdftitle={Spacetime evolution of jets with the STAR experiment},
+	pdfauthor={Tanmay Pani},
+}
 \begin{document}
 \phd \title{Spacetime evolution of jets with the STAR experiment}
 \author{Tanmay Pani}

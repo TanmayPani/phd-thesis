@@ -1,72 +1,76 @@
 \chapter{Summary}
 \label{ch:summary}
-This thesis is about jets, the angular structure of the energy inside them, and what that structure can tell us about QCD in vacuum and in QGP.
+The jet-hadron correlations relative to the event plane of Ch.~\ref{ch:jhcorr} have been published by the STAR Collaboration in Phys.\ Rev.\ C~\textbf{109}, 044909 (2024)~\cite{STAR:2023hye}.
 %
-Ch.~\ref{ch:intro} set up the theory needed to talk about them.
+The generalized angularities of jets in \AuAu collisions (Sec.~\ref{sec:AuAuAngularities}) were shown as STAR preliminary results at the 30\(^\text{th}\) International Conference on Ultra-relativistic Nucleus-Nucleus Collisions (Quark Matter 2023)~\cite{Pani:2024mgy}.
 %
-The running of \(\alpha_s\) gives asymptotic freedom on one end and color confinement on the other, and the confinement scale \(\Lambda\) separates the perturbative hard process from the non-perturbative hadronization.
-%
-The evolution of outgoing partons in between is the parton shower, whose collinear enhancements are captured by the DGLAP splitting functions and Sudakov form factors of sec.~\ref{subsec:dglap}.
-%
-The soft, wide-angle enhancement is captured by the antenna pattern, which after azimuthal averaging confines soft radiation from a parton to a cone extending up to its color partner, i.e. \emph{angular ordering}.
-%
-This makes the opening angle (rather than the virtuality) the natural evolution variable of the shower (sec.~\ref{sec:coherentPartonBranching}), and is the reason why the angular distribution of energy in a jet is an imprint of the shower's history.
-%
-The observables studied in ch.~\ref{ch:angularities} are radial moments of exactly this distribution.
+Earlier iterations of the \pp angularities of Sec.~\ref{sec:ppResults} were presented orally at the 11\(^\text{th}\) International Conference on Hard and Electromagnetic Probes of High-Energy Nuclear Collisions (Hard Probes 2023)~\cite{Pani_2024} and as posters at Hard Probes 2024 and Hard Probes 2026, and some of the recommendations of this work for unbinned unfolding are featured in a community white paper~\cite{Canelli_2026}.
 
-Ch.~\ref{ch:STAR} described RHIC, from the ion sources to the storage rings, and the STAR detector.
+This thesis uses jets, the collimated sprays of hadrons that trace the quarks and gluons of a hard scattering, to study QCD in vacuum and in the quark-gluon plasma at RHIC.
 %
-All the analyses presented here use the TPC for charged tracks and the BEMC for neutral energy and triggering, together giving full azimuthal coverage for \(|\eta| < 1\).
+Ch.~\ref{ch:intro} built the necessary picture: the color charge and the non-Abelian \(\mathrm{SU}(3)\) symmetry of QCD, the running of \(\alpha_s\) that separates the perturbative hard scattering and parton shower from the non-perturbative hadronization, and the event generators that model these stages.
 %
-Ch.~\ref{ch:hic} then established the vocabulary of the analyses: jets as defined by IRC-safe sequential recombination algorithms (sec.~\ref{sec:jetAlgo}), SoftDrop grooming as a way of separating the pQCD and npQCD parts of a jet, the Glauber picture of the initial state, centrality as the experimental proxy for the impact parameter (sec.~\ref{sect:CentEP}), anisotropic flow and the event plane (sec.~\ref{sec:EP_Recon}), and jet quenching along with the \RAA{} and \(R_\mathrm{CP}\) used to quantify it.
+Because soft gluon radiation is ordered in angle (App.~\ref{app:theory}), the angular distribution of energy inside a jet records the history of its shower, which is what the angularities of Ch.~\ref{ch:angularities} measure.
 %
-The di-hadron and \(R_\mathrm{CP}\) measurements reviewed there are what motivate going from high-\(p_\mathrm{T}\) hadrons to fully reconstructed jets and their substructure.
+All measurements use the STAR TPC for charged tracks and the BEMC for neutral energy and triggering (Ch.~\ref{ch:STAR}), and rest on the event-plane reconstruction (App.~\ref{sec:EP_Recon}), the machine-learning tools (App.~\ref{app:ML}) and the unfolding framework (App.~\ref{app:Unfolding}) described in the appendices, in which binned Iterative Bayesian Unfolding and unbinned MultiFold are the same algorithm, differing only in how the reweighting ratios are estimated.
 
-Ch.~\ref{ch:methods} collected the data analysis techniques common to the analyses.
+\paragraph{Path-length dependence of jet quenching.}
+Ch.~\ref{ch:jhcorr} measured the distributions of charged hadrons relative to jets with \pttrigrange{15}{20} and \pttrigrange{20}{40} in 20--50\% central \AuAu collisions at \sNN{200}{GeV}, separately for jets in-, mid- and out-of-plane with respect to the second-order event plane, as the angle to the event plane is correlated with the average path length through the medium.
 %
-Two classification studies were shown as illustrations: a CNN acting on jet images separates quark and gluon jets in \pp collisions at \sNN{200}{GeV}, and a DNN acting on a vector of substructure observables separates PYTHIA-6 jets from JEWEL jets with an AUC that decreases going from central to peripheral collisions.
+The large, flow-modulated combinatorial background was removed with the reaction plane fit, which constrains the background by fitting all three orientations simultaneously at large \deta, while the pair acceptance was corrected with mixed events and the orientation-dependent underlying-event contribution to the jet momentum with random cones.
 %
-The main part of the chapter is a general framework for unfolding, starting from Bayes theorem on truth and measured distributions and the assumption that the detector response \(R(\mathbf{y}, \mathbf{x})\) is transferable from simulation.
+Within the uncertainties, neither the associated yields nor the widths of the jet peaks show a dependence on the event plane.
 %
-Each iteration in eq.~\ref{eq:generalUnfolding} is written in terms of two ratios, \(\omega\) at the measured level and \(\nu\) at the particle level, and the convolutions with \(R(\mathbf{y}, \mathbf{x})\) which map \(\omega(\mathbf{y})\to\omega(\mathbf{x})\) and \(\nu(\mathbf{x})\to\nu(\mathbf{y})\).
+The ratios of the associated yields between the orientations do not deviate significantly from unity, with indications of potential modifications only in the inclusive \ptassocrange{1.0}{10} bin of the \pttrigrange{20}{40} jets.
 %
-Binning this gives Iterative Bayesian Unfolding and replacing the ratios with classifier outputs gives MultiFold, with misses and fakes handled by evaluating the same maps at the unmatched jets.
+Any real dependence is diluted by the finite event-plane resolution, \(R_2 = 0.56\): a constituent anisotropy of \(v_2 = 0.1\) would reduce the out-of-plane to in-plane ratio only to 0.81 instead of 0.67.
 %
-Written this way, the binned and unbinned methods are the same algorithm, differing only in how the ratios are estimated.
+JEWEL predicts an event-plane dependence well below the uncertainties, consistent with jet-by-jet fluctuations dominating over path-length effects, and describes the data better with recoils at low \Pt{assoc} and without them at high \Pt{assoc}.
 
-Ch.~\ref{ch:jhcorr} presented jet-hadron correlations relative to the event plane in 20-50\% central \AuAu collisions at \sNN{200}{GeV}.
+\paragraph{Jet substructure in \AuAu collisions.}
+Sec.~\ref{sec:AuAuAngularities} presented the girth \(g = \lambda_1^1\), \(p_\mathrm{T}^\mathrm{D} = \sqrt{\lambda_0^2}\) and LeSub of hard-core jets in 0--20\% and 40--80\% central \AuAu collisions, the first heavy-ion measurement corrected with unbinned, machine-learning based unfolding.
 %
-Since the angle of a jet to the event plane is correlated on average with its path length through the medium, medium-induced modifications were looked for as differences between in-, mid- and out-of-plane trigger jets.
-%
-The flow modulated combinatorial background was removed with the RPF method, which fits the background dominated region at large \deta simultaneously for the three orientations.
-%
-Associated yields, their ratios and jet-peak widths were extracted for \pttrigrange{15}{20} and \pttrigrange{20}{40} jets.
-%
-Within the precision of the measurement, neither the yields nor the widths show a dependence on the event plane, and the yield ratios are consistent with 1.0, with indications of potential modification only in the inclusive \ptassocrange{1.0}{10} bin of the higher \(p_\mathrm{T, jet}\) sample.
-%
-JEWEL predicts an event-plane dependence well below the systematic uncertainties, consistent with path-length dependence of energy loss being dominated by jet-by-jet fluctuations, and describes the low-\Pt{assoc} region better with recoils and the high-\Pt{assoc} region better without.
+The distributions are consistent between central and peripheral collisions within the systematic uncertainties.
 
-Ch.~\ref{ch:angularities} presented the measurements of generalized angularities \(\lambda_\beta^\kappa\).
+\paragraph{Inclusive and groomed angularities in \pp collisions.}
+Sec.~\ref{sec:ppResults} presented the inclusive and SoftDrop-groomed angularities \(\lambda^{\kappa=1}_{\beta}\), \(\beta = 0.5\), 1 and 2, of inclusive jets in \pp collisions at \sPP{200}{GeV}, unfolded with MultiFold using 23 features per jet.
 %
-In \pp collisions at \sPP{200}{GeV}, inclusive and SoftDrop groomed \(\lambda^{\kappa=1}_{\beta\in\{0.5, 1, 2\}}\) distributions and their profiles against \(R_\mathrm{g}\) were fully corrected using MultiFold with 23 features per jet, converging in two iterations.
+The unfolding passes its closure tests and, from the same unfolded jets, reproduces the jet mass, groomed jet mass, \(R_\mathrm{g}\) and \(z_\mathrm{g}\) previously published by STAR.
 %
-Grooming shifts the distributions to smaller angularities, more so for higher \(\beta\) where early, soft, wide-angle radiation contributes more.
+The jets become narrower with increasing \(p_\mathrm{T, jet}\), and grooming shifts the angularities to smaller values, the more so the larger \(\beta\).
 %
-\(\langle\lambda^{\kappa=1}_\beta\rangle\) rises monotonically with \(R_\mathrm{g}\), steepening with \(\beta\), and high-\(R_\mathrm{g}\) jets are unaffected by grooming because their widest split already passes \(z_\mathrm{cut}\), which is angular ordering seen in data.
+PYTHIA-6, PYTHIA-8 and HERWIG-7 reproduce these trends but predict jets that are narrower than measured: PYTHIA-8 and HERWIG-7 fall 20--40\% below the data in the tails of the distributions, while PYTHIA-6 agrees within uncertainties in most bins, and for \(\beta = 1\) and 2 grooming reduces the deviations of PYTHIA-8 and HERWIG-7.
+
+Because the unbinned unfolding keeps the full set of jet features, the mean angularities could also be measured as functions of the groomed radius \(R_\mathrm{g}\), an observable that was not chosen before the unfolding.
 %
-PYTHIA-6, PYTHIA-8 and HERWIG-7 tuned to RHIC energies describe the distributions and profiles within uncertainties, so these measurements serve as the baselines for the heavy-ion measurements.
+The profiles rise monotonically with \(R_\mathrm{g}\), the groomed and inclusive values converge at large \(R_\mathrm{g}\), as expected from the angular ordering of the clustering sequence, and at fixed \(R_\mathrm{g}\) they depend only weakly on \(p_\mathrm{T, jet}\).
 %
-In \AuAu collisions at \sNN{200}{GeV}, \(g = \lambda_1^1\), \(p_\mathrm{T}^\mathrm{D} = \sqrt{\lambda_0^2}\) and LeSub were unfolded with MultiFold for hard-core jets in 0-20\% and 40-80\% central events, the first use of the method on heavy-ion data.
+PYTHIA-8 and HERWIG-7 underestimate them by 10--15\% at every \(R_\mathrm{g}\), which shows that their narrower jets come from too little radiation at a given splitting angle rather than from a different distribution of splitting angles.
 %
-Central to peripheral ratios are consistent with unity within conservative systematic uncertainties.
+Compared with ALICE at \(\sqrt{s} = 5.02\)~TeV at the same charged-jet \(p_\mathrm{T}\), the jets at RHIC are considerably narrower, as expected from their larger fraction of quark-initiated jets.
+
+\paragraph{Synthesis.}
+Both heavy-ion measurements select jets with a high-tower trigger and hard-core constituents, a selection that favors hard-fragmented, narrow jets that interact least with the medium.
 %
-Together with the jet-hadron results, this points to the same conclusion: the HT-trigger and hard-core constituent selections bias both analyses towards hard-fragmented, narrow jets which interact the least with the medium, and a survivor bias is the likely reason why the expected path-length and centrality dependencies are not seen.
+This survivor bias is the likely common reason why neither the expected path-length dependence nor a centrality dependence of the substructure is observed.
+%
+The \pp measurement avoids this selection and provides both the baseline and a validated unbinned unfolding pipeline for the next generation of heavy-ion measurements.
 
 \section{Outlook}
-The natural next step is to redo the \AuAu angularity measurement with the inclusive constituent selection and grooming used in the \pp analysis, so that the \pp results can serve as the baseline they were meant to be and the \(R_\mathrm{g}\) profiles can separate the pQCD and npQCD parts of the modification.
+The natural next step is to measure the inclusive and groomed angularities of jets in \AuAu collisions with the inclusive constituent selection and SoftDrop grooming of the \pp analysis, unfolded with the same pipeline, so that the \pp results can serve as the baseline they were designed to be.
 %
-The unfolding framework of ch.~\ref{ch:methods} was written with this in mind, as the larger heavy-ion background makes misses and fakes far from negligible.
+There, the \(R_\mathrm{g}\) profiles can separate a medium-induced change of the radiation at a given splitting angle from a change of the distribution of the splitting angles themselves, a distinction that one-dimensional distributions cannot make.
 %
-On the jet-hadron side, selecting on the initial state ellipticity through the \(q_n\) flow vector within a centrality class would test whether fluctuations in the initial geometry are what washes out the event-plane dependence.
+The larger background of heavy-ion collisions makes missed and fake jets far from negligible, which the unfolding framework of App.~\ref{app:Unfolding} already treats explicitly.
+
+The unfolding itself can be made more robust.
 %
-Finally, the quark-gluon and quenched-unquenched classifiers of ch.~\ref{ch:methods} suggest that the amount of modification can itself be quantified as a discrimination problem, which would extend naturally to the angularities once the groomed heavy-ion measurement is available.
+Recent methods that replace the particle-level step of OmniFold by a single loss function remove the need for iterations and reduce the dependence on the reference simulation~\cite{Ore:2026qgp}, which would avoid the growth of statistical fluctuations over the iterations seen in this work, and profiling the uncertainties of the detector simulation as nuisance parameters during the unfolding~\cite{Zhu:2024drd} would give a more principled treatment of the systematic uncertainties than the separate variations used here.
+%
+Richer jet representations, such as images of the constituents, could let the classifiers use more of the information in a jet.
+
+On the jet-hadron side, selecting events on the ellipticity of their initial state through the \(q_n\) flow vector within a centrality class would test whether fluctuations of the initial geometry wash out the event-plane dependence.
+%
+The quark-gluon and quenched-unquenched classifiers of App.~\ref{app:ML} suggest that the amount of medium modification can itself be quantified as a discrimination problem, which extends naturally to the angularities once groomed heavy-ion measurements are available.
+%
+Finally, the \pp measurement will be extended with \(\lambda_0^2\) and the remaining angularities for the final STAR publication.

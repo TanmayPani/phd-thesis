@@ -12,7 +12,7 @@ That would give bunch of per-constituent scalars, which we can add up  for a jet
 	\lambda_\beta^\kappa=\sum_{\mathrm{const} \in \mathrm{jet}}z_{\rm const.}^\kappa \left(\frac{\Delta R_\mathrm{const., jet}}{R}\right)^\beta
 \end{equation}
 %
-The parameters $\kappa$ and $\beta$ provide tune experimental sensitivity to hard and wide-angle radiation, respectively. 
+The parameters $\kappa$ and $\beta$ tune the experimental sensitivity to hard and wide-angle radiation, respectively. 
 %
 $\lambda^1_\beta$'s are IRC safe angularites~\cite{Berger_2003}, which probe the average angular spread of energy around the jet-axis. 
 %
@@ -20,9 +20,9 @@ They are radial moments of the  jet's transverse momentum profile, also known as
 %
 Relating with \(e^+e^-\) collision measurements, \(\lambda_1^1\) is the jet \emph{width} or \emph{girth}~\cite{CATANI1992269} and \(\lambda_2^1\) is the jet \emph{thrust}~\cite{Thrust_Larkoski_2014}. 
 %
-Further, \(\lambda_2^1\) is related to the jet-mass~\((m_\mathrm{jet})\) as  \(\left(\lambda_2^1 = \frac{m^2_\mathrm{jet}}{p_\mathrm{T, jet}^2} + \mathbf{O}(()\lambda_2^1)^2) \right)\), providing an IRC-safe way of accessing \(m_\mathrm{jet}\) information as it doesn't directly depend on hadron masses.
+Further, \(\lambda_2^1\) is related to the jet-mass~\((m_\mathrm{jet})\) as  \(\left(\lambda_2^1 = \frac{m^2_\mathrm{jet}}{p_\mathrm{T, jet}^2} + \mathcal{O}\big((\lambda_2^1)^2\big) \right)\), providing an IRC-safe way of accessing \(m_\mathrm{jet}\) information as it doesn't directly depend on hadron masses.
 %
-\(\lambda_{0.5}^1\) was been shown to have sensitivity to initiating parton-type of the jet, called \emph{LHA angularity} after the Les Houches 2015 where the quark-gluon discrimination study was first shown~\cite{Andersen:2016qtm}.
+\(\lambda_{0.5}^1\) has been shown to have sensitivity to initiating parton-type of the jet, called \emph{LHA angularity} after the Les Houches 2015 where the quark-gluon discrimination study was first shown~\cite{Andersen:2016qtm}.
 
 As an experimental observable, it is useful to restrict the summation in Eq.~\ref{eq:LambdaKappaBeta} to only charged constituents / tracks and mitigate contamination from towers like pileup, especially in the case of heavy-ion collisions.  
 %
@@ -37,7 +37,7 @@ Experimental measurements of IRC unsafe angularities like \(\lambda_0^0\), the j
 
 In this chapter, various generalized angularites are measured at RHIC energies. 
 %
-These measurements explore jet fragmentation in a phase space of lower-momentum jets complimenting LHC measurements at high energies. 
+These measurements explore jet fragmentation in a phase space of lower-momentum jets complementing LHC measurements at high energies. 
 
 \section{Angularities of Au+Au jets}
 \label{sec:AuAuAngularities}
@@ -52,7 +52,7 @@ Distributions of Girth (\(g\)), \(p^D_T\), and LeSub given by,
 %
 LeSub is the \(p_\mathrm{T}\) difference between the leading and sub-leading constituents in the jet, which represents the split in momentum at the earliest fragmentation of the jet. 
 %
-The STAR preliminary results shown in this section were presented in the 30\(^\text{th}\) International Conference on Ultra-relativistic Nucleus-Nucleus Collisions (Quark Matter 2023)~\cite{Pani:2024mgy}. 
+
 
 \subsection{Dataset and Selection}
 Jets are reconstructed with same data (Au + Au collision from 2014), events (HT2-triggered, \(|v_z| < 24\)~cm; Sect.~\ref{sec:JHEventSel}), track and tower selection (Sect.~\ref{sec:TrackTowerSel}), constituents (hard-core,~\(cp_\mathrm{T, trk},~E_\mathrm{T, tow.} > 2.0\)~GeV)  and definition (\(R=0.4\),~anti-\(k_\mathrm{T}\),~boost-invariant \(p_\mathrm{T}^2\)) as in Sect.~\ref{sec:JetRecoAuAu}. 
@@ -100,7 +100,7 @@ Here, the matched embedding jets of each centrality class (0-20\% and 40-80\%) a
 %
 Since both samples come from the same PYTHIA-6 simulation, this tests the technical closure of the method rather than its dependence on the prior.
 %
-Proper closure is demonstrated in Fig.\ref{fig:closure} for the obervables studied in these proceedings, with the ratios of distributions being consistent with unity within statistical errors.
+Proper closure is demonstrated in Fig.\ref{fig:closure} for the observables studied here, with the ratios of distributions being consistent with unity within statistical errors.
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{angularities/AuAu/closure_cent0to20_v3}
@@ -176,7 +176,7 @@ Harder-fragmented jets, on average are narrower and have lower interaction time 
 This is the first heavy-ion analysis to use unbinned unfolding of detector effects, hence there is room for improvement in application of the technique, which will be explored in the next section.
 
 \section{Inclusive and groomed angularities of \(p + p\) jets}
-The last section showed that valuable information about jet substructure is lost by over-subtracting background with a naive tool like a hard-core constituent cut.
+The last section suggested that the hard-core constituent cut, a naive tool for suppressing the background, may remove the part of the jet substructure that is most sensitive to the medium.
 %
 Therefore, a more sophisticated method of isolating perturbative and non-perturbative effects must be used.
 %
@@ -192,11 +192,8 @@ Second, it develops unbinned unfolding for RHIC energies, by trying out new meth
 %
 Third, it explores new kinds of measurements beyond plain distributions, which become possible once binning is no longer a hard requirement of the unfolding.
 %
-Only the IRC-safe angularities are shown here; other variables, such as \(\lambda_0^2\), are being worked on for the final publication.
-%
-Earlier iterations of the \(p+p\) angularities have been presented orally at the 11th International Conference on Hard and Electromagnetic Probes of High-Energy Nuclear Collisions (Hard Probes 2023)~\cite{Pani_2024} and as posters at Hard Probes 2024 and Hard Probes 2026.
-%
-A few of the recommendations of this work for unbinned unfolding are featured in the white paper~\cite{Canelli_2026}.
+Only the \(\kappa = 1\) angularities are shown here; other variables, such as \(\lambda_0^2\), are being worked on for the final publication.
+
 
  
 \subsection{SoftDrop}

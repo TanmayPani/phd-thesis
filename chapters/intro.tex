@@ -149,7 +149,7 @@ Any additional emission, or any virtual loop, adds more vertices and hence more 
 %
 Such a \emph{perturbative} expansion is only useful when the coupling is small, which is well satisfied for electromagnetism.
 %
-As shown in Sec.~\ref{subsec:runningCoupling}, the couplings are not constants but depend on the momentum transfer \(Q\) of the interaction, and for the strong interaction this dependence decides where perturbation theory can be used at all.
+As discussed in Sec.~\ref{subsec:runningCoupling}, the couplings are not constants but depend on the momentum transfer \(Q\) of the interaction, and for the strong interaction this dependence decides where perturbation theory can be used at all.
 
 \begin{figure}[htbp]
 	\centering
@@ -362,13 +362,11 @@ The collimated sprays of hadrons that emerge along the directions of the scatter
 		\rotatebox{90}{\(qg \to qg\)} & \showerimg{qg2qg_noHadr} & \showerimg{qg2qg_hadrString} & \showerimg{qg2qg_hadr} \\[0.3cm]
 		\rotatebox{90}{\(gg \to gg\)} & \showerimg{gg2gg_noHadr} & \showerimg{gg2gg_hadrString} & \showerimg{gg2gg_hadr} \\
 	\end{tabular}
-	\caption{Stages of simulated proton-proton collisions for the hard scatterings \(qq \to qq\) (top), \(qg \to qg\) (middle) and \(gg \to gg\) (bottom). Left: the hard scattering with the parton shower, i.e.\ initial-state (ISR) and final-state radiation (FSR). Middle: the color strings (brown) joining the color-connected partons at the end of the shower. Right: the hadrons produced by the breaking strings and their decay products. Incoming beams are shown in gray, quarks and antiquarks as blue and violet lines, gluons as red coils and photons as yellow coils; positive, negative and neutral hadrons are shown as pink, green and gray lines. The stages are labelled in the top row. The events with more gluons in the hard scattering contain more radiation. The events were generated with PYTHIA-8 (Detroit tune, all hard QCD processes, \(p+p\) at \sPP{200}{GeV}, \(20 < \hat{p}_\mathrm{T} < 30\)~GeV/\(c\)) and drawn from the PYTHIA event record with an interactive event viewer coded using Python and JavaScript}
+	\caption{Stages of simulated proton-proton collisions for the hard scatterings \(qq \to qq\) (top), \(qg \to qg\) (middle) and \(gg \to gg\) (bottom). Left: the hard scattering with the parton shower, i.e.\ initial-state (ISR) and final-state radiation (FSR). Middle: the color strings (brown) joining the color-connected partons at the end of the shower. Right: the hadrons produced by the breaking strings and their decay products. Incoming beams are shown in gray, quarks and antiquarks as blue and violet lines, gluons as red coils and photons as yellow coils; positive, negative and neutral hadrons are shown as pink, green and gray lines. The stages are labelled in the top row. The events with more gluons in the hard scattering contain more radiation. The events were generated with PYTHIA-8 (Detroit tune, all hard QCD processes, \(p+p\) at \sPP{200}{GeV}, \(20 < \hat{p}_\mathrm{T} < 30\)~GeV/\(c\)) and drawn from the PYTHIA event record with an interactive event viewer coded using Python and JavaScript.}
 	\label{fig:partonShowerStages}
 \end{figure}
 
-The shower is not a set of independent emissions: quantum interference between emissions, \emph{color coherence}, suppresses soft radiation at large angles and orders the emissions in angle (App.~\ref{sec:coherentPartonBranching}).
-%
-Coherent branching does not only suppress soft emission, it also organizes the color flow of the shower.
+The shower is not a set of independent emissions: quantum interference between emissions, \emph{color coherence}, suppresses soft radiation at large angles and orders the emissions in angle (App.~\ref{sec:coherentPartonBranching}), and it also organizes the color flow of the shower.
 %
 Eq.~\ref{eq:coherentPattern} shows that a pair of partons close in angle radiates as its parent, carrying the parent's charge, so the color of a branching is handed down the tree along with its momentum.
 %
@@ -376,7 +374,7 @@ Applying this at every branching down to the cut-off \(t_0\), neighbouring parto
 %
 This property is called \emph{preconfinement}~\cite{Ellis_Stirling_Webber_1996}.
 %
-The preconfined singlets can either decay directly into hadrons, giving the \emph{cluster} models~\cite{Webber:147786}, or stretch a confining color flux tube between color connected partons and break it up, giving the \emph{string} models~\cite{ANDERSSON198331}. 
+The preconfined singlets can either decay directly into hadrons, giving the \emph{cluster} models~\cite{Webber:147786}, or be joined by the strings introduced above, giving the \emph{string} models~\cite{ANDERSSON198331}.
 
 QCD event generators chain these processes, matrix elements for the hard processes from eq.~\ref{eq:factorization}, parton showers, additional semi-hard scatterings among the remaining constituents of the incoming hadrons making up the \emph{underlying event}, hadronization, and finally the decays of unstable hadrons.
 %
@@ -398,54 +396,27 @@ PYTHIA-6 and PYTHIA-8 share the string hadronization and the transverse-momentum
 
 Ch.~\ref{ch:jhcorr} also uses JEWEL~\cite{Zapp:2013vla}, which adds scattering of the shower partons off a thermal medium to this picture.
 %
-The response of the detector to the generated particles is simulated separately using GEANT~\cite{Brun:1987ma}, and Ch.~\ref{ch:methods} describes how its effects are taken back out of a measurement.
-
-\subsection{Quark Gluon Plasma (QGP)}
-\label{sec:QGPIntro}
-Asymptotic freedom of QCD means that matter at extremely high temperatures and densities (high \(Q^2\)) undergo a \emph{deconfinement} phase transition, with partonic degrees of freedom replacing hadronic degrees of freedom. 
-%
-This state of deconfined quarks and gluons is called QCD/quark-gluon plasma due to analogous phenomena observed in atomic physics~\cite{SHURYAK198071}.
-
-Thermodynamically, when temperature (\(T\)) or baryon number density (\(n_\mathrm{B}\)) approaches the confinement scale \(\Lambda\) introduced in Sec.~\ref{subsec:runningCoupling} (\(T \sim \Lambda \sim \mathcal{O}(10^{12})K,~\text{and}~n_\mathrm{B} \sim \Lambda^3 \sim 1~\text{fm}^{-3}\)) the boundaries between hadrons become ill defined resulting in hadrons ``melt'' into QGP~\cite{Fukushima_2010}.  
-%
-For reference, the core of our sun ``only'' has \(T\sim \mathcal{O}(10^{7})K\) and \(n_\mathrm{B}\sim\mathcal{O}(10^{-14})\text{fm}^{-3}\). 
-
-These orders of \(T\) and \(n_\mathrm{B}\) are the theorized conditions prevalent in the universe a few \(\mu\mathrm{s}\) after Big-Bang. The only natural phenomena in the present-day, cold universe that can achieve these conditions are the cores of neutron stars~\cite{Annala_2020} or neutron star mergers~\cite{neutronStarMerger}. Artificially, the required  \(T\) and \(n_\mathrm{B}\) can be achieved at facilities like the Large Hadron Collider (LHC) and Relativistic Heavy Ion Collider (RHIC) through collisions of heavy-ions (like Au, Pb, etc.) at near-light speeds, the aptly named \emph{little bangs}. More on this will be discussed in Sec. \ref{sec:heavyIonCollisions}. 
-
-
-\section{Relativistic collisions of  nuclei}
-\label{ch:hic}
-Outgoing partons from hard processes undergo many successive splitting and fragmentation processes, becoming a collimated ``spray'' of hadrons called \emph{jets} which are detected as dense clustering of energy in calorimeters. 
-%
-In principle, a \emph{jet finding algorithm} should be able to faithfully get the kinematics of the initiating parton given the theory discussed in sec.\ref{sec:partonShower}, which show partons cleanly branching into partons and eventually fragmenting into final-state hadrons that can be traced back to the shower partons. 
-%
-However reality is rarely this straightforward. 
-%
-First, the fragmentation functions that connect the partons and final state hadrons cannot be calculated in experiments. 
-%
-Second, it is not trivial to establish connection between final state particles and initial state partons even at the parton level, before we have the complications from hadronization and detector level reconstruction. 
-%
-For example, in a clean reaction like \(e^+e^-\to q\bar{q}\). If one of the quark emits a gluon, then depending on the emission angle of the gluon, we might cluster 2 or 3 jets in the final state. We will further define jet finding in sec.~\ref{sec:jetAlgo}
-
-As discussed in sec.~\ref{sec:QGPIntro}, collisions of heavy-ions at near-light speeds can create the conditions for forming QGP.
-%
-Sec.~\ref{sec:RHIC} discussed RHIC and sec.~\ref{sec:STAR} describe the STAR detector system. 
-%
-Before moving on to analyses of heavy-ion collisions, we need to establish a few more concepts. 
-%
-Nuclei like $\rm ^{197}_{79}Au$, $\rm ^{96}_{40}Zr$, $\rm ^{96}_{44}Ru$,  etc. are complex arrangements of protons and neutrons that have a multitude of non-trivial initial configurations leading up to their collisions which have significant effects on the final state particle distributions. 
-%
-Therefore, any measurement done using heavy-ion events need to report these initial configurations of the colliding nuclei. We discuss these in sec.~\ref{sec:heavyIonCollisions}. 
-
-
+The response of the detector to the generated particles is simulated separately using GEANT~\cite{Brun:1987ma}, and App.~\ref{app:Unfolding} describes how its effects are taken back out of a measurement.
 
 \section{Finding Jets}
 \label{sec:jetAlgo}
+The partons of a hard scattering end up as the collimated sprays of hadrons, the jets, described in Sec.~\ref{sec:eventGenerators}.
+%
+In principle, a \emph{jet finding algorithm} should be able to faithfully recover the kinematics of the initiating parton, given the picture of App.~\ref{sec:partonShower}, in which partons branch cleanly into partons and eventually fragment into final-state hadrons that can be traced back to the shower partons.
+%
+However reality is rarely this straightforward.
+%
+First, the fragmentation functions that connect the partons and final state hadrons cannot be calculated perturbatively.
+%
+Second, it is not trivial to establish a connection between final state particles and initial state partons even at the parton level, before the complications from hadronization and detector level reconstruction.
+%
+For example, in a clean reaction like \(e^+e^-\to q\bar{q}\), if one of the quarks emits a gluon, then depending on the emission angle of the gluon, 2 or 3 jets might be clustered in the final state.
+%
 To address the prevalent ambiguity of jet definitions, the Snowmass Accord~\cite{Berger:1992etd} stated that, experimental and theoretical measurements had to use the same jet finding algorithm on final state hadrons in order to be comparable. 
 %
 Thus clustered jets are not-quite the proxies for partons in the same way as parton showers, but regions in the final state phase space that are most likely to have contributions from parton showers. 
 %
-Even after we define a jet, another ambiguity comes from the decision of what constituents in the event must be used as inputs into the jet finding algorithm. Especially, in heavy-ion collisions jet-medium interactions make that choice non-trivial. For example, is a soft particle inside the jet cone coming from soft gluon radiation from the jet or the medium? Keeping these considerations in mind, a ``good'' jet finding algorithm is:
+Even after we define a jet, another ambiguity comes from the decision of what constituents in the event must be used as inputs into the jet finding algorithm. Especially, in heavy-ion collisions jet-medium interactions make that choice non-trivial. For example, is a soft particle inside the jet cone coming from soft gluon radiation from the jet or the medium? Keeping these considerations in mind, a jet finding algorithm should be:a ``good'' jet finding algorithm is:
 \begin{itemize}
 	\item \emph{Collinear safe}, meaning  it would find the same jet with the same \(p_\mathrm{T, jet}\) regardless of  fragmentation details
 	\item \emph{Infrared safe}, meaning  it would find the same jets, even in the presence of a
@@ -466,8 +437,8 @@ The most commonly used family of infrared and collinear safe jet algorithms, seq
 	%
 	\item $i_\mathrm{min} = \min(\{d_{ij}\}\cup \{d_{i}\})$ is found.  
 	%
-	$d_\mathrm{min} \in \{d_{ij}\}$, the particles are combined into one jet candidate, adding their energies and momenta according to some \emph{recombination scheme}, and the first step is repeated.  
-	\item  $d_\mathrm{min} \in \{d_{i}\}$, this is recorded as a final state jet candidate.  It is removed from the list and the first step is repeated. 
+	If $d_\mathrm{min} \in \{d_{ij}\}$, the particles are combined into one jet candidate, adding their energies and momenta according to some \emph{recombination scheme}, and the first step is repeated.  
+	\item  If $d_\mathrm{min} \in \{d_{i}\}$, this is recorded as a final state jet candidate.  It is removed from the list and the first step is repeated. 
 \end{enumerate}
 These steps are iterated until no particles remain. 
 %
@@ -509,6 +480,20 @@ It also provides various recombination schemes.
 
 \section{Heavy-Ion Collisions}
 \label{sec:heavyIonCollisions}
+\subsection{Quark Gluon Plasma (QGP)}
+\label{sec:QGPIntro}
+Asymptotic freedom of QCD means that matter at extremely high temperatures and densities (high \(Q^2\)) undergo a \emph{deconfinement} phase transition, with partonic degrees of freedom replacing hadronic degrees of freedom. 
+%
+This state of deconfined quarks and gluons is called QCD/quark-gluon plasma due to analogous phenomena observed in atomic physics~\cite{SHURYAK198071}.
+
+Thermodynamically, when temperature (\(T\)) or baryon number density (\(n_\mathrm{B}\)) approaches the confinement scale \(\Lambda\) introduced in Sec.~\ref{subsec:runningCoupling} (\(T \sim \Lambda \sim \mathcal{O}(10^{12})K,~\text{and}~n_\mathrm{B} \sim \Lambda^3 \sim 1~\text{fm}^{-3}\)) the boundaries between hadrons become ill defined resulting in hadrons ``melt'' into QGP~\cite{Fukushima_2010}.  
+%
+For reference, the core of our sun ``only'' has \(T\sim \mathcal{O}(10^{7})K\) and \(n_\mathrm{B}\sim\mathcal{O}(10^{-14})\text{fm}^{-3}\). 
+
+These orders of \(T\) and \(n_\mathrm{B}\) are the theorized conditions prevalent in the universe a few \(\mu\mathrm{s}\) after Big-Bang. The only natural phenomena in the present-day, cold universe that can achieve these conditions are the cores of neutron stars~\cite{Annala_2020} or neutron star mergers~\cite{neutronStarMerger}. Artificially, the required  \(T\) and \(n_\mathrm{B}\) can be achieved at facilities like the Large Hadron Collider (LHC) and Relativistic Heavy Ion Collider (RHIC) through collisions of heavy-ions (like Au, Pb, etc.) at near-light speeds, the aptly named \emph{little bangs}. The rest of this section describes these collisions and the evolution of the matter they produce.
+
+\subsection{Space-time evolution of a heavy-ion collision}
+\label{sec:qgpSpacetime}
 
 \begin{figure}
 	\centering
@@ -521,7 +506,6 @@ Estimates of the energy density indicate that heavy ion collisions at RHIC and L
 %
 
 %\subsection{Space-time picture of QGP}
-\label{sec:qgpSpacetime}
 The heavy ion collision and the evolution of the fireball, as depicted in Figure~\ref{fig:lightcone}, has several stages, and the measurement of the final state particles can be affected by one or all of these stages depending on their production mechanism and interaction time within the medium. 
 %
 Immediately after the collision, the system is in a non-thermalized, pre-equilibrium state where, partons undergo hard scattering, dominated by \(2\to 2\) QCD processes with the outgoing partons back-to-back in azimuth (\(\Delta \varphi \approx \pi\)). 
@@ -544,6 +528,10 @@ Elastic interactions can still occur till the kinetic freeze-out (\(T_{fo} \appr
 %	\label{fig:tmuvssnn}
 %\end{figure}
 \subsection{Initial State of Colliding Nuclei}
+Nuclei like $\rm ^{197}_{79}Au$, $\rm ^{96}_{40}Zr$, $\rm ^{96}_{44}Ru$,  etc. are complex arrangements of protons and neutrons that have a multitude of non-trivial initial configurations leading up to their collisions, which have significant effects on the final state particle distributions.
+%
+Therefore, any measurement done using heavy-ion events needs to report these initial configurations of the colliding nuclei.
+%
 The initial state of the incoming nuclei is not precisely known, but its properties impact the production of final state particles.  
 %
 The incoming nuclei are often modeled as either an independent collection of nucleons called a Glauber initial state~\cite{Miller:2007ri}, or a wall of coherent gluons called a Color Glass Condensate~\cite{IANCU2001583}. 
@@ -633,6 +621,7 @@ Centrality classes are classified for the simulated distribution.
 \(\langle N_\mathrm{part}\rangle\), \(\langle N_\mathrm{coll}\rangle\) in those centrality classes are calculated. 
 
 \subsection{Anisotropic flow}
+\label{sec:flowIntro}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.4\textwidth]{figures/flow_elliptic_init_v4.pdf}
@@ -681,6 +670,7 @@ A scaling of the $v_2$ values with the number of constituent quarks (2 for meson
 
 
 \section{Jets in QGP}
+\label{sec:jetsInQGP}
 As discussed in sec.~\ref{sec:qgpSpacetime}, hard scatterings of partons that produce jets happens before the system thermalizes into QGP (parton producing a 10~GeV jet scatters at \(\tau \sim 1/E \sim 0.2\text{fm}/c\)). 
 %
 Thus the ensuing parton shower traverses the QGP, and resulting jet is \emph{modified/quenched} compared to an appropriate \emph{baseline}. 
@@ -759,7 +749,7 @@ Although measurements with high $p_\mathrm{T}$ hadrons help us understand jet qu
 %
 Fully reconstructed jets, however, are mostly unbiased probes of energy flow at high $p_\mathrm{T}$, and offer a wealth of substructure observables which allow us to look at energy flow within the jet more differentially.
 %
-This motivates the studies presented in chapters~\ref{ch:jhcorr} and~\ref{ch:angularities}.   
+
 
 \begin{figure}
 	\centering
@@ -796,25 +786,21 @@ where the jet cone is divided rings of width $\delta r$ which have an inner radi
 From the results shown in fig.~\ref{fig:cmsjetshapefinaljs4cent}, the differential jet shapes in the most central Pb+Pb collisions are broadened in comparison to measurements done in \pp collisions at the same center of mass energy ~\cite{Chatrchyan:1605718}.  
 %
 These measurements demonstrate that there is an enhancement in the modification with increasing angle from the jet axis, indicating a broadening of the jet profile and a depletion near r~$\approx$~0.2.
+%
+These measurements motivate the studies presented in Chs.~\ref{ch:jhcorr} and~\ref{ch:angularities}: the dependence of jet quenching on the path length through the medium, and the angular structure of jets in vacuum and in the QGP.
 
 \section{Outline}
-Angular ordering makes the angular distribution of energy inside a jet a record of the shower that produced it, with the wide-angle radiation coming from the early, hard splittings and the core of the jet being filled in later.
+This thesis uses jets to study QCD in vacuum and in the QGP with two measurements at \sNN{200}{GeV}: the dependence of jet quenching on the path length through the medium, and the angular structure of jets, which records the history of their showers.
 %
-This thesis measures that distribution.
+Ch.~\ref{ch:STAR} describes RHIC and the STAR detector.
 %
-It is measured first in \pp collisions, where it is a test of the vacuum shower and a baseline, and then in \AuAu collisions, where a deviation from that baseline is the imprint of the medium the shower has gone through. 
-
-Ch.~\ref{ch:STAR} describes RHIC and the STAR detector, in particular the TPC and the BEMC which measure the charged and neutral parts of a jet.
+Ch.~\ref{ch:jhcorr} presents jet-hadron correlations relative to the event plane in \AuAu collisions.
 %
-Ch.~\ref{ch:hic} defines jets as the output of a jet finding algorithm rather than as partons, introduces SoftDrop grooming, and sets up the quantities used to describe a heavy-ion collision: the Glauber picture of the initial state, centrality, the event plane, and the nuclear modification factors used to quantify jet quenching.
+Ch.~\ref{ch:angularities} presents generalized angularities of jets, first in \AuAu collisions and then, inclusive and groomed, in \pp collisions.
 %
-Ch.~\ref{ch:methods} collects the analysis techniques, mainly the classifiers used to tag jets and the unfolding procedure used to remove detector effects from a measured distribution.
+Ch.~\ref{ch:summary} summarizes the results and gives an outlook.
 %
-Ch.~\ref{ch:jhcorr} presents jet-hadron correlations relative to the event plane in \AuAu collisions, which probe the dependence of energy loss on the path length traversed in the medium.
-%
-Ch.~\ref{ch:angularities} presents generalized angularities, inclusive and groomed, in \pp collisions and then in \AuAu collisions.
-%
-Ch.~\ref{ch:summary} summarizes both measurements and what they suggest about where to go next. 
+The appendices collect the theory of hard processes and parton showers (App.~\ref{app:theory}), relativistic kinematics (App.~\ref{app:kinematics}), the event-plane reconstruction (App.~\ref{sec:EP_Recon}), and the machine-learning and unfolding methods used in the analyses (Apps.~\ref{app:ML} and~\ref{app:Unfolding}).
 
 
 

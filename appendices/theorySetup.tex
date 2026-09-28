@@ -1,4 +1,5 @@
 \chapter{Hard Processes and Parton Showers}
+\label{app:theory}
 \section{The QCD Lagrangian}
 \label{sec:qcdLagrangian}
 The color symmetry of Sec.~\ref{sec:QCDIntro} is made precise by the QCD Lagrangian,
@@ -96,13 +97,13 @@ Different hard processes will have different leading powers \(k\). \(W\) product
 
 The \(D_f(\hat{\mathbf{O}}\to\mathbf{O}, \mu^2)\) are the \emph{fragmentation functions}, giving the likelihood of a partonic final state with \(\hat{\mathbf{O}}\) being measured as \(\mathbf{O}\) once hadronization is over.
 %
-Like the parton densities, they cannot be calculated in perturbation theory, but they are \emph{universal}: once measured in one process they can be used in any other, and their dependence on \(\mu\) is governed by evolution equations of the same form as eq.~\ref{eq:RGEquation}.
+Like the parton densities, they cannot be calculated in perturbation theory, but they are \emph{universal}: once measured in one process they can be used in any other, and their dependence on \(\mu\) is governed by evolution equations of the same kind as the running of \(\alpha_s\) (Sec.~\ref{subsec:runningCoupling}).
 %
 Eq.~\ref{eq:factorization} is the skeleton of every measurement presented in this thesis, with the choice of \(\mathbf{O}\) being what separates one from the next, and a measurement is comparable to a calculation only if both use the same \(\mathbf{O}\).
 %
 Restricting \(\mathbf{O}\) to charged particles, as will be done for the angularities of Ch.~\ref{ch:angularities}, puts that restriction into \(D_f\) as well, and the non-perturbative input can then no longer be avoided.
 %
-The nuclear modification factors of Ch.~\ref{ch:hic} are ratios of Eq.~\ref{eq:factorization} between two collision systems, where the parton densities largely cancel and what is left is the effect of the medium on \(\hat{\sigma}_{ij\to f}\) and \(D_f\).
+The nuclear modification factors of Sec.~\ref{sec:jetsInQGP} are ratios of Eq.~\ref{eq:factorization} between two collision systems, where the parton densities largely cancel and what is left is the effect of the medium on \(\hat{\sigma}_{ij\to f}\) and \(D_f\).
 
 %The parton densities \(f_i(x,\mu^2)\) in Eq.~\ref{eq:factorization} are not calculable in perturbation theory, but they are \emph{universal}: once measured in one process they may be used to predict any other. Requiring the physical cross section of Eq.~\ref{eq:factorization} to be independent of the arbitrary scale \(\mu\), exactly as for the coupling in Sec.~\ref{subsec:runningCoupling},
 %\begin{equation}
@@ -417,7 +418,7 @@ Eq.~\ref{eq:angularOrdering}  shows that azimuth-averaged soft gluon emission fr
 %
 Since the emission probability of Eq.~\ref{eq:antennaSplitXSec} is weighted by the color charges, a gluon radiates \(C_A/C_F = 9/4\) times as much as a quark of the same energy into the same cone.
 %
-Gluon jets are therefore wider and carry more particles than quark jets of the same momentum, a difference the classifiers of Ch.~\ref{ch:methods} are trained to pick up, and one that has to be kept in mind whenever angularities are compared between samples with different quark and gluon fractions.
+Gluon jets are therefore wider and carry more particles than quark jets of the same momentum, a difference the classifiers of App.~\ref{app:ML} are trained to pick up, and one that has to be kept in mind whenever angularities are compared between samples with different quark and gluon fractions.
 %The total soft gluon emission cross-section can be then easily obtained for two external lines forming a color singlet (\(e^+e^-\to q\bar{q}\)) have \(\mathbf{Q}_i+\mathbf{Q}_j=0\) and hence \(C_{q\bar{q}}=\mathbf{Q}_q^2=\mathbf{Q}_{\bar{q}}^2 = C_F\), and angular ordering suppresses radiation outside the cones extending from \(q\) to \(\bar{q}\) and vice versa.
 
 %\begin{align}
