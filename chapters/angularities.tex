@@ -124,6 +124,8 @@ Here, the matched embedding jets of each centrality class (0-20\% and 40-80\%) a
 Since both samples come from the same PYTHIA\mbox{-}6 simulation, this tests the technical closure of the method rather than its dependence on the prior.
 %
 Proper closure is demonstrated in Fig.~\ref{fig:closure} for the observables studied here, with the ratios of distributions being consistent with unity within statistical errors.
+%
+Each row of the figure shows the ratios for \(g\), \(p_\mathrm{T}^\mathrm{D}\) and LeSub; they lie within about 5\% of unity over most of the range in both centrality classes, and the largest deviations, of 10--15\%, occur in the sparsely populated tail of \(p_\mathrm{T}^\mathrm{D}\) above about 0.7, where the statistical uncertainties are also largest.
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{angularities/AuAu/closure_cent0to20_v3}
@@ -348,7 +350,7 @@ To enhance jet signal, only High-Tower (HT) triggered events (at least one tower
  The tracks and towers are clustered into jets using the anti-\(k_{\rm T}\) algorithm with a jet resolution parameter $R = 0.4$, implemented using the FastJet library~\cite{Cacciari:2011ma}, with the same particle-mass assumptions and recombination scheme as in Sec.~\ref{sec:JetRecoAuAu}. Unlike the hard-core Au+Au jets, all tracks and towers above 0.2~GeV are clustered, so the jets are inclusive.  After obtaining the jets, the softer constituents are groomed using SoftDrop (Sec.~\ref{sec:softDropDesc}) with \(\beta = 0\) and \(z_\mathrm{cut} = 0.2\). The groomed-jet's constituents lose non-kinematic information like charge, which is regained by matching them to the original jet's constituents. 
  
  \subsection{Detector effects and Unfolding}
- The embedding simulation starts from PYTHIA\mbox{-}6 (STAR Tune)  at the particle level. The particles are then reconstructed as detector hits using the STAR detector system implemented in GEANT3 and embedded into zero-bias events from 200 GeV \pp collisions (2012). The events are generated in bins of the partonic hard-scattering transverse momentum, \(\hat{p}_\mathrm{T}\), which are combined with weights given by their cross sections divided by the number of generated events. Events are required to have \(|v_z| < 30\)~cm, and events containing a particle-level track with \ptGeq{track}{30} are rejected; the numbers of events used in each \(\hat{p}_\mathrm{T}\) bin are listed in Tab.~\ref{tab:ppEmbEvents}. The jets from particle and detector levels are matched using a \(p_\mathrm{T, jet}\) ordered nearness criteria, similar to the one used for the Au+Au embedding (Sec.~\ref{sec:AuAuEmbedding}).  The matched jets can be used to show detector responses like shown in Fig.~\ref{fig:PtResolution} (top) and  \(p_\mathrm{T, jet}\)-resolution (Eq.~\ref{Eq:JetPtRes}) shown in Fig.~\ref{fig:PtResolution} (bottom).  
+ The embedding simulation starts from PYTHIA\mbox{-}6 (STAR Tune)  at the particle level. The particles are then reconstructed as detector hits using the STAR detector system implemented in GEANT3 and embedded into zero-bias events from 200 GeV \pp collisions (2012). The events are generated in bins of the partonic hard-scattering transverse momentum, \(\hat{p}_\mathrm{T}\), which are combined with weights given by their cross sections divided by the number of generated events. Events are required to have \(|v_z| < 30\)~cm, and events containing a particle-level track with \ptGeq{track}{30} are rejected; the numbers of events used in each \(\hat{p}_\mathrm{T}\) bin are listed in Tab.~\ref{tab:ppEmbEvents}. The jets from particle and detector levels are matched using a \(p_\mathrm{T, jet}\) ordered nearness criteria, similar to the one used for the Au+Au embedding (Sec.~\ref{sec:AuAuEmbedding}).  The matched jets can be used to show detector responses like shown in Fig.~\ref{fig:PtResolution} (top) and  \(p_\mathrm{T, jet}\)-resolution (Eq.~\ref{Eq:JetPtRes}) shown in Fig.~\ref{fig:PtResolution} (bottom). The mean detector-level \(p_\mathrm{T, jet}\) follows the particle-level one at low \(p_\mathrm{T, jet}\) and falls increasingly below it at higher \(p_\mathrm{T, jet}\), because of unreconstructed tracks and of neutral hadrons that the electromagnetic calorimeter does not measure. Correspondingly, the jet-\(p_\mathrm{T}\) scale shift quoted in the bottom panels grows from about 1\% for \ptRange{jet}{10}{15} to about 17\% for \ptRange{jet}{40}{80}, and the resolution from about 15\% to 19\%.  
 
 
  \begin{table}[!htbp]
@@ -380,7 +382,7 @@ To enhance jet signal, only High-Tower (HT) triggered events (at least one tower
  	\label{fig:PtResolution}
  \end{figure}
  
- Unfolding is done using the MultiFold method. Every jet is represented as a vector of 23 features. The four classifiers of MultiFold are parametrized as DNNs with 3 hidden layers with 256 nodes each. The model weights are trained using the AdamW optimizer with a learning rate of \(10^{-3}\) and weight decay of \(10^{-2}\). Convergence is achieved in two unfolding iterations; the training histories of the four classifiers over the iterations are shown in Fig.~\ref{fig:unfoldigLossAccAUC}. Statistical uncertainties are estimated from an ensemble of 50 model replicas, each trained on a random subsample of 500k data-like and 500k sim-like jets, so that each replica sees 1M jets every epoch (Sec.~\ref{sec:bootstrap}). All the  required unfolded distributions and profiles are calculated by using the per-jet unfolding weights. 
+ Unfolding is done using the MultiFold method. Every jet is represented as a vector of 23 features. The four classifiers of MultiFold are parametrized as DNNs with 3 hidden layers with 256 nodes each. The model weights are trained using the AdamW optimizer with a learning rate of \(10^{-3}\) and weight decay of \(10^{-2}\). Convergence is achieved in two unfolding iterations; the training histories of the four classifiers over the iterations are shown in Fig.~\ref{fig:unfoldigLossAccAUC}. In the first iteration the step-1 classifier separates the measured from the reconstructed jets (validation loss below \(\ln 2\), AUROC of about 0.6), while from the second iteration on all four classifiers stay close to \(\ln 2\), with AUROC values between 0.5 and 0.55, i.e.\ little difference is left to correct. In the later iterations the step-2 validation losses of the replicas spread and rise above \(\ln 2\), a sign that the classifiers start to learn statistical fluctuations, consistent with the choice of the second iteration for the nominal result. Statistical uncertainties are estimated from an ensemble of 50 model replicas, each trained on a random subsample of 500k data-like and 500k sim-like jets, so that each replica sees 1M jets every epoch (Sec.~\ref{sec:bootstrap}). All the  required unfolded distributions and profiles are calculated by using the per-jet unfolding weights. 
  
  \begin{figure}
  	\centering
@@ -390,7 +392,11 @@ To enhance jet signal, only High-Tower (HT) triggered events (at least one tower
  	\label{fig:unfoldigLossAccAUC}
  \end{figure}
  
- Closure test of the unfolding shown in  Fig.~\ref{fig:ClosureAngularity} and~\ref{fig:ClosureAngVsRg} is done by doing the same unfolding procedure replacing measured data with pseudo-data for which the particle level is known (pseudo-truth). The pseudo-unfolded distributions are then compared to the pseudo-truth via ratios
+ Closure test of the unfolding shown in Figs.~\ref{fig:ClosureAngularity} and~\ref{fig:ClosureAngVsRg} is done by doing the same unfolding procedure replacing measured data with pseudo-data for which the particle level is known (pseudo-truth). The pseudo-unfolded distributions are then compared to the pseudo-truth via ratios.
+%
+For the distributions (Fig.~\ref{fig:ClosureAngularity}) the ratios are within a few percent of unity over most of the range, for all three \(\beta\) and \(p_\mathrm{T, jet}\) ranges; larger deviations, up to about 20\%, appear only in the first bins at the smallest angularities and in the sparsely populated tails at high \(p_\mathrm{T, jet}\), where the statistical uncertainties are large.
+%
+The \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles (Fig.~\ref{fig:ClosureAngVsRg}) close to within about 1\% everywhere.
  \begin{figure}
  	\centering
  	\includegraphics[width=\linewidth]{figures/angularities/pp/fig_dist_ptbins_closure_like.pdf}
@@ -451,6 +457,10 @@ To enhance jet signal, only High-Tower (HT) triggered events (at least one tower
 The Barlow test was performed on each source of systematic error to remove the statistical fluctuation from the variation.
 %
 The relative uncertainty from every source, detector and unfolding related, is shown before the Barlow check for the inclusive and groomed distributions (Figs.~\ref{fig:SysDistInclRaw} and~\ref{fig:SysDistSDRaw}) and for the inclusive and groomed \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles (Figs.~\ref{fig:SysProfInclRaw} and~\ref{fig:SysProfSDRaw}), and after it in Figs.~\ref{fig:SysDistIncl}, \ref{fig:SysDistSD}, \ref{fig:SysProfIncl} and~\ref{fig:SysProfSD}, respectively.
+%
+In all of them the total is dominated by the two prior variations, PYTHIA\mbox{-}8 and HERWIG\mbox{-}7: for the distributions it is a few percent near the peaks and grows to 20--35\% in the sparsely populated tails, while for the profiles it stays at 3--6\% over the whole \(R_\mathrm{g}\) range.
+%
+The detector-related sources contribute at most a few percent, and the Barlow check mainly removes their isolated, bin-to-bin fluctuating contributions, leaving the prior-dominated total almost unchanged.
 \begin{figure}
 	\includegraphics[width=\textwidth]{angularities/pp/sys_ch_ang_k1_b0.5_hist_ang_raw.pdf}
 	\includegraphics[width=\textwidth]{angularities/pp/sys_ch_ang_k1_b1_hist_ang_raw.pdf}

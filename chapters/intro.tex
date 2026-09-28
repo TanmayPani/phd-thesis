@@ -138,6 +138,8 @@ Tab.~\ref{tab:qrknlep} shows fermions of the standard model, their anti-particle
 \end{figure}
 
 The mediators/bosons exchanged between the other fundamental particles give rise to the fundamental interactions: electromagnetism from the photon (\(\gamma\)), weak force from \(W^\pm\) and \(Z\) bosons, the gluon (\(g\)) for the strong force, and the Higgs boson (\(h\)) for imparting mass to the fundamental particles. Various interaction vertices possible in SM, that become the building blocks of all fundamental interactions are shown in Fig.~\ref{fig:smvtx}.
+%
+The figure groups them by interaction: the photon couples to every electrically charged fermion, the gluon to quarks and to itself through the three- and four-gluon vertices, the \(W\) to a charged lepton and its neutrino or to an up-type and a down-type quark, and the \(Z\) to any fermion pair, while the electroweak and Higgs vertices couple the gauge bosons to each other and the Higgs boson to the massive particles.
 
 Each vertex in Fig.~\ref{fig:smvtx} is a point where a mediator is emitted or absorbed, and its strength is set by the \emph{coupling} of the corresponding interaction: the electric charge \(e\) for the photon, the weak couplings for the \(W^\pm\) and \(Z\), and the strong coupling \(g_s\) for the gluon.
 %
@@ -472,7 +474,9 @@ This algorithm becomes the \emph{\(k_\mathrm{T}\) algorithm}~\cite{kTAlgorithm} 
 		gray. Circles are particles, their area growing with $p_{\rm T}$.}
 	\label{fig:jetalgorithms}
 \end{figure}
-The difference in these algorithms are shown in Fig.~\ref{fig:jetalgorithms}.  
+The difference between these algorithms is shown in Fig.~\ref{fig:jetalgorithms} for one simulated event, where each colored region is the area covered by one of the three hardest jets.
+%
+The \(k_\mathrm{T}\) and Cambridge/Aachen algorithms, which begin by merging soft or nearby particles, produce jets with irregular boundaries that depend on the soft particles of the event, whereas anti-\(k_\mathrm{T}\) clusters around the hardest particles first and gives circular jets of radius \(R\) whose shape is insensitive to soft radiation.  
 %
 The \emph{FastJet} library~\cite{Cacciari:2011ma} efficiently implements these algorithms and a few more, and is the de-facto standard in the High Energy Physics (HEP) community. 
 %
@@ -651,9 +655,9 @@ Contrary to initial naive expectations of a gas-like QGP, the QGP formed in thes
 %
 Thus, mean free path of particles in QGP fireball is much smaller than the fireball's system size.
 %
-Hence, in non-central heavy ion collisions the initial state coordinate space asymmetry generates a pressure gradient in the direction of the impact parameter $b$, schematically shown in Fig.~\ref{fig:anisotropycartoon}. 
+Hence, in non-central heavy ion collisions the initial state coordinate space asymmetry generates a pressure gradient in the direction of the impact parameter $b$, schematically shown in Fig.~\ref{fig:anisotropycartoon} (left). 
 %
-This spatial asymmetry translates into a azimuthal momentum anisotropy as the system expands, meaning that particles are more likely to be emitted along the plane where the pressure gradients are the highest. 
+This spatial asymmetry translates into an azimuthal momentum anisotropy as the system expands (Fig.~\ref{fig:anisotropycartoon}, right), meaning that particles are more likely to be emitted along the plane where the pressure gradients are the highest. 
 %
 This plane is defined by the beam axis and the impact parameter of the collision, and called the \emph{reaction plane} (\(\Psi_{\rm RP}\)).
 %
@@ -680,11 +684,13 @@ Due to the symmetry of the collision geometry, the most prominent contribution i
 	\label{fig:AnisotropyResults}
 \end{figure}
 
-$v_2$ was measured by the STAR and PHENIX for several particle species and is shown in Fig.~\ref{fig:AnisotropyResults}. 
+$v_2$ was measured by the STAR and PHENIX for several particle species and is shown in Fig.~\ref{fig:AnisotropyResults}.
+%
+Below \(p_\mathrm{T} \approx 2\)~GeV/\(c\) (left panel), \(v_2\) rises with \(p_\mathrm{T}\) and is ordered by hadron mass, lighter hadrons having larger \(v_2\), as predicted by the hydrodynamic calculations, while at higher \(p_\mathrm{T}\) it saturates below the hydrodynamic curves, with baryons above mesons. 
 %
 Large positive $v_2$ values indicate collective phenomena associated with a strongly coupled fluid, or a \emph{signature of QGP}.
 %
-A scaling of the $v_2$ values with the number of constituent quarks (2 for mesons, 3 for baryons) yielded a universal curve as a function of $p_{\rm T}/n_q$ suggesting the flow dynamics were developed in a medium with quark and gluon degrees of freedom, i.e. QGP.
+A scaling of the $v_2$ values with the number of constituent quarks (2 for mesons, 3 for baryons) yielded a universal curve as a function of $p_{\rm T}/n_q$ (right panel) suggesting the flow dynamics were developed in a medium with quark and gluon degrees of freedom, i.e. QGP.
 
 
 \section{Jets in QGP}
