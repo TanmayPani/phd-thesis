@@ -104,7 +104,7 @@ MultiFold uses Dense Neural Networks (DNNs) implemented using the EnergyFlow pac
 %
 See App.~\ref{app:Unfolding} for more information about unfolding procedure and App.~\ref{app:ML} for more information on machine learning.
 %
-Each classifier has three hidden layers of 100 nodes, and is trained with batches of 1024 jets on 80\% of the jets, the remaining 20\% being used for validation. Training is stopped once the validation loss has not improved for 10 epochs, and the network with the lowest validation loss is kept and used as the starting point in the next iteration.
+Each classifier has three hidden layers of 100 nodes, and is trained with the Adam optimizer~\cite{Kingma:2014adam} in batches of 1024 jets on 80\% of the jets, the remaining 20\% being used for validation. Training is stopped once the validation loss has not improved for 10 epochs, and the network with the lowest validation loss is kept and used as the starting point in the next iteration.
 %
 The evolution of the losses during the unfolding is shown in Fig.~\ref{fig:multifoldTraining} for two runs with the nominal settings.
 %
@@ -350,6 +350,7 @@ To enhance jet signal, only High-Tower (HT) triggered events (at least one tower
  The tracks and towers are clustered into jets using the anti-\(k_{\rm T}\) algorithm with a jet resolution parameter $R = 0.4$, implemented using the FastJet library~\cite{Cacciari:2011ma}, with the same particle-mass assumptions and recombination scheme as in Sec.~\ref{sec:JetRecoAuAu}. Unlike the hard-core Au+Au jets, all tracks and towers above 0.2~GeV are clustered, so the jets are inclusive.  After obtaining the jets, the softer constituents are groomed using SoftDrop (Sec.~\ref{sec:softDropDesc}) with \(\beta = 0\) and \(z_\mathrm{cut} = 0.2\). The groomed-jet's constituents lose non-kinematic information like charge, which is regained by matching them to the original jet's constituents. 
  
  \subsection{Detector effects and Unfolding}
+ \label{sec:ppUnfolding}
  The embedding simulation starts from PYTHIA\mbox{-}6 (STAR Tune)  at the particle level. The particles are then reconstructed as detector hits using the STAR detector system implemented in GEANT3 and embedded into zero-bias events from 200 GeV \pp collisions (2012). The events are generated in bins of the partonic hard-scattering transverse momentum, \(\hat{p}_\mathrm{T}\), which are combined with weights given by their cross sections divided by the number of generated events. Events are required to have \(|v_z| < 30\)~cm, and events containing a particle-level track with \ptGeq{track}{30} are rejected; the numbers of events used in each \(\hat{p}_\mathrm{T}\) bin are listed in Tab.~\ref{tab:ppEmbEvents}. The jets from particle and detector levels are matched using a \(p_\mathrm{T, jet}\) ordered nearness criteria, similar to the one used for the Au+Au embedding (Sec.~\ref{sec:AuAuEmbedding}).  The matched jets can be used to show detector responses like shown in Fig.~\ref{fig:PtResolution} (top) and  \(p_\mathrm{T, jet}\)-resolution (Eq.~\ref{Eq:JetPtRes}) shown in Fig.~\ref{fig:PtResolution} (bottom). The mean detector-level \(p_\mathrm{T, jet}\) follows the particle-level one at low \(p_\mathrm{T, jet}\) and falls increasingly below it at higher \(p_\mathrm{T, jet}\), because of unreconstructed tracks and of neutral hadrons that the electromagnetic calorimeter does not measure. Correspondingly, the jet-\(p_\mathrm{T}\) scale shift quoted in the bottom panels grows from about 1\% for \ptRange{jet}{10}{15} to about 17\% for \ptRange{jet}{40}{80}, and the resolution from about 15\% to 19\%.  
 
 
@@ -382,7 +383,7 @@ To enhance jet signal, only High-Tower (HT) triggered events (at least one tower
  	\label{fig:PtResolution}
  \end{figure}
  
- Unfolding is done using the MultiFold method. Every jet is represented as a vector of 23 features. The four classifiers of MultiFold are parametrized as DNNs with 3 hidden layers with 256 nodes each. The model weights are trained using the AdamW optimizer with a learning rate of \(10^{-3}\) and weight decay of \(10^{-2}\). Convergence is achieved in two unfolding iterations; the training histories of the four classifiers over the iterations are shown in Fig.~\ref{fig:unfoldigLossAccAUC}. In the first iteration the step-1 classifier separates the measured from the reconstructed jets (validation loss below \(\ln 2\), AUROC of about 0.6), while from the second iteration on all four classifiers stay close to \(\ln 2\), with AUROC values between 0.5 and 0.55, i.e.\ little difference is left to correct. In the later iterations the step-2 validation losses of the replicas spread and rise above \(\ln 2\), a sign that the classifiers start to learn statistical fluctuations, consistent with the choice of the second iteration for the nominal result. Statistical uncertainties are estimated from an ensemble of 50 model replicas, each trained on a random subsample of 500k data-like and 500k sim-like jets, so that each replica sees 1M jets every epoch (Sec.~\ref{sec:bootstrap}). All the  required unfolded distributions and profiles are calculated by using the per-jet unfolding weights. 
+ Unfolding is done using the MultiFold method. Every jet is represented as a vector of 23 features. The four classifiers of MultiFold are parametrized as DNNs with 3 hidden layers with 256 nodes each, implemented in PyTorch~\cite{Paszke:2019pytorch}. The model weights are trained using the AdamW optimizer~\cite{Kingma:2014adam,Loshchilov:2017adamw} with a learning rate of \(10^{-3}\) and weight decay of \(10^{-2}\). Convergence is achieved in two unfolding iterations; the training histories of the four classifiers over the iterations are shown in Fig.~\ref{fig:unfoldigLossAccAUC}. In the first iteration the step-1 classifier separates the measured from the reconstructed jets (validation loss below \(\ln 2\), AUROC of about 0.6), while from the second iteration on all four classifiers stay close to \(\ln 2\), with AUROC values between 0.5 and 0.55, i.e.\ little difference is left to correct. In the later iterations the step-2 validation losses of the replicas spread and rise above \(\ln 2\), a sign that the classifiers start to learn statistical fluctuations, consistent with the choice of the second iteration for the nominal result. Statistical uncertainties are estimated from an ensemble of 50 model replicas, each trained on a random subsample of 500k data-like and 500k sim-like jets, so that each replica sees 1M jets every epoch (Sec.~\ref{sec:bootstrap}). All the  required unfolded distributions and profiles are calculated by using the per-jet unfolding weights. 
  
  \begin{figure}
  	\centering
@@ -417,7 +418,7 @@ The \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles 
  %
  The unfolded distribution inherits all of these, and after several trainings chained across iterations there is no closed form for propagating them. 
  %
- Instead, the whole procedure is repeated on resampled inputs and the spread of the outcomes is taken as the uncertainty. 
+ Instead, the whole procedure is repeated on resampled inputs and the spread of the outcomes is taken as the uncertainty, following the bootstrap method~\cite{Efron:1979bootstrap} and its application to ensembles of neural networks~\cite{Lakshminarayanan:2016ensembles}. 
  
  Every classifier \(f\) is replaced by an ensemble of \(N_\mathrm{rep.}\) replicas. 
  %
@@ -446,9 +447,12 @@ The \(\langle\lambda^{\kappa=1}_{\beta}\rangle\) vs.\ \(R_\mathrm{g}\) profiles 
  %
  With \(m\) smaller than the full samples, the spread is that of samples of size \(m\) and is conservative for the purely statistical part. 
  %
- \(N_\mathrm{rep.}\) only sets how precisely \(\sigma_H\) itself is known, not its size. 
+ \(N_\mathrm{rep.}\) only sets how precisely \(\sigma_H\) itself is known, not its size.
+ %
+ All replicas of an ensemble are trained simultaneously on one GPU, as described in App.~\ref{app:torchstrap}.
  
  \subsection{Systematic Uncertainties}
+ \label{sec:ppSystematics}
  \subsubsection{Jet Reconstruction Related Uncertainties}
  Analysis was rerun with each of the following changes (compared to the nominal) done to the detector level of the embedding simulation.  
  %

@@ -65,7 +65,7 @@ Data is augmented using  procedures like random reflections ($\Delta y\to-\Delta
 	\label{fig:qgJetExamples}
 \end{figure}
 
-The images were input for a Convolutional Neural Network (CNN) implemented using PyTorch as shown in Fig.~\ref{fig:rgbnn}.  
+The images were input for a Convolutional Neural Network (CNN) implemented using PyTorch~\cite{Paszke:2019pytorch} as shown in Fig.~\ref{fig:rgbnn}.  
 %
 Each convolutional layer consisted of 64 filters, with filter sizes of \(5\times5\), \(3\times3\), and \(3\times3\), respectively. The max-pooling layers performed a 2×2 down-sampling with a stride length of 2. The dense layer consisted of 128 units, with a dropout rate of 0.2 before and after it.
 \begin{figure}
@@ -77,7 +77,7 @@ Each convolutional layer consisted of 64 filters, with filter sizes of \(5\times
 	\label{fig:rgbnn}
 \end{figure}
 
-The network was trained with the AdamW optimizer at a learning rate of \(10^{-3}\) and a weight decay of 0.1, using the cross-entropy loss. 
+The network was trained with the AdamW optimizer~\cite{Kingma:2014adam,Loshchilov:2017adamw} at a learning rate of \(10^{-3}\) and a weight decay of 0.1, using the cross-entropy loss. 
 %
 Training used a batch size of 128 for 20 epochs, and the model with the lowest validation loss was retained. 
 %
