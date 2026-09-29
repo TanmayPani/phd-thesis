@@ -15,7 +15,7 @@ The classifiers used here are small multi-layer perceptrons (MLPs), with a few h
 %
 Every operation of their training step, a matrix multiplication, an activation or an optimizer update, is a separate \emph{kernel} launched on the GPU, and a kernel acting on such small tensors finishes in a time comparable to the overhead of launching it.
 %
-Training \(N\) replicas one after the other, or in \(N\) separate processes, therefore multiplies the number of launches by \(N\) while leaving the GPU mostly idle, and separate processes in addition duplicate the memory of the framework itself.
+Training \(N\) replicas one after the other, or in \(N\) separate processes, therefore multiplies the number of launches by \(N\) while leaving the GPU mostly idle, and separate processes in addition duplicate the memory of the framework itself~\cite{Whitney2021Parallelizing}.
 
 The replicas, however, share their architecture and differ only in the values of their parameters and in the data they see.
 %
@@ -231,7 +231,7 @@ Late in a training, when early stopping has frozen most replicas, the skipped ro
 
 \section{Toy example}
 \label{sec:tsToy}
-The effect of the three configurations of Fig.~\ref{fig:tsEnsembles} is illustrated with the two-spirals example of the torchstrap repository: a classifier separating two interleaved spirals of 100 points in total, smeared with Gaussian noise, a problem in which the decision boundary is only constrained where there are data.
+The effect of the three configurations of Fig.~\ref{fig:tsEnsembles} is illustrated with the two-spirals example of the torchstrap repository, adapted from Refs.~\cite{Whitney2021Parallelizing,functorchParallelTrain}: a classifier separating two interleaved spirals of 100 points in total, smeared with Gaussian noise, a problem in which the decision boundary is only constrained where there are data.
 %
 An MLP with two hidden layers of 512 nodes is trained with Adam and a cosine learning-rate schedule, once as a single model and twice as an ensemble of 100 replicas trained in parallel, and the predicted probability of the classifier is shown in Fig.~\ref{fig:tsSpirals}.
 %

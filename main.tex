@@ -114,6 +114,15 @@
 %commands
 \input{defines/Commands.tex}
 \input{defines/TikzDiagrams.tex}
+% Devanagari words: XeLaTeX-typeset PDFs (figures/devanagari/make_devanagari.py) placed on the
+% baseline, with the Unicode text attached as ActualText so they copy and search as text.
+\usepackage{accsupp}
+\input{defines/devanagari_words.tex}
+\makeatletter
+\newcommand{\devword}[1]{%
+	\edef\dev@act{\noexpand\BeginAccSupp{method=hex,unicode,ActualText=\csname devhex@#1\endcsname}}%
+	\dev@act\raisebox{-0.3em}{\includegraphics[height=1.35em]{figures/devanagari/#1.pdf}}\EndAccSupp{}}
+\makeatother
 
 % clickable citations, cross-references, table of contents and URLs (keep hyperref last)
 \usepackage[hyperfootnotes=false]{hyperref}
@@ -174,7 +183,24 @@ Measuring the mean angularities as functions of the groomed jet radius, which th
 
 \beforepreface
 
-\acknowledgements{\(\ldots\)}
+\acknowledgements{
+As I am writing this thesis on \date{\today} Christopher Nolan's blockbuster movie, ``The Odyssey'' has bought Homer's 2800 year old epic back into cultural relevance. 
+%
+Perhaps it is fitting that I bring my graduate school journey to an end, thinking of Odysseus's voyage home.
+%
+While not quite as perilous as the complicated  hero's journey, I would not say it was easy.
+%
+Even though I didn't have to sail through the choppy waters between Scylla and Charybdis, I did have to take a 14 hours flight across the Atlantic on 30\(~\text{th}\) August 2020 during peak COVID pandemic. 
+%
+My penchant for getting waylaid from my course (of research) definitely rivals that of the men from Ithaca.
+%
+However, all through it, much like Athena with Odysseus, Prof. Sevil Salur never left my side.
+
+
+
+\(\ldots\)
+
+}
 
 \dedication{
 	\begin{center}
