@@ -1,4 +1,4 @@
-\chapter{Vectorized training of model ensembles}
+\chapter{Vectorized Training of Model Ensembles}
 \label{app:torchstrap}
 
 The statistical uncertainties of the unbinned unfolding in Ch.~\ref{ch:angularities} are obtained by replacing every classifier of MultiFold with an ensemble of independently trained replicas (Sec.~\ref{sec:bootstrap}).
@@ -246,7 +246,7 @@ This spread of the replicas is the quantity that Sec.~\ref{sec:bootstrap} uses a
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\linewidth]{figures/torchstrap/spirals_predictions.pdf}
-	\caption[Predictions of a single MLP and of MLP ensembles on the two-spirals problem]{Predicted probability of an MLP classifier trained on 100 points from two noisy spirals (blue: class 0, orange: class 1), for a single model (left), the mean of an ensemble of 100 replicas trained on the full dataset (middle), and the mean of a bootstrap ensemble of 100 replicas, each trained on its own resample (right). All replicas of an ensemble were trained simultaneously on one GPU.}
+	\caption[Predictions of a single MLP and of MLP ensembles on two spirals]{Predicted probability of an MLP classifier trained on 100 points from two noisy spirals (blue: class 0, orange: class 1), for a single model (left), the mean of an ensemble of 100 replicas trained on the full dataset (middle), and the mean of a bootstrap ensemble of 100 replicas, each trained on its own resample (right). All replicas of an ensemble were trained simultaneously on one GPU.}
 	\label{fig:tsSpirals}
 \end{figure}
 

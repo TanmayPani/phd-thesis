@@ -1,8 +1,8 @@
 \chapter{Jets and Machine Learning}
 \label{app:ML}
 
-\section{Machine Learning Basics}
-Fortunately, many of the tasks encountered in HEP can be naturally reformulated as machine learning problems. 
+\section{Machine learning basics}
+Many of the tasks encountered in HEP can be naturally reformulated as machine learning problems. 
 %
 Typically, the problems are formulated in terms of a search for some function \(f:X \to Y\), from the space of the observed data \(X\) to a low-dimensional space of a desired target label \(Y\), which optimizes a chosen metric. 
 %
@@ -20,7 +20,7 @@ In this case, the algorithms minimize the loss function directly with respect to
 %
 Neural networks, support vector machines, and decision trees are examples of types of models commonly used in machine learning. 
 %
-These models often have a large number of parameters, and in the case of neural networks, finding the optimal \(f_\phi\) can be a difficult problem
+These models often have a large number of parameters, and in the case of neural networks, finding the optimal \(f_\phi\) can be a difficult problem.
 %
 
 An essential goal in machine learning is generalization—the ability of the model to perform well on data that were not used in training. 
@@ -29,18 +29,18 @@ Failure in this task is called overtraining or overfitting.
 %
 A vast array of techniques exist to avoid overtraining, all of which can be considered forms of regularization. 
 %
-Regularization techniques such as dropout were key to advances in image recognition with deep learning
+Regularization techniques such as dropout were key to advances in image recognition with deep learning.
 
-\section{Jet Classification}
+\section{Jet classification}
 For jets, classifiers can be used as a tagging mechanism. 
 %
 For almost every way of representing a jet, there is a class of machine learning models.
 %
-Two cases are discussed here
-\subsection{Quark-Gluon jet discrimination}
-Quark and gluon jet \(p+p\) events are generated as \(qq\to qq\) and \(gg\to gg\) dijet events at \sNN{200}{GeV} using PYTHIA\mbox{-}8 (RHIC Tune). 
+Two cases are discussed here.
+\subsection{Quark-gluon jet discrimination}
+Quark and gluon jet \(p+p\) events are generated as \(qq\to qq\) and \(gg\to gg\) dijet events at \sNN{200}{GeV} using PYTHIA\mbox{-}8 (RHIC tune). 
 %
-Each jet is represented as an $24\times24$ image following~\cite{Komiske_2017}. 
+Each jet is represented as a $24\times24$ image following~\cite{Komiske_2017}. 
 %
 The RGB color channels of the image are made as,
 \begin{itemize}
@@ -53,14 +53,14 @@ giving jets as shown in Fig.~\ref{fig:qgJetExamples}.
 The gluon jet (right) has more constituents, spread over a wider area around the axis, than the quark jet (left), whose constituents are concentrated near the center, which is the difference the classifier learns to exploit.
 %
 Preprocessing involves centering the images around each jet's $p_\mathrm{T}$-weighted centroid
-$(\bar y,\bar\phi) = \sum_i p_{\mathrm{T},i}(y_i,\phi_i)/\sum_i p_{\mathrm{T},i}$, followed by normalization
+$(\bar y,\bar\phi) = \sum_i p_{\mathrm{T},i}(y_i,\phi_i)/\sum_i p_{\mathrm{T},i}$, followed by normalization.
 %
 Data is augmented using  procedures like random reflections ($\Delta y\to-\Delta y$ or $\Delta\phi\to-\Delta\phi$) and random jitter. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{figures/qgjet_images}
-	\caption{Jet images of a typical quark (left) and gluon (right) jet in \(\Delta y\) and \(\Delta\phi\) around the jet axis, with the image channels defined in the text. Gluon jets exhibit a broader spatial radiation pattern
+	\caption[Jet images of a quark and a gluon jet]{Jet images of a typical quark (left) and gluon (right) jet in \(\Delta y\) and \(\Delta\phi\) around the jet axis, with the image channels defined in the text. Gluon jets exhibit a broader spatial radiation pattern
 		and higher particle multiplicity compared to quark jets.}
 	\label{fig:qgJetExamples}
 \end{figure}
@@ -71,7 +71,7 @@ Each convolutional layer consisted of 64 filters, with filter sizes of \(5\times
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/RGBNN}
-	\caption{An illustration of the deep convolutional neural network architecture. The first
+	\caption[Architecture of the convolutional neural network]{An illustration of the deep convolutional neural network architecture. The first
 		layer is the input jet image, followed by three convolutional layers, a dense layer and an
 		output layer~\cite{Komiske_2017}.}
 	\label{fig:rgbnn}
@@ -84,12 +84,12 @@ Training used a batch size of 128 for 20 epochs, and the model with the lowest v
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/roc_per_jpt}
-	\caption{ROC curves of the CNN quark-gluon classifier, quark efficiency vs gluon efficiency, evaluated on a holdout test set in bins of \(p_\mathrm{T, jet}\) (20--25, 25--30, 30--40 and 40--65 GeV/\(c\)). The area under the curve (AUC) rises from 0.79 to 0.83 with increasing \(p_\mathrm{T, jet}\). The diagonal corresponds to random guessing.}
+	\caption[ROC curves of the quark-gluon classifier in bins of \(p_\mathrm{T, jet}\)]{ROC curves of the CNN quark-gluon classifier, quark efficiency vs gluon efficiency, evaluated on a holdout test set in bins of \(p_\mathrm{T, jet}\) (20--25, 25--30, 30--40 and 40--65 GeV/\(c\)). The area under the curve (AUC) rises from 0.79 to 0.83 with increasing \(p_\mathrm{T, jet}\). The diagonal corresponds to random guessing.}
 	\label{fig:rocperjpt}
 \end{figure}
 Training images were augmented with random reflections in \(\Delta\eta\) and \(\Delta\phi\) and random translations of up to 0.5 pixels. 
 %
-The Receiver Operator Characteristic (ROC) curve, evaluated on a holdout test set, is shown differentially in \(p_\mathrm{T, jet}\) in Fig.~\ref{fig:rocperjpt}. The separation improves with \(p_\mathrm{T, jet}\), with the area under the curve increasing from 0.79 to 0.83. 
+The Receiver Operating Characteristic (ROC) curve, evaluated on a holdout test set, is shown differentially in \(p_\mathrm{T, jet}\) in Fig.~\ref{fig:rocperjpt}. The separation improves with \(p_\mathrm{T, jet}\), with the area under the curve increasing from 0.79 to 0.83. 
 
 
 A way to gain some understanding of how the model looks at jet substructure is through \emph{interpretability} methods. 
@@ -98,28 +98,45 @@ A simple method is used here: the average change in the classifier output when a
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/importance_cnn_qg}
-	\caption{Per-pixel importance for the CNN quark-gluon classifier: the mean change of the classifier output when a pixel is masked, relative to the probability of the true class, \(\langle|\Delta P|\rangle/P(\text{true class})\), as a function of \(\Delta y\) and \(\Delta\phi\) from the jet axis, for quark (left) and gluon (right) jets with \(20 < p_\mathrm{T, jet} < 30\)~GeV/\(c\) (top) and \(p_\mathrm{T, jet} \geq 30\)~GeV/\(c\) (bottom).}
+	\caption[Per-pixel importance for the quark-gluon classifier]{Per-pixel importance for the CNN quark-gluon classifier: the mean change of the classifier output when a pixel is masked, relative to the probability of the true class, \(\langle|\Delta P|\rangle/P(\text{true class})\), as a function of \(\Delta y\) and \(\Delta\phi\) from the jet axis, for quark (left) and gluon (right) jets with \(20 < p_\mathrm{T, jet} < 30\)~GeV/\(c\) (top) and \(p_\mathrm{T, jet} \geq 30\)~GeV/\(c\) (bottom).}
 	\label{fig:importancecnnqg}
 \end{figure}
 \subsection{Characterizing jet quenching}
-Another way to think about jet quenching/modification, is to ask how easily can a classifier algorithm tell apart the quenched and unquenched jet. 
+Another way to think about jet quenching is to ask how easily a classifier can tell apart quenched and unquenched jets. 
 %
 Here PYTHIA\mbox{-}6~\cite{Sj_strand_2006} provides the unquenched jets and JEWEL \cite{Zapp:2013vla} the quenched jets in different centrality bins with/without recoil centers. 
 %
-Jets are represented as a 9-D vectors of features: $p_{\rm T, jet}$, $\rm N^{charged}_{\rm constit., jet}$, $\rm N^{neutral}_{\rm constit., jet}$, LeSub, $\lambda^2_0$, $\lambda_1^{0.5}$, $\lambda_1^1$, $\lambda_1^2$.
+Jets are represented as 9-D vectors of features: $p_{\rm T, jet}$, $\rm N^{charged}_{\rm constit., jet}$, $\rm N^{neutral}_{\rm constit., jet}$, LeSub, $\lambda^2_0$, $\lambda_1^{0.5}$, $\lambda_1^1$, $\lambda_1^2$.
 %
 The jets are input into Dense Neural Networks (DNNs) with three hidden layers with 100 nodes each. After training, the ROC curves shown in Fig.~\ref{fig:jetQuenchROC} are calculated on a holdout test set.
 %
 \begin{figure}
 	\includegraphics[width=0.49\linewidth]{roc_curve_dnn_withoutRec.pdf}
 	\includegraphics[width=0.49\linewidth]{roc_curve_dnn_wRec.pdf}
-	\caption{ROC curves of the DNN classifier separating PYTHIA\mbox{-}6 (unquenched) from JEWEL (quenched) jets, for JEWEL without recoils (left) and with recoils (right), in four centrality classes, with the corresponding AUC values in the legends. Jets are anti-\(k_\mathrm{T}\), \(R = 0.4\), \(p_\mathrm{T, jet} > 10\)~GeV/\(c\), \(|\eta_\mathrm{jet}| < 1 - R\), with at least two charged constituents.}
+	\caption[ROC curves of the classifier separating PYTHIA\mbox{-}6 and JEWEL jets]{ROC curves of the DNN classifier separating PYTHIA\mbox{-}6 (unquenched) from JEWEL (quenched) jets, for JEWEL without recoils (left) and with recoils (right), in four centrality classes, with the corresponding AUC values in the legends. Jets are anti-\(k_\mathrm{T}\), \(R = 0.4\), \(p_\mathrm{T, jet} > 10\)~GeV/\(c\), \(|\eta_\mathrm{jet}| < 1 - R\), with at least two charged constituents.}
 	\label{fig:jetQuenchROC}
 \end{figure}
 %
-The DNN performs better than chance in all the centralities and for both with/without recoils case.
-The with-recoils case gives exaggerated ROC curves due to the background of recoil centers. 
+Without recoils, the classifier is only slightly better than chance: the AUC falls from 0.60 in 0--10\% to 0.52 in 50--80\% central collisions.
 %
-AUC score decreases from central (0-10\%) to peripheral (50-80\%) events possibly implying more modification in central compared to peripheral.  
+The decrease towards peripheral collisions is expected, since a smaller and shorter-lived medium modifies the jets less.
 %
-More information about jet quenching and machine learning can be found in~\cite{lai2022informationcontentjetquenching}
+The small AUC values do not mean that the jets are unmodified, but that the modification is small compared with the jet-to-jet fluctuations.
+%
+The vacuum shower is itself stochastic, so the angularities and multiplicities of vacuum jets at a given \(p_\mathrm{T, jet}\) are broadly distributed.
+%
+In JEWEL, the energy loss also fluctuates strongly from jet to jet (Sec.~\ref{sec:eventGenerators}), so many quenched jets lose little energy and are indistinguishable from vacuum jets.
+%
+Moreover, the two samples are compared at the same final \(p_\mathrm{T, jet}\), so a quenched jet competes with vacuum jets from partons of lower energy.
+%
+The classifier therefore separates the two populations statistically, which is enough to show that they differ, but it cannot tag an individual jet as quenched~\cite{lai2022informationcontentjetquenching}.
+
+With recoils, the separation is much stronger, with the AUC falling from 0.998 in 0--10\% to 0.745 in 50--80\% central collisions.
+%
+This separation is driven mostly by the recoil partons from the medium, whose thermal momenta add soft particles inside the jet cone (Sec.~\ref{sec:eventGenerators}), rather than by a modification of the jet shower itself.
+%
+These ROC curves therefore overstate the discrimination that could be achieved on the jets alone.
+
+Applying such a classifier to data would add further complications absent from this study: fluctuations of the underlying event, which have to be subtracted and can mimic or wash out the soft modifications, detector effects, and the absence of per-jet labels, since whether a measured jet was quenched is not defined.
+%
+The classifiers are therefore used here as a measure of how much information about jet quenching the jet observables carry, which can guide the choice of observables for a measurement, rather than as taggers for data~\cite{lai2022informationcontentjetquenching}.

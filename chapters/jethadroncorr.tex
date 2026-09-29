@@ -1,4 +1,4 @@
-\chapter{Jet-hadron correlations relative to the event plane}
+\chapter{Jet-Hadron Correlations Relative to the Event Plane}
 \label{ch:jhcorr}
 As discussed in Sec.~\ref{sec:jetsInQGP}, a parton traversing the QGP loses energy, and the amount lost is expected to depend on the length of its path through the medium.
 %
@@ -19,7 +19,7 @@ When studying the \dphi distributions, a peak is observed at $\dphi = 0$ which i
 %
 Another peak which is seen near $\dphi = \pi$ is referred to as the \emph{away-side}.  
 %
-The away-side consists of the hadrons associated with the trigger jet and make up the second jet which results from the early hard-scatter.
+The away-side consists of the hadrons from the recoiling parton, i.e.\ the second jet of the back-to-back hard scattering.
 
 The goal of this analysis is to study the conditional yield of associated particles, the width of the near- and away-side peaks (quantified using the Gaussian width) as a function of the angle between the jet axis and the event plane.  The yield is estimated by:
 %
@@ -31,7 +31,7 @@ The goal of this analysis is to study the conditional yield of associated partic
 %
 The integration limits are chosen based on practical considerations, including the detector acceptance and binning of histograms.  
 
-\section{Analysis Method} \label{sect:Method}
+\section{Analysis method} \label{sect:Method}
 This measurement utilizes data collected during the 2014 run from \AuAu collisions at nucleon-nucleon center-of-mass energy of \sNN{200}{GeV} by the STAR experiment~\cite{ACKERMANN2003624} at RHIC.  Events referred to as signal (same) events are required to contain a HT trigger in the BEMC \cite{BEDDO2003725}.  Minimum-bias (MB) triggered events based on coincidence of Zero Degree Calorimeters (ZDC coincidence), Vertex Position Detectors and Beam-Beam Counters signals are used to estimate the pair-acceptance effects via a mixed-event (ME) technique \cite{PhysRevC.96.024905}. For this analysis, 9.4M HT-triggered and 4.0M MB collision events in the 20--50\% centrality range are used.
 
 \subsection{Data set and event selection} \label{sec:JHEventSel}
@@ -71,7 +71,7 @@ The acceptance $|\eta| < 1.0$ matches that of the BEMC.
 Only tracks with $\ensuremath{p_{\rm T}}\xspace > 2.0$~\GeVc are used in the jet reconstruction (Sec.~\ref{sec:JetRecoAuAu}), while all selected tracks with $\ensuremath{p_{\rm T}}\xspace > 1.0$~\GeVc serve as associated particles.
 
 \begin{table}[!htbp]
-	\caption{Track selection criteria.}
+	\caption[Track selection criteria]{Track selection criteria.}
 	\label{Tab:JHTrackCuts}
 	\centering
 	\begin{tabular}{l | c}
@@ -119,7 +119,7 @@ Following Ref.~\cite{STAR:2021lvw}, the momenta of all tracks that extrapolate t
 %
 with $f_\mathrm{had} = 1$, and the tower is removed if its corrected energy falls below the threshold required for the jet constituents.
 %
-Although subtracting the full track momentum over-corrects the charged hadrons, which deposit on average only about a third of their energy in the BEMC, it removes the large tower-by-tower fluctuations of the deposited energy and therefore improves the jet energy resolution.
+Although subtracting the full track momentum over-corrects the charged hadrons, which deposit on average only about a third of their energy in the BEMC~\cite{STAR:2019yqm}, it removes the large tower-by-tower fluctuations of the deposited energy and therefore improves the jet energy resolution.
 
 \subsection{Event plane reconstruction}
 The event plane (\(\Psi_{2,EP}\)), the experimental estimate of the reaction plane described in App.~\ref{sec:EP_Recon}, is calculated event-by-event using the Modified Reaction Plane (MRP) method~\cite{CASTILHO2018369,Agakishiev:2014ada,Adams_2005} using charged tracks with $0.2 < p_{\rm  T, track} < 1.0$ \GeVc measured within the TPC.  
@@ -160,7 +160,7 @@ The analysis is restricted to 20--50\% central \AuAu collisions to achieve the h
 	% \end{figure}
 % set up next section for centrality and event plane
 
-The second- (fourth-) order event-plane resolutions relative to the second-order event plane ($R_2\{\Psi_{2, EP}\}$ and $R_4\{\Psi_{2, EP}\}$ respectively) as a function of collision centrality are shown in Fig.~\ref{fig:EPres}.  The resolution is peaked around the 20-30\% and 30-40\% centrality.  %The event-plane resolutions are dependent on the momenta range of excluded tracks.
+The second- (fourth-) order event-plane resolutions relative to the second-order event plane ($R_2\{\Psi_{2, EP}\}$ and $R_4\{\Psi_{2, EP}\}$ respectively) as a function of collision centrality are shown in Fig.~\ref{fig:EPres}.  The resolution peaks in the 20--30\% and 30--40\% centrality classes.  %The event-plane resolutions are dependent on the momenta range of excluded tracks.
 % For the momentum of the associated tracks used in this work, $R_2$ ranges from 0.52-0.66 and $R_4$ from 0.24-0.39.  
 % This analysis used tracks from 0.2-1.0 \GeVc for event plane reconstruction to avoid having to use multiple event plane definitions or momentum exclusion ranges and to remove potential auto-correlations.  
 Because of the finite number of particles, the reconstructed event plane only approximates the true symmetry plane; the resolution $R_n\{\Psi_{2,EP}\}$ (Eq.~\ref{resolution}) quantifies how well it does so.
@@ -189,19 +189,19 @@ The finite resolution therefore pulls any event-plane dependence of the yields t
 		%   \includegraphics[width=7.5cm]{figures/plots/EPresolution/R02_1EP_C20-50.pdf}
 		%   \includegraphics[width=7.5cm]{figures/plots/EPresolution/R04_1EP_C20-50.pdf}
 		\includegraphics[width=12cm]{figures/R2-4combined.pdf}
-		\caption{Event-plane resolution: Second-order (fourth-order) harmonic relative to the event plane, $R_{2}(\Psi_{2})$ ($R_{4}(\Psi_{2})$), respectively.  The approach follows the Modified Reaction Plane (MRP) method \cite{Agakishiev:2014ada} utilizing the charged tracks of the TPC for event-plane reconstruction and resolution calculation for tracks ranging from 0.2-1.0 \GeVc. Combined over 20--50\% centrality, $R_2 = 0.56$ and $R_4 = 0.28$. }  
+		\caption[Event-plane resolution as a function of centrality]{Event-plane resolution: Second-order (fourth-order) harmonic relative to the event plane, $R_{2}(\Psi_{2})$ ($R_{4}(\Psi_{2})$), respectively.  The approach follows the Modified Reaction Plane (MRP) method \cite{Agakishiev:2014ada} utilizing the charged tracks of the TPC for event-plane reconstruction and resolution calculation for tracks with 0.2--1.0~\GeVc. Combined over 20--50\% centrality, $R_2 = 0.56$ and $R_4 = 0.28$. }  
 		\label{fig:EPres}
 	\end{center}
 \end{figure}
 
 \subsection{Jet reconstruction and selection} \label{sec:JetRecoAuAu}
-Full jets are reconstructed by measuring charged-tracks in the TPC and collecting neutral-particle information from the BEMC.  The anti-\kt algorithm 
+Full jets are reconstructed by measuring charged tracks in the TPC and collecting neutral-particle information from the BEMC.  The anti-\kt algorithm 
 %\cite{Cacciari:2008gp} implemented through the FastJet package \cite{Cacciari:2011ma} 
-clusters these particles into jets by reconstructing the jet momenta as the quadratic sum of their constituent momenta using a boost-invariant $\it{p}^{2}_{\rm T}$ recombination scheme.  Tracks used for reconstructing jets are assumed to be pions while the towers to have arisen from massless particles. All jets measured in this work are clustered with resolution parameter of $R=0.4$. The area of jets, $A_{\rm jet}$, is found with FastJet using active ghost particles \cite{Cacciari:2008gn}.  Partially reconstructed jets at the edge of the acceptance are rejected by applying a fiducial cut, $|\eta_{\rm jet}| < 1.0 - R$, to assure all jets fall within the acceptance of the detectors. 
+clusters these particles into jets by reconstructing the jet momenta as the quadratic sum of their constituent momenta using a boost-invariant $\it{p}^{2}_{\rm T}$ recombination scheme (Sec.~\ref{sec:jetAlgo}).  This scheme weights the directions of the constituents by $p^{2}_{\rm T}$ when they are combined, so that the jet axis follows the hardest constituents and is less sensitive to soft particles from the underlying event and from the recoil of the medium.  Tracks used for reconstructing jets are assumed to be pions while the towers to have arisen from massless particles. All jets measured in this work are clustered with resolution parameter of $R=0.4$. The area of jets, $A_{\rm jet}$, is found with FastJet using active ghost particles \cite{Cacciari:2008gn}.  Partially reconstructed jets at the edge of the acceptance are rejected by applying a fiducial cut, $|\eta_{\rm jet}| < 1.0 - R$, to assure all jets fall within the acceptance of the detectors. 
 
 %This procedure uses the FastJet package \cite{Cacciari:2011ma}, where the anti-\kt \cite{Cacciari:2008gp} recombination algorithm is used for reconstructing signal jets and the \kt sequential recombination algorithm is used for estimating the underlying event background ($\rho$).  The momenta of the jet is calculated as the quadratic sum of their constituent momenta using a boost-invariant $\it{p}^{2}_{\rm T}$ recombination scheme.  Tracks used for reconstructing jets are assumed to be pions while the towers to have arisen from massless particles.  A jet can further be described by its resolution parameter $R$, which refers to its radial extension in azimuth and pseudorapidity.  The exact meaning of R is algorithm specific, but in this paper, it will typically refer to roughly circular clusters of radius R about the jet axis determined by $\Delta R = \sqrt{\dphi^2 + \deta^2}$ where \dphi (\deta) is the relative azimuthal angle (relative pseudorapidity).  The area of jets, $A^{jet}$, is found within the FastJet package utilizing active ghost particles \cite{Cacciari:2008gn}.  The location of a jet is described by the `jet axis', which refers to the azimuthal and pseudorapidity coordinates of the centroid of the jet.  Partially reconstructed jets at the edge of the acceptance are rejected by a fiducial cut, $|\eta_{jet}| < 1.0 - R$, to assure jets fall within the acceptance of the detectors.
 
-Jets produced in heavy-ion collisions sit on top of a large amount of underlying event.  The jet signal can be found beneath tens to hundreds of particles resulting from various other processes. To reduce the influence of these background particles, this analysis requires tracks (towers) with $\ensuremath{p_{\rm T}}\xspace (\Et) >$ 2.0 \GeVc for jet reconstruction.  At RHIC energies this selection reduces the median background transverse-momentum density per unit $A_{\rm jet}$, $\langle \rho \rangle$, down to $\approx 0.6$~\GeVc.  This high-constituent selection, referred to as a ``hard-core" jet selection reduces fluctuations, fake jets, and background jet particles~\cite{PhysRevLett.119.062301}.  To further reduce contributions from the background and to match the trigger condition, the jets are required to contain a constituent tower that fired the HT trigger ($ E_{\rm T, tower}> 5.4$~GeV). Jets containing a track with $\ensuremath{p_{\rm T}}\xspace > 30$~\GeVc are rejected, as such tracks are likely to be mis-reconstructed. The remaining jets are studied in classes of jets with \pttrigrange{15}{20} and \pttrigrange{20}{40}.
+Jets produced in heavy-ion collisions sit on top of a large amount of underlying event.  The jet signal can be found beneath tens to hundreds of particles resulting from various other processes. To reduce the influence of these background particles, this analysis requires tracks (towers) with $\ensuremath{p_{\rm T}}\xspace (\Et) >$ 2.0 \GeVc for jet reconstruction.  At RHIC energies this selection reduces the median background transverse-momentum density per unit $A_{\rm jet}$, $\langle \rho \rangle$, down to $\approx 0.6$~\GeVc.  This high-constituent selection, referred to as a ``hard-core'' jet selection, reduces fluctuations, fake jets, and background jet particles~\cite{PhysRevLett.119.062301}.  To further reduce contributions from the background and to match the trigger condition, the jets are required to contain a constituent tower that fired the HT trigger ($ E_{\rm T, tower}> 5.4$~GeV). Jets containing a track with $\ensuremath{p_{\rm T}}\xspace > 30$~\GeVc are rejected, as such tracks are likely to be mis-reconstructed. The remaining jets are studied in classes of jets with \pttrigrange{15}{20} and \pttrigrange{20}{40}.
 %
 The numbers of trigger jets in the two classes are shown in Fig.~\ref{fig:NTrig} for each orientation relative to the event plane.
 %
@@ -215,7 +215,7 @@ This ordering is expected both from the path-length dependence of jet quenching 
 		\includegraphics[width=\linewidth]{JHC/NTrig_J15-20_C20-50_Zcut24.pdf} &
 		\includegraphics[width=\linewidth]{JHC/NTrig_J20-40_C20-50_Zcut24.pdf} \\
 	\end{tabularx}
-	\caption{Number of trigger jets as a function of the reconstructed \Pt{jet} for \pttrigrange{15}{20} (left) and \pttrigrange{20}{40} (right) full jets in 20--50\% central \AuAu collisions, for in-plane (blue), mid-plane (magenta) and out-of-plane (red) jets and all orientations combined (black).}
+	\caption[Number of trigger jets for each orientation relative to the event plane]{Number of trigger jets as a function of the reconstructed \Pt{jet} for \pttrigrange{15}{20} (left) and \pttrigrange{20}{40} (right) full jets in 20--50\% central \AuAu collisions, for in-plane (blue), mid-plane (magenta) and out-of-plane (red) jets and all orientations combined (black).}
 	\label{fig:NTrig}
 \end{figure}
 
@@ -256,7 +256,7 @@ The measurement of the correlation function (distribution of charged hadrons rel
 	\end{tabularx}
 %		\includegraphics[width=0.49\linewidth]{figures/jhcorr_jpt1520}
 %	\includegraphics[width=0.49\linewidth]{figures/ajhcorr_jpt1520}
-	\caption{Two-dimensional jet-hadron correlations in \dphi and \deta for in-plane \pttrigrange{15}{20} jets in 20--50\% central \AuAu collisions, for the associated-hadron momenta (a) \ptassocrange{1.0}{1.5}, (b) \ptassocrange{1.5}{2.0}, (c) \ptassocrange{2.0}{3.0}, (d) \ptassocrange{3.0}{4.0}, (e) \ptassocrange{4.0}{6.0} and (f) \ptassocrange{6.0}{10.0}. Each group shows, from left to right, the raw same-event distribution per trigger jet, the normalized mixed-event pair acceptance $a(\dphi, \deta)$, whose trapezoidal shape in \(\Delta\eta = \eta_\mathrm{jet} - \eta_\mathrm{assoc}\) follows from \(|\eta_\mathrm{assoc}| < 1.0 \) and \(|\eta_\mathrm{jet}| < 0.6 \), and the acceptance-corrected correlation function, which still contains the combinatorial background.}
+	\caption[Raw, mixed-event and acceptance-corrected jet-hadron correlations for 15--20~GeV/\(c\) jets]{Two-dimensional jet-hadron correlations in \dphi and \deta for in-plane \pttrigrange{15}{20} jets in 20--50\% central \AuAu collisions, for the associated-hadron momenta (a) \ptassocrange{1.0}{1.5}, (b) \ptassocrange{1.5}{2.0}, (c) \ptassocrange{2.0}{3.0}, (d) \ptassocrange{3.0}{4.0}, (e) \ptassocrange{4.0}{6.0} and (f) \ptassocrange{6.0}{10.0}. Each group shows, from left to right, the raw same-event distribution per trigger jet, the normalized mixed-event pair acceptance $a(\dphi, \deta)$, whose trapezoidal shape in \(\Delta\eta = \eta_\mathrm{jet} - \eta_\mathrm{assoc}\) follows from \(|\eta_\mathrm{assoc}| < 1.0 \) and \(|\eta_\mathrm{jet}| < 0.6 \), and the acceptance-corrected correlation function, which still contains the combinatorial background.}
 	\label{fig:jhcorrjpt1520}
 \end{sidewaysfigure}
 
@@ -276,7 +276,7 @@ The measurement of the correlation function (distribution of charged hadrons rel
 
 $N_{\rm assoc, jet}$ gives the number of pairs of trigger jets and the associated hadrons, $N^{\rm meas}_{\rm assoc,jet}$ and $N^{\rm bkgd}_{\rm assoc,jet}$ are the number of pairs measured and the pair characterized as background respectively. $\epsilon(\Pt{assoc}, \eta_{\rm assoc})$ is the single-track reconstruction efficiency\footnote{Acceptance effects such as gaps between sector boundaries are included in this correction; however, $\epsilon(\Pt{assoc}, \eta_{\rm assoc})$ is referred to as an efficiency correction in order to distinguish it from $a(\Pt{assoc}, \text{\dphi}, \text{\deta})$.}.  The pair acceptance, $a(\Pt{assoc}, \text{\dphi}, \text{\deta})$, is calculated from the raw pairs measured between a trigger jet and the charged hadrons from mixed events.  %The background correction $N_{\rm bkgd}$ is described in Sec.~\ref{sect:CorrBkgd}.
 
-The correlations are determined in bins of centrality, reconstructed trigger-jet transverse momentum (\Pt{jet}), associated-hadron transverse momentum (\Pt{assoc}), and bins of the trigger jet relative to the event plane (in, mid, out, all combined angles) defined in Eq.~\ref{Eq:EPbins}.  Fig.~\ref{fig:jhcorrjpt1520} shows, for in-plane \pttrigrange{15}{20} jets, how the raw same-event distributions are turned into acceptance-corrected correlation functions by the mixed-event correction described below.  The corrected correlation functions contain a large combinatorial background ($N^{\rm bkgd}_{\rm assoc,jet}$), which must be subtracted.  This subtraction procedure is described in Sec.~\ref{sect:CorrBkgd} .
+The correlations are determined in bins of centrality, reconstructed trigger-jet transverse momentum (\Pt{jet}), associated-hadron transverse momentum (\Pt{assoc}), and bins of the trigger jet relative to the event plane (in, mid, out, all combined angles) defined in Eq.~\ref{Eq:EPbins}.  Fig.~\ref{fig:jhcorrjpt1520} shows, for in-plane \pttrigrange{15}{20} jets, how the raw same-event distributions are turned into acceptance-corrected correlation functions by the mixed-event correction described below.  The corrected correlation functions contain a large combinatorial background ($N^{\rm bkgd}_{\rm assoc,jet}$), which must be subtracted.  This subtraction procedure is described in Sec.~\ref{sect:CorrBkgd}.
 
 %The acceptance correction is applied in \dphi and \deta before further analysis and background subtraction.  Figure shows an example of the raw correlations from same events pairs before applying a mixed event correction for the efficiency and acceptance of the BEMC.  A plateau structure can be seen due to the finite acceptance of track pairs.
 
@@ -288,14 +288,14 @@ The correlations are determined in bins of centrality, reconstructed trigger-jet
 % Mixed events should not contain physics correlations, but information of the acceptance and efficiency of single event pairs.
 
 The pair-acceptance correction, $1 / a(\Pt{assoc}, \text{\dphi}, \text{\deta})$, accounts for the detector and tracking inefficiencies, and is found by correlating jets from HT-triggered events with associated hadrons from MB events of the same event class. %(centrality, primary vertex position in the z-direction).  
-In addition to providing the acceptance correction, the mixed-event procedure will also help remove the trivial correlation due to an $\eta$ dependence in the single-particle track distributions~\cite{PhysRevC.101.064901}.  Taking the ratio of the single-event pairs by the mixed-event pairs removes the detector effects of acceptance and efficiency.  The pair acceptance will serve as the dominant effect, given that there is little $\eta$ dependence in both the tracks and jets across the acceptance range of this analysis.
+In addition to providing the acceptance correction, the mixed-event procedure will also help remove the trivial correlation due to an $\eta$ dependence in the single-particle track distributions~\cite{PhysRevC.101.064901}.  Taking the ratio of the same-event pairs to the mixed-event pairs removes the detector effects of acceptance and efficiency.  The pair acceptance will serve as the dominant effect, given that there is little $\eta$ dependence in both the tracks and jets across the acceptance range of this analysis.
 %
 Since the trigger jets are restricted to $|\eta_\mathrm{jet}| < 0.6$ and the associated hadrons to $|\eta_\mathrm{assoc}| < 1.0$, the number of possible pairs is constant for $|\deta| < 0.4$ and falls linearly to zero at $|\deta| = 1.6$, which gives the pair acceptance its trapezoidal shape in \deta, illustrated with a toy model in Fig.~\ref{fig:ToyMixedEvent} and visible in the measured mixed-event distributions of Fig.~\ref{fig:jhcorrjpt1520}.
 
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.6\linewidth]{JHC/ToyMixedEventModel-eps-converted-to.pdf}
-	\caption{Toy model of the pair acceptance in $\deta = \eta_\mathrm{jet} - \eta_\mathrm{hadron}$ for uncorrelated trigger jets and hadrons, each uniformly distributed in pseudorapidity (here $|\eta_\mathrm{jet}| < 0.5$ and $|\eta_\mathrm{hadron}| < 0.9$). The number of pairs is constant where the smaller acceptance is fully contained in the larger one and falls linearly to zero at the largest possible separation. The analysis uses the plateau region $|\deta| < 0.4$ to normalize the measured mixed-event distributions.}
+	\caption[Toy model of the pair acceptance in \(\Delta\eta\)]{Toy model of the pair acceptance in $\deta = \eta_\mathrm{jet} - \eta_\mathrm{hadron}$ for uncorrelated trigger jets and hadrons, each uniformly distributed in pseudorapidity (here $|\eta_\mathrm{jet}| < 0.5$ and $|\eta_\mathrm{hadron}| < 0.9$). The number of pairs is constant where the smaller acceptance is fully contained in the larger one and falls linearly to zero at the largest possible separation. The analysis uses the plateau region $|\deta| < 0.4$ to normalize the measured mixed-event distributions.}
 	\label{fig:ToyMixedEvent}
 \end{figure}
 %
@@ -303,7 +303,7 @@ Because the trigger jet and the associated hadrons of a mixed pair come from dif
 
 %To increase the sampling size of mixed events used for the acceptance correction, both MB30 and MB5 triggered events are used for event mixing.  After re-weighting the reference multiplicity distributions to correct for the VPD trigger inefficiency, MB5 events are added with an additional weight factor such that they are normalized to MB30 events in a 2-dimensional fashion to account for VPD resolution differences across centrality and the online VPD vertex cut which had a negative $v_z$ offset.  Additional details can be found in Ref.~\cite{PhysRevC.99.034908}.  
 
-The event mixing follows Ref.~\cite{PhysRevC.96.024905}. The MB events are kept in pools binned in 10\% centrality and 4-cm $v_z$ intervals, each holding up to 25\,000 tracks; each trigger jet is correlated with the tracks of all events in the pool of its event class, and the mixed-event pairs are weighted by the inverse of the number of mixed events. The acceptance is constructed separately for the 20-30\%, 30-40\%, and 40-50\% centrality classes and then combined.  High-momentum tracks are nearly straight, so the detector acceptance does not change significantly at high-\Pt{assoc}, and thus all associated momentum bins greater than 2.0 \GeVc are combined to increase statistics.  There is no difference in efficiency and acceptance within uncertainties for different orientations of the jet relative to the event plane, and therefore the same correction $a(\Pt{assoc}, \text{\dphi}, \text{\deta})$ is applied for all angles relative to the event plane.  The acceptance $a(\Pt{assoc}, \text{\dphi}, \text{\deta})$ is normalized to 1 at its maximum, determined using the region of approximately constant acceptance ($|\deta| <$ 0.4).  For each \Pt{assoc} bin, the projection of the flat plateau region (integrated over the region $|\deta| <$ 0.4) was fit with a constant over the whole \dphi range.  The associated uncertainties of the fits were used for the systematic uncertainty on the mixed-event normalization, which is added in quadrature and reported as the scale uncertainty.  This systematic uncertainty is under 1\% (1.25\%) in all \Pt{assoc} bins used for the reported results of jets with  \pttrigrange{15}{20} and  \pttrigrange{20}{40}.
+The event mixing follows Ref.~\cite{PhysRevC.96.024905}. The MB events are kept in pools binned in 10\% centrality and 4-cm $v_z$ intervals, each holding up to 25\,000 tracks; each trigger jet is correlated with the tracks of all events in the pool of its event class, and the mixed-event pairs are weighted by the inverse of the number of mixed events. The acceptance is constructed separately for the 20--30\%, 30--40\%, and 40--50\% centrality classes and then combined.  High-momentum tracks are nearly straight, so the detector acceptance does not change significantly at high-\Pt{assoc}, and thus all associated momentum bins greater than 2.0 \GeVc are combined to increase statistics.  There is no difference in efficiency and acceptance within uncertainties for different orientations of the jet relative to the event plane, and therefore the same correction $a(\Pt{assoc}, \text{\dphi}, \text{\deta})$ is applied for all angles relative to the event plane.  The acceptance $a(\Pt{assoc}, \text{\dphi}, \text{\deta})$ is normalized to 1 at its maximum, determined using the region of approximately constant acceptance ($|\deta| <$ 0.4).  For each \Pt{assoc} bin, the projection of the flat plateau region (integrated over the region $|\deta| <$ 0.4) was fit with a constant over the whole \dphi range.  The associated uncertainties of the fits were used for the systematic uncertainty on the mixed-event normalization, which is added in quadrature and reported as the scale uncertainty.  This systematic uncertainty is under 1\% (1.25\%) in all \Pt{assoc} bins used for the reported results of jets with  \pttrigrange{15}{20} and  \pttrigrange{20}{40}.
 
 A shape uncertainty in \dphi due to the \zvtx binning, similar to that in \deta, could lead to an additional shape uncertainty in the correlation functions.  To test for this, the ratio of the 1D \dphi projection with the nominal \zvtx binning and the binning described above was calculated for each \Pt{jet}, \Pt{assoc}, and centrality bin.  The variations about 1.0 are smaller than the statistical errors associated with the points.  This uncertainty was therefore considered negligible.
 
@@ -331,7 +331,7 @@ for each \Pt{assoc} bin.
 %
 The scale band is obtained by multiplying the correlation function by $\alpha$ and by $2 - \alpha$.
 %
-This uncertainty is determined by varying the binning of the mixed events in $v_z$ and is correlated for different angles relative to the event plane and for different bins in \Pt{assoc}.  Above $\Pt{assoc} >$ 3 \GeVc, this uncertainty is negligible because the background is small.
+This uncertainty is determined by varying the binning of the mixed events in $v_z$ and is correlated for different angles relative to the event plane and for different bins in \Pt{assoc}.  For $\Pt{assoc} >$ 3~\GeVc, this uncertainty is negligible because the background is small.
 
 \subsection{Flow modulation of combinatorial background} \label{sect:CorrBkgd}
 The combinatorial background ($N^{\rm bkgd}_{\rm assoc,jet}$) from Eq.~\ref{Eqtn:CorrFunction} can be parametrized for trigger jets restricted to the orientation $\mathfrak{R} = {\text{in/mid/out-of-plane}}$ relative to the event plane as~\cite{Bielcikova:2003ku,Sharma:2015qra}:
@@ -358,14 +358,14 @@ Where, $\beta^\mathfrak{R}$ is the $\mathfrak{R}$ dependence of $B^\mathfrak{R}$
 	B^\mathfrak{R} \propto \beta^\mathfrak{R} = 1 + \sum_{k=2,4,6,..} 2v_{k, \mathrm{jet}} \cos(k\phi_{s}^\mathfrak{R}) \frac{\sin(kc)}{kc}R_{k}
 	\label{Eq:betaR}
 \end{equation}
-Here $\phi_S^\mathfrak{R}$ and $c$ are the center and half-width of the $|\Psi_{2,EP}-\phi_{\mathrm {jet}}|$ range for jets restricted to orientation $\mathfrak{R}$. Odd $v_{n, \mathrm{jet}}$'s mainly arise from initial state fluctuations and are therefore uncorrelated with the second-order event-plane and remain constant when the trigger jet is moved relative to the event plane, while even $v_{n, \mathrm{jet}}$'s will change~\cite{Aad:2014fla,Sharma:2015qra}. The $\mathfrak{R}$ dependent background shape is dependent upon the event-plane resolutions ($R_{n}$), which are fixed at the measured values (Sec.~\ref{sect:Method}). Extended details into the derivations of relevant equations can be found in Refs.~\cite{Bielcikova:2003ku,Nattrass_2018,Nattrass_Reexam2018}. 
+Here $\phi_S^\mathfrak{R}$ and $c$ are the center and half-width of the $|\Psi_{2,EP}-\phi_{\mathrm {jet}}|$ range for jets restricted to orientation $\mathfrak{R}$. Odd $v_{n, \mathrm{jet}}$'s mainly arise from initial state fluctuations and are therefore uncorrelated with the second-order event-plane and remain constant when the trigger jet is moved relative to the event plane, while even $v_{n, \mathrm{jet}}$'s will change~\cite{Aad:2014fla,Sharma:2015qra}. The $\mathfrak{R}$ dependent background shape is dependent upon the event-plane resolutions ($R_{n}$), which are fixed at the measured values (Sec.~\ref{sect:Method}). Further details of the derivations can be found in Refs.~\cite{Bielcikova:2003ku,Nattrass_2018,Nattrass_Reexam2018}. 
 
 %The correlation function will contain contributions from all physical correlations in the event.  Quantum correlations between particles from the same source, known as Hanbury-Brown-Twiss (HBT) correlations, are suppressed by a difference between the momentum of the trigger and associated particles \cite{Lisa_2005}.  The \vneffnot of Eq.~\ref{Eqtn:JBBBCorrelations} may arise due to hydrodynamical flow or jet quenching.  When fixing a trigger (jet) relative to the event plane, the level of the background and effective $v_{n}^{t}$ are modified \cite{Bielcikova:2003ku}. for even $n$ $\tilde{v}^{R,t}_{n}$ can be reduced to:    
 
 Collective particle flow plays a major role in understanding the underlying-event background.  This background consists of particles created from mechanisms unrelated to the hard process that led to a jet.  Some of the jet signal is correlated with the event plane due to the path-length dependence of partonic energy loss, while soft hadrons are predominantly correlated with the event plane due to hydrodynamical flow that also contribute to the bulk-particle production. 
 
 \subsubsection{Reaction plane fit} \label{sect:RPF}
-To remove the combinatorial background comprised by contributions from the underlying event, the reaction plane fit (RPF) developed in Ref.~\cite{Sharma:2015qra} is applied in this work.
+To remove the combinatorial background from the underlying event, the reaction plane fit (RPF) developed in Ref.~\cite{Sharma:2015qra} is applied in this work.
 %
 The measured jet-hadron correlation signal is decomposed into a \ns and an \as, with the former being narrow in \dphi and \deta and the latter narrow in \dphi, but broad in \deta.
 %
@@ -419,7 +419,7 @@ Since the three orientations are fit simultaneously, this uncertainty is correla
 %		\includegraphics[width=\linewidth]{JHC/FitPars_v4Assoc_J20-40_C20-50_Zcut24.pdf}&
 %		\includegraphics[width=\linewidth]{JHC/FitPars_v4Jet_J20-40_C20-50_Zcut24.pdf}
 	\end{tabularx}
-	\caption{Parameters of the RPF fits as a function of \Pt{assoc} for \pttrigrange{15}{20} (left) and \pttrigrange{20}{40} (right) full jets in 20--50\% central \AuAu collisions: the background level $B$ (top) and the second-order flow coefficient of the associated hadrons, $v_{2,\mathrm{assoc}}$ (bottom). The fits are performed over $|\dphi| < \pi/2$ in the background-dominated region $0.6 < |\deta| < 1.2$.}
+	\caption[Parameters of the RPF fits as a function of \(p_\mathrm{T, assoc}\)]{Parameters of the RPF fits as a function of \Pt{assoc} for \pttrigrange{15}{20} (left) and \pttrigrange{20}{40} (right) full jets in 20--50\% central \AuAu collisions: the background level $B$ (top) and the second-order flow coefficient of the associated hadrons, $v_{2,\mathrm{assoc}}$ (bottom). The fits are performed over $|\dphi| < \pi/2$ in the background-dominated region $0.6 < |\deta| < 1.2$.}
 	\label{fig:RPFpars}
 \end{figure}
 
@@ -437,7 +437,7 @@ Since the three orientations are fit simultaneously, this uncertainty is correla
 		\includegraphics[width=\linewidth]{JHC/JHCorrBGsub_A4.0-6.0_T15-20_C20-50.pdf} &
 		\includegraphics[width=\linewidth]{JHC/JHCorrBGsub_A6.0-10.0_T15-20_C20-50.pdf} \\
 	\end{tabularx}
-		\caption{RPF fits for \pttrigrange{15}{20} full jets in 20--50\% central \AuAu collisions, for (a) \ptassocrange{1.0}{1.5}, (b) \ptassocrange{1.5}{2.0}, (c) \ptassocrange{2.0}{3.0}, (d) \ptassocrange{3.0}{4.0}, (e) \ptassocrange{4.0}{6.0} and (f) \ptassocrange{6.0}{10.0}. Each panel shows, from left to right, in-plane, mid-plane and out-of-plane jets and all orientations combined. Upper panels: \dphi projections of the signal+background region ($|\deta| < 0.6$, green) and of the background-dominated region ($0.6 < |\deta| < 1.2$, black), with the RPF fit to the background-dominated region (blue band, fit uncertainty). Lower panels: quality of the fit to the background-dominated region, (data $-$ fit)/fit.}
+		\caption[RPF background fits for 15--20~GeV/\(c\) jets]{RPF fits for \pttrigrange{15}{20} full jets in 20--50\% central \AuAu collisions, for (a) \ptassocrange{1.0}{1.5}, (b) \ptassocrange{1.5}{2.0}, (c) \ptassocrange{2.0}{3.0}, (d) \ptassocrange{3.0}{4.0}, (e) \ptassocrange{4.0}{6.0} and (f) \ptassocrange{6.0}{10.0}. Each panel shows, from left to right, in-plane, mid-plane and out-of-plane jets and all orientations combined. Upper panels: \dphi projections of the signal+background region ($|\deta| < 0.6$, green) and of the background-dominated region ($0.6 < |\deta| < 1.2$, black), with the RPF fit to the background-dominated region (blue band, fit uncertainty). Lower panels: quality of the fit to the background-dominated region, (data $-$ fit)/fit.}
 		\label{fig:RPFfitJ1520}
 \end{sidewaysfigure}
 
@@ -459,7 +459,7 @@ Since the three orientations are fit simultaneously, this uncertainty is correla
 	\includegraphics[width=\linewidth]{JHC/dPhiCorrelationsJ15-20_C20-50_6.0-10.0.pdf} \\
 \end{tabularx}
 
-		\caption{Background-subtracted jet-hadron correlation functions in \dphi ($|\deta| < 0.6$) for \pttrigrange{15}{20} full jets in 20--50\% central \AuAu collisions, for (a) \ptassocrange{1.0}{1.5}, (b) \ptassocrange{1.5}{2.0}, (c) \ptassocrange{2.0}{3.0}, (d) \ptassocrange{3.0}{4.0}, (e) \ptassocrange{4.0}{6.0} and (f) \ptassocrange{6.0}{10.0}. Each panel shows in-plane, mid-plane and out-of-plane jets and all orientations combined. The red band is the correlated scale uncertainty from the mixed-event acceptance correction and the gray band is the uncertainty of the RPF background fit, which is correlated point-to-point; the global scale uncertainty of 6\% is not shown.}
+		\caption[Background-subtracted jet-hadron correlations for 15--20~GeV/\(c\) jets]{Background-subtracted jet-hadron correlation functions in \dphi ($|\deta| < 0.6$) for \pttrigrange{15}{20} full jets in 20--50\% central \AuAu collisions, for (a) \ptassocrange{1.0}{1.5}, (b) \ptassocrange{1.5}{2.0}, (c) \ptassocrange{2.0}{3.0}, (d) \ptassocrange{3.0}{4.0}, (e) \ptassocrange{4.0}{6.0} and (f) \ptassocrange{6.0}{10.0}. Each panel shows in-plane, mid-plane and out-of-plane jets and all orientations combined. The red band is the correlated scale uncertainty from the mixed-event acceptance correction and the gray band is the uncertainty of the RPF background fit, which is correlated point-to-point; the global scale uncertainty of 6\% is not shown.}
 		\label{fig:dPhiJ1520}
 \end{sidewaysfigure}
 
@@ -477,7 +477,7 @@ Since the three orientations are fit simultaneously, this uncertainty is correla
 	\includegraphics[width=\linewidth]{JHC/dPhiCorrelationsJ20-40_C20-50_6.0-10.0.pdf} \\
 \end{tabularx}
 
-		\caption{Same as Fig.~\ref{fig:dPhiJ1520}, for \pttrigrange{20}{40} full jets.}
+		\caption[Background-subtracted jet-hadron correlations for 20--40~GeV/\(c\) jets]{Same as Fig.~\ref{fig:dPhiJ1520}, for \pttrigrange{20}{40} full jets.}
 		\label{fig:dPhiJ2040}
 \end{sidewaysfigure}
 
@@ -490,9 +490,9 @@ Each panel corresponds to one \Pt{assoc} bin and shows the in-plane, mid-plane, 
 The uncertainties from the RPF background subtraction are propagated using Eq.~\ref{eqn:CovProp} and are non-trivially correlated point-to-point and between different bins relative to the event plane.  These are shown in gray.  The uncertainty from the acceptance correction, described in Sec.~\ref{sect:MixedEvents} is displayed by the red uncertainty band. The uncertainties on the event-plane resolution are negligible relative to that of the background subtraction and statistical uncertainties of the final results.  Additional uncertainties uncorrelated with each other, but correlated for all points in \dphi are given in Tab.~\ref{Tab:SystematicSummary}.  They are combined in quadrature and listed as the scale uncertainty on the results.
 
 \subsection{Detector response and embedding closure} \label{sec:AuAuEmbedding}
-The PYTHIA\mbox{-}6 Perugia 2012 tune is used to create particle level dijet events embedded in MB \AuAu 200 GeV events at the detector level.
+The PYTHIA\mbox{-}6 Perugia 2012 tune is used to create particle-level dijet events embedded in MB \AuAu 200 GeV events at the detector level.
 %
-The events are generated in bins of the partonic hard-scattering transverse momentum, $\hat{p}_\mathrm{T}$, and the bins are combined with weights given by their cross sections divided by the number of generated events.  This allows for further comparisons between the jets from the input PYTHIA\mbox{-}6 tracks (generator-level jets or GEN-jets) and the jets from the embedded tracks reconstructed by GEANT (reconstructed jets or RECO-jets). RECO level events are analyzed with the same selections and parameters as used by the data analysis. All particles of GEN-level events are required to be in their final state (particles with no further daughters). GEN-level jets have $\ptGenJet > $ 10 \GeVc and the RECO-level jets have $\ptRecoJet >$ 5 \GeVc. Further, only the RECO-level jets are required to contain a neutral component with $ E_{\rm T} \geq 5.4$ GeV to match the trigger condition applied in data. The goal is to study the effects of the detector response on jet reconstruction and on the analysis.  In order to compare the same jet pre- and post-reconstruction, a `nearness' criterion is applied in the $\eta-\phi$ plane that matches a GEN-jet to one RECO-jet satisfying: 
+The events are generated in bins of the partonic hard-scattering transverse momentum, $\hat{p}_\mathrm{T}$, and the bins are combined with weights given by their cross sections divided by the number of generated events.  This allows for further comparisons between the jets from the input PYTHIA\mbox{-}6 tracks (generator-level jets or GEN-jets) and the jets from the embedded tracks reconstructed by GEANT (reconstructed jets or RECO-jets). RECO-level events are analyzed with the same selections and parameters as used by the data analysis. All particles of GEN-level events are required to be in their final state (particles with no further daughters) at the generator level; long-lived particles that decay weakly are not decayed by the generator but by GEANT in the detector simulation, so their decay products enter only the RECO-level events. GEN-level jets have $\ptGenJet > $ 10 \GeVc and the RECO-level jets have $\ptRecoJet >$ 5 \GeVc. Further, only the RECO-level jets are required to contain a neutral component with $ E_{\rm T} \geq 5.4$ GeV to match the trigger condition applied in data. The goal is to study the effects of the detector response on jet reconstruction and on the analysis.  In order to compare the same jet pre- and post-reconstruction, a `nearness' criterion is applied in the $\eta-\phi$ plane that matches a GEN-jet to one RECO-jet satisfying: 
 
 (a) $r_{\rm GEN, RECO}=\sqrt{(\eta^{\rm GEN}_{\rm jet}-\eta^{\rm RECO}_{\rm jet})^2+(\phi^{\rm GEN}_{\rm jet}-\phi^{\rm RECO}_{\rm jet})^2}\leq0.4$, $r_{\rm GEN, RECO}$ being the separation between the gen-jet and the reco-jet in $\eta-\phi$ space, (b) the RECO-jet is the closest to the gen-jet among all reco-jets (minimize $r_{\rm GEN, RECO}$).  
 
@@ -515,7 +515,7 @@ The resulting GEN- and RECO-level jet spectra are compared to calculate the mome
 %   \subsection{Response Matrices}
 %%%%%%%%%%% Each such distribution is normalized within the region $20 \leq \ensuremath{p_{\rm T}}\xspace < 100$ \GeVc where fluctuations are minimized and, assuming that the jet energy distribution in the data is the same as that provided by PYTHIA\mbox{-}6, describes the generator level jet distribution that corresponds to the measured detector level jet distribution, shown in Fig.~\ref{plot:exampleParticleJetDistribution}. 
 
-Fig.~\ref{fig:jetptresWinset} shows the \Pt{jet} resolution for $15 < \ptGenJet < 20$ \GeVc (left) and $20 < \ptGenJet < 40$ \GeVc (right) $R=0.4$ full jets.  The distributions have been normalized into probability functions and are shown for the 20-50\% most central events for all angles of the jet relative to the event plane.  Fig.~\ref{fig:jetptresWinset} further shows an average energy loss of around 15\% going from GEN to RECO. This net energy shift is thought to be due to counteracting effects of the tracking inefficiency at the RECO level and there being more tracks in the RECO level from the min-bias pedestal. The \Pt{jet} resolution for $15 < \ptRecoJet < 40$ \GeVc reco-jets is roughly 10-20\%.  The event-plane dependence of the \Pt{jet} resolution was also studied and found to be within 1-2\% of each other between different orientations of jets w.r.t event plane.  There can be slight differences in the jets reconstructed at lower momenta with \pttrigrange{15}{20} for jets at different angles relative to the event plane, due to a low momentum embedded jet overlapping with another jet in the \AuAu data and from statistical fluctuations.  As there are more jets from in-plane than out-of-plane orientations in the data, this leads to an apparent difference in the reconstructed jet spectra. Otherwise there are no significant differences between jets at different angles relative to the event plane. A map between \ptGenJet and  \ptRecoJet, called the response matrix, is added to Fig.~\ref{fig:jetptresWinset} as a smaller inset on the top right.
+Fig.~\ref{fig:jetptresWinset} shows the \Pt{jet} resolution for $15 < \ptGenJet < 20$ \GeVc (left) and $20 < \ptGenJet < 40$ \GeVc (right) $R=0.4$ full jets.  The distributions have been normalized into probability functions and are shown for the 20--50\% most central events for all angles of the jet relative to the event plane.  Fig.~\ref{fig:jetptresWinset} further shows an average energy loss of around 15\% going from GEN to RECO. This net energy shift is thought to be due to counteracting effects of the tracking inefficiency at the RECO level and there being more tracks in the RECO level from the min-bias pedestal. The \Pt{jet} resolution for $15 < \ptRecoJet < 40$ \GeVc reco-jets is roughly 10--20\%.  The event-plane dependence of the \Pt{jet} resolution was also studied, and the resolutions for the different jet orientations relative to the event plane agree within 1--2\%.  There can be slight differences in the jets reconstructed at lower momenta with \pttrigrange{15}{20} for jets at different angles relative to the event plane, due to a low momentum embedded jet overlapping with another jet in the \AuAu data and from statistical fluctuations.  As there are more jets from in-plane than out-of-plane orientations in the data, this leads to an apparent difference in the reconstructed jet spectra. Otherwise there are no significant differences between jets at different angles relative to the event plane. A map between \ptGenJet and  \ptRecoJet, called the response matrix, is added to Fig.~\ref{fig:jetptresWinset} as a smaller inset on the top right.
 %
 Since the trigger jets are selected at the detector level and the results are not unfolded, these numbers characterize which particle-level jets populate the two reconstructed jet-momentum classes rather than enter as a correction.
 
@@ -526,7 +526,7 @@ Since the trigger jets are selected at the detector level and the results are no
 	% OLD	\includegraphics[width=0.99\linewidth]{figures/plots/Embedding/EmbPlot_vers4.pdf}
 	%	\includegraphics[width=0.99\linewidth]{figures/plots/Embedding/EmbPlot-momentum-resolution.pdf}
 	\includegraphics[width=0.99\linewidth]{figures/EmbPlot_pt_resolution_w_inset.pdf}
-	\caption{\Pt{jet} resolution for $15 < \ptGenJet < 20$ \GeVc (left) and $20 < \ptGenJet < 40$ \GeVc (right) $R=0.4$ full jets with the corresponding response matrix as an inset on the top right.  Jets are measured from all angles relative to the event plane in the 20-50\% most central events.  This comparison is for matched GEN-level to RECO-level jets. }
+	\caption[Jet-\(p_\mathrm{T}\) resolution and response matrix of the Au+Au embedding]{\Pt{jet} resolution for $15 < \ptGenJet < 20$ \GeVc (left) and $20 < \ptGenJet < 40$ \GeVc (right) $R=0.4$ full jets with the corresponding response matrix as an inset on the top right.  Jets are measured from all angles relative to the event plane in the 20--50\% most central events.  This comparison is for matched GEN-level to RECO-level jets. }
 	\label{fig:jetptresWinset}
 \end{figure}
 
@@ -543,11 +543,11 @@ The remaining deviations, on the near side in the highest \Pt{assoc} bin and in 
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.99\linewidth]{JHC/NearAwaySideYieldRatioRECO-GEN_J20-40_C20-50_onlyALL_withEffCorr.pdf}
-	\caption{Embedding closure test: ratio of the near-side (left) and away-side (right) associated yields extracted from RECO-level jets to those of the matched GEN-level jets vs \Pt{assoc}, for \pttrigrange{20}{40} full jets embedded in 20--50\% central \AuAu events, all orientations relative to the event plane combined. The RECO-level near-side yields are corrected for the tracking efficiency inside jets (see text). The gray bands are the uncertainties of the RPF background fit. Points are displaced for visibility.}
+	\caption[Embedding closure test of the associated yields for 20--40~GeV/\(c\) jets]{Embedding closure test: ratio of the near-side (left) and away-side (right) associated yields extracted from RECO-level jets to those of the matched GEN-level jets vs \Pt{assoc}, for \pttrigrange{20}{40} full jets embedded in 20--50\% central \AuAu events, all orientations relative to the event plane combined. The RECO-level near-side yields are corrected for the tracking efficiency inside jets (see text). The gray bands are the uncertainties of the RPF background fit. Points are displaced for visibility.}
 	\label{fig:ClosureJ2040}
 \end{figure}
 
-\subsection{Systematic Uncertainties} \label{sect:SysUnc}
+\subsection{Systematic uncertainties} \label{sect:SysUnc}
 The systematic uncertainties fall into three classes that differ in how they are correlated, and therefore in how they are shown on the results.
 %
 (i) Sources that change the overall normalization of the correlation functions, independently of \dphi and of the jet orientation, are combined into a global scale uncertainty: the single-track reconstruction efficiency, the normalization of the mixed events, and the event-plane resolution.
@@ -566,10 +566,10 @@ The event-plane resolution enters only through the background parametrization; v
 
 The systematic uncertainties are summarized in Tabs.~\ref{Tab:SystematicSummary}, \ref{Tab:SystematicSummaryEPdep}, and~\ref{Tab:SystematicSummaryEPdep2040}.  Tab.~\ref{Tab:SystematicSummary} lists the sources of systematic uncertainties which are independent of the angle relative to the event plane.  These sources include the single-track reconstruction efficiency (Sec.~\ref{sec:TrackTowerSel}), 
 %contamination from secondaries (Sec.~\ref{sect:STARdet}), 
-uncertainties in the mixed events due to their normalization and shape in \dphi (Sec.~\ref{sect:MixedEvents}), and uncertainties in the event-plane resolution (Sec.~\ref{sect:Method}).  The uncertainties are added in quadrature and lead to a 6\% uncertainty in the scale of the correlation functions and yields with the single-track reconstruction efficiency being the dominate source.  This uncertainty is uncorrelated for different associated-particle momenta.
+uncertainties in the mixed events due to their normalization and shape in \dphi (Sec.~\ref{sect:MixedEvents}), and uncertainties in the event-plane resolution (Sec.~\ref{sect:Method}).  The uncertainties are added in quadrature and lead to a 6\% uncertainty in the scale of the correlation functions and yields with the single-track reconstruction efficiency being the dominant source.  This uncertainty is uncorrelated for different associated-particle momenta.
 
 \begin{table}[!htbp]
-	\caption{Summary of systematic uncertainties which are independent of the angle relative to the event plane and the momentum for both \pttrigrange{15}{20} and \pttrigrange{20}{40} in 20-50\% central \AuAu collisions.}
+	\caption[Systematic uncertainties independent of the jet orientation]{Summary of systematic uncertainties which are independent of the angle relative to the event plane and the momentum for both \pttrigrange{15}{20} and \pttrigrange{20}{40} in 20--50\% central \AuAu collisions.}
 	\label{Tab:SystematicSummary}
 	\centering % used for centering table
 	\begin{tabular}{l | c} % centered columns
@@ -589,13 +589,13 @@ uncertainties in the mixed events due to their normalization and shape in \dphi 
 	\end{tabular}
 \end{table}
 
-Additional uncertainties, highly dependent on the angle of the jet relative to the event plane and the associated particles' momentum, are summarized in Tabs.~\ref{Tab:SystematicSummaryEPdep} and~\ref{Tab:SystematicSummaryEPdep2040}.  These include the impact of the scale uncertainty from the acceptance shape (Sec.~\ref{sect:MixedEvents}, Eq.~\ref{Eqtn:alpha}) and the RPF background fit (Sec.~\ref{sect:CorrBkgd}) on the associated yield and jet-peak width results.  These uncertainties are compared for two associated particle momentum bins (1.0-1.5 and 3.0-4.0 \GeVc) to highlight how much of an impact the background has at low momenta.  The uncertainty arising from the RPF background subtraction is non-trivially correlated point-to-point in \dphi and for different orientations of the jet relative to the event plane, but is uncorrelated between different \Pt{assoc} bins.  The acceptance-correction uncertainty on the shape in \deta is also correlated for different orientations of the jet relative to the event plane and uncorrelated across \Pt{assoc} bins.  The acceptance-shape uncertainty is the dominant source at low-momenta, while being more comparable to the background uncertainty at larger momenta.  
+Additional uncertainties, highly dependent on the angle of the jet relative to the event plane and the associated particles' momentum, are summarized in Tabs.~\ref{Tab:SystematicSummaryEPdep} and~\ref{Tab:SystematicSummaryEPdep2040}.  These include the impact of the scale uncertainty from the acceptance shape (Sec.~\ref{sect:MixedEvents}, Eq.~\ref{Eqtn:alpha}) and the RPF background fit (Sec.~\ref{sect:CorrBkgd}) on the associated yield and jet-peak width results.  These uncertainties are compared for two associated particle momentum bins (1.0--1.5 and 3.0--4.0~\GeVc) to highlight how much of an impact the background has at low momenta.  The uncertainty arising from the RPF background subtraction is non-trivially correlated point-to-point in \dphi and for different orientations of the jet relative to the event plane, but is uncorrelated between different \Pt{assoc} bins.  The acceptance-correction uncertainty on the shape in \deta is also correlated for different orientations of the jet relative to the event plane and uncorrelated across \Pt{assoc} bins.  The acceptance-shape uncertainty is the dominant source at low momenta, while being more comparable to the background uncertainty at larger momenta.  
 
 Since no underlying-event subtraction is applied to the jets (Sec.~\ref{sec:JetRecoAuAu}), background particles that fall into the jet cone shift the reconstructed jet momentum upward, and the shift is larger for in-plane than for out-of-plane jets because the flow-modulated background is larger in-plane.
 %
 Jets in the different orientations therefore sample slightly different parton momenta for the same reconstructed \Pt{jet} class.
 %
-To account for this jet-energy shift (JES) and to provide an adequate comparison for the jet samples from different orientations relative to event plane, a random-cone study was performed on the minimum bias data of matching centrality selection: cones of radius 0.4 are placed at random positions within the jet acceptance, and the transverse momenta of the charged particles inside them are summed, in bins of the cone orientation relative to the event plane.
+To account for this jet-energy shift (JES) and to provide an adequate comparison for the jet samples from different orientations relative to the event plane, a random-cone study was performed on the minimum-bias data of matching centrality selection: cones of radius 0.4 are placed at random positions within the jet acceptance, and the transverse momenta of the charged particles inside them are summed, in bins of the cone orientation relative to the event plane.
 %
 The mean summed momenta are found to be 0.388 \GeVc (in-plane), 0.344 \GeVc (mid-plane), and 0.308 \GeVc (out-of-plane), with a corresponding RMS of 0.4 \GeVc.
 %
@@ -610,13 +610,15 @@ The nominal yields and widths are corrected by these rescaled shifts, and the co
 % ------------------------ 15-20 GeV ---------------------------------
 \begin{table}[!htbp]
 	%\begin{table}[H]
-	\caption{Summary of systematic uncertainties on the associated yields and widths calculated from the correlation functions due to the shape uncertainty coming from the shape of the acceptance correction in \deta, the correlated background-fit uncertainty, and the uncertainty associated with the jet energy shift (JES) correction, each varying with event-plane orientation bins.  They are displayed for \pttrigrange{15}{20} in 20-50\% central \AuAu collisions for \ptassocrange{1.0}{1.5} and \ptassocrange{3.0}{4.0} bins.  The values are expressed as a percent of the nominal value.}
+	\caption[Orientation-dependent systematic uncertainties for 15--20~GeV/\(c\) jets]{Summary of systematic uncertainties on the associated yields and widths calculated from the correlation functions due to the shape uncertainty coming from the shape of the acceptance correction in \deta, the correlated background-fit uncertainty, and the uncertainty associated with the jet energy shift (JES) correction, each varying with event-plane orientation bins.  They are displayed for \pttrigrange{15}{20} in 20--50\% central \AuAu collisions for \ptassocrange{1.0}{1.5} and \ptassocrange{3.0}{4.0} bins.  The values are expressed as a percent of the nominal value.}
 	\label{Tab:SystematicSummaryEPdep}
 	\centering
+	\small
+	\setlength{\tabcolsep}{4pt}
 	\begin{tabular}{c | c | c | c | c | c | c}\hline
 		\multirow{3}{*}{Source} & \multirow{3}{*}{Result} & \multirow{3}{*}{Orientation} & \multicolumn{4}{c}{Uncertainty \%} \\ \cline{4-7}
 		&   &      & \multicolumn{2}{c|}{Near-side: \Pt{assoc} (\GeVc)} & \multicolumn{2}{c}{Away-side: \Pt{assoc} (\GeVc)} \Bstrut \\ \cline{4-7}     
-		&   &      & 1.0-1.5 & 3.0-4.0 & 1.0-1.5 & 3.0-4.0 \\ \hline       
+		&   &      & 1.0--1.5 & 3.0--4.0 & 1.0--1.5 & 3.0--4.0 \\ \hline       
 		
 		\multirow{6}{*}{} & \multirow{3}{*}{Yield} & in-plane & 14 & 1.2 & 8.1 & 3.0  \\ \cline{3-7}
 		& & mid-plane & 11 & 1.2 & 7.6 & 3.3 \\ \cline{3-7}
@@ -649,13 +651,15 @@ The nominal yields and widths are corrected by these rescaled shifts, and the co
 \begin{table}[!htbp]
 	%\begin{table}[!ht]
 	%\begin{table}[H]
-	\caption{Summary of systematic uncertainties on the associated yields and widths calculated from the correlation functions due to the shape uncertainty coming from the shape of the acceptance correction in \deta, the correlated background-fit uncertainty, and the uncertainty associated with the JES correction, each varying with event-plane orientation bins.  They are displayed for \pttrigrange{20}{40} in 20-50\% central \AuAu collisions for \ptassocrange{1.0}{1.5} and \ptassocrange{3.0}{4.0} bins.  The values are expressed as a percent of the nominal value. }
+	\caption[Orientation-dependent systematic uncertainties for 20--40~GeV/\(c\) jets]{Summary of systematic uncertainties on the associated yields and widths calculated from the correlation functions due to the shape uncertainty coming from the shape of the acceptance correction in \deta, the correlated background-fit uncertainty, and the uncertainty associated with the JES correction, each varying with event-plane orientation bins.  They are displayed for \pttrigrange{20}{40} in 20--50\% central \AuAu collisions for \ptassocrange{1.0}{1.5} and \ptassocrange{3.0}{4.0} bins.  The values are expressed as a percent of the nominal value. }
 	\label{Tab:SystematicSummaryEPdep2040}
 	\centering
+	\small
+	\setlength{\tabcolsep}{4pt}
 	\begin{tabular}{c | c | c | c | c | c | c}\hline
 		\multirow{3}{*}{Source} & \multirow{3}{*}{Result} & \multirow{3}{*}{Orientation} & \multicolumn{4}{c}{Uncertainty \%} \\ \cline{4-7}
 		&   &      & \multicolumn{2}{c|}{Near-side: \Pt{assoc} (\GeVc)} & \multicolumn{2}{c}{Away-side: \Pt{assoc} (\GeVc)} \Bstrut \\ \cline{4-7}     
-		&   &      & 1.0-1.5 & 3.0-4.0 & 1.0-1.5 & 3.0-4.0 \\ \hline           
+		&   &      & 1.0--1.5 & 3.0--4.0 & 1.0--1.5 & 3.0--4.0 \\ \hline           
 		
 		\multirow{6}{*}{} & \multirow{3}{*}{Yield} & in-plane & 35 & 1.2 & 22 & 2.5  \\ \cline{3-7}
 		& & mid-plane & 39 & 1.2 & 22 & 2.2 \\ \cline{3-7}
@@ -683,6 +687,22 @@ The nominal yields and widths are corrected by these rescaled shifts, and the co
 	\end{tabular}
 \end{table}
 
+Tabs.~\ref{Tab:SystematicSummaryEPdep} and~\ref{Tab:SystematicSummaryEPdep2040} show the same pattern for both jet momentum classes.
+%
+The sources related to the background, the acceptance shape and the RPF fit, are largest at low \Pt{assoc} and fall steeply with it.
+%
+At \ptassocrange{1.0}{1.5} the jet signal is a small excess on top of a large combinatorial background, so a change of the level or shape of the pair acceptance, or of the fitted background, by a fraction of a percent of the background changes the subtracted signal by a large fraction of itself; at \ptassocrange{3.0}{4.0} the signal dominates and the same changes amount to about a percent.
+%
+The yields are more affected than the widths because a change of the background level shifts the whole pedestal under the jet peaks and therefore their integrals, while the widths respond only to changes of the shape near the peaks.
+%
+The JES uncertainty on the yields, by contrast, depends only weakly on \Pt{assoc}, staying at a few percent at both momenta, and it becomes the leading source at high \Pt{assoc}, where the background-related sources are small.
+
+All the uncertainties are larger for the \pttrigrange{20}{40} jets, especially out-of-plane, and follow a less regular pattern than for the \pttrigrange{15}{20} jets; the JES correction, for example, affects the widths of the 20--40~\GeVc jets as much as their yields at low \Pt{assoc}.
+%
+The variations are evaluated on the data themselves, by re-binning the mixed events in \zvtx, refitting the background and repeating the analysis for shifted jet-momentum classes, and no Barlow check was applied to them.
+%
+They therefore include the statistical fluctuations of the varied analyses, which are larger for the smaller sample of \pttrigrange{20}{40} jets (Fig.~\ref{fig:NTrig}) and are the likely origin of the larger and irregular entries.
+
 \section{Results} \label{sect:Results}
 %\subsection{Yields}
 \label{sect:Yields}
@@ -692,17 +712,17 @@ The integration limits in \dphi for the near-side are $a=-\pi/3$ and $b=\pi/3$, 
 %
 The yield is computed as the difference of the integral of the measured signal+background distribution, which carries the statistical uncertainty, and the integral of the fitted background, whose uncertainty follows from Eq.~\ref{eqn:CovProp}; the two are reported separately.
 
-Shown in Fig.~\ref{fig:AssocYields} are the near-side (left) and away-side (right) associated yields vs \Pt{assoc} for \pttrigrange{15}{20} (top) and \pttrigrange{20}{40} (bottom) full jets in 20-50\% centrality collisions.  The yields are compared for each orientation of the trigger jet reconstructed relative to the event plane (in/mid/out) for \Pt{assoc} $\in$ [1.0, 1.5], [1.5, 2.0], [2.0, 3.0], [3.0, 4.0], [4.0, 6.0], [6.0, 10.0] \GeVc.
+Shown in Fig.~\ref{fig:AssocYields} are the near-side (left) and away-side (right) associated yields vs \Pt{assoc} for \pttrigrange{15}{20} (top) and \pttrigrange{20}{40} (bottom) full jets in 20--50\% centrality collisions.  The yields are compared for each orientation of the trigger jet reconstructed relative to the event plane (in/mid/out) for \Pt{assoc} $\in$ [1.0, 1.5], [1.5, 2.0], [2.0, 3.0], [3.0, 4.0], [4.0, 6.0], [6.0, 10.0] \GeVc.
 
-The main feature is the steeply falling associated yield with increasing \Pt{assoc}, which occurs on both the near- and away-side.  Note that associated yields for \Pt{assoc} $\geq$ 2.0 \GeVc include jet constituents, which leads to the discontinuity at \Pt{assoc} = 2 \GeVc.  Additionally, the use of jets with `hard-cores' and containment of a tower associated to the firing event trigger can lead to a surface bias of the near-side jet.  This, however, maximizes the average path length the away-side recoil jets travels, increasing the likelihood of an interaction with the medium. An in-plane jet and an out-of-plane jet with the same \Pt{jet} would be expected to have different distributions of hard and soft constituents. An in-plane jet with less path traveled in the medium on average would be expected to show higher yields of constituents with higher \Pt{assoc} than the more quenched out-of-plane jet, which would be expected to show higher yields of constituents with lower \Pt{assoc}. While uncertainties are smaller for jets with \pttrigrange{15}{20}, both samples still lack any clear dependence on the event-plane angle.   This is an indication that modifications dependent on the average path length are smaller than the experimental uncertainties.  On the far right of the near- and away-side panels is the inclusive \Pt{assoc} bin with \ptassocrange{1.0}{10}. The associated yields of each event-plane orientation in the inclusive \Pt{assoc} selection are consistent with each other for the sample where \pttrigrange{15}{20}. However, in the jet sample with \pttrigrange{20}{40}, there are indications suggesting potential modifications. This potential modification is apparent on both the near- and away-side with the largest contributions coming from the lowest \Pt{assoc} bins.
+The main feature is the steeply falling associated yield with increasing \Pt{assoc}, which occurs on both the near- and away-side.  Note that associated yields for \Pt{assoc} $\geq$ 2.0 \GeVc include jet constituents, which leads to the discontinuity at \Pt{assoc} = 2 \GeVc.  Additionally, the use of jets with `hard-cores' and containment of a tower associated to the firing event trigger can lead to a surface bias of the near-side jet.  This, however, maximizes the average path length the away-side recoil jets travel, increasing the likelihood of an interaction with the medium. An in-plane jet and an out-of-plane jet with the same \Pt{jet} would be expected to have different distributions of hard and soft constituents. An in-plane jet with less path traveled in the medium on average would be expected to show higher yields of constituents with higher \Pt{assoc} than the more quenched out-of-plane jet, which would be expected to show higher yields of constituents with lower \Pt{assoc}. While uncertainties are smaller for jets with \pttrigrange{15}{20}, both samples still lack any clear dependence on the event-plane angle.   This is an indication that modifications dependent on the average path length are smaller than the experimental uncertainties.  On the far right of the near- and away-side panels is the inclusive \Pt{assoc} bin with \ptassocrange{1.0}{10}. The associated yields of each event-plane orientation in the inclusive \Pt{assoc} selection are consistent with each other for the sample where \pttrigrange{15}{20}. However, in the jet sample with \pttrigrange{20}{40}, there are indications suggesting potential modifications. This potential modification is apparent on both the near- and away-side with the largest contributions coming from the lowest \Pt{assoc} bins.
 
 % yield:
 %\begin{figure}[!htbp]
 \begin{figure}
 	\begin{center}     
-		\includegraphics[width=15cm]{figures/JHC/results/NearAwaySideYield_J15-20_C20-50_wJEScorr_wJEWELerr.pdf}
-		\includegraphics[width=15cm]{figures/JHC/results/NearAwaySideYield_J20-40_C20-50_wJEScorr_wJEWELerr.pdf}
-		\caption{Near-side (left) and away-side (right) uncorrected (unc.) associated yield vs \Pt{assoc} for 15-20 (top) and 20-40 \GeVc (bottom) full jets of 20-50\% centrality in \AuAu collisions.  The gray bands describe the systematic uncertainties of the background fits and are non-trivially correlated point-to-point.  The colored bands are scale uncertainties from the mixed event acceptance shape and JES correction.  There is an additional 6\% global scale uncertainty.  Included on the far right of the near- and away-side panels is the inclusive transverse momentum bin from 1.0-10.0 \GeVc.  Points are displaced for visibility. } 
+		\includegraphics[width=\linewidth]{figures/JHC/results/NearAwaySideYield_J15-20_C20-50_wJEScorr_wJEWELerr.pdf}
+		\includegraphics[width=\linewidth]{figures/JHC/results/NearAwaySideYield_J20-40_C20-50_wJEScorr_wJEWELerr.pdf}
+		\caption[Near- and away-side associated yields as functions of \(p_\mathrm{T, assoc}\)]{Near-side (left) and away-side (right) uncorrected (unc.) associated yield vs \Pt{assoc} for 15--20 (top) and 20--40~\GeVc (bottom) full jets of 20--50\% centrality in \AuAu collisions.  The gray bands describe the systematic uncertainties of the background fits and are non-trivially correlated point-to-point.  The colored bands are scale uncertainties from the mixed-event acceptance shape and JES correction.  There is an additional 6\% global scale uncertainty.  Included on the far right of the near- and away-side panels is the inclusive transverse momentum bin from 1.0--10.0~\GeVc.  Points are displaced for visibility. } 
 		\label{fig:AssocYields}
 	\end{center}
 \end{figure}
@@ -710,14 +730,14 @@ The main feature is the steeply falling associated yield with increasing \Pt{ass
 \label{sect:Widths}
 The widths are calculated by fitting a Gaussian, $A\,\mathrm{e}^{-(\Delta\phi - \Delta\phi_0)^2/2\sigma^2}$, to the jet peak centered at $\dphi_0 = 0$ for the near-side and $\dphi_0 = \pi$ for the away-side.  The Gaussians are fitted separately, with a range of $|\Delta\phi|~<~\pi/3$ on the \ns and $|\Delta\phi - \pi|~<~\pi/3$ on the \as. The Gaussian fit is repeated with different values of the background parameters and the covariance matrix is used to propagate the uncertainties.  The scale uncertainties on the widths are given by $\sigma_{w}^{sc} = \frac{B}{\sigma_B} \times |\alpha - 1|$, where $\alpha$ (Eq.~\ref{Eqtn:alpha}) is the \Pt{assoc}-dependent scale factor associated with the acceptance shape when propagating the background determined in the $0.6 \leq |\deta| < 1.2$ to the region $|\deta| < 0.6$.  
 
-From Fig.~\ref{fig:JetWidths}, it is clear a broadening of the jet peaks is occurring for decreasing \Pt{assoc}.  This is expected from both collisional energy loss and gluon bremsstrahlung.  With out-of-plane jets expected to traverse a longer average path length than in-plane jets, this would lead to additional interactions with the medium and more subsequent re-scatterings resulting in a larger width for jets out-of-plane relative to in-plane.   Within the uncertainties there is no clear ordering.  This indicates the effect of path-length dependent energy loss is not large enough to be seen by the current precision of the data.  On the far right of the near- and away-side panels is the inclusive \Pt{assoc} bin with \ptassocrange{1.0}{10}.   The widths of each event-plane orientation in the inclusive selection for the sample with \pttrigrange{15}{20} are consistent.  Conversely, the \pttrigrange{20}{40} sample reveals indications of potential modifications.
+Fig.~\ref{fig:JetWidths} shows that the jet peaks broaden with decreasing \Pt{assoc}.  This is expected from both collisional energy loss and gluon bremsstrahlung.  With out-of-plane jets expected to traverse a longer average path length than in-plane jets, this would lead to additional interactions with the medium and more subsequent re-scatterings resulting in a larger width for jets out-of-plane relative to in-plane.   Within the uncertainties there is no clear ordering.  This indicates the effect of path-length dependent energy loss is not large enough to be seen by the current precision of the data.  On the far right of the near- and away-side panels is the inclusive \Pt{assoc} bin with \ptassocrange{1.0}{10}.   The widths of each event-plane orientation in the inclusive selection for the sample with \pttrigrange{15}{20} are consistent.  Conversely, the \pttrigrange{20}{40} sample reveals indications of potential modifications.
 This potential modification is apparent on both the near- and away-side and primarily comes from the lowest transverse momentum bins where sample size is the largest.
 
 \begin{figure}
 	\begin{center}     
-		\includegraphics[width=16cm]{figures/JHC/results/NearAwaySideWidths_J15-20_C20-50_wJEScorr_wJEWELerr.pdf}
-		\includegraphics[width=16cm]{figures/JHC/results/NearAwaySideWidths_J20-40_C20-50_wJEScorr_wJEWELerr.pdf}
-		\caption{Near-side (left) and away-side (right) jet width vs \Pt{assoc} for 15-20 (top) and 20-40 \GeVc (bottom) full jets of 20-50\% centrality in \AuAu collisions.  The widths are extracted from the Gaussian fit to the jet peak.  The gray bands describe the systematic uncertainties of the background fits which are non-trivially correlated point-to-point.  The colored bands are scale uncertainties from the mixed-event acceptance shape and JES correction.  There is an additional 6\% global scale uncertainty.  Included on the far right of the near- and away-side panels is an inclusive transverse momentum bin from 1.0-10.0 \GeVc.  Points are displaced for visibility. }
+		\includegraphics[width=\linewidth]{figures/JHC/results/NearAwaySideWidths_J15-20_C20-50_wJEScorr_wJEWELerr.pdf}
+		\includegraphics[width=\linewidth]{figures/JHC/results/NearAwaySideWidths_J20-40_C20-50_wJEScorr_wJEWELerr.pdf}
+		\caption[Near- and away-side jet-peak widths as functions of \(p_\mathrm{T, assoc}\)]{Near-side (left) and away-side (right) jet width vs \Pt{assoc} for 15--20 (top) and 20--40~\GeVc (bottom) full jets of 20--50\% centrality in \AuAu collisions.  The widths are extracted from the Gaussian fit to the jet peak.  The gray bands describe the systematic uncertainties of the background fits which are non-trivially correlated point-to-point.  The colored bands are scale uncertainties from the mixed-event acceptance shape and JES correction.  There is an additional 6\% global scale uncertainty.  Included on the far right of the near- and away-side panels is an inclusive transverse momentum bin from 1.0--10.0~\GeVc.  Points are displaced for visibility. }
 		\label{fig:JetWidths}
 	\end{center}
 \end{figure}
@@ -734,7 +754,7 @@ To better quantify and examine the event-plane dependence of the yields, ratios 
 	\label{eqn:YieldRatio}
 \end{equation}
 
-\noindent where A and B denote different event-plane orientations of the yield.  The statistical errors, coming only from the terms, $Y_A^{\rm meas}$ and $Y_B^{\rm meas}$, which were completely uncorrelated were calculated as: 
+\noindent where A and B denote different event-plane orientations of the yield.  The statistical uncertainties, which come only from the completely uncorrelated terms $Y_A^{\rm meas}$ and $Y_B^{\rm meas}$, are calculated as: 
 
 \begin{equation}
 	\sigma^{\rm stat}_r = \left|\frac{1}{r}\right|\sqrt{\left(\frac{\sigma_A}{Y_A}\right)^2 + \left(\frac{\sigma_B}{Y_B}\right)^2}.
@@ -748,32 +768,32 @@ To better quantify and examine the event-plane dependence of the yields, ratios 
 	\label{eqn:SysRatio}
 \end{equation}
 
-Where, $p_i$'s are the parameters of the RPF fits. Fig.~\ref{plot:YieldRatio_C20-50} shows the near-side (left) and away-side (right) associated-yield ratios of out-of-plane/in-plane and mid-plane/in-plane for 15-20 (top) and 20-40 GeV/\(c\) (bottom) jets.
+Where, $p_i$'s are the parameters of the RPF fits. Fig.~\ref{plot:YieldRatio_C20-50} shows the near-side (left) and away-side (right) associated-yield ratios of out-of-plane/in-plane and mid-plane/in-plane for 15--20 (top) and 20--40~GeV/\(c\) (bottom) jets.
 
-For \pttrigrange{15}{20}, the out-of-plane to in-plane associated-yield ratio shows slight enhancement out-of-plane relative to in-plane at low-\Pt{assoc}, although the effect is small.  This can potentially be due to additional induced gluon radiation that out-of-plane and mid-plane jets would experience relative to in-plane jets, possibly from the longer path length traversed by jets that are not in-plane.   Deviations of the yield ratios from 1.0 are not statistically significant on the away-side, although a small suppression is seen in-plane relative to both mid-plane and out-of plane on both the near-side and the away-side for \ptassocrange{2.0}{5.0} for out/in.  The suppression is expected to occur at a higher momentum fraction ($z$) of the jet.  On the away-side, the effects are favoring a redistribution of energy from high-momentum constituents to lower momentum constituents.  
+For \pttrigrange{15}{20}, the out-of-plane to in-plane associated-yield ratio shows slight enhancement out-of-plane relative to in-plane at low \Pt{assoc}, although the effect is small.  This can potentially be due to additional induced gluon radiation that out-of-plane and mid-plane jets would experience relative to in-plane jets, possibly from the longer path length traversed by jets that are not in-plane.   Deviations of the yield ratios from 1.0 are not statistically significant on the away-side, although a small suppression is seen in-plane relative to both mid-plane and out-of-plane on both the near-side and the away-side for \ptassocrange{2.0}{5.0} for out/in.  The suppression is expected to occur at a higher momentum fraction ($z$) of the jet.  On the away-side, the effects are favoring a redistribution of energy from high-momentum constituents to lower momentum constituents.  
 %However, the away-side measurement is not sensitive enough to the potential effects because the uncertainties associated with the result are dominated by both the statistics and the JES correction.
 %the shift in energy to reconstructed jets from varying $v^{jet}_2$ between event-plane orientations.
 
-For \pttrigrange{20}{40} the near-side ratios are consistent with 1.0 with some movement at the two lowest \Pt{assoc} bins.  On the away-side, mid/in is consistent with 1.0 with a little enhancement and out/in has an enhancement at high-\Pt{assoc} and suppression at low-\Pt{assoc}. This observation contradicts the expectations.  If in-plane jets interact less, the ratios are expected to be $< 1.0$ at high-\Pt{assoc} and $> 1.0$ at low-\Pt{assoc}.  This is a reminder of the competing effects in the analyzed momentum range, and it is an indication that the expected path length effects due to jet energy loss are dominated by the fluctuations in the medium.
+For \pttrigrange{20}{40} the near-side ratios are consistent with 1.0 with some movement at the two lowest \Pt{assoc} bins.  On the away-side, mid/in is consistent with 1.0 with a little enhancement and out/in has an enhancement at high \Pt{assoc} and suppression at low \Pt{assoc}. This observation contradicts the expectations.  If in-plane jets interact less, the ratios are expected to be $< 1.0$ at high \Pt{assoc} and $> 1.0$ at low \Pt{assoc}.  This is a reminder of the competing effects in the analyzed momentum range, and it is an indication that the expected path-length effects due to jet energy loss are dominated by the fluctuations in the medium.
 
 %\begin{figure}[!htbp]
 \begin{figure}
 	\begin{center}     
-		\includegraphics[width=16cm]{JHC/results/YieldRatio_J15-20_C20-50_wJEScorr.pdf}
-		\includegraphics[width=16cm]{JHC/results/YieldRatio_J20-40_C20-50_wJEScorr.pdf}
-		\caption{Near-side (left) and away-side (right) associated-yield ratios (of out-of-plane and mid-plane to in-plane) vs \Pt{assoc} for 15-20 (top) and 20-40 (bottom) GeV/\(c\) full jets in 20-50\% centrality collisions.  The gray bands describe the systematic uncertainties of the background fits which are non-trivially correlated point-to-point.  The colored bands are scale uncertainties from the JES correction.  Points are displaced for visibility. }
+		\includegraphics[width=\linewidth]{JHC/results/YieldRatio_J15-20_C20-50_wJEScorr.pdf}
+		\includegraphics[width=\linewidth]{JHC/results/YieldRatio_J20-40_C20-50_wJEScorr.pdf}
+		\caption[Out-of-plane/in-plane and mid-plane/in-plane associated-yield ratios]{Near-side (left) and away-side (right) associated-yield ratios (of out-of-plane and mid-plane to in-plane) vs \Pt{assoc} for 15--20 (top) and 20--40 (bottom)~GeV/\(c\) full jets in 20--50\% centrality collisions.  The gray bands describe the systematic uncertainties of the background fits which are non-trivially correlated point-to-point.  The colored bands are scale uncertainties from the JES correction.  Points are displaced for visibility. }
 		\label{plot:YieldRatio_C20-50}
 	\end{center}
 \end{figure}
 
 Alternatively, the initial geometry within specific centrality bins may be fluctuating at a larger magnitude than any possible event-plane dependence~\cite{Noronha-Hostler-RAAv2,PhysRevLett.116.252301}.  The possibility of this occurrence can be studied by looking at the initial configuration and selecting low and high ellipticity events by  using the $q_n$ flow vector found within a selected centrality range.
 
-To study the impact of surface bias and event-plane resolution, a check was performed to investigate the systematic change in the ratio of yields (out/in, mid/in) with the angle of the event plane by fitting a constant to Fig.~\ref{plot:YieldRatio_C20-50} for jets with \pttrigrange{15}{20} (top) and \pttrigrange{20}{40} (bottom).  The systematic uncertainties are treated as uncorrelated point-to-point and added to the statistical uncertainties in quadrature.  The results are shown in Tabs.~\ref{Tab:RatioFits_J15-20} and~\ref{Tab:RatioFits_J20-40} and are consistent with one.  Care should be taken when interpreting the results, as various effects can be in play and medium modifications could give way to a \Pt{assoc} dependence. This \Pt{assoc} dependence can be seen as an enhancement of associated yields for $\Pt{assoc} \geq$ 2 \GeVc on the near-side from the geometric kinematic biases due to the ``hard-core" requirement of jet reconstruction.   
+To study the impact of surface bias and event-plane resolution, a check was performed to investigate the systematic change in the ratio of yields (out/in, mid/in) with the angle of the event plane by fitting a constant to Fig.~\ref{plot:YieldRatio_C20-50} for jets with \pttrigrange{15}{20} (top) and \pttrigrange{20}{40} (bottom).  The systematic uncertainties are treated as uncorrelated point-to-point and added to the statistical uncertainties in quadrature.  The results are shown in Tabs.~\ref{Tab:RatioFits_J15-20} and~\ref{Tab:RatioFits_J20-40} and are consistent with one.  Care should be taken when interpreting the results, as various effects can be in play and medium modifications could give way to a \Pt{assoc} dependence. This \Pt{assoc} dependence can be seen as an enhancement of associated yields for $\Pt{assoc} \geq$ 2 \GeVc on the near-side from the geometric kinematic biases due to the ``hard-core'' requirement of jet reconstruction.   
 
 %======================================================================
 \begin{table}
 	%\begin{table}[!ht]
-	\caption{Results of fits to Fig.~\ref{plot:YieldRatio_C20-50} (top panel: 15-20 \GeVc jets) to a constant $c$, the $\chi^2$ over the number of degrees of freedom (NDF), the number of standard deviations $\sigma$ of $c$ from one, and the range of $c$ within a 90\% confidence limit (CL).}
+	\caption[Constant fits to the associated-yield ratios for 15--20~GeV/\(c\) jets]{Results of fits to Fig.~\ref{plot:YieldRatio_C20-50} (top panel: 15--20~\GeVc jets) to a constant $c$, the $\chi^2$ over the number of degrees of freedom (NDF), the number of standard deviations $\sigma$ of $c$ from one, and the range of $c$ within a 90\% confidence limit (CL).}
 	\label{Tab:RatioFits_J15-20}
 	\centering % used for centering table
 	\begin{tabular}{c | c c | c c} % entered columns (5 columns)
@@ -802,7 +822,7 @@ To study the impact of surface bias and event-plane resolution, a check was perf
 % === Comment out table for 20-40 GeV jets, ====
 \begin{table}
 	%\begin{table}[!ht]
-	\caption{Results of fits to Fig.~\ref{plot:YieldRatio_C20-50} (bottom panel: 20-40 \GeVc jets) to a constant $c$, the $\chi^2$ over the number of degrees of freedom (NDF), the number of standard deviations $\sigma$ of $c$ from one, and the range of $c$ within a 90\% confidence limit (CL).}
+	\caption[Constant fits to the associated-yield ratios for 20--40~GeV/\(c\) jets]{Results of fits to Fig.~\ref{plot:YieldRatio_C20-50} (bottom panel: 20--40~\GeVc jets) to a constant $c$, the $\chi^2$ over the number of degrees of freedom (NDF), the number of standard deviations $\sigma$ of $c$ from one, and the range of $c$ within a 90\% confidence limit (CL).}
 	\label{Tab:RatioFits_J20-40}
 	\centering % used for centering table
 	\begin{tabular}{c | c c | c c} % entered columns (5 columns)
@@ -828,7 +848,7 @@ To study the impact of surface bias and event-plane resolution, a check was perf
 \end{table}
 
 \section{Conclusions} \label{sect:Summary}
-The measurement of jet-hadron correlations relative to the event plane is reported for the 20-50\% most central events in \AuAu collisions at \sNN{200}{GeV} in STAR. 
+The measurement of jet-hadron correlations relative to the event plane is reported for the 20--50\% most central events in \AuAu collisions at \sNN{200}{GeV} in STAR. 
 %
 Partonic interactions are directly related to the distance traversed in the medium, so it is expected that medium-induced jet modifications should depend on the path length. 
 %
@@ -848,7 +868,7 @@ This study highlights the importance of conducting further tuning of Monte Carlo
 
 Within the precision of the current measurement at \sNN{200}{GeV}, the associated yields and jet-peak widths show no dependence on the event plane. 
 %
-The ratios derived from the associated yields are used to quantify the differences, but they do not deviate significantly from 1.0. For the \pttrigrange{20}{40}, there were indications of potential modifications observed in the inclusive bin of \ptassocrange{1.0}{10}.
+The ratios derived from the associated yields are used to quantify the differences, but they do not deviate significantly from 1.0. For the \pttrigrange{20}{40} jets, there were indications of potential modifications observed in the inclusive bin of \ptassocrange{1.0}{10}.
 %
 The results presented in this study align with the findings observed in hadron-hadron and jet-hadron correlations reported in Ref.~\cite{Nattrass:2016cln} for RHIC and  Ref.~\cite{PhysRevC.101.064901} for LHC energies.  
 %

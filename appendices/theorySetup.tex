@@ -8,15 +8,15 @@ The color symmetry of Sec.~\ref{sec:QCDIntro} is made precise by the QCD Lagrang
 		t^a_{\alpha\beta}A^a_\mu - m\delta_{\alpha\beta})q^\beta - \frac{1}{4} F^a_{\mu\nu}F_a^{\mu\nu}}_{\mathcal{L}_\mathrm{classical}}\notag\\ &\underbrace{- \frac{1}{2\lambda}(\partial^\mu A^a_\mu)^2}_{\mathcal{L}_\mathrm{gauge-fixing}}+ \underbrace{\bar{c}^\alpha\partial^\mu(\partial_\mu\delta_{\alpha\beta} + igT^a_{\alpha\beta}A^a_\mu)c^\beta}_{\mathcal{L}_\mathrm{ghost}}
 \end{align}
 
-\(\mathcal{L}_\mathrm{classical}\) is the classical Lagrangian density shows interaction of a quark field  \(q^\alpha\) with 3 color degrees of freedom interacting with gluon fields \(A^a_\mu\) with 8 color degrees of freedom. \(g\) and \(m\) are dimensionless and correspond to QCD coupling constant, and quark-mass respectively. \(F^a_{\mu\nu}\) are the gluon tensors defined as,
+\(\mathcal{L}_\mathrm{classical}\) is the classical Lagrangian density, which describes the interaction of a quark field \(q^\alpha\) with 3 color degrees of freedom with the gluon fields \(A^a_\mu\) with 8 color degrees of freedom. \(g\) is the dimensionless QCD coupling constant and \(m\) the quark mass. \(F^a_{\mu\nu}\) are the gluon tensors defined as,
 \begin{equation}
 	F^a_{\mu\nu} = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a - gf_{abc}A^b_\mu A^c_\nu.
 	\label{eq:gluonFieldTensor}
 \end{equation}
 
-To properly define gluon propagators, we need to make a choice of gauge. The \(\mathcal{L}_\mathrm{gauge-fixing}\) parametrizes the class of covariant gauges with the gauge parameter $\lambda$. In non-Abelian theories, this gauge fixing term leads to creation of unphysical degrees of freedom, which are canceled out by \(\mathcal{L}_\mathrm{ghost}\) which contains complex, scalar fermion fields \(c^\alpha\). 
+To properly define gluon propagators, we need to make a choice of gauge. The \(\mathcal{L}_\mathrm{gauge-fixing}\) parametrizes the class of covariant gauges with the gauge parameter $\lambda$. In non-Abelian theories, this gauge fixing term leads to creation of unphysical degrees of freedom, which are canceled out by \(\mathcal{L}_\mathrm{ghost}\) which contains the ghost fields \(c^\alpha\), complex scalar fields with fermionic statistics. 
 
-The matrices \(t^a\) and  \(T^a\) are the fundamental and adjoint representations of \(\rm SU(3)\) in form of traceless \(3\times3\) and \(8\times8\) hermitian matrices satisfying:
+The matrices \(t^a\) and  \(T^a\) are the fundamental and adjoint representations of \(\rm SU(3)\) in the form of traceless \(3\times3\) and \(8\times8\) Hermitian matrices satisfying:
 \begin{align}
 	[t^a, t^b] = if_{abc}t^c,~\tr(t^at^b) = \frac{1}{2}\delta^{ab} \notag\\
 	[T^a, T^b] = if_{abc}T^c,~(T^{a})_{bc} = -if^{abc}.
@@ -63,19 +63,19 @@ Comparing with quantum electrodynamics (QED), where the photon field tensor lack
 		\yvertex{gluon}{A,\alpha}{}{fermion}{b,i}{}{fermion}{c,j}{}                    &
 		\(-ig\,(t^{A})_{cb}\,(\gamma^{\alpha})_{ji}\)
 	\end{tabular}
-	\caption{Feynman rules for QCD in a covariant gauge with gauge parameter \(\lambda\):
+	\caption[Feynman rules of QCD]{Feynman rules for QCD in a covariant gauge with gauge parameter \(\lambda\):
 		the gluon, ghost and quark propagators, followed by the three- and four-gluon,
 		ghost-gluon and quark-gluon vertices.}
 	\label{tab:qcdrules}
 \end{table}
-\section{Hard Processes}
+\section{Hard processes}
 \label{sec:hardProcesses}
-To consider any nucleus as a singular coherent object, the fluctuations inside it would involve momentum transfers below the confinement scale (\(\Lambda\)) introduced in Sec.~\ref{subsec:runningCoupling}, and would occur over timescales \(\sim 1/\Lambda\). We define \emph{hard-scattering processes} or just \emph{hard processes} as interactions of a hard perturbative probe with high momentum transfer \(Q >> \Lambda\). Since this interaction occurs over a time-scale \(\sim 1/Q \ll 1/\Lambda\), the perturbative probe effectively interacts with a near-static ``snapshot'' of the nucleus with a characteristic resolution \(\sim 1/Q\).
+To consider any nucleus as a single coherent object, the fluctuations inside it would involve momentum transfers below the confinement scale (\(\Lambda\)) introduced in Sec.~\ref{subsec:runningCoupling}, and would occur over timescales \(\sim 1/\Lambda\). We define \emph{hard-scattering processes} or just \emph{hard processes} as interactions of a hard perturbative probe with high momentum transfer \(Q \gg \Lambda\). Since this interaction occurs over a time-scale \(\sim 1/Q \ll 1/\Lambda\), the perturbative probe effectively interacts with a near-static ``snapshot'' of the nucleus with a characteristic resolution \(\sim 1/Q\).
 
 \begin{figure}[htbp]
 	\centering
 	\factorizationdiagram
-	\caption{Collinear factorization of a hadronic hard scattering.}
+	\caption[Collinear factorization of a hadronic hard scattering]{Collinear factorization of a hadronic hard scattering.}
 	\label{fig:factorization}
 \end{figure}
 
@@ -86,7 +86,7 @@ Thus, the cross sections of a collision process of nuclei with momentum \(P_1\) 
 	\label{eq:factorization}
 \end{equation}
 
-Where, the interactions occur between partons \(i\) from nucleus 1 and \(j\) from nucleus 2 carrying momentum \(p_1 = x_1P_1\) and \(p_2 = x_2P_2\) respectively. \(\mu\) is an arbitrary \emph{factorization scale}, often just set to \(Q\). The \(f_{k}(x, \mu^2)\) are the \emph{parton densities} giving likelihood of a parton \(k\) to carry \(x\) fraction of its parent nucleus's momentum at a particular factorization scale \(\mu\). \(f\) labels the partonic final state coming out of the scattering and \(\mathbf{\Phi}_f\) is its phase space. \(\hat{\sigma}_{ij\to f}\)  is the \emph{parton cross-section} for scattering of partons \(i\) and \(j\) into \(f\), kept differential in a partonic observable \(\hat{\mathbf{O}}\). We can approximate it to the \((n+k)\) order in \(\alpha_s\) as,
+Where, the interactions occur between partons \(i\) from nucleus 1 and \(j\) from nucleus 2 carrying momentum \(p_1 = x_1P_1\) and \(p_2 = x_2P_2\) respectively. \(\mu\) is an arbitrary \emph{factorization scale}, often just set to \(Q\). The \(f_{k}(x, \mu^2)\) are the \emph{parton densities}, giving the probability of a parton \(k\) to carry \(x\) fraction of its parent nucleus's momentum at a particular factorization scale \(\mu\). \(f\) labels the partonic final state coming out of the scattering and \(\mathbf{\Phi}_f\) is its phase space. \(\hat{\sigma}_{ij\to f}\)  is the \emph{parton cross-section} for scattering of partons \(i\) and \(j\) into \(f\), kept differential in a partonic observable \(\hat{\mathbf{O}}\). We can approximate it to the \((n+k)\) order in \(\alpha_s\) as,
 
 \begin{equation}
 	\frac{d\hat{\sigma}_{ij\to f}}{d\hat{\mathbf{O}}} = \alpha_s^k \sum_{m=0}^{n}\alpha_s^m\,\frac{d\hat{\sigma}^{(m)}_{ij\to f}}{d\hat{\mathbf{O}}}(p_1, p_2, Q^2/\mu^2)
@@ -208,7 +208,7 @@ The nuclear modification factors of Sec.~\ref{sec:jetsInQGP} are ratios of Eq.~\
 %			\end{sidewaystable}
 \section{From partons to jets}
 \label{sec:partonShower}
-Outgoing partons evolve from higher to lower momentum transfer scales (say, \(t\)). Initially their evolution are modeled using the pQCD mechanism called \emph{parton shower}. Eventually, say at an infra-red scale cut-off \(t_0\), pQCD calculations stop being valid and npQCD processes like hadronization dominate. QCD Monte-Carlo programs combining parton shower at \(t < t_0\) and hadronization process at \(t > t_0\)  are called \emph{QCD event generators}
+Outgoing partons evolve from higher to lower momentum transfer scales (say, \(t\)). Initially, their evolution is modeled using the pQCD mechanism called the \emph{parton shower}. Eventually, at an infrared cut-off scale \(t_0\), pQCD calculations stop being valid and npQCD processes like hadronization dominate. QCD Monte Carlo programs combining the parton shower at \(t > t_0\) and hadronization at \(t < t_0\) are called \emph{QCD event generators}.
 
 
 \subsection{Parton branching}
@@ -245,7 +245,7 @@ Outgoing partons evolve from higher to lower momentum transfer scales (say, \(t\
 		\pic[draw, "\(\theta_a\)",  ->, angle eccentricity=1.7] {angle = continual--splitPoint--splitUp};
 		\pic[draw, "\(\theta_b\)",  <-, angle eccentricity=2.] {angle = splitDown--splitPoint--continual};
 	\end{tikzpicture}
-	\caption{Kinematics of timelike (left) vs spacelike (right) parton branching.}
+	\caption[Kinematics of timelike and spacelike parton branching]{Kinematics of timelike (left) vs spacelike (right) parton branching.}
 	\label{fig:splitKinematics}
 \end{figure}
 
@@ -329,7 +329,7 @@ To obtain the evolution equations, we can frame the evolution in terms of the ch
 	                 & =\frac{\delta t}{t} \sum_j \int_{0}^{1} dz \frac{\alpha_s}{2\pi} \left[\frac{\hat{P}_{ij}(z)}{z}f_j(x/z, t) - \hat{P}_{ji}f_i(x,t)\right]
 \end{align}
 %
-The second term of the RHS gives \emph{Sudakov form factor}, which gives the probability of a parton \(i\) evolving from scale \(t\) to a softer scale \(t_0\) without a resolvable emission,
+The second term of the RHS gives the \emph{Sudakov form factor}, which gives the probability of a parton \(i\) evolving from scale \(t\) to a softer scale \(t_0\) without a resolvable emission,
 %
 \begin{align}
 	\Delta_i(t) \equiv \exp(-\sum_j\int_{t_0}^{t} \frac{dt^\prime}{t^\prime}\int dz\frac{\alpha_s}{2\pi} \hat{P}_{ji}(z))
@@ -342,7 +342,7 @@ We get the familiar DGLAP-like evolution equations,
 	\hat{P}_{ij}(z)f_j(x/z, t)\end{align}
 
 
-To deal with singularities corresponding to soft gluons at \(z\to 1\), we introduce an explicit infrared cut-off \(z < 1-\epsilon(t)\) .  Requiring the transverse momentum in timelike branching \(a\to bc\) to be positive,
+To deal with singularities corresponding to soft gluons at \(z\to 1\), we introduce an explicit infrared cut-off \(z < 1-\epsilon(t)\).  Requiring the transverse momentum in timelike branching \(a\to bc\) to be positive,
 \begin{align}
 	p_T^2    & = z(1-z)p_a^2 - (1-z)p_b^2 - zp_c^2 > 0 \notag \\
 	\implies & z(1-z) > t_0/t \implies t_0/t < z < 1 - t_0/t
@@ -358,10 +358,10 @@ and also, \(t > 2t_0\). Thus the Sudakov factors become,
 	\label{eq:col`inearSudakov}
 \end{align}
 
-\subsection{Angular Ordering}
+\subsection{Angular ordering}
 \label{sec:angularOrdering}
 Sec.~\ref{subsec:dglap} took collinear enhancements into account to all orders in
-\(\alpha_s\). However it does not take the enhancement in soft gluon emission at wide emission angle.
+\(\alpha_s\). However, it does not take into account the enhancement of soft-gluon emission at wide angles.
 This is demonstrated in Eq.~\ref{eq:softPropagator} by considering an on-mass-shell external line of
 momentum \(p\), mass \(m\) emitting a gluon with momentum \(q\)  at an angle \(\theta\)
 \begin{equation}
@@ -386,7 +386,7 @@ The weighted sum \(\sum_{i,j}C_{ij}W_{ij}\)  is called the \emph{antenna pattern
 	= \frac{1-v_iv_j\cos\theta_{ij}}
 	{(1-v_i\cos\theta_{iq})(1-v_j\cos\theta_{jq})}
 \end{align}
-The vectors \(\mathbf{Q}_{i}\) represents color charge of parton \(i\).
+The vectors \(\mathbf{Q}_{i}\) represent the color charge of parton \(i\).
 %\(\mathbf{Q}_i^2 = C_F\) for a quark, \(C_A\) for a gluon and \(0\) for a color singlet. 
 \begin{equation}
 	\mathbf{Q}_i^2 =
@@ -397,14 +397,14 @@ The vectors \(\mathbf{Q}_{i}\) represents color charge of parton \(i\).
 	\end{cases}
 \end{equation}
 
-\(W_{ij}\) comes from interference between lines \(i\) and \(j\). \(W_{ij}\) can be separated into two parts  \(W^{[i/j]}_{ij}\) each with an \emph{incoherent} and a \emph{coherent} contribution from line \(i/j\)  . Assuming massless emitters (\(v_i=v_j=1\)) for simplicity,
+\(W_{ij}\) comes from interference between lines \(i\) and \(j\). \(W_{ij}\) can be separated into two parts  \(W^{[i/j]}_{ij}\) each with an \emph{incoherent} and a \emph{coherent} contribution from line \(i/j\). Assuming massless emitters (\(v_i=v_j=1\)) for simplicity,
 \begin{align}
 	W_{ij}       & = W^{[i]}_{ij} + W^{[j]}_{ij}\notag                                                                                                                                                                         \\
 	W^{[i]}_{ij} & = \frac{1}{2}\left(\overbrace{\frac{1}{1-\cos\theta_{iq}}}^\mathrm{incoherent} + \overbrace{\frac{\cos\theta_{iq}-\cos\theta_{ij}}{(1-\cos\theta_{jq}) (1-\cos\theta_{iq})}}^\mathrm{coherent}\right)\notag \\
 	             & =  \frac{1}{2(1-\cos\theta_{iq})}\left(1 + \frac{\cos\theta_{iq}-\cos\theta_{ij}}{1-\cos\theta_{ij}\cos\theta_{iq} - \sin\theta_{ij}\sin\theta_{iq}\cos\phi_{iq}}\right)
 	\label{eq:antennaSplit}
 \end{align}
-Using the direction of line \(i\) as the z-axis, \(d\Omega \)  from Eq.~\ref{eq:antennaSplitXSec} becomes \(d\cos\theta_{iq}\,d\phi_{iq}\), We can carry out the \(\phi_{iq}\) integration,
+Using the direction of line \(i\) as the z-axis, \(d\Omega \)  from Eq.~\ref{eq:antennaSplitXSec} becomes \(d\cos\theta_{iq}\,d\phi_{iq}\), and we can carry out the \(\phi_{iq}\) integration,
 \begin{align}
 	\int_0^{2\pi}\frac{d\phi_{iq}}{2\pi}W^{[i]}_{ij} & = \frac{1}{1-\cos\theta_{iq}}\left(\frac{1 + \frac{\cos\theta_{iq}-\cos\theta_{ij}}{|\cos\theta_{iq}-\cos\theta_{ij}|}}{2}\right) \notag \\
 	                                                 & = \begin{cases}
@@ -427,9 +427,9 @@ Gluon jets are therefore wider and carry more particles than quark jets of the s
 %\end{align}
 %We will come back to Eq.~\ref{eq:qqbarSinglet} 
 
-\subsection{Color Coherence}
+\subsection{Color coherence}
 \label{sec:colorCoherence}
-Lets take the case of three partons \(\{i,j,k\}\) forming a color singlet (\(\mathbf{Q}_i + \mathbf{Q}_j +\mathbf{Q}_k = 0\)) e.g., \(e^+e^-\to q\bar{q} g\). First, partons \(l\) and \(k\) come from a color singlet state (\(\mathbf{Q}_l +\mathbf{Q}_k = 0\)). Then \(l\) splits into \(i\) and \(j\) (\(\mathbf{Q}_l = \mathbf{Q}_i + \mathbf{Q}_j = -\mathbf{Q}_k\)). The antennae function for this state is:
+Let us take the case of three partons \(\{i,j,k\}\) forming a color singlet (\(\mathbf{Q}_i + \mathbf{Q}_j +\mathbf{Q}_k = 0\)) e.g., \(e^+e^-\to q\bar{q} g\). First, partons \(l\) and \(k\) come from a color singlet state (\(\mathbf{Q}_l +\mathbf{Q}_k = 0\)). Then \(l\) splits into \(i\) and \(j\) (\(\mathbf{Q}_l = \mathbf{Q}_i + \mathbf{Q}_j = -\mathbf{Q}_k\)). The antenna function for this state is:
 \begin{align}
 	\label{eq:threePartonW}
 	\sum_{a,b}C_{ab}W_{ab} & = -\mathbf{Q}_i\!\cdot\!\mathbf{Q}_jW_{ij} -\mathbf{Q}_j\!\cdot\!\mathbf{Q}_kW_{jk} -\mathbf{Q}_i\!\cdot\!\mathbf{Q}_kW_{ik} \notag                                                   \\
@@ -516,19 +516,19 @@ Where,
 			%\node at (1.1,-2.1) {\(\mathcal{M}_l\)};
 		\end{scope}
 	\end{tikzpicture}
-	\caption{Wide-angle emission of soft gluon \(q\), off \(i\) and \(j\), acts as if
+	\caption[Coherent soft-gluon emission from two partons close in angle]{Wide-angle emission of soft gluon \(q\), off \(i\) and \(j\), acts as if
 		the emission came off the parent parton \(l\), imagined to be on shell.}
 	\label{fig:threeParton}
 \end{figure}
 
 
-Each parton radiates in proportion to its color charge squared. When \(i\) and \(j\) close in angle their incoherent
+Each parton radiates in proportion to its color charge squared. When \(i\) and \(j\) are close in angle, their incoherent
 contributions are limited to cones of half-angle \(\theta_{ij}\), while at larger
 angles, out to the direction of \(k\), they radiate coherently in proportion to
 their combined charge \(\mathbf{Q}_l^2\), as if from an internal line of momentum
 \(p_l = p_i+p_j\) as shown in Fig.~\ref{fig:threeParton}.
 
-\subsection{Coherent Parton Branching}
+\subsection{Coherent parton branching}
 \label{sec:coherentPartonBranching}
 Extended to higher orders this gives a \emph{coherent parton branching} formalism.
 In place of the virtual mass-squared \(t\) the evolution variable is the opening

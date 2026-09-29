@@ -1,6 +1,6 @@
-\chapter{Event plane reconstruction}
+\chapter{Event-Plane Reconstruction}
 \label{sec:EP_Recon}
-The reaction plane, \(\Psi_{\rm RP}\) cannot be directly measured and is approximated by the second-order symmetry plane, $\Psi_{2,EP}$, referred to as the \emph{event plane}  in this text, for simplicity.  
+The reaction plane, \(\Psi_{\rm RP}\), cannot be directly measured and is approximated by the second-order symmetry plane, $\Psi_{2,EP}$, referred to as the \emph{event plane}  in this text, for simplicity.  
 %
 \(\Psi_{\rm RP} \to \Psi_{2, EP}\) if nucleon distributions were in their average positions and devoid of fluctuations from interactions among nucleons~\cite{PhysRevC.101.064901}.
 %
@@ -23,7 +23,7 @@ where the sum is calculated for all reconstructed charged particles (tracks) in 
 
 Due to finite acceptance and multiplicities, the calculated event plane has an underlying anisotropy that is corrected by applying two separate correction methods.  
 %
-First, a calibration and recentering correction procedures are applied to remove bias introduced by non-uniform acceptance of the TPC tracking system and further account for potential beam-condition effects~\cite{Barrette:1997pt,PhysRevC.55.1420,Poskanzer:1998yz}.  
+First, calibration and recentering procedures are applied to remove bias introduced by non-uniform acceptance of the TPC tracking system and further account for potential beam-condition effects~\cite{Barrette:1997pt,PhysRevC.55.1420,Poskanzer:1998yz}.  
 %
 This procedure involves recentering the weighted $\mathbf{Q}_2$-vectors such that, $\langle\mathbf{Q}_2 \rangle = \mathbf{0}$. 
 %
@@ -42,7 +42,7 @@ This method defines a new angle:
 %
 Usually 20 orders of Fourier moment are removed. 
 %
-Additional details of the recentering and shifting corrections can be found in Refs.~\cite{Wang:2012bga,Barrette:1997pt,Poskanzer:1998yz}
+Additional details of the recentering and shifting corrections can be found in Refs.~\cite{Wang:2012bga,Barrette:1997pt,Poskanzer:1998yz}.
 
 The difference between $\Psi_{RP}$ and \(\Psi_{2, EP}\) is quantified by event-plane resolution, $R_n$ or $R_n\{\Psi_{2, EP}\}$ given by Eq.~\ref{resolution}. 
 %
@@ -53,11 +53,11 @@ The observed $v_n$, $v_n^{\rm obs}$ is corrected for this limited resolution by 
 	\label{resolution}
 \end{equation}
 
-Furthermore, individual events are divided into two random sub-events by assigning charged tracks to sub-events, ``$a$" and ``$b$". 
+Furthermore, individual events are divided into two random sub-events by assigning charged tracks to sub-events, ``$a$'' and ``$b$''. 
 %
 The sub-events are unique, with approximately equal multiplicities. 
 %
-The correlation of the event planes of the two sub-events can be written as a product, \cite{PhysRevC.55.1420,Poskanzer:1998yz}
+The correlation of the event planes of the two sub-events can be written as a product~\cite{PhysRevC.55.1420,Poskanzer:1998yz}
 %
 \begin{equation}
 	\langle \cos(n[\Psi_{2, EP}^{a} - \Psi_{2, EP}^{b}]) \rangle = 
@@ -74,6 +74,6 @@ This allows calculation of the event-plane resolution directly from data. Since 
 	\label{resolutionIndiv}
 \end{equation}
 
-The event-plane resolution is multiplicity dependent and calculated for separate ranges of collision centrality using the two sub-events method.  
+The event-plane resolution is multiplicity dependent and calculated for separate ranges of collision centrality using the two-sub-event method.  
 %
 Narrower bins are calculated and then combined accordingly to match the ranges required, by averaging the results from the narrow bins weighted by the multiplicity of each bin \cite{Voloshin:2008dg}.
