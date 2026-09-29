@@ -10,3 +10,6 @@
 *.synctex.gz
 *.toc
 *.aux
+_extras/
+*.out
+/main.pdf
