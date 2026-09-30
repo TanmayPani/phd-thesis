@@ -137,7 +137,7 @@ Thus distributions of any jet observable \(\mathbf{O}\) will have these \emph{de
 \begin{align}
 	\label{eq:trMeas}
 	p_\mathrm{meas.}(\mathbf{y}) &= \int d\mathbf{x}~p_\mathrm{meas.|tr.}(\mathbf{y} |  \mathbf{x}) p_\mathrm{tr.}(\mathbf{x}) \notag\\
-	p_\mathrm{tr.}(\mathbf{x}) &= \int d\mathbf{y}~p_\mathrm{tr.|meas.}(\mathbf{x} |  \mathbf{y}) p_\mathrm{meas.}(\mathbf{y})
+	p_\mathrm{tr.}(\mathbf{x}) &= \int d\mathbf{y}~p_\mathrm{tr.|meas.}(\mathbf{x} |  \mathbf{y}) p_\mathrm{meas.}(\mathbf{y}).
 \end{align}
 
 
@@ -152,13 +152,13 @@ Substituting \(R(\mathbf{y}, \mathbf{x})\) in Eq.~\ref{eq:trMeas} and using \(\o
 	\label{eq:unfoldEstimator}
 	p_\mathrm{gen., 1}(\mathbf{x}) &\equiv \int d\mathbf{y}~p_\mathrm{gen.|reco., 0}(\mathbf{x} |  \mathbf{y})\,p_\mathrm{meas.}(\mathbf{y}) \notag\\
 	&=\int d\mathbf{y}~\frac{R(\mathbf{y}, \mathbf{x})\,p_\mathrm{gen., 0}(\mathbf{x})}{p_\mathrm{reco., 0}(\mathbf{y})} p_\mathrm{meas.}(\mathbf{y})\notag\\
-	&= p_\mathrm{gen., 0}(\mathbf{x})\int d\mathbf{y}~R(\mathbf{y}, \mathbf{x})\,\omega_0(\mathbf{y})
+	&= p_\mathrm{gen., 0}(\mathbf{x})\int d\mathbf{y}~R(\mathbf{y}, \mathbf{x})\,\omega_0(\mathbf{y}).
 \end{align}
 Using \(\nu_0(\mathbf{x}) = p_\mathrm{gen., 1}(\mathbf{x})/p_\mathrm{gen., 0}(\mathbf{x})\) measured distribution correspondingly becomes,
 \begin{align}
 	\label{eq:step2Joint}
 	p_\mathrm{reco., 1}(\mathbf{y}) &= \int d\mathbf{x}~(\mathbf{x})\,R(\mathbf{y}, \mathbf{x})\,p_\mathrm{gen., 1}(\mathbf{x})\notag\\
-	&= p_\mathrm{reco., 0}(\mathbf{y}) \int d\mathbf{x}~\frac{R(\mathbf{y}, \mathbf{x})\,p_\mathrm{gen., 0}(\mathbf{x})}{p_\mathrm{reco., 0}(\mathbf{y})}\nu_0(\mathbf{x}) 
+	&= p_\mathrm{reco., 0}(\mathbf{y}) \int d\mathbf{x}~\frac{R(\mathbf{y}, \mathbf{x})\,p_\mathrm{gen., 0}(\mathbf{x})}{p_\mathrm{reco., 0}(\mathbf{y})}\nu_0(\mathbf{x}). 
 \end{align}
 The convolutions \(\int d\mathbf{y}~R(\mathbf{y}, \mathbf{x})\,\omega_0(\mathbf{y})\) and \(\int d\mathbf{x}~R(\mathbf{y}, \mathbf{x})\frac{\,p_\mathrm{gen., 0}(\mathbf{x})}{p_\mathrm{reco., 0}(\mathbf{y})}\nu_0(\mathbf{x})\) are mapping \(\omega_0(\mathbf{y})\to\omega_0(\mathbf{x})\) and \(\nu_0(\mathbf{x})\to\nu_0(\mathbf{y})\) respectively. 
 %
@@ -169,7 +169,7 @@ For the \(n^\text{th}\) iteration,
 	\omega_{n-1}(\mathbf{y}) &= \frac{p_\mathrm{meas.}(\mathbf{y})}{p_{\mathrm{reco.}, n-1}(\mathbf{y})} \notag\\
 	p_{\mathrm{gen.}, n}(\mathbf{x}) &= p_{\mathrm{gen.}, n-1}(\mathbf{x})\int d\mathbf{y}~R(\mathbf{y}, \mathbf{x})\,\omega_{n-1}(\mathbf{y})\notag\\
 	\nu_{n-1}(\mathbf{x}) &= \frac{p_{\mathrm{gen.}, n}(\mathbf{x})}{p_{\mathrm{gen.}, n-1}(\mathbf{x})} \notag\\
-	p_{\mathrm{reco.}, n}(\mathbf{y}) &= p_{\mathrm{reco.}, n-1}(\mathbf{y}) \int d\mathbf{x}~R(\mathbf{y}, \mathbf{x})\frac{p_{\mathrm{gen.}, n-1}(\mathbf{x})}{p_{\mathrm{reco.}, n-1}(\mathbf{y})}\nu_{n-1}(\mathbf{x}) 
+	p_{\mathrm{reco.}, n}(\mathbf{y}) &= p_{\mathrm{reco.}, n-1}(\mathbf{y}) \int d\mathbf{x}~R(\mathbf{y}, \mathbf{x})\frac{p_{\mathrm{gen.}, n-1}(\mathbf{x})}{p_{\mathrm{reco.}, n-1}(\mathbf{y})}\nu_{n-1}(\mathbf{x}). 
 \end{align}
 %
 Given convergence, \(p_{\mathrm{reco.}, n}(\mathbf{y}) \to p_\mathrm{gen.}(\mathbf{y})\) and \(p_{\mathrm{tr.}, n}(\mathbf{x}) \to p_{\mathrm{unf.}}(\mathbf{x})\) is the unfolded distribution. 
@@ -206,7 +206,7 @@ One of the first unbinned approaches, OmniFold~\cite{PhysRevLett.124.182001} (Fi
 \end{equation}
 and \(\nu_{i-1}(\mathbf{y})\) can be calculated using classifier \(f_{i, i-1}\) which classifies a jet represented by \(\mathbf{x}\) as being generated from \(i^\text{th}\) or \((i-1)^\text{th}\) iteration. 
 \begin{equation}
-	\nu_{i-1}(\mathbf{x}) = \frac{f_{i, i-1}(\mathbf{x})}{1-f_{i, i-1}(\mathbf{x})}
+	\nu_{i-1}(\mathbf{x}) = \frac{f_{i, i-1}(\mathbf{x})}{1-f_{i, i-1}(\mathbf{x})}.
 \end{equation}
 Not every jet has a partner at the other level.
 %
