@@ -6,7 +6,7 @@ The generalized angularities of jets in \AuAu collisions (Sec.~\ref{sec:AuAuAngu
 %
 Part of the \pp angularities of Sec.~\ref{sec:ppResults} was presented as a poster at Hard Probes 2026~\cite{Pani:HP2026poster}, and earlier iterations of them orally at Hard Probes 2023~\cite{Pani_2024}; some of the recommendations of this work for unbinned unfolding are featured in a community white paper~\cite{Canelli_2026}.
 
-This thesis used jets to study QCD in vacuum and in the quark-gluon plasma at RHIC, with two questions in mind: does jet quenching depend on the path length through the medium, and how is the energy of a jet distributed in angle?
+This thesis used jets to study QCD in vacuum and in the quark-gluon plasma produced by RHIC, with two questions in mind: does jet quenching depend on the path length through the medium, and how is the energy of a jet distributed in angle?
 %
 Because soft gluon radiation is ordered in angle (App.~\ref{app:theory}), the second question is a question about the history of the parton shower.
 
@@ -43,7 +43,9 @@ Its main physics message comes from combining two views of the same jets.
 %
 The distributions show that PYTHIA\mbox{-}8 and HERWIG\mbox{-}7 predict jets narrower than measured, by up to 20--40\% in the tails, while PYTHIA\mbox{-}6 agrees within uncertainties in most bins.
 %
-The mean angularities as functions of \(R_\mathrm{g}\), an observable that did not have to be chosen before the unfolding, locate the origin of this difference: at every splitting angle PYTHIA\mbox{-}8 and HERWIG\mbox{-}7 fall 10--15\% below the data, so they produce too little radiation at a given angle rather than a wrong distribution of angles.
+The mean angularities as functions of \(R_\mathrm{g}\), an observable that did not have to be chosen before the unfolding, locate the origin of this difference: at every value of \(R_\mathrm{g}\), the angle of the first hard splitting, PYTHIA\mbox{-}8 and HERWIG\mbox{-}7 fall 10--15\% below the data.
+%
+Their narrower jets therefore come from too little radiation around a splitting of a given angle, rather than from a different distribution of the splitting angle \(R_\mathrm{g}\) itself.
 %
 Both generators are already used with tunes made for RHIC energies (Sec.~\ref{sec:eventGenerators}), the Detroit tune of PYTHIA\mbox{-}8, which was compared to STAR jet substructure measurements~\cite{PhysRevD.105.016011}, and the Nashville tune of HERWIG\mbox{-}7~\cite{Qureshi:2024eqz}.
 %
@@ -66,8 +68,6 @@ In summary, this thesis contributes to the field
 \end{itemize}
 
 \section{Outlook}
-The \pp measurement will be extended with \(\lambda_0^2\) and the remaining angularities for the final STAR publication.
-
 The natural next step is to measure the inclusive and groomed angularities of jets in \AuAu collisions with the constituent selection, grooming and unfolding of the \pp analysis.
 %
 There, the \(R_\mathrm{g}\) profiles can separate a medium-induced change of the radiation at a given splitting angle from a change of the splitting angles themselves, a distinction one-dimensional distributions cannot make.
@@ -75,16 +75,20 @@ There, the \(R_\mathrm{g}\) profiles can separate a medium-induced change of the
 Its feasibility has still to be established: grooming reduces the underlying event inside the jets that are found, but cannot remove the combinatorial jets that the hard-core selection suppresses, and their statistical subtraction will likely bring large systematic uncertainties and some model dependence (Sec.~\ref{sec:angConclusion}).
 %
 The unfolding itself can be made more robust by methods that remove the need for iterations~\cite{Ore:2026qgp}, which would avoid the growth of statistical fluctuations over the iterations seen in this work, and by profiling the detector uncertainties as nuisance parameters~\cite{Zhu:2024drd}.
+%
+The \pp measurement itself will be extended with \(\lambda_0^2\) and the remaining angularities for the final STAR publication, and the next steps within the collaboration, such as the review of the analysis by a STAR paper committee, are being planned before its submission to a journal.
 
 On the jet-hadron side, selecting events on the ellipticity of their initial state through the \(q_n\) flow vector would test whether fluctuations of the initial geometry wash out the event-plane dependence; since the measurement is already statistics-limited, this requires the larger \AuAu datasets recorded in 2023 and 2025.
 %
 The classifiers of App.~\ref{app:ML} suggest that medium modification can itself be quantified as a discrimination problem.
 
-More broadly, RHIC ended its operations in 2026, leaving the field with the high-statistics \AuAu datasets that STAR recorded in 2023 and 2025 and with the first data of sPHENIX, a detector designed for jet measurements, with electromagnetic and hadronic calorimetry over the full azimuth~\cite{PHENIX:2015siv}, which has begun to publish its jet measurements~\cite{sPHENIX:2026jgh}.
+RHIC ended its operations in 2026, after 25 years of collisions (Sec.~\ref{sec:RHIC}).
 %
-Together, they will extend jet measurements at RHIC to less biased jet selections and to a wider kinematic range, and increase their complementarity with the LHC, where jets of the same momentum are produced in a medium of higher temperature and with a larger fraction of gluon jets.
+In its final years, STAR recorded high-statistics \AuAu datasets in 2023 and 2025, and sPHENIX, a detector designed for jet measurements with electromagnetic and hadronic calorimetry over the full azimuth~\cite{PHENIX:2015siv}, recorded its first data and has begun to publish its jet measurements~\cite{sPHENIX:2026jgh}.
 %
-Afterwards, the RHIC complex will become the Electron-Ion Collider~\cite{AbdulKhalek:2021gbh}, where jets in electron-nucleus collisions, with a well-known initial state and no hot medium, will probe how parton showers interact with cold nuclear matter, the counterpart of the QGP studied in this thesis.
+Together, these datasets will extend jet measurements at RHIC to less biased jet selections and to a wider kinematic range, and increase their complementarity with the LHC, where jets of the same momentum are produced in a medium of higher temperature and with a larger fraction of gluon jets.
+%
+%Afterwards, the RHIC complex will become the Electron-Ion Collider~\cite{AbdulKhalek:2021gbh}, where jets in electron-nucleus collisions, with a well-known initial state and no hot medium, will probe how parton showers interact with cold nuclear matter, the counterpart of the QGP studied in this thesis.
 %
 The field has recently started going back to the data of earlier experiments to measure observables developed long after those data were taken, such as correlations and energy correlators in archived ALEPH \(e^+e^-\) data~\cite{Electron-PositronAlliance:2019cpi,Bossi:2024qeu} and energy correlators in CMS open data~\cite{Komiske:2022enw}, which requires the data to be preserved together with the knowledge needed to analyze them~\cite{DPHEP:2023blx}.
 %
