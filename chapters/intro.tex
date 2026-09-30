@@ -161,7 +161,7 @@ The figure groups them by interaction: the photon couples to every electrically 
 
 Each vertex in Fig.~\ref{fig:smvtx} is a point where a mediator is emitted or absorbed, and its strength is set by the \emph{coupling} of the corresponding interaction: the electric charge \(e\) for the photon, the weak couplings for the \(W^\pm\) and \(Z\), and the strong coupling \(g_s\) for the gluon.
 %
-Every vertex in a Feynman diagram contributes one factor of its coupling to the quantum-mechanical amplitude of a process, and the cross section, being proportional to the square of the amplitude, therefore scales as a power of the dimensionless combinations \(\alpha = e^2/4\pi \approx 1/137\) and \(\alpha_s = g_s^2/4\pi\).
+Every vertex in a Feynman diagram contributes one factor of its coupling to the quantum-mechanical amplitude of a process, and the cross section, being proportional to the square of the amplitude, therefore scales as a power of the dimensionless coupling constants, the fine-structure constant \(\alpha = e^2/4\pi \approx 1/137\) of electromagnetism and the strong coupling \(\alpha_s = g_s^2/4\pi\) of QCD.
 %
 For example, the scattering of two quarks by the exchange of a gluon, or the annihilation of a quark and an antiquark into a gluon that produces a new pair (Fig.~\ref{fig:qqScattering}), has two vertices, so its amplitude is proportional to \(g_s^2\) and its cross section to \(\alpha_s^2\).
 %
@@ -337,7 +337,7 @@ The resulting cascade is the \emph{parton shower}, and it proceeds, emission by 
 
 Below this scale \(\alpha_s\) becomes large (Sec.~\ref{subsec:runningCoupling}) and perturbation theory no longer applies.
 %
-The colored partons are then bound into color-neutral hadrons, a step called \emph{hadronization}, which is modeled phenomenologically: in the string picture, the partons that are connected in color are joined by a color flux tube, or \emph{string}, which breaks into hadrons as the partons fly apart.
+The colored partons are then bound into color-neutral hadrons, a step called \emph{hadronization}, which is modeled phenomenologically: in the string picture~\cite{ANDERSSON198331}, the partons that are connected in color are joined by a color flux tube, or \emph{string}, which breaks into hadrons as the partons fly apart.
 %
 Many of the hadrons produced are unstable and \emph{decay} further, e.g.\ neutral pions into photon pairs, before reaching a detector.
 %
@@ -400,7 +400,7 @@ The shower is not a set of independent emissions: quantum interference between e
 %
 Eq.~\ref{eq:coherentPattern} shows that a pair of partons close in angle radiates as its parent, carrying the parent's charge, so the color of a branching is handed down the tree along with its momentum.
 %
-Applying this at every branching down to the cut-off \(t_0\), neighboring partons are the ones that are color connected, and the final state has sorted itself into color singlet groups whose invariant masses are set by \(t_0\) and \(\Lambda\), and not by the scale of the hard process that started it.
+Applying this at every branching down to the infrared cut-off \(t_0\) at which the shower stops (a squared momentum scale of about 1~GeV\(^2\), App.~\ref{sec:partonShower}), neighboring partons are the ones that are color connected, and the final state has sorted itself into color singlet groups whose invariant masses are set by \(t_0\) and \(\Lambda\), and not by the scale of the hard process that started it.
 %
 This property is called \emph{preconfinement}~\cite{Ellis_Stirling_Webber_1996}.
 %
@@ -434,7 +434,7 @@ A shower parton can scatter elastically off the scattering centers with the pert
 %
 The collisional and radiative energy losses of Sec.~\ref{sec:jetsInQGP} therefore both follow from the same scatterings instead of being modeled separately.
 %
-Scatterings that occur within the formation time of an emission act coherently, which suppresses the medium-induced radiation of energetic partons (the Landau--Pomeranchuk--Migdal effect), and JEWEL includes this through the formation times of the emissions.
+Scatterings that occur within the formation time of an emission act coherently, which suppresses the medium-induced radiation of energetic partons (the Landau--Pomeranchuk--Migdal effect~\cite{Landau:1953um,Landau:1953gr,Migdal:1956tc}), and JEWEL includes this through the formation times of the emissions~\cite{Zapp:2008af}.
 %
 When the shower ends, the partons are hadronized with the string model of PYTHIA.
 %
@@ -544,9 +544,9 @@ This state of deconfined quarks and gluons is called QCD/quark-gluon plasma due 
 
 Thermodynamically, when temperature (\(T\)) or baryon number density (\(n_\mathrm{B}\)) approaches the confinement scale \(\Lambda\) introduced in Sec.~\ref{subsec:runningCoupling} (\(T \sim \Lambda \sim \mathcal{O}(10^{12})K,~\text{and}~n_\mathrm{B} \sim \Lambda^3 \sim 1~\text{fm}^{-3}\)) the boundaries between hadrons become ill defined, and the hadrons ``melt'' into a QGP~\cite{Fukushima_2010}.  
 %
-For reference, the core of the Sun ``only'' has \(T\sim \mathcal{O}(10^{7})K\) and \(n_\mathrm{B}\sim\mathcal{O}(10^{-14})\text{fm}^{-3}\). 
+For reference, the core of the Sun ``only'' has \(T\sim \mathcal{O}(10^{7})K\) and \(n_\mathrm{B}\sim\mathcal{O}(10^{-14})~\text{fm}^{-3}\). 
 
-These orders of \(T\) and \(n_\mathrm{B}\) are the theorized conditions prevalent in the universe a few \(\mu\mathrm{s}\) after Big-Bang. The only natural phenomena in the present-day, cold universe that can achieve these conditions are the cores of neutron stars~\cite{Annala_2020} or neutron star mergers~\cite{neutronStarMerger}. Artificially, the required  \(T\) and \(n_\mathrm{B}\) can be achieved at facilities like the Large Hadron Collider (LHC) and Relativistic Heavy Ion Collider (RHIC) through collisions of heavy-ions (like Au, Pb, etc.) at near-light speeds, the aptly named \emph{little bangs}. The rest of this section describes these collisions and the evolution of the matter they produce.
+These orders of \(T\) and \(n_\mathrm{B}\) are the theorized conditions prevalent in the universe a few \(\mu\mathrm{s}\) after Big-Bang~\cite{Boyanovsky:2006bf}. The only natural phenomena in the present-day, cold universe that can achieve these conditions are the cores of neutron stars~\cite{Annala_2020} or neutron star mergers~\cite{neutronStarMerger}. Artificially, the required  \(T\) and \(n_\mathrm{B}\) can be achieved at facilities like the Large Hadron Collider (LHC) and Relativistic Heavy Ion Collider (RHIC) through collisions of heavy-ions (like Au, Pb, etc.) at near-light speeds, the aptly named \emph{little bangs}. The rest of this section describes these collisions and the evolution of the matter they produce.
 
 \subsection{Space-time evolution of a heavy-ion collision}
 \label{sec:qgpSpacetime}
@@ -566,7 +566,7 @@ The heavy ion collision and the evolution of the fireball, as depicted in Fig.~\
 %
 Immediately after the collision, the system is in a non-thermalized, pre-equilibrium state where partons undergo hard scattering, dominated by \(2\to 2\) QCD processes with the outgoing partons back-to-back in azimuth (\(\Delta \phi \approx \pi\)). 
 %
-At \(\tau \approx 0.5 - 1~\text{fm}/c\), the system thermalizes into the QGP state which expands following hydrodynamic laws. 
+At \(\tau \approx 0.5 - 1~\text{fm}/c\), the system thermalizes into the QGP state which expands following hydrodynamic laws~\cite{Heinz_2013,Berges:2020fwq}.
 %
 During the expansion, the system cools down until it reaches the temperature (\(T_c \approx 156\)~MeV from lattice QCD studies) at which a crossover phase transition to a hadronic gas state occurs. 
 %
@@ -600,8 +600,8 @@ If the distance between centers of nucleons is less than \(\sqrt{\sigma_\mathrm{
 %
 Nucleons that have undergone at least one binary collision are said to have participated in the reaction.
 %
-This procedure is followed to obtain the number of participant nucleons (\(N_\mathrm{part}\)) and the number of binary collisions (\(N_\mathrm{coll}\)) event-by-event.
-
+This procedure is followed to obtain the number of participant nucleons (\(N_\mathrm{part}\)) and the number of binary collisions (\(N_\mathrm{coll}\)) event-by-event. 
+%
 A schematic diagram of the geometry of heavy-ion collisions is shown in Fig.~\ref{fig:hictikz}. 
 \begin{figure}
 	\centering
@@ -660,11 +660,11 @@ Assuming that particle production is governed by contribution from hard componen
 \begin{equation}
 	\frac{dN_\mathrm{ch}}{d\eta} = n_{pp}\left[xN_\mathrm{coll} + (1-x)\frac{N_\mathrm{part}}{2}\right]
 \end{equation}
-where the quantity \(n_{pp}\) is the multiplicity from a \(p+p\) collision of the same center-of-mass energy. \(x\) is the contribution of hard component. 
+where the quantity \(n_{pp}\) is the multiplicity from a \(p+p\) collision of the same center-of-mass energy and \(x\) is the fraction contributed by the hard component. 
 %
-\(n_{pp}\) is drawn from a negative binomial distribution with parameters \(\text{NBD }(n_{pp}; \langle n_{pp}\rangle,k)\), where \( \langle n_{pp}\rangle\) is the average multiplicity in the \(p+p\) collision and \(k\) is the width of the distribution. 
+The multiplicity \(n_{pp}\) is drawn from a negative binomial distribution with parameters \(\text{NBD }(n_{pp}; \langle n_{pp}\rangle,k)\), where \( \langle n_{pp}\rangle\) is the average multiplicity in the \(p+p\) collision and \(k\) is the width of the distribution. 
 %
-The simulated charged multiplicity distribution is then fitted with the corresponding multiplicity distribution from the experiment. \(\langle n_{pp}\rangle\), \(k\), and \(x\) are kept as free parameters in the fitting to experimentally measured charged particle multiplicity distribution. 																		
+The simulated charged multiplicity distribution is then fitted with the corresponding multiplicity distribution from the experiment, with \(\langle n_{pp}\rangle\), \(k\), and \(x\) kept as free parameters in the fitting to experimentally measured charged particle multiplicity distribution. 																		
 %
 Initial guess values for \(x\) could be set close to those determined in different experiments for faster convergence of fitting~\cite{back2004collision,PhysRevC.88.044909}. 
 
@@ -672,9 +672,7 @@ An event belongs to a centrality class, say 0\%–5\% if its charged particle mu
 %
 Fig.~\ref{fig:centralityVsNch} illustrates collision centrality definition in heavy-ion collisions by comparing the charged particle multiplicities with Glauber MC + Two-component model simulation.
 %
-Centrality classes are classified for the simulated distribution. 
-%
-\(\langle N_\mathrm{part}\rangle\), \(\langle N_\mathrm{coll}\rangle\) in those centrality classes are calculated. 
+The same centrality classes are defined on the simulated distribution, and the mean numbers of participants and binary collisions, \(\langle N_\mathrm{part}\rangle\) and \(\langle N_\mathrm{coll}\rangle\), are calculated in each of them. 
 
 \subsection{Anisotropic flow}
 \label{sec:flowIntro}
@@ -697,7 +695,7 @@ This plane is defined by the beam axis and the impact parameter of the collision
 %
 The anisotropy can be characterized by the Fourier decomposition of the azimuthal particle distribution with respect to \(\Psi_{\rm RP}\)~\cite{Bielcikova:2003ku,Voloshin:1994mz}:
 \begin{equation}
-	\frac{dN}{d(\phi - \Psi_{RP})} = \frac{N_0}{2\pi} \left( 1 + 2 \sum_{n=1}^{\infty} v_n \cos[n(\phi - \Psi_{RP})] \right),
+	\frac{dN}{d(\phi - \Psi_{RP})} = \frac{N_0}{2\pi} \left( 1 + 2 \sum_{n=1}^{\infty} v_n \cos[n(\phi - \Psi_{RP})] \right).
 	\label{fourier_azi_part_distr}
 \end{equation}
 %
@@ -705,7 +703,7 @@ The \emph{anisotropic flow} coefficients $v_{n}$, the $n^{\rm th}$ order term in
 %
 \begin{equation}
 	\label{flow}
-	v_{n} = \left< \cos([n(\phi - \Psi_{\rm RP})]) \right>
+	v_{n} = \left< \cos([n(\phi - \Psi_{\rm RP})]) \right>.
 \end{equation}
 %
 Due to the symmetry of the collision geometry, the most prominent contribution is from the second order coefficient $v_2$, called \emph{elliptic flow}.
@@ -718,7 +716,7 @@ Due to the symmetry of the collision geometry, the most prominent contribution i
 	\label{fig:AnisotropyResults}
 \end{figure}
 
-$v_2$ was measured by the STAR and PHENIX for several particle species and is shown in Fig.~\ref{fig:AnisotropyResults}.
+The elliptic flow \(v_2\) was measured by STAR and PHENIX for several particle species, as shown in Fig.~\ref{fig:AnisotropyResults}.
 %
 Below \(p_\mathrm{T} \approx 2\)~GeV/\(c\) (left panel), \(v_2\) rises with \(p_\mathrm{T}\) and is ordered by hadron mass, lighter hadrons having larger \(v_2\), as predicted by the hydrodynamic calculations, while at higher \(p_\mathrm{T}\) it saturates below the hydrodynamic curves, with baryons above mesons. 
 %
@@ -743,7 +741,7 @@ As discussed in Sec.~\ref{sec:qgpSpacetime}, hard scatterings of partons that pr
 %
 Thus the ensuing parton shower traverses the QGP, and resulting jet is \emph{modified/quenched} compared to an appropriate \emph{baseline}. 
 %
-In the perturbative picture, in which the jet partons interact weakly with the medium, the two main mechanisms for jet quenching are \emph{collisional} and \emph{radiative} energy losses.
+In the perturbative picture, in which the jet partons are weakly coupled to the medium, i.e.\ \(\alpha_s\) at the momentum transferred in each interaction is small enough for the interactions to be calculated in perturbative QCD, the two main mechanisms for jet quenching are \emph{collisional} and \emph{radiative} energy losses.
 %
 Collisional energy loss happens due to the elastic scattering between the parton and the medium constituents and usually dominates for lower energy partons. 
 %
@@ -799,7 +797,7 @@ Leading hadron (highest $p_\mathrm{T}$ in event) is used as a jet proxy and the 
 %
 Fig.~\ref{fig:angularcorr} shows one of the first measurements performed by STAR~\cite{Adams:2003im}, di-hadron correlations compared between p+p, Au+Au, and d+Au collisions. 
 %
-The p + p and d+Au both show peaks around $\Delta\phi = 0$ and $\Delta\phi =  \pi$ as expected, given that hard scatterings are dominated by \(2\to 2\) Feynman diagrams. 
+The measurements in \(p+p\) and d+Au collisions both show peaks around $\Delta\phi = 0$ and $\Delta\phi =  \pi$ as expected, given that hard scatterings are dominated by \(2\to 2\) Feynman diagrams. 
 %
 However, for Au+Au collisions, the peak around $\Delta\phi = \pi$ completely vanishes. 
 %
@@ -824,20 +822,6 @@ They are, however, not free of bias: a minimum jet \(p_\mathrm{T}\) still favors
 %
 A reconstructed jet may also have been unmodified, or strongly modified with most of the radiated energy kept inside the jet cone, or modified with part of that energy lost outside the cone, which lowers its \(p_\mathrm{T}\).
 
-Several questions about jets in the QGP are open as well.
-%
-The hard scattering happens before the QGP forms, and how much jets are already modified in the pre-equilibrium stage is unknown~\cite{Andres:2019eus}; whether jets are modified in small systems such as high-multiplicity \pp collisions, where other signs of collectivity are seen, is also open~\cite{Nagle:2018nvi}.
-%
-The energy lost by a jet is not simply removed: the medium responds to it, and part of the response, in its kinematics and possibly in its hadron chemistry, is correlated with the jet and ends up inside the jet cone, where it cannot be separated from the radiation of the jet itself~\cite{Cao:2020wlm}.
-%
-Finally, it is not obvious how well \RAA~measures energy loss: because the jet spectrum falls steeply, a small shift of the jet \(p_\mathrm{T}\) produces a large suppression, and since jets are compared at the same reconstructed \(p_\mathrm{T}\) rather than at the same initial \(p_\mathrm{T}\), \RAA~mixes jets with different energy losses and different substructure~\cite{Brewer:2018dfs}.
-%
-Such selection biases motivate both measurements of this thesis, which select jets by their orientation relative to the event plane (Ch.~\ref{ch:jhcorr}) and measure how the internal structure of jets at a given \(p_\mathrm{T}\) changes (Ch.~\ref{ch:angularities}).
-
-Jets also offer a wealth of substructure observables, which give access to the energy flow within the jet more differentially.
-%
-
-
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{Gen1_ChargedParticleAndJets_RCP.png}
@@ -856,7 +840,21 @@ This may be because the inclusive hadron distribution usually arises from the le
 %
 This fragmentation process can therefore introduce the $p_\mathrm{T}$ dependence of $R_{CP}$ in hadrons.
 
-These measurements establish that jets lose energy in the QGP, but, being averaged over all jets in an event class, they do not say how the energy loss depends on the distance travelled through the medium, which is one of the main features that distinguish energy-loss mechanisms~\cite{Liou:2013qya}.
+Several questions about jets in the QGP are open as well.
+%
+The hard scattering happens before the QGP forms, and how much jets are already modified in the pre-equilibrium stage is unknown~\cite{Andres:2019eus}; whether jets are modified in small systems such as high-multiplicity \pp collisions, where other signs of collectivity are seen, is also open~\cite{Nagle:2018nvi}.
+%
+The energy lost by a jet is not simply removed: the medium responds to it, and part of the response, in its kinematics and possibly in its hadron chemistry, is correlated with the jet and ends up inside the jet cone, where it cannot be separated from the radiation of the jet itself~\cite{Cao:2020wlm}.
+%
+Finally, it is not obvious how well \RAA~measures energy loss: because the jet spectrum falls steeply, a small shift of the jet \(p_\mathrm{T}\) produces a large suppression, and since jets are compared at the same reconstructed \(p_\mathrm{T}\) rather than at the same initial \(p_\mathrm{T}\), \RAA~mixes jets with different energy losses and different substructure~\cite{Brewer:2018dfs}.
+%
+Such selection biases motivate measuring how the internal structure of jets at a given \(p_\mathrm{T}\) changes (Ch.~\ref{ch:angularities}).
+%
+Jets also offer a wealth of substructure observables, which give access to the energy flow within the jet more differentially.
+%
+
+
+The \RAA~and \(R_\mathrm{CP}\) measurements establish that jets lose energy in the QGP, but, being averaged over all jets in an event class, they do not say how the energy loss depends on the distance travelled through the medium, which is one of the main features that distinguish energy-loss mechanisms~\cite{Liou:2013qya}.
 %
 In non-central collisions the overlap region is elongated (Sec.~\ref{sec:flowIntro}), so partons emitted out of the event plane traverse on average more medium than those emitted in-plane.
 %
@@ -872,7 +870,7 @@ A measurement at RHIC, with lower jet energies and a smaller, shorter-lived medi
 	\caption[Differential jet shapes in Pb+Pb and \(p+p\) collisions]{Differential jet shapes in Pb+Pb and \(p+p\) collisions for four Pb+Pb  centralities. Each spectrum is normalized so that its integral is unity.  In central collisions a larger fraction of the jet momentum is found at large angles relative to the jet axis, as expected from partonic energy loss. Taken from~\cite{Connors_2018}.}
 	\label{fig:cmsjetshapefinaljs4cent}
 \end{figure}
-Going into the jet substructure, CMS measured the average radial momentum profile of jets around the jet axis, called the \emph{differential jet shape} and defined as
+Among the current jet substructure measurements, CMS measured the average radial momentum profile of jets around the jet axis, called the \emph{differential jet shape} and defined as
 \begin{equation}
 	\rho(r) = \frac{1}{\delta r} \frac{1}{N_{\mathrm jet}} \sum_{\mathrm jets} \frac{ \sum_{{\mathrm tracks} \epsilon [r_a, r_b)} p_{T}^{\mathrm track}}{p_{T}^{\mathrm jet}}
 	\label{eq:rhoVsDr}
@@ -882,24 +880,26 @@ where the jet cone is divided into rings of width $\delta r$ which have an inner
 %
 From the results shown in Fig.~\ref{fig:cmsjetshapefinaljs4cent}, the differential jet shapes in the most central Pb+Pb collisions are broadened in comparison to measurements done in \pp collisions at the same center-of-mass energy~\cite{Chatrchyan:1605718}.  
 %
-These measurements demonstrate that there is an enhancement in the modification with increasing angle from the jet axis, indicating a broadening of the jet profile and a depletion near r~$\approx$~0.2.
+These measurements show that the modification grows with the radius \(r\) from the jet axis: relative to \pp jets, a larger fraction of the jet momentum is found at large \(r\), indicating a broadening of the jet profile, with a depletion near \(r \approx 0.2\).
 
 \begin{figure}
 	\centering
 	\includegraphics[trim=120 75 0 20,clip,width=0.8\linewidth]{figures/STAR_PRC105/Fig8a.pdf}
 	\includegraphics[trim=120 75 0 20,clip,width=0.8\linewidth]{figures/STAR_PRC105/Fig8b.pdf}
-	\caption[Subjet momentum fraction and opening angle of hard-core dijets in Au+Au collisions]{Distributions of the momentum fraction \(z_\mathrm{SJ}\) (top) and opening angle \(\theta_\mathrm{SJ}\) (bottom) of the two leading subjets of trigger (left) and recoil (right) jets in 0--20\% central Au+Au collisions at \sNN{200}{GeV} (filled markers), compared to \pp jets embedded in Au+Au events (open markers, with the systematic uncertainty as shaded regions). Red and black markers show HardCore and Matched jets, respectively. Taken from~\cite{PhysRevC.105.044906}.}
+	\caption[Subjet momentum fraction and opening angle of hard-core dijets in Au+Au collisions]{Distributions of the momentum fraction \(z_\mathrm{SJ}\) (top) and opening angle \(\theta_\mathrm{SJ}\) (bottom) of the two leading subjets of trigger (left) and recoil (right) jets in 0--20\% central Au+Au collisions at \sNN{200}{GeV} (filled markers), compared to \pp jets embedded in Au+Au events (open markers, with the systematic uncertainty as shaded regions). The subjets are found by reclustering the jet constituents with the anti-\(k_\mathrm{T}\) algorithm with \(R_\mathrm{SJ} = 0.1\), without grooming. Red markers (HC) show HardCore jets, clustered from constituents above 2~GeV/\(c\), and black markers (Mat) the Matched jets, clustered from all constituents above 0.2~GeV/\(c\) and geometrically matched to the HardCore jets. Taken from~\cite{PhysRevC.105.044906}.}
 	\label{fig:starSubjetAuAu}
 \end{figure}
 At RHIC, STAR measured the substructure of the two highest-energy, back-to-back jets in 0--20\% central \AuAu collisions at \sNN{200}{GeV}, selected with hard-core constituents above 2~GeV/\(c\), as are the \AuAu jets of Ch.~\ref{ch:jhcorr} and Sec.~\ref{sec:AuAuAngularities}~\cite{PhysRevC.105.044906}.
 %
-The SoftDrop groomed momentum fraction \(z_\mathrm{g}\) and radius \(R_\mathrm{g}\), and the momentum fraction and opening angle of the two leading subjets (Fig.~\ref{fig:starSubjetAuAu}), showed no significant modification relative to \pp jets embedded in \AuAu events, i.e.\ the hardest splittings of these jets are vacuum-like.
+The measurement used the SoftDrop groomed momentum fraction \(z_\mathrm{g}\) and radius \(R_\mathrm{g}\) (Sec.~\ref{sec:softDropDesc}) and, without grooming, the momentum fraction \(z_\mathrm{SJ}\) of the softer of the two leading \(R_\mathrm{SJ} = 0.1\) subjets and their angular separation \(\theta_\mathrm{SJ}\) (Fig.~\ref{fig:starSubjetAuAu}).
+%
+None of them showed a significant modification relative to \pp jets embedded in \AuAu events, i.e.\ the hardest splittings of these jets are vacuum-like.
 %
 The dijet momentum imbalance was also found to be independent of the subjet opening angle between 0.1 and 0.3, which suggests that these jets lose energy as a single color charge, without the medium resolving their two prongs~\cite{PhysRevC.105.044906}.
 %
 These observables characterize the hardest splitting of a jet.
 %
-The generalized angularities of Ch.~\ref{ch:angularities} complement them by weighting every constituent by its momentum and angle to the jet axis, with the parameters \(\kappa\) and \(\beta\) moving the sensitivity between the core and the periphery of the jet, and at RHIC they probe lower jet energies and a larger fraction of quark jets than the jet shapes measured at the LHC.
+%The generalized angularities of Ch.~\ref{ch:angularities} complement them by weighting every constituent by its momentum and angle to the jet axis, with the parameters \(\kappa\) and \(\beta\) moving the sensitivity between the core and the periphery of the jet, and at RHIC they probe lower jet energies and a larger fraction of quark jets than the jet shapes measured at the LHC.
 %
 These measurements motivate the studies presented in Chs.~\ref{ch:jhcorr} and~\ref{ch:angularities}: the dependence of jet quenching on the path length through the medium, and the angular structure of jets in vacuum and in the QGP.
 

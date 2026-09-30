@@ -5,7 +5,7 @@ This chapter is based on \cite{STAR:2023hye} published in \href{https://doi.org/
 \end{itquote}
 As discussed in Sec.~\ref{sec:jetsInQGP}, a parton traversing the QGP loses energy, and the amount lost is expected to depend on the length of its path through the medium.
 %
-In a non-central collision the overlap region is elongated, so the path length of a jet depends on its direction relative to the event plane (Sec.~\ref{sec:flowIntro} and App.~\ref{sec:EP_Recon}), and this chapter measures the distributions of charged hadrons around jets separately for jets at different angles to the event plane.
+In a non-central collision the overlap region is elongated, so the path length of a jet depends on its direction relative to the event plane (Sec.~\ref{sec:flowIntro} and App.~\ref{sec:EP_Recon}), and this chapter describes the measurement of the distribution of charged hadrons around jets separately for jets at different angles to the event plane.
 %
 In this analysis, the coordinate system used to depict the distribution of associated particles is defined relative to a reconstructed jet, also called a \emph{trigger jet}. 
 %
@@ -35,14 +35,12 @@ The goal of this analysis is to study the conditional yield of associated partic
 The integration limits are chosen based on practical considerations, including the detector acceptance and binning of histograms.  
 
 \section{Analysis method} \label{sect:Method}
-This measurement utilizes data collected during the 2014 run from \AuAu collisions at nucleon-nucleon center-of-mass energy of \sNN{200}{GeV} by the STAR experiment~\cite{ACKERMANN2003624} at RHIC.  Events referred to as signal (same) events are required to contain a HT trigger in the BEMC \cite{BEDDO2003725}.  Minimum-bias (MB) triggered events based on coincidence of Zero Degree Calorimeters (ZDC coincidence), Vertex Position Detectors and Beam-Beam Counters signals are used to estimate the pair-acceptance effects via a mixed-event (ME) technique \cite{PhysRevC.96.024905}. For this analysis, 9.4M HT-triggered and 4.0M MB collision events in the 20--50\% centrality range are used.
+This measurement utilizes data collected during the 2014 run from \AuAu collisions at nucleon-nucleon center-of-mass energy of \sNN{200}{GeV} by the STAR experiment~\cite{ACKERMANN2003624} at RHIC.  Events referred to as signal (same) events are required to fire the high-tower (HT2) trigger of the BEMC~\cite{BEDDO2003725}, which requires a single BEMC tower with a transverse energy above approximately 5.4~GeV.  Minimum-bias (MB) triggered events based on coincidence of Zero Degree Calorimeters (ZDC coincidence), Vertex Position Detectors (VPD) and Beam-Beam Counters (BBC) signals are used to estimate the pair-acceptance effects via a mixed-event (ME) technique \cite{PhysRevC.96.024905}. For this analysis, 9.4M HT-triggered and 4.0M MB collision events in the 20--50\% centrality range are used.
 
 \subsection{Data set and event selection} \label{sec:JHEventSel}
 The data consist of the mid- and low-luminosity subsets of the 2014 \AuAu production (830 and 548 runs, respectively).
 %
 Runs are rejected when run-averaged quantities of the MB events, namely the mean primary-vertex position along the beam $\langle v_z \rangle$ and in the transverse plane $\langle V_r \rangle$, the ZDC coincidence rate $\langle \mathrm{ZDCx} \rangle$, the reference multiplicity $\langle \mathrm{refMult} \rangle$, and the mean track transverse momentum, lie more than three standard deviations from their average over all runs; such outliers indicate detector or beam conditions that are not representative of the data set.
-%
-The HT2 trigger requires a single BEMC tower with a transverse energy above approximately 5.4~GeV.
 
 Events are required to have a reconstructed primary vertex within $|v_{z}| < 24$~cm of the center of the detector.
 %
@@ -54,7 +52,7 @@ The centrality of each event, defined in Sec.~\ref{sect:CentEP}, is determined f
 %
 The 20--50\% centrality range used here corresponds approximately to corrected refMult values of 75--250.
 %
-To increase the number of events available for the event mixing by more than 60\%, events from two MB triggers with different online VPD vertex requirements (VPDMB5 and VPDMB30) are combined.
+To increase the number of events available for the event mixing by more than 60\%, events from two MB triggers with different online VPD vertex requirements are combined: VPDMB5 and VPDMB30, which require the vertex position reconstructed online from the VPD timing to lie within \(|v_{z}| < 5\)~cm and \(|v_{z}| < 30\)~cm of the center of the detector, respectively.
 %
 The VPDMB5 events are reweighted in bins of refMult and $v_z$ so that their multiplicity distributions match those of the VPDMB30 events, which compensates for the different VPD resolution and the offset of the online VPD vertex cut, and they are only used for $|v_z| < 16$~cm; events in which both triggers fired are used only once.
 
@@ -93,7 +91,9 @@ Only tracks with $\ensuremath{p_{\rm T}}\xspace > 2.0$~\GeVc are used in the jet
 
 The single-track reconstruction efficiency, $\epsilon(\Pt{assoc}, \eta_{\rm assoc})$ in Eq.~\ref{Eqtn:CorrFunction}, is the probability that a charged particle within the acceptance is reconstructed and passes the track selection.
 %
-It is determined from simulated pions, kaons and protons embedded into real \AuAu events, passed through the GEANT simulation of the STAR detector and the full reconstruction chain, as the fraction of embedded particles that are matched to a reconstructed track.
+To determine it, the detector response to simulated pions, kaons and protons is computed with the GEANT simulation of the STAR detector and embedded into real \AuAu events, which are then processed with the full STAR reconstruction chain.
+%
+The efficiency is the fraction of these embedded particles that are matched to a reconstructed track.
 %
 Since the efficiency decreases with the detector occupancy, it is evaluated as a function of \ensuremath{p_{\rm T}}\xspace and $\eta$ in bins of centrality and of luminosity.
 %
@@ -171,6 +171,18 @@ Because of the finite number of particles, the reconstructed event plane only ap
 It is determined from the data with the two-sub-event method (Eqs.~\ref{resolution2sub} and~\ref{resolutionIndiv}), in narrow centrality intervals that are combined over 20--50\% weighted by the number of events.
 %
 For 20--50\% central events, the event-plane resolutions $R_2\{\Psi_{2, EP}\}$ and $R_4\{\Psi_{2, EP}\}$ are 0.56 and 0.28, respectively.  The statistical uncertainties of the resolution are below 1\%; varying the resolution by $\pm 1\%$ has a negligible effect on the final \dphi correlations.  Measured values for the event-plane resolution are in good agreement with prior STAR studies \cite{Agakishiev:2014ada}.  These resolutions are evaluated to correct the observed flow coefficients which arise in the fits of the combinatorial background discussed in Sec.~\ref{sect:CorrBkgd}.
+% 2x1, width = 7.5cm
+\begin{figure}[!htbp]
+	\begin{center}     
+		%  \includegraphics[width=7.5cm]{figures/plots/EPresolution/R2combined.pdf}
+		%  \includegraphics[width=7.5cm]{figures/plots/EPresolution/R4combined.pdf}
+		%   \includegraphics[width=7.5cm]{figures/plots/EPresolution/R02_1EP_C20-50.pdf}
+		%   \includegraphics[width=7.5cm]{figures/plots/EPresolution/R04_1EP_C20-50.pdf}
+		\includegraphics[width=12cm]{figures/R2-4combined.pdf}
+		\caption[Event-plane resolution as a function of centrality]{Event-plane resolution: Second-order (fourth-order) harmonic relative to the event plane, $R_{2}(\Psi_{2})$ ($R_{4}(\Psi_{2})$), respectively.  The approach follows the Modified Reaction Plane (MRP) method \cite{Agakishiev:2014ada} utilizing the charged tracks of the TPC for event-plane reconstruction and resolution calculation for tracks with 0.2--1.0~\GeVc. Combined over 20--50\% centrality, $R_2 = 0.56$ and $R_4 = 0.28$. }  
+		\label{fig:EPres}
+	\end{center}
+\end{figure}
 
 The finite resolution also mixes jets between the three orientation bins, which reduces any event-plane dependence of the signal itself.
 %
@@ -184,18 +196,6 @@ For an anisotropy of the jet constituents of $v_2^\mathrm{quench} = 0.1$, compar
 %
 The finite resolution therefore pulls any event-plane dependence of the yields toward unity, which must be kept in mind when interpreting the yield ratios in Sec.~\ref{sect:YieldRatio}.
 
-% 2x1, width = 7.5cm
-\begin{figure}[!htbp]
-	\begin{center}     
-		%  \includegraphics[width=7.5cm]{figures/plots/EPresolution/R2combined.pdf}
-		%  \includegraphics[width=7.5cm]{figures/plots/EPresolution/R4combined.pdf}
-		%   \includegraphics[width=7.5cm]{figures/plots/EPresolution/R02_1EP_C20-50.pdf}
-		%   \includegraphics[width=7.5cm]{figures/plots/EPresolution/R04_1EP_C20-50.pdf}
-		\includegraphics[width=12cm]{figures/R2-4combined.pdf}
-		\caption[Event-plane resolution as a function of centrality]{Event-plane resolution: Second-order (fourth-order) harmonic relative to the event plane, $R_{2}(\Psi_{2})$ ($R_{4}(\Psi_{2})$), respectively.  The approach follows the Modified Reaction Plane (MRP) method \cite{Agakishiev:2014ada} utilizing the charged tracks of the TPC for event-plane reconstruction and resolution calculation for tracks with 0.2--1.0~\GeVc. Combined over 20--50\% centrality, $R_2 = 0.56$ and $R_4 = 0.28$. }  
-		\label{fig:EPres}
-	\end{center}
-\end{figure}
 
 \subsection{Jet reconstruction and selection} \label{sec:JetRecoAuAu}
 Full jets are reconstructed by measuring charged tracks in the TPC and collecting neutral-particle information from the BEMC.  The anti-\kt algorithm 
