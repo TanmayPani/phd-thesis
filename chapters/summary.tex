@@ -17,11 +17,11 @@ Within the uncertainties, neither the associated yields nor the widths of the je
 %
 The ratios of the associated yields between the orientations do not deviate significantly from unity, with indications of potential modifications only in the inclusive \ptassocrange{1.0}{10} bin of the \pttrigrange{20}{40} jets.
 %
-The finite event-plane resolution, \(R_2 = 0.56\), dilutes any real dependence, and JEWEL predicts one well below the uncertainties, consistent with jet-by-jet fluctuations dominating over path-length effects.
+The jets are sorted into the three orientations with a reconstructed event plane whose resolution is \(R_2 = 0.56\), so that a real difference between in- and out-of-plane jets would appear in the yield ratios reduced to about half of its size (Sec.~\ref{sec:EPReco}); JEWEL predicts one well below the uncertainties, consistent with jet-by-jet fluctuations dominating over path-length effects.
 %
 These results align with the event-plane dependent hadron-hadron correlations at RHIC~\cite{Nattrass:2016cln} and with the jet-hadron correlations at the LHC~\cite{PhysRevC.101.064901}.
 %
-While the leading hadrons of jets show the expected path-length dependence~\cite{PhysRevC.76.034904}, no significant dependence has been observed for reconstructed jets and the hadrons around them at either energy, and any dependence on the average path length is smaller than the experimental uncertainties.
+While the leading hadrons of jets~\cite{PhysRevC.76.034904} and, at the LHC, the yields of reconstructed jets~\cite{ALICE:2023dei} show the expected path-length dependence, no significant dependence has been observed for the hadrons around reconstructed jets at either energy, and any such dependence is smaller than the experimental uncertainties.
 %
 Because the jets are biased towards hard fragmentation by the trigger and the hard-core selection, the comparison with JEWEL, which describes the high-\(p_\mathrm{T, assoc}\) yields better without recoil partons and the low-\(p_\mathrm{T, assoc}\) yields better with them, also shows that the models need further tuning for such jets.
 
@@ -37,7 +37,7 @@ This agrees with the picture at the LHC, where the jet shapes of central Pb+Pb c
 As the first heavy-ion application of unbinned unfolding, the measurement also showed where the method needed to be developed before it could be applied to less biased jets.
 
 \paragraph{Inclusive and groomed angularities in \pp collisions}
-The \pp measurement of Sec.~\ref{sec:ppResults} provides the inclusive and SoftDrop-groomed angularities \(\lambda^{\kappa=1}_{\beta}\), \(\beta = 0.5\), 1 and 2, of inclusive jets at \sPP{200}{GeV}, validated by closure tests and by reproducing four previously published STAR observables from the same unfolded jets.
+The \pp measurement of Sec.~\ref{sec:ppResults} provides the inclusive and SoftDrop-groomed angularities \(\lambda^{\kappa=1}_{\beta}\), \(\beta = 0.5\), 1 and 2, of inclusive jets at \sPP{200}{GeV}, validated by closure tests and by comparing four previously published STAR observables computed from the same unfolded jets: \(R_\mathrm{g}\) and \(z_\mathrm{g}\) agree with the publications, while the jet mass and groomed jet mass are systematically broader, a difference that is still being investigated.
 %
 Its main physics message comes from combining two views of the same jets.
 %
@@ -62,7 +62,7 @@ In summary, this thesis contributes to the field
 	\item a constraint on the path-length dependence of jet quenching at RHIC energies, published by STAR, which complements the corresponding measurement at the LHC;
 	\item the first heavy-ion jet substructure measurement corrected with unbinned, machine-learning based unfolding, which adds the jet angularities to the vacuum-like picture of hard-selected jets at RHIC;
 	\item the first inclusive and groomed angularities of jets at RHIC, which provide the \pp baseline for heavy-ion measurements at the same energy and test the parton showers of current event generators at RHIC energies, including, through the \(R_\mathrm{g}\) profiles, at fixed splitting angle;
-	\item an unbinned unfolding pipeline, validated against earlier STAR measurements, together with a training framework for ensembles of classifiers (App.~\ref{app:torchstrap}), and recommendations for unbinned unfolding taken up in a community white paper~\cite{Canelli_2026}.
+	\item an unbinned unfolding pipeline, compared with earlier STAR measurements, together with a training framework for ensembles of classifiers (App.~\ref{app:torchstrap}), and recommendations for unbinned unfolding taken up in a community white paper~\cite{Canelli_2026}.
 \end{itemize}
 
 \section{Outlook}
@@ -86,4 +86,10 @@ Together, they will extend jet measurements at RHIC to less biased jet selection
 %
 Afterwards, the RHIC complex will become the Electron-Ion Collider~\cite{AbdulKhalek:2021gbh}, where jets in electron-nucleus collisions, with a well-known initial state and no hot medium, will probe how parton showers interact with cold nuclear matter, the counterpart of the QGP studied in this thesis.
 %
-Unbinned unfolding, developed here for RHIC jets, allows such measurements to be published without binning, so that they can be reanalyzed with observables that were not chosen at the time of the measurement~\cite{Canelli_2026}.
+The field has recently started going back to the data of earlier experiments to measure observables developed long after those data were taken, such as correlations and energy correlators in archived ALEPH \(e^+e^-\) data~\cite{Electron-PositronAlliance:2019cpi,Bossi:2024qeu} and energy correlators in CMS open data~\cite{Komiske:2022enw}, which requires the data to be preserved together with the knowledge needed to analyze them~\cite{DPHEP:2023blx}.
+%
+Observables that become interesting in the coming decades may likewise call for the RHIC jet data.
+%
+Unbinned unfolding, developed here for RHIC jets, helps to make this possible: a result published as a weight for every jet, together with the unfolded features of the jets, can be reanalyzed with any observable that is a function of those features, without repeating the unfolding~\cite{Canelli_2026}.
+%
+With the same goal of preserving the results for future analyses, the jet-hadron correlations of Ch.~\ref{ch:jhcorr} are available on HEPData~\cite{HEPData:ins2735142}, and the \pp angularities will be as well, together with their publication.

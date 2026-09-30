@@ -106,7 +106,7 @@ Another way to think about jet quenching is to ask how easily a classifier can t
 %
 Here PYTHIA\mbox{-}6~\cite{Sj_strand_2006} provides the unquenched jets and JEWEL \cite{Zapp:2013vla} the quenched jets in different centrality bins with/without recoil centers. 
 %
-Jets are represented as 9-D vectors of features: $p_{\rm T, jet}$, $\rm N^{charged}_{\rm constit., jet}$, $\rm N^{neutral}_{\rm constit., jet}$, LeSub, $\lambda^2_0$, $\lambda_1^{0.5}$, $\lambda_1^1$, $\lambda_1^2$.
+Jets are represented as 9-D vectors of features: $p_{\rm T, jet}$, $\rm N^{charged}_{\rm cons, jet}$, $\rm N^{neutral}_{\rm cons, jet}$, LeSub, $\lambda^2_0$, $\lambda_1^{0.5}$, $\lambda_1^1$, $\lambda_1^2$.
 %
 The jets are input into Dense Neural Networks (DNNs) with three hidden layers with 100 nodes each. After training, the ROC curves shown in Fig.~\ref{fig:jetQuenchROC} are calculated on a holdout test set.
 %

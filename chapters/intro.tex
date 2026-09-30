@@ -42,9 +42,11 @@ In 1911, Rutherford's analysis of alpha particles scattered off a thin gold foil
 %
 In 1928, Dirac's relativistic equation for the electron predicted antimatter~\cite{Dirac:1928}, and its first example, the \emph{positron}, was found by Anderson in cosmic rays in 1932~\cite{Anderson:1933}.
 %
-The following decades brought a flood of unexpected particles, the \emph{muon}~\cite{Neddermeyer:1937}, the \emph{pion}~\cite{Lattes:1947}, the \emph{strange} particles~\cite{Rochester:1947} and the \emph{neutrino}~\cite{Cowan:1956}, and, with the new accelerators of the 1950s, dozens of short-lived hadrons, a ``particle zoo'' too large for all of its members to be fundamental.
+The following decades brought a flood of unexpected particles, the \emph{muon}~\cite{Neddermeyer:1937}, the \emph{pion}~\cite{Lattes:1947}, the \emph{strange} particles~\cite{Rochester:1947} and the \emph{neutrino}~\cite{Cowan:1956}, and, with the new accelerators of the 1950s, dozens of short-lived hadrons, a ``particle zoo''.
+%
+Nothing required Nature to keep this zoo small, but its members shared certain properties: hadrons with the same spin and parity had similar masses, and in 1961 Gell-Mann and Ne'eman organized them into octets and decuplets of an approximate \emph{flavor SU(3)} symmetry, the \emph{Eightfold Way}~\cite{Gell-Mann:1961omu,Neeman:1961jhl}, whose prediction of the \(\Omega^-\) baryon was confirmed in 1964~\cite{Barnes:1964pd}.
 
-Order was restored in 1964, when Gell-Mann and Zweig proposed that hadrons are built from a few \emph{quarks}~\cite{GellMann:1964,Zweig:1964}, which soon had to be given a new quantum number, \emph{color}~\cite{Greenberg:1964,HanNambu:1965}.
+In the same year, Gell-Mann and Zweig explained this pattern by proposing that hadrons are built from three kinds of \emph{quarks}, up, down and strange, which the approximate symmetry interchanges~\cite{GellMann:1964,Zweig:1964}; the quarks soon had to be given a new quantum number, \emph{color}~\cite{Greenberg:1964,HanNambu:1965}.
 %
 The deep-inelastic scattering experiments at SLAC in 1968--1969, in a sense Rutherford's experiment repeated at a much finer scale, found that the proton indeed contains point-like constituents, the \emph{partons}, later identified with quarks~\cite{Bloom:1969,Breidenbach:1969}.
 %
@@ -410,7 +412,7 @@ QCD event generators chain these processes, matrix elements for the hard process
 %
 Everything below the hard process carries parameters that are not fixed by theory, and a set of values for them obtained by fitting to data is called a \emph{tune}.
 %
-Two generators starting from the same matrix element can therefore still disagree, and their spread shows how strongly a prediction depends on the modeling of the non-perturbative stages; agreement between them, however, does not make a prediction perturbative, since the tunes have enough freedom to bring different models into agreement.
+Two generators starting from the same matrix element can therefore still disagree.
 %
 The combination of the stages is itself approximate: the parton shower is accurate only for soft and collinear emissions, and combining it with exact matrix elements for hard, wide-angle emissions without counting them twice requires dedicated matching and merging schemes~\cite{Catani:2001cc,Buckley:2011ms}, while hadronization and the underlying event have no first-principles description at all~\cite{Buckley:2011ms}.
 
@@ -848,19 +850,26 @@ The energy lost by a jet is not simply removed: the medium responds to it, and p
 %
 Finally, it is not obvious how well \RAA~measures energy loss: because the jet spectrum falls steeply, a small shift of the jet \(p_\mathrm{T}\) produces a large suppression, and since jets are compared at the same reconstructed \(p_\mathrm{T}\) rather than at the same initial \(p_\mathrm{T}\), \RAA~mixes jets with different energy losses and different substructure~\cite{Brewer:2018dfs}.
 %
-Such selection biases motivate measuring how the internal structure of jets at a given \(p_\mathrm{T}\) changes (Ch.~\ref{ch:angularities}).
+Such selection biases are one reason to look beyond yields.
 %
-Jets also offer a wealth of substructure observables, which give access to the energy flow within the jet more differentially.
+Measurements of \RAA~and \(R_\mathrm{CP}\) count jets, but they do not show how the momentum is arranged inside a jet, which is where the medium is expected to leave its imprint.
 %
+Medium-induced radiation and the response of the medium are expected to move momentum away from the core of the jet, to larger angles and lower momenta~\cite{Cao:2020wlm}.
+%
+In addition, the QGP resolves two partons of the shower as separate color charges only if the angle between them is large enough~\cite{Casalderrey-Solana:2012evi}.
+%
+Jet substructure observables, built from the momenta and directions of the jet constituents, measure this flow of energy within jets directly, and comparing them between jets of similar \(p_\mathrm{T}\) in vacuum and in the QGP is the subject of Ch.~\ref{ch:angularities}.
 
 
-The \RAA~and \(R_\mathrm{CP}\) measurements establish that jets lose energy in the QGP, but, being averaged over all jets in an event class, they do not say how the energy loss depends on the distance travelled through the medium, which is one of the main features that distinguish energy-loss mechanisms~\cite{Liou:2013qya}.
+Being averaged over all jets in an event class, the yields also do not say how the energy loss depends on the distance travelled through the medium, which is one of the main features that distinguish energy-loss mechanisms~\cite{Liou:2013qya}.
 %
 In non-central collisions the overlap region is elongated (Sec.~\ref{sec:flowIntro}), so partons emitted out of the event plane traverse on average more medium than those emitted in-plane.
 %
 The leading hadrons of jets follow this expectation: high-\(p_\mathrm{T}\) neutral pions are more suppressed out-of-plane than in-plane, giving them a positive azimuthal anisotropy~\cite{PhysRevC.76.034904}.
 %
-For reconstructed jets and the hadrons around them, however, ALICE found no significant dependence on the angle to the event plane in Pb+Pb collisions at \sNN{2.76}{TeV}~\cite{PhysRevC.101.064901}.
+The yields of reconstructed jets show it as well: in Pb+Pb collisions at \sNN{5.02}{TeV}, ALICE found out-of-plane jets to be more suppressed than in-plane jets, most strongly for \(R = 0.2\) jets below 50~GeV/\(c\) in events with an elliptical shape~\cite{ALICE:2023dei}.
+%
+For the hadrons around reconstructed jets, however, ALICE found no significant dependence on the angle to the event plane in Pb+Pb collisions at \sNN{2.76}{TeV}~\cite{PhysRevC.101.064901}.
 %
 A measurement at RHIC, with lower jet energies and a smaller, shorter-lived medium, provides a complementary constraint on the path-length dependence of jet quenching, and is the subject of Ch.~\ref{ch:jhcorr}.
 

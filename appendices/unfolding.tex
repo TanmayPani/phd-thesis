@@ -221,3 +221,9 @@ For misses, a classifier \(f^\mathrm{gen.}_{i, i-1}\) separates matched generate
 	\nu_{i-1}(\mathbf{y}) = \frac{f^\mathrm{reco.}_{i, i-1}(\mathbf{y})}{1-f^\mathrm{reco.}_{i, i-1}(\mathbf{y})} ,
 \end{equation}
 evaluated at the miss's \(\mathbf{x}\) and the fake's \(\mathbf{y}\) respectively. Thus, it takes 2-4 classifier trainings per unfolding iteration~\cite{andreassen2021scaffoldingsimulationsdeeplearning}.
+
+The result of the unfolding is not a set of histograms but a weight for every generated jet.
+%
+Since each generated jet carries all the features \(\mathbf{x}\) it was unfolded with, any observable that is a function of \(\mathbf{x}\) can be computed from the weighted jets after the unfolding, in any binning, without repeating the unfolding: new observables can be studied with the same unfolded jets, as long as they are combinations of the unfolded features~\cite{PhysRevLett.124.182001,Canelli_2026}.
+%
+Observables that depend on information not contained in \(\mathbf{x}\) still require a new unfolding that includes it.

@@ -189,3 +189,56 @@ Within these layers, the shower’s energy was most concentrated around 5-7 radi
 The BEMC had an energy resolution that improved with particle energy, around 17\% for 1.5 GeV electrons and 10\% for 3 GeV electrons in head-on Au+Au collisions.
 %
  This follows the typical calorimetric trend in which the relative energy resolution improves as the energy increases ($\sigma_{E}/E \approx 1.5 \% + 15 \% /\sqrt{E}$), complementing the TPC, whose relative momentum resolution degrades with increasing momentum ($\sigma_{p_\mathrm{T}}/p_\mathrm{T} \propto p_\mathrm{T}$).
+\subsection{Trigger and luminosity detectors} \label{sec:triggerDetectors}
+Besides the TPC and the BEMC, three fast forward detectors enter the analyses of this thesis, through the minimum-bias trigger, the online vertex selection and the monitoring of the luminosity.
+%
+Their signals were available for every bunch crossing and were combined by the STAR trigger system to decide which collisions were recorded~\cite{Bieser:2002ah}.
+
+\subsubsection{Vertex Position Detector (VPD)} \label{VPD}
+The VPD~\cite{Llope:2014nva} consisted of two identical assemblies mounted around the beam pipe 5.7~m from the center of STAR on either side, each with 19 detectors covering about half of the solid angle in \(4.24 \leq |\eta| \leq 5.1\) (Fig.~\ref{fig:VPD}, top).
+%
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/VPD_fig2.jpg}\\[1ex]
+	\includegraphics[width=\linewidth]{figures/VPD_fig6.jpg}
+	\caption[The STAR Vertex Position Detector]{(Top) Schematic front view of one VPD assembly around the beam pipe (left) and photograph of the two assemblies (right). (Bottom) Primary-vertex position along the beam measured by the VPD versus the one reconstructed from TPC tracks, in \(p+p\) collisions at \(\sqrt{s} = 510\)~GeV (left) and \AuAu collisions at \sNN{200}{GeV} (right); the insets show the distributions of their difference. Taken from~\cite{Llope:2014nva}.}
+	\label{fig:VPD}
+\end{figure}
+%
+Each detector was a lead converter followed by a fast plastic scintillator read out by a photomultiplier tube, and measured the arrival time of the nearly light-speed particles produced at forward rapidity.
+%
+The difference between the arrival times at the east and west assemblies gives the position of the collision vertex along the beam, \(v_z = c\,(t_\mathrm{east} - t_\mathrm{west})/2\), with a resolution of about 1~cm in \AuAu collisions (Fig.~\ref{fig:VPD}, bottom), and their average gives the start time of the collision to a few tens of picoseconds, which the TPC uses as its time reference (Sec.~\ref{TPC}).
+%
+The VPD coincidence was the main input to the minimum-bias trigger in \AuAu collisions, and the online vertex position it provides defines the VPDMB5 and VPDMB30 triggers of Ch.~\ref{ch:jhcorr}, which require \(|v_z| < 5\) and 30~cm, respectively.
+
+\subsubsection{Beam-Beam Counters (BBC)} \label{BBC}
+The BBCs were two annuli of scintillator tiles mounted around the beam pipe beyond the east and west pole tips of the STAR magnet, 3.74~m from the center of the detector~\cite{Kiryluk:2005gg}.
+%
+Their inner ring of small hexagonal tiles (Fig.~\ref{fig:BBC}) covered \(3.4 < |\eta| < 5.0\) over the full azimuth, and was surrounded by larger tiles at smaller \(|\eta|\).
+%
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth, trim={0 0 0 31bp}, clip]{figures/jkiryluk_fig1a.pdf}
+	\caption[The small tiles of the STAR Beam-Beam Counters]{Schematic view of the small hexagonal tiles of one BBC around the beam pipe (central opening), labeled by their photomultiplier tubes. The colors show an example event of the local polarimetry measurement of Ref.~\cite{Kiryluk:2005gg}, a charged particle hitting tiles on one side (red). Taken from~\cite{Kiryluk:2005gg}.}
+	\label{fig:BBC}
+\end{figure}
+%
+A coincidence of hits in the east and west BBCs within the time window of a bunch crossing signals an inelastic collision; the BBCs provided the minimum-bias trigger and the relative luminosity measurement in \pp collisions, and served as local polarimeters for the polarized proton beams~\cite{Kiryluk:2005gg}.
+%
+In the \AuAu minimum-bias trigger of Ch.~\ref{ch:jhcorr}, the BBC signals are combined with those of the VPD and the ZDCs.
+
+\subsubsection{Zero Degree Calorimeters (ZDC)} \label{ZDC}
+The ZDCs~\cite{Adler:2000bd} were identical hadronic calorimeters built for all RHIC experiments and placed about 18~m on either side of the interaction point, downstream of the dipole magnets that separate the two beams (Fig.~\ref{fig:ZDC}).
+%
+\begin{figure}
+	\centering
+	\includegraphics[width=0.75\linewidth]{figures/ZDC_fig1.jpg}
+	\caption[Location of the Zero Degree Calorimeters]{(a) Plan view of the collision region, with the ZDCs behind the DX dipole magnets, which bend the ion beams and the protons away from the neutrons. (b) Beam's-eye view at the ZDC location (section A--A in (a)), showing the neutrons hitting the ZDC between the two beam pipes, while the deflected protons miss it. Taken from~\cite{Adler:2000bd}.}
+	\label{fig:ZDC}
+\end{figure}
+%
+The magnets bend the beams and the charged fragments of the nuclei away, so that only neutral particles, mostly the spectator neutrons that evaporate from the colliding nuclei within about 2~mrad of the beam axis, reach the calorimeters.
+%
+Each ZDC was built from tungsten absorber plates interleaved with optical fibers that collect the Cherenkov light of the hadronic shower, arranged in modules along the beam, and measured the total energy of these neutrons, i.e.\ their number.
+%
+The coincidence of the two ZDCs is a minimum-bias selection of heavy-ion collisions, and its rate (ZDCx) serves as a monitor of the luminosity; in Ch.~\ref{ch:jhcorr} it is part of the minimum-bias trigger and is used in the run-by-run quality assurance (Sec.~\ref{sec:JHEventSel}).
