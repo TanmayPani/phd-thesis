@@ -1,5 +1,10 @@
 \chapter{Generalized Angularities}
 \label{ch:angularities}
+\begin{itquote}
+Section~\ref{sec:AuAuAngularities} is based on STAR preliminary results presented at Quark Matter 2023~\cite{Pani:2024mgy} and Hard Probes 2024~\cite{Pani:HP2024poster}.
+%
+Part of the \(p+p\) results of Sec.~\ref{sec:ppAngularities} was presented as STAR preliminary results at Hard Probes 2026~\cite{Pani:HP2026poster}, earlier results at Hard Probes 2023~\cite{Pani_2024}, and a STAR publication of the full results is in preparation.
+\end{itquote}
 Substructure-based observables calculated from the constituents of clustered jets can be sensitive to a variety of QCD processes, from initial hard (high-\(Q^2\)) parton scattering to hadronization.
 %
 A constituent carries two main pieces of information: its momentum relative to the jet and its direction with respect to the jet axis, characterized by its distance from the jet axis in the \(\eta\)--\(\phi\) plane,
@@ -204,6 +209,7 @@ Harder-fragmented jets are, on average, narrower and interact with the QGP for a
 This is the first heavy-ion analysis to use unbinned unfolding of detector effects, hence there is room for improvement in application of the technique, which will be explored in the next section.
 
 \section{Inclusive and groomed angularities of \(p + p\) jets}
+\label{sec:ppAngularities}
 The last section suggested that the hard-core constituent cut, a naive tool for suppressing the background, may remove the part of the jet substructure that is most sensitive to the medium.
 %
 Therefore, a more sophisticated method of isolating perturbative and non-perturbative effects must be used.
@@ -329,7 +335,7 @@ The second choice looks ahead to heavy-ion collisions, where the hard-core selec
 %
 A constituent threshold discards every soft particle, including the soft collinear radiation of the jet itself, and is not infrared and collinear safe, whereas SoftDrop removes whole branches that are soft relative to their partner, up to the first hard splitting, keeps every particle inside the two prongs of that splitting, soft ones included, and gives infrared and collinear safe observables.
 %
-With a comparable \(z_\mathrm{cut}\), the \(p+p\) measurement provides the baseline for testing whether grooming can achieve the background suppression of the hard-core selection in \AuAu collisions with a better defined and less biased selection.
+With a comparable \(z_\mathrm{cut}\), the \(p+p\) measurement provides the baseline for testing whether grooming can achieve the background suppression of the hard-core selection in \AuAu collisions with a better defined and less biased selection; grooming cannot, however, remove the combinatorial jets, as discussed in Sec.~\ref{sec:angConclusion}.
 
 The radiation removed by the grooming can also be studied on its own.
 %
@@ -767,6 +773,18 @@ They also show that PYTHIA\mbox{-}8 and HERWIG\mbox{-}7 underestimate the angula
 Compared with ALICE measurements at \(\sqrt{s} = 5.02\) TeV at the same charged-jet \(p_\mathrm{T}\), the jets at RHIC are considerably narrower, as expected from their larger fraction of quark-initiated jets.
 
 These \(p+p\) results provide the baseline for the next step: measuring inclusive and groomed angularities of jets in Au+Au collisions at the same energy, with grooming in place of the hard-core selection to suppress the underlying event, and with the unfolding pipeline developed here.
+%
+Whether this is feasible remains to be shown.
+%
+The underlying event affects such a measurement in two ways: it adds soft particles to the jets that are found, and it adds jets that are not there at all, the combinatorial jets clustered from the background alone.
+%
+Grooming acts only on jets that have already been found, so it can at best reduce the first effect, and even then the background can pass the grooming condition, as seen in the \(R_\mathrm{g}\) of STAR jets with soft constituents in central \AuAu collisions, which peaks near the jet boundary~\cite{PhysRevC.105.044906}.
+%
+The hard-core selection suppresses both effects at once, because the background rarely produces particles above 2~GeV/\(c\)~\cite{PhysRevC.105.044906}.
+%
+Even so, combinatorial jets are not negligible at low \(p_\mathrm{T, jet}\): for charged-particle jets with constituents above 2~GeV/\(c\) and \(p_\mathrm{T, jet} > 9\)~GeV/\(c\) in 0--10\% central \AuAu collisions, they make up about 9\%, 28\% and 53\% of the jets for \(R = 0.2\), 0.3 and 0.4, and only 3\% for \(R = 0.3\) with constituents above 3~GeV/\(c\)~\cite{STAR:2026liw}.
+%
+Without the hard-core selection, the combinatorial jets have to be removed statistically, e.g.\ with mixed events~\cite{STAR:2017hhs,STAR:2026liw}, which is likely to bring large systematic uncertainties and some dependence on the model of the background.
 %
 Differential measurements such as the \(R_\mathrm{g}\) profiles are particularly promising there, since they can separate a medium-induced change of the radiation pattern at a given splitting angle from a change in the distribution of the splitting angles themselves.
 %

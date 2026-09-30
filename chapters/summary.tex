@@ -1,10 +1,10 @@
 \chapter{Summary}
 \label{ch:summary}
-The jet-hadron correlations relative to the event plane of Ch.~\ref{ch:jhcorr} have been published by the STAR Collaboration in Phys.\ Rev.\ C~\textbf{109}, 044909 (2024)~\cite{STAR:2023hye}.
+The jet-hadron correlations relative to the event plane of Ch.~\ref{ch:jhcorr} have been published in Physical Review C~\cite{STAR:2023hye}.
 %
-The generalized angularities of jets in \AuAu collisions (Sec.~\ref{sec:AuAuAngularities}) were shown as STAR preliminary results at Quark Matter 2023~\cite{Pani:2024mgy}.
+The generalized angularities of jets in \AuAu collisions (Sec.~\ref{sec:AuAuAngularities}) were shown as STAR preliminary results at Quark Matter 2023~\cite{Pani:2024mgy} and in a poster at Hard Probes 2024~\cite{Pani:HP2024poster}.
 %
-Earlier iterations of the \pp angularities of Sec.~\ref{sec:ppResults} were presented orally at Hard Probes 2023~\cite{Pani_2024} and as posters at Hard Probes 2024 and 2026, and some of the recommendations of this work for unbinned unfolding are featured in a community white paper~\cite{Canelli_2026}.
+Part of the \pp angularities of Sec.~\ref{sec:ppResults} was presented as a poster at Hard Probes 2026~\cite{Pani:HP2026poster}, and earlier iterations of them orally at Hard Probes 2023~\cite{Pani_2024}; some of the recommendations of this work for unbinned unfolding are featured in a community white paper~\cite{Canelli_2026}.
 
 This thesis used jets to study QCD in vacuum and in the quark-gluon plasma at RHIC, with two questions in mind: does jet quenching depend on the path length through the medium, and how is the energy of a jet distributed in angle?
 %
@@ -18,9 +18,23 @@ Within the uncertainties, neither the associated yields nor the widths of the je
 The ratios of the associated yields between the orientations do not deviate significantly from unity, with indications of potential modifications only in the inclusive \ptassocrange{1.0}{10} bin of the \pttrigrange{20}{40} jets.
 %
 The finite event-plane resolution, \(R_2 = 0.56\), dilutes any real dependence, and JEWEL predicts one well below the uncertainties, consistent with jet-by-jet fluctuations dominating over path-length effects.
+%
+These results align with the event-plane dependent hadron-hadron correlations at RHIC~\cite{Nattrass:2016cln} and with the jet-hadron correlations at the LHC~\cite{PhysRevC.101.064901}.
+%
+While the leading hadrons of jets show the expected path-length dependence~\cite{PhysRevC.76.034904}, no significant dependence has been observed for reconstructed jets and the hadrons around them at either energy, and any dependence on the average path length is smaller than the experimental uncertainties.
+%
+Because the jets are biased towards hard fragmentation by the trigger and the hard-core selection, the comparison with JEWEL, which describes the high-\(p_\mathrm{T, assoc}\) yields better without recoil partons and the low-\(p_\mathrm{T, assoc}\) yields better with them, also shows that the models need further tuning for such jets.
 
 \paragraph{Jet substructure in \AuAu collisions}
 The girth, \(p_\mathrm{T}^\mathrm{D}\) and LeSub of hard-core jets (Sec.~\ref{sec:AuAuAngularities}), the first heavy-ion measurement corrected with unbinned, machine-learning based unfolding, are consistent between 0--20\% and 40--80\% central collisions within the systematic uncertainties.
+%
+The measurement adds the momentum and angular distribution of the jet constituents to a consistent picture of hard-selected jets at RHIC: STAR has also found vacuum-like hardest splittings of hard-core dijets~\cite{PhysRevC.105.044906} and vacuum-like proton-to-pion ratios inside jets~\cite{STAR:2026liw} in central \AuAu collisions.
+%
+Within the present precision, jets that pass a hard selection at RHIC therefore fragment like jets in vacuum, and the modification seen in inclusive observables such as \(R_\mathrm{CP}\) (Sec.~\ref{sec:jetsInQGP}) must reside in what the selection removes: the jets that lost enough energy to fall below the thresholds, and the soft, wide-angle radiation carried by constituents below 2~GeV/\(c\).
+%
+This agrees with the picture at the LHC, where the jet shapes of central Pb+Pb collisions broaden at large angles~\cite{Chatrchyan:1605718}, while the angularities of small-radius jets show an apparent narrowing, which points to a selection of narrow jets~\cite{Alice2018}.
+%
+As the first heavy-ion application of unbinned unfolding, the measurement also showed where the method needed to be developed before it could be applied to less biased jets.
 
 \paragraph{Inclusive and groomed angularities in \pp collisions}
 The \pp measurement of Sec.~\ref{sec:ppResults} provides the inclusive and SoftDrop-groomed angularities \(\lambda^{\kappa=1}_{\beta}\), \(\beta = 0.5\), 1 and 2, of inclusive jets at \sPP{200}{GeV}, validated by closure tests and by reproducing four previously published STAR observables from the same unfolded jets.
@@ -30,6 +44,10 @@ Its main physics message comes from combining two views of the same jets.
 The distributions show that PYTHIA\mbox{-}8 and HERWIG\mbox{-}7 predict jets narrower than measured, by up to 20--40\% in the tails, while PYTHIA\mbox{-}6 agrees within uncertainties in most bins.
 %
 The mean angularities as functions of \(R_\mathrm{g}\), an observable that did not have to be chosen before the unfolding, locate the origin of this difference: at every splitting angle PYTHIA\mbox{-}8 and HERWIG\mbox{-}7 fall 10--15\% below the data, so they produce too little radiation at a given angle rather than a wrong distribution of angles.
+%
+Both generators are already used with tunes made for RHIC energies (Sec.~\ref{sec:eventGenerators}), the Detroit tune of PYTHIA\mbox{-}8, which was compared to STAR jet substructure measurements~\cite{PhysRevD.105.016011}, and the Nashville tune of HERWIG\mbox{-}7~\cite{Qureshi:2024eqz}.
+%
+The angularities, and the \(R_\mathrm{g}\) profiles in particular, are therefore new input for the next round of tuning at RHIC energies, as the STAR jet mass was for the Detroit tune~\cite{Mooney:2022thesis}.
 
 %\paragraph{Synthesis}
 Both heavy-ion measurements select jets with a high-tower trigger and hard-core constituents, which favors hard-fragmented, narrow jets that interact least with the medium.
@@ -38,15 +56,34 @@ This survivor bias is the likely common reason why neither the expected path-len
 %
 The \pp measurement avoids this selection and provides both the baseline and a validated unbinned unfolding pipeline for the next generation of heavy-ion measurements.
 
+\paragraph{Contributions}
+In summary, this thesis contributes to the field
+\begin{itemize}
+	\item a constraint on the path-length dependence of jet quenching at RHIC energies, published by STAR, which complements the corresponding measurement at the LHC;
+	\item the first heavy-ion jet substructure measurement corrected with unbinned, machine-learning based unfolding, which adds the jet angularities to the vacuum-like picture of hard-selected jets at RHIC;
+	\item the first inclusive and groomed angularities of jets at RHIC, which provide the \pp baseline for heavy-ion measurements at the same energy and test the parton showers of current event generators at RHIC energies, including, through the \(R_\mathrm{g}\) profiles, at fixed splitting angle;
+	\item an unbinned unfolding pipeline, validated against earlier STAR measurements, together with a training framework for ensembles of classifiers (App.~\ref{app:torchstrap}), and recommendations for unbinned unfolding taken up in a community white paper~\cite{Canelli_2026}.
+\end{itemize}
+
 \section{Outlook}
+The \pp measurement will be extended with \(\lambda_0^2\) and the remaining angularities for the final STAR publication.
+
 The natural next step is to measure the inclusive and groomed angularities of jets in \AuAu collisions with the constituent selection, grooming and unfolding of the \pp analysis.
 %
 There, the \(R_\mathrm{g}\) profiles can separate a medium-induced change of the radiation at a given splitting angle from a change of the splitting angles themselves, a distinction one-dimensional distributions cannot make.
 %
+Its feasibility has still to be established: grooming reduces the underlying event inside the jets that are found, but cannot remove the combinatorial jets that the hard-core selection suppresses, and their statistical subtraction will likely bring large systematic uncertainties and some model dependence (Sec.~\ref{sec:angConclusion}).
+%
 The unfolding itself can be made more robust by methods that remove the need for iterations~\cite{Ore:2026qgp}, which would avoid the growth of statistical fluctuations over the iterations seen in this work, and by profiling the detector uncertainties as nuisance parameters~\cite{Zhu:2024drd}.
 
-On the jet-hadron side, selecting events on the ellipticity of their initial state through the \(q_n\) flow vector would test whether fluctuations of the initial geometry wash out the event-plane dependence.
+On the jet-hadron side, selecting events on the ellipticity of their initial state through the \(q_n\) flow vector would test whether fluctuations of the initial geometry wash out the event-plane dependence; since the measurement is already statistics-limited, this requires the larger \AuAu datasets recorded in 2023 and 2025.
 %
 The classifiers of App.~\ref{app:ML} suggest that medium modification can itself be quantified as a discrimination problem.
+
+More broadly, RHIC ended its operations in 2026, leaving the field with the high-statistics \AuAu datasets that STAR recorded in 2023 and 2025 and with the first data of sPHENIX, a detector designed for jet measurements, with electromagnetic and hadronic calorimetry over the full azimuth~\cite{PHENIX:2015siv}, which has begun to publish its jet measurements~\cite{sPHENIX:2026jgh}.
 %
-Finally, the \pp measurement will be extended with \(\lambda_0^2\) and the remaining angularities for the final STAR publication.
+Together, they will extend jet measurements at RHIC to less biased jet selections and to a wider kinematic range, and increase their complementarity with the LHC, where jets of the same momentum are produced in a medium of higher temperature and with a larger fraction of gluon jets.
+%
+Afterwards, the RHIC complex will become the Electron-Ion Collider~\cite{AbdulKhalek:2021gbh}, where jets in electron-nucleus collisions, with a well-known initial state and no hot medium, will probe how parton showers interact with cold nuclear matter, the counterpart of the QGP studied in this thesis.
+%
+Unbinned unfolding, developed here for RHIC jets, allows such measurements to be published without binning, so that they can be reanalyzed with observables that were not chosen at the time of the measurement~\cite{Canelli_2026}.

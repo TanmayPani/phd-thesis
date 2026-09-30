@@ -42,7 +42,7 @@ In 1911, Rutherford's analysis of alpha particles scattered off a thin gold foil
 %
 In 1928, Dirac's relativistic equation for the electron predicted antimatter~\cite{Dirac:1928}, and its first example, the \emph{positron}, was found by Anderson in cosmic rays in 1932~\cite{Anderson:1933}.
 %
-The following decades brought a flood of unexpected particles, the \emph{muon}~\cite{Neddermeyer:1937}, the \emph{pion}~\cite{Lattes:1947}, the \emph{strange} particles~\cite{Rochester:1947} and the \emph{neutrino}~\cite{Cowan:1956}, and, with the new accelerators of the 1950s, dozens of short-lived hadrons, a ``particle zoo'' too large to be fundamental.
+The following decades brought a flood of unexpected particles, the \emph{muon}~\cite{Neddermeyer:1937}, the \emph{pion}~\cite{Lattes:1947}, the \emph{strange} particles~\cite{Rochester:1947} and the \emph{neutrino}~\cite{Cowan:1956}, and, with the new accelerators of the 1950s, dozens of short-lived hadrons, a ``particle zoo'' too large for all of its members to be fundamental.
 
 Order was restored in 1964, when Gell-Mann and Zweig proposed that hadrons are built from a few \emph{quarks}~\cite{GellMann:1964,Zweig:1964}, which soon had to be given a new quantum number, \emph{color}~\cite{Greenberg:1964,HanNambu:1965}.
 %
@@ -56,7 +56,7 @@ Quarks and gluons themselves are never observed in isolation, but their traces a
 %
 The \emph{W} and \emph{Z} bosons of the unified electroweak theory were discovered at CERN in 1983~\cite{UA1W:1983,UA2W:1983,UA1Z:1983}, the \emph{top} quark at Fermilab in 1995~\cite{CDFtop:1995,D0top:1995} and the \emph{tau neutrino} in 2000~\cite{DONUT:2001}, completing three generations of quarks and leptons.
 %
-Finally, the discovery of the \emph{Higgs boson} at CERN in 2012~\cite{ATLASHiggs:2012,CMSHiggs:2012} completed the particle content of the Standard Model, described in the following section.
+Finally, the discovery of the \emph{Higgs boson} at CERN in 2012~\cite{ATLASHiggs:2012,CMSHiggs:2012} completed the particle content of the current Standard Model, described in the following section, together with the questions it leaves open.
 
 
 %===========================================================================================
@@ -315,6 +315,14 @@ This divergence is not physical: it signals that perturbation theory is being us
 %
 Confinement is therefore not a consequence of a diverging coupling (QCD in one space and one time dimension, for example, confines with a finite coupling~\cite{Deur:2016tte}), but a property of the non-perturbative QCD (npQCD) regime: isolated color charges are not observed, and partons are bound into color-neutral hadrons (\emph{Color Confinement})~\cite{Wilson:1974sk}.
 
+Although QCD has been tested precisely in the perturbative regime, several of its basic properties are still not understood from first principles.
+%
+Confinement has not been derived from the QCD Lagrangian: proving that the quantum Yang-Mills theory underlying QCD exists as a mathematically consistent theory and has a \emph{mass gap}, i.e.\ that its lightest excitations have a finite mass, is one of the Millennium Prize Problems of the Clay Mathematics Institute~\cite{Jaffe:2000ne}.
+%
+The self-interaction of gluons allows bound states made only of gluons, \emph{glueballs}, which lattice QCD predicts but which have not been unambiguously identified, since they mix with ordinary mesons of the same quantum numbers~\cite{Mathieu:2008me}.
+%
+QCD also allows a term in its Lagrangian that violates the combined charge-conjugation and parity (CP) symmetry, but the upper limit on the electric dipole moment of the neutron requires its coefficient to be smaller than about \(10^{-10}\)~\cite{ParticleDataGroup:2026aaa}, for which QCD offers no reason (the \emph{strong CP problem}); the new symmetry proposed by Peccei and Quinn to explain it implies a new particle, the axion~\cite{Peccei:1977hh}.
+
 \section{Parton showers, hadronization and event generators}
 \label{sec:eventGenerators}
 In a collision of two hadrons, the partons that scatter at a large momentum transfer do so over a time too short for the rest of the hadron to take part, so the \emph{hard scattering} can be calculated perturbatively in terms of partons, and combined with the probabilities of finding those partons inside the incoming hadrons (App.~\ref{sec:hardProcesses}, Eq.~\ref{eq:factorization}).
@@ -403,6 +411,8 @@ QCD event generators chain these processes, matrix elements for the hard process
 Everything below the hard process carries parameters that are not fixed by theory, and a set of values for them obtained by fitting to data is called a \emph{tune}.
 %
 Two generators starting from the same matrix element can therefore still disagree, and their spread shows how strongly a prediction depends on the modeling of the non-perturbative stages; agreement between them, however, does not make a prediction perturbative, since the tunes have enough freedom to bring different models into agreement.
+%
+The combination of the stages is itself approximate: the parton shower is accurate only for soft and collinear emissions, and combining it with exact matrix elements for hard, wide-angle emissions without counting them twice requires dedicated matching and merging schemes~\cite{Catani:2001cc,Buckley:2011ms}, while hadronization and the underlying event have no first-principles description at all~\cite{Buckley:2011ms}.
 
 This thesis uses PYTHIA~\cite{Sj_strand_2006} and HERWIG~\cite{Bellm:2015jjp}, which differ in how they deal with the coherence of Sec.~\ref{sec:coherentPartonBranching}.
 %
@@ -411,7 +421,7 @@ HERWIG orders its shower in angle and imposes Eq.~\ref{eq:angularOrdering} direc
 PYTHIA instead orders in transverse momentum and radiates off color dipoles rather than off individual partons, which suppresses soft wide-angle emission without ordering in angle at all, and hadronizes with strings.
 %
 
-Both generators are used with tunes made for RHIC energies~\cite{Skands_2010,PhysRevD.105.016011,adkins2019studying}, as the tunes in widest use are fitted mostly to LHC data and overshoot the underlying event at \sPP{200}{GeV}.
+Both generators are used with tunes made for RHIC energies, PYTHIA\mbox{-}6 with the STAR tune of Perugia 2012~\cite{Skands_2010,adkins2019studying}, PYTHIA\mbox{-}8 with the Detroit tune~\cite{PhysRevD.105.016011} and HERWIG\mbox{-}7 with the Nashville tune~\cite{Qureshi:2024eqz}, as the tunes in widest use are fitted mostly to LHC data and overshoot the underlying event at \sPP{200}{GeV}.
 %
 PYTHIA\mbox{-}6 and PYTHIA\mbox{-}8 share the string hadronization and the transverse-momentum ordered shower, and differ mainly in their treatment of multiple parton interactions, color reconnection and beam remnants, all of which control the multiplicity and the soft, wide-angle part of an event.
 %
@@ -497,6 +507,10 @@ This algorithm becomes the \emph{\(k_\mathrm{T}\) algorithm}~\cite{kTAlgorithm} 
 The difference between these algorithms is shown in Fig.~\ref{fig:jetalgorithms} for one simulated event, where each colored region is the area covered by one of the three hardest jets.
 %
 The \(k_\mathrm{T}\) and Cambridge/Aachen algorithms, which begin by merging soft or nearby particles, produce jets with irregular boundaries that depend on the soft particles of the event, whereas anti-\(k_\mathrm{T}\) clusters around the hardest particles first and gives circular jets of radius \(R\) whose shape is insensitive to soft radiation.  
+%
+These properties make anti-\(k_\mathrm{T}\) the standard choice for finding jets, but a jet algorithm is a convention rather than a unique definition of a jet: the jets depend on the algorithm and on \(R\)~\cite{Salam:2009jx}.
+%
+Because anti-\(k_\mathrm{T}\) clusters around the hardest particle, the order in which it merges the constituents does not follow the angular ordering of the parton shower and has no physical interpretation, so substructure measurements, including those of this thesis, recluster the constituents of the jet with the Cambridge/Aachen algorithm before grooming~\cite{Dasgupta_2013}.
 %
 The \emph{FastJet} library~\cite{Cacciari:2011ma} efficiently implements these algorithms and a few more, and is the de-facto standard in the High Energy Physics (HEP) community. 
 %
@@ -712,6 +726,16 @@ Large positive $v_2$ values indicate collective phenomena associated with a stro
 %
 A scaling of the $v_2$ values with the number of constituent quarks (2 for mesons, 3 for baryons) yielded a universal curve as a function of $p_{\rm T}/n_q$ (right panel) suggesting the flow dynamics were developed in a medium with quark and gluon degrees of freedom, i.e. QGP.
 
+Despite this evidence, many basic questions about the QGP remain open.
+%
+Lattice QCD establishes a crossover at vanishing baryon density, but at finite baryon density the weight of the QCD path integral becomes complex and lattice calculations suffer from the \emph{sign problem}~\cite{deForcrand:2009zkb}, so whether the crossover turns into a first-order transition that ends at a \emph{critical point} is being searched for experimentally, e.g.\ in the RHIC Beam Energy Scan~\cite{Bzdak:2019pkr}.
+%
+How the matter evolves from the far-from-equilibrium initial state to a nearly perfect liquid that hydrodynamics describes, and what its degrees of freedom are near \(T_c\), where it is strongly coupled, are not fully understood~\cite{Berges:2020fwq}.
+%
+Flow-like signals in high-multiplicity \pp and in \(p\)/\(d\)/\(^3\)He+Au collisions raise the question of the smallest system in which a QGP forms~\cite{Nagle:2018nvi}.
+%
+It is also not known whether the topological structure of the QCD vacuum can be observed in heavy-ion collisions through effects such as the chiral magnetic effect~\cite{Kharzeev:2015znc}, for which a dedicated STAR search with isobar collisions found no signature that satisfies its predefined criteria~\cite{STAR:2021mii}.
+
 
 \section{Jets in QGP}
 \label{sec:jetsInQGP}
@@ -719,13 +743,17 @@ As discussed in Sec.~\ref{sec:qgpSpacetime}, hard scatterings of partons that pr
 %
 Thus the ensuing parton shower traverses the QGP, and resulting jet is \emph{modified/quenched} compared to an appropriate \emph{baseline}. 
 %
-The two main mechanisms for jet quenching are \emph{collisional} and \emph{radiative} energy losses. 
+In the perturbative picture, in which the jet partons interact weakly with the medium, the two main mechanisms for jet quenching are \emph{collisional} and \emph{radiative} energy losses.
 %
 Collisional energy loss happens due to the elastic scattering between the parton and the medium constituents and usually dominates for lower energy partons. 
 %
 Radiative energy loss happens due to induced gluon radiation (\textit{bremsstrahlung}) through inelastic scatterings with the medium particles \cite{MAJUMDER201141,QinWang2024,Burkeetal}. 
 %
-For partons with \ptGeq{parton}{5} , this is usually the dominant source of energy loss \cite{LandoltBornstein2010:sm_lbs_978-3-642-01539-7_16}. 
+For partons with \ptGeq{parton}{5} , this is usually the dominant source of energy loss \cite{LandoltBornstein2010:sm_lbs_978-3-642-01539-7_16}.
+%
+This division is not complete: the QGP is strongly coupled, and the interaction of the jet with the medium at scales of the order of the medium temperature need not be perturbative.
+%
+At strong coupling, the energy loss can be calculated holographically, through the gauge/gravity duality, in which a parton traversing the plasma loses energy to it without distinct elastic and radiative contributions~\cite{Chesler:2014jva}, and hybrid models combine a perturbative shower with such a strongly coupled energy loss~\cite{Casalderrey-Solana:2014bpa}.
 %
 %\subsection{Combinatorial background in heavy-ion jets}
 %Final state of heavy-ion collisions is characterized by a massive \emph{Underlying Event}, arising from the thermalized QGP. 
@@ -795,7 +823,17 @@ Fully reconstructed jets recover more of the energy of the initiating parton tha
 They are, however, not free of bias: a minimum jet \(p_\mathrm{T}\) still favors jets that lost less energy.
 %
 A reconstructed jet may also have been unmodified, or strongly modified with most of the radiated energy kept inside the jet cone, or modified with part of that energy lost outside the cone, which lowers its \(p_\mathrm{T}\).
+
+Several questions about jets in the QGP are open as well.
 %
+The hard scattering happens before the QGP forms, and how much jets are already modified in the pre-equilibrium stage is unknown~\cite{Andres:2019eus}; whether jets are modified in small systems such as high-multiplicity \pp collisions, where other signs of collectivity are seen, is also open~\cite{Nagle:2018nvi}.
+%
+The energy lost by a jet is not simply removed: the medium responds to it, and part of the response, in its kinematics and possibly in its hadron chemistry, is correlated with the jet and ends up inside the jet cone, where it cannot be separated from the radiation of the jet itself~\cite{Cao:2020wlm}.
+%
+Finally, it is not obvious how well \RAA~measures energy loss: because the jet spectrum falls steeply, a small shift of the jet \(p_\mathrm{T}\) produces a large suppression, and since jets are compared at the same reconstructed \(p_\mathrm{T}\) rather than at the same initial \(p_\mathrm{T}\), \RAA~mixes jets with different energy losses and different substructure~\cite{Brewer:2018dfs}.
+%
+Such selection biases motivate both measurements of this thesis, which select jets by their orientation relative to the event plane (Ch.~\ref{ch:jhcorr}) and measure how the internal structure of jets at a given \(p_\mathrm{T}\) changes (Ch.~\ref{ch:angularities}).
+
 Jets also offer a wealth of substructure observables, which give access to the energy flow within the jet more differentially.
 %
 
@@ -816,7 +854,17 @@ The charged jet $R_{CP}$ is also found to have similar values between RHIC and L
 %
 This may be because the inclusive hadron distribution usually arises from the leading hadron in the corresponding jet, and is therefore sensitive to the fragmentation function. 
 %
-This fragmentation process can therefore introduce the $p_\mathrm{T}$ dependence of $R_{CP}$ in hadrons. 
+This fragmentation process can therefore introduce the $p_\mathrm{T}$ dependence of $R_{CP}$ in hadrons.
+
+These measurements establish that jets lose energy in the QGP, but, being averaged over all jets in an event class, they do not say how the energy loss depends on the distance travelled through the medium, which is one of the main features that distinguish energy-loss mechanisms~\cite{Liou:2013qya}.
+%
+In non-central collisions the overlap region is elongated (Sec.~\ref{sec:flowIntro}), so partons emitted out of the event plane traverse on average more medium than those emitted in-plane.
+%
+The leading hadrons of jets follow this expectation: high-\(p_\mathrm{T}\) neutral pions are more suppressed out-of-plane than in-plane, giving them a positive azimuthal anisotropy~\cite{PhysRevC.76.034904}.
+%
+For reconstructed jets and the hadrons around them, however, ALICE found no significant dependence on the angle to the event plane in Pb+Pb collisions at \sNN{2.76}{TeV}~\cite{PhysRevC.101.064901}.
+%
+A measurement at RHIC, with lower jet energies and a smaller, shorter-lived medium, provides a complementary constraint on the path-length dependence of jet quenching, and is the subject of Ch.~\ref{ch:jhcorr}.
 
 \begin{figure}
 	\centering
@@ -835,6 +883,16 @@ where the jet cone is divided into rings of width $\delta r$ which have an inner
 From the results shown in Fig.~\ref{fig:cmsjetshapefinaljs4cent}, the differential jet shapes in the most central Pb+Pb collisions are broadened in comparison to measurements done in \pp collisions at the same center-of-mass energy~\cite{Chatrchyan:1605718}.  
 %
 These measurements demonstrate that there is an enhancement in the modification with increasing angle from the jet axis, indicating a broadening of the jet profile and a depletion near r~$\approx$~0.2.
+
+At RHIC, STAR measured the substructure of the two highest-energy, back-to-back jets in 0--20\% central \AuAu collisions at \sNN{200}{GeV}, reconstructed from the same hard-core constituents above 2~GeV/\(c\) as the jets of this thesis~\cite{PhysRevC.105.044906}.
+%
+The SoftDrop groomed momentum fraction \(z_\mathrm{g}\) and radius \(R_\mathrm{g}\), and the momentum fraction and opening angle of the two leading subjets, showed no significant modification relative to \pp jets embedded in \AuAu events, i.e.\ the hardest splittings of these jets are vacuum-like.
+%
+The dijet momentum imbalance was also found to be independent of the subjet opening angle between 0.1 and 0.3, which suggests that these jets lose energy as a single color charge, without the medium resolving their two prongs~\cite{PhysRevC.105.044906}.
+%
+These observables characterize the hardest splitting of a jet.
+%
+The generalized angularities of Ch.~\ref{ch:angularities} complement them by weighting every constituent by its momentum and angle to the jet axis, with the parameters \(\kappa\) and \(\beta\) moving the sensitivity between the core and the periphery of the jet, and at RHIC they probe lower jet energies and a larger fraction of quark jets than the jet shapes measured at the LHC.
 %
 These measurements motivate the studies presented in Chs.~\ref{ch:jhcorr} and~\ref{ch:angularities}: the dependence of jet quenching on the path length through the medium, and the angular structure of jets in vacuum and in the QGP.
 
