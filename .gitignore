@@ -13,3 +13,7 @@
 _extras/
 *.out
 /main.pdf
+/slides.pdf
+*.nav
+*.snm
+*.vrb
