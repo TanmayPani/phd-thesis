@@ -27,11 +27,12 @@
 \usepackage{siunitx}
 \usepackage[absolute,overlay]{textpos}
 \usetikzlibrary{decorations.pathmorphing, fpu, angles, quotes, arrows.meta, bending, 3d,
-	patterns, decorations.pathreplacing, positioning, calc, fit, backgrounds}
+	patterns, decorations.pathreplacing, positioning, calc, fit, backgrounds, shadows}
 
 \graphicspath{{figures/}}
 \input{defines/Commands.tex}
 \input{defines/TikzDiagrams.tex}
+\input{defines/jet_diagrams.tex} % \drawDiJetInVacuum, \drawDiJetInMedium (from the ICNFP-2024 talk)
 
 \setbeamerfont{footnote}{size=\tiny}
 
@@ -40,6 +41,52 @@
 	\begin{textblock*}{0.8\paperwidth}(0.03\paperwidth, 0.885\paperheight)
 		{\tiny\color{gray}#1}
 	\end{textblock*}}
+
+% Slide copies of \threevertex / \fourvertex (defines/TikzDiagrams.tex), scaled down, with the
+% vertex remembered as coordinate #1 and its coupling #2 drawn in red on overlays \couplingspec
+\newcommand{\couplingspec}{3-}
+\newcommand{\sthreevertex}[8]{%
+	\begin{tikzpicture}[baseline=0, thick, scale=0.55, remember picture]
+		\begin{feynman}
+			\vertex [circle, fill=black, minimum size=3.5pt, inner sep=0pt] (v) at (0,0) {};
+			\vertex (i1) at (240:1.5) {\(#4\)};
+			\vertex (i2) at (120:1.5) {\(#6\)};
+			\vertex [circle, fill=black, minimum size=2.5pt, inner sep=0pt] (o) at (1.5,0) {};
+			\diagram* {
+				(i1) -- [#3] (v) -- [#5] (i2),
+				(v) -- [#7, edge label'=\(#8\)] (o)
+			};
+		\end{feynman}
+		\coordinate (#1) at (0,0);
+		\node[anchor=east, text=PrimaryColor, font=\footnotesize, inner sep=1pt, visible on=<\couplingspec>] at (-0.2,0) {\(#2\)};
+	\end{tikzpicture}%
+}
+\newcommand{\sfourvertex}[7]{% #1 name, #2 coupling, #3 line style of all four legs, #4-#7 labels
+	\begin{tikzpicture}[baseline=0, thick, scale=0.55, remember picture]
+		\begin{feynman}
+			\vertex [circle, fill=black, minimum size=3.5pt, inner sep=0pt] (v) at (0,0) {};
+			\vertex (i1) at (135:1.5) {\(#4\)};
+			\vertex (i2) at (225:1.5) {\(#5\)};
+			\vertex (o1) at (45:1.5) {\(#6\)};
+			\vertex (o2) at (-45:1.5) {\(#7\)};
+			\diagram* {
+				(i1) -- [#3] (v),
+				(i2) -- [#3] (v),
+				(v) -- [#3] (o1),
+				(v) -- [#3] (o2),
+			};
+		\end{feynman}
+		\coordinate (#1) at (0,0);
+		\node[anchor=west, text=PrimaryColor, font=\footnotesize, inner sep=1pt, visible on=<\couplingspec>] at (0.3,0) {\(#2\)};
+	\end{tikzpicture}%
+}
+
+% show a TikZ scope only on some overlays while keeping its space: \begin{scope}[visible on=<2->]
+\tikzset{
+	invisible/.style={opacity=0, text opacity=0},
+	visible on/.style={alt={#1{}{invisible}}},
+	alt/.code args={<#1>#2#3}{\alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}},
+}
 
 % MultiFold flow boxes (from slides/preliminary_request)
 \tikzset{
@@ -64,8 +111,8 @@
 \newcommand{\PYeight}{PYTHIA\mbox{-}8\xspace}
 \newcommand{\HWseven}{HERWIG\mbox{-}7\xspace}
 
-\title{Spacetime evolution of jets with the STAR experiment}
-\subtitle{PhD defense}
+\title{Spacetime evolution of jets}
+\subtitle{with the STAR experiment}
 \author{Tanmay Pani}
 \supervisors[Advisor:]{Prof. Sevil Salur}
 \institute{Department of Physics and Astronomy, Rutgers University}
@@ -105,15 +152,15 @@
 %		\end{column}
 %	\end{columns}
 %\end{frame}
- 
+
 %======================================================================
 \section{QCD, jets and the QGP}
 \begin{frame}{The Standard Model}
 	\centering
 	\begin{tikzpicture}[
-			callout/.style={draw=PrimaryColor, fill=white, rounded corners=3pt, line width=0.8pt,
+		callout/.style={draw=PrimaryColor, fill=white, rounded corners=3pt, line width=0.8pt,
 				text width=3.3cm, align=left, inner sep=4pt, font=\scriptsize, execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
-			pointer/.style={-{Stealth[length=2mm]}, PrimaryColor, line width=0.8pt}]
+		pointer/.style={-{Stealth[length=2mm]}, PrimaryColor, line width=0.8pt}]
 		\node[anchor=south west, inner sep=0] (sm) at (0,0) {\includegraphics[height=0.7\textheight]{SM.png}};
 		% unit square on the image (1254 x 1200 px)
 		\begin{scope}[x={(sm.south east)}, y={(sm.north west)}]
@@ -134,10 +181,57 @@
 		\end{scope}
 	\end{tikzpicture}\\[1mm]
 	{\scriptsize Works from atoms to TeV --- but no gravity, dark matter, \(\nu\) masses}
+	\only<2>{%
+		\begin{tikzpicture}[remember picture, overlay]
+			\fill[white, opacity=0.75] (current page.south west) rectangle (current page.north east);
+			\node[draw=PrimaryColor, fill=white, rounded corners=4pt, line width=1.2pt, inner sep=10pt,
+				font=\Large\bfseries, text=PrimaryColor, drop shadow] at (current page.center)
+			{But what is meant by ``coupling'' ??};
+		\end{tikzpicture}}
+\end{frame}
+
+\begin{frame}{Interaction vertices and couplings}
+	\centering
+	\begin{tabular}{
+		>{\centering\arraybackslash}m{2.25cm}
+		>{\centering\arraybackslash}m{2.25cm}
+		>{\centering\arraybackslash}m{2.25cm}
+		>{\centering\arraybackslash}m{2.25cm}
+		}
+		\multicolumn{1}{c}{\vhead{Electromagnetic}}                                                                  & \multicolumn{3}{l}{\vhead{Strong}} \\
+		\sthreevertex{vEM}{e}{fermion}{X^{+|-}}{fermion}{X^{-|+}}{photon}{\gamma}                                    &
+		\sthreevertex{vQG}{g_s}{fermion}{q}{fermion}{q}{gluon}{g}                                                    &
+		\sthreevertex{vGGG}{g_s}{gluon}{g}{gluon}{g}{gluon}{g}                                                       &
+		\sfourvertex{vGGGG}{g_s^2}{gluon}{g}{g}{g}{g}
+		\\[-0.1cm]
+		\multicolumn{3}{l}{\vhead{Weak}}                                                                             &                                    \\
+		\sthreevertex{vWL}{g_W}{fermion}{\nu_e \mid \nu_\mu \mid \nu_\tau}{fermion}{e \mid \mu \mid \tau}{photon}{W} &
+		\sthreevertex{vWQ}{g_W}{fermion}{d/s/b}{fermion}{u/c/t}{photon}{W}                                           &
+		\sthreevertex{vZ}{g_Z}{fermion}{f}{fermion}{f}{photon}{Z}                                                    &
+		\\[-0.1cm]
+		\multicolumn{2}{l}{\vhead{Electroweak}}                                                                      & \multicolumn{2}{l}{\vhead{Higgs}}  \\
+		\sthreevertex{vEW}{g_W}{photon}{Z/\gamma}{photon}{W}{photon}{W}                                              &
+		\sfourvertex{vEWW}{g_W^2}{photon}{W}{W}{W|Z/\gamma}{W|Z/\gamma}                                              &
+		\sthreevertex{vH}{m/v}{fermion}{m}{fermion}{m}{scalar}{H}                                                    &
+		\sfourvertex{vHH}{m_B^2/v^2}{scalar}{H}{H}{m_B}{m_B}
+	\end{tabular}
+	\begin{tikzpicture}[remember picture, overlay,
+		callout/.style={draw=PrimaryColor, fill=white, rounded corners=3pt, line width=0.8pt,
+				text width=2.6cm, align=left, inner sep=4pt, font=\scriptsize, execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+		pointer/.style={-{Stealth[length=2mm]}, PrimaryColor, line width=0.8pt}]
+		% left: what a vertex and a coupling are
+		\node<2->[callout, anchor=west] (cv) at ([xshift=0.25cm, yshift=1.6cm]current page.west) {\textbf{Vertex}: mediator emitted / absorbed};
+		\draw<2>[pointer] (cv.east) -- ([xshift=-2pt]vEM);
+		\node<3->[callout, anchor=west] (cc) at ([xshift=0.25cm, yshift=-0.6cm]current page.west) {\textbf{Coupling} = vertex strength};
+		\draw<3->[pointer] (cc.east) -- ([xshift=-20pt]vWL);
+		% empty Weak-row cell: what the couplings do to a cross section
+		\node<4->[callout, text width=4cm, anchor=south west] (ca) at ([xshift=1.0cm, yshift=-0.15cm]vZ) {Each vertex: \(\times g\) in amplitude \(\Rightarrow\) \(\sigma \propto \alpha^n\), \(\alpha = g^2/4\pi\)};
+		\node<5->[callout, text width=4cm, anchor=north west] (cs) at ([xshift=1.0cm, yshift=-0.25cm]vZ) {More emissions / loops \(\to\) series in \(\alpha\): needs \(\alpha\) small\\QED \(\alpha \approx 1/137\) \checkmark{} --- QCD \(\alpha_s\)\,?};
+	\end{tikzpicture}
 \end{frame}
 \begin{frame}{Quantum chromodynamics}
 	\begin{columns}[c]
-		\begin{column}{0.48\textwidth}
+		\begin{column}{0.39\textwidth}
 			\begin{itemize}
 				\item Quarks, gluons: \emph{color} charge
 				\item<2-> \textbf{Asymptotic freedom:} \(\alpha_s \downarrow\) as \(Q \uparrow\) \(\Rightarrow\) pQCD
@@ -145,55 +239,79 @@
 				\item<4-> Hard-scattered partons \(\to\) collimated hadron sprays: \alert{jets}
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.59\textwidth}
 			\centering
 			\only<1>{%
-			\begin{tikzpicture}
-				\node[anchor=south west, inner sep=0] (sm) at (0,0) {\includegraphics[width=\linewidth]{SM.png}};
-				% unit square on the image; corners from pixel coordinates of the 1254 x 1200 image
-				\begin{scope}[x={(sm.south east)}, y={(sm.north west)}]
-					\draw[red, line width=2pt, rounded corners=4pt]
+				\begin{tikzpicture}
+					\node[anchor=south west, inner sep=0] (sm) at (0,0) {\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{SM.png}};
+					% unit square on the image; corners from pixel coordinates of the 1254 x 1200 image
+					\begin{scope}[x={(sm.south east)}, y={(sm.north west)}]
+						\draw[red, line width=2pt, rounded corners=4pt]
 						(0.0654,0.8017) -- (0.7967,0.8017) -- (0.7967,0.6067) -- (0.6093,0.6067) -- (0.6093,0.4167) -- (0.0654,0.4167) -- cycle;
-				\end{scope}
-			\end{tikzpicture}}%
-			\only<2->{%
-			\begin{tikzpicture}
-				\node[anchor=south west, inner sep=0] (as) at (0,0) {\includegraphics[width=\linewidth]{alphas-v-Q-2025-cropped.pdf}};
-				% unit square on the plot (986 x 585 px render)
-				\begin{scope}[x={(as.south east)}, y={(as.north west)}]
-					% asymptotic freedom: alpha_s small at high Q
-					\draw<2->[red, line width=1.5pt] (0.78,0.25) ellipse [x radius=0.17, y radius=0.085];
-					% confinement: alpha_s grows at low Q
-					\draw<3->[red, line width=1.5pt] (0.19,0.83) ellipse [x radius=0.075, y radius=0.17];
-				\end{scope}
-			\end{tikzpicture}%
+					\end{scope}
+				\end{tikzpicture}}%
+			\only<2-3>{%
+				\begin{tikzpicture}
+					\node[anchor=south west, inner sep=0] (as) at (0,0) {\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{alphas-v-Q-2025-cropped.pdf}};
+					% unit square on the plot (986 x 585 px render)
+					\begin{scope}[x={(as.south east)}, y={(as.north west)}]
+						% asymptotic freedom: alpha_s small at high Q
+						\draw<2->[red, line width=1.5pt] (0.78,0.25) ellipse [x radius=0.17, y radius=0.085];
+						% confinement: alpha_s grows at low Q
+						\draw<3->[red, line width=1.5pt] (0.19,0.83) ellipse [x radius=0.075, y radius=0.17];
+					\end{scope}
+				\end{tikzpicture}%
 				\refnote{PDG, Review of Particle Physics (2025)}}
+			\only<4>{%
+				\begin{tabular}{@{}>{\centering\arraybackslash}m{3mm}@{\hspace{2pt}}>{\centering\arraybackslash}m{0.85\linewidth}@{}}
+					\rotatebox{90}{\scriptsize\(qq \to qq\)} & \includegraphics[height=0.24\textheight]{partonShower/qq2qq_noHadr.pdf} \\
+					\rotatebox{90}{\scriptsize\(qg \to qg\)} & \includegraphics[height=0.24\textheight]{partonShower/qg2qg_noHadr.pdf} \\
+					\rotatebox{90}{\scriptsize\(gg \to gg\)} & \includegraphics[height=0.24\textheight]{partonShower/gg2gg_noHadr.pdf}
+				\end{tabular}}
 		\end{column}
 	\end{columns}
 
 \end{frame}
 
 \begin{frame}{From partons to hadrons}
-	\begin{columns}[c]
-		\begin{column}{0.42\textwidth}
-			\begin{itemize}
-				\item Hard scattering \(\to\) \textbf{parton shower}: soft, collinear emissions
-				\item<2-> \textbf{Angular ordering}: early splittings wide, late narrow
-				\item<3-> \textbf{Hadronization}: non-perturbative, modeled (string, cluster)
-				\item<4-> Generators: \PYsix, \PYeight, \HWseven
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.56\textwidth}
-			\centering
-			\only<1-2>{\includegraphics[height=0.72\textheight]{partonShower/qg2qg_noHadr.pdf}}%
-			\only<3->{\includegraphics[height=0.72\textheight]{partonShower/qg2qg_hadr.pdf}}
-		\end{column}
-	\end{columns}
+	\centering
+	\begin{tikzpicture}[
+		callout/.style={draw=PrimaryColor, fill=white, rounded corners=3pt, line width=0.8pt,
+				text width=3.5cm, align=left, inner sep=4pt, font=\scriptsize, execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+		pointer/.style={-{Stealth[length=2mm]}, PrimaryColor, line width=0.8pt}]
+		% one qg -> qg event: shower (clicks 1-2), then hadrons (click 3 on)
+		\node[inner sep=0, visible on=<1-2>] (sh) at (0,0) {\includegraphics[height=0.66\textheight]{partonShower/qg2qg_noHadr.pdf}};
+		\node[inner sep=0, visible on=<3->] (hd) at (0,0) {\includegraphics[height=0.66\textheight]{partonShower/qg2qg_hadr.pdf}};
+		\node[callout, anchor=east] (shw) at (-2.4,1.3) {Hard-scattered partons highly \textbf{virtual} \(\to\) radiate gluons, \(g \to q\bar{q}\): \textbf{parton shower} (ISR + FSR)};
+		\node[callout, anchor=west, visible on=<2->] (soft) at (2.4,-1.2) {Emissions mostly soft or collinear; shower stops at \(\sim 1\)~GeV};
+		\node[callout, anchor=west, visible on=<3->] (had) at (2.4,1.3) {\textbf{Hadronization}: non-perturbative, modeled (string, cluster)};
+		\node[callout, anchor=east, visible on=<4->] (gen) at (-2.4,-1.2) {Generators: \PYsix, \PYeight, \HWseven};
+		% unit square on the shower image
+		\begin{scope}[shift={(sh.south west)}, x={($(sh.south east)-(sh.south west)$)}, y={($(sh.north west)-(sh.south west)$)}]
+			\draw[pointer, visible on=<1-2>] (shw.east) -- (0.56,0.80);   % outgoing (scattered) quark
+			% ISR on the incoming gluon, FSR off the outgoing quark (label style of fig:partonShowerStages)
+			\node[font=\scriptsize\sffamily, inner sep=1pt, visible on=<1-2>] (isr) at (0.22,0.33) {ISR};
+			\draw[-{Stealth[length=1.6mm]}, thin, black!80, visible on=<1-2>] (isr) -- (0.42,0.47);
+			\node[font=\scriptsize\sffamily, inner sep=1pt, visible on=<1-2>] (fsr) at (0.82,0.78) {FSR};
+			\draw[-{Stealth[length=1.6mm]}, thin, black!80, visible on=<1-2>] (fsr) -- (0.62,0.72);
+			\draw[pointer, visible on=<2>] (soft.west) -- (0.50,0.08);    % soft end of the gluon shower
+		\end{scope}
+		% unit square on the hadron image
+		\begin{scope}[shift={(hd.south west)}, x={($(hd.south east)-(hd.south west)$)}, y={($(hd.north west)-(hd.south west)$)}]
+			\draw[pointer, visible on=<3->] (had.west) -- (0.45,0.86);     % hadrons along the quark jet
+			\draw[pointer, visible on=<3->] (had.south west) -- (0.43,0.30); % color string
+		\end{scope}
+	\end{tikzpicture}
+	\vfill
+	\onslide<4->{%
+		\begin{beamercolorbox}[wd=0.85\linewidth, sep=5pt, rounded=true, center]{block body}
+			\small\textbf{Jet} = collimated hadron spray that traces its parton's shower
+		\end{beamercolorbox}}
 \end{frame}
 
 \begin{frame}{Finding jets}
 	\begin{columns}[c]
-		\begin{column}{0.55\textwidth}
+		\begin{column}{0.39\textwidth}
 			\begin{itemize}
 				\item Jet = algorithm; same on partons, hadrons, detector
 				\item<2-> \textbf{anti-\(k_\mathrm{T}\)}: hardest first \(\Rightarrow\) cone-like, radius \(R\)
@@ -201,9 +319,9 @@
 				\item<4-> Here: \(R = 0.4\), FastJet
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.4\textwidth}
+		\begin{column}{0.59\textwidth}
 			\centering
-			\includegraphics[width=\linewidth]{jet_areas.pdf}
+			\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{jet_areas.pdf}
 		\end{column}
 	\end{columns}
 	\refnote{Cacciari, Salam, Soyez, JHEP 04 (2008) 063}
@@ -211,23 +329,44 @@
 
 \begin{frame}{Heavy-ion collisions and the quark-gluon plasma}
 	\begin{columns}[c]
-		\begin{column}{0.48\textwidth}
+		\begin{column}{0.39\textwidth}
 			\begin{itemize}
 				\item Hot, dense matter \(\to\) \textbf{QGP}; universe \(\mu\)s after Big Bang
 				\item<2-> Heavy-ion collisions: pre-equilibrium \(\to\) QGP \(\to\) hadrons \(\to\) freeze-out
 				\item<3-> Too short-lived \(\Rightarrow\) self-generated probes
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.59\textwidth}
 			\centering
-			\includegraphics[width=\linewidth]{LightCone1_color-crop}
+			\only<1>{\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{qcd_phase_diagram.jpg}}%
+			\only<2->{\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{LightCone1_color-crop}}
 		\end{column}
 	\end{columns}
 \end{frame}
 
+\begin{frame}{Centrality}
+	\begin{columns}[c]
+		\begin{column}{0.39\textwidth}
+			\small
+			\begin{itemize}
+				\item Impact parameter \(b\): not measurable
+				\item<2-> Proxy: charged multiplicity \(N_\mathrm{ch}\) \(\Rightarrow\) \textbf{centrality} classes
+				\item<3-> Glauber MC: \(b \to N_\mathrm{part}, N_\mathrm{coll}\) + 2-component model:
+				      {\footnotesize\[\frac{dN_\mathrm{ch}}{d\eta} = n_{pp}\Big[x N_\mathrm{coll} + (1-x)\tfrac{N_\mathrm{part}}{2}\Big]\]}
+				\item<4-> 0--5\% = top 5\% of \(N_\mathrm{ch}\); \(\langle N_\mathrm{part} \rangle\), \(\langle N_\mathrm{coll} \rangle\) per class
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.59\textwidth}
+			\centering
+			\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{centrality_refmult.jpg}
+		\end{column}
+	\end{columns}
+	\refnote{Miller et al., Ann.\ Rev.\ Nucl.\ Part.\ Sci.\ 57 (2007) 205}
+\end{frame}
+
 \begin{frame}{Collective flow}
 	\begin{columns}[c]
-		\begin{column}{0.42\textwidth}
+		\begin{column}{0.39\textwidth}
 			\begin{itemize}
 				\item Non-central: almond-shaped overlap
 				\item<2-> Pressure gradients \(\to\) momentum anisotropy \(v_2\) w.r.t.\ \textbf{event plane}
@@ -235,31 +374,114 @@
 				\item<4-> In- vs out-of-plane jets: \alert{different path lengths}
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.56\textwidth}
+		\begin{column}{0.59\textwidth}
 			\centering
-			\includegraphics[width=0.48\linewidth]{flow_elliptic_init_v4.pdf}
-			\includegraphics[width=0.48\linewidth]{flow_elliptic_expd_xyz_v2.pdf}\\[2mm]
-			\onslide<3->{\includegraphics[width=0.6\linewidth]{Gen1_IdentifiedParticle_v2.png}}
+			\begin{tikzpicture}
+				\node[anchor=south west, inner sep=0] (ini) at (0,0) {\includegraphics[width=0.48\linewidth]{flow_elliptic_init_v4.pdf}};
+				% the grid is the x-z plane: beam (z) and impact parameter (x)
+				\begin{scope}[x={(ini.south east)}, y={(ini.north west)}]
+					\node[font=\scriptsize, anchor=north, text=PrimaryColor] (rp) at (0.62,-0.02) {reaction plane \(\Psi_\mathrm{RP}\)};
+					\draw[-{Stealth[length=1.6mm]}, PrimaryColor, thin] (rp.north) -- (0.58,0.19);
+				\end{scope}
+			\end{tikzpicture}\hfill
+			\includegraphics[width=0.48\linewidth]{flow_elliptic_expd_xyz_v2.pdf}\\[1mm]
+			\begin{overlayarea}{\linewidth}{0.4\textheight}
+				\centering
+				% click 2: Psi_RP is not measured; the 2nd-order event plane approximates it (App. EP reconstruction)
+				\only<2>{%
+					\begin{tikzpicture}[scale=1.0, >={Stealth[length=1.6mm]}]
+						\draw[dashed, gray] (-1.6,0) -- (1.6,0) node[below right, font=\scriptsize, text=black!70, inner sep=1pt] {\(\Psi_\mathrm{RP}\)};
+						% particles: more and harder along the reaction plane (elliptic flow)
+						\foreach \p in {0,22,45,67,90,112,135,157,180,202,225,247,270,292,315,337} {
+								\pgfmathsetmacro{\r}{0.7+0.55*cos(2*\p)}
+								\draw[->, thin, black!70] (0,0) -- (\p+8:\r);
+							}
+						\draw[thick, PrimaryColor] (200:1.6) -- (20:1.6) node[above right, font=\scriptsize, text=PrimaryColor, inner sep=1pt] {\(\Psi_{2,\mathrm{EP}}\)};
+						\draw[PrimaryColor] (0:1.45) arc[start angle=0, end angle=20, radius=1.45];
+					\end{tikzpicture}\hspace{1mm}%
+					\parbox[c]{0.5\linewidth}{\raggedright\footnotesize
+						\(\Psi_\mathrm{RP}\) not measurable \(\to\) event plane from tracks:\\[1mm]
+						\(\Psi_{2,\mathrm{EP}} = \tfrac{1}{2}\arctan(Q_{y,2}/Q_{x,2})\)\\[1mm]
+						\(\mathbf{Q}_2 = \sum_\mathrm{tracks} p_\mathrm{T} (\cos 2\phi, \sin 2\phi)\)\\[1mm]
+						\(R_2 = \langle \cos 2(\Psi_{2,\mathrm{EP}} - \Psi_\mathrm{RP}) \rangle\)}}%
+				\only<3->{\includegraphics[width=0.6\linewidth]{Gen1_IdentifiedParticle_v2.png}}
+			\end{overlayarea}
 		\end{column}
 	\end{columns}
 \end{frame}
 
 \begin{frame}{Jet quenching}
 	\begin{columns}[c]
-		\begin{column}{0.36\textwidth}
+		\begin{column}{0.39\textwidth}
+			% fixed, top-aligned box so the first bullet never moves between clicks
+			\parbox[c][0.83\textheight][t]{\linewidth}{%
 			\begin{itemize}
 				\item Partons lose energy in QGP
-				\item<2-> Away-side peak vanishes in central Au+Au
-				\item<3-> Hadrons, jets suppressed: \(R_\mathrm{AA}, R_\mathrm{CP} < 1\)
 			\end{itemize}
-		\end{column}
-		\begin{column}{0.62\textwidth}
+			% di-hadron correlation cartoon (click 3), transverse plane
+			\only<3>{%
 			\centering
-			\only<1-2>{\includegraphics[width=0.85\linewidth]{Gen0_AngularCorrelation_JetQuenching.png}}%
-			\only<3>{\includegraphics[width=0.95\linewidth]{Gen1_ChargedParticleAndJets_RCP.png}}
+			\begin{tikzpicture}[scale=1.1,
+				trig/.style={-{Stealth[length=2.5mm]}, line width=1.6pt, PrimaryColor},
+				assoc/.style={-{Stealth[length=1.8mm]}, thick, black!70},
+				lbl/.style={font=\scriptsize, align=center, inner sep=1pt}]
+				% QGP in the transverse plane; hard scattering near its surface
+				\shade[inner color=orange!70, outer color=orange!15] (0,0) ellipse [x radius=1.25, y radius=1.6];
+				\node[lbl, text=orange!40!black, font=\scriptsize\bfseries] at (-0.1,1.2) {QGP};
+				\coordinate (hs) at (0.85,0.25);
+				% trigger: short path, escapes with its near-side partners
+				\draw[trig] (hs) -- (2.3,0.65) node[lbl, right, text=PrimaryColor] {trigger:\\[-1pt]short path};
+				% associated hadrons at the angles of the earlier cartoon, relative to the trigger (15.5 deg):
+				% near side -15, +15, +50 deg; away side +170, +185, +205 deg
+				\foreach \a/\l in {0.5/1.3, 30.5/1.15, 65.5/1.25} \draw[assoc] (hs) -- ++(\a:\l);
+				\foreach \a/\l in {185.5/1.3, 200.5/1.5, 220.5/1.1} \draw[assoc, black!40] (hs) -- ++(\a:\l);
+				\draw[thin] ($(hs)+(15.5:0.6)$) arc[start angle=15.5, end angle=65.5, radius=0.6];
+				\node[lbl] at ($(hs)+(40:0.85)$) {\(\Delta\phi\)};
+				% away side: long path through the QGP, absorbed
+				\draw[line width=1.6pt, PrimaryColor!70, densely dashed] (hs) -- (-0.85,-0.15);
+				\draw[line width=1.6pt, PrimaryColor!25, densely dotted, -{Stealth[length=2mm]}] (-0.85,-0.15) -- (-1.15,-0.22);
+				\node[lbl, text=red!60!black, font=\large] at (-0.9,-0.16) {\(\times\)};
+				\node[lbl, anchor=north] at (-0.75,-0.35) {away side:\\[-1pt]long path,\\[-1pt]absorbed};
+				\fill (hs) circle (1.6pt);
+			\end{tikzpicture}\\[1mm]
+			{\small \(\Delta\phi = \phi_\mathrm{assoc} - \phi_\mathrm{trig}\): \(\displaystyle \frac{1}{N_\mathrm{trig}} \frac{dN_\mathrm{pair}}{d\Delta\phi}\)}}%
+			% R_AA / R_CP definitions take this space on clicks 4-5
+			\only<4->{%
+				\begin{itemize}
+					\item Heavy-ion vs scaled \(p+p\):
+					      \[R_\mathrm{AA} = \frac{dN_\mathrm{AA}/dp_\mathrm{T}}{\langle T_\mathrm{AA} \rangle\, d\sigma_{pp}/dp_\mathrm{T}}\]
+					\item<5-> Central vs scaled peripheral:
+					      \[R_\mathrm{CP} = \frac{dN/dp_\mathrm{T} \,/\, \langle N_\mathrm{coll} \rangle \big|_\mathrm{cent}}{dN/dp_\mathrm{T} \,/\, \langle N_\mathrm{coll} \rangle \big|_\mathrm{peri}}\]
+				\end{itemize}}%
+			}
+		\end{column}
+		\begin{column}{0.59\textwidth}
+			\centering
+			% figure and its takeaway centred together in a fixed-height box
+			\parbox[c][0.83\textheight][c]{\linewidth}{\centering
+				\only<1-2>{%
+					\resizebox{!}{0.62\textheight}{%
+						\begin{tikzpicture}
+							\useasboundingbox (-4.3,-2.6) rectangle (2.2,3.6); % same frame for both steps
+							\only<1>{%
+								\drawDiJetInVacuum
+								\draw[fill=violet!20, rounded corners, opacity=0.2] (-2.0, 3.5) rectangle (0.6, -2.5) node at (-1.0, 3.) {Medium};
+							}%
+							\only<2>{\drawDiJetInMedium}%
+						\end{tikzpicture}}}%
+				\only<3>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{Gen0_AngularCorrelation_JetQuenching.png}}%
+				\only<4>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{Gen0_SingleParticle_RAA.png}}%
+				\only<5>{\includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{Gen1_ChargedParticleAndJets_RCP.png}}
+				\par\vspace{1mm}
+				\only<1-3>{\visible<3>{\begin{beamercolorbox}[wd=\linewidth, sep=4pt, rounded=true, center]{block body}\small Away-side peak vanishes in central Au+Au: recoiling parton quenched\end{beamercolorbox}}}%
+			\only<4>{\begin{beamercolorbox}[wd=\linewidth, sep=4pt, rounded=true, center]{block body}\small All hadrons suppressed, \(R_\mathrm{AA} \approx 0.2\)--\(0.6\); direct \(\gamma\) unmodified\end{beamercolorbox}}%
+			\only<5>{\begin{beamercolorbox}[wd=\linewidth, sep=4pt, rounded=true, center]{block body}\small Charged jets \(\sim\)60\% suppressed, no \(p_\mathrm{T}\) dependence; same at RHIC and LHC\end{beamercolorbox}}
+			}
 		\end{column}
 	\end{columns}
-	\refnote{STAR, PRL 91 (2003) 072304; STAR, PRC 102 (2020) 054913}
+	\only<3>{\refnote{STAR, PRL 91 (2003) 072304}}%
+	\only<4>{\refnote{PHENIX, from Tannenbaum, J.\ Phys.\ Conf.\ Ser.\ 589 (2015) 012019}}%
+	\only<5>{\refnote{STAR, PRC 102 (2020) 054913}}
 \end{frame}
 
 \begin{frame}{Why look inside jets?}
@@ -271,12 +493,12 @@
 	\end{itemize}
 	\vspace{3mm}
 	\onslide<5->{
-	\begin{block}{This thesis}
-		\begin{itemize}
-			\item Path length: jet-hadron vs event plane (Au+Au)
-			\item Energy vs angle: angularities (Au+Au, \(p+p\))
-		\end{itemize}
-	\end{block}}
+		\begin{block}{This thesis}
+			\begin{itemize}
+				\item Path length: jet-hadron vs event plane (Au+Au)
+				\item Energy vs angle: angularities (Au+Au, \(p+p\))
+			\end{itemize}
+		\end{block}}
 	\refnote{Cao, Wang, Rept.\ Prog.\ Phys.\ 84 (2021) 024301; Casalderrey-Solana et al., PLB 725 (2013) 357; Brewer, Milhano, Thaler, PRL 122 (2019) 222301}
 \end{frame}
 
@@ -285,14 +507,14 @@
 
 \begin{frame}{The Relativistic Heavy Ion Collider}
 	\begin{columns}[c]
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.59\textwidth}
 			\centering
 			\includegraphics[width=\linewidth]{rhic-aerial-hr.jpg}
 		\end{column}
-		\begin{column}{0.48\textwidth}
+		\begin{column}{0.39\textwidth}
 			\begin{itemize}
-				\item BNL, 2000--2026: dedicated heavy-ion + polarized \(p\) collider
-				\item 49 species pairs, \(\sim\)300 trillion collisions, \(\sim\)450 PB
+				\item Operated 2000--2026: dedicated heavy-ion + polarized \(p\) collider
+				\item \(\sim\)300 trillion collisions, \(\sim\)450 PB
 				\item Last beam: O+O, 6 Feb 2026
 				\item Here: Au+Au 2014, \(p+p\) 2012, 200~GeV
 			\end{itemize}
@@ -301,43 +523,129 @@
 \end{frame}
 
 \begin{frame}{The STAR detector}
-	\begin{columns}[c]
-		\begin{column}{0.5\textwidth}
-			\centering
-			\includegraphics[width=\linewidth]{STAR.png}
-		\end{column}
-		\begin{column}{0.48\textwidth}
-			\begin{itemize}
-				\item \textbf{TPC}: tracks, \(|\eta| < 1\), full \(\phi\)
-				\item \textbf{BEMC}: neutral energy; high-tower (HT) trigger
-				\item \textbf{VPD, BBC, ZDC}: MB trigger, vertex, luminosity
-				\item Jets = tracks + towers
-			\end{itemize}
-		\end{column}
-	\end{columns}
+	\centering
+	\begin{tikzpicture}[
+		blurb/.style={draw=PrimaryColor, fill=white, rounded corners=3pt, line width=0.8pt,
+				text width=2.8cm, align=left, inner sep=4pt, font=\scriptsize, execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
+		pointer/.style={-{Stealth[length=2mm]}, PrimaryColor, line width=0.8pt}]
+		\node[anchor=south west, inner sep=0] (star) at (0,0) {\includegraphics[height=0.58\textheight]{STAR.png}};
+		% unit square on the image (1200 x 675 px); arrow targets as in fig:STARDetector
+		\begin{scope}[x={(star.south east)}, y={(star.north west)}]
+			\node[blurb, anchor=north] (tpc) at (-0.09,-0.04) {\textbf{TPC}: tracks + d\(E\)/d\(x\); \(|\eta| < 1\), full \(\phi\); 0.2--30~GeV/\(c\)};
+			\node[blurb, anchor=north] (bemc) at (0.30,-0.04) {\textbf{BEMC}: \(0.05 \times 0.05\) towers; neutral energy; HT trigger};
+			\node[blurb, anchor=north] (bbc) at (0.69,-0.04) {\textbf{BBC} (3.7~m): \(3.4 < |\eta| < 5\); \(p+p\) MB trigger, rel.\ luminosity};
+			\node[blurb, anchor=north] (fwd) at (1.08,-0.04) {\textbf{VPD} (5.7~m): \(v_z\), start time\\\textbf{ZDC} (18~m): neutrons; MB, luminosity};
+			\draw[pointer] (tpc.north) -- (0.43,0.70);
+			\draw[pointer] (bemc.north) -- (0.54,0.32);
+			\draw[pointer] (bbc.north) -- (0.665,0.52);
+			\draw[pointer, dashed] (fwd.north) -- (0.77,0.555) node[pos=0.55, sloped, above, font=\tiny, text=PrimaryColor] {further along beam};
+			\node[anchor=west, font=\scriptsize, text=gray] (mag) at (0.80,0.95) {Solenoid: 0.5~T};
+			\draw[-{Stealth[length=1.6mm]}, gray, line width=0.6pt] (mag.west) -- (0.55,0.845);
+		\end{scope}
+	\end{tikzpicture}\\[1mm]
+	{\small \textbf{Jets} = TPC tracks + BEMC towers}
 \end{frame}
 
 %======================================================================
 \section{Jet-hadron correlations relative to the event plane}
 
-\begin{frame}{Jet-hadron correlations relative to the event plane}
-	\begin{columns}[T]
-		\begin{column}{0.5\textwidth}
+\begin{frame}{Jet-hadron correlations: what we measure}
+	\begin{columns}[c]
+		\begin{column}{0.39\textwidth}
 			\small
 			\begin{itemize}
-				\item 20--50\% Au+Au, HT; hard-core jets (cons.\ \(> 2\)~GeV/\(c\)), 15--20, 20--40~GeV/\(c\)
-				\item<2-> Hadrons around jets: \textbf{in / mid / out-of-plane}
-				\item<3-> Flow background: \textbf{reaction plane fit} (RPF), all orientations at once
-				\item<4-> EP resolution \(R_2 = 0.56\) \(\Rightarrow\) true in/out difference halved
+				\item Energy loss vs \textbf{path length}?
+				\item<2-> Jet angle to event plane \(\Psi_2\): \textbf{in / mid / out-of-plane}
+				\item<3-> Hadrons around jet vs \(\Delta\phi, \Delta\eta\): \textbf{yields}, \textbf{widths}
+				\item<4-> 20--50\% Au+Au 200~GeV, HT; hard-core jets (cons.\ \(> 2\)~GeV/\(c\)), 15--20, 20--40~GeV/\(c\)
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.48\textwidth}
+		\begin{column}{0.59\textwidth}
 			\centering
-			\includegraphics[width=\linewidth]{JHC/dPhiCorrelationsJ20-40_C20-50_2.0-3.0.pdf}\\[1mm]
-			\onslide<3->{\includegraphics[width=0.8\linewidth]{JHC/JHCorrBGsub_A2.0-3.0_T15-20_C20-50.pdf}}
+			\begin{tikzpicture}[scale=0.95, >={Stealth[length=2.2mm]}]
+				\def\R{2.6}
+				% event-plane bins, Eq. Eq:EPbins, mirrored into all four quadrants
+				\begin{scope}[visible on=<2->]
+					\foreach \c in {0,180} {
+							\fill[red!25]  (0,0) -- (\c-30:\R) arc[start angle=\c-30, end angle=\c+30, radius=\R] -- cycle;
+							\fill[gray!12] (0,0) -- (\c+30:\R) arc[start angle=\c+30, end angle=\c+60, radius=\R] -- cycle;
+							\fill[gray!12] (0,0) -- (\c-60:\R) arc[start angle=\c-60, end angle=\c-30, radius=\R] -- cycle;
+							\fill[blue!20] (0,0) -- (\c+60:\R) arc[start angle=\c+60, end angle=\c+120, radius=\R] -- cycle;
+						}
+					\node[font=\scriptsize\bfseries, text=red!70!black]  at (-15:2.25) {in};
+					\node[font=\scriptsize\bfseries, text=black!70]      at (-45:2.25) {mid};
+					\node[font=\scriptsize\bfseries, text=blue!70!black] at (-75:2.25) {out};
+				\end{scope}
+				% overlap region and event plane
+				\fill[orange!60, opacity=0.85] (0,0) ellipse [x radius=0.85, y radius=1.45];
+				\node[font=\tiny] at (0,-1.1) {QGP};
+				\draw[dashed, thick] (\R+0.2,0) -- (-\R-0.2,0) node[left, font=\scriptsize] {\(\Psi_2\)};
+				% trigger jet, recoil and associated hadrons
+				\begin{scope}[visible on=<3->]
+					\draw[->, line width=1.6pt, PrimaryColor] (0.15,0.05) -- (20:\R) node[above, font=\scriptsize, text=PrimaryColor, inner sep=2pt, align=center] {trigger jet\\near side, \(\Delta\phi \approx 0\)};
+					\draw[->, line width=1.6pt, PrimaryColor!60] (-0.15,-0.05) -- (200:\R) node[below, font=\scriptsize, text=PrimaryColor!60, inner sep=2pt, align=center] {recoil\\away side, \(\Delta\phi \approx \pi\)};
+					\foreach \a/\l in {14/1.5, 27/1.8, 190/1.6, 212/1.8} \draw[->, thin] (0,0) -- (\a:\l);
+					\draw[->, thin] (0,0) -- (55:1.75);
+					\draw[thick] (20:1.15) arc[start angle=20, end angle=55, radius=1.15] node[midway, above right, font=\scriptsize, inner sep=1pt] {\(\Delta\phi\)};
+					\draw[PrimaryColor] (0:2.0) arc[start angle=0, end angle=20, radius=2.0];
+					\node[font=\scriptsize, anchor=west, text=PrimaryColor, inner sep=1pt] at (7:2.02) {\(\phi_\mathrm{jet} - \Psi_2\)};
+				\end{scope}
+			\end{tikzpicture}
 		\end{column}
 	\end{columns}
 	\refnote{STAR, PRC 109 (2024) 044909}
+\end{frame}
+
+\begin{frame}{Jet-hadron correlation functions}
+	\centering
+	\begin{overlayarea}{\linewidth}{0.5\textheight}
+		\centering
+		\only<1>{%
+			\begin{tabular}{@{}c@{\hspace{2pt}}c@{\hspace{2pt}}c@{}}
+				{\scriptsize same event}                                                                      & {\scriptsize mixed event} & {\scriptsize same / mixed} \\
+				\includegraphics[width=0.325\linewidth]{JHC/J15-20_C20-50_raw2D_sig_in_Ass1.0-1.5_Zcut24.pdf} &
+				\includegraphics[width=0.325\linewidth]{JHC/J15-20_C20-50_raw2D_mix_in_Ass1.0-1.5_Zcut24.pdf} &
+				\includegraphics[width=0.325\linewidth]{JHC/J15-20_C20-50_raw2D_ratio_in_Ass1.0-1.5_Zcut24.pdf}
+			\end{tabular}}%
+		\only<2->{%
+			\begin{tikzpicture}
+				\node[anchor=south west, inner sep=0] (dphi) at (0,0) {\includegraphics[width=\linewidth,height=0.48\textheight,keepaspectratio]{JHC/dPhiCorrelationsJ15-20_C20-50_1.0-1.5.pdf}};
+				% unit square on the image (1186 x 375 px render): panel frames at x = 81/355/627/899/1179 px,
+				% plot area y = 5..317 px; each panel spans -pi/2 < dphi < 3pi/2.
+				% Per panel: x of dphi = 0 and image widths per radian
+				\begin{scope}[x={(dphi.south east)}, y={(dphi.north west)}]
+					\foreach \xz/\k in {0.12614/0.036838, 0.35700/0.036433, 0.58600/0.036501, 0.81703/0.037572} {
+							\fill[blue!40, opacity=0.3, visible on=<3->]   ({\xz-1.0472*\k},0.155) rectangle ({\xz+1.0472*\k},0.985);  % near side |dphi| < pi/3
+							\fill[orange!60, opacity=0.3, visible on=<3->] ({\xz+2.0944*\k},0.155) rectangle ({\xz+4.1888*\k},0.985);  % away side |dphi - pi| < pi/3
+						}
+				\end{scope}
+			\end{tikzpicture}}
+	\end{overlayarea}
+	\vfill
+	\begin{overlayarea}{\linewidth}{0.26\textheight}
+		\only<1-2>{%
+			\begin{columns}[T]
+				\begin{column}{0.49\textwidth}
+					\small
+					\begin{itemize}
+						\item Hadrons around jets in \(\Delta\phi\), \(\Delta\eta\), per trigger jet
+						\item Same / mixed event: pair acceptance (trapezoid in \(\Delta\eta\)), \(\varepsilon\) corrected
+					\end{itemize}
+				\end{column}
+				\begin{column}{0.49\textwidth}
+					\small
+					\begin{itemize}
+						\item<2-> Project onto \(\Delta\phi\): in / mid / out-of-plane jets
+						\item<2-> Near side \(\Delta\phi \approx 0\), away side \(\Delta\phi \approx \pi\), on flow background
+					\end{itemize}
+				\end{column}
+			\end{columns}}%
+		\only<3>{%
+		\centering
+		\(\displaystyle Y = \frac{1}{N_\mathrm{trig}} \int_{-0.6}^{0.6} d\Delta\eta \int_{a}^{b} d\Delta\phi\, \frac{d^2N_\mathrm{assoc,jet}}{d\Delta\phi\, d\Delta\eta}\)\\[2mm]
+		\small{\color{blue!70!black}\textbf{near side}: \([a,b] = [-\pi/3, \pi/3]\)} \qquad {\color{orange!80!black}\textbf{away side}: \([a,b] = [2\pi/3, 4\pi/3]\)}}
+	\end{overlayarea}
+	\refnote{STAR, PRC 109 (2024) 044909. In-plane 15--20~GeV/\(c\) jets, 1.0--1.5~GeV/\(c\) hadrons, 20--50\%}
 \end{frame}
 
 \begin{frame}{Results: yields and their ratios}
@@ -373,12 +681,73 @@
 		\lambda^\kappa_\beta = \sum_{\mathrm{cons} \in \mathrm{jet}} z_\mathrm{cons}^\kappa \left(\frac{\Delta R_\mathrm{cons, jet}}{R}\right)^\beta ,
 		\qquad z_\mathrm{cons} = \frac{p_\mathrm{T, cons}}{p_\mathrm{T, jet}}
 	\]
-	\begin{itemize}
-		\item<2-> \(\kappa\): hard constituents; \(\beta\): wide angles
-		\item<3-> \(\kappa = 1\), IRC safe: \(\lambda^1_{0.5}\) (LHA), \(\lambda^1_1\) (girth), \(\lambda^1_2\) (thrust \(\approx m^2/p_\mathrm{T}^2\))
-		\item<4-> Au+Au: \(g = \lambda^1_1\), \(p_\mathrm{T}^D = \sqrt{\lambda^2_0}\), LeSub \(= p_\mathrm{T}^\mathrm{lead} - p_\mathrm{T}^\mathrm{sublead}\); hard-core jets, 0--20\% vs 40--80\%
-		\item<5-> \textbf{MultiFold}: \alert{first unbinned ML unfolding in heavy ions}
-	\end{itemize}
+	\begin{columns}[T]
+		\begin{column}{0.56\textwidth}
+			\begin{itemize}
+				\item<2-> \(\kappa\): hard constituents; \(\beta\): wide angles
+				\item<3-> \(\kappa = 1\), IRC safe: \(\lambda^1_{0.5}\) (LHA), \(\lambda^1_1\) (girth), \(\lambda^1_2\) (thrust \(\approx m^2/p_\mathrm{T}^2\))
+				\item<4-> Au+Au: \(g = \lambda^1_1\), \(p_\mathrm{T}^D = \sqrt{\lambda^2_0}\), LeSub \(= p_\mathrm{T}^\mathrm{lead} - p_\mathrm{T}^\mathrm{sublead}\); hard-core jets, 0--20\% vs 40--80\%
+				\item<5-> \textbf{MultiFold}: \alert{first unbinned ML unfolding in heavy ions}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.42\textwidth}
+			\centering
+			\onslide<2->{%
+				% same toy jet in the eta-phi plane (circle = jet radius R), marker area ~ constituent weight
+				\begin{tikzpicture}[scale=0.95]
+					\useasboundingbox (-1.1,-3.95) rectangle (3.5,1.05); % same frame for both stages
+					% clicks 2-3: IRC-safe angularities, area ~ z (dR/R)^beta, normalised per panel
+					\only<2-3>{%
+						\begin{scope}[shift={(0,0)}]
+							\draw[thin, gray] (0,0) circle (1);
+							\draw[densely dotted, gray] (0,0) -- (1,0);
+							\fill[PrimaryColor] (0,0) circle (0.8pt);
+							\foreach \r/\a/\s in {0.060/35/0.300, 0.180/215/0.272, 0.320/115/0.244, 0.480/300/0.220, 0.660/65/0.223, 0.820/165/0.218, 0.940/250/0.206} \fill[blue!60!black, opacity=0.75] (\a:\r) circle (\s);
+							\node[font=\scriptsize, anchor=north] at (0,-1.02) {\(\lambda^1_{0.5}\) LHA};
+						\end{scope}
+						\begin{scope}[shift={(2.4,0)}]
+							\draw[thin, gray] (0,0) circle (1);
+							\draw[densely dotted, gray] (0,0) -- (1,0);
+							\fill[PrimaryColor] (0,0) circle (0.8pt);
+							\foreach \r/\a/\s in {0.060/35/0.215, 0.180/215/0.257, 0.320/115/0.265, 0.480/300/0.265, 0.660/65/0.291, 0.820/165/0.300, 0.940/250/0.293} \fill[blue!60!black, opacity=0.75] (\a:\r) circle (\s);
+							\node[font=\scriptsize, anchor=north] at (0,-1.02) {\(\lambda^1_1\) girth};
+						\end{scope}
+						\begin{scope}[shift={(1.2,-2.6)}]
+							\draw[thin, gray] (0,0) circle (1);
+							\draw[densely dotted, gray] (0,0) -- (1,0);
+							\fill[PrimaryColor] (0,0) circle (0.8pt);
+							\foreach \r/\a/\s in {0.060/35/0.055, 0.180/215/0.115, 0.320/115/0.158, 0.480/300/0.194, 0.660/65/0.249, 0.820/165/0.287, 0.940/250/0.300} \fill[blue!60!black, opacity=0.75] (\a:\r) circle (\s);
+							\node[font=\scriptsize, anchor=north] at (0,-1.02) {\(\lambda^1_2\) thrust};
+						\end{scope}
+					}%
+					% click 4 on: p_T^D = sqrt(lambda^2_0), area ~ z^2 on a common scale
+					\only<4->{%
+					\begin{scope}[shift={(0,0)}]
+						\draw[thin, gray] (0,0) circle (1);
+						\draw[densely dotted, gray] (0,0) -- (1,0);
+						\fill[PrimaryColor] (0,0) circle (0.8pt);
+						\foreach \r/\a/\s in {0.090/20/0.050, 0.220/140/0.046, 0.300/260/0.042, 0.410/75/0.042, 0.500/200/0.038, 0.580/320/0.038, 0.670/110/0.034, 0.740/30/0.034, 0.830/240/0.029, 0.900/170/0.029, 0.950/300/0.038} \fill[blue!60!black, opacity=0.75] (\a:\r) circle (\s);
+						\node[font=\scriptsize, anchor=north] at (0,-1.02) {low \(p_\mathrm{T}^D = 0.31\)};
+					\end{scope}
+					\begin{scope}[shift={(2.4,0)}]
+						\draw[thin, gray] (0,0) circle (1);
+						\draw[densely dotted, gray] (0,0) -- (1,0);
+						\fill[PrimaryColor] (0,0) circle (0.8pt);
+						\foreach \r/\a/\s in {0.050/40/0.294, 0.350/200/0.042, 0.550/110/0.034, 0.750/290/0.025, 0.900/170/0.025} \fill[blue!60!black, opacity=0.75] (\a:\r) circle (\s);
+						\node[font=\scriptsize, anchor=north] at (0,-1.02) {high \(p_\mathrm{T}^D = 0.72\)};
+					\end{scope}
+					% LeSub: leading minus subleading constituent, in a cone jet (\jetcone from TikzDiagrams.tex)
+					\coordinate (lsA) at (-0.8,-2.75);
+					\coordinate (lsB) at (3.1,-2.75);
+					\jetcone{lsA}{lsB}{0.7}{0.16}
+					\draw[-{Stealth[length=2.2mm]}, line width=1.6pt, red!80!black] (lsA) -- (2.3,-2.5) node[pos=0.55, above, sloped, font=\scriptsize, text=red!80!black, inner sep=1pt] {\(p_\mathrm{T}^\mathrm{lead}\)};
+					\draw[-{Stealth[length=1.8mm]}, line width=1.1pt, orange!90!black] (lsA) -- (1.6,-3.05) node[pos=0.6, below, sloped, font=\scriptsize, text=orange!80!black, inner sep=1pt] {\(p_\mathrm{T}^\mathrm{sublead}\)};
+					\foreach \e in {(1.0,-2.55),(0.9,-2.95),(1.2,-2.8)} \draw[-{Stealth[length=1.2mm]}, thin, white] (lsA) -- \e;
+					\node[font=\scriptsize, anchor=north] at (1.2,-3.5) {LeSub \(= p_\mathrm{T}^\mathrm{lead} - p_\mathrm{T}^\mathrm{sublead}\)};
+					}%
+				\end{tikzpicture}}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}{Au+Au angularities: results}
@@ -406,68 +775,68 @@
 	\end{enumerate}
 	\vspace{4mm}
 	\onslide<4->{
-	Measured: \lam{\beta}, \(\beta = 0.5, 1, 2\), inclusive + groomed; \(\langle\lambda_\beta\rangle\) vs \Rg}
+		Measured: \lam{\beta}, \(\beta = 0.5, 1, 2\), inclusive + groomed; \(\langle\lambda_\beta\rangle\) vs \Rg}
 	\refnote{T.~Pani (STAR), HP 2026 (STAR Preliminary)}
 \end{frame}
 
 \begin{frame}{SoftDrop grooming}
 	\begin{columns}[c]
-		\begin{column}{0.55\textwidth}
+		\begin{column}{0.59\textwidth}
 			\centering
 			\resizebox{\linewidth}{!}{%
-			\begin{tikzpicture}[font=\Large, >={Stealth[length=2mm]}, baseline]
-				\coordinate (O)  at (0,0);
-				\coordinate (A)  at (0.80,4.55);
-				\coordinate (D)  at (0.59,3.50);
-				\coordinate (N)  at (0.5,2.8);
-				\coordinate (S1) at (0.6, 1.9);
-				\coordinate (S2) at (0.7,1.);
-				\coordinate (Fc) at (-0.3,-0.2);
-				\coordinate (F1) at (0.0,0.2);
-				\coordinate (F2) at (0.5,-0.2);
-				\coordinate (F3) at (0.9,0.1);
-				\coordinate (FL) at (-1.86,0.16);
-				\coordinate (FR) at (2.24,-0.1);
-				\draw[sdlight, line width=0.8pt] (A) -- (D);
-				\draw[sdlight, line width=0.8pt] (D) -- (FL);
-				\draw[sdlight, line width=0.8pt] (A) -- (FR);
-				\draw[sdnavy, line width=1.1pt] (O) ellipse [x radius=3, y radius=1.0];
-				\draw[{Stealth[length=2mm]}-{Stealth[length=2mm]}, sdnavy, line width=0.9pt] (-2.95, -0.02) -- (0.1, -0.02);
-				\node[sdnavy, below] at (-1.45,0.1) {$R$};
-				\fill[sdlight] (FL) ellipse [x radius=0.20, y radius=0.065];
-				\fill[sdnavy]  (Fc) ellipse [x radius=0.24, y radius=0.075];
-				\fill[sdnavy]  (F1) ellipse [x radius=0.3, y radius=0.1];
-				\fill[sdnavy]  (F2) ellipse [x radius=0.18, y radius=0.060];
-				\fill[sdnavy]  (F3) ellipse [x radius=0.3, y radius=0.1];
-				\fill[sdlight] (FR) ellipse [x radius=0.18, y radius=0.060];
-				\draw[black,  line width=2.2pt] (Fc) -- (N) -- (D);
-				\draw[black, line width=1.8pt] (N) -- (S1);
-				\draw[sdblue,  line width=1.2pt] (S1) -- (F1);
-				\draw[sdblue,  line width=1.2pt] (S1) -- (S2);
-				\draw[sdblue, line width=1.2pt] (S2) -- (F2);
-				\draw[sdblue, line width=1.2pt] (S2) -- (F3);
-				\draw[sdnavy, line width=0.7pt] (N) ++(-105:0.7) arc (-100:-80.1:0.7);
-				\node[sdnavy] at ($(N)+(-50:0.88)$) {$R_{\mathrm g}$};
-				\fill[sdcyan] (A) circle (0.11);
-				\fill[sdblue] (D) circle (0.11);
-				\draw[sdnavy, line width=1pt, fill=sdcyan] (N) circle (0.13);
-				\fill[sdblue] (S1) circle (0.11);
-				\fill[sdblue] (S2) circle (0.11);
-				\node[anchor=west] at (3.55,3.35)
-				{$z_{\mathrm g}\equiv\dfrac{p_{\mathrm{T,subleading}}}{p_{\mathrm{T,leading}}+p_{\mathrm{T,subleading}}}$};
-				\node[anchor=west] at (3.55,2.0)
-				{$\theta_{\mathrm g}\equiv\dfrac{R_{\mathrm g}}{R}$};
-				\node[anchor=west] at (3.55,0.65)
-				{$z_g > z_{\rm cut}\,(\theta_{\mathrm{g}})^{\beta}$};
-			\end{tikzpicture}}
+				\begin{tikzpicture}[font=\Large, >={Stealth[length=2mm]}, baseline]
+					\coordinate (O)  at (0,0);
+					\coordinate (A)  at (0.80,4.55);
+					\coordinate (D)  at (0.59,3.50);
+					\coordinate (N)  at (0.5,2.8);
+					\coordinate (S1) at (0.6, 1.9);
+					\coordinate (S2) at (0.7,1.);
+					\coordinate (Fc) at (-0.3,-0.2);
+					\coordinate (F1) at (0.0,0.2);
+					\coordinate (F2) at (0.5,-0.2);
+					\coordinate (F3) at (0.9,0.1);
+					\coordinate (FL) at (-1.86,0.16);
+					\coordinate (FR) at (2.24,-0.1);
+					\draw[sdlight, line width=0.8pt] (A) -- (D);
+					\draw[sdlight, line width=0.8pt] (D) -- (FL);
+					\draw[sdlight, line width=0.8pt] (A) -- (FR);
+					\draw[sdnavy, line width=1.1pt] (O) ellipse [x radius=3, y radius=1.0];
+					\draw[{Stealth[length=2mm]}-{Stealth[length=2mm]}, sdnavy, line width=0.9pt] (-2.95, -0.02) -- (0.1, -0.02);
+					\node[sdnavy, below] at (-1.45,0.1) {$R$};
+					\fill[sdlight] (FL) ellipse [x radius=0.20, y radius=0.065];
+					\fill[sdnavy]  (Fc) ellipse [x radius=0.24, y radius=0.075];
+					\fill[sdnavy]  (F1) ellipse [x radius=0.3, y radius=0.1];
+					\fill[sdnavy]  (F2) ellipse [x radius=0.18, y radius=0.060];
+					\fill[sdnavy]  (F3) ellipse [x radius=0.3, y radius=0.1];
+					\fill[sdlight] (FR) ellipse [x radius=0.18, y radius=0.060];
+					\draw[black,  line width=2.2pt] (Fc) -- (N) -- (D);
+					\draw[black, line width=1.8pt] (N) -- (S1);
+					\draw[sdblue,  line width=1.2pt] (S1) -- (F1);
+					\draw[sdblue,  line width=1.2pt] (S1) -- (S2);
+					\draw[sdblue, line width=1.2pt] (S2) -- (F2);
+					\draw[sdblue, line width=1.2pt] (S2) -- (F3);
+					\draw[sdnavy, line width=0.7pt] (N) ++(-105:0.7) arc (-100:-80.1:0.7);
+					\node[sdnavy] at ($(N)+(-50:0.88)$) {$R_{\mathrm g}$};
+					\fill[sdcyan] (A) circle (0.11);
+					\fill[sdblue] (D) circle (0.11);
+					\draw[sdnavy, line width=1pt, fill=sdcyan] (N) circle (0.13);
+					\fill[sdblue] (S1) circle (0.11);
+					\fill[sdblue] (S2) circle (0.11);
+					\node[anchor=west] at (3.55,3.35)
+					{$z_{\mathrm g}\equiv\dfrac{p_{\mathrm{T,subleading}}}{p_{\mathrm{T,leading}}+p_{\mathrm{T,subleading}}}$};
+					\node[anchor=west] at (3.55,2.0)
+					{$\theta_{\mathrm g}\equiv\dfrac{R_{\mathrm g}}{R}$};
+					\node[anchor=west] at (3.55,0.65)
+					{$z_g > z_{\rm cut}\,(\theta_{\mathrm{g}})^{\beta}$};
+				\end{tikzpicture}}
 		\end{column}
-		\begin{column}{0.43\textwidth}
+		\begin{column}{0.39\textwidth}
 			\small
 			\begin{itemize}
 				\item C/A recluster \(\Rightarrow\) angle-ordered tree
 				\item<2-> Unwind; drop softer branch until \(z > z_\mathrm{cut}\,\theta^\beta\)
 				\item<3-> First hard splitting \(\to\) \zg, \Rg
-				\item<4-> \(z_\mathrm{cut} = 0.2\), \(\beta = 0\): as ALICE; \(\sim\) hard-core scale, but IRC safe
+				\item<4-> \(z_\mathrm{cut} = 0.2\), \(\beta = 0\)
 			\end{itemize}
 		\end{column}
 	\end{columns}
@@ -484,23 +853,164 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Embedding: from particles to the detector}
+	\centering
+	% fig:UnfoldingScheme from appendices/unfolding.tex (TikZ copied verbatim)
+	\resizebox{!}{0.82\textheight}{%
+		\begin{tikzpicture}[scale=0.7,rotate=0]
+			\def\R{5} % tracker outer radius
+			\def\dang{3} % angular granularity of calo deposits, 
+			% HCAL DEPOSITS
+			\foreach \dr [count=\i,
+				evaluate={\r=\R+\dr; \anga=12+\dang*\i; \angb=\anga+\dang;}
+			] in {0.1, 0.2, 0.2, 0.6, 0.3,0.5,0.2,2.0,1.2,0.3,0.5, 0.2, 0.4, 0.1}{
+					\draw[calo] (0,0) -- (\anga:\r) arc(\anga:\angb:\r) -- cycle;
+					%\draw[calo]
+					%  (\anga:\R) -- (\anga:\r) arc(\anga:\angb:\r)
+					%  -- (\angb:\R) arc(\angb:\anga:\R) -- cycle;
+				}
+
+			\foreach \dr [count=\i,
+				evaluate={\r=\R+\dr; \anga=192+\dang*\i; \angb=\anga+\dang;}
+			] in {0.1, 0.05, 0.3, 0.2,0.3,0.5,0.2, 0.5,0.4,0.3,0.5, 0.2, 0.4, 0.1}{
+					\draw[calo] (0,0) -- (\anga:\r) arc(\anga:\angb:\r) -- cycle;
+					%\draw[calo]
+					%  (\anga:\R) -- (\anga:\r) arc(\anga:\angb:\r)
+					%  -- (\angb:\R) arc(\angb:\anga:\R) -- cycle;
+				}
+
+			\foreach \ang [count=\i,
+				evaluate={\stepa = 15;
+						\stepb=\stepa+50;
+						\ra=\R+0.25*sin(\dang*\i*10);
+						\rb=\R+0.2*cos(\dang*\i*15);
+						\rc=\R+0.3*sin(\dang*\i*20);
+						\rd=\R+0.1;
+					}]in {0, 3,...,360}{
+			\draw[calobg] (0,0) -- (\ang:\ra) arc(\ang:\ang+\dang:\ra) -- cycle;
+			\draw[calobg] (0,0) -- (\ang:\rd) arc(\ang:\ang+\dang:\rd) -- cycle;
+			\draw[calobg] (0,0) -- (\stepa*\dang+\ang:\rb) arc(\stepa*\dang+\ang:\stepa*\dang+\ang+\dang:\rb) -- cycle;
+			\draw[calobg] (0,0) -- (\stepb*\dang+\ang:\rc) arc(\stepb*\dang+\ang:\stepb*\dang+\ang+\dang:\rc) -- cycle;
+			}
+
+			\draw[thick,fill=white] (0,0) circle(\R);
+
+			\foreach \ang [count=\i,
+				evaluate={\bend=12*sin(20+\i*\dang*15)}]in {0, 3,...,360}{
+			\draw[black,opacity=0.3,thin,fill=none]
+			(0,0) to[bend right=\bend] (\ang:\R);
+			}
+
+			\foreach \ang [count=\i,
+				evaluate={\bend=12*cos(\i*\dang*15)}]in {0, 3,...,360}{
+			\draw[black,opacity=0.3,thin,fill=none]
+			(0,0) to[bend left=\bend] (\ang-\dang*0.5:\R);
+			}
+
+			%\draw[calo]
+			%  (\anga:\R) -- (\anga:\r) arc(\anga:\angb:\r)
+			%  -- (\angb:\R) arc(\angb:\anga:\R) -- cycle;
+
+			\foreach \bend [count=\i,
+				evaluate={\anga=6+\dang*\i;}
+			] in {30, 14, 15,18, 20, 12, 19, 17, 11, 12}{
+					\draw[blue!60!green!50!black,thin,fill=none]
+					(0,0) to[bend left=\bend] (\anga:\R);
+				}
+
+			\foreach \bend [count=\i,
+				evaluate={\anga=72-\dang*\i;}
+			] in {20, 30, 19, 18, 20, 12, 19, 17, 12, 10, 8}{
+					\draw[blue!60!green!50!black,thin,fill=none]
+					(0,0) to[bend right=\bend] (\anga:\R);
+				}
+
+			\foreach \bend [count=\i,
+				evaluate={\anga=186+1.5*\dang*\i;}
+			] in {30, 14, 20, 12, 11, 12}{
+					\draw[blue!60!green!50!black,thin,fill=none]
+					(0,0) to[bend left=\bend] (\anga:\R);
+				}
+
+			\foreach \bend [count=\i,
+				evaluate={\anga=252-1.5*\dang*\i;}
+			] in {20, 30, 19, 12, 19, 10, 8}{
+					\draw[blue!60!green!50!black,thin,fill=none]
+					(0,0) to[bend right=\bend] (\anga:\R);
+				}
+
+			\begin{scope}[visible on=<2->]
+				\node[draw, text width=0.15\textwidth, rounded corners=4pt] (tracks) at (90:1.3*\R){
+					\textbf{TPC tracks}
+				};
+				\draw (tracks) edge[dashed,  ->, very thick, red] (225:0.6*\R);
+				\draw (tracks) edge[dashed,  ->, very thick, red] (30:0.5*\R);
+			\end{scope}
+
+			\begin{scope}[visible on=<3->]
+				\node[draw, text width=0.17\textwidth, rounded corners=4pt] (towers) at (150:1.5*\R){
+					\textbf{BEMC tower deposits}
+				};
+				\draw (towers) edge[dashed,  ->, very thick, magenta] (210:1.02*\R);
+				\draw (towers) edge[dashed,  ->, very thick, magenta] (30:1.02*\R);
+			\end{scope}
+
+			\begin{scope}[visible on=<4->]
+				\node[draw, text width=0.15\textwidth, rounded corners=4pt] (UE) at (340:1.8*\R){
+					\textbf{Underlying Event}
+				};
+				\draw (UE) edge[dashed, ->, very thick, blue] (300:1.02*\R);
+				\draw (UE) edge[dashed,  ->, very thick, blue] (340:0.5*\R);
+			\end{scope}
+
+			\draw[thick,fill=white] (0,0) circle(0.27*\R);
+			\begin{feynhand}[scale=0.3]
+				\vertex (a)  at (-1, -2);
+				\vertex(b)  at (-2, 1);
+				\vertex (c)  at (0, -1);
+				\vertex (d)  at (0, 1);
+				\propag [plain] (c) to (a);
+				\propag [plain] (b) to  [edge label = $p_1$] (d);
+				\propag [gluon] (c) to (d);
+				\vertex(e) at (2, -1) ;
+				\vertex (f) at (1, 2);
+				\propag [plain] (e) to [edge label = $p_2$](c);
+				\propag [plain] (d) to (f);
+				\coordinate (J1) at (2.5,3.5);
+				\coordinate (J2) at (-2.5, -3.5);
+				\jetcone{f}{J1}{0.4}{0.10}
+				\jetcone{a}{J2}{0.4}{0.10}
+				\node[vector,left] at (J1) {$\vv{p}_{j_1}$};
+				\node[vector,right] at (J2) {$\vv{p}_{j_2}$};
+			\end{feynhand}
+
+			\begin{scope}[visible on=<5->]
+				\draw  (10:\R) edge["\textbf{Deconvolution / Unfolding}", ->, very thick, red] (10:0.15*\R);
+			\end{scope}
+		\end{tikzpicture}}
+\end{frame}
+
 \begin{frame}{Dataset and jets}
+	\centering
+	\includegraphics[width=0.285\linewidth]{jet_pt_response.pdf}\hfill
+	\includegraphics[width=0.7\linewidth]{jet_pt_res.pdf}
+	\vfill
 	\begin{columns}[T]
-		\begin{column}{0.52\textwidth}
+		\begin{column}{0.49\textwidth}
 			\small
 			\begin{itemize}
 				\item \(p+p\) 200~GeV, 2012; 5.1M HT events
 				\item Tracks, towers \(> 0.2\)~GeV; full hadronic corr.
 				\item anti-\(k_\mathrm{T}\) \(R = 0.4\), \(|\eta| \leq 0.6\), \(p_\mathrm{T} \geq 10\)~GeV/\(c\), \(N_\mathrm{ch} \geq 2\)
-				\item \textbf{Inclusive}: no hard-core cut
-				\item<2-> Embedding: \PYsix + GEANT3 + zero-bias, 16M events
-				\item<2-> JES shift 1\(\to\)17\%, JER 15\(\to\)19\% (low \(\to\) high \(p_\mathrm{T}\))
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.46\textwidth}
-			\centering
-			\only<1>{\includegraphics[width=0.75\linewidth]{jet_pt_response.pdf}}%
-			\only<2>{\includegraphics[width=\linewidth]{jet_pt_res.pdf}}
+		\begin{column}{0.49\textwidth}
+			\small
+			\begin{itemize}
+				\item \textbf{Inclusive}: no hard-core cut
+				\item Embedding: \PYsix + GEANT3 + zero-bias, 16M events
+				\item JES shift 1\(\to\)17\%, JER 15\(\to\)19\% (low \(\to\) high \(p_\mathrm{T}\))
+			\end{itemize}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -529,14 +1039,22 @@
 
 \begin{frame}{Training diagnostics}
 	\begin{columns}[c]
-		\begin{column}{0.48\textwidth}
+		\begin{column}{0.59\textwidth}
 			\centering
-			\includegraphics[height=0.8\textheight]{angularities/pp/unfolding/pp_multifold_training.pdf}
+			% loss panels of the four classifiers (steps 1, 1b, 2, 2b), 2x2, from
+			% jet-angularity-study/studies/plot_training.py (run metrics), training_loss_2x2.pdf
+			\includegraphics[width=\linewidth, height=0.8\textheight, keepaspectratio]{angularities/pp/unfolding/pp_multifold_training_loss.pdf}
 		\end{column}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.39\textwidth}
+			{\footnotesize
+				\[\begin{aligned}
+						\mathcal{L}_\mathrm{BCE} & = -\frac{1}{\sum_i w_i}\sum_i w_i \big[\, y_i \ln f_i \\
+						                         & \qquad + (1-y_i) \ln(1-f_i)\big]
+					\end{aligned}\]
+				\centering \(f_i = f(\mathbf{x}_i)\): classifier output, \(y_i \in \{0,1\}\)\par}
 			\begin{itemize}
-				\item Loss | accuracy, AUROC; thin lines = replicas
-				\item<2-> Iter.\ 1: data \(\ne\) reco (AUROC \(\approx 0.6\))
+				\item Weighted BCE loss; thin lines = replicas
+				\item<2-> Iter.\ 1: loss \(< \ln 2\) \(\Rightarrow\) data \(\ne\) reco
 				\item<3-> Iter.\ 2+: loss \(\approx \ln 2\) \(\Rightarrow\) converged
 				\item<4-> Later: replicas diverge \(\Rightarrow\) use \textbf{iter.\ 2}
 			\end{itemize}
@@ -546,12 +1064,12 @@
 
 \begin{frame}{Closure with a data-like prior}
 	\begin{columns}[c]
-		\begin{column}{0.62\textwidth}
+		\begin{column}{0.59\textwidth}
 			\centering
-			\only<1>{\includegraphics[height=0.78\textheight]{angularities/pp/fig_dist_ptbins_closure_like.pdf}}%
-			\only<2>{\includegraphics[height=0.78\textheight]{angularities/pp/fig_dr_ptbins_closure_like.pdf}}
+			\only<1>{\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{angularities/pp/fig_dist_ptbins_closure_like.pdf}}%
+			\only<2>{\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{angularities/pp/fig_dr_ptbins_closure_like.pdf}}
 		\end{column}
-		\begin{column}{0.36\textwidth}
+		\begin{column}{0.39\textwidth}
 			\small
 			\begin{itemize}
 				\item Pseudo-data: \PYsix reweighted to look like data
@@ -588,42 +1106,15 @@
 	\end{columns}
 	\vspace{3mm}
 	\onslide<2->{
-	\begin{block}{Size}
-		\textbf{Prior} dominates: few \% at peaks, 20--35\% in tails; profiles 3--6\%; detector \(\lesssim\) few \%
-	\end{block}}
-\end{frame}
-
-\begin{frame}{Prior variation by classifier reweighting}
-	\centering
-	\includegraphics[width=0.49\linewidth]{angularities/pp/reweight_herwig7_ch_ang_k1_b1.pdf}
-	\includegraphics[width=0.49\linewidth]{angularities/pp/reweight_herwig7_prof_ch_ang_k1_b1.pdf}
-	\begin{itemize}
-		\small
-		\item \PYsix \(\to\) \HWseven / \PYeight via classifier on \textbf{all features}; response fixed
-		\item<2-> Few-\% match, \alert{incl.\ \Rg correlation} (1-D can't)
-	\end{itemize}
+		\begin{block}{Size}
+			\textbf{Prior} dominates: few \% at peaks, 20--35\% in tails; profiles 3--6\%; detector \(\lesssim\) few \%
+		\end{block}}
 \end{frame}
 
 \begin{frame}{Uncertainty breakdown (girth)}
 	\centering
 	\includegraphics[width=0.9\linewidth]{angularities/pp/sys_ch_ang_k1_b1_hist_ang.pdf}\\
 	\onslide<2->{\includegraphics[width=0.9\linewidth]{angularities/pp/sys_ch_ang_k1_b1_prof_incl_vs_sd_dR.pdf}}
-\end{frame}
-
-\begin{frame}{Cross-check: published STAR observables}
-	\centering
-	\only<1>{%
-	\includegraphics[width=0.495\linewidth]{angularities/pp/pub_comparison/star_published/star_pub_sd_dR}
-	\includegraphics[width=0.495\linewidth]{angularities/pp/pub_comparison/star_published/star_pub_sd_symmetry}}%
-	\only<2->{%
-	\includegraphics[height=0.33\textheight]{angularities/pp/pub_comparison/star_published/star_pub_m}\\
-	\includegraphics[height=0.33\textheight]{angularities/pp/pub_comparison/star_published/star_pub_sd_m}}
-	\begin{itemize}\setlength{\itemsep}{0pt}
-		\scriptsize
-		\item Same unfolded jets, \(z_\mathrm{cut} = 0.1\): \Rg, \zg \textbf{agree}
-		\item<2-> \(M\), \(M_\mathrm{g}\) \textbf{broader} --- under investigation
-	\end{itemize}
-	\refnote{STAR, PLB 811 (2020) 135846; STAR, PRD 104 (2021) 052007}
 \end{frame}
 
 \begin{frame}{Results: inclusive and groomed angularities}
@@ -633,8 +1124,9 @@
 	\only<3->{\includegraphics[height=0.7\textheight]{angularities/pp/fig_dist_ptbins_ch_ang_k1_b2.pdf}}
 	\begin{itemize}\setlength{\itemsep}{0pt}
 		\scriptsize
-		\item Narrower at high \(p_\mathrm{T}\); grooming \(\to\) smaller \(\lambda\), more for large \(\beta\)
-		\item<2-> MC jets \textbf{too narrow}: \HWseven, \PYeight 20--40\% low in tails; \PYsix OK
+		\item Jets narrower at high \(p_\mathrm{T}\); grooming \(\to\) smaller \(\lambda\)
+		\item<2->  Grooming affects more for larger \(\beta\)
+		\item<2-> MC jets \textbf{too narrow}: \HWseven, \PYeight 20--40\% low in tails
 		\item<3-> Grooming reduces the gap (\(\beta = 1, 2\))
 	\end{itemize}
 \end{frame}
@@ -657,15 +1149,15 @@
 		\HWseven, \PYeight: jets too narrow
 	\end{block}
 	\onslide<2->{
-	\begin{block}{Profiles vs \Rg}
-		Same splitting angle, still too little radiation \\
-		\(\Rightarrow\) \alert{radiation per splitting}, not splitting-angle distribution
-	\end{block}}
+		\begin{block}{Profiles vs \Rg}
+			Same splitting angle, still too little radiation \\
+			\(\Rightarrow\) \alert{radiation per splitting}, not splitting-angle distribution
+		\end{block}}
 	\onslide<3->{
-	\begin{itemize}
-		\item Not chosen before unfolding --- unbinned pays off
-		\item Input for RHIC tunes (Detroit, Nashville)
-	\end{itemize}}
+		\begin{itemize}
+			\item Not chosen before unfolding --- unbinned pays off
+			\item Input for RHIC tunes (Detroit, Nashville)
+		\end{itemize}}
 \end{frame}
 
 \begin{frame}{Comparison with ALICE at \(\sqrt{s} = 5.02\)~TeV}
@@ -689,17 +1181,16 @@
 		\item \textbf{Jet-hadron (published):} no event-plane dependence; path-length effect \(<\) uncertainties
 		\item<2-> \textbf{Au+Au angularities:} first unbinned ML unfolding in heavy ions; vacuum-like
 		\item<3-> \textbf{\(p+p\) angularities:} first at RHIC; MC too narrow; \Rg profiles: radiation per splitting
-		\item<4-> Heavy-ion: \textbf{survivor bias}; \(p+p\): unbiased baseline + pipeline
+		\item<4-> Heavy-ion: \textbf{survivor bias}
+		\item<5-> \(p+p\) baseline calculated for inclusive and groomed angularities
+		\item<6-> Developed analysis pipeline with unbinned unfoldoing for RHIC
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Outlook}
 	\begin{itemize}
-		\item Groomed angularities, \Rg profiles in \textbf{Au+Au} --- combinatorial jets the challenge
-		\item<2-> Non-iterative unfolding; nuisance-parameter systematics
-		\item<3-> STAR paper: + \(\lambda^2_0\), more angularities
-		\item<4-> RHIC done: 2023/25 Au+Au, sPHENIX
-		\item<5-> Publish \textbf{per-jet weights} \(\Rightarrow\) reanalysis for future observables
+		\item Groomed angularities, \Rg profiles in \textbf{Au+Au}
+		\item<3-> STAR paper: inclusive/groomed angularities in \(p+p\)
 	\end{itemize}
 \end{frame}
 
@@ -728,8 +1219,8 @@
 	\centering
 	\vfill
 	{\Huge\color{PrimaryColor} Thank you}\\[6mm]
-%	{\large\itshape Ithaka gave you the marvelous journey.}\\[2mm]
-%	{\small --- C.\,P.~Cavafy, \emph{Ithaka}}
+	%	{\large\itshape Ithaka gave you the marvelous journey.}\\[2mm]
+	%	{\small --- C.\,P.~Cavafy, \emph{Ithaka}}
 	\vfill
 \end{frame}
 
@@ -779,6 +1270,17 @@
 	\includegraphics[width=0.85\linewidth]{angularities/pp/sys_ch_ang_k1_b1_prof_sd_vs_sd_dR.pdf}
 \end{frame}
 
+\begin{frame}{Backup: prior variation by classifier reweighting}
+	\centering
+	\includegraphics[width=0.49\linewidth]{angularities/pp/reweight_herwig7_ch_ang_k1_b1.pdf}
+	\includegraphics[width=0.49\linewidth]{angularities/pp/reweight_herwig7_prof_ch_ang_k1_b1.pdf}
+	\begin{itemize}
+		\small
+		\item \PYsix \(\to\) \HWseven / \PYeight via classifier on \textbf{all features}; response fixed
+		\item<2-> Few-\% match, \alert{incl.\ \Rg correlation} (1-D can't)
+	\end{itemize}
+\end{frame}
+
 \begin{frame}{Backup: \PYeight prior reweighting}
 	\centering
 	\includegraphics[width=0.49\linewidth]{angularities/pp/reweight_pythia8_ch_ang_k1_b1.pdf}
@@ -791,19 +1293,52 @@
 	\includegraphics[width=0.4\linewidth]{angularities/pp/pub_comparison/alice_2107.11303/angularities_noptd/alice_groomed_lambda2_ptch20_40.pdf}
 \end{frame}
 
+\begin{frame}{Backup: cross-check with published STAR observables}
+	\centering
+	\includegraphics[width=0.495\linewidth]{angularities/pp/pub_comparison/star_published/star_pub_sd_dR}
+	\includegraphics[width=0.495\linewidth]{angularities/pp/pub_comparison/star_published/star_pub_sd_symmetry}
+	\begin{itemize}\setlength{\itemsep}{0pt}
+		\scriptsize
+		\item Same unfolded jets, \(z_\mathrm{cut} = 0.1\): \Rg, \zg \textbf{agree}
+	\end{itemize}
+	\refnote{STAR, PLB 811 (2020) 135846}
+\end{frame}
+
+\begin{frame}{Backup: published STAR jet mass}
+	\centering
+	\includegraphics[width=0.495\linewidth]{angularities/pp/pub_comparison/star_published/star_pub_m}
+	\includegraphics[width=0.495\linewidth]{angularities/pp/pub_comparison/star_published/star_pub_sd_m}
+	\begin{itemize}\setlength{\itemsep}{0pt}
+		\scriptsize
+		\item \(M\), \(M_\mathrm{g}\) \textbf{broader} than published --- under investigation
+	\end{itemize}
+	\refnote{STAR, PRD 104 (2021) 052007}
+\end{frame}
+
 \begin{frame}{Backup: event-plane resolution}
 	\begin{columns}[c]
-		\begin{column}{0.48\textwidth}
+		\begin{column}{0.59\textwidth}
 			\centering
 			\includegraphics[width=\linewidth]{R2-4combined.pdf}
 		\end{column}
-		\begin{column}{0.48\textwidth}
+		\begin{column}{0.39\textwidth}
 			\begin{itemize}
 				\item Background: \(R_n\) in RPF \(\Rightarrow\) corrected
 				\item Signal: not corrected; \(v_2^\mathrm{quench} \to R_2 v_2^\mathrm{quench}\)
 			\end{itemize}
 		\end{column}
 	\end{columns}
+\end{frame}
+
+\begin{frame}{Backup: reaction plane fit (RPF)}
+	\centering
+	\includegraphics[width=\linewidth,height=0.6\textheight,keepaspectratio]{JHC/JHCorrBGsub_A2.0-3.0_T15-20_C20-50.pdf}
+	\begin{itemize}\setlength{\itemsep}{0pt}
+		\small
+		\item Flow background: \textbf{reaction plane fit} (RPF), all orientations at once
+		\item EP resolution \(R_2 = 0.56\) \(\Rightarrow\) true in/out difference halved
+	\end{itemize}
+	\refnote{STAR, PRC 109 (2024) 044909}
 \end{frame}
 
 \begin{frame}{Backup: RPF fit parameters}

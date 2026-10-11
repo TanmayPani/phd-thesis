@@ -1,0 +1,236 @@
+\newcommand\drawDiJetInVacuum{
+   % \begin{tikzpicture}
+        \begin{feynhand}
+            \vertex (a)  at (-4, -1); 
+            \vertex (b)  at (-4, 1) ; 
+            \vertex (a1) at (-3.5, -0.5); 
+            \vertex (a1_isr) at (-3, -0.5);
+            \vertex (b1) at (-3.5, 0.5); 
+            \vertex (b1_isr) at (-4, 0.5);
+            \propag [plain] (a) to (a1);
+            \propag [plain] (b) to (b1);
+            \propag [bos] (a1) to (a1_isr);
+            \propag [bos] (b1) to (b1_isr);
+            \vertex (c)  at (-3, 0); 
+            \vertex (d)  at (-2, 0);
+            \propag [fermion] (a1) to (c);
+            \propag [fermion] (c) to (b1);
+            \propag [gluon] (c) to (d);
+            \vertex (e) at (-1.5, -0.5); 
+            \vertex (f) at (-1.5, 0.5);
+            \propag [fermion] (d) to (e);
+            \propag [plain] (f) to (d);
+            \vertex (f0) at (-1, 1.); 
+            \propag [fermion] (f0) to (f);
+            \vertex (f00) at (0, 3);
+            \propag [bos] (f0) to (f00);
+            \vertex (f01) at (-0.5, 1.5);
+            \propag [plain] (f01) to (f0);
+            \vertex [NWblob] (f010) at (1.0, 2.5) {};
+            \propag [fermion] (f010) to (f01);
+            \vertex (f011) at (0.2, 1.5);
+            \propag [gluon] (f01) to (f011);
+            \propag [fermion] (f011) to (f010);
+            \vertex (f1) at (-1, 0.);
+            \propag [gluon] (f) to (f1);
+            \vertex (f10) at (0., 0);
+            \vertex (f11) at (0., .75);
+            \propag [gluon] (f1) to (f10);
+            \propag [gluon] (f1) to (f11);
+            \vertex [NWblob] (f110) at (1., 0.5) {};
+            \vertex [NWblob] (f111) at (1., 1.3) {};
+            \propag [fermion] (f110) to (f11);
+            \propag [fermion] (f11) to (f111);
+            \propag [fermion] (f10) to (f110);
+            \vertex [NWblob] (f101) at (1.0, -0.5) {};
+            \propag [fermion] (f101) to (f10);
+            \propag [fermion] (f111) to (f011);
+            \vertex (e0) at (0, -1); 
+            \vertex (ep) at (-1., -1);
+            \propag [gluon] (e) to (e0);
+            \propag [plain] (e) to (ep);
+            \vertex [NWblob] (epp) at (1, -1.5) {};
+            \vertex (ep0) at (0, -2);
+            \propag [fermion] (ep) to (epp);
+            \propag [bos] (ep) to (ep0);
+            %\vertex (e01) at (0.5, -0.5);
+            \propag [fermion] (e0) to (epp); 
+            \propag [fermion] (f101) to (e0);
+            \vertex [ringdot] (h10) at (1.6, 2.8) {};
+            \vertex [ringdot] (h101) at (1.6, 2.4) {};
+            \propag[plain] (f010) to (h10);
+            \propag[plain] (f010) to (h101);
+            \vertex [ringdot] (h102) at (1.8, 2.7) {};
+            \propag[plain] (h101) to (h102);
+            \vertex [ringdot] (h103) at (1.8, 2.3) {};
+            \propag[plain] (h101) to (h103);
+            \vertex [ringdot] (h11) at (1.6, 1.4) {};
+            \vertex [ringdot] (h111) at (1.6, 1.0) {};	
+            \propag[plain] (f111) to (h11);
+            \propag[plain] (f111) to (h111);
+            \vertex [ringdot] (h112) at (1.8, 1.3) {};
+            \propag[plain] (h111) to (h112);
+            \vertex [ringdot] (h113) at (1.8, 0.9) {};
+            \propag[plain] (h111) to (h113);
+            \vertex [ringdot] (h12) at (1.6, 0.6) {};
+            \vertex [ringdot] (h121) at (1.6, 0.2) {};
+            \propag[plain] (f110) to (h12);
+            \propag[plain] (f110) to (h121);
+            \vertex [ringdot] (h122) at (1.8, 0.5) {};
+            \propag[plain] (h121) to (h122);
+            \vertex [ringdot] (h123) at (1.8, 0.1) {};
+            \propag[plain] (h121) to (h123);
+            \vertex [ringdot] (h124) at (2.0, 0.6) {};
+            \propag[plain] (h122) to (h124);
+            \vertex [ringdot] (h125) at (2.0, 0.4) {};
+            \propag[plain] (h122) to (h125);
+            \vertex [ringdot] (h13) at (1.6, -0.4) {};
+            \vertex [ringdot] (h131) at (1.6, -0.8) {};
+            \propag[plain] (f101) to (h13);
+            \propag[plain] (f101) to (h131);
+            \vertex [ringdot] (h132) at (1.8, -0.7) {};
+            \propag[plain] (h131) to (h132);
+            \vertex [ringdot] (h134) at (1.8, -0.9) {};
+            \propag[plain] (h131) to (h134);
+            \vertex [ringdot] (h14) at (1.6, -1.6) {};
+            \vertex [ringdot] (h141) at (1.6, -2.0) {};
+            \propag[plain] (epp) to (h14);
+            \propag[plain] (epp) to (h141);
+            \vertex [ringdot] (h142) at (1.8, -1.8) {};
+            \propag[plain] (h141) to (h142);
+            \vertex [ringdot] (h144) at (1.8, -2.0) {};
+            \propag[plain] (h141) to (h144);
+        \end{feynhand}
+                
+    %\end{tikzpicture}
+}
+
+\newcommand\drawDiJetInMedium{
+    \begin{feynhand}
+        \vertex (a)  at (-4, -1); 
+        \vertex (b)  at (-4, 1) ; 
+        \vertex (a1) at (-3.5, -0.5); 
+        \vertex (a1_isr) at (-3, -0.5);
+        \vertex (b1) at (-3.5, 0.5); 
+        \vertex (b1_isr) at (-4, 0.5);
+        \propag [plain] (a) to (a1);
+        \propag [plain] (b) to (b1);
+        \propag [bos] (a1) to (a1_isr);
+        \propag [bos] (b1) to (b1_isr);
+        \vertex (c)  at (-3, 0); 
+        \vertex (d)  at (-2, 0);
+        \propag [fermion] (a1) to (c);
+        \propag [fermion] (c) to (b1);
+        \propag [gluon] (c) to (d);
+        \vertex (f) at (-1.5, 0.5);
+        \vertex (f0) at (-1, 1.); 
+        \vertex (f1) at (-1, 0.);
+        \vertex (f00) at (0, 3);
+        \vertex (f01) at (-0.5, 1.5);
+        \vertex (f10) at (0., 0);
+        \vertex (f11) at (0., .75);
+        \vertex (f011) at (0.2, 1.5);
+            \vertex (f_med) at (-2.5, 3);
+            \vertex (f_med0) at (-1.5, 2);
+            \vertex (f_med1) at (-1., 2.5);
+            \propag [fermion, red] (f_med) to (f_med0);
+            \propag [fermion, red] (f_med0) to (f_med1);
+            \vertex (f0_med) at (-1.4, 1.25);
+            \propag [gluon, red] (f0_med) to (f_med0);
+            \propag [fermion, red] (f0_med) to (f);
+            \propag [fermion, red] (f0) to (f0_med);
+        
+        \propag [gluon] (f) to (f1);
+        \propag [fermion] (f) to (d);
+        \propag [plain] (f01) to (f0);
+        \propag [bos] (f0) to (f00);
+        
+        \vertex [NWblob] (f010) at (1.0, 2.5) {};
+        \propag [fermion] (f010) to (f01);
+        \propag [gluon] (f01) to (f011);
+        \propag [fermion] (f011) to (f010);
+        
+        \propag [gluon] (f1) to (f10);
+        \propag [gluon] (f1) to (f11);
+        \vertex [NWblob] (f110) at (1., 0.5) {};
+        \vertex [NWblob] (f111) at (1., 1.3) {};
+        \propag [fermion] (f110) to (f11);
+        \propag [fermion] (f11) to (f111);
+        \propag [fermion] (f10) to (f110);
+        \vertex [NWblob] (f101) at (1.0, -0.5) {};
+        \propag [fermion] (f101) to (f10);
+        \propag [fermion] (f111) to (f011);
+        
+        
+        
+        
+        
+            \vertex (e) at (-1.5, -0.5); 
+            \vertex (e_med) at (-1.8, -0.7);
+            \vertex (e_med_1) at (-1.75, -1.5);
+            \propag [fermion, red] (d) to (e_med);
+            \propag [fermion, red] (e_med) to (e);
+            \propag [gluon, red] (e_med) to (e_med_1);
+        
+        \vertex (e0) at (0, -1); 
+        \vertex (ep) at (-1., -1);
+        
+        \propag [gluon] (e) to (e0);
+        \propag [plain] (e) to (ep);
+        \vertex [NWblob] (epp) at (1, -1.5) {};
+        \vertex (ep0) at (0, -2);
+        \propag [fermion] (ep) to (epp);
+        \propag [bos] (ep) to (ep0);
+        %\vertex (e01) at (0.5, -0.5);
+        \propag [fermion] (e0) to (epp); 
+        \propag [fermion] (f101) to (e0);
+        \vertex [ringdot] (h10) at (1.6, 2.8) {};
+        \vertex [ringdot] (h101) at (1.6, 2.4) {};
+        \propag[plain] (f010) to (h10);
+        \propag[plain] (f010) to (h101);
+        \vertex [ringdot] (h102) at (1.8, 2.7) {};
+        \propag[plain] (h101) to (h102);
+        \vertex [ringdot] (h103) at (1.8, 2.3) {};
+        \propag[plain] (h101) to (h103);
+        \vertex [ringdot] (h11) at (1.6, 1.4) {};
+        \vertex [ringdot] (h111) at (1.6, 1.0) {};	
+        \propag[plain] (f111) to (h11);
+        \propag[plain] (f111) to (h111);
+        \vertex [ringdot] (h112) at (1.8, 1.3) {};
+        \propag[plain] (h111) to (h112);
+        \vertex [ringdot] (h113) at (1.8, 0.9) {};
+        \propag[plain] (h111) to (h113);
+        \vertex [ringdot] (h12) at (1.6, 0.6) {};
+        \vertex [ringdot] (h121) at (1.6, 0.2) {};
+        \propag[plain] (f110) to (h12);
+        \propag[plain] (f110) to (h121);
+        \vertex [ringdot] (h122) at (1.8, 0.5) {};
+        \propag[plain] (h121) to (h122);
+        \vertex [ringdot] (h123) at (1.8, 0.1) {};
+        \propag[plain] (h121) to (h123);
+        \vertex [ringdot] (h124) at (2.0, 0.6) {};
+        \propag[plain] (h122) to (h124);
+        \vertex [ringdot] (h125) at (2.0, 0.4) {};
+        \propag[plain] (h122) to (h125);
+        \vertex [ringdot] (h13) at (1.6, -0.4) {};
+        \vertex [ringdot] (h131) at (1.6, -0.8) {};
+        \propag[plain] (f101) to (h13);
+        \propag[plain] (f101) to (h131);
+        \vertex [ringdot] (h132) at (1.8, -0.7) {};
+        \propag[plain] (h131) to (h132);
+        \vertex [ringdot] (h134) at (1.8, -0.9) {};
+        \propag[plain] (h131) to (h134);
+        \vertex [ringdot] (h14) at (1.6, -1.6) {};
+        \vertex [ringdot] (h141) at (1.6, -2.0) {};
+        \propag[plain] (epp) to (h14);
+        \propag[plain] (epp) to (h141);
+        \vertex [ringdot] (h142) at (1.8, -1.8) {};
+        \propag[plain] (h141) to (h142);
+        \vertex [ringdot] (h144) at (1.8, -2.0) {};
+        \propag[plain] (h141) to (h144);
+    \end{feynhand}
+    \draw[fill=violet!20, rounded corners, opacity=0.2] (-2.0, 3.5) rectangle (0.6, -2.5) node at (-1.0, 3.) {Medium};
+    
+        \node[fill=orange!50] at (-2, -1.8) {Inelastic collisions};
+        \node[fill=orange!50] at (-3, 1.8) {Elastic collisions};
+}

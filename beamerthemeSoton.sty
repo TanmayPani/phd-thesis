@@ -69,6 +69,11 @@
 \newlength{\titlebarheight}
 \setlength{\titlebarheight}{1cm}
 
+% -------- PROGRESS BAR HEIGHT (section name and frame number sit inside it) --------
+
+\newlength{\progbarheight}
+\setlength{\progbarheight}{0.35cm}
+
 % -------- COLOR SCHEME --------
 
 \definecolor{PrimaryColor}{RGB}{0,85,127} % primary color (blue)
@@ -287,20 +292,20 @@ top color=transparent!100]
 			% show progress bar
 			\ifnum \value{showProgressBar}>0\relax%
 				% progress bar icon in the middle of the screen
-				\draw[fill=ProgBarBGColor,draw=none] (0cm,0cm) rectangle(\slidewidth,0.25cm);
-				\draw[fill=PrimaryColor,draw=none] (0cm,0cm) rectangle(\progressbar@tmpdim,0.25cm);
+				\draw[fill=ProgBarBGColor,draw=none] (0cm,0cm) rectangle(\slidewidth,\progbarheight);
+				\draw[fill=PrimaryColor,draw=none] (0cm,0cm) rectangle(\progressbar@tmpdim,\progbarheight);
 
-				% bottom info
-				\node[anchor=south west] at(0cm,0.25cm) {\color{PrimaryColor}\tiny\vphantom{lp}\insertsection};
+				% bottom info, inside the bar
+				\node[anchor=west,inner ysep=0pt] at(0cm,0.5\progbarheight) {\hypersetup{linkcolor=BackgroundColor}\color{BackgroundColor}\tiny\vphantom{lp}\insertsection};
 				
 				% if slide numbers are active
 				\ifnum \value{showSlideNumbers}>0\relax%
 					% if slide totals are active
 					\ifnum \value{showSlideTotal}>0\relax%
 						% draw both slide number and slide total
-						\node[anchor=south east] at(\slidewidth,0.25cm) {\color{PrimaryColor}\tiny\insertframenumber/\inserttotalframenumber};
+						\node[anchor=east,inner ysep=0pt] at(\slidewidth,0.5\progbarheight) {\color{BackgroundColor}\tiny\insertframenumber/\inserttotalframenumber};
 					\else
-						\node[anchor=south east] at(\slidewidth,0.25cm) {\color{PrimaryColor}\tiny\insertframenumber};
+						\node[anchor=east,inner ysep=0pt] at(\slidewidth,0.5\progbarheight) {\color{BackgroundColor}\tiny\insertframenumber};
 					\fi
 				\fi
 			\else
@@ -384,5 +389,5 @@ top color=transparent!100]
 
 % -------- FIX TEXT OVER PROGRESS BAR --------
 \addtobeamertemplate{footline}{}{%
-  \vspace{0.5cm}
+  \vspace{\progbarheight}
 }
